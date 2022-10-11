@@ -1,0 +1,38 @@
+.footer {
+  margin-top: auto;
+  height: 15rem;
+  background: linear-gradient(to bottom, rgba(128, 125, 125, 0), rgba(70, 69, 69, 0.4));
+  &__flex-container {
+    display: flex;
+    margin-top: 2rem;
+    margin-left: 15rem;
+    margin-right: 15rem;
+    border-top: 1px solid rgba(162, 158, 158, 0.8);
+    padding-top: 5rem;
+    font-size: 1.2rem;
+
+  }
+  &__copyright {
+    text-align: center;
+    font-size: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__contact {
+    align-self: center;
+    &__image {
+      width: 2rem;
+      height: auto;
+      align-self: center;
+      fill: gold;
+      margin-left: 0.5rem;
+    }
+  }
+
+  &__creator {
+    align-self: center;
+  }
+
+
+}

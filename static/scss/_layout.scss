@@ -1,0 +1,23 @@
+// layout
+.grid-full-span{
+    grid-column: 1 / - 1;
+}
+
+
+.grid-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    grid-template-rows: auto;
+    grid-auto-flow: dense;
+
+}
+//body {
+//   background-image:linear-gradient(to bottom, rgba(73, 73, 73,1), rgba(73, 73, 73,1));
+//
+//}
+
+
+
+
+
+

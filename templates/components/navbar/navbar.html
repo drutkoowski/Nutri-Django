@@ -1,0 +1,23 @@
+{% load static %}
+<div class="grid-full-span navbar">
+    <h3 class="navbar__item navbar__item--first navbar__item--site-name">Nutri<span class=" navbar__item--first navbar__item--nutri-dot">.</span></h3>
+    <div class="navbar__item navbar__item--menu">
+        <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
+
+        <label for="navi-toggle" class="navigation__button">
+            <span class="navigation__icon">&nbsp;</span>
+        </label>
+
+        <div class="navigation__background">&nbsp;</div>
+
+        <nav class="navigation__nav">
+            <ul class="navigation__list not-visible">
+                <li class="navigation__item"><a href="#" class="navigation__link"><span><img class="navigation__link__icon filter-gold" src="{% static 'images/svg/key.svg' %}" alt="Log in Icon" /></span>Log in</a></li>
+                <li class="navigation__item"><a href="#" class="navigation__link"><span><img class="navigation__link__icon filter-gold" src="{% static 'images/svg/new.svg' %}" alt="Sign up Icon" /></span>Sign up</a></li>
+                <li class="navigation__item"><a href="#" class="navigation__link"><span><img class="navigation__link__icon filter-gold" src="{% static 'images/svg/about.svg' %}" alt="About Icon" /></span>About</a></li>
+                <li class="navigation__item"><a href="#" class="navigation__link"><span><img class="navigation__link__icon filter-gold" src="{% static 'images/svg/star-outline.svg' %}" alt="Reviews Icon" /></span>Reviews</a></li>
+                <li class="navigation__item"><a href="#" class="navigation__link"><span><img class="navigation__link__icon filter-gold" src="{% static 'images/svg/contacts.svg' %}" alt="Contact Icon" /></span>Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>

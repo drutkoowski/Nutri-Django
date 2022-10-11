@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block scripts %}
+    <script src="{% static 'scripts/carousel.js' %}" defer></script>
+    <script src="{% static 'scripts/main.js' %}" defer></script>
+{% endblock scripts %}
+{% block content %}
+{#    spinner #}
+<div class="loader"></div>
+    <div class="grid-container">
+
+        <div class="background-photo-container--header grid-full-span">
+
+          {% include 'components/navbar/navbar.html' %}
+
+            <div class="grid-full-span header">
+                <div class="header__flex-container">
+                    <h2 id='header-upper' class="header__quote--upper">Easy to use calorie calculator fitted for you and your diet<span class="header__nutri-dot">.</span></h2>
+                    <p id='header-lower' class="header__quote--lower">Using Nutri<span class="header__nutri-dot">.</span> You can make your goal real<span class="header__nutri-dot">.</span></p>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div id='about' class="about grid-full-span reveal fade-left">
+            <h3 class="about__element about__element__heading">
+                Easy to use calorie calculator fitted for your body goals and diet<span class="header__nutri-dot">.</span>
+            </h3>
+            <div class="about__element about__element__image"></div>
+        </div>
+
+
+        <div id='healthy-food' class="healthy-food grid-full-span reveal fade-right">
+            <div class="healthy-food__element healthy-food__element__image"></div>
+            <h3 class="healthy-food__element healthy-food__element__heading">
+                Create your own healthy habits all in one place<span class="header__nutri-dot">.</span>
+            </h3>
+        </div>
+
+         <div class="make-goals-real grid-full-span reveal fade-bottom">
+            <div class="make-goals-real__flex-container">
+                    <h2 id='make-goals-real-upper' class="make-goals-real__quote--upper">Using Nutri<span class="header__nutri-dot" style="margin-right: 1px">.</span> You can make your goal real<span class="header__nutri-dot">.</span></h2>
+                </div>
+        </div>
+
+        <div class="why-nutri grid-full-span reveal fade-bottom">
+            <h3 class="why-nutri__title">Discover Your Nutrition<span class="header__nutri-dot">.</span></h3>
+            <div class="why-nutri__card-1 why-nutri__card">
+                <img class="why-nutri__card__icon filter-gold" src="{% static 'images/svg/phone-approved.svg' %}" alt="Phone approved Icon" />
+                <p class="why-nutri__card__description">Desktop and Mobile accessibility<span class="header__nutri-dot">.</span></p>
+            </div>
+            <div class="why-nutri__card-2 why-nutri__card">
+                <img class="why-nutri__card__icon filter-gold" src="{% static 'images/svg/save-money.svg' %}" alt="Free of charge Icon" />
+                <p class="why-nutri__card__description">Completely free of charge<span class="header__nutri-dot">.</span></p>
+            </div>
+            <div class="why-nutri__card-3 why-nutri__card">
+                 <img class="why-nutri__card__icon filter-gold" src="{% static 'images/svg/approved.svg' %}" alt="Approved Icon" />
+                <p class="why-nutri__card__description">Appreciated by <b>172</b> users<span class="header__nutri-dot">.</span></p>
+            </div>
+        </div>
+
+        <div class="workout-journey grid-full-span reveal fade-bottom">
+            <div class="workout-journey__flex-container">
+                    <h2 id='workout-journey-upper' class="workout-journey__quote--upper">We support you on multiple levels of development<span class="header__nutri-dot">.</span></h2>
+                </div>
+        </div>
+
+        <div class="gains grid-full-span reveal fade-bottom">
+            <div class="gains__card">
+                 <img class="gains__card__icon filter-gold" src="{% static 'images/svg/calculator.svg' %}" alt="Calculator Icon" />
+                <p class="gains__card__description">Calculate daily KCAL<span class="header__nutri-dot">.</span></p>
+            </div>
+            <div class="gains__card">
+                <img class="gains__card__icon filter-gold" src="{% static 'images/svg/recipe.svg' %}" alt="Recipe Icon" />
+                <p class="gains__card__description">Search for recipes<span class="header__nutri-dot">.</span></p>
+            </div>
+            <div class="gains__card">
+                <img class="gains__card__icon filter-gold" src="{% static 'images/svg/save.svg' %}" alt="Save Icon" />
+                <p class="gains__card__description">Save your progress<span class="header__nutri-dot">.</span></p>
+                </div>
+            <div class="gains__card">
+                <img class="gains__card__icon filter-gold" src="{% static 'images/svg/options.svg' %}" alt="Options Icon" />
+                <p class="gains__card__description">Many personalization methods<span class="header__nutri-dot">.</span></p>
+            </div>
+            <div class="gains__card">
+                <img class="gains__card__icon filter-gold" src="{% static 'images/svg/exercise.svg' %}" alt="Exercise Icon" />
+                <p class="gains__card__description">Add your exercises<span class="header__nutri-dot">.</span></p>
+            </div>
+            <div class="gains__card">
+                <img class="gains__card__icon filter-gold" src="{% static 'images/svg/share.svg' %}" alt="Share Icon" />
+                <p class="gains__card__description">Share your progress<span class="header__nutri-dot">.</span></p>
+            </div>
+        </div>
+
+        <div class="reviews grid-full-span reveal fade-bottom">
+            {% include 'components/carousel/carousel.html' %}
+        </div>
+
+        <div class="grid-full-span" style="margin-bottom: 15rem;"></div>
+        <div class="footer grid-full-span">
+            <div class="footer__flex-container">
+                <div class="footer__creator">Created with &hearts; by Damian Rutkowski</div>
+                <div class="footer__copyright">Copyright &copy; 2022<span class="header__nutri-dot">.</span> All rights reserved<span class="header__nutri-dot">.</span></div>
+                <div class="footer__contact">
+                    <img class="footer__contact__image" src="{% static 'images/svg/github.svg' %}" alt="Github Icon" />
+                    <img class="footer__contact__image" src="{% static 'images/svg/facebook.svg' %}" alt="Facebook Icon" />
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock content %}

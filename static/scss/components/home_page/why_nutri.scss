@@ -1,0 +1,57 @@
+.why-nutri {
+    display: grid;
+    margin-top: 5rem;
+    grid-template-rows: 0.15fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    height: 75rem;
+    grid-gap: 3rem;
+
+    &__card {
+      display: flex;
+      flex-direction: column;
+      width: 35rem;
+      height: 55rem;
+      border-radius: 20px;
+      justify-content: center;
+      transition: all 1s ease;
+
+      &:hover{
+        transform: scale(1.05);
+      }
+
+      &__description{
+        margin-top: 2rem;
+      }
+      &__icon {
+
+      }
+      &-1{
+        justify-self: center;
+        margin-top: 2rem;
+        grid-column: 1 / 2;
+        font-size: 3.5rem;
+        text-align: center;
+      }
+
+      &-2{
+        justify-self: center;
+        margin-top: 2rem;
+        grid-column: 2 / 3;
+        font-size: 3.5rem;
+        text-align: center;
+      }
+
+      &-3{
+       justify-self: center;
+        margin-top: 2rem;
+        grid-column: 3 / 4;
+        font-size: 3.5rem;
+        text-align: center;
+      }
+    }
+    &__title {
+        grid-column: 1 / -1;
+        justify-self: center;
+        font-size: 5.2rem;
+    }
+}

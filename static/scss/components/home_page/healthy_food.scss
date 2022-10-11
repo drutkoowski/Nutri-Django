@@ -1,0 +1,29 @@
+.healthy-food {
+    display: grid;
+    grid-template-columns: 0.1fr 2fr 1fr 0.1fr;
+    grid-template-rows: 1fr;
+    height: 55rem;
+    column-gap: 5rem;
+    margin-top: 25rem;
+    transition: hover 1s ease;
+     &__element {
+        &__heading {
+            grid-column: 3/4;
+            font-size: 5rem;
+            font-weight: bolder;
+            align-self: center;
+        }
+
+         &__image {
+            transform: scale(1.05);
+            grid-column: 2/3;
+            max-width: 100%;
+            background-image:
+             url('../../../../static/images/about_healthy_food.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 5%;
+        }
+    }
+}
