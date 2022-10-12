@@ -2,16 +2,18 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  grid-gap: 3rem;
+  grid-row-gap: 10rem;
   height: auto;
   margin-top: 5rem;
+  position: relative;
 
   &__card {
+      margin-top: 5rem;
       background: linear-gradient(to bottom right, rgba(218, 218, 220, 0.2) 0%, rgba(220, 214, 214, 0.2) 80%);
       display: flex;
       flex-direction: column;
       width: 45rem;
-      height: 55rem;
+      height: 35rem;
       border-radius: 20px;
       justify-self: center;
       transition: all 1s ease;
@@ -22,7 +24,7 @@
 
     &__icon {
       margin-top: 4rem;
-      width: 35rem;
+      width: 20rem;
       height: auto;
       align-self: center;
       fill: gold;
@@ -30,7 +32,8 @@
 
     &__description {
       font-size: 3.5rem;
-      margin: 3rem auto 0 auto;
+      margin: auto auto 5rem auto;
+      color: white;
 
     }
   }

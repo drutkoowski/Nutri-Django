@@ -281,6 +281,12 @@
 .filter-gold {
   filter: invert(78%) sepia(67%) saturate(657%) hue-rotate(356deg) brightness(98%) contrast(107%); }
 
+.margin-top-md {
+  margin-top: 5rem; }
+
+.margin-bottom-md {
+  margin-bottom: 5rem; }
+
 .about {
   display: grid;
   grid-template-columns: 0.1fr 1fr 2fr 0.1fr;
@@ -439,15 +445,17 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  grid-gap: 3rem;
+  grid-row-gap: 10rem;
   height: auto;
-  margin-top: 5rem; }
+  margin-top: 5rem;
+  position: relative; }
   .gains__card {
+    margin-top: 5rem;
     background: linear-gradient(to bottom right, rgba(218, 218, 220, 0.2) 0%, rgba(220, 214, 214, 0.2) 80%);
     display: flex;
     flex-direction: column;
     width: 45rem;
-    height: 55rem;
+    height: 35rem;
     border-radius: 20px;
     justify-self: center;
     transition: all 1s ease; }
@@ -455,24 +463,21 @@
       transform: scale(1.05); }
     .gains__card__icon {
       margin-top: 4rem;
-      width: 35rem;
+      width: 20rem;
       height: auto;
       align-self: center;
       fill: gold; }
     .gains__card__description {
       font-size: 3.5rem;
-      margin: 3rem auto 0 auto; }
+      margin: auto auto 5rem auto;
+      color: white; }
 
 .make-goals-real {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   margin-top: 15rem;
-  height: 50vh;
-  background-image: linear-gradient(to bottom, rgba(47, 49, 49, 0) 0%, #171616 100%), url("../../../../static/images/goal-real.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat; }
+  height: 100vh; }
   .make-goals-real__flex-container {
     display: flex;
     flex-direction: column;
@@ -480,6 +485,7 @@
     align-self: center;
     color: white; }
   .make-goals-real__quote--upper {
+    margin-top: 55rem;
     animation-name: moveInLeft;
     animation-duration: 1s;
     animation-timing-function: ease-out;
@@ -549,7 +555,8 @@
 
 .footer {
   margin-top: auto;
-  height: 15rem; }
+  height: 15rem;
+  background: linear-gradient(to bottom, rgba(128, 125, 125, 0), rgba(70, 69, 69, 0.4)); }
   .footer__flex-container {
     display: flex;
     margin-top: 2rem;
@@ -573,6 +580,19 @@
       margin-left: 0.5rem; }
   .footer__creator {
     align-self: center; }
+
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  overflow: hidden; }
+  .bg-video__content {
+    height: 100%;
+    width: 100%;
+    object-fit: cover; }
 
 *,
 *::after,

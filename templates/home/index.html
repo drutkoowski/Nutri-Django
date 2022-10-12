@@ -39,7 +39,14 @@
         </div>
 
          <div class="make-goals-real grid-full-span reveal fade-bottom">
-            <div class="make-goals-real__flex-container">
+           <div class="bg-video">
+                <video class="bg-video__content" autoplay muted loop>
+                    <source src="{% static 'video/video_bg_real.mp4' %}" type="video/mp4">
+                    <source src="{% static 'video/bg_video_real.webm' %}" type="video/webm">
+                    Your browser is not supported!
+                </video>
+            </div>
+              <div class="make-goals-real__flex-container">
                     <h2 id='make-goals-real-upper' class="make-goals-real__quote--upper">Using Nutri<span class="header__nutri-dot" style="margin-right: 1px">.</span> You can make your goal real<span class="header__nutri-dot">.</span></h2>
                 </div>
         </div>
@@ -60,34 +67,42 @@
             </div>
         </div>
 
-        <div class="workout-journey grid-full-span reveal fade-bottom">
-            <div class="workout-journey__flex-container">
-                    <h2 id='workout-journey-upper' class="workout-journey__quote--upper">We support you on multiple levels of development<span class="header__nutri-dot">.</span></h2>
-                </div>
-        </div>
+{#        <div class="workout-journey grid-full-span reveal fade-bottom">#}
+{#            <div class="workout-journey__flex-container">#}
+{#                    <h2 id='workout-journey-upper' class="workout-journey__quote--upper">We support you on multiple levels of development<span class="header__nutri-dot">.</span></h2>#}
+{#                </div>#}
+{#        </div>#}
 
         <div class="gains grid-full-span reveal fade-bottom">
-            <div class="gains__card">
+            <div class="bg-video">
+                <video class="bg-video__content" autoplay muted loop>
+                    <source src="{% static 'video/bg_video_gains.mp4' %}" type="video/mp4">
+                    <source src="{% static 'video/bg_video_gains.webm' %}" type="video/webm">
+                    Your browser is not supported!
+                </video>
+            </div>
+            <div class="gains__card margin-top-md">
                  <img class="gains__card__icon filter-gold" src="{% static 'images/svg/calculator.svg' %}" alt="Calculator Icon" />
                 <p class="gains__card__description">Calculate daily KCAL<span class="header__nutri-dot">.</span></p>
             </div>
-            <div class="gains__card">
+
+            <div class="gains__card margin-top-md">
                 <img class="gains__card__icon filter-gold" src="{% static 'images/svg/recipe.svg' %}" alt="Recipe Icon" />
                 <p class="gains__card__description">Search for recipes<span class="header__nutri-dot">.</span></p>
             </div>
-            <div class="gains__card">
+            <div class="gains__card margin-top-md">
                 <img class="gains__card__icon filter-gold" src="{% static 'images/svg/save.svg' %}" alt="Save Icon" />
                 <p class="gains__card__description">Save your progress<span class="header__nutri-dot">.</span></p>
                 </div>
-            <div class="gains__card">
+            <div class="gains__card margin-bottom-md">
                 <img class="gains__card__icon filter-gold" src="{% static 'images/svg/options.svg' %}" alt="Options Icon" />
                 <p class="gains__card__description">Many personalization methods<span class="header__nutri-dot">.</span></p>
             </div>
-            <div class="gains__card">
+            <div class="gains__card margin-bottom-md">
                 <img class="gains__card__icon filter-gold" src="{% static 'images/svg/exercise.svg' %}" alt="Exercise Icon" />
                 <p class="gains__card__description">Add your exercises<span class="header__nutri-dot">.</span></p>
             </div>
-            <div class="gains__card">
+            <div class="gains__card margin-bottom-md">
                 <img class="gains__card__icon filter-gold" src="{% static 'images/svg/share.svg' %}" alt="Share Icon" />
                 <p class="gains__card__description">Share your progress<span class="header__nutri-dot">.</span></p>
             </div>
