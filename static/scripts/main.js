@@ -8,11 +8,9 @@ hamburgerNav.addEventListener('click', () => {
     console.log(hamburgerNav.checked)
 
     if (!navigationList.classList.contains('not-visible') && !hamburgerNav.checked) {
-        console.log('blok wylaczenia')
         navigationList.classList.add('not-visible')
     }
     else if (navigationList.classList.contains('not-visible') && hamburgerNav.checked) {
-        console.log('blok wlaczenia')
          navigationList.classList.remove('not-visible')
     }
 
