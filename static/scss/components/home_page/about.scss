@@ -6,12 +6,71 @@
     column-gap: 5rem;
     margin-top: 25rem;
 
+     @include respond(md-desktop) {
+       grid-template-columns: 1fr 2fr 0.1fr;
+       height: 45rem;
+     }
+
+    @include respond(tab-md) {
+      font-size: 2.5rem;
+      height: 35rem;
+      margin-top: 15rem;
+    }
+
+    @include respond(tab-sm) {
+      grid-template-columns: 1fr;
+      grid-template-rows: 0.5fr 1fr;
+      height: 55rem;
+      margin-top: 10rem;
+    }
+
+    @include respond(phone-lg) {
+      height: 40rem;
+    }
+
+   @include respond(phone-sm) {
+      height: 35rem;
+    }
+
+
+
     &__element {
         &__heading {
             grid-column: 2/3;
             font-size: 5rem;
             font-weight: bolder;
             align-self: center;
+           @include respond(md-desktop) {
+             grid-column: 1/2;
+             font-size: 3rem;
+             margin-left: 5rem;
+            }
+            @include respond(tab-md) {
+              font-size: 2.5rem;
+              margin-left: 4rem;
+              column-gap: 0;
+            }
+
+           @include respond(tab-sm) {
+              grid-column: 1 / -1;
+              grid-row: 1 / 2;
+              font-size: 3rem;
+              margin-left: 5rem;
+             margin-right: 5rem;
+            }
+           @include respond(phone-lg) {
+              font-size: 2.5rem;
+
+            }
+
+           @include respond(phone-md) {
+              font-size: 1.8rem;
+            }
+
+           @include respond(phone-sm) {
+              font-size: 1.5rem;
+            }
+
         }
 
          &__image {
@@ -23,6 +82,17 @@
             background-position: center;
             background-repeat: no-repeat;
             border-radius: 5%;
-        }
+
+            @include respond(md-desktop) {
+              grid-column: 2/3;
+            }
+
+            @include respond(tab-sm) {
+              grid-column: 1 / -1;
+              grid-row: 2 / 3;
+              border-radius: 0;
+            }
+
     }
+  }
 }

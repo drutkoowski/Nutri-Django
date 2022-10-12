@@ -364,11 +364,58 @@ ORDER: Base + typography > general layout + grid > page layout > components
   height: 55rem;
   column-gap: 5rem;
   margin-top: 25rem; }
+  @media only screen and (max-width: 93.75em) {
+    .about {
+      grid-template-columns: 1fr 2fr 0.1fr;
+      height: 45rem; } }
+  @media only screen and (max-width: 62.5em) {
+    .about {
+      font-size: 2.5rem;
+      height: 35rem;
+      margin-top: 15rem; } }
+  @media only screen and (max-width: 46.875em) {
+    .about {
+      grid-template-columns: 1fr;
+      grid-template-rows: 0.5fr 1fr;
+      height: 55rem;
+      margin-top: 10rem; } }
+  @media only screen and (max-width: 37.5em) {
+    .about {
+      height: 40rem; } }
+  @media only screen and (max-width: 21.875em) {
+    .about {
+      height: 35rem; } }
   .about__element__heading {
     grid-column: 2/3;
     font-size: 5rem;
     font-weight: bolder;
     align-self: center; }
+    @media only screen and (max-width: 93.75em) {
+      .about__element__heading {
+        grid-column: 1/2;
+        font-size: 3rem;
+        margin-left: 5rem; } }
+    @media only screen and (max-width: 62.5em) {
+      .about__element__heading {
+        font-size: 2.5rem;
+        margin-left: 4rem;
+        column-gap: 0; } }
+    @media only screen and (max-width: 46.875em) {
+      .about__element__heading {
+        grid-column: 1 / -1;
+        grid-row: 1 / 2;
+        font-size: 3rem;
+        margin-left: 5rem;
+        margin-right: 5rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .about__element__heading {
+        font-size: 2.5rem; } }
+    @media only screen and (max-width: 28.5em) {
+      .about__element__heading {
+        font-size: 1.8rem; } }
+    @media only screen and (max-width: 21.875em) {
+      .about__element__heading {
+        font-size: 1.5rem; } }
   .about__element__image {
     grid-column: 3/4;
     max-width: 100%;
@@ -377,7 +424,14 @@ ORDER: Base + typography > general layout + grid > page layout > components
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 5%; }
-
+    @media only screen and (max-width: 93.75em) {
+      .about__element__image {
+        grid-column: 2/3; } }
+    @media only screen and (max-width: 46.875em) {
+      .about__element__image {
+        grid-column: 1 / -1;
+        grid-row: 2 / 3;
+        border-radius: 0; } }
 .healthy-food {
   display: grid;
   grid-template-columns: 0.1fr 2fr 1fr 0.1fr;
@@ -386,11 +440,69 @@ ORDER: Base + typography > general layout + grid > page layout > components
   column-gap: 5rem;
   margin-top: 25rem;
   transition: hover 1s ease; }
+  @media only screen and (max-width: 93.75em) {
+    .healthy-food {
+      grid-template-columns: 0.1fr 2fr 1fr;
+      height: 45rem; } }
+  @media only screen and (max-width: 75em) {
+    .healthy-food {
+      height: 40rem; } }
+  @media only screen and (max-width: 62.5em) {
+    .healthy-food {
+      grid-template-columns: 1.75fr 1fr;
+      font-size: 2.5rem;
+      height: 35rem;
+      margin-top: 15rem; } }
+  @media only screen and (max-width: 56.25em) {
+    .healthy-food {
+      height: 30rem; } }
+  @media only screen and (max-width: 46.875em) {
+    .healthy-food {
+      grid-template-columns: 1fr;
+      grid-template-rows: 0.5fr 1fr;
+      height: 55rem;
+      margin-top: 10rem; } }
+  @media only screen and (max-width: 37.5em) {
+    .healthy-food {
+      height: 40rem; } }
+  @media only screen and (max-width: 21.875em) {
+    .healthy-food {
+      height: 35rem; } }
   .healthy-food__element__heading {
     grid-column: 3/4;
     font-size: 5rem;
     font-weight: bolder;
     align-self: center; }
+    @media only screen and (max-width: 93.75em) {
+      .healthy-food__element__heading {
+        grid-column: 3/4;
+        font-size: 3rem;
+        margin-left: 2rem; } }
+    @media only screen and (max-width: 75em) {
+      .healthy-food__element__heading {
+        font-size: 2.5rem; } }
+    @media only screen and (max-width: 62.5em) {
+      .healthy-food__element__heading {
+        font-size: 2rem;
+        column-gap: 0; } }
+    @media only screen and (max-width: 62.5em) {
+      .healthy-food__element__heading {
+        grid-column: 2/3; } }
+    @media only screen and (max-width: 46.875em) {
+      .healthy-food__element__heading {
+        grid-column: 1 / -1;
+        grid-row: 1 / 2;
+        font-size: 3rem;
+        margin: 0 auto 0 auto; } }
+    @media only screen and (max-width: 37.5em) {
+      .healthy-food__element__heading {
+        font-size: 2.5rem; } }
+    @media only screen and (max-width: 28.5em) {
+      .healthy-food__element__heading {
+        font-size: 1.8rem; } }
+    @media only screen and (max-width: 21.875em) {
+      .healthy-food__element__heading {
+        font-size: 1.5rem; } }
   .healthy-food__element__image {
     transform: scale(1.05);
     grid-column: 2/3;
@@ -400,7 +512,19 @@ ORDER: Base + typography > general layout + grid > page layout > components
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 5%; }
-
+    @media only screen and (max-width: 93.75em) {
+      .healthy-food__element__image {
+        grid-column: 2/3; } }
+    @media only screen and (max-width: 62.5em) {
+      .healthy-food__element__image {
+        grid-column: 1/2;
+        margin-left: 5rem; } }
+    @media only screen and (max-width: 46.875em) {
+      .healthy-food__element__image {
+        grid-column: 1 / -1;
+        grid-row: 2 / 3;
+        border-radius: 0;
+        margin-left: 0; } }
 .why-nutri {
   display: grid;
   margin-top: 10rem;
@@ -539,7 +663,18 @@ ORDER: Base + typography > general layout + grid > page layout > components
     animation-duration: 1s;
     animation-timing-function: ease-out;
     font-size: 3.2rem; }
-
+    @media only screen and (max-width: 56.25em) {
+      .workout-journey__quote--upper {
+        font-size: 2.7rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .workout-journey__quote--upper {
+        font-size: 2.3rem; } }
+    @media only screen and (max-width: 28.5em) {
+      .workout-journey__quote--upper {
+        font-size: 1.7rem; } }
+    @media only screen and (max-width: 21.875em) {
+      .workout-journey__quote--upper {
+        font-size: 1.4rem; } }
 .carousel {
   position: relative; }
   .carousel__nav {
@@ -892,6 +1027,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   margin-top: auto;
   height: 20rem;
   background-image: linear-gradient(to bottom, rgba(47, 49, 49, 0) 0%, #171616 100%), url("../../../static/images/gym.jpg");
+  background-position: center;
   color: white; }
   .footer__flex-container {
     display: flex;
