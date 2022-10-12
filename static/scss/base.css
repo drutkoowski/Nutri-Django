@@ -523,7 +523,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
-  height: 50vh;
+  height: 80vh;
   background-image: linear-gradient(to bottom, rgba(47, 49, 49, 0) 0%, #171616 100%), url("../../../../static/images/workout-support.jpg");
   background-size: cover;
   background-position: center;
@@ -890,32 +890,81 @@ ORDER: Base + typography > general layout + grid > page layout > components
             height: 1.4rem; } }
 .footer {
   margin-top: auto;
-  height: 15rem;
-  background: linear-gradient(to bottom, rgba(128, 125, 125, 0), rgba(70, 69, 69, 0.4)); }
+  height: 20rem;
+  background-image: linear-gradient(to bottom, rgba(47, 49, 49, 0) 0%, #171616 100%), url("../../../static/images/gym.jpg");
+  color: white; }
   .footer__flex-container {
     display: flex;
     margin-top: 2rem;
     margin-left: 15rem;
     margin-right: 15rem;
-    border-top: 1px solid rgba(162, 158, 158, 0.8);
     padding-top: 5rem;
     font-size: 1.2rem; }
+    @media only screen and (max-width: 62.5em) {
+      .footer__flex-container {
+        margin-right: 5rem;
+        margin-left: 5rem; } }
+    @media only screen and (max-width: 46.875em) {
+      .footer__flex-container {
+        margin-right: 2.5rem;
+        margin-left: 2.5rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .footer__flex-container {
+        margin-right: 0.5rem;
+        margin-left: 0.5rem; } }
+    @media only screen and (max-width: 28.5em) {
+      .footer__flex-container {
+        margin-right: 0.25rem;
+        margin-left: 0.25rem; } }
   .footer__copyright {
     text-align: center;
     font-size: 2rem;
     margin-left: auto;
     margin-right: auto; }
+    @media only screen and (max-width: 75em) {
+      .footer__copyright {
+        font-size: 1.5rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .footer__copyright {
+        font-size: 1.2rem; } }
+    @media only screen and (max-width: 28.5em) {
+      .footer__copyright {
+        font-size: 1rem; } }
   .footer__contact {
-    align-self: center; }
+    align-self: center;
+    width: 10rem; }
+    @media only screen and (max-width: 37.5em) {
+      .footer__contact {
+        margin-left: 1rem; } }
+    @media only screen and (max-width: 28.5em) {
+      .footer__contact {
+        margin-left: 2rem; } }
     .footer__contact__image {
+      display: inline-block;
       width: 2rem;
-      height: auto;
+      height: 2rem;
       align-self: center;
-      fill: gold;
-      margin-left: 0.5rem; }
+      margin-left: 0.5rem;
+      background-image: linear-gradient(white, #9f9d9d); }
+      @media only screen and (max-width: 37.5em) {
+        .footer__contact__image {
+          width: 1.3rem;
+          height: 1.3rem; } }
+      .footer__contact__image--github {
+        -webkit-mask: url("../../../static/images/svg/github.svg") no-repeat center;
+        mask: url("../../../static/images/svg/github.svg") no-repeat center; }
+      .footer__contact__image--facebook {
+        -webkit-mask: url("../../../static/images/svg/facebook.svg") no-repeat center;
+        mask: url("../../../static/images/svg/facebook.svg") no-repeat center; }
   .footer__creator {
     align-self: center; }
-
+    @media only screen and (max-width: 37.5em) {
+      .footer__creator {
+        font-size: 1rem; } }
+    @media only screen and (max-width: 28.5em) {
+      .footer__creator {
+        font-size: 0.8rem;
+        justify-content: center; } }
 .bg-video {
   position: absolute;
   top: 0;

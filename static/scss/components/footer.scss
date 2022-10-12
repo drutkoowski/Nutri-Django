@@ -1,15 +1,37 @@
 .footer {
   margin-top: auto;
-  height: 15rem;
-  background: linear-gradient(to bottom, rgba(128, 125, 125, 0), rgba(70, 69, 69, 0.4));
+  height: 20rem;
+  background-image:linear-gradient(to bottom, rgba(47, 49, 49, 0) 0%, rgba(23, 22, 22, 1) 100%),
+     url('../../../static/images/gym.jpg');
+  color: white;
+
   &__flex-container {
     display: flex;
     margin-top: 2rem;
     margin-left: 15rem;
     margin-right: 15rem;
-    border-top: 1px solid rgba(162, 158, 158, 0.8);
     padding-top: 5rem;
     font-size: 1.2rem;
+
+     @include respond(tab-md) {
+        margin-right: 5rem;
+       margin-left: 5rem;
+     }
+
+    @include respond(tab-sm) {
+        margin-right: 2.5rem;
+        margin-left: 2.5rem;
+     }
+
+     @include respond(phone-lg) {
+        margin-right: 0.5rem;
+        margin-left: 0.5rem;
+     }
+
+     @include respond(phone-md) {
+        margin-right: 0.25rem;
+        margin-left: 0.25rem;
+     }
 
   }
   &__copyright {
@@ -17,21 +39,63 @@
     font-size: 2rem;
     margin-left: auto;
     margin-right: auto;
+     @include respond(tab-land) {
+       font-size: 1.5rem;
+     }
+
+     @include respond(phone-lg) {
+        font-size: 1.2rem;
+     }
+
+    @include respond(phone-md) {
+        font-size: 1rem;
+     }
   }
 
   &__contact {
     align-self: center;
+    width: 10rem;
+     @include respond(phone-lg) {
+          margin-left: 1rem;
+     }
+
+    @include respond(phone-md) {
+          margin-left: 2rem;
+     }
     &__image {
+      display: inline-block;
       width: 2rem;
-      height: auto;
+      height: 2rem;
       align-self: center;
-      fill: gold;
       margin-left: 0.5rem;
+      background-image: linear-gradient(rgb(255, 255, 255), rgb(159, 157, 157));
+
+       @include respond(phone-lg) {
+          width: 1.3rem;
+          height: 1.3rem;
+     }
+
+      &--github {
+        -webkit-mask:  url('../../../static/images/svg/github.svg') no-repeat center;
+        mask:  url('../../../static/images/svg/github.svg') no-repeat center;
+      }
+      &--facebook {
+        -webkit-mask:  url('../../../static/images/svg/facebook.svg') no-repeat center;
+        mask:  url('../../../static/images/svg/facebook.svg') no-repeat center;
+      }
+
     }
   }
 
   &__creator {
     align-self: center;
+     @include respond(phone-lg) {
+        font-size: 1rem;
+     }
+    @include respond(phone-md) {
+        font-size: 0.8rem;
+        justify-content: center;
+     }
   }
 
 
