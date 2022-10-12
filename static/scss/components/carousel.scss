@@ -34,10 +34,18 @@
 
     &--left {
       left: -40px;
+
+      @include respond(tab-sm) {
+        left: -30px;
+      }
     }
 
     &--right {
       right: -40px;
+
+      @include respond(tab-sm) {
+        right: -30px;
+      }
     }
   }
 
