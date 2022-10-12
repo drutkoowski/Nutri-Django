@@ -1,4 +1,53 @@
 @import url(_typography.css);
+.not-visible {
+  display: none; }
+
+.visible {
+  display: inline; }
+
+.reveal {
+  position: relative;
+  opacity: 0; }
+
+.reveal.active {
+  opacity: 1; }
+
+.active.fade-bottom {
+  animation: fade-bottom 1s ease-in; }
+
+.active.fade-left {
+  animation: fade-left 1s ease-in; }
+
+.active.fade-right {
+  animation: fade-right 1s ease-in; }
+
+.filter-gold {
+  filter: invert(78%) sepia(67%) saturate(657%) hue-rotate(356deg) brightness(98%) contrast(107%); }
+
+.margin-top-md {
+  margin-top: 5rem; }
+
+.margin-bottom-md {
+  margin-bottom: 5rem; }
+
+/*
+0 - 600px:      Phone
+600 - 900px:    Tablet portrait
+900 - 1200px:   Tablet landscape
+[1200 - 1800] is where our normal styles apply
+1800px + :      Big desktop
+
+$breakpoint arguement choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+ORDER: Base + typography > general layout + grid > page layout > components
+
+1em = 16px
+10px = 0.625 em !!!
+*/
 .grid-full-span {
   grid-column: 1/-1; }
 
@@ -69,6 +118,9 @@
     font-size: 4rem;
     font-weight: 700;
     letter-spacing: 0.4rem; }
+    @media only screen and (max-width: 28.5em) {
+      .navbar__item--first:first-of-type {
+        font-size: 3.5rem; } }
   .navbar__item--nutri-dot {
     color: gold; }
 
@@ -88,7 +140,16 @@
   text-align: center;
   cursor: pointer;
   border: 1px solid black; }
-
+  @media only screen and (max-width: 75em) {
+    .navigation__button {
+      height: 6rem;
+      width: 6rem;
+      top: 3rem; } }
+  @media only screen and (max-width: 28.5em) {
+    .navigation__button {
+      right: 3rem;
+      height: 5rem;
+      width: 5rem; } }
 .navigation__background {
   height: 5rem;
   width: 6rem;
@@ -99,7 +160,15 @@
   background-image: radial-gradient(#2e2e2f, #1a1a1a);
   z-index: 1000;
   transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1); }
-
+  @media only screen and (max-width: 75em) {
+    .navigation__background {
+      top: 3.5rem;
+      right: 6.1rem; } }
+  @media only screen and (max-width: 28.5em) {
+    .navigation__background {
+      right: 3.1rem;
+      width: 4.5rem;
+      top: 3rem; } }
 .navigation__nav {
   height: 100vh;
   position: fixed;
@@ -169,7 +238,12 @@
     top: -.8rem; }
   .navigation__icon::after {
     top: .8rem; }
-
+  @media only screen and (max-width: 75em) {
+    .navigation__icon {
+      margin-top: 3rem; } }
+  @media only screen and (max-width: 28.5em) {
+    .navigation__icon {
+      margin-top: 2.5rem; } }
 .navigation__button:hover .navigation__icon::before {
   top: -1rem; }
 
@@ -205,12 +279,35 @@
     animation-name: moveInLeft;
     animation-duration: 1s;
     animation-timing-function: ease-out; }
-  .header__quote--upper {
-    font-size: 5.3rem; }
-  .header__quote--lower {
-    text-align: center;
-    font-size: 2rem; }
-
+    .header__quote--upper {
+      font-size: 5.3rem; }
+      @media only screen and (max-width: 93.75em) {
+        .header__quote--upper {
+          font-size: 4rem; } }
+      @media only screen and (max-width: 62.5em) {
+        .header__quote--upper {
+          font-size: 3rem; } }
+      @media only screen and (max-width: 37.5em) {
+        .header__quote--upper {
+          font-size: 2.5rem; } }
+      @media only screen and (max-width: 28.5em) {
+        .header__quote--upper {
+          font-size: 2rem; } }
+    .header__quote--lower {
+      text-align: center;
+      font-size: 2rem; }
+      @media only screen and (max-width: 62.5em) {
+        .header__quote--lower {
+          font-size: 1.6rem; } }
+      @media only screen and (max-width: 46.875em) {
+        .header__quote--lower {
+          font-size: 1.4rem; } }
+      @media only screen and (max-width: 37.5em) {
+        .header__quote--lower {
+          font-size: 1.2rem; } }
+      @media only screen and (max-width: 28.5em) {
+        .header__quote--lower {
+          font-size: 1.1rem; } }
 .background-photo-container--header {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
@@ -255,37 +352,6 @@
   100% {
     transform: translateX(0);
     opacity: 1; } }
-
-.not-visible {
-  display: none; }
-
-.visible {
-  display: inline; }
-
-.reveal {
-  position: relative;
-  opacity: 0; }
-
-.reveal.active {
-  opacity: 1; }
-
-.active.fade-bottom {
-  animation: fade-bottom 1s ease-in; }
-
-.active.fade-left {
-  animation: fade-left 1s ease-in; }
-
-.active.fade-right {
-  animation: fade-right 1s ease-in; }
-
-.filter-gold {
-  filter: invert(78%) sepia(67%) saturate(657%) hue-rotate(356deg) brightness(98%) contrast(107%); }
-
-.margin-top-md {
-  margin-top: 5rem; }
-
-.margin-bottom-md {
-  margin-bottom: 5rem; }
 
 .about {
   display: grid;
@@ -333,46 +399,121 @@
 
 .why-nutri {
   display: grid;
-  margin-top: 5rem;
+  margin-top: 10rem;
   grid-template-rows: 0.15fr 1fr;
   grid-template-columns: 1fr 1fr 1fr;
-  height: 75rem;
-  grid-gap: 3rem; }
+  height: 75rem; }
+  @media only screen and (max-width: 75em) {
+    .why-nutri {
+      height: auto; } }
+  @media only screen and (max-width: 37.5em) {
+    .why-nutri {
+      grid-template-rows: 0.1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr;
+      height: auto; } }
   .why-nutri__card {
-    display: flex;
-    flex-direction: column;
-    width: 35rem;
-    height: 55rem;
+    margin-top: 10rem;
+    width: 45rem;
+    height: 65rem;
     border-radius: 20px;
     justify-content: center;
-    transition: all 1s ease; }
+    justify-items: center;
+    transition: all 1s ease;
+    justify-self: center;
+    font-size: 3.5rem;
+    text-align: center; }
+    @media only screen and (max-width: 93.75em) {
+      .why-nutri__card {
+        font-size: 3rem;
+        width: 35rem;
+        height: 55rem;
+        margin-top: 0; } }
+    @media only screen and (max-width: 75em) {
+      .why-nutri__card {
+        font-size: 2rem;
+        width: 25rem;
+        height: 45rem; } }
+    @media only screen and (max-width: 56.25em) {
+      .why-nutri__card {
+        font-size: 1.7rem;
+        width: 20rem;
+        height: 40rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .why-nutri__card {
+        height: auto;
+        width: auto;
+        font-size: 3rem;
+        grid-row-gap: 2rem; } }
+    @media only screen and (max-width: 28.5em) {
+      .why-nutri__card {
+        font-size: 2rem; } }
     .why-nutri__card:hover {
       transform: scale(1.05); }
     .why-nutri__card__description {
       margin-top: 2rem; }
+      @media only screen and (max-width: 93.75em) {
+        .why-nutri__card__description {
+          margin-top: 0; } }
+      @media only screen and (max-width: 56.25em) {
+        .why-nutri__card__description {
+          margin-top: -3rem; } }
+      @media only screen and (max-width: 37.5em) {
+        .why-nutri__card__description {
+          font-size: 1.8rem;
+          text-wrap: none;
+          margin-top: -4rem; } }
+    .why-nutri__card__icon {
+      margin: 0 auto 0 auto;
+      width: 30rem;
+      height: 35rem; }
+      @media only screen and (max-width: 93.75em) {
+        .why-nutri__card__icon {
+          width: 25rem;
+          height: 40rem; } }
+      @media only screen and (max-width: 75em) {
+        .why-nutri__card__icon {
+          width: 20rem;
+          height: 35rem; } }
+      @media only screen and (max-width: 56.25em) {
+        .why-nutri__card__icon {
+          width: 15rem;
+          height: 30rem; } }
     .why-nutri__card-1 {
-      justify-self: center;
-      margin-top: 2rem;
-      grid-column: 1 / 2;
-      font-size: 3.5rem;
-      text-align: center; }
+      grid-column: 1 / 2; }
+      @media only screen and (max-width: 37.5em) {
+        .why-nutri__card-1 {
+          grid-row: 2/3;
+          grid-column: 1/2; } }
     .why-nutri__card-2 {
-      justify-self: center;
-      margin-top: 2rem;
-      grid-column: 2 / 3;
-      font-size: 3.5rem;
-      text-align: center; }
+      grid-column: 2 / 3; }
+      @media only screen and (max-width: 37.5em) {
+        .why-nutri__card-2 {
+          grid-row: 3/4;
+          grid-column: 1/2; } }
     .why-nutri__card-3 {
-      justify-self: center;
-      margin-top: 2rem;
-      grid-column: 3 / 4;
-      font-size: 3.5rem;
-      text-align: center; }
+      grid-column: 3 / 4; }
+      @media only screen and (max-width: 37.5em) {
+        .why-nutri__card-3 {
+          grid-row: 4/5;
+          grid-column: 1/2; } }
   .why-nutri__title {
     grid-column: 1 / -1;
     justify-self: center;
     font-size: 5.2rem; }
-
+    @media only screen and (max-width: 46.875em) {
+      .why-nutri__title {
+        font-size: 4.5rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .why-nutri__title {
+        grid-row: 1/2;
+        grid-column: 1/2;
+        font-size: 4rem; } }
+    @media only screen and (max-width: 28.5em) {
+      .why-nutri__title {
+        font-size: 3rem; } }
+    @media only screen and (max-width: 21.875em) {
+      .why-nutri__title {
+        font-size: 2.5rem; } }
 .workout-journey {
   display: grid;
   grid-template-columns: 1fr;
@@ -459,6 +600,11 @@
     border-radius: 20px;
     justify-self: center;
     transition: all 1s ease; }
+    @media only screen and (max-width: 93.75em) {
+      .gains__card {
+        width: 30rem;
+        height: auto;
+        grid-column-gap: 5rem; } }
     .gains__card:hover {
       transform: scale(1.05); }
     .gains__card__icon {
@@ -467,17 +613,24 @@
       height: auto;
       align-self: center;
       fill: gold; }
+      @media only screen and (max-width: 93.75em) {
+        .gains__card__icon {
+          width: 10rem; } }
     .gains__card__description {
       font-size: 3.5rem;
       margin: auto auto 5rem auto;
-      color: white; }
-
+      color: white;
+      text-wrap: normal; }
+      @media only screen and (max-width: 93.75em) {
+        .gains__card__description {
+          font-size: 2.5rem; } }
 .make-goals-real {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   margin-top: 15rem;
-  height: 100vh; }
+  height: 100vh;
+  position: relative; }
   .make-goals-real__flex-container {
     display: flex;
     flex-direction: column;
@@ -490,7 +643,15 @@
     animation-duration: 1s;
     animation-timing-function: ease-out;
     font-size: 3.2rem; }
-
+    @media only screen and (max-width: 37.5em) {
+      .make-goals-real__quote--upper {
+        font-size: 2.5rem; } }
+    @media only screen and (max-width: 28.5em) {
+      .make-goals-real__quote--upper {
+        font-size: 2rem; } }
+    @media only screen and (max-width: 21.875em) {
+      .make-goals-real__quote--upper {
+        font-size: 1.5rem; } }
 .reviews {
   display: grid;
   grid-template-rows: 1fr;
@@ -604,7 +765,8 @@
   text-decoration: none; }
 
 html {
-  font-size: 62.5%; }
+  font-size: 62.5%;
+  overflow-x: hidden; }
 
 body {
   box-sizing: border-box; }
