@@ -359,172 +359,99 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 .about {
   display: grid;
-  grid-template-columns: 0.1fr 1fr 2fr 0.1fr;
+  grid-template-columns: 0.3fr 1fr 1fr 0.3fr;
   grid-template-rows: 1fr;
   height: 55rem;
-  column-gap: 5rem;
-  margin-top: 25rem; }
+  margin-top: 15rem;
+  column-gap: 10rem; }
   @media only screen and (max-width: 93.75em) {
     .about {
-      grid-template-columns: 1fr 2fr 0.1fr;
-      height: 45rem; } }
-  @media only screen and (max-width: 62.5em) {
-    .about {
-      font-size: 2.5rem;
-      height: 35rem;
-      margin-top: 15rem; } }
-  @media only screen and (max-width: 46.875em) {
-    .about {
-      grid-template-columns: 1fr;
-      grid-template-rows: 0.5fr 1fr;
-      height: 55rem;
-      margin-top: 10rem; } }
-  @media only screen and (max-width: 37.5em) {
-    .about {
-      height: 40rem; } }
-  @media only screen and (max-width: 21.875em) {
-    .about {
-      height: 35rem; } }
-  .about__element__heading {
-    grid-column: 2/3;
-    font-size: 5rem;
-    font-weight: bolder;
-    align-self: center; }
-    @media only screen and (max-width: 93.75em) {
-      .about__element__heading {
-        grid-column: 1/2;
-        font-size: 3rem;
-        margin-left: 5rem; } }
-    @media only screen and (max-width: 62.5em) {
-      .about__element__heading {
-        font-size: 2.5rem;
-        margin-left: 4rem;
-        column-gap: 0; } }
-    @media only screen and (max-width: 46.875em) {
-      .about__element__heading {
-        grid-column: 1 / -1;
-        grid-row: 1 / 2;
-        font-size: 3rem;
-        margin-left: 5rem;
-        margin-right: 5rem; } }
-    @media only screen and (max-width: 37.5em) {
-      .about__element__heading {
-        font-size: 2.5rem; } }
-    @media only screen and (max-width: 28.5em) {
-      .about__element__heading {
-        font-size: 1.8rem; } }
-    @media only screen and (max-width: 21.875em) {
-      .about__element__heading {
-        font-size: 1.5rem; } }
-  .about__element__image {
-    grid-column: 3/4;
-    max-width: 100%;
-    background-image: url("../../../../static/images/workout_about.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 5%; }
-    @media only screen and (max-width: 93.75em) {
-      .about__element__image {
-        grid-column: 2/3; } }
-    @media only screen and (max-width: 46.875em) {
-      .about__element__image {
-        grid-column: 1 / -1;
-        grid-row: 2 / 3;
-        border-radius: 0; } }
-.healthy-food {
-  display: grid;
-  grid-template-columns: 0.1fr 2fr 1fr 0.1fr;
-  grid-template-rows: 1fr;
-  height: 55rem;
-  column-gap: 5rem;
-  margin-top: 25rem;
-  transition: hover 1s ease; }
-  @media only screen and (max-width: 93.75em) {
-    .healthy-food {
-      grid-template-columns: 0.1fr 2fr 1fr;
-      height: 45rem; } }
+      grid-template-columns: 0.15fr 1fr 1fr 0.15fr;
+      grid-template-rows: 1fr;
+      column-gap: 5rem; } }
   @media only screen and (max-width: 75em) {
-    .healthy-food {
-      height: 40rem; } }
+    .about {
+      grid-template-columns: 0.05fr 1fr 1fr 0.05fr;
+      grid-template-rows: 1fr; } }
   @media only screen and (max-width: 62.5em) {
-    .healthy-food {
-      grid-template-columns: 1.75fr 1fr;
-      font-size: 2.5rem;
-      height: 35rem;
-      margin-top: 15rem; } }
-  @media only screen and (max-width: 56.25em) {
-    .healthy-food {
-      height: 30rem; } }
+    .about {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr; } }
   @media only screen and (max-width: 46.875em) {
-    .healthy-food {
+    .about {
+      margin-top: 5rem;
       grid-template-columns: 1fr;
-      grid-template-rows: 0.5fr 1fr;
-      height: 55rem;
-      margin-top: 10rem; } }
-  @media only screen and (max-width: 37.5em) {
-    .healthy-food {
-      height: 40rem; } }
-  @media only screen and (max-width: 21.875em) {
-    .healthy-food {
+      grid-template-rows: 1fr 1fr;
+      margin-left: 5rem;
+      margin-right: 5rem; } }
+  @media only screen and (max-width: 28.5em) {
+    .about {
+      margin-left: 2.5rem;
+      margin-right: 2.5rem;
       height: 35rem; } }
-  .healthy-food__element__heading {
-    grid-column: 3/4;
-    font-size: 5rem;
-    font-weight: bolder;
-    align-self: center; }
+  @media only screen and (max-width: 21.875em) {
+    .about {
+      height: 45rem; } }
+  .about__paragraph {
+    font-size: 3rem;
+    line-height: 5.5rem;
+    white-space: pre-line; }
     @media only screen and (max-width: 93.75em) {
-      .healthy-food__element__heading {
-        grid-column: 3/4;
-        font-size: 3rem;
-        margin-left: 2rem; } }
+      .about__paragraph {
+        font-size: 2.2rem; } }
     @media only screen and (max-width: 75em) {
-      .healthy-food__element__heading {
-        font-size: 2.5rem; } }
-    @media only screen and (max-width: 62.5em) {
-      .healthy-food__element__heading {
-        font-size: 2rem;
-        column-gap: 0; } }
-    @media only screen and (max-width: 62.5em) {
-      .healthy-food__element__heading {
-        grid-column: 2/3; } }
-    @media only screen and (max-width: 46.875em) {
-      .healthy-food__element__heading {
-        grid-column: 1 / -1;
-        grid-row: 1 / 2;
-        font-size: 3rem;
-        margin: 0 auto 0 auto; } }
+      .about__paragraph {
+        font-size: 1.8rem;
+        line-height: 4.5rem; } }
     @media only screen and (max-width: 37.5em) {
-      .healthy-food__element__heading {
-        font-size: 2.5rem; } }
+      .about__paragraph {
+        font-size: 1.6rem;
+        line-height: 3.5rem; } }
     @media only screen and (max-width: 28.5em) {
-      .healthy-food__element__heading {
-        font-size: 1.8rem; } }
+      .about__paragraph {
+        font-size: 1.5rem;
+        line-height: 2.5rem; } }
     @media only screen and (max-width: 21.875em) {
-      .healthy-food__element__heading {
-        font-size: 1.5rem; } }
-  .healthy-food__element__image {
-    transform: scale(1.05);
-    grid-column: 2/3;
-    max-width: 100%;
-    background-image: url("../../../../static/images/about_healthy_food.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 5%; }
-    @media only screen and (max-width: 93.75em) {
-      .healthy-food__element__image {
-        grid-column: 2/3; } }
-    @media only screen and (max-width: 62.5em) {
-      .healthy-food__element__image {
-        grid-column: 1/2;
-        margin-left: 5rem; } }
-    @media only screen and (max-width: 46.875em) {
-      .healthy-food__element__image {
-        grid-column: 1 / -1;
-        grid-row: 2 / 3;
-        border-radius: 0;
-        margin-left: 0; } }
+      .about__paragraph {
+        font-size: 1.4rem;
+        line-height: 2.2rem; } }
+    .about__paragraph--1 {
+      grid-column: 2/3; }
+      @media only screen and (max-width: 46.875em) {
+        .about__paragraph--1 {
+          display: none; } }
+      .about__paragraph--1--sm {
+        display: none; }
+        @media only screen and (max-width: 46.875em) {
+          .about__paragraph--1--sm {
+            grid-column: 1/2;
+            display: inline;
+            grid-row: 1/2; } }
+      @media only screen and (max-width: 62.5em) {
+        .about__paragraph--1 {
+          grid-column: 1/2;
+          margin-left: 2rem; } }
+    .about__paragraph--2 {
+      grid-column: 3/4; }
+      @media only screen and (max-width: 46.875em) {
+        .about__paragraph--2 {
+          display: none; } }
+      .about__paragraph--2--sm {
+        display: none; }
+        @media only screen and (max-width: 46.875em) {
+          .about__paragraph--2--sm {
+            display: inline;
+            grid-column: 1/2;
+            grid-row: 2/3; } }
+      @media only screen and (max-width: 62.5em) {
+        .about__paragraph--2 {
+          grid-column: 2/3;
+          margin-right: 2rem; } }
+    .about__paragraph--tabulator {
+      padding-left: 5rem; }
+      @media only screen and (max-width: 56.25em) {
+        .about__paragraph--tabulator {
+          padding-left: 3rem; } }
 .why-nutri {
   display: grid;
   margin-top: 10rem;
@@ -642,39 +569,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
     @media only screen and (max-width: 21.875em) {
       .why-nutri__title {
         font-size: 2.5rem; } }
-.workout-journey {
-  margin-top: 15rem;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
-  height: 80vh;
-  background-image: linear-gradient(to bottom, rgba(47, 49, 49, 0) 0%, #171616 100%), url("../../../../static/images/workout-support.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat; }
-  .workout-journey__flex-container {
-    display: flex;
-    flex-direction: column;
-    justify-self: center;
-    align-self: center;
-    color: white; }
-  .workout-journey__quote--upper {
-    animation-name: moveInLeft;
-    animation-duration: 1s;
-    animation-timing-function: ease-out;
-    font-size: 3.2rem; }
-    @media only screen and (max-width: 56.25em) {
-      .workout-journey__quote--upper {
-        font-size: 2.7rem; } }
-    @media only screen and (max-width: 37.5em) {
-      .workout-journey__quote--upper {
-        font-size: 2.3rem; } }
-    @media only screen and (max-width: 28.5em) {
-      .workout-journey__quote--upper {
-        font-size: 1.7rem; } }
-    @media only screen and (max-width: 21.875em) {
-      .workout-journey__quote--upper {
-        font-size: 1.4rem; } }
 .carousel {
   position: relative; }
   .carousel__nav {
