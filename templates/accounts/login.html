@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load sass_tags %}
+{% block scripts %}
+    <script src="{% sass_src 'scripts/main.js' %}" defer></script>
+{% endblock scripts %}
+{% block content %}
+    <div class="loader"></div>
+     <div class="bg-video">
+         <video id="login-video" class="bg-video__content" autoplay muted loop>
+             <source src="{% sass_src 'video/bg_video_login.mp4' %}" type="video/mp4">
+             <source src="{% sass_src 'video/bg_video_login.webm' %}" type="video/webm">
+             Your browser is not supported!
+         </video>
+     </div>
+
+        {% include 'components/navbar/navbar.html' %}
+        <div class="login grid-full-span">
+            <div class="login__card">
+                <p>asdsadas</p>
+            </div>
+        </div>
+
+{% endblock %}

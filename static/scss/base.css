@@ -1008,6 +1008,24 @@ ORDER: Base + typography > general layout + grid > page layout > components
     width: 100%;
     object-fit: cover; }
 
+body {
+  height: 100%; }
+
+.login {
+  margin-top: 13rem;
+  display: grid;
+  grid-template-columns: 0.25fr 1fr 0.25fr;
+  grid-template-rows: 1fr;
+  align-items: center;
+  justify-items: center;
+  font-size: 10rem; }
+  .login__card {
+    grid-column: 2/3;
+    background-color: #cdcdd7;
+    height: 55rem;
+    width: 80rem;
+    border-radius: 20px; }
+
 *,
 *::after,
 *::before {
