@@ -9,14 +9,96 @@ body {
   display: grid;
   grid-template-columns: 0.25fr 1fr 0.25fr;
   grid-template-rows: 1fr;
-  align-items: center;
-  justify-items: center;
-  font-size: 10rem;
   &__card {
+    margin-left: auto;
+    margin-right: auto;
     grid-column: 2/3;
     background-image: linear-gradient(to bottom, rgb(238, 236, 236), rgb(215, 212, 212));
     height: 60rem;
-    width: 90rem;
-    border-radius: 20px;
+    width: 70rem;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    -webkit-box-shadow: 0px 0px 7px 4px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 0px 0px 7px 4px rgba(66, 68, 90, 1);
+    box-shadow: 0px 0px 7px 4px rgba(66, 68, 90, 1);
+
+
+    &__alert {
+      font-size: 1.5rem;
+      color: red;
+    }
+    &__heading {
+
+      margin-top: 5rem;
+      font-size: 5rem;
+    }
+
+    &__button {
+      &:first-of-type {
+        margin-top: 6rem;
+      }
+      cursor: pointer;
+      margin-top: 2rem;
+      padding: 2rem 15rem;
+      border-radius: 10px;
+      outline: gold;
+      font-size: 2rem;
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+    }
+    &__buttons {
+      display: grid;
+      grid-template-rows: 1fr;
+      grid-template-columns: 1fr 1fr;
+      width: 45rem;
+      margin-top: 6rem;
+      grid-column-gap: 3rem;
+
+      &__button {
+        padding: 1.5rem 5rem;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        border-radius: 5px;
+        cursor: pointer;
+        &:active {
+          background-color: black;
+          color: white;
+        }
+        &--back {
+          grid-column: 1/2;
+        }
+        &--next {
+          grid-column: 2/3;
+          background-color: black;
+          color: white;
+        }
+      }
+
+    }
+  }
+}
+
+.progress-bar {
+  width: 100%;
+  background-color: #a2a1a0;
+  height: 10px;
+  overflow: hidden;
+  position: relative;
+  display: block;
+  z-index: 0;
+  &--active {
+    height: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transform-origin: left center;
+    background-color: black;
+    transition: transform 0.4s linear 0s;
   }
 }

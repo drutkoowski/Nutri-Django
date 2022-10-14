@@ -1,6 +1,6 @@
 const hamburgerNav = document.getElementById('navi-toggle')
 const navigationList = document.getElementsByClassName('navigation__list')[0]
-const navigationNavDiv = document.getElementsByClassName('navigation__nav')[0]
+
 
 const gainsVideo = document.getElementById('gains-video')
 const goalsVideo = document.getElementById('goals-video')
@@ -16,6 +16,7 @@ hamburgerNav.addEventListener('click', () => {
     }
 })
 
-
-gainsVideo.playbackRate = 0.75;
-goalsVideo.playbackRate = 0.75;
+if (gainsVideo && goalsVideo) {
+    gainsVideo.playbackRate = 0.75;
+    goalsVideo.playbackRate = 0.75;
+}

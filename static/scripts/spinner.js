@@ -20,5 +20,5 @@ window.addEventListener("load", () => {
 
     })
 })
-console.log('asdsa')
+
 

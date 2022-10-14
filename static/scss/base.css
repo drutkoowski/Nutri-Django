@@ -48,6 +48,15 @@ ORDER: Base + typography > general layout + grid > page layout > components
 1em = 16px
 10px = 0.625 em !!!
 */
+.progress--0 {
+  transform: translateX(-88.8889%); }
+
+.progress--1 {
+  transform: translateX(-68.8889%); }
+
+.progress--2 {
+  transform: translateX(-48.8889%); }
+
 .grid-full-span {
   grid-column: 1/-1; }
 
@@ -1017,16 +1026,79 @@ body {
   margin-top: 13rem;
   display: grid;
   grid-template-columns: 0.25fr 1fr 0.25fr;
-  grid-template-rows: 1fr;
-  align-items: center;
-  justify-items: center;
-  font-size: 10rem; }
+  grid-template-rows: 1fr; }
   .login__card {
+    margin-left: auto;
+    margin-right: auto;
     grid-column: 2/3;
     background-image: linear-gradient(to bottom, #eeecec, #d7d4d4);
     height: 60rem;
-    width: 90rem;
-    border-radius: 20px; }
+    width: 70rem;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    -webkit-box-shadow: 0px 0px 7px 4px #42445a;
+    -moz-box-shadow: 0px 0px 7px 4px #42445a;
+    box-shadow: 0px 0px 7px 4px #42445a; }
+    .login__card__alert {
+      font-size: 1.5rem;
+      color: red; }
+    .login__card__heading {
+      margin-top: 5rem;
+      font-size: 5rem; }
+    .login__card__button {
+      cursor: pointer;
+      margin-top: 2rem;
+      padding: 2rem 15rem;
+      border-radius: 10px;
+      outline: gold;
+      font-size: 2rem; }
+      .login__card__button:first-of-type {
+        margin-top: 6rem; }
+    .login__card__content {
+      display: flex;
+      flex-direction: column; }
+    .login__card__buttons {
+      display: grid;
+      grid-template-rows: 1fr;
+      grid-template-columns: 1fr 1fr;
+      width: 45rem;
+      margin-top: 6rem;
+      grid-column-gap: 3rem; }
+      .login__card__buttons__button {
+        padding: 1.5rem 5rem;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        border-radius: 5px;
+        cursor: pointer; }
+        .login__card__buttons__button:active {
+          background-color: black;
+          color: white; }
+        .login__card__buttons__button--back {
+          grid-column: 1/2; }
+        .login__card__buttons__button--next {
+          grid-column: 2/3;
+          background-color: black;
+          color: white; }
+
+.progress-bar {
+  width: 100%;
+  background-color: #a2a1a0;
+  height: 10px;
+  overflow: hidden;
+  position: relative;
+  display: block;
+  z-index: 0; }
+  .progress-bar--active {
+    height: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transform-origin: left center;
+    background-color: black;
+    transition: transform 0.4s linear 0s; }
 
 *,
 *::after,
