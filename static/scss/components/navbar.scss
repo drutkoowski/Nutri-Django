@@ -6,6 +6,12 @@
     align-items: start;
     color: white;
 
+    &__href {
+        &:visited {
+            color: white;
+        }
+    }
+
     &__item {
         //font-size: 4rem;
         //font-weight: 300;

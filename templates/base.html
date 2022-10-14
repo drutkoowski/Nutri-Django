@@ -10,12 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Benne&display=swap" rel="stylesheet">
     <link rel="icon" href="{% sass_src 'images/favicon.ico' %}">
     <link href="{% sass_src 'scss/base.scss' %}" rel="stylesheet" type="text/css" />
-
-    <script src="{% sass_src 'scripts/spinner.js' %}" defer></script>
-    <script src="{% sass_src 'scripts/animations.js' %}" defer></script>
-
     {% block styles %}{% endblock styles %}
-    {% block scripts %} {% endblock scripts %}
+
     <title>Nutri {% block title %} {% endblock title%}</title>
 
 </head>
@@ -23,5 +19,7 @@
 {% block content %}{% endblock content%}
 
 </body>
-
+    {% block scripts %} {% endblock scripts %}
+    <script src="{% sass_src 'scripts/spinner.js' %}" defer></script>
+    <script src="{% sass_src 'scripts/animations.js' %}" defer></script>
 </html>

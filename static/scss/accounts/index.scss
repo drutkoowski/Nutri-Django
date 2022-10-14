@@ -14,9 +14,9 @@ body {
   font-size: 10rem;
   &__card {
     grid-column: 2/3;
-    background-color: #cdcdd7;
-    height: 55rem;
-    width: 80rem;
+    background-image: linear-gradient(to bottom, rgb(238, 236, 236), rgb(215, 212, 212));
+    height: 60rem;
+    width: 90rem;
     border-radius: 20px;
   }
 }

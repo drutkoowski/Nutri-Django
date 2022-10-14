@@ -111,6 +111,8 @@ ORDER: Base + typography > general layout + grid > page layout > components
   margin-top: 3.5rem;
   align-items: start;
   color: white; }
+  .navbar__href:visited {
+    color: white; }
   .navbar__item--site-name {
     margin-left: 4rem; }
   .navbar__item--first:first-of-type {
@@ -1021,9 +1023,9 @@ body {
   font-size: 10rem; }
   .login__card {
     grid-column: 2/3;
-    background-color: #cdcdd7;
-    height: 55rem;
-    width: 80rem;
+    background-image: linear-gradient(to bottom, #eeecec, #d7d4d4);
+    height: 60rem;
+    width: 90rem;
     border-radius: 20px; }
 
 *,
