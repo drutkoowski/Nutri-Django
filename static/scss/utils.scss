@@ -103,11 +103,23 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 
   &--1 {
-    transform: translateX(-68.8889%);
+    transform: translateX(-73.8889%);
   }
 
    &--2 {
-    transform: translateX(-48.8889%);
+    transform: translateX(-54.8889%);
+  }
+
+  &--3 {
+    transform: translateX(-41.8889%);
+  }
+
+    &--4 {
+    transform: translateX(-18.8889%);
+  }
+
+  &--5 {
+    transform: translateX(-0.00%);
   }
 
 }

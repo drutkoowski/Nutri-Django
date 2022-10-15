@@ -6,7 +6,6 @@ const gainsVideo = document.getElementById('gains-video')
 const goalsVideo = document.getElementById('goals-video')
 
 hamburgerNav.addEventListener('click', () => {
-    console.log(hamburgerNav.checked)
 
     if (!navigationList.classList.contains('not-visible') && !hamburgerNav.checked) {
         navigationList.classList.add('not-visible')
