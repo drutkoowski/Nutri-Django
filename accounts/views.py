@@ -14,7 +14,7 @@ def home_page(request):
 
 
 def signup_view(request):
-    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == "POST":
         goal_weight = request.POST.get('goal-weight')
         activity_level = request.POST.get('activity-level')
         body_cm = request.POST.get('body-cm')
@@ -27,7 +27,7 @@ def signup_view(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = Account.objects.create_user(first_name=first_name, last_name=last_name, username=username, email=email,
-                                           password=password, )
+                                           password=password)
         user.is_active = True  # temporary
         profile = UserProfile()
         profile.user = user
@@ -64,7 +64,7 @@ def login_user(request):
 @login_required(login_url='login')
 def logout_view(request):
     auth.logout(request)
-    return redirect('home-page')
+    return redirect('login')
 
 
 @login_required(login_url='login')

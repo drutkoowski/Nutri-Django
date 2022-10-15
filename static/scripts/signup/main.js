@@ -11,7 +11,7 @@ let iteration = 0
 let choices = []
 let currentChoice = null
 
-const sendData = (choices, url, nextUrl) =>{
+const sendData = () => {
        // 0 - GOAL WEIGHT
     // 1 - ACTIVITY LEVEL
     // 2 - body parameter (cm)
@@ -23,10 +23,9 @@ const sendData = (choices, url, nextUrl) =>{
     // 8 - email address
     // 9 - username
     // 10 - password
-    console.log(choices, url, nextUrl)
     $.ajax({
         type: "POST",
-        url: url,
+        url: '',
         data: {
             'csrfmiddlewaretoken': csrfToken,
             'goal-weight': choices[0],
@@ -45,7 +44,7 @@ const sendData = (choices, url, nextUrl) =>{
             progressBar.classList.remove(`progress--${iteration}`)
             iteration += 1
             progressBar.classList.add(`progress--${iteration}`)
-            window.location = nextUrl;
+            window.location = window.location.origin + '/dashboard';
             },
         error: function (error) {
             alertMsg.innerHTML = `Something went wrong, try again.`
@@ -390,9 +389,7 @@ buttonNext.addEventListener('click', e => {
                                 alertMsg.classList?.remove('not-visible')
                             }
                             else if (status === 404) {
-                                 const url = window.location.origin + '/login'
-                                 const nextUrl = window.location.origin + '/dashboard'
-                                 sendData(choices, url, nextUrl)
+                                 sendData()
                             }
                         },
                         error: function (error) {
