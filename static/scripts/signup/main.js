@@ -44,9 +44,11 @@ const sendData = () => {
             progressBar.classList.remove(`progress--${iteration}`)
             iteration += 1
             progressBar.classList.add(`progress--${iteration}`)
-            window.location = window.location.origin + '/dashboard';
+            afterSignupSuccess()
+            window.location = window.location.origin + '/login';
             },
         error: function (error) {
+            console.log(error)
             alertMsg.innerHTML = `Something went wrong, try again.`
             alertMsg.classList?.remove('not-visible')
         },
@@ -85,6 +87,14 @@ function getChildren(parent) {
     return arr
 }
 
+
+const afterSignupSuccess = () => {
+  setTimeout(
+    function() {
+      alert('You signed up successfully.. now you will be redirected to login page.')
+    }, 5000);
+
+}
 
 
 
@@ -386,6 +396,7 @@ buttonNext.addEventListener('click', e => {
                             const status = response.status
                             if (status === 200) {
                                 alertMsg.innerHTML = `User with these credentials already exists.`
+                                choices = choices.slice(0, 8)
                                 alertMsg.classList?.remove('not-visible')
                             }
                             else if (status === 404) {
