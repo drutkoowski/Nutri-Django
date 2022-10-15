@@ -6,10 +6,12 @@ const alertMsg = document.querySelector('.signup__card__alert')
 const progressBar = document.querySelector('.progress-bar--active')
 const csrf = document.getElementsByName('csrfmiddlewaretoken')
 const csrfToken = csrf[0].value
+const modal = document.querySelector(".modal");
 
 let iteration = 0
 let choices = []
 let currentChoice = null
+
 
 const sendData = () => {
        // 0 - GOAL WEIGHT
@@ -44,11 +46,13 @@ const sendData = () => {
             progressBar.classList.remove(`progress--${iteration}`)
             iteration += 1
             progressBar.classList.add(`progress--${iteration}`)
-            afterSignupSuccess()
-            window.location = window.location.origin + '/login';
+            modal.classList.remove('not-visible')
+
+            setInterval(function () {
+                window.location = window.location.origin + '/login';
+            }, 4000);
             },
         error: function (error) {
-            console.log(error)
             alertMsg.innerHTML = `Something went wrong, try again.`
             alertMsg.classList?.remove('not-visible')
         },
@@ -88,13 +92,13 @@ function getChildren(parent) {
 }
 
 
-const afterSignupSuccess = () => {
-  setTimeout(
-    function() {
-      alert('You signed up successfully.. now you will be redirected to login page.')
-    }, 5000);
-
-}
+// const afterSignupSuccess = () => {
+//   setTimeout(
+//     function() {
+//       alert('You signed up successfully.. now you will be redirected to login page.')
+//     }, 5000);
+//
+// }
 
 
 
