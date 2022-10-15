@@ -23,9 +23,10 @@
                 <h4 class="login__card__heading">What's your weight goal?</h4>
                 <p class="login__card__alert not-visible"></p>
                 <div class="login__card__content">
-                    <button id='gain-weight' class="login__card__button">Gain Weight</button>
-                    <button id='maintain-weight' class="login__card__button">Maintain Weight</button>
-                    <button id='lose-weight' class="login__card__button">Lose Weight</button>
+                    {% csrf_token %}
+                        <button id='gain-weight' class="login__card__button">Gain Weight</button>
+                        <button id='maintain-weight' class="login__card__button">Maintain Weight</button>
+                        <button id='lose-weight' class="login__card__button">Lose Weight</button>
                 </div>
                 <div class="login__card__buttons">
                     <button class="login__card__buttons__button login__card__buttons__button--back">Back</button>

@@ -4,7 +4,8 @@ const buttonBack = document.querySelector('.login__card__buttons__button--back')
 const buttonNext = document.querySelector('.login__card__buttons__button--next')
 const alertMsg = document.querySelector('.login__card__alert')
 const progressBar = document.querySelector('.progress-bar--active')
-
+const csrf = document.getElementsByName('csrfmiddlewaretoken')
+const csrfToken = csrf[0].value
 
 let iteration = 0
 let choices = []
@@ -42,6 +43,7 @@ function getChildren(parent) {
     })
     return arr
 }
+
 
 
 
@@ -191,7 +193,7 @@ function appendContent(parent, iteration) {
         currentHeading.innerHTML = `What's your email address and password?`
         contentToAppend = `
             <input id='email' type="email" class="login__card__input" placeholder="Email Address" required/>
-            
+            <input id='username' type="text" class="login__card__input" placeholder="Username" required/>
              <input id='password' type="password" class="login__card__input" placeholder="Password" required/>
            
              
@@ -288,8 +290,6 @@ buttonNext.addEventListener('click', e => {
             if (firstName !== null && lastName !== null && (gender === 'Male' || gender ==='Female') && !isEmpty(firstName) && !isEmpty(lastName) && (yearsOld > 5 && yearsOld < 91)) {
                 if(firstName.length < 3 || lastName.length < 3)
                 {
-                    console.log(firstName, firstName.length)
-                    console.log(lastName, lastName.length)
                     alertMsg.innerHTML = `You have filled incorrect name or last name field.`
                     alertMsg.classList?.remove('not-visible')
                 }
@@ -305,6 +305,7 @@ buttonNext.addEventListener('click', e => {
                     if(buttonBack.disabled === true) buttonBack.disabled = false
                     appendContent(parent, iteration)
                     clearAlerts()
+
                 }
 
             }
@@ -317,7 +318,8 @@ buttonNext.addEventListener('click', e => {
          else if (iteration === 4) {
             const emailAddress = document.querySelector('#email').value
             const password = document.querySelector('#password').value
-            if (emailAddress !== null && password !== null && !isEmpty(emailAddress) && !isEmpty(password) && validateEmail(emailAddress)){
+            const username = document.querySelector('#username').value
+            if (emailAddress !== null && password !== null && username !== null && !isEmpty(emailAddress) && !isEmpty(username) && !isEmpty(password) && validateEmail(emailAddress)){
                  if(password.length < 4){
                      alertMsg.innerHTML = `Your password is too short!`
                      alertMsg.classList?.remove('not-visible')
@@ -328,9 +330,46 @@ buttonNext.addEventListener('click', e => {
                  }
                  if (password.length > 4 && password.length < 35) {
                      choices.push(emailAddress)
+                     choices.push(username)
                      choices.push(password)
-
-                     // ajax call
+                     // 0 - GOAL WEIGHT
+                     // 1 - ACTIVITY LEVEL
+                     // 2 - body parameter (cm)
+                     // 3 - body parameter (kg)
+                    //  4 - first name
+                    // 5 - last name
+                    // 6 - gender
+                    // 7 - years old
+                    // 8 - email address
+                    // 9 - username
+                    // 10 - password
+                     const url = window.location.origin + '/login'
+                     console.log(url)
+                     $.ajax({
+                        type: "POST",
+                        url: "",
+                        data: {
+                            'csrfmiddlewaretoken': csrfToken,
+                            'goal-weight': choices[0],
+                            'activity-level': choices[1],
+                            'body-cm': choices[2],
+                            'body-kg': choices[3],
+                            'first-name': choices[4],
+                            'last-name': choices[5],
+                            'gender': choices[6],
+                            'years-old': choices[7],
+                            'email': choices[8],
+                            'username': choices[9],
+                            'password': choices[10],
+                        },
+                        success: function (response){
+                            window.location = url;
+                            console.log(response.text)
+                        },
+                        error: function (error) {
+                            console.log(error)
+                        },
+                    })
                      progressBar.classList.remove(`progress--${iteration}`)
                      iteration += 1
                      progressBar.classList.add(`progress--${iteration}`)
@@ -343,7 +382,6 @@ buttonNext.addEventListener('click', e => {
                 alertMsg.classList?.remove('not-visible')
             }
         }
-    console.log(choices)
 })
 
 buttonBack.addEventListener('click', (e) => {
@@ -368,9 +406,8 @@ buttonBack.addEventListener('click', (e) => {
     }
 
     if(iteration === 5) {
-        choices = choices.slice(0, 8)
+        choices = choices.slice(0, 9)
     }
-    console.log(choices)
     iteration = iteration - 1
     progressBar.classList.add(`progress--${iteration}`)
     appendContent(parent, iteration)
