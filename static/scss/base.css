@@ -1031,12 +1031,12 @@ ORDER: Base + typography > general layout + grid > page layout > components
 body {
   height: 100%; }
 
-.login {
+.signup {
   margin-top: 13rem;
   display: grid;
   grid-template-columns: 0.25fr 1fr 0.25fr;
   grid-template-rows: 1fr; }
-  .login__card {
+  .signup__card {
     margin-left: auto;
     margin-right: auto;
     grid-column: 2/3;
@@ -1050,28 +1050,28 @@ body {
     -webkit-box-shadow: 0px 0px 7px 4px #42445a;
     -moz-box-shadow: 0px 0px 7px 4px #42445a;
     box-shadow: 0px 0px 7px 4px #42445a; }
-    .login__card__input {
+    .signup__card__input {
       margin-top: 2rem;
       text-align: center;
       padding: 2rem 5rem;
       border-radius: 10px;
       font-size: 2rem;
       width: 42rem; }
-      .login__card__input__span {
+      .signup__card__input__span {
         margin-top: 2rem;
         margin-left: 1rem;
         align-self: center;
         justify-self: center;
         font-size: 2rem; }
-      .login__card__input__container {
+      .signup__card__input__container {
         display: flex; }
-    .login__card__alert {
+    .signup__card__alert {
       font-size: 1.5rem;
       color: red; }
-    .login__card__heading {
+    .signup__card__heading {
       margin-top: 5rem;
       font-size: 5rem; }
-    .login__card__button {
+    .signup__card__button {
       cursor: pointer;
       margin-top: 2rem;
       padding: 2rem 15rem;
@@ -1079,30 +1079,30 @@ body {
       outline: gold;
       font-size: 2rem;
       width: 45rem; }
-      .login__card__button:first-of-type {
+      .signup__card__button:first-of-type {
         margin-top: 4rem; }
-    .login__card__content {
+    .signup__card__content {
       display: flex;
       flex-direction: column; }
-    .login__card__buttons {
+    .signup__card__buttons {
       display: grid;
       grid-template-rows: 1fr;
       grid-template-columns: 1fr 1fr;
       width: 45rem;
       margin-top: 3rem;
       grid-column-gap: 3rem; }
-      .login__card__buttons__button {
+      .signup__card__buttons__button {
         padding: 1.5rem 5rem;
         font-size: 1.5rem;
         text-transform: uppercase;
         border-radius: 5px;
         cursor: pointer; }
-        .login__card__buttons__button:active {
+        .signup__card__buttons__button:active {
           background-color: black;
           color: white; }
-        .login__card__buttons__button--back {
+        .signup__card__buttons__button--back {
           grid-column: 1/2; }
-        .login__card__buttons__button--next {
+        .signup__card__buttons__button--next {
           grid-column: 2/3;
           background-color: black;
           color: white; }
@@ -1132,6 +1132,54 @@ body {
     font-size: 2rem;
     margin-left: 1.5rem;
     margin-top: 0.5rem; }
+
+body {
+  height: 100%; }
+
+.login {
+  margin-top: 13rem;
+  display: grid;
+  grid-template-columns: 0.25fr 1fr 0.25fr;
+  grid-template-rows: 1fr; }
+  .login__card {
+    margin-left: auto;
+    margin-right: auto;
+    grid-column: 2/3;
+    background-image: linear-gradient(to bottom, #eeecec, #d7d4d4);
+    height: 60rem;
+    width: 70rem;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    -webkit-box-shadow: 0px 0px 7px 4px #42445a;
+    -moz-box-shadow: 0px 0px 7px 4px #42445a;
+    box-shadow: 0px 0px 7px 4px #42445a; }
+    .login__card__content {
+      display: flex;
+      flex-direction: column; }
+    .login__card__input {
+      margin-top: 2rem;
+      text-align: center;
+      padding: 2rem 5rem;
+      border-radius: 10px;
+      font-size: 2rem;
+      width: 50rem; }
+    .login__card__heading {
+      margin-top: 5rem;
+      font-size: 5rem; }
+    .login__card__alert {
+      font-size: 1.5rem;
+      color: red; }
+    .login__card__button {
+      background-color: black;
+      color: white;
+      margin-top: 4rem;
+      cursor: pointer;
+      padding: 2rem 15rem;
+      border-radius: 10px;
+      font-size: 2rem;
+      width: 50rem; }
 
 *,
 *::after,

@@ -1,0 +1,67 @@
+body {
+  height: 100%;
+
+}
+
+.login {
+  margin-top: 13rem;
+
+  display: grid;
+  grid-template-columns: 0.25fr 1fr 0.25fr;
+  grid-template-rows: 1fr;
+
+  &__card {
+    margin-left: auto;
+    margin-right: auto;
+    grid-column: 2/3;
+    background-image: linear-gradient(to bottom, rgb(238, 236, 236), rgb(215, 212, 212));
+    height: 60rem;
+    width: 70rem;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    -webkit-box-shadow: 0px 0px 7px 4px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 0px 0px 7px 4px rgba(66, 68, 90, 1);
+    box-shadow: 0px 0px 7px 4px rgba(66, 68, 90, 1);
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__input {
+      margin-top: 2rem;
+      text-align: center;
+      padding: 2rem 5rem;
+      border-radius: 10px;
+      font-size: 2rem;
+      width: 50rem;
+    }
+
+     &__heading {
+
+      margin-top: 5rem;
+      font-size: 5rem;
+    }
+
+     &__alert {
+      font-size: 1.5rem;
+      color: red;
+    }
+
+    &__button {
+      background-color: black;
+      color: white;
+      margin-top: 4rem;
+      cursor: pointer;
+      padding: 2rem 15rem;
+      border-radius: 10px;
+      font-size: 2rem;
+       width: 50rem;
+    }
+
+  }
+}
+
+

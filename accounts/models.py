@@ -20,7 +20,7 @@ class MyAccountManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, first_name, last_name, email, username, password):
+    def create_superuser(self, first_name, last_name, email, username, password, ):
         user = self.create_user(
             email=self.normalize_email(email),
             username=username,
@@ -41,7 +41,6 @@ class Account(AbstractBaseUser):
     last_name = models.CharField(max_length=50)
     username = models.CharField(max_length=50, unique=True)
     email = models.EmailField(max_length=100, unique=True)
-
     # required
     date_joined = models.DateTimeField(auto_now_add=True)
     last_login = models.DateTimeField(auto_now_add=True)
@@ -69,7 +68,12 @@ class Account(AbstractBaseUser):
 
 class UserProfile(models.Model):
     user = models.OneToOneField(Account, on_delete=models.CASCADE)
-    bio = models.CharField(max_length=150, blank=True)
+    activity_level = models.CharField(max_length=15)
+    goal_weight = models.CharField(max_length=5)
+    height = models.CharField(max_length=5)
+    weight = models.CharField(max_length=5)
+    years_old = models.CharField(max_length=3)
+    gender = models.CharField(max_length=6)
 
     def __str__(self):
         return self.user.username

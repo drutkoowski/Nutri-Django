@@ -2,12 +2,12 @@
 {% load sass_tags %}
 {% block scripts %}
     <script src="{% sass_src 'scripts/main.js' %}" defer></script>
-    <script src="{% sass_src 'scripts/login/main.js' %}" defer></script>
+    <script src="{% sass_src 'scripts/signup/main.js' %}" defer></script>
 {% endblock scripts %}
 {% block content %}
     <div class="loader"></div>
      <div class="bg-video">
-         <video id="login-video" class="bg-video__content" autoplay muted loop>
+         <video id="signup-video" class="bg-video__content" autoplay muted loop>
              <source src="{% sass_src 'video/bg_video_login.mp4' %}" type="video/mp4">
              <source src="{% sass_src 'video/bg_video_login.webm' %}" type="video/webm">
              Your browser is not supported!
@@ -15,22 +15,22 @@
      </div>
 
         {% include 'components/navbar/navbar.html' %}
-        <div class="login grid-full-span">
-            <div class="login__card">
+        <div class="signup grid-full-span">
+            <div class="signup__card">
                 <span class="progress-bar">
                     <span class="progress-bar--active progress--0"></span>
                 </span>
-                <h4 class="login__card__heading">What's your weight goal?</h4>
-                <p class="login__card__alert not-visible"></p>
-                <div class="login__card__content">
+                <h4 class="signup__card__heading">What's your weight goal?</h4>
+                <p class="signup__card__alert not-visible"></p>
+                <div class="signup__card__content">
                     {% csrf_token %}
-                        <button id='gain-weight' class="login__card__button">Gain Weight</button>
-                        <button id='maintain-weight' class="login__card__button">Maintain Weight</button>
-                        <button id='lose-weight' class="login__card__button">Lose Weight</button>
+                        <button id='gain-weight' class="signup__card__button">Gain Weight</button>
+                        <button id='maintain-weight' class="signup__card__button">Maintain Weight</button>
+                        <button id='lose-weight' class="signup__card__button">Lose Weight</button>
                 </div>
-                <div class="login__card__buttons">
-                    <button class="login__card__buttons__button login__card__buttons__button--back">Back</button>
-                    <button class="login__card__buttons__button login__card__buttons__button--next" >Next</button>
+                <div class="signup__card__buttons">
+                    <button class="signup__card__buttons__button signup__card__buttons__button--back">Back</button>
+                    <button class="signup__card__buttons__button signup__card__buttons__button--next" >Next</button>
                 </div>
             </div>
         </div>

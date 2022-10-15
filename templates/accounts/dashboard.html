@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load sass_tags %}
+{% block scripts %}
+    <script src="{% sass_src 'scripts/main.js' %}" defer></script>
+{% endblock scripts %}
+{% block content %}
+    <div class="loader"></div>
+    {% include 'components/navbar/navbar.html' %}
+    <a class="" href="{% url 'logout' %}" style="font-size: 15rem"> Logout</a>
+{% endblock %}

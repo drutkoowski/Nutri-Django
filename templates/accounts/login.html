@@ -1,4 +1,33 @@
 {% extends 'base.html' %}
+{% load sass_tags %}
+{% block scripts %}
+    <script src="{% sass_src 'scripts/main.js' %}" defer></script>
+     <script src="{% sass_src 'scripts/login/main.js' %}" defer></script>
+{% endblock scripts %}
 {% block content %}
-    LOGIN VIEW
+    <div class="loader"></div>
+     <div class="bg-video">
+         <video id="login-video" class="bg-video__content" autoplay muted loop>
+             <source src="{% sass_src 'video/bg_video_login.mp4' %}" type="video/mp4">
+             <source src="{% sass_src 'video/bg_video_login.webm' %}" type="video/webm">
+             Your browser is not supported!
+         </video>
+     </div>
+
+        {% include 'components/navbar/navbar.html' %}
+        <div class="login grid-full-span">
+            <div class="login__card">
+                <h4 class="login__card__heading">Log in to Nutri<span class="header__nutri-dot">.</span></h4>
+                <p class="login__card__alert not-visible"></p>
+                <div class="login__card__content">
+                    {% csrf_token %}
+                    <input id='email' name="email" type="email" class="login__card__input" placeholder="Email Address" required/>
+                    <input id='password' name="password" type="password" class="login__card__input" placeholder="Password" required/>
+
+                    <button class="login__card__button" id="login-button">Log in</button>
+                </div>
+
+            </div>
+        </div>
+
 {% endblock %}
