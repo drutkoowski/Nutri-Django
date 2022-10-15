@@ -11,6 +11,7 @@ window.addEventListener("load", () => {
     loader.addEventListener('transitionend', () => {
         const headerUpper = document.getElementById('header-upper')
         const headerLower = document.getElementById('header-lower')
+
         if (headerUpper && headerLower) {
             headerUpper.classList.remove('not-visible')
             headerLower.classList.remove('not-visible')

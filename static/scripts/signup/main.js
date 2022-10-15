@@ -12,6 +12,13 @@ let iteration = 0
 let choices = []
 let currentChoice = null
 
+const capitalize = (word) => {
+    return word.toLowerCase()
+        .split(' ')
+        .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+        .join(' ')
+}
+
 
 const sendData = () => {
        // 0 - GOAL WEIGHT
@@ -34,8 +41,8 @@ const sendData = () => {
             'activity-level': choices[1],
             'body-cm': choices[2],
             'body-kg': choices[3],
-            'first-name': choices[4],
-            'last-name': choices[5],
+            'first-name': capitalize(choices[4]),
+            'last-name': capitalize(choices[5]),
             'gender': choices[6],
             'years-old': choices[7],
             'email': choices[8],
