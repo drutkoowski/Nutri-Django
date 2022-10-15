@@ -99,14 +99,6 @@ function getChildren(parent) {
 }
 
 
-// const afterSignupSuccess = () => {
-//   setTimeout(
-//     function() {
-//       alert('You signed up successfully.. now you will be redirected to login page.')
-//     }, 5000);
-//
-// }
-
 
 
 function appendContent(parent, iteration) {
@@ -338,7 +330,7 @@ buttonNext.addEventListener('click', e => {
 
             }
             else {
-                alertMsg.innerHTML = `You have fill the inputs.`
+                alertMsg.innerHTML = `You have to fill the inputs.`
                 alertMsg.classList?.remove('not-visible')
 
             }
@@ -438,6 +430,7 @@ buttonNext.addEventListener('click', e => {
 })
 
 buttonBack.addEventListener('click', (e) => {
+
     const parent = document.querySelector('.signup__card__content')
     const children = Array.from(parent.children)
     progressBar.classList.remove(`progress--${iteration}`)
@@ -464,8 +457,8 @@ buttonBack.addEventListener('click', (e) => {
     iteration = iteration - 1
     progressBar.classList.add(`progress--${iteration}`)
     appendContent(parent, iteration)
-    if (iteration === 0 || iteration === 1) {
-        addListeners()
+    if (iteration < 1) {
+        buttonBack.disabled = true
     }
 })
 
