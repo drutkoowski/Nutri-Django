@@ -1032,13 +1032,21 @@ body {
   height: 100%; }
 
 .signup {
-  margin-top: 13rem;
+  margin-top: 5rem;
+  height: auto;
   display: grid;
   grid-template-columns: 0.25fr 1fr 0.25fr;
-  grid-template-rows: 1fr; }
+  grid-template-rows: 1fr;
+  justify-items: center;
+  align-items: center; }
+  @media only screen and (max-width: 46.875em) {
+    .signup {
+      grid-template-columns: 0.1fr 1fr 0.1fr; } }
+  @media only screen and (max-width: 37.5em) {
+    .signup {
+      margin-top: 5rem;
+      grid-template-columns: 1fr; } }
   .signup__card {
-    margin-left: auto;
-    margin-right: auto;
     grid-column: 2/3;
     background-image: linear-gradient(to bottom, #eeecec, #d7d4d4);
     height: auto;
@@ -1050,6 +1058,35 @@ body {
     -webkit-box-shadow: 0px 0px 7px 4px #42445a;
     -moz-box-shadow: 0px 0px 7px 4px #42445a;
     box-shadow: 0px 0px 7px 4px #42445a; }
+    @media only screen and (max-width: 75em) {
+      .signup__card {
+        width: 60rem; } }
+    @media only screen and (max-width: 56.25em) {
+      .signup__card {
+        width: 50rem;
+        margin-left: auto;
+        margin-right: auto; } }
+    @media only screen and (max-width: 46.875em) {
+      .signup__card {
+        width: 50rem;
+        margin-left: auto;
+        margin-right: auto; } }
+    @media only screen and (max-width: 37.5em) {
+      .signup__card {
+        width: 40rem;
+        margin-left: auto;
+        margin-right: auto;
+        grid-column: 1/2; } }
+    @media only screen and (max-width: 28.5em) {
+      .signup__card {
+        width: 35rem;
+        margin-left: auto;
+        margin-right: auto; } }
+    @media only screen and (max-width: 21.875em) {
+      .signup__card {
+        width: 26rem;
+        margin-left: auto;
+        margin-right: auto; } }
     .signup__card__links {
       text-decoration: none;
       font-size: 1.2rem;
@@ -1066,6 +1103,22 @@ body {
       border-radius: 10px;
       font-size: 2rem;
       width: 42rem; }
+      @media only screen and (max-width: 56.25em) {
+        .signup__card__input {
+          width: 35rem; } }
+      @media only screen and (max-width: 56.25em) {
+        .signup__card__input {
+          width: 25rem;
+          font-size: 1.7rem; } }
+      @media only screen and (max-width: 28.5em) {
+        .signup__card__input {
+          width: 20rem;
+          font-size: 1.4rem;
+          padding: 1rem 4rem; } }
+      @media only screen and (max-width: 21.875em) {
+        .signup__card__input {
+          width: 15rem;
+          font-size: 1.2rem; } }
       .signup__card__input__span {
         margin-top: 2rem;
         margin-left: 1rem;
@@ -1078,8 +1131,36 @@ body {
       font-size: 1.5rem;
       color: red; }
     .signup__card__heading {
-      margin-top: 5rem;
+      margin-top: 3rem;
       font-size: 5rem; }
+      .signup__card__heading--4 {
+        text-align: center; }
+        @media only screen and (max-width: 75em) {
+          .signup__card__heading--4 {
+            font-size: 3rem; } }
+        @media only screen and (max-width: 56.25em) {
+          .signup__card__heading--4 {
+            font-size: 2.5rem; } }
+        @media only screen and (max-width: 37.5em) {
+          .signup__card__heading--4 {
+            font-size: 2rem; } }
+      @media only screen and (max-width: 75em) {
+        .signup__card__heading {
+          font-size: 4rem; } }
+      @media only screen and (max-width: 56.25em) {
+        .signup__card__heading {
+          font-size: 3.5rem; } }
+      @media only screen and (max-width: 37.5em) {
+        .signup__card__heading {
+          font-size: 3rem; } }
+      @media only screen and (max-width: 28.5em) {
+        .signup__card__heading {
+          font-size: 2.5rem; }
+          .signup__card__heading .signup__card__heading--3 {
+            font-size: 2rem !important; } }
+      @media only screen and (max-width: 21.875em) {
+        .signup__card__heading {
+          font-size: 2rem; } }
     .signup__card__button {
       cursor: pointer;
       margin-top: 2rem;
@@ -1089,7 +1170,27 @@ body {
       font-size: 2rem;
       width: 45rem; }
       .signup__card__button:first-of-type {
-        margin-top: 4rem; }
+        margin-top: 3rem; }
+      @media only screen and (max-width: 75em) {
+        .signup__card__button {
+          width: 40rem;
+          padding: 2rem 10rem;
+          font-size: 1.7rem; } }
+      @media only screen and (max-width: 56.25em) {
+        .signup__card__button {
+          font-size: 1.6rem;
+          width: 30rem;
+          white-space: nowrap; } }
+      @media only screen and (max-width: 28.5em) {
+        .signup__card__button {
+          width: 25rem;
+          font-size: 1.2rem;
+          padding: 2rem 5rem; } }
+      @media only screen and (max-width: 21.875em) {
+        .signup__card__button {
+          width: 18rem;
+          font-size: 1.3rem;
+          padding: 2rem 2rem; } }
     .signup__card__content {
       display: flex;
       flex-direction: column; }
@@ -1100,12 +1201,32 @@ body {
       width: 45rem;
       margin-top: 3rem;
       grid-column-gap: 3rem; }
+      @media only screen and (max-width: 75em) {
+        .signup__card__buttons {
+          width: 40rem; } }
+      @media only screen and (max-width: 56.25em) {
+        .signup__card__buttons {
+          width: 30rem; } }
+      @media only screen and (max-width: 21.875em) {
+        .signup__card__buttons {
+          width: 20rem;
+          grid-column-gap: 1rem; } }
       .signup__card__buttons__button {
         padding: 1.5rem 5rem;
         font-size: 1.5rem;
         text-transform: uppercase;
         border-radius: 5px;
         cursor: pointer; }
+        @media only screen and (max-width: 56.25em) {
+          .signup__card__buttons__button {
+            padding: 1.5rem 3rem; } }
+        @media only screen and (max-width: 46.875em) {
+          .signup__card__buttons__button {
+            font-size: 1.2rem; } }
+        @media only screen and (max-width: 21.875em) {
+          .signup__card__buttons__button {
+            padding: 1.5rem 2rem;
+            font-size: 1rem; } }
         .signup__card__buttons__button:active {
           background-color: black;
           color: white; }

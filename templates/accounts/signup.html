@@ -5,14 +5,7 @@
     <script src="{% sass_src 'scripts/signup/main.js' %}" defer></script>
 {% endblock scripts %}
 {% block content %}
-    <div class="modal not-visible">
-        <div class="modal__content">
-            <div class="modal__close-button">&times;</div>
-            <h1>Signed up successfully... Redirecting to login page.</h1>
-            <div class="loader--signup"></div>
-        </div>
-    </div>
-    <div class="loader"></div>
+    <div class="container ">
      <div class="bg-video">
          <video id="signup-video" class="bg-video__content" autoplay muted loop>
              <source src="{% sass_src 'video/bg_video_login.mp4' %}" type="video/mp4">
@@ -43,5 +36,13 @@
                 <a href="" class="signup__card__links">Forgot password?</a>
             </div>
         </div>
-
+     <div class="modal not-visible">
+        <div class="modal__content">
+            <div class="modal__close-button">&times;</div>
+            <h1>Signed up successfully... Redirecting to login page.</h1>
+            <div class="loader--signup"></div>
+        </div>
+    </div>
+    <div class="loader"></div>
+</div>
 {% endblock %}

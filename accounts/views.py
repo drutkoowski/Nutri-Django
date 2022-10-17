@@ -53,7 +53,10 @@ def login_user(request):
         email_address = request.POST.get('emailAddress')
         password = request.POST.get('password')
         check_if_user_exists = Account.objects.filter(email__iexact=email_address).first()
-        user = auth.authenticate(username=check_if_user_exists.username, password=password)
+        if check_if_user_exists:
+            user = auth.authenticate(username=check_if_user_exists.username, password=password)
+        else:
+            user = None
         if user is not None:
             auth.login(request, user)
             return JsonResponse({'status': 200, 'text': 'User logged in'})

@@ -134,8 +134,8 @@ function appendContent(parent, iteration) {
 
      if (iteration === 3) {
         let currentHeading = document.querySelector('.signup__card__heading')
-        currentHeading.style.fontSize = '3.5rem'
-        currentHeading.innerHTML = `What's your name, birth year and gender?`
+        currentHeading.innerHTML = `What's your personal info?`
+        currentHeading.classList.add('signup__card__heading--3')
         contentToAppend = `
              <input id='first-name' class="signup__card__input" placeholder="First Name"/>
             
@@ -244,6 +244,8 @@ function appendContent(parent, iteration) {
      if (iteration === 4) {
         let currentHeading = document.querySelector('.signup__card__heading')
         currentHeading.innerHTML = `What's your email address and password?`
+        currentHeading.classList.toggle('signup__card__heading--3')
+        currentHeading.classList.add('signup__card__heading--4')
         contentToAppend = `
             <input id='email' type="email" class="signup__card__input" placeholder="Email Address" required/>
             <input id='username' type="text" class="signup__card__input" placeholder="Username" required/>
@@ -289,9 +291,11 @@ addListeners(cardContent)
 
 
 buttonNext.addEventListener('click', e => {
+
         if(iteration < 2){
             if (currentChoice !== null) {
             alertMsg.classList?.add('not-visible')
+                console.log(currentChoice)
             choices.push(currentChoice)
             currentChoice = null
             const parent = document.querySelector('.signup__card__content')
@@ -438,9 +442,11 @@ buttonBack.addEventListener('click', (e) => {
     clearAlerts()
     if(iteration === 1) {
         choices = []
+        currentChoice = null
     }
     if(iteration === 2) {
         choices = choices[0]
+        currentChoice = null
     }
 
     if(iteration === 3) {
@@ -457,6 +463,7 @@ buttonBack.addEventListener('click', (e) => {
     iteration = iteration - 1
     progressBar.classList.add(`progress--${iteration}`)
     appendContent(parent, iteration)
+    console.log(choices)
     if (iteration < 1) {
         buttonBack.disabled = true
     }

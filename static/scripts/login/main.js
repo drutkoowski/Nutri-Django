@@ -17,7 +17,34 @@ function isEmpty(str) {
     return !str.trim().length;
 }
 
+const logIn = (password, emailAddress) => {
+    const url = window.location.origin + '/data/login-user'
+    const nextUrl = window.location.origin + '/dashboard'
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: {
+            'csrfmiddlewaretoken': csrfToken,
+            'password': password,
+            'emailAddress': emailAddress,
+        },
+        success: function (response){
+            const status = response.status
+            if (status === 200) {
+                window.location = nextUrl;
+            }
+            else if (status === 404) {
+                alertMsg.innerHTML = `We could not match any user with these credentials.`
+                alertMsg.classList?.remove('not-visible')
+            }
 
+            },
+        error: function (error) {
+            alertMsg.innerHTML = `Error occurred.. try again.`
+            alertMsg.classList?.remove('not-visible')
+        },
+    })
+}
 
 loginButton.addEventListener('click', (e) => {
     e.preventDefault()
@@ -31,32 +58,8 @@ loginButton.addEventListener('click', (e) => {
         }
         else {
             // ajax call to check if user exist
-            const url = window.location.origin + '/data/login-user'
-            const nextUrl = window.location.origin + '/dashboard'
-            $.ajax({
-                type: "POST",
-                url: url,
-                data: {
-                    'csrfmiddlewaretoken': csrfToken,
-                    'password': password,
-                    'emailAddress': emailAddress,
-                },
-                success: function (response){
-                    const status = response.status
-                    if (status === 200) {
-                        window.location = nextUrl;
-                    }
-                    else if (status === 404) {
-                        alertMsg.innerHTML = `We could not match any user with these credentials.`
-                        alertMsg.classList?.remove('not-visible')
-                    }
+            logIn(password, emailAddress)
 
-                },
-                error: function (error) {
-                    alertMsg.innerHTML = `Error occurred.. try again.`
-                    alertMsg.classList?.remove('not-visible')
-                },
-            })
         }
     }
     else {
