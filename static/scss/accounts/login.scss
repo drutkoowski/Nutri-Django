@@ -4,12 +4,17 @@ body {
 }
 
 .login {
-  margin-top: 13rem;
+  margin-top: 10rem;
 
   display: grid;
   grid-template-columns: 0.25fr 1fr 0.25fr;
   grid-template-rows: 1fr;
-
+  @include respond(tab-port) {
+     grid-template-columns: 0.1fr 1fr 0.1fr;
+  }
+  @include respond(phone-lg) {
+     grid-template-columns: 1fr;
+  }
   &__card {
     margin-left: auto;
     margin-right: auto;
@@ -17,7 +22,7 @@ body {
     background-image: linear-gradient(to bottom, rgb(238, 236, 236), rgb(215, 212, 212));
     height: 60rem;
     width: 70rem;
-    border-radius: 5px;
+    border-radius: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,9 +30,37 @@ body {
     -moz-box-shadow: 0px 0px 7px 4px rgba(66, 68, 90, 1);
     box-shadow: 0px 0px 7px 4px rgba(66, 68, 90, 1);
 
+     @include respond(tab-land) {
+       height: 50rem;
+       width: 60rem;
+     }
+
+    @include respond(tab-sm) {
+       height: 50rem;
+       width: 50rem;
+     }
+
+    @include respond(phone-lg) {
+      grid-column: 1/2;
+       height: 45rem;
+       width: 45rem;
+     }
+
+    @include respond(phone-md) {
+       height: 45rem;
+       width: 35rem;
+     }
+
+    @include respond(phone-sm) {
+       height: 40rem;
+       width: 25rem;
+     }
+
     &__content {
       display: flex;
       flex-direction: column;
+      justify-content: center;
+      align-content: center;
     }
 
     &__input {
@@ -37,17 +70,51 @@ body {
       border-radius: 10px;
       font-size: 2rem;
       width: 50rem;
+      @include respond(tab-land) {
+        margin-left: auto;
+        margin-right: auto;
+        width: 40rem;
+     }
+
+      @include respond(phone-lg) {
+        width: 35rem;
+        margin-top: 1.5rem;
+        font-size: 1.5rem;
+     }
+      @include respond(phone-md) {
+        margin-top: 1rem;
+        width: 30rem;
+     }
+
+      @include respond(phone-sm) {
+        width: 20rem;
+        font-size: 1rem;
+     }
     }
 
      &__heading {
 
       margin-top: 5rem;
       font-size: 5rem;
+      @include respond(phone-lg) {
+         font-size: 4.5rem;
+         margin-top: 3rem;
+     }
+     @include respond(phone-md) {
+         font-size: 4rem;
+         margin-top: 2rem;
+     }
+     @include respond(phone-sm) {
+        font-size: 3rem;
+     }
     }
 
      &__alert {
       font-size: 1.5rem;
       color: red;
+     @include respond(phone-sm) {
+        font-size: 1rem;
+     }
     }
 
     &__button {
@@ -58,7 +125,22 @@ body {
       padding: 2rem 15rem;
       border-radius: 10px;
       font-size: 2rem;
-       width: 50rem;
+      width: 50rem;
+      @include respond(tab-land) {
+        width: 40rem;
+     }
+      @include respond(phone-lg) {
+          width: 35rem;
+          padding: 2rem 5rem;
+     }
+      @include respond(phone-md) {
+       width: 30rem;
+
+     }
+      @include respond(phone-sm) {
+        width: 20rem;
+         font-size: 1rem;
+      }
     }
 
   }

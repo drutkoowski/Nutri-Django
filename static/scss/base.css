@@ -1051,7 +1051,7 @@ body {
     background-image: linear-gradient(to bottom, #eeecec, #d7d4d4);
     height: auto;
     width: 70rem;
-    border-radius: 5px;
+    border-radius: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1311,10 +1311,16 @@ body {
   height: 100%; }
 
 .login {
-  margin-top: 13rem;
+  margin-top: 10rem;
   display: grid;
   grid-template-columns: 0.25fr 1fr 0.25fr;
   grid-template-rows: 1fr; }
+  @media only screen and (max-width: 56.25em) {
+    .login {
+      grid-template-columns: 0.1fr 1fr 0.1fr; } }
+  @media only screen and (max-width: 37.5em) {
+    .login {
+      grid-template-columns: 1fr; } }
   .login__card {
     margin-left: auto;
     margin-right: auto;
@@ -1322,16 +1328,39 @@ body {
     background-image: linear-gradient(to bottom, #eeecec, #d7d4d4);
     height: 60rem;
     width: 70rem;
-    border-radius: 5px;
+    border-radius: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
     -webkit-box-shadow: 0px 0px 7px 4px #42445a;
     -moz-box-shadow: 0px 0px 7px 4px #42445a;
     box-shadow: 0px 0px 7px 4px #42445a; }
+    @media only screen and (max-width: 75em) {
+      .login__card {
+        height: 50rem;
+        width: 60rem; } }
+    @media only screen and (max-width: 46.875em) {
+      .login__card {
+        height: 50rem;
+        width: 50rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .login__card {
+        grid-column: 1/2;
+        height: 45rem;
+        width: 45rem; } }
+    @media only screen and (max-width: 28.5em) {
+      .login__card {
+        height: 45rem;
+        width: 35rem; } }
+    @media only screen and (max-width: 21.875em) {
+      .login__card {
+        height: 40rem;
+        width: 25rem; } }
     .login__card__content {
       display: flex;
-      flex-direction: column; }
+      flex-direction: column;
+      justify-content: center;
+      align-content: center; }
     .login__card__input {
       margin-top: 2rem;
       text-align: center;
@@ -1339,12 +1368,44 @@ body {
       border-radius: 10px;
       font-size: 2rem;
       width: 50rem; }
+      @media only screen and (max-width: 75em) {
+        .login__card__input {
+          margin-left: auto;
+          margin-right: auto;
+          width: 40rem; } }
+      @media only screen and (max-width: 37.5em) {
+        .login__card__input {
+          width: 35rem;
+          margin-top: 1.5rem;
+          font-size: 1.5rem; } }
+      @media only screen and (max-width: 28.5em) {
+        .login__card__input {
+          margin-top: 1rem;
+          width: 30rem; } }
+      @media only screen and (max-width: 21.875em) {
+        .login__card__input {
+          width: 20rem;
+          font-size: 1rem; } }
     .login__card__heading {
       margin-top: 5rem;
       font-size: 5rem; }
+      @media only screen and (max-width: 37.5em) {
+        .login__card__heading {
+          font-size: 4.5rem;
+          margin-top: 3rem; } }
+      @media only screen and (max-width: 28.5em) {
+        .login__card__heading {
+          font-size: 4rem;
+          margin-top: 2rem; } }
+      @media only screen and (max-width: 21.875em) {
+        .login__card__heading {
+          font-size: 3rem; } }
     .login__card__alert {
       font-size: 1.5rem;
       color: red; }
+      @media only screen and (max-width: 21.875em) {
+        .login__card__alert {
+          font-size: 1rem; } }
     .login__card__button {
       background-color: black;
       color: white;
@@ -1354,7 +1415,20 @@ body {
       border-radius: 10px;
       font-size: 2rem;
       width: 50rem; }
-
+      @media only screen and (max-width: 75em) {
+        .login__card__button {
+          width: 40rem; } }
+      @media only screen and (max-width: 37.5em) {
+        .login__card__button {
+          width: 35rem;
+          padding: 2rem 5rem; } }
+      @media only screen and (max-width: 28.5em) {
+        .login__card__button {
+          width: 30rem; } }
+      @media only screen and (max-width: 21.875em) {
+        .login__card__button {
+          width: 20rem;
+          font-size: 1rem; } }
 *,
 *::after,
 *::before {
