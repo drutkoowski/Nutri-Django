@@ -295,7 +295,6 @@ buttonNext.addEventListener('click', e => {
         if(iteration < 2){
             if (currentChoice !== null) {
             alertMsg.classList?.add('not-visible')
-                console.log(currentChoice)
             choices.push(currentChoice)
             currentChoice = null
             const parent = document.querySelector('.signup__card__content')
@@ -435,7 +434,7 @@ buttonNext.addEventListener('click', e => {
 
 buttonBack.addEventListener('click', (e) => {
 
-    const parent = document.querySelector('.signup__card__content')
+    let parent = document.querySelector('.signup__card__content')
     const children = Array.from(parent.children)
     progressBar.classList.remove(`progress--${iteration}`)
     clearQuestions(parent, children)
@@ -445,16 +444,22 @@ buttonBack.addEventListener('click', (e) => {
         currentChoice = null
     }
     if(iteration === 2) {
-        choices = choices[0]
+        let choicesHandler = []
+        choicesHandler.push(choices[0])
+        choices = choicesHandler
         currentChoice = null
     }
 
     if(iteration === 3) {
-        choices = choices.slice(0, 2)
+        let choicesHandler = []
+        choicesHandler.push(choices[0], choices[1])
+        choices = choicesHandler
     }
 
     if(iteration === 4) {
-        choices = choices.slice(0, 4)
+        let choicesHandler = []
+        choicesHandler.push(choices[0], choices[1], choices[2], choices[3])
+        choices = choicesHandler
     }
 
     if(iteration === 5) {
@@ -462,6 +467,7 @@ buttonBack.addEventListener('click', (e) => {
     }
     iteration = iteration - 1
     progressBar.classList.add(`progress--${iteration}`)
+    parent = document.querySelector('.signup__card__content')
     appendContent(parent, iteration)
     console.log(choices)
     if (iteration < 1) {
