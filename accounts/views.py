@@ -14,6 +14,8 @@ def home_page(request):
 
 
 def signup_view(request):
+    if request.user.is_authenticated:
+        return redirect('dashboard')
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == "POST":
         goal_weight = request.POST.get('goal-weight')
         activity_level = request.POST.get('activity-level')
@@ -44,7 +46,7 @@ def signup_view(request):
 
 def login_view(request):
     if request.user.is_authenticated:
-        redirect('dashboard')
+        return redirect('dashboard')
     return render(request, 'accounts/login.html')
 
 

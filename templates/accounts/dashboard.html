@@ -1,10 +1,110 @@
 {% extends 'base.html' %}
 {% load sass_tags %}
 {% block scripts %}
-    <script src="{% sass_src 'scripts/main.js' %}" defer></script>
+    <script src="{% sass_src 'scripts/dashboard/main.js' %}" defer></script>
+     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 {% endblock scripts %}
 {% block content %}
     <div class="loader"></div>
-    {% include 'components/navbar/navbar.html' %}
-    <a class="" href="{% url 'logout' %}" style="font-size: 15rem"> Logout</a>
+    <div class="grid-layout-container">
+        <div class="dashboard__sidebar">
+            <div class="dashboard__sidebar__avatar">
+                <img src="{% sass_src 'images/svg/default_user.svg' %}" alt="">
+            </div>
+            <div class="dashboard__sidebar__name">
+                imie nazwisko
+            </div>
+             <div class="dashboard__sidebar__username">
+                username
+            </div>
+             <div class="dashboard__sidebar__gender">
+                plec
+            </div>
+             <div class="dashboard__sidebar__years">
+                wiek
+            </div>
+            <div class="dashboard__sidebar__height">
+                wzrost
+            </div>
+            <div class="dashboard__sidebar__weight">
+                waga
+            </div>
+             <div class="dashboard__sidebar__goal">
+                cel zywieniowy
+            </div>
+             <div class="dashboard__sidebar__activity-level">
+                poziom aktywnosci
+            </div>
+            <div class="dashboard__sidebar__settings">
+                Settings
+            </div>
+            <div class="dashboard__sidebar__log-out">
+                <a class="" href="{% url 'logout' %}"> Logout</a>
+            </div>
+        </div>
+        <div class="dashboard__content">
+
+            <div class="dashboard__content__welcome-text">
+                <h3>Welcome back, user name!</h3>
+                <p>Let's check quality of your nutrition for today!</p>
+            </div>
+
+            <div class="dashboard__content__summary">
+                <div class="dashboard__content__summary__item dashboard__content__summary__item--meal">
+                    <h2 class="dashboard__content__summary__item__header">Meals</h2>
+                </div>
+                <div class="dashboard__content__summary__item dashboard__content__summary__item--workout">
+                    <h2 class="dashboard__content__summary__item__header">Exercises</h2>
+                </div>
+                <div class="dashboard__content__summary__item dashboard__content__summary__item--manage">
+                    <h2 class="dashboard__content__summary__item__header">Manage Plans</h2>
+                </div>
+                 <div class="dashboard__content__summary__item dashboard__content__summary__item--graph">
+                    <div class="dashboard__content__summary__item--graph__content">
+                        <h4>Summary</h4>
+                        <p>Goal: <b>1827</b> kcal</p>
+                        <p>Eaten: <b>1084</b> kcal</p>
+                        <p>Burnt: <b>274</b> kcal</p>
+                        <p>Remaining: <b>534</b> kcal</p>
+                    </div>
+                      <div class="dashboard__content__summary__item--graph__graph">
+                          <div class="dashboard__content__summary__item--graph__graph__container">
+                              <canvas id="myChart" class="summaryChart"></canvas>
+                               <p class="summaryChart__description"><span class="summaryChart__description--percent"><b>60%</b></span></p>
+                                <p class="summaryChart__description--goal">of the goal</p>
+                          </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard__content__daily-summary">
+                <div class="dashboard__content__daily-summary__item dashboard__content__daily-summary__item--calories">
+                    calories
+                </div>
+                <div class="dashboard__content__daily-summary__item dashboard__content__daily-summary__item--carbs">
+                    carbs
+                </div>
+
+                <div class="dashboard__content__daily-summary__item dashboard__content__daily-summary__item--protein">
+                    protein
+                </div>
+
+                 <div class="dashboard__content__daily-summary__item dashboard__content__daily-summary__item--fat">
+                    fat
+                </div>
+            </div>
+
+            <div class="dashboard__content__graphs">
+                 <div class="dashboard__content__graphs__item dashboard__content__graphs__item--water">
+                    Water tracker
+                </div>
+                <div class="dashboard__content__graphs__item dashboard__content__graphs__item--weekly">
+                    weekly graph
+                </div>
+            </div>
+        </div>
+
+    </div>
+
 {% endblock %}
