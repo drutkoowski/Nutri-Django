@@ -9,31 +9,31 @@
     <div class="grid-layout-container">
         <div class="dashboard__sidebar">
             <div class="dashboard__sidebar__avatar">
-                <img src="{% sass_src 'images/svg/default_user.svg' %}" alt="">
+                <img src="{% sass_src 'images/svg/default_user.svg' %}" alt="User Avatar">
             </div>
             <div class="dashboard__sidebar__name">
-                imie nazwisko
+                Damian Rutkowski
             </div>
              <div class="dashboard__sidebar__username">
-                username
+                Rutekk20
             </div>
              <div class="dashboard__sidebar__gender">
-                plec
+                Male
             </div>
              <div class="dashboard__sidebar__years">
-                wiek
+                22 years old
             </div>
             <div class="dashboard__sidebar__height">
-                wzrost
+                177 cm
             </div>
             <div class="dashboard__sidebar__weight">
-                waga
+                68 kg
             </div>
              <div class="dashboard__sidebar__goal">
-                cel zywieniowy
+                Goal: Gain Weight
             </div>
              <div class="dashboard__sidebar__activity-level">
-                poziom aktywnosci
+                Activity: Medium
             </div>
             <div class="dashboard__sidebar__settings">
                 Settings
@@ -69,9 +69,9 @@
                     </div>
                       <div class="dashboard__content__summary__item--graph__graph">
                           <div class="dashboard__content__summary__item--graph__graph__container">
-                              <canvas id="myChart" class="summaryChart"></canvas>
+                              <canvas id="summaryChart" class="summaryChart"></canvas>
                                <p class="summaryChart__description"><span class="summaryChart__description--percent"><b>60%</b></span></p>
-                                <p class="summaryChart__description--goal">of the goal</p>
+                               <p class="summaryChart__description--goal">of the goal</p>
                           </div>
 
                     </div>
@@ -104,7 +104,8 @@
                     Water tracker
                 </div>
                 <div class="dashboard__content__graphs__item dashboard__content__graphs__item--weekly">
-                    weekly graph
+                    <h3>Weekly Calorie Graph</h3>
+                    <canvas id="summaryWeekly" class="summaryWeekly"></canvas>
                 </div>
             </div>
         </div>

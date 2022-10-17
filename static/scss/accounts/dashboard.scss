@@ -24,13 +24,16 @@ body {
     flex-direction: column;
     grid-column: 2/3;
     grid-row: 2/3;
-    align-items: center;
+    align-items: start;
+    justify-items: center;
     font-size: 2rem;
     background-color: white;
     -webkit-box-shadow: 0px 0px 59px -22px rgba(66, 68, 90, 1);
     -moz-box-shadow: 0px 0px 59px -22px rgba(66, 68, 90, 1);
     box-shadow: 0px 0px 59px -22px rgba(66, 68, 90, 1);
+
     &__avatar {
+      align-self: center;
       margin-top: 5rem;
       img {
         width: 4rem;
@@ -41,16 +44,27 @@ body {
       }
     }
      &__name {
-      text-transform: uppercase;
-      font-weight: bold;
-      margin-top: 2rem;
+       align-self: center;
+       text-transform: uppercase;
+       font-weight: bold;
+       margin-top: 2rem;
     }
      &__username {
+      margin-left: 2rem;
       margin-top: 15rem;
     }
+    &__gender, &__years, &__height, &__weight, &__goal, &__activity-level {
+
+      margin-left: 2rem;
+    }
+
 
     &__settings {
+      align-self: center;
       margin-top: auto;
+    }
+    &__log-out {
+      align-self: center;
     }
   }
 
@@ -66,6 +80,7 @@ body {
     border-radius: 20px;
     color: white;
     margin-left: -20px;
+
     //-webkit-box-shadow: 0px 0px 59px -22px rgba(66, 68, 90, 1);
     //-moz-box-shadow: 0px 0px 59px -22px rgba(66, 68, 90, 1);
     //box-shadow: 0px 0px 59px -22px rgba(66, 68, 90, 1);
@@ -75,6 +90,10 @@ body {
       margin-top: 5rem;
       grid-column: 1 / -1;
       grid-row: 1/2;
+      animation-name: moveInLeft;
+      animation-duration: 1s;
+      animation-timing-function: ease-out;
+
       h3 {
         font-size: 3rem;
       }
@@ -93,6 +112,10 @@ body {
       justify-items: center;
       align-items: center;
       margin: 2rem 1rem 0 1rem;
+      animation-name: fade-bottom;
+      animation-duration: 1s;
+      animation-timing-function: ease-out;
+
       &__item {
         cursor: pointer;
         justify-self: stretch;
@@ -103,6 +126,10 @@ body {
         -webkit-box-shadow: 0px 0px 59px -22px rgba(66, 68, 90, 1);
         -moz-box-shadow: 0px 0px 59px -22px rgba(66, 68, 90, 1);
         box-shadow: 0px 0px 59px -22px rgba(66, 68, 90, 1);
+        transition: all 0.5s ease-out;
+         &:hover {
+          transform: scale(1.05);
+        }
         &__header {
           justify-self: center;
           align-self: center;
@@ -177,6 +204,9 @@ body {
       justify-items: center;
       align-items: center;
       margin: 2rem 4rem 0 4rem;
+      animation-name: fade-bottom;
+      animation-duration: 1s;
+      animation-timing-function: ease-out;
       &__item {
         justify-self: stretch;
         height: 10rem;
@@ -191,6 +221,10 @@ body {
         -webkit-box-shadow: 0px 0px 59px -22px rgba(66, 68, 90, 1);
         -moz-box-shadow: 0px 0px 59px -22px rgba(66, 68, 90, 1);
         box-shadow: 0px 0px 59px -22px rgba(66, 68, 90, 1);
+        transition: all 0.5s ease-out;
+        &:hover {
+          transform: scale(1.05);
+        }
 
         &--calories {
           grid-column: 1/2;
@@ -260,17 +294,36 @@ body {
       grid-column-gap: 2rem;
       justify-items: center;
       margin: 4rem 1rem 0 1rem;
+      animation-name: fade-bottom;
+      animation-duration: 1s;
+      animation-timing-function: ease-out;
       &__item {
         justify-self: stretch;
         height: 30rem;
         background-color: white;
         border-radius: 20px;
+        -webkit-box-shadow: 0px 0px 59px -22px rgba(66, 68, 90, 1);
+        -moz-box-shadow: 0px 0px 59px -22px rgba(66, 68, 90, 1);
+        box-shadow: 0px 0px 59px -22px rgba(66, 68, 90, 1);
+        transition: all 0.5s ease-out;
+        &:hover {
+          transform: scale(1.05);
+        }
+
         &--water {
             grid-column: 1/2;
         }
 
         &--weekly {
-           grid-column: 2 / -1;
+          display: flex;
+          flex-direction: column;
+          color: black;
+          grid-column: 2 / -1;
+          h3 {
+            align-self: center;
+            margin-top: 1rem;
+            justify-self: center;
+          }
         }
       }
     }
@@ -307,4 +360,8 @@ body {
       font-size: 3rem;
     }
   }
+}
+
+.summaryWeekly {
+  margin-bottom: 5rem;
 }
