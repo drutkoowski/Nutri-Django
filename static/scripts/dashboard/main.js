@@ -17,6 +17,7 @@ let data = {
     }]
 };
 
+
 let summaryChart = new Chart(myChart, {
   type: 'doughnut',
   data: data,
@@ -24,6 +25,7 @@ let summaryChart = new Chart(myChart, {
   	responsive: true,
     maintainAspectRatio: false,
     cutout: 50,
+    // borderRadius: 30,
     legend: {
       display: false
     }

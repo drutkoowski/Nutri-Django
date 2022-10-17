@@ -1496,7 +1496,7 @@ body {
   .dashboard__content__summary {
     display: grid;
     grid-template-rows: 1fr;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: 1fr 1fr 1fr 1.5fr;
     grid-column-gap: 2rem;
     grid-row: 2/3;
     grid-column: 1 / -1;
@@ -1536,13 +1536,14 @@ body {
         background-size: cover;
         grid-column: 3/4; }
       .dashboard__content__summary__item--graph {
-        grid-column: 4/6;
+        grid-column: 4/5;
         display: grid;
         grid-template-rows: 1fr;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 0.75fr;
         color: black;
         justify-items: center;
-        align-items: center; }
+        align-items: center;
+        cursor: text; }
         .dashboard__content__summary__item--graph__content {
           grid-column: 1/2;
           display: flex;
@@ -1551,7 +1552,7 @@ body {
           .dashboard__content__summary__item--graph__content p {
             font-size: 1.6rem; }
             .dashboard__content__summary__item--graph__content p:first-of-type {
-              margin-top: 0.5rem; }
+              margin-top: 1rem; }
         .dashboard__content__summary__item--graph__graph {
           grid-column: 2/3; }
           .dashboard__content__summary__item--graph__graph__container {
@@ -1571,15 +1572,56 @@ body {
       justify-self: stretch;
       height: 10rem;
       background-color: white;
-      border-radius: 20px; }
+      border-radius: 20px;
+      color: black;
+      display: flex;
+      flex-direction: column;
+      justify-items: center;
+      align-items: center;
+      line-height: 1.4;
+      -webkit-box-shadow: 0px 0px 59px -22px #42445a;
+      -moz-box-shadow: 0px 0px 59px -22px #42445a;
+      box-shadow: 0px 0px 59px -22px #42445a; }
       .dashboard__content__daily-summary__item--calories {
         grid-column: 1/2; }
+        .dashboard__content__daily-summary__item--calories h4 {
+          margin-top: 1rem;
+          text-transform: uppercase; }
+        .dashboard__content__daily-summary__item--calories p span {
+          margin-top: 1rem;
+          font-size: 4rem;
+          color: green;
+          font-weight: bolder; }
       .dashboard__content__daily-summary__item--carbs {
         grid-column: 2/3; }
+        .dashboard__content__daily-summary__item--carbs h4 {
+          margin-top: 1rem;
+          text-transform: uppercase; }
+        .dashboard__content__daily-summary__item--carbs p span {
+          margin-top: 1rem;
+          font-size: 4rem;
+          color: green;
+          font-weight: bolder; }
       .dashboard__content__daily-summary__item--protein {
         grid-column: 3/4; }
+        .dashboard__content__daily-summary__item--protein h4 {
+          margin-top: 1rem;
+          text-transform: uppercase; }
+        .dashboard__content__daily-summary__item--protein p span {
+          margin-top: 1rem;
+          font-size: 4rem;
+          color: green;
+          font-weight: bolder; }
       .dashboard__content__daily-summary__item--fat {
         grid-column: 4/5; }
+        .dashboard__content__daily-summary__item--fat h4 {
+          margin-top: 1rem;
+          text-transform: uppercase; }
+        .dashboard__content__daily-summary__item--fat p span {
+          margin-top: 1rem;
+          font-size: 4rem;
+          color: green;
+          font-weight: bolder; }
   .dashboard__content__graphs {
     display: grid;
     grid-template-rows: 1fr;
