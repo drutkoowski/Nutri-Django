@@ -1,7 +1,7 @@
 let myChart = document.getElementById('summaryChart').getContext('2d')
 let weekChart = document.getElementById('summaryWeekly').getContext('2d')
 let nutritionDetails = document.getElementById('summaryNutritionDetails').getContext('2d')
-const xValuesWeekGraph = ["Mon","Tuesday","Wed","Thr","Fri","Sat","Sun"];
+const xValuesWeekGraph = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
 let detailsColors = []
 let nutritionDetailsDataset = [60, 40, 30, 20, 90, 83, 63, 33, 3]
 let dataSummary = {
@@ -56,11 +56,6 @@ let nutritionDetailsData = {
     {
       data: nutritionDetailsDataset,
       backgroundColor: detailsColors,
-
-      // hoverBackgroundColor: [
-      //   "#2ce04f",
-      //   "#c1e5b7",
-      // ]
     }]
 }
 
@@ -100,14 +95,19 @@ let nutritionDetailsChartBox = new Chart(nutritionDetails, {
     options: {
         scales: {
             x: {
-            suggestedMin: 0,
-            suggestedMax: 100,
+                suggestedMin: 0,
+                suggestedMax: 100,
+                title: {
+                    text: "Percent (%)",
+                    display: true,
+                }
             }
         },
         indexAxis: 'y',
         elements: {
           bar: {
             borderWidth: 2,
+            borderRadius: 10,
           }
         },
         responsive: true,
@@ -115,10 +115,21 @@ let nutritionDetailsChartBox = new Chart(nutritionDetails, {
           legend: {
             display: false
           },
-        }
+        },
   }
 })
 
 
-// summaryChart.canvas.parentNode.style.height = '15rem';
-// summaryChart.canvas.parentNode.style.width = '15rem';
+/// hamburger menu
+const hamburgerNav = document.getElementById('navi-toggle')
+const navigationList = document.getElementsByClassName('navigation--dashboard__list')[0]
+
+hamburgerNav.addEventListener('click', () => {
+
+    if (!navigationList.classList.contains('not-visible') && !hamburgerNav.checked) {
+        navigationList.classList.add('not-visible')
+    }
+    else if (navigationList.classList.contains('not-visible') && hamburgerNav.checked) {
+         navigationList.classList.remove('not-visible')
+    }
+})

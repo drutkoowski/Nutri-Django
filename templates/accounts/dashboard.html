@@ -6,6 +6,20 @@
 {% endblock scripts %}
 {% block content %}
     <div class="loader"></div>
+    <div class="">
+        <input type="checkbox" class="navigation--dashboard__checkbox" id="navi-toggle">
+
+        <label for="navi-toggle" class="navigation--dashboard__button">
+            <span class="navigation--dashboard__icon">&nbsp;</span>
+        </label>
+
+        <div class="navigation--dashboard__background">&nbsp;</div>
+            <nav class="navigation--dashboard__nav">
+                <ul class="navigation--dashboard__list not-visible">
+                    <li class="navigation--dashboard__item"><a href="{% url 'login' %}" class="navigation--dashboard__link"><span><img class="navigation--dashboard__link__icon filter-gold" src="{% sass_src 'images/svg/key.svg' %}" alt="Log in Icon" /></span>Log in</a></li>
+                </ul>
+            </nav>
+    </div>
     <div class="grid-layout-container">
         <div class="dashboard__sidebar">
             <div class="dashboard__sidebar__avatar">
@@ -45,8 +59,9 @@
         <div class="dashboard__content">
 
             <div class="dashboard__content__welcome-text">
-                <h3>Welcome back, user name!</h3>
+                 <h3>Welcome back, user name!</h3>
                 <p>Let's check quality of your nutrition for today!</p>
+
             </div>
 
             <div class="dashboard__content__summary">
@@ -101,7 +116,7 @@
 
             <div class="dashboard__content__graphs">
                  <div class="dashboard__content__graphs__item dashboard__content__graphs__item--details">
-                    <h3>Nutrition daily details</h3>
+                    <h3>Nutrition Daily Details</h3>
                     <div class="summaryNutritionDetails__container">
                         <canvas id="summaryNutritionDetails" class="summaryNutritionDetails"></canvas>
                     </div>
