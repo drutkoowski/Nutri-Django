@@ -1538,18 +1538,18 @@ body {
         margin-left: auto;
         margin-right: auto; }
       .dashboard__content__summary__item--meal {
-        background-image: linear-gradient(to right bottom, rgba(241, 241, 241, 0.3), rgba(82, 82, 82, 0.6)), url("/static/images/add_meal.png");
+        background-image: linear-gradient(to right bottom, rgba(241, 241, 241, 0.3), rgba(82, 82, 82, 0.3)), url("/static/images/add_meal.png");
         background-position: center;
         background-repeat: no-repeat;
         grid-column: 1/2; }
       .dashboard__content__summary__item--workout {
-        background-image: linear-gradient(to right bottom, rgba(241, 241, 241, 0.3), rgba(82, 82, 82, 0.6)), url("/static/images/add_exercise.png");
+        background-image: linear-gradient(to right bottom, rgba(241, 241, 241, 0.3), rgba(82, 82, 82, 0.3)), url("/static/images/add_exercise.png");
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
         grid-column: 2/3; }
       .dashboard__content__summary__item--manage {
-        background-image: linear-gradient(to right bottom, rgba(241, 241, 241, 0.3), rgba(82, 82, 82, 0.6)), url("/static/images/manage.png");
+        background-image: linear-gradient(to right bottom, rgba(241, 241, 241, 0.3), rgba(82, 82, 82, 0.3)), url("/static/images/manage.png");
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;

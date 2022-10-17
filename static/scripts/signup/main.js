@@ -469,7 +469,6 @@ buttonBack.addEventListener('click', (e) => {
     progressBar.classList.add(`progress--${iteration}`)
     parent = document.querySelector('.signup__card__content')
     appendContent(parent, iteration)
-    console.log(choices)
     if (iteration < 1) {
         buttonBack.disabled = true
     }
