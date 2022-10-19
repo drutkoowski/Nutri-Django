@@ -1,0 +1,8 @@
+{% load sass_tags %}
+<div class="dashboard__sidebar--small">
+    <div class="dashboard__sidebar--small__upper">
+        <img src="{% sass_src 'images/svg/default_user.svg' %}" alt="User Avatar">
+        <p>{{ user.user.full_name}}</p>
+    </div>
+    {% include 'accounts/navbar_small.html' %}
+</div>

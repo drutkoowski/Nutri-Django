@@ -1,0 +1,63 @@
+ .dashboard__sidebar {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    grid-column: 2/3;
+    grid-row: 2/3;
+    align-items: start;
+    justify-items: center;
+    font-size: 2rem;
+    background-color: white;
+    -webkit-box-shadow: 0px 0px 59px -22px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 0px 0px 59px -22px rgba(66, 68, 90, 1);
+    box-shadow: 0px 0px 59px -22px rgba(66, 68, 90, 1);
+    color: black;
+    @include respond(tab-land) {
+      display: none;
+    }
+    &__avatar {
+      align-self: center;
+      margin-top: 5rem;
+
+      img {
+        width: 4rem;
+        height: 4rem;
+        border-radius: 20px;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+    }
+     &__name {
+       align-self: center;
+       text-transform: uppercase;
+       font-weight: bold;
+       margin-top: 2rem;
+       font-size: 2rem;
+        @include respond(md-desktop) {
+          font-size: 1.5rem;
+        }
+    }
+     &__username {
+      margin-left: 2rem;
+      margin-top: 15rem;
+       @include respond(md-desktop) {
+          font-size: 1.7rem;
+        }
+    }
+    &__gender, &__years, &__height, &__weight, &__goal, &__activity-level {
+      margin-left: 2rem;
+      @include respond(md-desktop) {
+          font-size: 1.7rem;
+      }
+    }
+
+
+    &__settings {
+      align-self: center;
+      margin-top: auto;
+    }
+    &__log-out {
+      align-self: center;
+    }
+  }

@@ -1,33 +1,47 @@
-.navigation--dashboard {
+.navigation--dashboard--small {
+    display: none;
+    @include respond(tab-land) {
+      display: inline;
+    }
     &__checkbox {
         display: none;
+
     }
 
     &__button {
         background-color: #fff;
         height: 7rem;
         width: 7rem;
-        position: absolute;
-        top: 0;
-        right: 2rem;
+        position: fixed;
+        top: 3.5rem;
+        right: 6rem;
         border-radius: 50%;
         z-index: 2000;
         box-shadow: 0 1rem 3rem rgba(#fff, .1);
         text-align: center;
         cursor: pointer;
+        display: none;
+        @include respond(tab-land) {
+            display: inline;
+            right: 8rem;
+        }
     }
 
     &__background {
-        height: 5rem;
+         height: 5rem;
         width: 6rem;
         border-radius: 50%;
-        position: absolute;
-        top: 0;
-        right: 2.5rem;
+        position: fixed;
+        top: 4.5rem;
+        right: 6.5rem;
         background-image: radial-gradient(rgb(195, 241, 195), rgb(134, 248, 122));
         z-index: 1000;
         transition: transform .8s cubic-bezier(0.86, 0, 0.07, 1);
-
+        display: none;
+        @include respond(tab-land) {
+            display: inline;
+            right: 8.5rem;
+        }
     }
     // przejscie + nav bar (po clicku)
 
@@ -40,6 +54,10 @@
         opacity: 0;
         width: 0;
         transition: all .8s cubic-bezier(0.65, -0.53, 0.215, 1.45);
+        display: none;
+        @include respond(tab-land) {
+            display: inline;
+        }
     }
 
     &__list {
@@ -50,17 +68,23 @@
         list-style: none;
         text-align: center;
         width: 100%;
+        display: none;
+         @include respond(tab-land) {
+            display: inline;
+        }
+
     }
 
     &__item {
+        display: none;
         margin: 1rem;
-
         &__container{
             display: flex;
         }
     }
 
     &__link {
+        display: none;
         &__icon {
             width: 2.5rem;
             height: 2.5rem;
@@ -104,6 +128,7 @@
 
     //ICON
     &__icon {
+        display: none;
         position: relative;
         margin-top: 3.5rem;
 
