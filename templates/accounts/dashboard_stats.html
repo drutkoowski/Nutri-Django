@@ -6,14 +6,14 @@
 {% endblock scripts %}
 {% block content %}
     <div class="loader"></div>
-   {% include 'accounts/navbar.html' %}
     <div class="grid-layout-container">
-         {% include 'components/sidebar/sidebar.html' %}
+     {% include 'components/sidebar/sidebar.html' %}
         <div class="dashboard-stats">
 
             <div class="dashboard-stats__welcome-text">
                 <h1>YOUR NUTRI PROFILE STATS</h1>
                 <p>Let's check quality of your nutrition while using Nutri!</p>
+                 {% include 'accounts/navbar.html' %}
             </div>
              <div class="dashboard-stats__stats">
                  <div class="dashboard-stats__stats__body">

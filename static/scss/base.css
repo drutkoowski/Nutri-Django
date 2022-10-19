@@ -1028,6 +1028,120 @@ ORDER: Base + typography > general layout + grid > page layout > components
     width: 100%;
     object-fit: cover; }
 
+.navigation--dashboard__checkbox {
+  display: none; }
+
+.navigation--dashboard__button {
+  background-color: #fff;
+  height: 7rem;
+  width: 7rem;
+  position: absolute;
+  top: 0;
+  right: 2rem;
+  border-radius: 50%;
+  z-index: 2000;
+  box-shadow: 0 1rem 3rem rgba(255, 255, 255, 0.1);
+  text-align: center;
+  cursor: pointer; }
+
+.navigation--dashboard__background {
+  height: 5rem;
+  width: 6rem;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  right: 2.5rem;
+  background-image: radial-gradient(#c3f1c3, #86f87a);
+  z-index: 1000;
+  transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1); }
+
+.navigation--dashboard__nav {
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1500;
+  opacity: 0;
+  width: 0;
+  transition: all 0.8s cubic-bezier(0.65, -0.53, 0.215, 1.45); }
+
+.navigation--dashboard__list {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  list-style: none;
+  text-align: center;
+  width: 100%; }
+
+.navigation--dashboard__item {
+  margin: 1rem; }
+  .navigation--dashboard__item__container {
+    display: flex; }
+
+.navigation--dashboard__link__icon {
+  width: 2.5rem;
+  height: 2.5rem; }
+
+.navigation--dashboard__link:link, .navigation--dashboard__link:visited {
+  display: inline-block;
+  font-size: 4rem;
+  font-weight: bold;
+  padding: 1rem 2rem;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase; }
+  .navigation--dashboard__link:link span, .navigation--dashboard__link:visited span {
+    margin-right: 1.5rem;
+    display: inline-block; }
+
+.navigation--dashboard__link:hover, .navigation--dashboard__link:active {
+  background-position: 100%;
+  color: #ffffff;
+  transform: scale(1.08); }
+
+.navigation--dashboard__checkbox:checked ~ .navigation--dashboard__background {
+  transform: scale(80); }
+
+.navigation--dashboard__checkbox:checked ~ .navigation--dashboard__nav {
+  opacity: 1;
+  width: 100%; }
+
+.navigation--dashboard__icon {
+  position: relative;
+  margin-top: 3.5rem; }
+  .navigation--dashboard__icon, .navigation--dashboard__icon::before, .navigation--dashboard__icon::after {
+    width: 3rem;
+    height: 2px;
+    background-color: #111010;
+    display: inline-block; }
+  .navigation--dashboard__icon::before, .navigation--dashboard__icon::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    transition: all .2s; }
+  .navigation--dashboard__icon::before {
+    top: -.8rem; }
+  .navigation--dashboard__icon::after {
+    top: .8rem; }
+
+.navigation--dashboard__button:hover .navigation--dashboard__icon::before {
+  top: -1rem; }
+
+.navigation--dashboard__button:hover .navigation--dashboard__icon::after {
+  top: 1rem; }
+
+.navigation--dashboard__checkbox:checked + .navigation--dashboard__button .navigation--dashboard__icon {
+  background-color: transparent; }
+
+.navigation--dashboard__checkbox:checked + .navigation--dashboard__button .navigation--dashboard__icon::before {
+  top: 0;
+  transform: rotate(135deg); }
+
+.navigation--dashboard__checkbox:checked + .navigation--dashboard__button .navigation--dashboard__icon::after {
+  top: 0;
+  transform: rotate(-135deg); }
+
 body {
   height: 100%; }
 
@@ -1501,7 +1615,8 @@ body {
     grid-row: 1/2;
     animation-name: moveInLeft;
     animation-duration: 1s;
-    animation-timing-function: ease-out; }
+    animation-timing-function: ease-out;
+    position: relative; }
     .dashboard__content__welcome-text h3 {
       font-size: 3rem; }
     .dashboard__content__welcome-text p {
@@ -1590,6 +1705,9 @@ body {
     animation-name: fade-bottom;
     animation-duration: 1s;
     animation-timing-function: ease-out; }
+    @media only screen and (max-width: 93.75em) {
+      .dashboard__content__daily-summary {
+        grid-column-gap: 2rem; } }
     .dashboard__content__daily-summary__item {
       justify-self: stretch;
       height: 10rem;
@@ -1617,6 +1735,10 @@ body {
           font-size: 4rem;
           color: green;
           font-weight: bolder; }
+          @media only screen and (max-width: 93.75em) {
+            .dashboard__content__daily-summary__item--calories p span {
+              font-size: 3rem;
+              margin-top: 1.5rem; } }
       .dashboard__content__daily-summary__item--carbs {
         grid-column: 2/3; }
         .dashboard__content__daily-summary__item--carbs h4 {
@@ -1627,6 +1749,10 @@ body {
           font-size: 4rem;
           color: green;
           font-weight: bolder; }
+          @media only screen and (max-width: 93.75em) {
+            .dashboard__content__daily-summary__item--carbs p span {
+              font-size: 3rem;
+              margin-top: 1.5rem; } }
       .dashboard__content__daily-summary__item--protein {
         grid-column: 3/4; }
         .dashboard__content__daily-summary__item--protein h4 {
@@ -1637,6 +1763,10 @@ body {
           font-size: 4rem;
           color: green;
           font-weight: bolder; }
+          @media only screen and (max-width: 93.75em) {
+            .dashboard__content__daily-summary__item--protein p span {
+              font-size: 3rem;
+              margin-top: 1.5rem; } }
       .dashboard__content__daily-summary__item--fat {
         grid-column: 4/5; }
         .dashboard__content__daily-summary__item--fat h4 {
@@ -1647,6 +1777,10 @@ body {
           font-size: 4rem;
           color: green;
           font-weight: bolder; }
+          @media only screen and (max-width: 93.75em) {
+            .dashboard__content__daily-summary__item--fat p span {
+              font-size: 3rem;
+              margin-top: 1.5rem; } }
   .dashboard__content__graphs {
     display: grid;
     grid-template-rows: 1fr;
@@ -1659,6 +1793,9 @@ body {
     animation-name: fade-bottom;
     animation-duration: 1s;
     animation-timing-function: ease-out; }
+    @media only screen and (max-width: 93.75em) {
+      .dashboard__content__graphs {
+        margin-top: 10rem; } }
     .dashboard__content__graphs__item {
       justify-self: stretch;
       height: 30rem;
@@ -1716,140 +1853,15 @@ body {
   margin-bottom: 5rem; }
   .summaryWeekly__container {
     margin: 2rem auto 0 auto;
-    height: 35rem;
-    width: 90rem; }
+    height: 30rem;
+    width: 100%; }
 
-.navigation--dashboard__checkbox {
-  display: none; }
-
-.navigation--dashboard__button {
-  background-color: #fff;
-  height: 7rem;
-  width: 7rem;
-  position: fixed;
-  top: 7.5rem;
-  right: 6rem;
-  border-radius: 50%;
-  z-index: 2000;
-  box-shadow: 0 1rem 3rem rgba(255, 255, 255, 0.1);
-  text-align: center;
-  cursor: pointer; }
-  @media only screen and (max-width: 75em) {
-    .navigation--dashboard__button {
-      height: 6rem;
-      width: 6rem;
-      top: 3rem; } }
-  @media only screen and (max-width: 28.5em) {
-    .navigation--dashboard__button {
-      right: 3rem;
-      height: 5rem;
-      width: 5rem; } }
-.navigation--dashboard__background {
-  height: 5rem;
-  width: 6rem;
-  border-radius: 50%;
-  position: fixed;
-  top: 7.5rem;
-  right: 6.5rem;
-  background-image: radial-gradient(#c3f1c3, #86f87a);
-  z-index: 1000;
-  transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1); }
-  @media only screen and (max-width: 75em) {
-    .navigation--dashboard__background {
-      top: 3.5rem;
-      right: 6.1rem; } }
-  @media only screen and (max-width: 28.5em) {
-    .navigation--dashboard__background {
-      right: 3.1rem;
-      width: 4.5rem;
-      top: 3rem; } }
-.navigation--dashboard__nav {
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1500;
-  opacity: 0;
-  width: 0;
-  transition: all 0.8s cubic-bezier(0.65, -0.53, 0.215, 1.45); }
-
-.navigation--dashboard__list {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  list-style: none;
-  text-align: center;
-  width: 100%; }
-
-.navigation--dashboard__item {
-  margin: 1rem; }
-  .navigation--dashboard__item__container {
-    display: flex; }
-
-.navigation--dashboard__link__icon {
-  width: 2.5rem;
-  height: 2.5rem; }
-
-.navigation--dashboard__link:link, .navigation--dashboard__link:visited {
-  display: inline-block;
-  font-size: 4rem;
-  font-weight: bold;
-  padding: 1rem 2rem;
-  color: #fff;
-  text-decoration: none;
-  text-transform: uppercase; }
-  .navigation--dashboard__link:link span, .navigation--dashboard__link:visited span {
-    margin-right: 1.5rem;
-    display: inline-block; }
-
-.navigation--dashboard__link:hover, .navigation--dashboard__link:active {
-  background-position: 100%;
-  color: #ffffff;
-  transform: scale(1.08); }
-
-.navigation--dashboard__checkbox:checked ~ .navigation--dashboard__background {
-  transform: scale(80); }
-
-.navigation--dashboard__checkbox:checked ~ .navigation--dashboard__nav {
-  opacity: 1;
-  width: 100%; }
-
-.navigation--dashboard__icon {
-  position: relative;
-  margin-top: 3.5rem; }
-  .navigation--dashboard__icon, .navigation--dashboard__icon::before, .navigation--dashboard__icon::after {
-    width: 3rem;
-    height: 2px;
-    background-color: #111010;
-    display: inline-block; }
-  .navigation--dashboard__icon::before, .navigation--dashboard__icon::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    transition: all .2s; }
-  .navigation--dashboard__icon::before {
-    top: -.8rem; }
-  .navigation--dashboard__icon::after {
-    top: .8rem; }
-
-.navigation--dashboard__button:hover .navigation--dashboard__icon::before {
-  top: -1rem; }
-
-.navigation--dashboard__button:hover .navigation--dashboard__icon::after {
-  top: 1rem; }
-
-.navigation--dashboard__checkbox:checked + .navigation--dashboard__button .navigation--dashboard__icon {
-  background-color: transparent; }
-
-.navigation--dashboard__checkbox:checked + .navigation--dashboard__button .navigation--dashboard__icon::before {
-  top: 0;
-  transform: rotate(135deg); }
-
-.navigation--dashboard__checkbox:checked + .navigation--dashboard__button .navigation--dashboard__icon::after {
-  top: 0;
-  transform: rotate(-135deg); }
-
+.summaryNutritionDetails__container {
+  height: 25rem;
+  width: 50rem; }
+  @media only screen and (max-width: 93.75em) {
+    .summaryNutritionDetails__container {
+      width: 45rem; } }
 body {
   height: 100%; }
 
@@ -1872,7 +1884,8 @@ body {
     margin-top: 5rem;
     animation-name: moveInLeft;
     animation-duration: 1s;
-    animation-timing-function: ease-out; }
+    animation-timing-function: ease-out;
+    position: relative; }
   .dashboard-stats__stats {
     margin-top: 5rem;
     margin-left: 5rem;
