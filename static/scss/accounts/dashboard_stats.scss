@@ -41,7 +41,9 @@ body {
       display: grid;
       grid-template-columns: 1fr;
       grid-template-rows: auto;
-
+      animation-name: fade-left;
+      animation-duration: 1s;
+      animation-timing-function: ease-out;
       &__item {
         display: flex;
         align-self: center;
@@ -50,14 +52,13 @@ body {
           padding: 1rem 2rem;
         }
       }
-      &--bmi {
-
-      }
       &__nutrition {
         display: grid;
         grid-template-columns: 0.5fr 0.5fr;
         grid-template-rows: 1fr;
-
+        animation-name: fade-right;
+        animation-duration: 1s;
+        animation-timing-function: ease-out;
         &--col-1 {
           grid-column: 1/2;
           grid-row: 1/2;
@@ -80,6 +81,9 @@ body {
     grid-template-columns: 1fr 0.55fr;
     grid-template-rows: 1fr;
     grid-column-gap: 5rem;
+    animation-name: fade-bottom;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
     &__item {
       margin-left: 3rem;
       color: black;
@@ -93,11 +97,14 @@ body {
       grid-column: 2/3;
       grid-row: 1/2;
       margin-right: auto;
-
+      label {
+        font-size: 3rem;
+      }
       &__item {
         margin-top: 2rem;
         margin-left: 2rem;
         padding: 0.5rem 1rem;
+
       }
     }
 

@@ -81,8 +81,13 @@ def dashboard_view(request):
     return render(request, 'accounts/dashboard.html', context)
 
 
+@login_required(login_url='login')
 def dashboard_stats(request):
-    return render(request, 'accounts/dashboard_stats.html')
+    user = UserProfile.objects.filter(user=request.user).first()
+    context = {
+        'user': user,
+    }
+    return render(request, 'accounts/dashboard_stats.html', context)
 
 
 def check_if_taken(request):
