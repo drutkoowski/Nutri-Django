@@ -219,8 +219,8 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 .navigation__link:link, .navigation__link:visited {
   display: inline-block;
-  font-size: 3rem;
-  font-weight: 300;
+  font-size: 4rem;
+  font-weight: bold;
   padding: 1rem 2rem;
   color: #fff;
   text-decoration: none;
@@ -1751,7 +1751,7 @@ body {
   position: fixed;
   top: 7.5rem;
   right: 6.5rem;
-  background-image: radial-gradient(#deecde, #2dad24);
+  background-image: radial-gradient(#c3f1c3, #86f87a);
   z-index: 1000;
   transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1); }
   @media only screen and (max-width: 75em) {
@@ -1793,8 +1793,8 @@ body {
 
 .navigation--dashboard__link:link, .navigation--dashboard__link:visited {
   display: inline-block;
-  font-size: 3rem;
-  font-weight: 300;
+  font-size: 4rem;
+  font-weight: bold;
   padding: 1rem 2rem;
   color: #fff;
   text-decoration: none;
@@ -1874,12 +1874,13 @@ body {
     animation-duration: 1s;
     animation-timing-function: ease-out; }
   .dashboard-stats__stats {
-    margin-top: 10rem;
+    margin-top: 5rem;
     margin-left: 5rem;
     display: grid;
     grid-template-columns: 0.4fr 1fr;
     grid-template-rows: 1fr;
-    grid-column-gap: 5rem; }
+    grid-column-gap: 5rem;
+    font-size: 2.5rem; }
     .dashboard-stats__stats__body {
       grid-column: 1/2;
       display: grid;
@@ -1906,10 +1907,16 @@ body {
           display: flex;
           flex-direction: column; }
   .dashboard-stats__graph {
+    margin-top: 5rem;
     display: grid;
     grid-template-columns: 1fr 0.55fr;
-    grid-template-rows: 1fr; }
+    grid-template-rows: 1fr;
+    grid-column-gap: 5rem; }
     .dashboard-stats__graph__item {
+      margin-left: 3rem;
+      color: black;
+      background-color: white;
+      border-radius: 20px;
       grid-column: 1/2;
       grid-row: 1/2;
       height: auto; }
@@ -1927,16 +1934,8 @@ body {
   .summaryGraph__container {
     margin-left: 2rem;
     margin-top: 2rem;
-    height: 35rem;
-    width: 90rem; }
-
-#duration {
-  margin-left: 2rem;
-  margin-right: auto; }
-
-#type {
-  margin-left: 2rem;
-  margin-right: auto; }
+    height: 30rem;
+    width: auto; }
 
 *,
 *::after,

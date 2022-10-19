@@ -74,7 +74,11 @@ def logout_view(request):
 
 @login_required(login_url='login')
 def dashboard_view(request):
-    return render(request, 'accounts/dashboard.html')
+    user = UserProfile.objects.filter(user=request.user).first()
+    context = {
+        'user': user,
+    }
+    return render(request, 'accounts/dashboard.html', context)
 
 
 def dashboard_stats(request):

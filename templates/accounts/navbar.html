@@ -1,0 +1,18 @@
+{% load sass_tags %}
+<div class="">
+        <input type="checkbox" class="navigation--dashboard__checkbox" id="navi-toggle">
+
+        <label for="navi-toggle" class="navigation--dashboard__button">
+            <span class="navigation--dashboard__icon">&nbsp;</span>
+        </label>
+
+        <div class="navigation--dashboard__background">&nbsp;</div>
+            <nav class="navigation--dashboard__nav">
+                <ul class="navigation--dashboard__list not-visible">
+                    <li class="navigation--dashboard__item"><a href="{% url 'dashboard' %}" class="navigation--dashboard__link"><span><img class="navigation--dashboard__link__icon filter-gold" src="{% sass_src 'images/svg/dashboard.svg' %}" alt="Dashboard Icon" /></span>Dashboard</a></li>
+                    <li class="navigation--dashboard__item"><a href="{% url 'stats' %}" class="navigation--dashboard__link"><span><img class="navigation--dashboard__link__icon filter-gold" src="{% sass_src 'images/svg/stats.svg' %}" alt="Stats Icon" /></span>Stats</a></li>
+                    <li class="navigation--dashboard__item"><a href="{% url 'logout' %}" class="navigation--dashboard__link"><span><img class="navigation--dashboard__link__icon filter-gold" src="{% sass_src 'images/svg/logout.svg' %}" alt="Logout Icon" /></span>Logout</a></li>
+
+                </ul>
+            </nav>
+</div>

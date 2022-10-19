@@ -6,21 +6,7 @@
 {% endblock scripts %}
 {% block content %}
     <div class="loader"></div>
-    <div class="">
-        <input type="checkbox" class="navigation--dashboard__checkbox" id="navi-toggle">
-
-        <label for="navi-toggle" class="navigation--dashboard__button">
-            <span class="navigation--dashboard__icon">&nbsp;</span>
-        </label>
-
-        <div class="navigation--dashboard__background">&nbsp;</div>
-            <nav class="navigation--dashboard__nav">
-                <ul class="navigation--dashboard__list not-visible">
-                    <li class="navigation--dashboard__item"><a href="{% url 'login' %}" class="navigation--dashboard__link"><span><img class="navigation--dashboard__link__icon filter-gold" src="{% sass_src 'images/svg/key.svg' %}" alt="Log in Icon" /></span>Log in</a></li>
-                    <li class="navigation--dashboard__item"><a href="{% url 'stats' %}" class="navigation--dashboard__link"><span><img class="navigation--dashboard__link__icon filter-gold" src="{% sass_src 'images/svg/key.svg' %}" alt="Log in Icon" /></span>Stats</a></li>
-                </ul>
-            </nav>
-    </div>
+   {% include 'accounts/navbar.html' %}
     <div class="grid-layout-container">
          {% include 'components/sidebar/sidebar.html' %}
         <div class="dashboard-stats">
@@ -28,7 +14,6 @@
             <div class="dashboard-stats__welcome-text">
                  <h3>YOUR NUTRI PROFILE STATS</h3>
                 <p>Let's check quality of your nutrition while using Nutri!</p>
-
             </div>
              <div class="dashboard-stats__stats">
                  <div class="dashboard-stats__stats__body">

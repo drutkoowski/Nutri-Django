@@ -4,28 +4,28 @@
         <img src="{% sass_src 'images/svg/default_user.svg' %}" alt="User Avatar">
     </div>
     <div class="dashboard__sidebar__name">
-        Damian Rutkowski
+        {{ user.user.full_name}}
     </div>
     <div class="dashboard__sidebar__username">
-        Rutekk20
+         {{ user.user.username}}
     </div>
     <div class="dashboard__sidebar__gender">
-        Male
+        {{ user.gender}}
     </div>
     <div class="dashboard__sidebar__years">
-        22 years old
+        {{ user.years_old }} years old
     </div>
     <div class="dashboard__sidebar__height">
-        177 cm
+        {{ user.height }} cm
     </div>
     <div class="dashboard__sidebar__weight">
-        68 kg
+         {{ user.weight }} kg
     </div>
     <div class="dashboard__sidebar__goal">
-        Goal: Gain Weight
+        Goal:  {{ user.goal_weight|title }}
     </div>
     <div class="dashboard__sidebar__activity-level">
-        Activity: Medium
+        Activity: {{ user.activity_level |title}}
     </div>
     <div class="dashboard__sidebar__settings">
         Settings

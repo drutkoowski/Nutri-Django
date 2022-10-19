@@ -6,61 +6,13 @@
 {% endblock scripts %}
 {% block content %}
     <div class="loader"></div>
-    <div class="">
-        <input type="checkbox" class="navigation--dashboard__checkbox" id="navi-toggle">
-
-        <label for="navi-toggle" class="navigation--dashboard__button">
-            <span class="navigation--dashboard__icon">&nbsp;</span>
-        </label>
-
-        <div class="navigation--dashboard__background">&nbsp;</div>
-            <nav class="navigation--dashboard__nav">
-                <ul class="navigation--dashboard__list not-visible">
-                    <li class="navigation--dashboard__item"><a href="{% url 'login' %}" class="navigation--dashboard__link"><span><img class="navigation--dashboard__link__icon filter-gold" src="{% sass_src 'images/svg/key.svg' %}" alt="Log in Icon" /></span>Log in</a></li>
-                    <li class="navigation--dashboard__item"><a href="{% url 'stats' %}" class="navigation--dashboard__link"><span><img class="navigation--dashboard__link__icon filter-gold" src="{% sass_src 'images/svg/key.svg' %}" alt="Log in Icon" /></span>Stats</a></li>
-                </ul>
-            </nav>
-    </div>
+     {% include 'accounts/navbar.html' %}
     <div class="grid-layout-container">
-        <div class="dashboard__sidebar">
-            <div class="dashboard__sidebar__avatar">
-                <img src="{% sass_src 'images/svg/default_user.svg' %}" alt="User Avatar">
-            </div>
-            <div class="dashboard__sidebar__name">
-                Damian Rutkowski
-            </div>
-             <div class="dashboard__sidebar__username">
-                Rutekk20
-            </div>
-             <div class="dashboard__sidebar__gender">
-                Male
-            </div>
-             <div class="dashboard__sidebar__years">
-                22 years old
-            </div>
-            <div class="dashboard__sidebar__height">
-                177 cm
-            </div>
-            <div class="dashboard__sidebar__weight">
-                68 kg
-            </div>
-             <div class="dashboard__sidebar__goal">
-                Goal: Gain Weight
-            </div>
-             <div class="dashboard__sidebar__activity-level">
-                Activity: Medium
-            </div>
-            <div class="dashboard__sidebar__settings">
-                Settings
-            </div>
-            <div class="dashboard__sidebar__log-out">
-                <a class="" href="{% url 'logout' %}"> Logout</a>
-            </div>
-        </div>
+      {% include 'components/sidebar/sidebar.html' %}
         <div class="dashboard__content">
 
             <div class="dashboard__content__welcome-text">
-                 <h3>Welcome back, user name!</h3>
+                 <h3>Welcome back, {{ user.user.first_name}}!</h3>
                 <p>Let's check quality of your nutrition for today!</p>
 
             </div>

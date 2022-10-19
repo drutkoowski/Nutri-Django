@@ -419,7 +419,7 @@ body {
         position: fixed;
         top: 7.5rem;
         right: 6.5rem;
-        background-image: radial-gradient(rgb(222, 236, 222), rgb(45, 173, 36));
+        background-image: radial-gradient(rgb(195, 241, 195), rgb(134, 248, 122));
         z-index: 1000;
         transition: transform .8s cubic-bezier(0.86, 0, 0.07, 1);
 
@@ -474,8 +474,8 @@ body {
         &:link,
         &:visited {
             display: inline-block;
-            font-size: 3rem;
-            font-weight: 300;
+            font-size: 4rem;
+            font-weight: bold;
             padding: 1rem 2rem;
             color: #fff;
             text-decoration: none;
