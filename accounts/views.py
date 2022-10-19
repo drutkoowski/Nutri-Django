@@ -77,6 +77,10 @@ def dashboard_view(request):
     return render(request, 'accounts/dashboard.html')
 
 
+def dashboard_stats(request):
+    return render(request, 'accounts/dashboard_stats.html')
+
+
 def check_if_taken(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
         email_address = request.GET.get('emailAddress')
