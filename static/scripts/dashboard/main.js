@@ -2,8 +2,28 @@ let myChart = document.getElementById('summaryChart').getContext('2d')
 let weekChart = document.getElementById('summaryWeekly').getContext('2d')
 let nutritionDetails = document.getElementById('summaryNutritionDetails').getContext('2d')
 const xValuesWeekGraph = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+
+// watch if media query is true
+const mediaQuery = window.matchMedia('(max-width: 62.5em)')
+let indexAxis = 'y'
+
+function handleTabletChange(e) {
+  // Check if the media query is true
+  if (e.matches) {
+    // Then log the following message to the console
+    indexAxis = 'x'
+  }
+}
+
+
+// Initial check
+handleTabletChange(mediaQuery)
+
+
+
 let detailsColors = []
 let nutritionDetailsDataset = [60, 40, 30, 20, 90, 83, 63, 33, 3]
+
 let dataSummary = {
   labels: [],
   datasets: [
@@ -103,7 +123,7 @@ let nutritionDetailsChartBox = new Chart(nutritionDetails, {
                 }
             }
         },
-        indexAxis: 'y',
+        indexAxis: indexAxis,
         elements: {
           bar: {
             borderWidth: 2,
@@ -133,3 +153,5 @@ hamburgerNav.addEventListener('click', () => {
          navigationList.classList.remove('not-visible')
     }
 })
+
+

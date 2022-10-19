@@ -25,6 +25,10 @@
             display: inline;
             right: 8rem;
         }
+        @include respond(tab-md) {
+            right: 9.5rem;
+            top: 4.5rem;
+        }
     }
 
     &__background {
@@ -41,6 +45,10 @@
         @include respond(tab-land) {
             display: inline;
             right: 8.5rem;
+        }
+        @include respond(tab-md) {
+            right: 10rem;
+            top: 5.5rem;
         }
     }
     // przejscie + nav bar (po clicku)

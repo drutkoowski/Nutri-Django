@@ -1188,6 +1188,10 @@ ORDER: Base + typography > general layout + grid > page layout > components
       .navigation--dashboard--small__button {
         display: inline;
         right: 8rem; } }
+    @media only screen and (max-width: 62.5em) {
+      .navigation--dashboard--small__button {
+        right: 9.5rem;
+        top: 4.5rem; } }
   .navigation--dashboard--small__background {
     height: 5rem;
     width: 6rem;
@@ -1203,6 +1207,10 @@ ORDER: Base + typography > general layout + grid > page layout > components
       .navigation--dashboard--small__background {
         display: inline;
         right: 8.5rem; } }
+    @media only screen and (max-width: 62.5em) {
+      .navigation--dashboard--small__background {
+        right: 10rem;
+        top: 5.5rem; } }
   .navigation--dashboard--small__nav {
     height: 100vh;
     position: fixed;
@@ -1786,6 +1794,13 @@ body {
       grid-template-columns: 0.05fr 1fr 0.05fr;
       grid-template-rows: 1fr;
       height: auto; } }
+  @media only screen and (max-width: 62.5em) {
+    .grid-layout-container {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+      height: auto;
+      justify-content: center;
+      align-content: center; } }
 .dashboard__content {
   font-size: 2rem;
   grid-column: 3/4;
@@ -1807,6 +1822,13 @@ body {
       grid-column: 2/3;
       grid-row: 1/2;
       margin-left: -0px; } }
+  @media only screen and (max-width: 62.5em) {
+    .dashboard__content {
+      grid-template-rows: 0.25fr 0.25fr 0.8fr 0.5fr 1.5fr;
+      grid-column: 1/2;
+      grid-row: 1/2;
+      margin-left: 5rem;
+      margin-right: 5rem; } }
   .dashboard__content__welcome-text {
     margin-left: 5rem;
     margin-top: 5rem;
@@ -1925,6 +1947,12 @@ body {
           @media only screen and (max-width: 93.75em) {
             .dashboard__content__summary__item--graph__content h4 {
               font-size: 1.6rem; } }
+          @media only screen and (max-width: 75em) {
+            .dashboard__content__summary__item--graph__content h4 {
+              font-size: 2.3rem; } }
+          @media only screen and (max-width: 62.5em) {
+            .dashboard__content__summary__item--graph__content h4 {
+              font-size: 1.8rem; } }
           .dashboard__content__summary__item--graph__content p {
             font-size: 1.6rem; }
             .dashboard__content__summary__item--graph__content p:first-of-type {
@@ -1932,6 +1960,12 @@ body {
             @media only screen and (max-width: 93.75em) {
               .dashboard__content__summary__item--graph__content p {
                 font-size: 1.3rem; } }
+            @media only screen and (max-width: 75em) {
+              .dashboard__content__summary__item--graph__content p {
+                font-size: 1.9rem; } }
+            @media only screen and (max-width: 62.5em) {
+              .dashboard__content__summary__item--graph__content p {
+                font-size: 1.6rem; } }
         .dashboard__content__summary__item--graph__graph {
           grid-column: 2/3; }
           .dashboard__content__summary__item--graph__graph__container {
@@ -2049,6 +2083,12 @@ body {
       .dashboard__content__graphs {
         grid-row: 5/6;
         margin: 3rem 1rem 0 1rem; } }
+    @media only screen and (max-width: 62.5em) {
+      .dashboard__content__graphs {
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr;
+        grid-row-gap: 5rem;
+        margin: 4rem 0 0 0; } }
     .dashboard__content__graphs__item {
       justify-self: stretch;
       height: 30rem;
@@ -2058,6 +2098,9 @@ body {
       -moz-box-shadow: 0px 0px 59px -22px #42445a;
       box-shadow: 0px 0px 59px -22px #42445a;
       transition: all 0.5s ease-out; }
+      @media only screen and (max-width: 62.5em) {
+        .dashboard__content__graphs__item {
+          height: 40rem; } }
       .dashboard__content__graphs__item:hover {
         transform: scale(1.05); }
       .dashboard__content__graphs__item--details {
@@ -2065,6 +2108,10 @@ body {
         flex-direction: column;
         color: black;
         grid-column: 1/2; }
+        @media only screen and (max-width: 62.5em) {
+          .dashboard__content__graphs__item--details {
+            grid-row: 1/2;
+            grid-column: 1/2; } }
         .dashboard__content__graphs__item--details h3 {
           align-self: center;
           margin-top: 1rem;
@@ -2074,6 +2121,10 @@ body {
         flex-direction: column;
         color: black;
         grid-column: 2 / -1; }
+        @media only screen and (max-width: 62.5em) {
+          .dashboard__content__graphs__item--weekly {
+            grid-row: 2/3;
+            grid-column: 1/2; } }
         .dashboard__content__graphs__item--weekly h3 {
           align-self: center;
           margin-top: 1rem;
@@ -2106,9 +2157,21 @@ body {
         .summaryChart__description--goal {
           font-size: 1.5rem;
           top: 65%; } }
+      @media only screen and (max-width: 75em) {
+        .summaryChart__description--goal {
+          font-size: 1.7rem; } }
+      @media only screen and (max-width: 62.5em) {
+        .summaryChart__description--goal {
+          font-size: 1.3rem; } }
     .summaryChart__description--percent {
       font-size: 3rem; }
       @media only screen and (max-width: 93.75em) {
+        .summaryChart__description--percent {
+          font-size: 2rem; } }
+      @media only screen and (max-width: 75em) {
+        .summaryChart__description--percent {
+          font-size: 2.5rem; } }
+      @media only screen and (max-width: 62.5em) {
         .summaryChart__description--percent {
           font-size: 2rem; } }
 .summaryWeekly {
@@ -2124,6 +2187,12 @@ body {
   @media only screen and (max-width: 93.75em) {
     .summaryNutritionDetails__container {
       width: 45rem; } }
+  @media only screen and (max-width: 62.5em) {
+    .summaryNutritionDetails__container {
+      width: 70rem;
+      height: 25rem;
+      justify-self: center;
+      align-self: center; } }
 body {
   height: 100%; }
 

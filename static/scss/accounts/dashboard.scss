@@ -9,13 +9,21 @@
   background-repeat: no-repeat;
   background-position: center;
   -webkit-background-size: 100%;
--moz-background-size: cover;
--o-background-size: cover;
-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   @include respond(tab-land) {
       grid-template-columns: 0.05fr 1fr 0.05fr;
       grid-template-rows: 1fr;
       height: auto;
+  }
+
+   @include respond(tab-md) {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+      height: auto;
+     justify-content: center;
+     align-content: center;
   }
 }
 
@@ -42,6 +50,13 @@ background-size: cover;
       grid-column: 2/3;
       grid-row: 1/2;
       margin-left: -0px;
+    }
+    @include respond(tab-md) {
+     grid-template-rows: 0.25fr 0.25fr 0.8fr 0.5fr 1.5fr;
+     grid-column: 1/2;
+     grid-row: 1/2;
+     margin-left: 5rem;
+     margin-right: 5rem;
     }
     //-webkit-box-shadow: 0px 0px 59px -22px rgba(66, 68, 90, 1);
     //-moz-box-shadow: 0px 0px 59px -22px rgba(66, 68, 90, 1);
@@ -183,6 +198,12 @@ background-size: cover;
               @include respond(md-desktop) {
                 font-size: 1.6rem;
               }
+              @include respond(tab-land) {
+                font-size: 2.3rem;
+              }
+              @include respond(tab-md) {
+                font-size: 1.8rem;
+             }
             }
             p {
               &:first-of-type {
@@ -192,6 +213,12 @@ background-size: cover;
                @include respond(md-desktop) {
                 font-size: 1.3rem;
               }
+              @include respond(tab-land) {
+                font-size: 1.9rem;
+              }
+              @include respond(tab-md) {
+                font-size: 1.6rem;
+             }
             }
           }
           &__graph {
@@ -339,6 +366,12 @@ background-size: cover;
         grid-row: 5/6;
         margin: 3rem 1rem 0 1rem;
       }
+      @include respond(tab-md) {
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr;
+        grid-row-gap: 5rem;
+        margin: 4rem 0 0 0;
+      }
       &__item {
         justify-self: stretch;
         height: 30rem;
@@ -348,7 +381,9 @@ background-size: cover;
         -moz-box-shadow: 0px 0px 59px -22px rgba(66, 68, 90, 1);
         box-shadow: 0px 0px 59px -22px rgba(66, 68, 90, 1);
         transition: all 0.5s ease-out;
-
+        @include respond(tab-md) {
+          height: 40rem;
+        }
         &:hover {
           transform: scale(1.05);
         }
@@ -358,6 +393,10 @@ background-size: cover;
           flex-direction: column;
           color: black;
           grid-column: 1/2;
+          @include respond(tab-md) {
+            grid-row: 1/2;
+            grid-column: 1/2;
+          }
           h3 {
             align-self: center;
             margin-top: 1rem;
@@ -370,6 +409,10 @@ background-size: cover;
           flex-direction: column;
           color: black;
           grid-column: 2 / -1;
+          @include respond(tab-md) {
+            grid-row: 2/3;
+            grid-column: 1/2;
+          }
           h3 {
             align-self: center;
             margin-top: 1rem;
@@ -404,6 +447,7 @@ background-size: cover;
     @include respond(md-desktop) {
       font-size: 1rem;
     }
+
     &--goal {
       position:absolute;
       top: 70%;
@@ -413,10 +457,22 @@ background-size: cover;
         font-size: 1.5rem;
         top: 65%;
       }
+      @include respond(tab-land) {
+        font-size: 1.7rem;
+      }
+      @include respond(tab-md) {
+        font-size: 1.3rem;
+      }
     }
     &--percent{
       font-size: 3rem;
       @include respond(md-desktop) {
+        font-size: 2rem;
+      }
+       @include respond(tab-land) {
+        font-size: 2.5rem;
+      }
+      @include respond(tab-md) {
         font-size: 2rem;
       }
     }
@@ -438,6 +494,12 @@ background-size: cover;
   width: 50rem;
   @include respond(md-desktop) {
        width: 45rem;
+  }
+  @include respond(tab-md) {
+    width: 70rem;
+    height: 25rem;
+    justify-self: center;
+    align-self: center;
   }
 }
 
