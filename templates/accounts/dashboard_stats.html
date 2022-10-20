@@ -9,7 +9,7 @@
     <div class="grid-layout-container">
      {% include 'components/sidebar/sidebar.html' %}
         <div class="dashboard-stats">
-
+            {% include 'components/sidebar/sidebar_small.html' %}
             <div class="dashboard-stats__welcome-text">
                 <h1>YOUR NUTRI PROFILE STATS</h1>
                 <p>Let's check quality of your nutrition while using Nutri!</p>
@@ -19,22 +19,33 @@
                  <div class="dashboard-stats__stats__body">
 
                     <div class="dashboard-stats__stats__body--height dashboard-stats__stats__body__item">
-                        <p>Your Height: 176</p>
+                        <p>Your Height (cm): <input type="number" placeholder="176"></p>
                         <button>Edit</button>
                     </div>
 
                     <div class="dashboard-stats__stats__body--weight dashboard-stats__stats__body__item">
-                        <p>Your Weight: 75</p>
+                        <p>Your Weight (kg): <input type="number" placeholder="75"></p>
                         <button>Edit</button>
                     </div>
 
                     <div class="dashboard-stats__stats__body--activity dashboard-stats__stats__body__item">
-                        <p>Activity Level: Medium</p>
+                        <p>Activity Level:
+                            <select name="" id="">
+                            <option value="">Not Active</option>
+                            <option selected='selected' value="">Lightly Active</option>
+                            <option value="">Active</option>
+                            <option value="">Very Active</option>
+                        </select>
+                        </p>
                         <button>Edit</button>
                     </div>
 
                     <div class="dashboard-stats__stats__body--goal dashboard-stats__stats__body__item">
-                        <p>Goal: Gain</p>
+                        <p>Goal: <select name="" id="">
+                            <option value="">Gain Weight</option>
+                             <option value="">Maintain Weight</option>
+                             <option value="">Lose Weight</option>
+                        </select></p>
                         <button>Edit</button>
                     </div>
 
@@ -44,9 +55,6 @@
                          <div class="dashboard-stats__stats__body__nutrition--days">
                              <p>Days: 231</p>
                          </div>
-                         <div class="dashboard-stats__stats__body__nutrition--bmi">
-                            <p>Your BMI: 23.44</p>
-                        </div>
                          <div class="dashboard-stats__stats__nutrition--eaten">
                             <p>Eaten Kcal: 256443 kcal</p>
                             <p>Eaten Kcal (avg): 2543 kcal</p>
@@ -62,6 +70,9 @@
                          </div>
                      </div>
                      <div class="dashboard-stats__stats__body__nutrition--col-2">
+                          <div class="dashboard-stats__stats__body__nutrition--bmi">
+                            <p>Your BMI: 23.44</p>
+                        </div>
                          <div class="dashboard-stats__stats__nutrition--fat">
                             <p>Fat (avg): 12.5 g</p>
                         </div>

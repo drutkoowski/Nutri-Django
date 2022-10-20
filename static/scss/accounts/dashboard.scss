@@ -82,6 +82,9 @@
         margin-top: 1rem;
         font-size: 2.5rem;
       }
+      @include respond(phone-lg) {
+        margin: 0 auto 0 auto;
+      }
 
       h1 {
         @include respond(md-desktop) {
@@ -89,7 +92,7 @@
         }
         @include respond(phone-lg) {
           font-size: 3rem;
-          text-align: start;
+          text-align: center;
         }
         @include respond(phone-md) {
           font-size: 2rem;
@@ -103,7 +106,7 @@
         }
          @include respond(phone-lg) {
            font-size: 1.6rem;
-           text-align: start;
+           text-align: center;
         }
         @include respond(phone-md) {
           font-size: 1.2rem;
@@ -144,9 +147,10 @@
          grid-template-columns: 1fr;
          grid-column-gap: 0;
          grid-row-gap: 3rem;
+         margin: 3rem 0 0 0;
          //width: 45rem;
          //margin: 2rem auto 0 auto;
-         margin: 2rem 5rem 0 5rem;
+         //margin: 2rem 5rem 0 5rem;
       }
 
       &__item {
@@ -162,6 +166,9 @@
         transition: all 0.5s ease-out;
         @include respond(md-desktop) {
            height: 17rem;
+        }
+        @include respond(phone-lg) {
+           width: auto;
         }
          &:hover {
           transform: scale(1.05);
@@ -261,6 +268,9 @@
               @include respond(phone-lg) {
                 font-size: 1.6rem;
               }
+               @include respond(phone-md) {
+                font-size: 1.4rem;
+              }
 
             }
             p {
@@ -279,6 +289,9 @@
               }
               @include respond(phone-lg) {
                 font-size: 1.5rem;
+              }
+               @include respond(phone-md) {
+                font-size: 1.2rem;
               }
 
             }
@@ -524,12 +537,11 @@
       }
 
        @include respond(phone-lg) {
-        margin: 1rem 1rem 1rem 1rem;
+        margin: 1.5rem 0 0 0;
         grid-row-gap: 2rem;
       }
-       @include respond(phone-md-lg) {
-        margin: 3rem 0 0 0;
-        grid-row-gap: 2rem;
+      @include respond(phone-md-lg) {
+        margin: 3.5rem 0 0 0;
       }
 
 
@@ -543,7 +555,10 @@
         -moz-box-shadow: 0px 0px 59px -22px rgba(66, 68, 90, 1);
         box-shadow: 0px 0px 59px -22px rgba(66, 68, 90, 1);
         transition: all 0.5s ease-out;
-
+        @include respond(phone-lg) {
+          width: auto;
+          grid-row-gap: 5rem;
+        }
         &:hover {
           transform: scale(1.05);
         }

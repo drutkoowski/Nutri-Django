@@ -1,10 +1,8 @@
 
-body {
-  height: 100%;
 
-}
 
 .dashboard-stats{
+    height: 100vh;
     font-size: 2rem;
     grid-column: 3/4;
     grid-row: 2/3;
@@ -17,6 +15,20 @@ body {
     color: white;
     margin-left: -20px;
 
+     @include respond(tab-land) {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 0.25fr 0.25fr 0.8fr 1fr;
+      margin-top: 2rem;
+      grid-column: 2/3;
+      grid-row: 1/2;
+      margin-left: -0px;
+       height: auto;
+    }
+    @include respond(tab-md) {
+      grid-column: 1/2;
+      grid-row: 1/2;
+    }
 
     &__welcome-text {
       grid-row: 1/2;
@@ -27,16 +39,29 @@ body {
       animation-duration: 1s;
       animation-timing-function: ease-out;
       position: relative;
+      @include respond(tab-land) {
+        grid-column: 1/2;
+        grid-row: 2/3;
+        font-size: 2rem;
+        margin-left: 5rem;
+      }
     }
 
   &__stats {
     margin-top: 5rem;
     margin-left: 5rem;
     display: grid;
-    grid-template-columns: 0.4fr 1fr;
+    grid-template-columns: 0.6fr 1fr;
     grid-template-rows: 1fr;
     grid-column-gap: 5rem;
     font-size: 2.5rem;
+    @include respond(tab-land) {
+      grid-column: 1/2;
+      grid-row: 3/4;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 2fr;
+      margin-right: 5rem;
+    }
     &__body {
       grid-column: 1/2;
       display: grid;
@@ -45,18 +70,71 @@ body {
       animation-name: fade-left;
       animation-duration: 1s;
       animation-timing-function: ease-out;
+       @include respond(big-desktop) {
+        width: auto;
+      }
+       @include respond(tab-land) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-column-gap: 5rem;
+      }
       &__item {
         display: flex;
         align-self: center;
+        p {
+          @include respond(big-desktop) {
+            font-size: 3rem;
+          }
+          @include respond(tab-desktop) {
+            font-size: 2rem;
+          }
+          @include respond(tab-land) {
+            font-size: 3rem;
+          }
+          input {
+            width: 7rem;
+            margin-left: 1rem;
+            border-radius: 2px;
+            border: 0;
+            text-align: center;
+            @include respond(tab-desktop) {
+              width: 6rem;
+              font-size: 1.2rem;
+            }
+            @include respond(tab-land) {
+               width: 8rem;
+               font-size: 1.4rem;
+            }
+          }
+          select {
+            width: 10rem;
+            margin-left: 1rem;
+            border-radius: 2px;
+            border: 0;
+            @include respond(tab-desktop) {
+              width: 8rem;
+              font-size: 1.1rem;
+            }
+            @include respond(tab-land) {
+               width: 10rem;
+               font-size: 1.3rem;
+            }
+          }
+        }
         button {
           margin-left: auto;
-          padding: 1rem 5rem;
+          padding: 1rem 3rem;
           border-radius: 10px;
           background-color: rgba(111, 238, 124, 0.7);
           color: white;
           cursor: pointer;
           border: 0;
           text-transform: uppercase;
+          font-weight: bold;
+           @include respond(tab-desktop) {
+             padding: 1rem 2rem;
+           }
           &:hover {
             transform: scale(1.05);
           }
@@ -70,6 +148,7 @@ body {
         animation-duration: 1s;
         animation-timing-function: ease-out;
         &--col-1 {
+          margin-top: 2rem;
           grid-column: 1/2;
           grid-row: 1/2;
           display: flex;
@@ -77,6 +156,7 @@ body {
         }
 
         &--col-2 {
+          margin-top: 2rem;
           grid-column: 2/3;
           grid-row: 1/2;
           display: flex;
@@ -95,6 +175,15 @@ body {
     animation-duration: 1s;
     animation-timing-function: ease-out;
     transition: all .2s ease-out;
+     @include respond(md-desktop) {
+       grid-template-columns: 1fr;
+       grid-template-rows: 0.3fr 1fr;
+
+     }
+    @include respond(tab-land) {
+      grid-column: 1/2;
+      grid-row: 4/5;
+    }
      &:hover {
        transform: scale(1.05);
      }
@@ -106,13 +195,36 @@ body {
       grid-column: 1/2;
       grid-row: 1/2;
       height: auto;
+      margin-bottom: 5rem;
+       @include respond(md-desktop) {
+        grid-column: 1/2;
+        grid-row: 2/3;
+        margin: 2rem 5rem 5rem 5rem;
+      }
     }
     &__customization {
       grid-column: 2/3;
       grid-row: 1/2;
       margin-right: auto;
+      @include respond(md-desktop) {
+        grid-column: 1/2;
+        grid-row: 1/2;
+        margin-left: 5rem;
+
+      }
+      h1 {
+        text-wrap: none;
+        white-space: nowrap;
+        font-size: 3rem;
+        @include respond(big-desktop) {
+            font-size: 5rem;
+        }
+      }
       label {
         font-size: 3rem;
+        @include respond(md-desktop) {
+            font-size: 2rem;
+        }
       }
       &__item {
         margin-top: 2rem;
@@ -126,8 +238,7 @@ body {
 }
 
 .summaryGraph {
-  margin-bottom: 2rem;
-
+  margin-bottom: 5rem;
   &__container {
     margin-left: 2rem;
     margin-top: 2rem;

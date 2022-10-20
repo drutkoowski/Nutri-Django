@@ -34,3 +34,5 @@ let weekChartBox = new Chart(weekChart, {
         }
   }
 });
+
+window.onresize = function(){ location.reload(); }

@@ -18,6 +18,10 @@
         grid-column: 1 / -1;
         font-size: 3rem;
       }
+      @include respond(phone-md) {
+        margin-left: 2rem;
+
+      }
      img {
         @include respond(tab-land) {
           width: 6rem;
