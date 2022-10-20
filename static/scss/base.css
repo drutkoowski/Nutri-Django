@@ -1235,14 +1235,21 @@ ORDER: Base + typography > general layout + grid > page layout > components
     display: none; }
     @media only screen and (max-width: 75em) {
       .navigation--dashboard--small__list {
-        display: inline; } }
+        display: flex;
+        flex-direction: column; } }
   .navigation--dashboard--small__item {
     display: none;
     margin: 1rem; }
+    @media only screen and (max-width: 75em) {
+      .navigation--dashboard--small__item {
+        display: inline; } }
     .navigation--dashboard--small__item__container {
       display: flex; }
   .navigation--dashboard--small__link {
     display: none; }
+    @media only screen and (max-width: 75em) {
+      .navigation--dashboard--small__link {
+        display: inline-block; } }
     .navigation--dashboard--small__link__icon {
       width: 2.5rem;
       height: 2.5rem; }
@@ -1270,6 +1277,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
     display: none;
     position: relative;
     margin-top: 3.5rem; }
+    @media only screen and (max-width: 75em) {
+      .navigation--dashboard--small__icon {
+        display: inline; } }
     .navigation--dashboard--small__icon, .navigation--dashboard--small__icon::before, .navigation--dashboard--small__icon::after {
       width: 3rem;
       height: 2px;

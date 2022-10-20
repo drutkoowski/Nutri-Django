@@ -144,6 +144,9 @@ let nutritionDetailsChartBox = new Chart(nutritionDetails, {
 const hamburgerNav = document.getElementById('navi-toggle')
 const navigationList = document.getElementsByClassName('navigation--dashboard__list')[0]
 
+const hamburgerNavSmall = document.getElementById('navi-toggle-small')
+const navigationListSmall = document.getElementsByClassName('navigation--dashboard--small__list')[0]
+
 hamburgerNav.addEventListener('click', () => {
 
     if (!navigationList.classList.contains('not-visible') && !hamburgerNav.checked) {
@@ -153,5 +156,16 @@ hamburgerNav.addEventListener('click', () => {
          navigationList.classList.remove('not-visible')
     }
 })
+
+hamburgerNavSmall.addEventListener('click', () => {
+
+    if (!navigationListSmall.classList.contains('not-visible') && !hamburgerNavSmall.checked) {
+        navigationListSmall.classList.add('not-visible')
+    }
+    else if (navigationListSmall.classList.contains('not-visible') && hamburgerNavSmall.checked) {
+         navigationListSmall.classList.remove('not-visible')
+    }
+})
+
 
 
