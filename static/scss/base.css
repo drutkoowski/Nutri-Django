@@ -2479,7 +2479,7 @@ body {
             font-size: 2rem; } }
         @media only screen and (max-width: 75em) {
           .dashboard-stats__stats__body__item p {
-            font-size: 3rem; } }
+            font-size: 2rem; } }
         .dashboard-stats__stats__body__item p input {
           width: 7rem;
           margin-left: 1rem;
@@ -2492,7 +2492,7 @@ body {
               font-size: 1.2rem; } }
           @media only screen and (max-width: 75em) {
             .dashboard-stats__stats__body__item p input {
-              width: 8rem;
+              width: 10rem;
               font-size: 1.4rem; } }
         .dashboard-stats__stats__body__item p select {
           width: 10rem;

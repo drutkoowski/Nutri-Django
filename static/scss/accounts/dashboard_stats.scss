@@ -90,7 +90,7 @@
             font-size: 2rem;
           }
           @include respond(tab-land) {
-            font-size: 3rem;
+            font-size: 2rem;
           }
           input {
             width: 7rem;
@@ -103,7 +103,7 @@
               font-size: 1.2rem;
             }
             @include respond(tab-land) {
-               width: 8rem;
+               width: 10rem;
                font-size: 1.4rem;
             }
           }
