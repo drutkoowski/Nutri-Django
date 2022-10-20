@@ -2529,6 +2529,9 @@ body {
         animation-name: fade-right;
         animation-duration: 1s;
         animation-timing-function: ease-out; }
+        @media only screen and (max-width: 84.375em) {
+          .dashboard-stats__stats__body__nutrition {
+            grid-column-gap: 5rem; } }
         .dashboard-stats__stats__body__nutrition--col-1 {
           margin-top: 2rem;
           grid-column: 1/2;

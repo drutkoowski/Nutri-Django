@@ -147,6 +147,9 @@
         animation-name: fade-right;
         animation-duration: 1s;
         animation-timing-function: ease-out;
+        @include respond(tab-desktop) {
+          grid-column-gap: 5rem;
+        }
         &--col-1 {
           margin-top: 2rem;
           grid-column: 1/2;
