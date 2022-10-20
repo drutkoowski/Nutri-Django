@@ -167,5 +167,5 @@ hamburgerNavSmall.addEventListener('click', () => {
     }
 })
 
-
+window.onresize = function(){ location.reload(); }
 

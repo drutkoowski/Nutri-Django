@@ -9,6 +9,7 @@
   align-content: center;
   justify-content: center;
   background: rgb(51,51,51);
+  z-index: 23993;
   transition: opacity 0.75s, visibility .75s;
   &--hidden {
     opacity: 0;

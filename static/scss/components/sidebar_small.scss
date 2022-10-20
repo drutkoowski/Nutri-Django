@@ -24,10 +24,25 @@
           height: 6rem;
           border-radius: 30px;
       }
+       @include respond(phone-lg) {
+          width: 5rem;
+          height: 5rem;
+          border-radius: 30px;
+         align-self: center;
+      }
      }
      p {
          @include respond(tab-land) {
          margin-left: 3rem;
+      }
+       @include respond(phone-lg) {
+         font-size: 2rem;
+         align-self: center;
+      }
+        @include respond(phone-md) {
+         font-size: 1.5rem;
+         align-self: center;
+          margin-left: 1rem;
       }
      }
    }

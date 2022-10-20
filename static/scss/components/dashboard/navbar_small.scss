@@ -25,14 +25,23 @@
             display: inline;
             right: 8rem;
         }
+
         @include respond(tab-md) {
-            right: 9.5rem;
-            top: 4.5rem;
+            right: 4.5rem;
+        }
+         @include respond(tab-port) {
+            right: 6rem;
+        }
+        @include respond(phone-lg) {
+            right: 3rem;
+            top: 5rem;
+            height: 5.5rem;
+            width: 5.5rem;
         }
     }
 
     &__background {
-         height: 5rem;
+        height: 5rem;
         width: 6rem;
         border-radius: 50%;
         position: fixed;
@@ -46,10 +55,22 @@
             display: inline;
             right: 8.5rem;
         }
+
         @include respond(tab-md) {
-            right: 10rem;
-            top: 5.5rem;
+            right: 5.5rem;
         }
+
+        @include respond(tab-port) {
+            display: inline;
+            right: 6.5rem;
+        }
+        @include respond(phone-lg) {
+            right: 3.5rem;
+            top: 5.5rem;
+            height: 3.5rem;
+            width: 4rem;
+        }
+
     }
     // przejscie + nav bar (po clicku)
 
@@ -146,9 +167,13 @@
         display: none;
         position: relative;
         margin-top: 3.5rem;
-         @include respond(tab-land) {
+        @include respond(tab-land) {
             display: inline;
         }
+        @include respond(phone-lg) {
+            margin-top: 2.7rem;
+        }
+
 
         &,
         &::before,

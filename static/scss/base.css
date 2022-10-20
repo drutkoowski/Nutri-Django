@@ -103,6 +103,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   align-content: center;
   justify-content: center;
   background: #333333;
+  z-index: 23993;
   transition: opacity 0.75s, visibility .75s; }
   .loader--hidden {
     opacity: 0;
@@ -1190,8 +1191,16 @@ ORDER: Base + typography > general layout + grid > page layout > components
         right: 8rem; } }
     @media only screen and (max-width: 62.5em) {
       .navigation--dashboard--small__button {
-        right: 9.5rem;
-        top: 4.5rem; } }
+        right: 4.5rem; } }
+    @media only screen and (max-width: 56.25em) {
+      .navigation--dashboard--small__button {
+        right: 6rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .navigation--dashboard--small__button {
+        right: 3rem;
+        top: 5rem;
+        height: 5.5rem;
+        width: 5.5rem; } }
   .navigation--dashboard--small__background {
     height: 5rem;
     width: 6rem;
@@ -1209,8 +1218,17 @@ ORDER: Base + typography > general layout + grid > page layout > components
         right: 8.5rem; } }
     @media only screen and (max-width: 62.5em) {
       .navigation--dashboard--small__background {
-        right: 10rem;
-        top: 5.5rem; } }
+        right: 5.5rem; } }
+    @media only screen and (max-width: 56.25em) {
+      .navigation--dashboard--small__background {
+        display: inline;
+        right: 6.5rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .navigation--dashboard--small__background {
+        right: 3.5rem;
+        top: 5.5rem;
+        height: 3.5rem;
+        width: 4rem; } }
   .navigation--dashboard--small__nav {
     height: 100vh;
     position: fixed;
@@ -1280,6 +1298,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
     @media only screen and (max-width: 75em) {
       .navigation--dashboard--small__icon {
         display: inline; } }
+    @media only screen and (max-width: 37.5em) {
+      .navigation--dashboard--small__icon {
+        margin-top: 2.7rem; } }
     .navigation--dashboard--small__icon, .navigation--dashboard--small__icon::before, .navigation--dashboard--small__icon::after {
       width: 3rem;
       height: 2px;
@@ -1330,9 +1351,24 @@ ORDER: Base + typography > general layout + grid > page layout > components
       width: 6rem;
       height: 6rem;
       border-radius: 30px; } }
+  @media only screen and (max-width: 37.5em) {
+    .dashboard__sidebar--small__upper img {
+      width: 5rem;
+      height: 5rem;
+      border-radius: 30px;
+      align-self: center; } }
   @media only screen and (max-width: 75em) {
     .dashboard__sidebar--small__upper p {
       margin-left: 3rem; } }
+  @media only screen and (max-width: 37.5em) {
+    .dashboard__sidebar--small__upper p {
+      font-size: 2rem;
+      align-self: center; } }
+  @media only screen and (max-width: 28.5em) {
+    .dashboard__sidebar--small__upper p {
+      font-size: 1.5rem;
+      align-self: center;
+      margin-left: 1rem; } }
 .dashboard__sidebar {
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
@@ -1799,6 +1835,10 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover; }
+  @media only screen and (max-width: 93.75em) {
+    .grid-layout-container {
+      height: auto;
+      grid-template-rows: 0.15fr 1fr; } }
   @media only screen and (max-width: 75em) {
     .grid-layout-container {
       grid-template-columns: 0.05fr 1fr 0.05fr;
@@ -1806,11 +1846,7 @@ body {
       height: auto; } }
   @media only screen and (max-width: 62.5em) {
     .grid-layout-container {
-      grid-template-columns: 1fr;
-      grid-template-rows: 1fr;
-      height: auto;
-      justify-content: center;
-      align-content: center; } }
+      grid-template-columns: 1fr; } }
 .dashboard__content {
   font-size: 2rem;
   grid-column: 3/4;
@@ -1834,11 +1870,12 @@ body {
       margin-left: -0px; } }
   @media only screen and (max-width: 62.5em) {
     .dashboard__content {
-      grid-template-rows: 0.25fr 0.25fr 0.8fr 0.5fr 1.5fr;
+      grid-template-rows: 0.25fr 0.25fr 0.8fr 0.5fr 1.2fr;
       grid-column: 1/2;
-      grid-row: 1/2;
-      margin-left: 5rem;
-      margin-right: 5rem; } }
+      grid-row: 1/2; } }
+  @media only screen and (max-width: 37.5em) {
+    .dashboard__content {
+      grid-template-rows: 0.25fr 0.15fr 0.5fr 0.5fr 0.7fr; } }
   .dashboard__content__welcome-text {
     margin-left: 5rem;
     margin-top: 5rem;
@@ -1851,17 +1888,31 @@ body {
     @media only screen and (max-width: 75em) {
       .dashboard__content__welcome-text {
         grid-column: 1 / -1;
-        grid-row: 2/3;
+        grid-row: 2 / 3;
         margin-top: 1rem;
         font-size: 2.5rem; } }
     @media only screen and (max-width: 93.75em) {
       .dashboard__content__welcome-text h1 {
         font-size: 4rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .dashboard__content__welcome-text h1 {
+        font-size: 3rem;
+        text-align: start; } }
+    @media only screen and (max-width: 28.5em) {
+      .dashboard__content__welcome-text h1 {
+        font-size: 2rem; } }
     .dashboard__content__welcome-text p {
       font-size: 1.5rem; }
       @media only screen and (max-width: 93.75em) {
         .dashboard__content__welcome-text p {
           font-size: 2rem; } }
+      @media only screen and (max-width: 37.5em) {
+        .dashboard__content__welcome-text p {
+          font-size: 1.6rem;
+          text-align: start; } }
+      @media only screen and (max-width: 28.5em) {
+        .dashboard__content__welcome-text p {
+          font-size: 1.2rem; } }
   .dashboard__content__summary {
     display: grid;
     grid-template-rows: 1fr;
@@ -1886,6 +1937,16 @@ body {
         grid-template-columns: 1fr 1fr;
         grid-column-gap: 2rem;
         grid-row-gap: 5rem; } }
+    @media only screen and (max-width: 62.5em) {
+      .dashboard__content__summary {
+        grid-row-gap: 1rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .dashboard__content__summary {
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr;
+        grid-column-gap: 0;
+        grid-row-gap: 3rem;
+        margin: 2rem 5rem 0 5rem; } }
     .dashboard__content__summary__item {
       cursor: pointer;
       justify-self: stretch;
@@ -1916,6 +1977,10 @@ body {
           .dashboard__content__summary__item--meal {
             grid-column: 1/2;
             grid-row: 1/2; } }
+        @media only screen and (max-width: 37.5em) {
+          .dashboard__content__summary__item--meal {
+            grid-column: 1/2;
+            grid-row: 1/2; } }
       .dashboard__content__summary__item--workout {
         background-image: linear-gradient(to right bottom, rgba(241, 241, 241, 0.3), rgba(82, 82, 82, 0.3)), url("/static/images/add_exercise.png");
         background-position: center;
@@ -1926,6 +1991,10 @@ body {
           .dashboard__content__summary__item--workout {
             grid-column: 2/3;
             grid-row: 1/2; } }
+        @media only screen and (max-width: 37.5em) {
+          .dashboard__content__summary__item--workout {
+            grid-column: 1/2;
+            grid-row: 2/3; } }
       .dashboard__content__summary__item--manage {
         background-image: linear-gradient(to right bottom, rgba(241, 241, 241, 0.3), rgba(82, 82, 82, 0.3)), url("/static/images/manage.png");
         background-position: center;
@@ -1936,6 +2005,10 @@ body {
           .dashboard__content__summary__item--manage {
             grid-column: 1/2;
             grid-row: 2/3; } }
+        @media only screen and (max-width: 37.5em) {
+          .dashboard__content__summary__item--manage {
+            grid-column: 1/2;
+            grid-row: 3/4; } }
       .dashboard__content__summary__item--graph {
         grid-column: 4/5;
         display: grid;
@@ -1949,6 +2022,10 @@ body {
           .dashboard__content__summary__item--graph {
             grid-column: 2/3;
             grid-row: 2/3; } }
+        @media only screen and (max-width: 37.5em) {
+          .dashboard__content__summary__item--graph {
+            grid-column: 1/2;
+            grid-row: 4/5; } }
         .dashboard__content__summary__item--graph__content {
           grid-column: 1/2;
           display: flex;
@@ -1960,9 +2037,12 @@ body {
           @media only screen and (max-width: 75em) {
             .dashboard__content__summary__item--graph__content h4 {
               font-size: 2.3rem; } }
-          @media only screen and (max-width: 62.5em) {
+          @media only screen and (max-width: 56.25em) {
             .dashboard__content__summary__item--graph__content h4 {
-              font-size: 1.8rem; } }
+              font-size: 1.6rem; } }
+          @media only screen and (max-width: 37.5em) {
+            .dashboard__content__summary__item--graph__content h4 {
+              font-size: 1.6rem; } }
           .dashboard__content__summary__item--graph__content p {
             font-size: 1.6rem; }
             .dashboard__content__summary__item--graph__content p:first-of-type {
@@ -1973,9 +2053,12 @@ body {
             @media only screen and (max-width: 75em) {
               .dashboard__content__summary__item--graph__content p {
                 font-size: 1.9rem; } }
-            @media only screen and (max-width: 62.5em) {
+            @media only screen and (max-width: 56.25em) {
               .dashboard__content__summary__item--graph__content p {
-                font-size: 1.6rem; } }
+                font-size: 1.4rem; } }
+            @media only screen and (max-width: 37.5em) {
+              .dashboard__content__summary__item--graph__content p {
+                font-size: 1.5rem; } }
         .dashboard__content__summary__item--graph__graph {
           grid-column: 2/3; }
           .dashboard__content__summary__item--graph__graph__container {
@@ -2000,7 +2083,27 @@ body {
     @media only screen and (max-width: 75em) {
       .dashboard__content__daily-summary {
         grid-column: 1 / -1;
-        grid-row: 4/5; } }
+        grid-row: 4 / 5; } }
+    @media only screen and (max-width: 56.25em) {
+      .dashboard__content__daily-summary {
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        margin: 4rem 4rem 0 4rem;
+        grid-row-gap: 5rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .dashboard__content__daily-summary {
+        grid-row-gap: 1rem;
+        margin: 4rem 5rem 0 5rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .dashboard__content__daily-summary {
+        grid-row-gap: 1rem;
+        margin: 4rem 5rem 0 5rem; } }
+    @media only screen and (max-width: 28.5em) {
+      .dashboard__content__daily-summary {
+        grid-row-gap: 3rem;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr;
+        margin: 4rem 5rem 0 5rem; } }
     .dashboard__content__daily-summary__item {
       justify-self: stretch;
       height: 10rem;
@@ -2020,9 +2123,20 @@ body {
         transform: scale(1.05); }
       .dashboard__content__daily-summary__item--calories {
         grid-column: 1/2; }
+        @media only screen and (max-width: 56.25em) {
+          .dashboard__content__daily-summary__item--calories {
+            grid-column: 1/2;
+            grid-row: 1/2; } }
+        @media only screen and (max-width: 28.5em) {
+          .dashboard__content__daily-summary__item--calories {
+            grid-column: 1/2;
+            grid-row: 1/2; } }
         .dashboard__content__daily-summary__item--calories h4 {
           margin-top: 1rem;
           text-transform: uppercase; }
+          @media only screen and (max-width: 28.5em) {
+            .dashboard__content__daily-summary__item--calories h4 {
+              margin-bottom: 1rem; } }
         .dashboard__content__daily-summary__item--calories p span {
           margin-top: 1rem;
           font-size: 4rem;
@@ -2032,11 +2146,25 @@ body {
             .dashboard__content__daily-summary__item--calories p span {
               font-size: 3rem;
               margin-top: 1.5rem; } }
+          @media only screen and (max-width: 28.5em) {
+            .dashboard__content__daily-summary__item--calories p span {
+              font-size: 2.4rem; } }
       .dashboard__content__daily-summary__item--carbs {
         grid-column: 2/3; }
+        @media only screen and (max-width: 56.25em) {
+          .dashboard__content__daily-summary__item--carbs {
+            grid-column: 2/3;
+            grid-row: 1/2; } }
+        @media only screen and (max-width: 28.5em) {
+          .dashboard__content__daily-summary__item--carbs {
+            grid-column: 1/2;
+            grid-row: 2/3; } }
         .dashboard__content__daily-summary__item--carbs h4 {
           margin-top: 1rem;
           text-transform: uppercase; }
+          @media only screen and (max-width: 28.5em) {
+            .dashboard__content__daily-summary__item--carbs h4 {
+              margin-bottom: 1rem; } }
         .dashboard__content__daily-summary__item--carbs p span {
           margin-top: 1rem;
           font-size: 4rem;
@@ -2046,11 +2174,26 @@ body {
             .dashboard__content__daily-summary__item--carbs p span {
               font-size: 3rem;
               margin-top: 1.5rem; } }
+          @media only screen and (max-width: 28.5em) {
+            .dashboard__content__daily-summary__item--carbs p span {
+              font-size: 2.4rem;
+              margin-top: 3rem; } }
       .dashboard__content__daily-summary__item--protein {
         grid-column: 3/4; }
+        @media only screen and (max-width: 56.25em) {
+          .dashboard__content__daily-summary__item--protein {
+            grid-column: 1/2;
+            grid-row: 2/3; } }
+        @media only screen and (max-width: 28.5em) {
+          .dashboard__content__daily-summary__item--protein {
+            grid-column: 1/2;
+            grid-row: 3/4; } }
         .dashboard__content__daily-summary__item--protein h4 {
           margin-top: 1rem;
           text-transform: uppercase; }
+          @media only screen and (max-width: 28.5em) {
+            .dashboard__content__daily-summary__item--protein h4 {
+              margin-bottom: 1rem; } }
         .dashboard__content__daily-summary__item--protein p span {
           margin-top: 1rem;
           font-size: 4rem;
@@ -2060,11 +2203,26 @@ body {
             .dashboard__content__daily-summary__item--protein p span {
               font-size: 3rem;
               margin-top: 1.5rem; } }
+          @media only screen and (max-width: 28.5em) {
+            .dashboard__content__daily-summary__item--protein p span {
+              font-size: 2.4rem;
+              margin-top: 3rem; } }
       .dashboard__content__daily-summary__item--fat {
         grid-column: 4/5; }
+        @media only screen and (max-width: 56.25em) {
+          .dashboard__content__daily-summary__item--fat {
+            grid-column: 2/3;
+            grid-row: 2/3; } }
+        @media only screen and (max-width: 28.5em) {
+          .dashboard__content__daily-summary__item--fat {
+            grid-column: 1/2;
+            grid-row: 4/5; } }
         .dashboard__content__daily-summary__item--fat h4 {
           margin-top: 1rem;
           text-transform: uppercase; }
+          @media only screen and (max-width: 28.5em) {
+            .dashboard__content__daily-summary__item--fat h4 {
+              margin-bottom: 1rem; } }
         .dashboard__content__daily-summary__item--fat p span {
           margin-top: 1rem;
           font-size: 4rem;
@@ -2074,6 +2232,10 @@ body {
             .dashboard__content__daily-summary__item--fat p span {
               font-size: 3rem;
               margin-top: 1.5rem; } }
+          @media only screen and (max-width: 28.5em) {
+            .dashboard__content__daily-summary__item--fat p span {
+              font-size: 2.4rem;
+              margin-top: 3rem; } }
   .dashboard__content__graphs {
     display: grid;
     grid-template-rows: 1fr;
@@ -2082,7 +2244,7 @@ body {
     grid-column: 1 / -1;
     grid-column-gap: 2rem;
     justify-items: center;
-    margin: 4rem 1rem 0 1rem;
+    margin: 4rem 1rem 5rem 1rem;
     animation-name: fade-bottom;
     animation-duration: 1s;
     animation-timing-function: ease-out; }
@@ -2092,13 +2254,25 @@ body {
     @media only screen and (max-width: 75em) {
       .dashboard__content__graphs {
         grid-row: 5/6;
-        margin: 3rem 1rem 0 1rem; } }
+        margin: 3rem 1rem 5rem 1rem; } }
     @media only screen and (max-width: 62.5em) {
       .dashboard__content__graphs {
+        display: grid;
         grid-template-rows: 1fr 1fr;
         grid-template-columns: 1fr;
         grid-row-gap: 5rem;
-        margin: 4rem 0 0 0; } }
+        margin: 5rem 1rem 5rem 1rem;
+        grid-column-gap: 0;
+        justify-items: center;
+        align-items: center; } }
+    @media only screen and (max-width: 37.5em) {
+      .dashboard__content__graphs {
+        margin: 1rem 1rem 1rem 1rem;
+        grid-row-gap: 2rem; } }
+    @media only screen and (max-width: 31.25em) {
+      .dashboard__content__graphs {
+        margin: 3rem 0 0 0;
+        grid-row-gap: 2rem; } }
     .dashboard__content__graphs__item {
       justify-self: stretch;
       height: 30rem;
@@ -2108,9 +2282,6 @@ body {
       -moz-box-shadow: 0px 0px 59px -22px #42445a;
       box-shadow: 0px 0px 59px -22px #42445a;
       transition: all 0.5s ease-out; }
-      @media only screen and (max-width: 62.5em) {
-        .dashboard__content__graphs__item {
-          height: 40rem; } }
       .dashboard__content__graphs__item:hover {
         transform: scale(1.05); }
       .dashboard__content__graphs__item--details {
@@ -2120,8 +2291,8 @@ body {
         grid-column: 1/2; }
         @media only screen and (max-width: 62.5em) {
           .dashboard__content__graphs__item--details {
-            grid-row: 1/2;
-            grid-column: 1/2; } }
+            grid-column: 1 / 2;
+            grid-row: 1 / 2; } }
         .dashboard__content__graphs__item--details h3 {
           align-self: center;
           margin-top: 1rem;
@@ -2133,8 +2304,8 @@ body {
         grid-column: 2 / -1; }
         @media only screen and (max-width: 62.5em) {
           .dashboard__content__graphs__item--weekly {
-            grid-row: 2/3;
-            grid-column: 1/2; } }
+            grid-column: 1 / 2;
+            grid-row: 2 / 3; } }
         .dashboard__content__graphs__item--weekly h3 {
           align-self: center;
           margin-top: 1rem;
@@ -2170,9 +2341,6 @@ body {
       @media only screen and (max-width: 75em) {
         .summaryChart__description--goal {
           font-size: 1.7rem; } }
-      @media only screen and (max-width: 62.5em) {
-        .summaryChart__description--goal {
-          font-size: 1.3rem; } }
     .summaryChart__description--percent {
       font-size: 3rem; }
       @media only screen and (max-width: 93.75em) {
@@ -2181,9 +2349,6 @@ body {
       @media only screen and (max-width: 75em) {
         .summaryChart__description--percent {
           font-size: 2.5rem; } }
-      @media only screen and (max-width: 62.5em) {
-        .summaryChart__description--percent {
-          font-size: 2rem; } }
 .summaryWeekly {
   margin-bottom: 5rem; }
   .summaryWeekly__container {
@@ -2199,10 +2364,18 @@ body {
       width: 45rem; } }
   @media only screen and (max-width: 62.5em) {
     .summaryNutritionDetails__container {
-      width: 70rem;
-      height: 25rem;
+      width: 50rem;
       justify-self: center;
       align-self: center; } }
+  @media only screen and (max-width: 31.25em) {
+    .summaryNutritionDetails__container {
+      margin-top: 3rem;
+      width: 40rem; } }
+  @media only screen and (max-width: 28.5em) {
+    .summaryNutritionDetails__container {
+      margin-top: 3rem;
+      width: 35rem;
+      height: 35rem; } }
 body {
   height: 100%; }
 
