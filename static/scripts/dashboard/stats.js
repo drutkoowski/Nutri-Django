@@ -18,6 +18,7 @@ let dataWeekGraph = {
     datasets: [{
       data: [2860, 2140, 3060, 2777, 1895, 2345, 2753],
       borderColor: "green",
+      label: 'Eaten KCAL'
     }]
 };
 
@@ -29,7 +30,7 @@ let weekChartBox = new Chart(weekChart, {
     maintainAspectRatio: false,
     plugins: {
             legend: {
-                display: false
+                display: true
             },
         }
   }

@@ -2421,6 +2421,11 @@ body {
     .dashboard-stats {
       grid-column: 1/2;
       grid-row: 1/2; } }
+  @media only screen and (max-width: 56.25em) {
+    .dashboard-stats {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 0.25fr 0.25fr 0.5fr 0.5fr; } }
   .dashboard-stats__welcome-text {
     grid-row: 1/2;
     grid-column: 1/-1;
@@ -2436,6 +2441,10 @@ body {
         grid-row: 2/3;
         font-size: 2rem;
         margin-left: 5rem; } }
+    @media only screen and (max-width: 56.25em) {
+      .dashboard-stats__welcome-text {
+        font-size: 1.7rem;
+        margin-bottom: 2rem; } }
   .dashboard-stats__stats {
     margin-top: 5rem;
     margin-left: 5rem;
@@ -2451,6 +2460,10 @@ body {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 2fr;
         margin-right: 5rem; } }
+    @media only screen and (max-width: 56.25em) {
+      .dashboard-stats__stats {
+        margin-top: 0;
+        height: 60rem; } }
     .dashboard-stats__stats__body {
       grid-column: 1/2;
       display: grid;
@@ -2465,12 +2478,37 @@ body {
       @media only screen and (max-width: 75em) {
         .dashboard-stats__stats__body {
           display: grid;
+          grid-row: 1/2;
           grid-template-columns: 1fr 1fr;
           grid-template-rows: 1fr 1fr;
           grid-column-gap: 5rem; } }
+      @media only screen and (max-width: 56.25em) {
+        .dashboard-stats__stats__body {
+          display: grid;
+          grid-template-columns: 1fr;
+          grid-template-rows: 1fr 1fr 1fr 1fr; } }
+      @media only screen and (max-width: 56.25em) {
+        .dashboard-stats__stats__body--height {
+          grid-row: 1/2;
+          grid-column: 1/2; } }
+      @media only screen and (max-width: 56.25em) {
+        .dashboard-stats__stats__body--weight {
+          grid-row: 2/3;
+          grid-column: 1/2; } }
+      @media only screen and (max-width: 56.25em) {
+        .dashboard-stats__stats__body--activity {
+          grid-row: 3/4;
+          grid-column: 1/2; } }
+      @media only screen and (max-width: 56.25em) {
+        .dashboard-stats__stats__body--goal {
+          grid-row: 4/5;
+          grid-column: 1/2; } }
       .dashboard-stats__stats__body__item {
         display: flex;
         align-self: center; }
+        @media only screen and (max-width: 56.25em) {
+          .dashboard-stats__stats__body__item {
+            margin-top: 2rem; } }
         @media only screen and (min-width: 112.5em) {
           .dashboard-stats__stats__body__item p {
             font-size: 3rem; } }
@@ -2480,6 +2518,9 @@ body {
         @media only screen and (max-width: 75em) {
           .dashboard-stats__stats__body__item p {
             font-size: 2rem; } }
+        @media only screen and (max-width: 56.25em) {
+          .dashboard-stats__stats__body__item p {
+            font-size: 3rem; } }
         .dashboard-stats__stats__body__item p input {
           width: 7rem;
           margin-left: 1rem;
@@ -2494,6 +2535,10 @@ body {
             .dashboard-stats__stats__body__item p input {
               width: 10rem;
               font-size: 1.4rem; } }
+          @media only screen and (max-width: 56.25em) {
+            .dashboard-stats__stats__body__item p input {
+              width: 12rem;
+              font-size: 1.7rem; } }
         .dashboard-stats__stats__body__item p select {
           width: 10rem;
           margin-left: 1rem;
@@ -2507,6 +2552,10 @@ body {
             .dashboard-stats__stats__body__item p select {
               width: 10rem;
               font-size: 1.3rem; } }
+          @media only screen and (max-width: 56.25em) {
+            .dashboard-stats__stats__body__item p select {
+              width: 12rem;
+              font-size: 1.5rem; } }
         .dashboard-stats__stats__body__item button {
           margin-left: auto;
           padding: 1rem 3rem;
@@ -2524,6 +2573,7 @@ body {
             transform: scale(1.05); }
       .dashboard-stats__stats__body__nutrition {
         display: grid;
+        grid-row: 2/3;
         grid-template-columns: 0.5fr 0.5fr;
         grid-template-rows: 1fr;
         animation-name: fade-right;
@@ -2532,6 +2582,9 @@ body {
         @media only screen and (max-width: 84.375em) {
           .dashboard-stats__stats__body__nutrition {
             grid-column-gap: 5rem; } }
+        @media only screen and (max-width: 56.25em) {
+          .dashboard-stats__stats__body__nutrition {
+            margin-top: 5rem; } }
         .dashboard-stats__stats__body__nutrition--col-1 {
           margin-top: 2rem;
           grid-column: 1/2;
