@@ -14,9 +14,10 @@
             {% include 'components/sidebar/sidebar_small.html' %}
             <div class="activity-calendar__welcome-text">
                 <h1>Activity Calendar</h1>
+                <p>There you can watch your nutrition and workout history, day by day.</p>
                 {% include 'accounts/navbar.html' %}
             </div>
-            <div class="activity-calendar__container">
+            <div class="activity-calendar__container fade-bottom">
                 <header>
                 <p class="current-date"></p>
                 <div class="icons">
@@ -36,6 +37,7 @@
                 </ul>
                 <ul class="days"></ul>
               </div>
+                 <small>NOTE: Saved Workouts/Meals are highlighted by green dots. <br>Click at them to get more information.</small>
             </div>
         </div>
     </div>

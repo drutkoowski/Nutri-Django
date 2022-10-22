@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
 .activity-calendar {
   height: 100vh;
   font-size: 2rem;
@@ -31,6 +33,11 @@
     border-radius: 10px;
     box-shadow: 0 15px 40px rgba(0,0,0,0.12);
     color: black;
+    small {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      margin-left: 7rem;
+    }
     header {
       display: flex;
       align-items: center;
@@ -80,6 +87,7 @@
     margin-bottom: 20px;
   }
   li {
+    font-family: 'Poppins', sans-serif;
     color: #333;
     width: calc(100% / 7);
   }
@@ -121,9 +129,9 @@
       color: #aaa;
     }
     li.active {
-      color: #fff;
+      color: #52ff00;
       &::before {
-         background: #27f55b;
+         //background: #f1e452;
       }
     }
 
@@ -146,10 +154,15 @@
 
 }
 
-
-.modal--calendar__content {
-        display: flex;
-        flex-direction: column;
+.modal--calendar {
+  h3 {
+    font-size: 5rem;
+  }
+  &__content {
+    display: flex;
+      flex-direction: column;
+       width: 100vh;
+       height: 50vh;
        border-radius: 20px;
        -webkit-box-shadow: 0px 0px 7px 4px rgba(66, 68, 90, 1);
        -moz-box-shadow: 0px 0px 7px 4px rgba(66, 68, 90, 1);
@@ -161,11 +174,12 @@
        margin-right: auto;
        margin-left: auto;
        background-color: rgb(222, 219, 219);
-}
-
-.modal--calendar__close-button {
+  }
+  &__close-button {
     display: flex;
     justify-items: end;
     align-self: end;
-    font-size: 1.5rem;
+    font-size: 3.5rem;
+    cursor: pointer;
+  }
 }

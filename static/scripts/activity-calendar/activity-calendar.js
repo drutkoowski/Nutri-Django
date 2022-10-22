@@ -1,6 +1,6 @@
 const daysTag = document.querySelector(".days")
 
-const eventList = [new Date('2022-10-11'), new Date('2022-10-24')]
+const eventList = [new Date('2022-10-22'), new Date('2022-10-24'), new Date('2022-09-01')]
 currentDate = document.querySelector(".current-date"),
 prevNextIcon = document.querySelectorAll(".icons span");
 
@@ -13,6 +13,46 @@ currMonth = date.getMonth();
 // storing full name of all months in array
 const months = ["January", "February", "March", "April", "May", "June", "July",
               "August", "September", "October", "November", "December"];
+
+
+// modals and listeners
+const modal = document.querySelector('.modal--calendar')
+const modalContent = document.querySelector('.modal__calendar__activities-container')
+const modalClose = document.querySelector('.modal--calendar__close-button')
+
+const modalHeading = document.querySelector('.modal--calendar__heading')
+
+modalClose.addEventListener('click', e => {
+   modal.classList.add('not-visible')
+})
+
+const addContentToModal = (date, items) => {
+  modalHeading.innerHTML = `Your Nutri activities on ${date}.`
+  modalContent.innerHTML = ``
+  modalContent.insertAdjacentHTML('beforeend', items)
+}
+
+const addEventListeners = () => {
+
+  [...document.querySelectorAll('.isEvent')].forEach(function(item) {
+    item.addEventListener('click', function() {
+      let itemsToAdd = `<ul>
+        <li>Workout 30 mins</li>
+        <li>Dumplings x7<li>
+      </ul>`
+      console.log(item.classList[0])
+      let dateClass = item.classList[0] === 'active' ? item.classList[1] : item.classList[0]
+      addContentToModal(dateClass, itemsToAdd)
+      modal.classList.remove('not-visible')
+    });
+
+   });
+}
+addEventListeners()
+
+/// end modal and listeners
+
+
 
 const renderCalendar = () => {
     let firstDayofMonth = new Date(currYear, currMonth, 1).getDay(), // getting first day of month
@@ -43,6 +83,7 @@ const renderCalendar = () => {
     }
     currentDate.innerText = `${months[currMonth]} ${currYear}`; // passing current mon and yr as currentDate text
     daysTag.innerHTML = liTag;
+    addEventListeners()
 }
 
 
@@ -51,6 +92,7 @@ const renderCalendar = () => {
 
 
 renderCalendar();
+
 prevNextIcon.forEach(icon => { // getting prev and next icons
     icon.addEventListener("click", () => { // adding click event on both icons
         // if clicked icon is previous icon then decrement current month by 1 else increment it by 1
@@ -67,39 +109,33 @@ prevNextIcon.forEach(icon => { // getting prev and next icons
     });
 });
 
-const modal = document.querySelector('.modal--calendar')
-const modalContent = document.querySelector('.modal__calendar__activities-container')
-const modalClose = document.querySelector('.modal--calendar__close-button')
 
-const modalHeading = document.querySelector('.modal--calendar__heading')
+// nav functionality
+/// hamburger menu
+const hamburgerNav = document.getElementById('navi-toggle')
+const navigationList = document.getElementsByClassName('navigation--dashboard__list')[0]
 
-modalClose.addEventListener('click', e => {
-   modal.classList.add('not-visible')
+const hamburgerNavSmall = document.getElementById('navi-toggle-small')
+const navigationListSmall = document.getElementsByClassName('navigation--dashboard--small__list')[0]
+
+hamburgerNav.addEventListener('click', () => {
+
+    if (!navigationList.classList.contains('not-visible') && !hamburgerNav.checked) {
+        navigationList.classList.add('not-visible')
+    }
+    else if (navigationList.classList.contains('not-visible') && hamburgerNav.checked) {
+         navigationList.classList.remove('not-visible')
+    }
 })
 
-const addContentToModal = (date, items) => {
-  modalHeading.innerHTML = `Your Nutri activities on ${date}.`
-  modalContent.innerHTML = ``
-  modalContent.insertAdjacentHTML('beforeend', items)
-}
+hamburgerNavSmall.addEventListener('click', () => {
 
-const addEventListeners = () => {
-
-  [...document.querySelectorAll('.isEvent')].forEach(function(item) {
-    item.addEventListener('click', function() {
-      let itemsToAdd = `<ul>
-        <li>Workout 30 mins</li>
-        <li>Dumplings x7<li>
-      </ul>`
-      addContentToModal(item.classList[0], itemsToAdd)
-      modal.classList.remove('not-visible')
-    });
-
-   });
-}
-
-addEventListeners()
-
-
+    if (!navigationListSmall.classList.contains('not-visible') && !hamburgerNavSmall.checked) {
+        navigationListSmall.classList.add('not-visible')
+    }
+    else if (navigationListSmall.classList.contains('not-visible') && hamburgerNavSmall.checked) {
+         navigationListSmall.classList.remove('not-visible')
+    }
+})
 
 
