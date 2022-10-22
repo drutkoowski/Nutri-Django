@@ -169,3 +169,6 @@ hamburgerNavSmall.addEventListener('click', () => {
 
 window.onresize = function(){ location.reload(); }
 
+const todayDate = new Date().toLocaleDateString()
+const graphDate = document.querySelector('.graph-date')
+graphDate.textContent = `Summary ${todayDate}`

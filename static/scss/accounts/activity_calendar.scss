@@ -14,6 +14,22 @@
   border-radius: 20px;
   color: white;
   margin-left: -20px;
+  @include respond(tab-land) {
+    margin-top: 2rem;
+    border-radius: 20px;
+    margin-left: 0;
+    min-height: 100vh;
+    height: auto;
+    grid-column: 2/3;
+    grid-row: 1/2;
+    grid-template-rows: .10fr .10fr 2fr;
+  }
+  @include respond(tab-md){
+    grid-column: 1/2;
+  }
+  @include respond(phone-md-lg) {
+    row-gap: 5rem;
+  }
   &__welcome-text {
      grid-row: 1 / 2;
      grid-column: 1 / -1;
@@ -23,6 +39,31 @@
      animation-duration: 1s;
      animation-timing-function: ease-out;
      position: relative;
+     p {
+       @include respond(tab-land) {
+        font-size: 1.6rem;
+      }
+       @include respond(phone-md-lg) {
+        font-size: 1.4rem;
+      }
+       @include respond(phone-md) {
+        font-size: 1.15rem;
+      }
+       @include respond(phone-md-sm) {
+        font-size: 1.2rem;
+      }
+     }
+     @include respond(tab-land) {
+       grid-column: 1/2;
+       grid-row: 2/3;
+       margin-top: 0;
+    }
+    @include respond(phone-md) {
+      margin: 0 2rem;
+    }
+    @include respond(phone-md-sm) {
+      text-align: center;
+    }
   }
   &__container {
     margin: 2rem 10rem;
@@ -33,10 +74,32 @@
     border-radius: 10px;
     box-shadow: 0 15px 40px rgba(0,0,0,0.12);
     color: black;
+    @include respond(tab-land) {
+       margin: 0 3rem 5rem 3rem;
+       align-self: center;
+       justify-self: center;
+       width: 90%;
+       grid-column: 1/2;
+       grid-row: 3/4;
+    }
     small {
-      font-size: 1.2rem;
+      font-size: 2rem;
       margin-bottom: 2rem;
       margin-left: 7rem;
+      @include respond(md-desktop) {
+        font-size: 1.5rem;
+      }
+      @include respond(tab-sm) {
+        font-size: 1.3rem;
+      }
+      @include respond(phone-md-lg) {
+        font-size: 1.2rem;
+        margin-left: 3rem;
+      }
+       @include respond(phone-md-sm){
+         font-size: 1.1rem;
+         margin-left: 1.5rem;
+       }
     }
     header {
       display: flex;
@@ -47,6 +110,22 @@
         margin-left: 2.5rem;
         font-size: 3.5rem;
         font-weight: bold;
+        @include respond(tab-md){
+           font-size: 3rem;
+        }
+        @include respond(phone-md-lg){
+           font-size: 2.8rem;
+           margin-left: 0;
+        }
+        @include respond(phone-md-sm){
+           font-size: 2.4rem;
+           margin-left: 0;
+        }
+        @include respond(phone-sm) {
+          font-size: 2.2rem;
+        }
+
+
       }
       .icons {
         display: flex;
@@ -77,6 +156,9 @@
 
 .calendar {
   padding: 20px;
+   @include respond(phone-sm) {
+     padding: 10px;
+   }
   ul {
     display: flex;
     flex-wrap: wrap;
@@ -90,12 +172,16 @@
     font-family: 'Poppins', sans-serif;
     color: #333;
     width: calc(100% / 7);
+
   }
   .weeks {
     li {
        font-size: 1.7rem; // day names
        font-weight: 500;
        cursor: default;
+       @include respond(phone-sm) {
+         font-size: 1.2rem;
+       }
     }
   }
 
