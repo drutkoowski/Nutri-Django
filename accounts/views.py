@@ -50,22 +50,6 @@ def login_view(request):
     return render(request, 'accounts/login.html')
 
 
-def login_user(request):
-    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
-        email_address = request.POST.get('emailAddress')
-        password = request.POST.get('password')
-        check_if_user_exists = Account.objects.filter(email__iexact=email_address).first()
-        if check_if_user_exists:
-            user = auth.authenticate(username=check_if_user_exists.username, password=password)
-        else:
-            user = None
-        if user is not None:
-            auth.login(request, user)
-            return JsonResponse({'status': 200, 'text': 'User logged in'})
-        else:
-            return JsonResponse({'status': 404, 'text': 'Error while trying to log in the user'})
-
-
 @login_required(login_url='login')
 def logout_view(request):
     auth.logout(request)
@@ -88,6 +72,29 @@ def dashboard_stats(request):
         'user': user,
     }
     return render(request, 'accounts/dashboard_stats.html', context)
+
+
+@login_required(login_url='login')
+def activity_view(request):
+    return render(request, 'accounts/activity_calendar.html')
+
+
+# # # # # AJAX VIEWS # # # # #
+
+def login_user(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
+        email_address = request.POST.get('emailAddress')
+        password = request.POST.get('password')
+        check_if_user_exists = Account.objects.filter(email__iexact=email_address).first()
+        if check_if_user_exists:
+            user = auth.authenticate(username=check_if_user_exists.username, password=password)
+        else:
+            user = None
+        if user is not None:
+            auth.login(request, user)
+            return JsonResponse({'status': 200, 'text': 'User logged in'})
+        else:
+            return JsonResponse({'status': 404, 'text': 'Error while trying to log in the user'})
 
 
 def check_if_taken(request):

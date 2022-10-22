@@ -2,7 +2,6 @@
 
 
 .dashboard-stats{
-    height: 100vh;
     font-size: 2rem;
     grid-column: 3/4;
     grid-row: 2/3;
@@ -16,14 +15,14 @@
     margin-left: -20px;
 
      @include respond(tab-land) {
+      height: auto;
       display: grid;
       grid-template-columns: 1fr;
-      grid-template-rows: 0.25fr 0.25fr 0.8fr 1fr;
+      grid-template-rows: 0.15fr 0.15fr 1fr 0.5fr;
       margin-top: 2rem;
       grid-column: 2/3;
       grid-row: 1/2;
       margin-left: -0px;
-       height: auto;
     }
     @include respond(tab-md) {
       grid-column: 1/2;
@@ -32,10 +31,10 @@
     @include respond(tab-port) {
        display: grid;
        grid-template-columns: 1fr;
-       grid-template-rows: 0.25fr 0.25fr 0.5fr 0.5fr;
+       grid-template-rows: 0.25fr 0.25fr 1.5fr 0.5fr;
     }
    @include respond(phone-lg) {
-    grid-template-rows: 0.25fr 0.25fr 1.4fr 0.8fr;
+    grid-template-rows: 0.25fr 0.25fr 1.6fr 0.8fr;
    }
 
     &__welcome-text {
@@ -268,6 +267,11 @@
         animation-name: fade-right;
         animation-duration: 1s;
         animation-timing-function: ease-out;
+        @include respond(md-desktop) {
+          grid-template-columns: 1fr;
+          grid-template-rows: 1fr 1fr;
+          align-items: center;
+        }
         @include respond(tab-desktop) {
           grid-column-gap: 5rem;
         }
@@ -279,8 +283,8 @@
             margin-top: 5rem;
         }
        @include respond(tab-sm) {
-          align-items: center;
-          justify-items: center;
+          //align-items: center;
+          //justify-items: center;
           grid-column-gap: 3rem;
           font-size: 2.5rem;
           white-space: nowrap;
@@ -306,6 +310,10 @@
           grid-row: 1/2;
           display: flex;
           flex-direction: column;
+          @include respond(md-desktop) {
+            grid-column: 1/2;
+            grid-row: 1/2;
+          }
           @include respond(phone-lg) {
              grid-column: 1/2;
              grid-row: 1/2;
@@ -318,6 +326,10 @@
           grid-row: 1/2;
           display: flex;
           flex-direction: column;
+          @include respond(md-desktop) {
+            grid-column: 1/2;
+            grid-row: 2/3;
+          }
           @include respond(phone-lg) {
              grid-column: 1/2;
              grid-row: 2/3;
@@ -339,14 +351,13 @@
      @include respond(md-desktop) {
        grid-template-columns: 1fr;
        grid-template-rows: 0.3fr 1fr;
-
      }
     @include respond(tab-land) {
       grid-column: 1/2;
       grid-row: 4/5;
     }
     @include respond(tab-sm) {
-      margin-top: 10rem;
+      margin-top: 5rem;
     }
     @include respond(phone-md) {
        margin-top: 5rem;
