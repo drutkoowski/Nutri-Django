@@ -2792,7 +2792,7 @@ body {
         height: 30rem;
         margin-left: 0.5rem; } }
 .activity-calendar {
-  height: 100vh;
+  height: auto;
   font-size: 2rem;
   grid-column: 3/4;
   grid-row: 2/3;
@@ -2800,7 +2800,7 @@ body {
   grid-template-columns: 1fr;
   grid-template-rows: .25fr 2fr;
   grid-auto-flow: dense;
-  grid-row-gap: 10rem;
+  grid-row-gap: 5rem;
   background-color: #bde7c5;
   border-radius: 20px;
   color: white;

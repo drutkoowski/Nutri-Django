@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
 .activity-calendar {
-  height: 100vh;
+  height: auto;
   font-size: 2rem;
   grid-column: 3/4;
   grid-row: 2/3;
@@ -9,7 +9,7 @@
   grid-template-columns: 1fr;
   grid-template-rows: .25fr 2fr;
   grid-auto-flow: dense;
-  grid-row-gap: 10rem;
+  grid-row-gap: 5rem;
   background-color: rgb(189, 231, 197);
   border-radius: 20px;
   color: white;
