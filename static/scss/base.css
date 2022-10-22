@@ -2426,9 +2426,12 @@ body {
       display: grid;
       grid-template-columns: 1fr;
       grid-template-rows: 0.25fr 0.25fr 0.5fr 0.5fr; } }
+  @media only screen and (max-width: 37.5em) {
+    .dashboard-stats {
+      grid-template-rows: 0.25fr 0.25fr 1.4fr 0.8fr; } }
   .dashboard-stats__welcome-text {
     grid-row: 1/2;
-    grid-column: 1/-1;
+    grid-column: 1 / -1;
     margin-left: 5rem;
     margin-top: 5rem;
     animation-name: moveInLeft;
@@ -2445,6 +2448,25 @@ body {
       .dashboard-stats__welcome-text {
         font-size: 1.7rem;
         margin-bottom: 2rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .dashboard-stats__welcome-text {
+        font-size: 1.5rem; } }
+    @media only screen and (max-width: 31.25em) {
+      .dashboard-stats__welcome-text {
+        font-size: 1.3rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .dashboard-stats__welcome-text {
+        margin-left: 3rem; } }
+    @media only screen and (max-width: 25em) {
+      .dashboard-stats__welcome-text {
+        font-size: 1rem;
+        margin-left: 2rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .dashboard-stats__welcome-text p {
+        font-size: 1.4rem; } }
+    @media only screen and (max-width: 25em) {
+      .dashboard-stats__welcome-text p {
+        font-size: 1.2rem; } }
   .dashboard-stats__stats {
     margin-top: 5rem;
     margin-left: 5rem;
@@ -2452,7 +2474,9 @@ body {
     grid-template-columns: 0.6fr 1fr;
     grid-template-rows: 1fr;
     grid-column-gap: 5rem;
-    font-size: 2.5rem; }
+    font-size: 2.5rem;
+    grid-column: 1/2;
+    grid-row: 2/3; }
     @media only screen and (max-width: 75em) {
       .dashboard-stats__stats {
         grid-column: 1/2;
@@ -2464,6 +2488,12 @@ body {
       .dashboard-stats__stats {
         margin-top: 0;
         height: 60rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .dashboard-stats__stats {
+        margin: 0 3rem 0 3rem; } }
+    @media only screen and (max-width: 25em) {
+      .dashboard-stats__stats {
+        margin: 0 2rem 0 2rem; } }
     .dashboard-stats__stats__body {
       grid-column: 1/2;
       display: grid;
@@ -2521,6 +2551,12 @@ body {
         @media only screen and (max-width: 56.25em) {
           .dashboard-stats__stats__body__item p {
             font-size: 3rem; } }
+        @media only screen and (max-width: 37.5em) {
+          .dashboard-stats__stats__body__item p {
+            font-size: 2rem; } }
+        @media only screen and (max-width: 25em) {
+          .dashboard-stats__stats__body__item p {
+            font-size: 1.5rem; } }
         .dashboard-stats__stats__body__item p input {
           width: 7rem;
           margin-left: 1rem;
@@ -2539,6 +2575,16 @@ body {
             .dashboard-stats__stats__body__item p input {
               width: 12rem;
               font-size: 1.7rem; } }
+          @media only screen and (max-width: 37.5em) {
+            .dashboard-stats__stats__body__item p input {
+              width: 10rem; } }
+          @media only screen and (max-width: 28.5em) {
+            .dashboard-stats__stats__body__item p input {
+              width: 8rem; } }
+          @media only screen and (max-width: 25em) {
+            .dashboard-stats__stats__body__item p input {
+              width: 6rem;
+              font-size: 1.3rem; } }
         .dashboard-stats__stats__body__item p select {
           width: 10rem;
           margin-left: 1rem;
@@ -2556,6 +2602,14 @@ body {
             .dashboard-stats__stats__body__item p select {
               width: 12rem;
               font-size: 1.5rem; } }
+          @media only screen and (max-width: 28.5em) {
+            .dashboard-stats__stats__body__item p select {
+              width: 10rem;
+              font-size: 1.3rem; } }
+          @media only screen and (max-width: 25em) {
+            .dashboard-stats__stats__body__item p select {
+              width: 8rem;
+              font-size: 1.1rem; } }
         .dashboard-stats__stats__body__item button {
           margin-left: auto;
           padding: 1rem 3rem;
@@ -2573,7 +2627,8 @@ body {
             transform: scale(1.05); }
       .dashboard-stats__stats__body__nutrition {
         display: grid;
-        grid-row: 2/3;
+        grid-row: 1/2;
+        grid-column: 2/3;
         grid-template-columns: 0.5fr 0.5fr;
         grid-template-rows: 1fr;
         animation-name: fade-right;
@@ -2582,21 +2637,54 @@ body {
         @media only screen and (max-width: 84.375em) {
           .dashboard-stats__stats__body__nutrition {
             grid-column-gap: 5rem; } }
+        @media only screen and (max-width: 75em) {
+          .dashboard-stats__stats__body__nutrition {
+            grid-row: 2/3;
+            grid-column: 1/2; } }
         @media only screen and (max-width: 56.25em) {
           .dashboard-stats__stats__body__nutrition {
             margin-top: 5rem; } }
+        @media only screen and (max-width: 46.875em) {
+          .dashboard-stats__stats__body__nutrition {
+            align-items: center;
+            justify-items: center;
+            grid-column-gap: 3rem;
+            font-size: 2.5rem;
+            white-space: nowrap; } }
+        @media only screen and (max-width: 37.5em) {
+          .dashboard-stats__stats__body__nutrition {
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1fr;
+            align-items: start;
+            justify-items: start;
+            grid-row-gap: 2rem;
+            font-size: 3rem; } }
+        @media only screen and (max-width: 28.5em) {
+          .dashboard-stats__stats__body__nutrition {
+            font-size: 2.5rem; } }
+        @media only screen and (max-width: 25em) {
+          .dashboard-stats__stats__body__nutrition {
+            font-size: 2.2rem; } }
         .dashboard-stats__stats__body__nutrition--col-1 {
           margin-top: 2rem;
           grid-column: 1/2;
           grid-row: 1/2;
           display: flex;
           flex-direction: column; }
+          @media only screen and (max-width: 37.5em) {
+            .dashboard-stats__stats__body__nutrition--col-1 {
+              grid-column: 1/2;
+              grid-row: 1/2; } }
         .dashboard-stats__stats__body__nutrition--col-2 {
           margin-top: 2rem;
           grid-column: 2/3;
           grid-row: 1/2;
           display: flex;
           flex-direction: column; }
+          @media only screen and (max-width: 37.5em) {
+            .dashboard-stats__stats__body__nutrition--col-2 {
+              grid-column: 1/2;
+              grid-row: 2/3; } }
   .dashboard-stats__graph {
     margin-top: 5rem;
     display: grid;
@@ -2615,6 +2703,15 @@ body {
       .dashboard-stats__graph {
         grid-column: 1/2;
         grid-row: 4/5; } }
+    @media only screen and (max-width: 46.875em) {
+      .dashboard-stats__graph {
+        margin-top: 10rem; } }
+    @media only screen and (max-width: 28.5em) {
+      .dashboard-stats__graph {
+        margin-top: 5rem; } }
+    @media only screen and (max-width: 25em) {
+      .dashboard-stats__graph {
+        margin-top: 2rem; } }
     .dashboard-stats__graph:hover {
       transform: scale(1.05); }
     .dashboard-stats__graph__item {
@@ -2631,6 +2728,12 @@ body {
           grid-column: 1/2;
           grid-row: 2/3;
           margin: 2rem 5rem 5rem 5rem; } }
+      @media only screen and (max-width: 46.875em) {
+        .dashboard-stats__graph__item {
+          margin: 2rem 2rem 5rem 2rem; } }
+      @media only screen and (max-width: 25em) {
+        .dashboard-stats__graph__item {
+          margin: 2rem 0.5rem 5rem 0.5rem; } }
     .dashboard-stats__graph__customization {
       grid-column: 2/3;
       grid-row: 1/2;
@@ -2640,6 +2743,12 @@ body {
           grid-column: 1/2;
           grid-row: 1/2;
           margin-left: 5rem; } }
+      @media only screen and (max-width: 37.5em) {
+        .dashboard-stats__graph__customization {
+          margin: 0 3rem 0 3rem; } }
+      @media only screen and (max-width: 25em) {
+        .dashboard-stats__graph__customization {
+          margin: 0 2rem 0 2rem; } }
       .dashboard-stats__graph__customization h1 {
         text-wrap: none;
         white-space: nowrap;
@@ -2664,7 +2773,13 @@ body {
     margin-top: 2rem;
     height: 30rem;
     width: auto; }
-
+    @media only screen and (max-width: 84.375em) {
+      .summaryGraph__container {
+        height: 25rem; } }
+    @media only screen and (max-width: 56.25em) {
+      .summaryGraph__container {
+        height: 30rem;
+        margin-left: 0.5rem; } }
 *,
 *::after,
 *::before {

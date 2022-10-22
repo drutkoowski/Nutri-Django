@@ -34,10 +34,13 @@
        grid-template-columns: 1fr;
        grid-template-rows: 0.25fr 0.25fr 0.5fr 0.5fr;
     }
+   @include respond(phone-lg) {
+    grid-template-rows: 0.25fr 0.25fr 1.4fr 0.8fr;
+   }
 
     &__welcome-text {
       grid-row: 1/2;
-      grid-column: 1/-1;
+      grid-column: 1 / -1;
       margin-left: 5rem;
       margin-top: 5rem;
       animation-name: moveInLeft;
@@ -51,8 +54,29 @@
         margin-left: 5rem;
       }
       @include respond(tab-port) {
-         font-size: 1.7rem;
+        font-size: 1.7rem;
         margin-bottom: 2rem;
+      }
+      @include respond(phone-lg) {
+        font-size: 1.5rem;
+      }
+     @include respond(phone-md-lg) {
+        font-size: 1.3rem;
+     }
+     @include respond(phone-lg) {
+       margin-left: 3rem;
+     }
+    @include respond(phone-md-sm) {
+       font-size: 1rem;
+       margin-left: 2rem;
+    }
+      p {
+        @include respond(phone-lg) {
+          font-size: 1.4rem;
+       }
+        @include respond(phone-md-sm) {
+         font-size: 1.2rem;
+        }
       }
     }
 
@@ -64,6 +88,8 @@
     grid-template-rows: 1fr;
     grid-column-gap: 5rem;
     font-size: 2.5rem;
+    grid-column: 1/2;
+    grid-row: 2/3;
     @include respond(tab-land) {
       grid-column: 1/2;
       grid-row: 3/4;
@@ -73,7 +99,13 @@
     }
      @include respond(tab-port) {
       margin-top: 0;
-       height: 60rem;
+      height: 60rem;
+    }
+    @include respond(phone-lg) {
+       margin: 0 3rem 0 3rem;
+    }
+    @include respond(phone-md-sm) {
+      margin: 0 2rem 0 2rem;
     }
 
     &__body {
@@ -84,7 +116,7 @@
       animation-name: fade-left;
       animation-duration: 1s;
       animation-timing-function: ease-out;
-       @include respond(big-desktop) {
+      @include respond(big-desktop) {
         width: auto;
       }
        @include respond(tab-land) {
@@ -145,8 +177,14 @@
             font-size: 2rem;
           }
           @include respond(tab-port) {
-          font-size: 3rem;
-        }
+            font-size: 3rem;
+          }
+          @include respond(phone-lg) {
+            font-size: 2rem;
+          }
+          @include respond(phone-md-sm) {
+            font-size: 1.5rem;
+          }
           input {
             width: 7rem;
             margin-left: 1rem;
@@ -165,6 +203,16 @@
                width: 12rem;
                font-size: 1.7rem;
             }
+            @include respond(phone-lg) {
+               width: 10rem;
+            }
+           @include respond(phone-md) {
+              width: 8rem;
+           }
+           @include respond(phone-md-sm) {
+            width: 6rem;
+            font-size: 1.3rem;
+           }
           }
           select {
             width: 10rem;
@@ -183,6 +231,14 @@
                width: 12rem;
                font-size: 1.5rem;
             }
+            @include respond(phone-md) {
+              width: 10rem;
+              font-size: 1.3rem;
+           }
+           @include respond(phone-md-sm) {
+            width: 8rem;
+            font-size: 1.1rem;
+           }
           }
         }
         button {
@@ -205,7 +261,8 @@
       }
       &__nutrition {
         display: grid;
-        grid-row: 2/3;
+        grid-row: 1/2;
+        grid-column: 2/3;
         grid-template-columns: 0.5fr 0.5fr;
         grid-template-rows: 1fr;
         animation-name: fade-right;
@@ -214,9 +271,34 @@
         @include respond(tab-desktop) {
           grid-column-gap: 5rem;
         }
-         @include respond(tab-port) {
+        @include respond(tab-land) {
+          grid-row: 2/3;
+          grid-column: 1/2;
+        }
+        @include respond(tab-port) {
             margin-top: 5rem;
-         }
+        }
+       @include respond(tab-sm) {
+          align-items: center;
+          justify-items: center;
+          grid-column-gap: 3rem;
+          font-size: 2.5rem;
+          white-space: nowrap;
+       }
+        @include respond(phone-lg) {
+          grid-template-columns: 1fr;
+          grid-template-rows: 1fr 1fr;
+          align-items: start;
+          justify-items: start;
+          grid-row-gap: 2rem;
+          font-size: 3rem;
+        }
+       @include respond(phone-md) {
+         font-size: 2.5rem;
+      }
+      @include respond(phone-md-sm) {
+         font-size: 2.2rem;
+      }
 
         &--col-1 {
           margin-top: 2rem;
@@ -224,6 +306,10 @@
           grid-row: 1/2;
           display: flex;
           flex-direction: column;
+          @include respond(phone-lg) {
+             grid-column: 1/2;
+             grid-row: 1/2;
+         }
         }
 
         &--col-2 {
@@ -232,6 +318,10 @@
           grid-row: 1/2;
           display: flex;
           flex-direction: column;
+          @include respond(phone-lg) {
+             grid-column: 1/2;
+             grid-row: 2/3;
+         }
         }
       }
     }
@@ -255,9 +345,21 @@
       grid-column: 1/2;
       grid-row: 4/5;
     }
-     &:hover {
+    @include respond(tab-sm) {
+      margin-top: 10rem;
+    }
+    @include respond(phone-md) {
+       margin-top: 5rem;
+    }
+   @include respond(phone-md-sm) {
+     margin-top: 2rem;
+   }
+
+
+
+    &:hover {
        transform: scale(1.05);
-     }
+    }
     &__item {
       margin-left: 3rem;
       color: black;
@@ -267,10 +369,16 @@
       grid-row: 1/2;
       height: auto;
       margin-bottom: 5rem;
-       @include respond(md-desktop) {
+      @include respond(md-desktop) {
         grid-column: 1/2;
         grid-row: 2/3;
         margin: 2rem 5rem 5rem 5rem;
+      }
+      @include respond(tab-sm) {
+        margin: 2rem 2rem 5rem 2rem;
+      }
+      @include respond(phone-md-sm) {
+        margin: 2rem 0.5rem 5rem 0.5rem;
       }
     }
     &__customization {
@@ -281,8 +389,14 @@
         grid-column: 1/2;
         grid-row: 1/2;
         margin-left: 5rem;
-
       }
+     @include respond(phone-lg) {
+       margin: 0 3rem 0 3rem;
+     }
+     @include respond(phone-md-sm) {
+       margin: 0 2rem 0 2rem;
+     }
+
       h1 {
         text-wrap: none;
         white-space: nowrap;
@@ -315,6 +429,13 @@
     margin-top: 2rem;
     height: 30rem;
     width: auto;
+    @include respond(tab-desktop) {
+      height: 25rem;
+    }
+    @include respond(tab-port) {
+      height: 30rem;
+      margin-left: 0.5rem;
+    }
   }
 }
 

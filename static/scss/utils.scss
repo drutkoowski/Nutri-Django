@@ -66,6 +66,10 @@ ORDER: Base + typography > general layout + grid > page layout > components
         @media only screen and (max-width: 21.875em) { @content };    //350px
     }
 
+    @if $breakpoint == phone-md-sm {
+        @media only screen and (max-width: 25em) { @content };    //400px
+    }
+
     @if $breakpoint == phone-md {
         @media only screen and (max-width: 28.5em) { @content };    //450px
     }
