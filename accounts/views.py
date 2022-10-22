@@ -76,7 +76,11 @@ def dashboard_stats(request):
 
 @login_required(login_url='login')
 def activity_view(request):
-    return render(request, 'accounts/activity_calendar.html')
+    user = UserProfile.objects.filter(user=request.user).first()
+    context = {
+        'user': user,
+    }
+    return render(request, 'accounts/activity_calendar.html', context)
 
 
 # # # # # AJAX VIEWS # # # # #
