@@ -24,6 +24,7 @@ const modalHeading = document.querySelector('.modal--calendar__heading')
 
 modalClose.addEventListener('click', e => {
    modal.classList.add('not-visible')
+
 })
 
 const addContentToModal = (date, items) => {
@@ -40,7 +41,6 @@ const addEventListeners = () => {
         <li>Workout 30 mins</li>
         <li>Dumplings x7<li>
       </ul>`
-      console.log(item.classList[0])
       let dateClass = item.classList[0] === 'active' ? item.classList[1] : item.classList[0]
       addContentToModal(dateClass, itemsToAdd)
       modal.classList.remove('not-visible')
