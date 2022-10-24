@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load sass_tags %}
+{% block scripts %}
+     <script src="{% sass_src 'scripts/meals/add/main.js' %}" defer></script>
+{% endblock scripts %}
+{% block content %}
+    <div class="loader"></div>
+      <div class="bg-video" id="add-meals-video-container">
+         <video id="add-meals-video" class="bg-video__content" autoplay muted loop>
+             <source src="{% sass_src 'video/add_meal_bg_video2.mp4' %}" type="video/mp4">
+             <source src="{% sass_src 'video/meals_bg_video.webm' %}" type="video/webm">
+             Your browser is not supported!
+         </video>
+     </div>
+
+        <div class="add-meals-layout-container">
+            {% include 'accounts/navbar.html' %}
+             {% include 'accounts/navbar_small.html' %}
+            <div class="add-meals grid-full-span">
+                <div class="add-meals__search">
+                    <div class="add-meals__search__bar"><input type="text" placeholder="Search"/><span><img class="add-meals__search__bar__icon" src="{% sass_src 'images/svg/search.svg' %}" alt="Search Icon" /></span></div>
+                    <hr>
+                    <div class="add-meals__search__results">
+                        <h3>Your search results</h3>
+                        <hr>
+                        <div class="add-meals__search__results__container">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur delectus dolores et eum exercitationem facere qui repudiandae sed sit tempore. Assumenda autem cumque dolor dolorem illo ipsa molestiae neque, nisi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet architecto consectetur consequatur culpa deleniti dolorem doloribus ducimus est eum fugiat in, incidunt libero odio omnis optio similique, temporibus veritatis voluptatum?Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, ab amet assumenda dignissimos illo labore, magni natus nobis perspiciatis placeat recusandae sapiente sit voluptatum! Autem culpa debitis expedita nam quae.lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad alias aut culpa, debitis eius error fuga illo illum impedit inventore ipsum iure minus numquam, quas repellat sint veritatis voluptatibus? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque dolores enim esse est et excepturi exercitationem fugiat harum ipsam ipsum magnam magni, officiis perferendis recusandae, repudiandae tempora voluptas voluptatem. Lorem ipsum dolor sit amet, consectetur adipisicing elit. At culpa, cumque deserunt dignissimos dolores et eveniet impedit laborum magnam maxime molestiae natus odit optio tempora, veniam? Perferendis sequi sint sunt? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur delectus ducimus est perferendis quibusdam veniam vero. Aspernatur fugiat sit tempora veniam? Dicta ipsam nesciunt repellat temporibus ullam, veritatis. Non, quia. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquam aspernatur blanditiis cumque dolorem eligendi, impedit, ipsam labore odit officiis optio pariatur, porro quibusdam repudiandae sapiente tempora tenetur unde vitae! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aut dicta dolor dolores facere id laboriosam laborum laudantium libero magni minima modi nihil pariatur perspiciatis quo totam unde, voluptate. Aliquid! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae blanditiis dicta eos exercitationem explicabo laudantium magni minus nemo neque, obcaecati optio quam recusandae repudiandae sed temporibus, veritatis voluptatem. Pariatur, placeat? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab cum ducimus earum eius esse exercitationem fuga iste natus necessitatibus nostrum nulla odio possimus, quam quisquam sunt suscipit unde veritatis voluptate. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam autem consectetur debitis esse hic id nemo quas sint vel vitae. At culpa ea error esse explicabo illum, inventore maxime quaerat! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus amet blanditiis earum eius excepturi explicabo, fugit, molestias, odit optio porro repellendus voluptates. A aliquid error et laudantium neque porro quas. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci assumenda at autem debitis distinctio earum eligendi illo iste mollitia, natus nemo nihil repellendus reprehenderit repudiandae rerum, saepe sunt ut vitae! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab amet autem dolor enim harum impedit ipsum minima natus, necessitatibus neque nobis numquam odit possimus quas quasi qui quibusdam repellendus sequi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. At consectetur delectus dolorem doloremque ducimus ea esse inventore ipsum labore molestias, nemo, optio quia, repudiandae? Doloribus incidunt laudantium minus nesciunt officia.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-meals__added">
+                    <div class="add-meals__added--added">
+                        <div class="add-meals__added--added__heading">
+                            <h2>Added Meals</h2>
+                        </div>
+                    </div>
+                    <div class="add-meals__added--added__content">asdasdas</div>
+                    <div class="add-meals__added--saved">
+                       <div class="add-meals__added--saved__heading">
+                            <h2>Saved Meals</h2>
+                        </div>
+                    </div>
+                     <div class="add-meals__added--saved__content"></div>
+                </div>
+            </div>
+        </div>
+
+
+{% endblock %}

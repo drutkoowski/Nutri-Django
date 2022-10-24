@@ -74,7 +74,7 @@
       grid-column: 1 / -1;
       grid-row: 1/2;
       animation-name: moveInLeft;
-      animation-duration: 1s;
+      animation-duration: 2s;
       animation-timing-function: ease-out;
       position: relative;
       @include respond(tab-land) {
@@ -127,7 +127,7 @@
       align-items: center;
       margin: 2rem 1rem 0 1rem;
       animation-name: fade-bottom;
-      animation-duration: 1s;
+      animation-duration: 2s;
       animation-timing-function: ease-out;
       @include respond(md-desktop) {
          grid-column-gap: 1rem;
@@ -319,7 +319,7 @@
       align-items: center;
       margin: 2rem 4rem 0 4rem;
       animation-name: fade-bottom;
-      animation-duration: 1s;
+      animation-duration: 2s;
       animation-timing-function: ease-out;
        @include respond(md-desktop) {
         grid-column-gap: 2rem;
@@ -517,7 +517,7 @@
       justify-items: center;
       margin: 4rem 1rem 5rem 1rem;
       animation-name: fade-bottom;
-      animation-duration: 1s;
+      animation-duration: 2s;
       animation-timing-function: ease-out;
       @include respond(md-desktop) {
          margin-top: 10rem;

@@ -10,3 +10,7 @@ if (mealsVideo) {
 window.onresize = function(){ location.reload(); }
 
 
+const mealsAddCard = document.querySelector('.meals__card--add')
+mealsAddCard.addEventListener('click', e => {
+    location.href = location.href + '/add'
+})

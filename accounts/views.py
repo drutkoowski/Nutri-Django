@@ -74,6 +74,11 @@ def activity_view(request):
 def meals_view(request):
     return render(request, 'meals/meals.html')
 
+
+def add_meal_view(request):
+    return render(request, 'meals/add/add_meals.html')
+
+
 # # # # # AJAX VIEWS # # # # #
 
 def login_user(request):
@@ -102,4 +107,3 @@ def check_if_taken(request):
             return JsonResponse({'status': 200, 'text': 'User already exists.'})
         else:
             return JsonResponse({'status': 404, 'text': 'User not exists.'})
-
