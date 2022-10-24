@@ -1,9 +1,8 @@
 const hamburgerNav = document.getElementById('navi-toggle')
-const navigationList = document.getElementsByClassName('navigation__list')[0]
+const navigationList = document.getElementsByClassName('navigation--dashboard__list')[0]
 
-
-const gainsVideo = document.getElementById('gains-video')
-const goalsVideo = document.getElementById('goals-video')
+const hamburgerNavSmall = document.getElementById('navi-toggle-small')
+const navigationListSmall = document.getElementsByClassName('navigation--dashboard--small__list')[0]
 
 hamburgerNav.addEventListener('click', () => {
 
@@ -15,7 +14,20 @@ hamburgerNav.addEventListener('click', () => {
     }
 })
 
+hamburgerNavSmall.addEventListener('click', () => {
+
+    if (!navigationListSmall.classList.contains('not-visible') && !hamburgerNavSmall.checked) {
+        navigationListSmall.classList.add('not-visible')
+    }
+    else if (navigationListSmall.classList.contains('not-visible') && hamburgerNavSmall.checked) {
+         navigationListSmall.classList.remove('not-visible')
+    }
+})
+
+const gainsVideo = document.getElementById('gains-video')
+const goalsVideo = document.getElementById('goals-video')
 if (gainsVideo && goalsVideo) {
     gainsVideo.playbackRate = 0.75;
     goalsVideo.playbackRate = 0.75;
 }
+
