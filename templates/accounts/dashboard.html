@@ -11,7 +11,7 @@
         <div class="dashboard__content">
             {% include 'components/sidebar/sidebar_small.html' %}
             <div class="dashboard__content__welcome-text">
-                 <h1>Welcome back, {{ user.user.first_name}}.</h1>
+                 <h1>Welcome back, {{ get_current_user_profile.user.first_name}}.</h1>
                 <p>Let's check quality of your nutrition for today!</p>
                 {% include 'accounts/navbar.html' %}
             </div>

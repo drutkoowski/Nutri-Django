@@ -4,28 +4,28 @@
         <img src="{% sass_src 'images/svg/default_user.svg' %}" alt="User Avatar">
     </div>
     <div class="dashboard__sidebar__name">
-        {{ user.user.full_name}}
+        {{ get_current_user_profile.user.full_name}}
     </div>
     <div class="dashboard__sidebar__username">
-         {{ user.user.username}}
+         {{get_current_user_profile.user.username}}
     </div>
     <div class="dashboard__sidebar__gender">
-        {{ user.gender}}
+        {{ get_current_user_profile.gender}}
     </div>
     <div class="dashboard__sidebar__years">
-        {{ user.years_old }} years old
+        {{ get_current_user_profile.years_old }} years old
     </div>
     <div class="dashboard__sidebar__height">
-        {{ user.height }} cm
+        {{ get_current_user_profile.height }} cm
     </div>
     <div class="dashboard__sidebar__weight">
-         {{ user.weight }} kg
+         {{ get_current_user_profile.weight }} kg
     </div>
     <div class="dashboard__sidebar__goal">
-        Goal:  {{ user.goal_weight|title }}
+        Goal:  {{ get_current_user_profile.goal_weight|title }}
     </div>
     <div class="dashboard__sidebar__activity-level">
-        Activity: {{ user.activity_level |title}}
+        Activity: {{ get_current_user_profile.activity_level |title}}
     </div>
     <div class="dashboard__sidebar__settings">
         Settings

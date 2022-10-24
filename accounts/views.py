@@ -58,30 +58,21 @@ def logout_view(request):
 
 @login_required(login_url='login')
 def dashboard_view(request):
-    user = UserProfile.objects.filter(user=request.user).first()
-    context = {
-        'user': user,
-    }
-    return render(request, 'accounts/dashboard.html', context)
+    return render(request, 'accounts/dashboard.html')
 
 
 @login_required(login_url='login')
 def dashboard_stats(request):
-    user = UserProfile.objects.filter(user=request.user).first()
-    context = {
-        'user': user,
-    }
-    return render(request, 'accounts/dashboard_stats.html', context)
+    return render(request, 'accounts/dashboard_stats.html')
 
 
 @login_required(login_url='login')
 def activity_view(request):
-    user = UserProfile.objects.filter(user=request.user).first()
-    context = {
-        'user': user,
-    }
-    return render(request, 'accounts/activity_calendar.html', context)
+    return render(request, 'accounts/activity_calendar.html')
 
+
+def meals_view(request):
+    return render(request, 'accounts/activity_calendar.html')
 
 # # # # # AJAX VIEWS # # # # #
 
@@ -111,3 +102,4 @@ def check_if_taken(request):
             return JsonResponse({'status': 200, 'text': 'User already exists.'})
         else:
             return JsonResponse({'status': 404, 'text': 'User not exists.'})
+
