@@ -1,3 +1,11 @@
+.fix-navbar .navigation--dashboard__button{
+    top: 2rem;
+}
+
+.fix-navbar .navigation--dashboard__background{
+    top: 2rem;
+}
+
 .navigation--dashboard {
      @include respond(tab-land) {
       display: none;

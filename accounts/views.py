@@ -72,7 +72,7 @@ def activity_view(request):
 
 
 def meals_view(request):
-    return render(request, 'accounts/activity_calendar.html')
+    return render(request, 'meals/meals.html')
 
 # # # # # AJAX VIEWS # # # # #
 

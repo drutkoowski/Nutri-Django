@@ -1058,6 +1058,12 @@ ORDER: Base + typography > general layout + grid > page layout > components
     align-self: end;
     font-size: 1.5rem; }
 
+.fix-navbar .navigation--dashboard__button {
+  top: 2rem; }
+
+.fix-navbar .navigation--dashboard__background {
+  top: 2rem; }
+
 @media only screen and (max-width: 75em) {
   .navigation--dashboard {
     display: none; } }
@@ -3018,6 +3024,62 @@ body {
   align-self: end;
   font-size: 3.5rem;
   cursor: pointer; }
+
+.meals-layout-container {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 0.15fr 1fr 0.15fr;
+  grid-template-rows: 0.35fr 0.8fr 0.15fr;
+  align-items: center;
+  justify-items: center;
+  position: relative; }
+
+.meals {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-column: 2/3;
+  grid-row: 2/3;
+  width: 100%;
+  height: 100%;
+  grid-column-gap: 5rem; }
+  .meals__card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    background: white;
+    background: linear-gradient(90deg, white 0%, #dbdbee 35%, #cdcecf 100%);
+    -webkit-box-shadow: 0px 0px 8px 5px #42445a;
+    -moz-box-shadow: 0px 0px 8px 5px #42445a;
+    box-shadow: 0px 0px 8px 5px #42445a;
+    align-content: center;
+    padding: 0 2rem;
+    transition: all .2s ease-out;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white; }
+    .meals__card:hover {
+      transform: scale(1.1); }
+    .meals__card h1 {
+      margin-top: 15rem;
+      font-size: 4rem;
+      align-self: center; }
+    .meals__card p {
+      margin-top: 15rem;
+      font-size: 2rem;
+      align-self: center; }
+    .meals__card--add {
+      background-image: linear-gradient(to right bottom, rgba(241, 241, 241, 0.3), rgba(82, 82, 82, 0.5)), url("/static/images/add_meals_card.png"); }
+    .meals__card--proposition {
+      background-image: linear-gradient(to right bottom, rgba(241, 241, 241, 0.3), rgba(82, 82, 82, 0.5)), url("/static/images/meal_proposition_card.jpg");
+      background-size: cover; }
+    .meals__card--saved {
+      background-image: linear-gradient(to right bottom, rgba(241, 241, 241, 0.3), rgba(82, 82, 82, 0.5)), url("/static/images/saved_meals_card.jpg"); }
+
+#meals-video {
+  opacity: 0.7;
+  filter: blur(5px); }
 
 *,
 *::after,

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load sass_tags %}
+{% block scripts %}
+     <script src="{% sass_src 'scripts/meals/main.js' %}" defer></script>
+{% endblock scripts %}
+{% block content %}
+    <div class="loader"></div>
+     <div class="bg-video" id="meals-video-container">
+         <video id="meals-video" class="bg-video__content" autoplay muted loop>
+             <source src="{% sass_src 'video/meals_bg_video.mp4' %}" type="video/mp4">
+             <source src="{% sass_src 'video/meals_bg_video.webm' %}" type="video/webm">
+             Your browser is not supported!
+         </video>
+     </div>
+    <div class="meals-layout-container">
+        {% include 'accounts/navbar.html' %}
+        <div class="meals grid-full-span">
+            <div class="meals__card meals__card--add">
+                <h1>Add Today's Meal.</h1>
+                <p>Fill your day with the foods you eat today and find out more about their calorie content and the ingredients such as protein, fibre and carbohydrates they contain.</p>
+            </div>
+            <div class="meals__card meals__card--proposition">
+                <h1>Meals Propositions.</h1>
+                <p>Browse the dish suggestions with their recipes and other information constructed by us just for you.</p>
+            </div>
+            <div class="meals__card meals__card--saved">
+                <h1>Saved Meals.</h1>
+                <p>View and modify your saved dishes to make it easier and quicker to use the option to add meals.</p>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
