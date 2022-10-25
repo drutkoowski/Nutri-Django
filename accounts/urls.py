@@ -12,6 +12,7 @@ urlpatterns = [
     path('dashboard/stats', views.dashboard_stats, name='stats'),
     path('meals', views.meals_view, name='meals'),
     path('meals/add', views.add_meal_view, name='add-meal'),
+    path('meals/propositions', views.meal_propositions_view, name='meal-propositions'),
     # ajax views
     path('data/login-user', views.login_user, name='login-user'),
     path('data/check-if-taken', views.check_if_taken, name='check-if-taken')

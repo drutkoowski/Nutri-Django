@@ -79,6 +79,10 @@ def add_meal_view(request):
     return render(request, 'meals/add/add_meals.html')
 
 
+def meal_propositions_view(request):
+    return render(request, 'meals/propositions/meal_propositions.html')
+
+
 # # # # # AJAX VIEWS # # # # #
 
 def login_user(request):

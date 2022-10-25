@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% load sass_tags %}
+{% block scripts %}
+     <script src="{% sass_src 'scripts/meals/main.js' %}" defer></script>
+{% endblock scripts %}
+{% block content %}
+    <div class="loader"></div>
+     <div class="bg-video" id="meals-video-container">
+         <video id="meals-video" class="bg-video__content" autoplay muted loop>
+             <source src="{% sass_src 'video/meals_bg_video.mp4' %}" type="video/mp4">
+             <source src="{% sass_src 'video/meals_bg_video.webm' %}" type="video/webm">
+             Your browser is not supported!
+         </video>
+     </div>
+    <div class="meals-layout-container">
+        {% include 'accounts/navbar.html' %}
+         {% include 'accounts/navbar_small.html' %}
+        <div class="meals-propositions grid-full-span">
+              <div class="meals-propositions__card">
+                 <div class="meals-propositions__card__side meals-propositions__card__side--front">
+                     <div class="meals-propositions__card__picture">
+                         <img src="https://www.wedrowkipokuchni.com.pl/wp-content/uploads/2013/03/cc-500x500.jpg" alt="Meal Suggestion Photo">
+                     </div>
+                     <h4 class="meals-propositions__card__heading">
+                         <span class="meals-propositions__card__heading-span">Pierogi Ruskie</span>
+                     </h4>
+                     <div class="meals-propositions__card__details">
+                         <ul>
+                             <li>Ingredient 1</li>
+                             <li>Ingredient 2</li>
+                             <li>Ingredient 3</li>
+                             <li>Ingredient 4</li>
+                             <li>Ingredient 5</li>
+                         </ul>
+                     </div>
+                     <a href='' class="meals-propositions__save">Save Recipe</a>
+                 </div>
+                <div class="meals-propositions__card__side meals-propositions__card__side--back" style="background-image: linear-gradient(to bottom, rgba(142,243,125,0.3) 0%,rgba(0,252,0,0.2) 100%), url('https://www.wedrowkipokuchni.com.pl/wp-content/uploads/2013/03/cc-500x500.jpg');">
+                     <div class="meals-propositions__card__details-only">
+                         <div class="meals-propositions__card__details-only--content"><img class="filter-white" src="{% sass_src 'images/svg/clock.svg' %}" alt="Clock icon"><p>45 min</p></div>
+                         <div class="meals-propositions__card__details-only--content"><img class="filter-white" src="{% sass_src 'images/svg/up-arrow.svg' %}" alt="Difficulty icon"><p style="margin-top: 5px">Medium</p></div>
+                     </div>
+                    <div class="meals-propositions__card__cta">
+                        <div class="meals-propositions__card__details-box">
+                            <div class="meals-propositions__card__details-value"><p>3 servings</p></div>
+                            <div class="meals-propositions__card__details-value"><p>429 kcal</p></div>
+                            <div class="meals-propositions__card__details-value"><p>38g protein</p></div>
+                            <div class="meals-propositions__card__details-value"><p>13g carbohydrates</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                <div class="meals-propositions__card">
+                 <div class="meals-propositions__card__side meals-propositions__card__side--front">
+                     <div class="meals-propositions__card__picture">
+                         <img src="https://www.wedrowkipokuchni.com.pl/wp-content/uploads/2013/03/cc-500x500.jpg" alt="Meal Suggestion Photo">
+                     </div>
+                     <h4 class="meals-propositions__card__heading">
+                         <span class="meals-propositions__card__heading-span">Pierogi Ruskie</span>
+                     </h4>
+                     <div class="meals-propositions__card__details">
+                         <ul>
+                             <li>Ingredient 1</li>
+                             <li>Ingredient 2</li>
+                             <li>Ingredient 3</li>
+                             <li>Ingredient 4</li>
+                             <li>Ingredient 5</li>
+                         </ul>
+                     </div>
+                     <a href='' class="meals-propositions__save">Save Recipe</a>
+                 </div>
+                <div class="meals-propositions__card__side meals-propositions__card__side--back" style="background-image: linear-gradient(to bottom, rgba(142,243,125,0.3) 0%,rgba(0,252,0,0.2) 100%), url('https://www.wedrowkipokuchni.com.pl/wp-content/uploads/2013/03/cc-500x500.jpg');">
+                     <div class="meals-propositions__card__details-only">
+                         <div class="meals-propositions__card__details-only--content"><img class="filter-white" src="{% sass_src 'images/svg/clock.svg' %}" alt="Clock icon"><p>45 min</p></div>
+                         <div class="meals-propositions__card__details-only--content"><img class="filter-white" src="{% sass_src 'images/svg/up-arrow.svg' %}" alt="Difficulty icon"><p style="margin-top: 5px">Medium</p></div>
+                     </div>
+                    <div class="meals-propositions__card__cta">
+                        <div class="meals-propositions__card__details-box">
+                            <div class="meals-propositions__card__details-value"><p>3 servings</p></div>
+                            <div class="meals-propositions__card__details-value"><p>429 kcal</p></div>
+                            <div class="meals-propositions__card__details-value"><p>38g protein</p></div>
+                            <div class="meals-propositions__card__details-value"><p>13g carbohydrates</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <div class="meals-propositions__card">
+                 <div class="meals-propositions__card__side meals-propositions__card__side--front">
+                     <div class="meals-propositions__card__picture">
+                         <img src="https://www.wedrowkipokuchni.com.pl/wp-content/uploads/2013/03/cc-500x500.jpg" alt="Meal Suggestion Photo">
+                     </div>
+                     <h4 class="meals-propositions__card__heading">
+                         <span class="meals-propositions__card__heading-span">Pierogi Ruskie</span>
+                     </h4>
+                     <div class="meals-propositions__card__details">
+                         <ul>
+                             <li>Ingredient 1</li>
+                             <li>Ingredient 2</li>
+                             <li>Ingredient 3</li>
+                             <li>Ingredient 4</li>
+                             <li>Ingredient 5</li>
+                         </ul>
+                     </div>
+                     <a href='' class="meals-propositions__save">Save Recipe</a>
+                 </div>
+                <div class="meals-propositions__card__side meals-propositions__card__side--back" style="background-image: linear-gradient(to bottom, rgba(142,243,125,0.3) 0%,rgba(0,252,0,0.2) 100%), url('https://www.wedrowkipokuchni.com.pl/wp-content/uploads/2013/03/cc-500x500.jpg');">
+                     <div class="meals-propositions__card__details-only">
+                         <div class="meals-propositions__card__details-only--content"><img class="filter-white" src="{% sass_src 'images/svg/clock.svg' %}" alt="Clock icon"><p>45 min</p></div>
+                         <div class="meals-propositions__card__details-only--content"><img class="filter-white" src="{% sass_src 'images/svg/up-arrow.svg' %}" alt="Difficulty icon"><p style="margin-top: 5px">Medium</p></div>
+                     </div>
+                    <div class="meals-propositions__card__cta">
+                        <div class="meals-propositions__card__details-box">
+                            <div class="meals-propositions__card__details-value"><p>3 servings</p></div>
+                            <div class="meals-propositions__card__details-value"><p>429 kcal</p></div>
+                            <div class="meals-propositions__card__details-value"><p>38g protein</p></div>
+                            <div class="meals-propositions__card__details-value"><p>13g carbohydrates</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

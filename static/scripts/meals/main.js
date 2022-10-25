@@ -12,5 +12,10 @@ window.onresize = function(){ location.reload(); }
 
 const mealsAddCard = document.querySelector('.meals__card--add')
 mealsAddCard.addEventListener('click', e => {
-    location.href = location.href + '/add'
+    location.href = location.origin + '/meals/add'
+})
+
+const mealsPropositionCard = document.querySelector('.meals__card--proposition')
+mealsPropositionCard.addEventListener('click', e => {
+    location.href = location.origin + '/meals/propositions'
 })
