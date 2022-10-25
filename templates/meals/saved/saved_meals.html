@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load sass_tags %}
+
+{% block scripts %}
+     <script src="{% sass_src 'scripts/meals/add/main.js' %}" defer></script>
+     <script src="{% sass_src 'scripts/meals/saved/main.js' %}" defer></script>
+    <script>
+        let searchIconPath = "{% sass_src 'images/svg/search.svg' %}"
+    </script>
+{% endblock scripts %}
+{% block content %}
+    <div class="loader"></div>
+      <div class="bg-video" id="add-meals-video-container">
+         <video id="add-meals-video" class="bg-video__content" autoplay muted loop>
+             <source src="{% sass_src 'video/add_meal_bg_video.mp4' %}" type="video/mp4">
+             <source src="{% sass_src 'video/add_meal_bg_video.webm' %}" type="video/webm">
+             Your browser is not supported!
+         </video>
+     </div>
+
+        <div class="add-meals-layout-container">
+            {% include 'accounts/navbar.html' %}
+             {% include 'accounts/navbar_small.html' %}
+            <div class="saved-meals grid-full-span">
+                <div class="saved-meals__search">
+                    <div class="saved-meals__search__results">
+                        <h3>Your Saved Meals</h3>
+                        <hr>
+                        <div class="saved-meals__search__results__container">
+                            <div class="saved-meals__search__results__container__item">
+                                <div class="saved-meals__search__results__container__item__recipe"><p>Spaghetti Carbonara</p></div>
+                                <div class="saved-meals__search__results__container__item__buttons">
+                                    <button class="details-saved-meals" data-meal='432'>Details</button>
+                                    <button class="edit-saved-meals">Edit</button>
+                                    <button class="">Delete</button>
+                                </div>
+                            </div>
+                            <div class="saved-meals__search__results__container__item">
+                                <div class="saved-meals__search__results__container__item__recipe"><p>Jajecznica Damiana</p></div>
+                                <div class="saved-meals__search__results__container__item__buttons">
+                                    <button class="details-saved-meals" data-meal='3212'>Details</button>
+                                    <button class="edit-saved-meals">Edit</button>
+                                    <button>Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="saved-meals__search__save-new">
+                        <p>Do you want to create new meal?</p>
+                        <button class="saved-meals__search__save-new__button">Save New Meal</button>
+                    </div>
+                </div>
+                <div class="saved-meals__added not-visible">
+                    <div class="saved-meals__added--saved">
+                        <div class="saved-meals__added--saved__heading">
+                            <h2 class="saved-meals__added--saved__heading--item">&nbsp;</h2>
+                        </div>
+                        <div class="saved-meals__added--saved__content"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+{% endblock %}

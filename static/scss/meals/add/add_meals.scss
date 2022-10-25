@@ -19,7 +19,6 @@
     background-repeat: no-repeat;
     background-size: cover;
   }
-
 }
 .add-meals {
   display: grid;
@@ -75,6 +74,7 @@
         position: absolute;
         top: 20%;
         right: 2%;
+        cursor: pointer;
       }
     }
     hr {

@@ -1,6 +1,3 @@
-
-
-console.log(location.href, location.origin, location.origin+'/')
 if (location.href !== location.origin && location.href !== location.origin + '/') {
     const hamburgerNav = document.getElementById('navi-toggle')
     const navigationList = document.getElementsByClassName('navigation--dashboard__list')[0]

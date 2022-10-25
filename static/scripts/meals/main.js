@@ -19,3 +19,8 @@ const mealsPropositionCard = document.querySelector('.meals__card--proposition')
 mealsPropositionCard.addEventListener('click', e => {
     location.href = location.origin + '/meals/propositions'
 })
+
+const mealsSaved = document.querySelector('.meals__card--saved')
+mealsSaved.addEventListener('click', e => {
+    location.href = location.origin + '/meals/saved'
+})
