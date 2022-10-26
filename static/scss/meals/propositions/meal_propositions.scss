@@ -1,14 +1,56 @@
+.meals-propositions-layout-container {
+  width: 100vw;
+  height: auto;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 0.1fr 1fr 0.1fr;
+  grid-template-rows: 0.2fr 1fr;
+  align-items: center;
+  justify-items: center;
+  position: relative;
+  @include respond(md-desktop){
+      grid-template-columns: 0.05fr 1fr 0.05fr;
+  }
+  @include respond(tab-desktop) {
+    grid-template-columns: 0.05fr 1fr 0.05fr;
+    grid-template-rows: 0.30fr 2fr 0.15fr;
+    height: auto;
+    background-image: linear-gradient(to bottom, rgba(246, 244, 244, 0.5), rgba(148, 147, 147, 0.84)), url("https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+
 .meals-propositions{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr;
     grid-column: 2/3;
     grid-row: 2/3;
-    width: 100%;
-    height: 100%;
+    justify-self: stretch;
     grid-column-gap: 5rem;
-    grid-row-gap: 3rem;
-
+    @include respond(tab-md){
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        justify-self: center;
+        width: 55rem;
+        grid-column-gap: 0;
+        grid-row-gap: 10rem;
+    }
+    @include respond(phone-lg){
+        width: 45rem;
+    }
+     @include respond(phone-md-lg){
+        width: 35rem;
+    }
+    @include respond(phone-md-sm){
+        width: 30rem;
+    }
+    @include respond(phone-sm){
+        width: 25rem;
+    }
      &__save {
         display: flex;
         height: 5rem;
@@ -63,6 +105,14 @@
         transform: rotateY(0);
     }
 
+    &:active &__side--front {
+        transform: rotateY(-180deg);
+    }
+
+    &:active &__side--back {
+        transform: rotateY(0);
+    }
+
 
     // FRONT SIDE STYLING
     &__picture {
@@ -86,6 +136,10 @@
         top: 12rem;
         right: 2rem;
         width: 75%;
+       @include respond(tab-desktop) {
+            font-size: 2.3rem;
+            width: 55%;
+        }
 
     }
 
@@ -97,6 +151,9 @@
         background-image: linear-gradient(to right bottom,
                 rgb(174, 229, 166),
                 rgb(118, 238, 106));
+        @include respond(tab-desktop) {
+             padding: 0.5rem 0.5rem;
+        }
     }
 
     &__details {
@@ -111,7 +168,6 @@
                 text-align: center;
                 font-size: 1.5rem;
                 padding: 1rem;
-
                 &:not(:last-child) {
                     border-bottom: 1px solid rgb(127, 128, 128);
                 }
@@ -150,6 +206,9 @@
         text-transform: uppercase;
         justify-self: center;
         align-self: center;
+        @include respond(phone-sm){
+            font-size: 1.7rem;
+        }
         &--content {
             display: flex;
             img {
@@ -158,6 +217,10 @@
                 justify-self: center;
                 align-self: center;
                 margin-right: 1rem;
+                @include respond(phone-sm){
+                    width: 2rem;
+                    height: 2rem;
+                }
             }
         }
     }
@@ -166,60 +229,13 @@
         margin-top: 1.5rem;
         font-size: 3.5rem;
         font-weight: bold;
-    }
-
-
-
-
-
-    //@include respond(tab-port) {
-    @media only screen and (max-width: 56.25em),
-            only screen and (hover: none) {
-
-        height: auto;
-        border-radius: 3px;
-        background-color: white;
-        box-shadow: 0 1.5rem 4rem rgba(0,0,0, .15);
-
-        &__side {
-            height: auto;
-            position: relative;
-            box-shadow: none;
-
-            &--back {
-                transform: rotateY(0);
-                clip-path: polygon(0 15%, 100% 0, 100% 100%, 0% 100%);
-            }
+        @include respond(phone-md){
+            font-size: 3rem;
         }
-
-        &:hover &__side--front {
-            transform: rotateY(0);
-        }
-
-
-        &__details {
-            padding: 1rem 3rem;
-        }
-
-        // FRONT SIDE STYLING
-        &__cta {
-            position: relative;
-            top: 0%;
-            left: 0;
-            transform: translate(0);
-            width: 100%;
-            padding: 7rem 4rem 4rem 4rem;
-        }
-
-        &__details-box {
-            margin-bottom: 3rem;
-        }
-
-        &__details-value {
-            font-size: 4rem;
+         @include respond(phone-sm){
+            font-size: 2.4rem;
         }
      }
-
     }
 }
 
