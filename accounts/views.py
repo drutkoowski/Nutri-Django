@@ -99,17 +99,3 @@ def check_if_taken(request):
             return JsonResponse({'status': 200, 'text': 'User already exists.'})
         else:
             return JsonResponse({'status': 404, 'text': 'User not exists.'})
-
-
-def live_search_profiles(request):
-    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
-        query = request.GET.get('query')
-        if query is not '':
-            check_if_user_exists = Account.objects.filter(username__istartswith=query).all()
-            if check_if_user_exists is not None:
-                usernames = list(check_if_user_exists.values_list('username', flat=True))
-                return JsonResponse({'status': 200, 'text': 'User already exists.', 'usernames': usernames})
-            else:
-                return JsonResponse({'status': 404, 'text': 'User not exists.', 'usernames': []})
-        else:
-            return JsonResponse({'status': 404, 'text': 'User not exists.', 'usernames': []})

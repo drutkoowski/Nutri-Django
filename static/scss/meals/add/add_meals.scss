@@ -22,7 +22,7 @@
 }
 .add-meals {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
   grid-column: 2/3;
   grid-row: 2/3;
@@ -40,6 +40,7 @@
 
 
   &__search {
+    height: 55rem;
     display: flex;
     flex-direction: column;
     grid-row: 1/2;
@@ -49,6 +50,9 @@
     -webkit-box-shadow: 0px 0px 8px 2px rgba(66, 68, 90, 1);
     -moz-box-shadow: 0px 0px 8px 2px rgba(66, 68, 90, 1);
     box-shadow: 0px 0px 8px 2px rgba(66, 68, 90, 1);
+    animation-name: fade-left;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
     @include respond(tab-desktop) {
       grid-row: 1/2;
       grid-column: 1/2;
@@ -130,6 +134,9 @@
           grid-template-rows: 1fr;
           align-items: center;
           transition: all .3s ease-in;
+          animation-name: fade-bottom;
+          animation-duration: 1s;
+          animation-timing-function: ease-out;
           @include respond(tab-desktop) {
             grid-template-columns: 1fr 0.1fr;
           }
@@ -143,29 +150,7 @@
           grid-column: 1/2;
 
         }
-        button {
-          border-radius: 5px;
-          border: none;
-          width: 3rem;
-          height: 3rem;
-          grid-column: 2/3;
-          font-size: 2rem;
-          font-weight: bold;
-          cursor: pointer;
-          transition: all .3s ease-in;
-          background-color: rgb(189, 231, 197);
-          color: white;
-          @include respond(phone-lg){
-            margin-right: 1rem;
-          }
-          @include respond(phone-md){
-             width: 2rem;
-             height: 2rem;
-          }
-          &:hover {
-            transform: scale(1.25);
-          }
-        }
+
       }
       }
       h3 {
@@ -176,7 +161,8 @@
   }
 
   &__added {
-     background-color: rgb(189, 231, 197);
+    height: 55rem;
+    background-color: rgb(189, 231, 197);
     border-radius: 20px;
     grid-column: 2/3;
     grid-row: 1/2;
@@ -184,9 +170,12 @@
     -moz-box-shadow: 0px 0px 8px 2px rgba(66, 68, 90, 1);
     box-shadow: 0px 0px 8px 2px rgba(66, 68, 90, 1);
     display: grid;
-    grid-template-rows: 0.3fr 3fr;
+    grid-template-rows: 0.3fr 3fr 0.3fr;
     grid-template-columns: 1fr 1fr;
     color: white;
+    animation-name: fade-right;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
     @include respond(tab-desktop) {
       grid-row: 2/3;
       grid-column: 1/2;
@@ -241,6 +230,9 @@
           align-items: center;
           border-bottom: 1px solid #f2f2f2;
           transition: all .3s ease-in;
+          animation-name: fade-bottom;
+          animation-duration: 1s;
+          animation-timing-function: ease-out;
            @include respond(tab-desktop) {
             grid-template-columns: 1fr 0.1fr;
           }
@@ -251,37 +243,10 @@
          p {
           margin-left: 1.5rem;
           grid-column: 1/2;
-          font-size: 2.5rem;
+          font-size: 1.5rem;
           margin-right: 2.5rem;
            @include respond(md-desktop){
             font-size: 2rem;
-          }
-        }
-        button {
-          border-radius: 5px;
-          border: none;
-          width: 3rem;
-          height: 3rem;
-          grid-column: 2/3;
-          font-size: 1.8rem;
-          font-weight: bold;
-          cursor: pointer;
-          transition: all .3s ease-in;
-          background-color: rgb(189, 231, 197);
-          color: white;
-          @include respond(md-desktop){
-            margin-right: 0.5rem;
-          }
-          @include respond(tab-port){
-            margin-right: 2rem;
-          }
-          @include respond(phone-md){
-             width: 2rem;
-             height: 2rem;
-          }
-
-          &:hover {
-            transform: scale(1.25);
           }
         }
       }
@@ -343,7 +308,7 @@
           margin-top: 0.5rem;
           display: grid;
           grid-template-columns: 0.8fr 0.2fr;
-          grid-template-rows: 1fr;
+          grid-template-rows: 1fr 0.5fr;
           align-items: center;
           border-bottom: 1px solid #f2f2f2;
           transition: all .3s ease-in;
@@ -356,38 +321,17 @@
         p{
           margin-left: 1.5rem;
           grid-column: 1/2;
-          font-size: 2.5rem;
+          font-size: 1.5rem;
           margin-right: 2.5rem;
+
+          // margin-left: 1.5rem;
+          //          grid-column: 1/2;
+          //          font-size: 1.5rem;
+          //          margin-right: 2.5rem;
           @include respond(md-desktop){
             font-size: 2rem;
           }
 
-        }
-        button {
-          border-radius: 5px;
-          border: none;
-          width: 3rem;
-          height: 3rem;
-          grid-column: 2/3;
-          font-size: 1.8rem;
-          font-weight: bold;
-          cursor: pointer;
-          transition: all .3s ease-in;
-          background-color: rgb(189, 231, 197);
-          color: white;
-          @include respond(md-desktop){
-            margin-right: 0.5rem;
-          }
-          @include respond(tab-port){
-            margin-right: 2rem;
-          }
-          @include respond(phone-md){
-             width: 2rem;
-             height: 2rem;
-          }
-          &:hover {
-            transform: scale(1.25);
-          }
         }
       }
       }
@@ -415,4 +359,50 @@
   @include respond(tab-land) {
     display: none;
   }
+}
+
+.add-icon {
+  background-image: url("/static/images/svg/plus.svg");
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+}
+
+.remove-icon {
+  background-image: url("/static/images/svg/minus.svg");
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+}
+
+.today-meals-added-inputBox{
+  grid-row: 2/3;
+  grid-column: 1 / -1;
+  margin: 0.5rem 1.5rem 0 1.5rem;
+  font-size: 1.5rem;
+  input {
+    width: 8rem;
+    height: 2rem;
+    text-align: center;
+    border-radius: 10px;
+    border: none;
+    background-color: rgba(200, 243, 195, 0.69);
+  }
+  label {
+    margin-left: 1rem;
+  }
+}
+
+.save-add-today-meals{
+  grid-row: 3/4;
+  grid-column: 1/-1;
+  border-radius: 5px;
+  width: 15rem;
+  height: 3rem;
+  align-self: center;
+  justify-self: center;
+  font-size: 2rem;
+  border: none;
+  background-color: #7FFF00;
+  color: white;
 }

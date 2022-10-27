@@ -28,6 +28,12 @@
 .filter-white {
   filter: invert(98%) sepia(0%) saturate(0%) hue-rotate(37deg) brightness(103%) contrast(105%); }
 
+.filter-green {
+  filter: invert(81%) sepia(58%) saturate(4641%) hue-rotate(44deg) brightness(110%) contrast(125%); }
+
+.filter-red {
+  filter: invert(16%) sepia(79%) saturate(5943%) hue-rotate(342deg) brightness(89%) contrast(93%); }
+
 .margin-top-md {
   margin-top: 5rem; }
 
@@ -3212,7 +3218,7 @@ body {
       background-size: cover; } }
 .add-meals {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
   grid-column: 2/3;
   grid-row: 2/3;
@@ -3228,6 +3234,7 @@ body {
       grid-column-gap: 0;
       grid-row-gap: 5rem; } }
   .add-meals__search {
+    height: 55rem;
     display: flex;
     flex-direction: column;
     grid-row: 1/2;
@@ -3236,7 +3243,10 @@ body {
     border-radius: 20px;
     -webkit-box-shadow: 0px 0px 8px 2px #42445a;
     -moz-box-shadow: 0px 0px 8px 2px #42445a;
-    box-shadow: 0px 0px 8px 2px #42445a; }
+    box-shadow: 0px 0px 8px 2px #42445a;
+    animation-name: fade-left;
+    animation-duration: 1s;
+    animation-timing-function: ease-out; }
     @media only screen and (max-width: 84.375em) {
       .add-meals__search {
         grid-row: 1/2;
@@ -3307,7 +3317,10 @@ body {
           grid-template-columns: 0.8fr 0.2fr;
           grid-template-rows: 1fr;
           align-items: center;
-          transition: all .3s ease-in; }
+          transition: all .3s ease-in;
+          animation-name: fade-bottom;
+          animation-duration: 1s;
+          animation-timing-function: ease-out; }
           @media only screen and (max-width: 84.375em) {
             .add-meals__search__results__container__item {
               grid-template-columns: 1fr 0.1fr; } }
@@ -3317,31 +3330,11 @@ body {
             transform: scale(1.02); }
           .add-meals__search__results__container__item p {
             grid-column: 1/2; }
-          .add-meals__search__results__container__item button {
-            border-radius: 5px;
-            border: none;
-            width: 3rem;
-            height: 3rem;
-            grid-column: 2/3;
-            font-size: 2rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all .3s ease-in;
-            background-color: #bde7c5;
-            color: white; }
-            @media only screen and (max-width: 37.5em) {
-              .add-meals__search__results__container__item button {
-                margin-right: 1rem; } }
-            @media only screen and (max-width: 28.5em) {
-              .add-meals__search__results__container__item button {
-                width: 2rem;
-                height: 2rem; } }
-            .add-meals__search__results__container__item button:hover {
-              transform: scale(1.25); }
       .add-meals__search__results h3 {
         margin: 2rem 2rem;
         font-size: 2.3rem; }
   .add-meals__added {
+    height: 55rem;
     background-color: #bde7c5;
     border-radius: 20px;
     grid-column: 2/3;
@@ -3350,9 +3343,12 @@ body {
     -moz-box-shadow: 0px 0px 8px 2px #42445a;
     box-shadow: 0px 0px 8px 2px #42445a;
     display: grid;
-    grid-template-rows: 0.3fr 3fr;
+    grid-template-rows: 0.3fr 3fr 0.3fr;
     grid-template-columns: 1fr 1fr;
-    color: white; }
+    color: white;
+    animation-name: fade-right;
+    animation-duration: 1s;
+    animation-timing-function: ease-out; }
     @media only screen and (max-width: 84.375em) {
       .add-meals__added {
         grid-row: 2/3;
@@ -3405,7 +3401,10 @@ body {
           grid-template-rows: 1fr;
           align-items: center;
           border-bottom: 1px solid #f2f2f2;
-          transition: all .3s ease-in; }
+          transition: all .3s ease-in;
+          animation-name: fade-bottom;
+          animation-duration: 1s;
+          animation-timing-function: ease-out; }
           @media only screen and (max-width: 84.375em) {
             .add-meals__added--added__content__item {
               grid-template-columns: 1fr 0.1fr; } }
@@ -3414,35 +3413,11 @@ body {
           .add-meals__added--added__content__item p {
             margin-left: 1.5rem;
             grid-column: 1/2;
-            font-size: 2.5rem;
+            font-size: 1.5rem;
             margin-right: 2.5rem; }
             @media only screen and (max-width: 93.75em) {
               .add-meals__added--added__content__item p {
                 font-size: 2rem; } }
-          .add-meals__added--added__content__item button {
-            border-radius: 5px;
-            border: none;
-            width: 3rem;
-            height: 3rem;
-            grid-column: 2/3;
-            font-size: 1.8rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all .3s ease-in;
-            background-color: #bde7c5;
-            color: white; }
-            @media only screen and (max-width: 93.75em) {
-              .add-meals__added--added__content__item button {
-                margin-right: 0.5rem; } }
-            @media only screen and (max-width: 56.25em) {
-              .add-meals__added--added__content__item button {
-                margin-right: 2rem; } }
-            @media only screen and (max-width: 28.5em) {
-              .add-meals__added--added__content__item button {
-                width: 2rem;
-                height: 2rem; } }
-            .add-meals__added--added__content__item button:hover {
-              transform: scale(1.25); }
       .add-meals__added--added__content::-webkit-scrollbar-track {
         -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
         border-radius: 10px;
@@ -3495,7 +3470,7 @@ body {
           margin-top: 0.5rem;
           display: grid;
           grid-template-columns: 0.8fr 0.2fr;
-          grid-template-rows: 1fr;
+          grid-template-rows: 1fr 0.5fr;
           align-items: center;
           border-bottom: 1px solid #f2f2f2;
           transition: all .3s ease-in; }
@@ -3507,35 +3482,11 @@ body {
           .add-meals__added--saved__content__item p {
             margin-left: 1.5rem;
             grid-column: 1/2;
-            font-size: 2.5rem;
+            font-size: 1.5rem;
             margin-right: 2.5rem; }
             @media only screen and (max-width: 93.75em) {
               .add-meals__added--saved__content__item p {
                 font-size: 2rem; } }
-          .add-meals__added--saved__content__item button {
-            border-radius: 5px;
-            border: none;
-            width: 3rem;
-            height: 3rem;
-            grid-column: 2/3;
-            font-size: 1.8rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all .3s ease-in;
-            background-color: #bde7c5;
-            color: white; }
-            @media only screen and (max-width: 93.75em) {
-              .add-meals__added--saved__content__item button {
-                margin-right: 0.5rem; } }
-            @media only screen and (max-width: 56.25em) {
-              .add-meals__added--saved__content__item button {
-                margin-right: 2rem; } }
-            @media only screen and (max-width: 28.5em) {
-              .add-meals__added--saved__content__item button {
-                width: 2rem;
-                height: 2rem; } }
-            .add-meals__added--saved__content__item button:hover {
-              transform: scale(1.25); }
       .add-meals__added--saved__content::-webkit-scrollbar-track {
         -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
         border-radius: 10px;
@@ -3554,6 +3505,46 @@ body {
   @media only screen and (max-width: 75em) {
     #add-meals-video {
       display: none; } }
+.add-icon {
+  background-image: url("/static/images/svg/plus.svg");
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer; }
+
+.remove-icon {
+  background-image: url("/static/images/svg/minus.svg");
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer; }
+
+.today-meals-added-inputBox {
+  grid-row: 2/3;
+  grid-column: 1 / -1;
+  margin: 0.5rem 1.5rem 0 1.5rem;
+  font-size: 1.5rem; }
+  .today-meals-added-inputBox input {
+    width: 8rem;
+    height: 2rem;
+    text-align: center;
+    border-radius: 10px;
+    border: none;
+    background-color: rgba(200, 243, 195, 0.69); }
+  .today-meals-added-inputBox label {
+    margin-left: 1rem; }
+
+.save-add-today-meals {
+  grid-row: 3/4;
+  grid-column: 1/-1;
+  border-radius: 5px;
+  width: 15rem;
+  height: 3rem;
+  align-self: center;
+  justify-self: center;
+  font-size: 2rem;
+  border: none;
+  background-color: #7FFF00;
+  color: white; }
+
 .meals-propositions-layout-container {
   width: 100vw;
   height: auto;

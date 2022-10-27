@@ -18,23 +18,11 @@
              {% include 'accounts/navbar_small.html' %}
             <div class="add-meals grid-full-span">
                 <div class="add-meals__search">
-                    <div class="add-meals__search__bar"><input type="text" placeholder="Search"/><span><img class="add-meals__search__bar__icon" src="{% sass_src 'images/svg/search.svg' %}" alt="Search Icon" /></span></div>
+                    <div class="add-meals__search__bar"><input class="search-meal-add" type="text" placeholder="Search"/><span><img class="add-meals__search__bar__icon" src="{% sass_src 'images/svg/search.svg' %}" alt="Search Icon" /></span></div>
                     <div class="add-meals__search__results">
                         <h3>Your search results</h3>
                         <hr>
-                        <div class="add-meals__search__results__container">
-                            <div class="add-meals__search__results__container__item">
-                                <p>Eggs x6 - 128 kcal</p>
-                                <button>+</button>
-                            </div>
-                            <div class="add-meals__search__results__container__item">
-                                <p>Milk 1200ml - 837 kcal</p>
-                                <button>+</button>
-                            </div>
-                            <div class="add-meals__search__results__container__item">
-                                  <p>Banana x3 - 203 kcal</p><button>+</button>
-                            </div>
-                        </div>
+                        <div class="add-meals__search__results__container"></div>
                     </div>
                 </div>
                 <div class="add-meals__added">
@@ -43,12 +31,7 @@
                             <h2>Today's Meals</h2>
                         </div>
                     </div>
-                    <div class="add-meals__added--added__content">
-                        <div class="add-meals__added--added__content__item">
-                             <p>Eggs x6</p>
-                            <button>-</button>
-                        </div>
-                    </div>
+                    <div class="add-meals__added--added__content"></div>
                     <div class="add-meals__added--saved">
                        <div class="add-meals__added--saved__heading">
                             <h2>Saved Meals</h2>
@@ -57,9 +40,10 @@
                      <div class="add-meals__added--saved__content">
                          <div class="add-meals__added--saved__content__item">
                              <p>Damian's Pizza - 1239 kcalaaaa</p>
-                            <button>+</button>
+                            <div class="add-icon filter-green"></div>
                         </div>
                      </div>
+                    <button class="save-add-today-meals">Save</button>
                 </div>
             </div>
         </div>

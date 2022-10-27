@@ -135,7 +135,7 @@ editButtons.forEach(button => button.addEventListener('click', e => {
 
 
 const ajaxCall = (query) => {
-    const url = window.location.origin + '/data/live-search'
+    const url = window.location.origin + '/meals/data/live-search-ingredients'
      const searchResponseBox = document.querySelector('.saved-meals__added--saved__content__search-response')
     $.ajax({
         type: "GET",
@@ -151,12 +151,12 @@ const ajaxCall = (query) => {
                     el.remove()
                 })
                searchResponseBox.classList.remove('not-visible')
-               let usernames = [...response.usernames]
-               usernames.forEach(username => {
+               let ingredients = [...response.ingredients]
+               ingredients.forEach(ingredient => {
                    let contentToAppend = `
                     <div class="saved-meals__added--saved__content__search-response__item">
-                        <p>${username}</p>
-                        <button id='${username}' class="new-meal-add-item">+</button>
+                        <p>${ingredient.en_name}</p>
+                        <button id='${ingredient.pk}' class="new-meal-add-item">+</button>
                     </div>
                    `
                    searchResponseBox.insertAdjacentHTML('beforeend', contentToAppend)
