@@ -22,7 +22,9 @@
                     <div class="add-meals__search__results">
                         <h3>Your search results</h3>
                         <hr>
-                        <div class="add-meals__search__results__container"></div>
+                        <div class="add-meals__search__results__container">
+                           `<h3 class="search-results-info">No search results.</h3>`
+                        </div>
                     </div>
                 </div>
                 <div class="add-meals__added">
@@ -32,6 +34,7 @@
                         </div>
                     </div>
                     <div class="add-meals__added--added__content">
+                    {% if todayMeals %}
                         <h3>Already Added Today</h3>
                          <div class="add-meals__already__added">
                              {% for meal in todayMeals %}
@@ -41,6 +44,10 @@
                             </div>
                              {% endfor %}
                          </div>
+                        {% else %}
+                        <div class="saved-results-info">No meals added for today...</div>
+                    {% endif %}
+
                     </div>
                     <div class="add-meals__added--saved">
                        <div class="add-meals__added--saved__heading">

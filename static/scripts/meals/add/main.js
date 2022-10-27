@@ -13,6 +13,7 @@ if (mealsVideo) {
 const ajaxCallSearch = (query) => {
     const url = window.location.origin + '/meals/data/live-search-ingredients'
     const searchResponseBox = document.querySelector('.add-meals__search__results__container')
+
     $.ajax({
         type: "GET",
         url: url,
@@ -26,7 +27,7 @@ const ajaxCallSearch = (query) => {
                 searchElements.forEach(el => {
                     el.remove()
                 })
-
+                searchResponseBox.innerHTML = ``
                let ingredients = [...response.ingredients]
                ingredients.forEach(ingredient => {
                    let contentToAppend = `
@@ -35,6 +36,7 @@ const ajaxCallSearch = (query) => {
                         <div data-object='${encodeURIComponent(JSON.stringify(ingredient))}' id='${ingredient.id}' class="new-meal-item-add add-icon filter-green"></div>
                     </div>
                    `
+
                    searchResponseBox.insertAdjacentHTML('beforeend', contentToAppend)
                })
                 //
@@ -42,6 +44,8 @@ const ajaxCallSearch = (query) => {
                 addButtons.forEach(button => {
                     button.addEventListener('click', e =>{
                         const mealContent = document.querySelector('.add-meals__added--added__content')
+                        const infoResults = document.querySelector('.saved-results-info')
+                        infoResults.classList.add('not-visible')
                         const getMealObject = JSON.parse(decodeURIComponent(e.target.dataset.object));
                         const mealItemAppend = `
                                <div data-object="${e.target.dataset.object}" class="add-meals__added--added__content__item">
@@ -58,6 +62,10 @@ const ajaxCallSearch = (query) => {
                         removeAddedBtn.forEach(button => {
                             button.addEventListener('click', e => {
                                 const parentEl = button.parentNode
+                                if(mealContent.children.length === 1) {
+                                    const infoResults = document.querySelector('.saved-results-info')
+                                    infoResults.classList.remove('not-visible')
+                                }
                                 parentEl.remove()
                             })
                         })
@@ -69,10 +77,12 @@ const ajaxCallSearch = (query) => {
                 searchElements.forEach(el => {
                     el.remove()
                 })
+                searchResponseBox.innerHTML = `<h3 class="search-results-info">No search results.</h3>`
             }
 
             },
         error: function (error) {
+            searchResponseBox.innerHTML = `<h3 class="search-results-info">No search results.</h3>`
             const searchElements = Array.from(searchResponseBox.children)
                 searchElements.forEach(el => {
                     el.remove()
@@ -127,7 +137,14 @@ const ajaxCallSave = (mealItems) => {
 const searchInput = document.querySelector('.search-meal-add')
 searchInput.addEventListener('input', e => {
     const searchQuery = e.target.value
-    ajaxCallSearch(searchQuery)
+    const searchResponseBox = document.querySelector('.add-meals__search__results__container')
+    if (searchQuery !== '' ) {
+        ajaxCallSearch(searchQuery)
+
+    }
+    else {
+        searchResponseBox.innerHTML = `<h3 class="search-results-info">No search results.</h3>`
+    }
 })
 
 

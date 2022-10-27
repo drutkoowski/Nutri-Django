@@ -3582,6 +3582,26 @@ body {
   color: white;
   cursor: pointer; }
 
+.search-results-info {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  animation-name: fade-bottom;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  transition: all .2s ease-in; }
+
+.saved-results-info {
+  font-size: 2rem;
+  margin: 15rem auto;
+  text-align: center;
+  display: block;
+  font-weight: bold;
+  transition: all .2s ease-in;
+  animation-name: fade-bottom;
+  animation-duration: 1s;
+  animation-timing-function: ease-out; }
+
 .meals-propositions-layout-container {
   width: 100vw;
   height: auto;
