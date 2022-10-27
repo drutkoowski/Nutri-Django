@@ -108,7 +108,7 @@ saveNewMealButton.addEventListener('click', e => {
 
         }
         else {
-            console.log('asdsasadas')
+            inputNameEl.classList.add('color-error')
         }
     })
 })
