@@ -70,6 +70,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
 .progress--5 {
   transform: translateX(0%); }
 
+.input-scale:focus {
+  transform: scale(1.05); }
+
 .grid-full-span {
   grid-column: 1/-1; }
 
@@ -3896,9 +3899,7 @@ body {
         flex-direction: column;
         background-color: white;
         border-radius: 10px;
-        height: 90%;
-        overflow-y: auto;
-        overflow-x: hidden; }
+        height: 90%; }
         .saved-meals__added--saved__content__save {
           margin-top: 2rem;
           padding: 1rem 2rem;
@@ -3937,7 +3938,11 @@ body {
           .saved-meals__added--saved__content__search-response__item {
             display: grid;
             grid-template-rows: 1fr;
-            grid-template-columns: 0.8fr 0.2fr; }
+            grid-template-columns: 0.8fr 0.2fr;
+            transition: all .3s ease-out;
+            animation-name: fade-bottom;
+            animation-duration: 0.5s;
+            animation-timing-function: ease-out; }
             .saved-meals__added--saved__content__search-response__item:not(:last-of-type) {
               border-bottom: 1px solid #f2f2f2; }
             .saved-meals__added--saved__content__search-response__item p {
@@ -3966,7 +3971,11 @@ body {
                   height: 2rem; } }
         .saved-meals__added--saved__content__meal {
           height: 10rem;
-          font-size: 1.5rem; }
+          font-size: 1.5rem;
+          transition: all .3s ease-out;
+          animation-name: fade-bottom;
+          animation-duration: 1s;
+          animation-timing-function: ease-out; }
           .saved-meals__added--saved__content__meal h2 {
             margin-left: 2rem; }
           .saved-meals__added--saved__content__meal__items::-webkit-scrollbar-track {
@@ -3988,7 +3997,11 @@ body {
             display: grid;
             grid-template-rows: 1fr;
             grid-template-columns: 0.8fr 0.2fr;
-            margin: 0 2rem; }
+            margin: 0 2rem;
+            transition: all .3s ease-out;
+            animation-name: fade-bottom;
+            animation-duration: 0.5s;
+            animation-timing-function: ease-out; }
             .saved-meals__added--saved__content__meal__item:not(:last-of-type) {
               border-bottom: 1px solid #f2f2f2; }
             .saved-meals__added--saved__content__meal__item p {
@@ -4079,7 +4092,15 @@ body {
   text-align: center;
   border: 0;
   border-radius: 5px;
-  font-size: 1.4rem; }
+  font-size: 1.4rem;
+  transition: all .3s ease-out;
+  animation-name: fade-bottom;
+  animation-duration: 1s;
+  animation-timing-function: ease-out; }
+
+.color-error:focus {
+  background-color: rgba(255, 0, 0, 0.3);
+  color: white; }
 
 *,
 *::after,

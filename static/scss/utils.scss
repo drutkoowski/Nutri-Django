@@ -140,3 +140,10 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 
 }
+
+
+.input-scale {
+  &:focus {
+    transform: scale(1.05);
+  }
+}

@@ -60,7 +60,7 @@ saveNewMealButton.addEventListener('click', e => {
      headingAdjustableCard.innerHTML = `Save New Meal`
      const cardContentParent = document.querySelector('.saved-meals__added--saved__content')
      let contentToAppend = `
-       <div class="saved-meals__added--saved__content__search-bar"><input class="new-saved-meal-search" type="text" placeholder="Search"/><span><img class="add-meals__search__bar__icon" src="${searchIconPath}" alt="Search Icon" /></span></div>
+       <div class="saved-meals__added--saved__content__search-bar"><input class="new-saved-meal-search input-scale" type="text" placeholder="Search"/><span><img class="add-meals__search__bar__icon" src="${searchIconPath}" alt="Search Icon" /></span></div>
           <div class="saved-meals__added--saved__content__search-response not-visible">
               <div class="saved-meals__added--saved__content__search-response__item">
               </div>
@@ -71,15 +71,23 @@ saveNewMealButton.addEventListener('click', e => {
         </div>
      `
     let saveButtonAppend = `
-     <div class="saved-new-meals-buttons-container">
-        <input type="text" placeholder="Meal Name" class="meal_name_input">
+     <div class="saved-new-meals-buttons-container not-visible">
+        <input type="text" placeholder="Meal Name" class="meal_name_input input-scale">
         <button class="saved-meals__added--saved__content__save">Save</button>
     </div>
     
     `
     cardContentParent.insertAdjacentHTML('beforeend', contentToAppend)
     cardContentParent.insertAdjacentHTML('afterend', saveButtonAppend)
-
+    const inputNameElement = document.querySelector('.meal_name_input')
+    inputNameElement.addEventListener('input', e => {
+        if(e.target.value.length < 3) {
+            inputNameElement.classList.add('color-error')
+        }
+        else {
+            inputNameElement.classList.remove('color-error')
+        }
+    })
     const searchInput = document.querySelector('.new-saved-meal-search')
     searchInput.addEventListener('input', e => {
         const searchValue = e.target.value
@@ -89,6 +97,19 @@ saveNewMealButton.addEventListener('click', e => {
             el.remove()
         })
         ajaxCall(searchValue)
+    })
+    const mealSaveButton = document.querySelector('.saved-meals__added--saved__content__save')
+    mealSaveButton.addEventListener('click', e => {
+        const mealItems = document.querySelector('.saved-meals__added--saved__content__meal__items').children
+        const inputNameEl = document.querySelector('.meal_name_input')
+        if (mealItems.length > 0 && inputNameEl.value && inputNameEl.value.length > 3) {
+            console.log(inputNameEl.value)
+            console.log('you are able to save')
+
+        }
+        else {
+            console.log('asdsasadas')
+        }
     })
 })
 
@@ -144,10 +165,12 @@ const ajaxCall = (query) => {
                 addButtons.forEach(button => {
                     button.addEventListener('click', e=>{
                         const mealContent = document.querySelector('.saved-meals__added--saved__content__meal')
+                        const mealNameSaveContainer = document.querySelector('.saved-new-meals-buttons-container')
                         mealContent.classList.remove('not-visible')
+                        mealNameSaveContainer.classList.remove('not-visible')
                         const mealItemAppend = `
                                <div class="saved-meals__added--saved__content__meal__item">
-                                   <p>Spaghetti Carbonara</p>
+                                   <p class="${e.target.previousElementSibling.innerText}">${e.target.previousElementSibling.innerText}</p>
                                    <button class="saved-meals__added--saved__content__meal__item--remove">-</button>
                                </div>
                       `
@@ -155,13 +178,18 @@ const ajaxCall = (query) => {
                         mealContentItems.insertAdjacentHTML('beforeend', mealItemAppend)
                         const mealItems = document.querySelectorAll('.saved-meals__added--saved__content__meal__item--remove')
                         mealItems.forEach(mealEl => {
-                            mealEl.addEventListener('click', e=> {
+                            mealEl.addEventListener('click', e => {
                                 const parent = mealContentItems
                                 const removeEl = e.target.parentNode
                                 removeEl.remove()
                                 const parentChildrenCount = parent.children.length
+                                const mealNameSaveContainer = document.querySelector('.saved-new-meals-buttons-container')
                                 if (parentChildrenCount === 0) {
                                      mealContent.classList.add('not-visible')
+                                     mealNameSaveContainer.classList.add('not-visible')
+                                }
+                                else {
+                                    mealNameSaveContainer.classList.remove('not-visible')
                                 }
                             })
                         })
@@ -185,3 +213,12 @@ const ajaxCall = (query) => {
         },
     })
 }
+
+
+const saveNewMeal = () => {
+    const mealName = document.querySelector('.meal_name_input')
+    const ingredientsEl = document.querySelectorAll('.saved-meals__added--saved__content__meal__item')
+    console.log(ingredientsEl)
+
+}
+
