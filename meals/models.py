@@ -1,5 +1,5 @@
 from django.db import models
-
+from accounts.models import UserProfile
 
 # Create your models here.
 
@@ -12,6 +12,7 @@ class IngredientUnit(models.Model):
 
     def get_unit_name_en(self):
         return f"{self.en_name}"
+
 
 class Ingredient(models.Model):
     pl_name = models.CharField(max_length=100, blank=False)
@@ -33,3 +34,12 @@ class Ingredient(models.Model):
     calcium = models.FloatField(blank=True, default='0')
     magnesium = models.FloatField(blank=True, default='0')
 
+    def __str__(self):
+        return f"{self.pl_name} / {self.en_name}"
+
+
+class Meal(models.Model):
+    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE, default='')
+    created_at = models.DateTimeField(auto_now_add=True)
+    quantity = models.FloatField(blank=False)
+    created_by = models.ForeignKey(UserProfile, on_delete=models.CASCADE)

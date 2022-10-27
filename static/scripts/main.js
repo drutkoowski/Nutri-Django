@@ -13,8 +13,9 @@ if (location.href !== location.origin && location.href !== location.origin + '/'
              navigationList.classList.remove('not-visible')
         }
     })
-
-    hamburgerNavSmall.addEventListener('click', () => {
+    if (hamburgerNavSmall)
+    {
+         hamburgerNavSmall.addEventListener('click', () => {
 
         if (!navigationListSmall.classList.contains('not-visible') && !hamburgerNavSmall.checked) {
             navigationListSmall.classList.add('not-visible')
@@ -23,8 +24,16 @@ if (location.href !== location.origin && location.href !== location.origin + '/'
              navigationListSmall.classList.remove('not-visible')
         }
     })
+    }
+
 }
 else {
+    const gainsVideo = document.getElementById('gains-video')
+    const goalsVideo = document.getElementById('goals-video')
+    if (gainsVideo && goalsVideo) {
+        gainsVideo.playbackRate = 0.75;
+        goalsVideo.playbackRate = 0.75;
+    }
     const hamburgerNav = document.querySelector('#navi-toggle')
     const navigationList = document.getElementsByClassName('navigation__list')[0]
      hamburgerNav.addEventListener('click', () => {
@@ -36,12 +45,5 @@ else {
              navigationList.classList.remove('not-visible')
         }
     })
-}
-
-const gainsVideo = document.getElementById('gains-video')
-const goalsVideo = document.getElementById('goals-video')
-if (gainsVideo && goalsVideo) {
-    gainsVideo.playbackRate = 0.75;
-    goalsVideo.playbackRate = 0.75;
 }
 

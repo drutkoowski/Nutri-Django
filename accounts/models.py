@@ -67,13 +67,13 @@ class Account(AbstractBaseUser):
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(Account, on_delete=models.CASCADE)
     activity_level = models.CharField(max_length=15)
     goal_weight = models.CharField(max_length=5)
     height = models.CharField(max_length=5)
     weight = models.CharField(max_length=5)
     years_old = models.CharField(max_length=3)
     gender = models.CharField(max_length=6)
+    user = models.OneToOneField(Account, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.user.username
+        return f"{self.user.username}"

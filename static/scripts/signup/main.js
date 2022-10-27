@@ -401,6 +401,7 @@ buttonNext.addEventListener('click', e => {
                         success: function (response){
                             const status = response.status
                             if (status === 200) {
+
                                 alertMsg.innerHTML = `User with these credentials already exists.`
                                 choices = choices.slice(0, 8)
                                 alertMsg.classList?.remove('not-visible')

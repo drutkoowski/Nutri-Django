@@ -18,6 +18,9 @@ class AccountAdmin(UserAdmin):
 class UserProfileAdmin(admin.ModelAdmin):
     list_display = ("user", "activity_level", "goal_weight", "height", "weight", "years_old", "gender")
 
+    def user(self, obj):
+        return "\n".join(f'{obj.user}')
+
 
 #
 admin.site.register(Account, AccountAdmin)
