@@ -64,9 +64,50 @@ def add_today_meal_ajax(request):
         if ingredients_array is not None:
             user_profile = UserProfile.objects.filter(user=request.user).first()
             for item in data_array:
-
                 ingredient = Ingredient.objects.filter(pk=item['ingredientId']).first()
                 meal = Meal.objects.create(created_by=user_profile, quantity=item['quantity'], ingredient=ingredient)
                 meal.save()
             return JsonResponse({'status': 404, 'text': 'There are not ingredients found.', 'ingredients': []})
         return JsonResponse({'status': 404, 'text': 'There are not ingredients found.', 'ingredients': []})
+
+
+def test(request):
+    return render(request, 'meals/test.html')
+
+def add_ingredient(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
+        meal_name = request.POST.get('mealName')
+        serving_unit = request.POST.get('serving_unit')
+        calories = round(float(request.POST.get('calories')), 5)
+        cholesterol = round(float(request.POST.get('cholesterol')), 5)
+        fiber = round(float(request.POST.get('fiber')), 5)
+        potassium = round(float(request.POST.get('potassium')), 5)
+        saturated_fat = round(float(request.POST.get('saturated_fat')), 5)
+        sodium = round(float(request.POST.get('sodium')), 5)
+        sugars = round(float(request.POST.get('sugars')), 5)
+        carbs = round(float(request.POST.get('carbs')), 5)
+        fat = round(float(request.POST.get('fat')), 5)
+        protein = round(float(request.POST.get('protein')), 5)
+        serving_grams = round(float(request.POST.get('serving_grams')), 5)
+        unit = IngredientUnit.objects.filter(en_name__iexact=serving_unit).first()
+        if_exists = Ingredient.objects.filter(pl_name='', en_name__iexact=meal_name, kcal__iexact=calories,
+                                                        unit=unit, cholesterol__iexact=cholesterol,carbs__iexact=carbs,
+                                                        protein__iexact=protein, fat__iexact=fat, fiber__iexact=fiber,
+                                                        saturated_fat__iexact=saturated_fat,sodium__iexact=sodium,
+                                                        sugar__iexact=sugars, potassium__iexact=potassium,
+                                                        serving_grams__iexact=serving_grams).first()
+        if if_exists is None:
+            new_ingredient = Ingredient.objects.create(pl_name='', en_name=meal_name, kcal=calories,
+                                      unit=unit, cholesterol=cholesterol, carbs=carbs,
+                                      protein=protein, fat=fat, fiber=fiber,
+                                      saturated_fat=saturated_fat, sodium=sodium,
+                                      sugar=sugars, potassium=potassium,
+                                      serving_grams=serving_grams)
+            new_ingredient.save()
+            return JsonResponse({'status': 201})
+        else:
+            print(
+            f"{meal_name}, {serving_unit}, {calories}, {cholesterol}, {fiber}, {potassium}, {saturated_fat}, {sodium}, {sugars}, {carbs}, {fat}, {protein}, {serving_grams}")
+            return JsonResponse({'status': 302})
+    else:
+        return JsonResponse({'status': 404})

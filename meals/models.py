@@ -15,12 +15,10 @@ class IngredientUnit(models.Model):
 
 
 class Ingredient(models.Model):
-    pl_name = models.CharField(max_length=100, blank=False)
+    pl_name = models.CharField(max_length=100, blank=True)
     en_name = models.CharField(max_length=100, blank=False)
-    # for 100 ml or 10g (depends on unit)
     unit = models.ForeignKey(IngredientUnit, blank=False, on_delete=models.CASCADE)
-    multiplyValue = models.IntegerField(blank=False, default='1')
-    kcal = models.FloatField()
+    kcal = models.FloatField(blank=False, default='0')
     carbs = models.FloatField(blank=True, default='0')
     protein = models.FloatField(blank=True, default='0')
     fat = models.FloatField(blank=True, default='0')
@@ -30,9 +28,8 @@ class Ingredient(models.Model):
     sodium = models.FloatField(blank=True, default='0')
     sugar = models.FloatField(blank=True, default='0')
     potassium = models.FloatField(blank=True, default='0')
-    iron = models.FloatField(blank=True, default='0')
-    calcium = models.FloatField(blank=True, default='0')
-    magnesium = models.FloatField(blank=True, default='0')
+    serving_grams = models.FloatField(blank=True, default='0')
+
 
     def __str__(self):
         return f"{self.pl_name} / {self.en_name}"

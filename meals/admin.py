@@ -10,9 +10,10 @@ class IngredientUnitAdmin(admin.ModelAdmin):
 
 class IngredientAdmin(admin.ModelAdmin):
     list_display = (
-        "pl_name", "en_name", "kcal", "unit", "multiplyValue", "carbs", "protein", "fat", "fiber", "saturated_fat",
-        "cholesterol", "sodium", "sugar", "potassium", "iron", "calcium", "magnesium")
-
+        "pl_name", "en_name", "kcal", "unit", "carbs", "protein", "fat", "fiber", "saturated_fat",
+        "cholesterol", "sodium", "sugar", "potassium", "serving_grams")
+    ordering = ('en_name', 'kcal',)
+    search_fields = ("en_name",)
     def unit(self, obj):
         return "\n".join(f'{obj.unit.pl_name} / {obj.unit.en_name}')
 
