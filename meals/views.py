@@ -5,7 +5,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 
 from accounts.models import UserProfile
-from .models import Ingredient, IngredientUnit, Meal
+from .models import Ingredient, IngredientUnit, Meal, IngredientCategory
 
 
 # Create your views here.
@@ -42,7 +42,7 @@ def live_search_ingredients(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
         query = request.GET.get('query')
         if query != '':
-            check_if_ingredient_exists = Ingredient.objects.filter(en_name__icontains=query).all()
+            check_if_ingredient_exists = Ingredient.objects.filter(en_name__istartswith=query).all()
             if check_if_ingredient_exists is not None:
                 ingredients = list(check_if_ingredient_exists.values())
                 for i in ingredients:
@@ -72,7 +72,41 @@ def add_today_meal_ajax(request):
 
 
 def test(request):
+    import json
+
+    # Opening JSON file
+    f = open('C:\\Users\\user\\PycharmProjects\\pythonProject30\\data.json')
+
+    # returns JSON object as
+    # a dictionary
+    data = json.load(f)
+    from googletrans import Translator
+    translator = Translator()
+    for meal in data:
+        meal_name = meal['meal']
+        meal_kcal = float(meal['kcal'].replace(",", '.'))
+        meal_protein = float(meal['protein'].replace(",", '.'))
+        meal_carbs = float(meal['carbs'].replace(",", '.'))
+        meal_fat = float(meal['fat'].replace(",", '.'))
+        translation = translator.translate(meal_name, dest='en')
+        category = IngredientCategory.objects.filter(en_category_name__iexact='Meat').first()
+        unit = IngredientUnit.objects.filter(en_name__iexact='g').first()
+
+        if_exists = Ingredient.objects.filter(pl_name__iexact=meal_name, en_name__iexact=translation.text).first()
+        if_exist2 = Ingredient.objects.filter(kcal=meal_kcal,
+                                              unit=unit, carbs=meal_carbs,
+                                              protein=meal_protein, fat=meal_fat,
+                                              ).first()
+        if if_exists is None and if_exist2 is None:
+            new_ingredient = Ingredient.objects.create(pl_name=meal_name, en_name=translation.text, kcal=meal_kcal,
+                                                       unit=unit, carbs=meal_carbs, cholesterol=0,sugar=0,fiber=0,
+                                                       protein=meal_protein, fat=meal_fat,sodium=0, saturated_fat=0,
+                                                       serving_grams=100, category=category, potassium=0,
+                                                       serving_ml=0)
+            print('dodano')
+            new_ingredient.save()
     return render(request, 'meals/test.html')
+
 
 def add_ingredient(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
@@ -89,25 +123,34 @@ def add_ingredient(request):
         fat = round(float(request.POST.get('fat')), 5)
         protein = round(float(request.POST.get('protein')), 5)
         serving_grams = round(float(request.POST.get('serving_grams')), 5)
+        serving_ml = round(float(request.POST.get('servingMl')), 5)
+        category = IngredientCategory.objects.filter(en_category_name__iexact='Meat').first()
+
         unit = IngredientUnit.objects.filter(en_name__iexact=serving_unit).first()
-        if_exists = Ingredient.objects.filter(pl_name='', en_name__iexact=meal_name, kcal__iexact=calories,
-                                                        unit=unit, cholesterol__iexact=cholesterol,carbs__iexact=carbs,
-                                                        protein__iexact=protein, fat__iexact=fat, fiber__iexact=fiber,
-                                                        saturated_fat__iexact=saturated_fat,sodium__iexact=sodium,
-                                                        sugar__iexact=sugars, potassium__iexact=potassium,
-                                                        serving_grams__iexact=serving_grams).first()
-        if if_exists is None:
-            new_ingredient = Ingredient.objects.create(pl_name='', en_name=meal_name, kcal=calories,
-                                      unit=unit, cholesterol=cholesterol, carbs=carbs,
-                                      protein=protein, fat=fat, fiber=fiber,
-                                      saturated_fat=saturated_fat, sodium=sodium,
-                                      sugar=sugars, potassium=potassium,
-                                      serving_grams=serving_grams)
+        from googletrans import Translator
+
+        translator = Translator()
+        translation = translator.translate(meal_name, dest='pl')
+        if_exists = Ingredient.objects.filter(pl_name__iexact=translation.text, en_name__iexact=meal_name).first()
+        if_exist2 = Ingredient.objects.filter(kcal=calories,
+                                                       unit=unit, cholesterol=cholesterol, carbs=carbs,
+                                                       protein=protein, fat=fat, fiber=fiber,
+                                                       saturated_fat=saturated_fat, sodium=sodium,
+                                                       sugar=sugars, potassium=potassium,
+                                                       serving_grams=serving_grams).first()
+        if if_exists is None and if_exist2 is None:
+            new_ingredient = Ingredient.objects.create(pl_name=translation.text, en_name=meal_name, kcal=calories,
+                                                       unit=unit, cholesterol=cholesterol, carbs=carbs,
+                                                       protein=protein, fat=fat, fiber=fiber,
+                                                       saturated_fat=saturated_fat, sodium=sodium,
+                                                       sugar=sugars, potassium=potassium,
+                                                       serving_grams=serving_grams, category=category,
+                                                       serving_ml=serving_ml)
             new_ingredient.save()
             return JsonResponse({'status': 201})
         else:
             print(
-            f"{meal_name}, {serving_unit}, {calories}, {cholesterol}, {fiber}, {potassium}, {saturated_fat}, {sodium}, {sugars}, {carbs}, {fat}, {protein}, {serving_grams}")
+                f"{meal_name}, {serving_unit}, {calories}, {cholesterol}, {fiber}, {potassium}, {saturated_fat}, {sodium}, {sugars}, {carbs}, {fat}, {protein}, {serving_grams}")
             return JsonResponse({'status': 302})
     else:
         return JsonResponse({'status': 404})
