@@ -32,7 +32,7 @@ const ajaxCallSearch = (query) => {
                ingredients.forEach(ingredient => {
                    let contentToAppend = `
                     <div class="add-meals__search__results__container__item">
-                        <p>${ingredient.en_name} (${Math.trunc(ingredient.kcal)} kcal / ${ingredient.multiplyValue} ${ingredient.unit_name})</p>
+                        <p>${ingredient.pl_name} (${Math.trunc(ingredient.kcal)} kcal / ${ingredient.multiplyValue} ${ingredient.unit_name})</p>
                         <div data-object='${encodeURIComponent(JSON.stringify(ingredient))}' id='${ingredient.id}' class="new-meal-item-add add-icon filter-green"></div>
                     </div>
                    `

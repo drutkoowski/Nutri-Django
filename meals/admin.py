@@ -18,7 +18,7 @@ class IngredientAdmin(admin.ModelAdmin):
         "en_name", "pl_name", "unit", "category", "kcal", "carbs", "protein", "fat", "fiber", "saturated_fat",
         "cholesterol", "sodium", "sugar", "potassium", "serving_grams", "serving_ml")
     ordering = ('en_name', 'kcal',)
-    search_fields = ("en_name",)
+    search_fields = ("pl_name",)
     list_filter = ('category', 'unit', )
     def unit(self, obj):
         return "\n".join(f'{obj.unit.pl_name} / {obj.unit.en_name}')
