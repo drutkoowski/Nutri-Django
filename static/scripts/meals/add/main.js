@@ -30,12 +30,19 @@ const ajaxCallSearch = (query) => {
                 searchResponseBox.innerHTML = ``
                let ingredients = [...response.ingredients]
                ingredients.forEach(ingredient => {
-                   let contentToAppend = `
+                   let contentToAppend
+                   let unit_multiplier = ingredient.unit_multiplier
+                   let isGram = ingredient.unit_name_pl === 'g' ? '' : `lub ${Math.round(ingredient.serving_grams)} g`
+                   let categoryName = ingredient.category_name_pl
+                    contentToAppend = `
                     <div class="add-meals__search__results__container__item">
-                        <p>${ingredient.pl_name} (${Math.trunc(ingredient.kcal)} kcal / ${ingredient.multiplyValue} ${ingredient.unit_name})</p>
+                        <p><b>${ingredient.pl_name}</b> (${Math.trunc(ingredient.kcal)} kcal / ${unit_multiplier} ${ingredient.unit_name_pl} ${isGram})</p>
                         <div data-object='${encodeURIComponent(JSON.stringify(ingredient))}' id='${ingredient.id}' class="new-meal-item-add add-icon filter-green"></div>
+                        <small class="search-category-small">Kategoria: <span class="search-category-small__text">${categoryName}</span></small>
                     </div>
                    `
+
+
 
                    searchResponseBox.insertAdjacentHTML('beforeend', contentToAppend)
                })
@@ -43,17 +50,20 @@ const ajaxCallSearch = (query) => {
                 const addButtons = document.querySelectorAll('.new-meal-item-add')
                 addButtons.forEach(button => {
                     button.addEventListener('click', e =>{
+
                         const mealContent = document.querySelector('.add-meals__added--added__content')
                         const infoResults = document.querySelector('.saved-results-info')
                         infoResults.classList.add('not-visible')
                         const getMealObject = JSON.parse(decodeURIComponent(e.target.dataset.object));
+                        let unit_multiplier = getMealObject.unit_multiplier
+                        let isGram = getMealObject.unit_name_pl === 'g' ? '' : `lub ${Math.round(getMealObject.serving_grams)} g`
                         const mealItemAppend = `
                                <div data-object="${e.target.dataset.object}" class="add-meals__added--added__content__item">
-                                   <p>${getMealObject.en_name} (${Math.trunc(getMealObject.kcal)} kcal / ${getMealObject.multiplyValue} ${getMealObject.unit_name})</p>
+                                   <p><b>${getMealObject.pl_name}</b> (${Math.trunc(getMealObject.kcal)} kcal / ${unit_multiplier} ${getMealObject.unit_name_pl} ${isGram})</p>
                                   <div class="today-meals-added-remove-btn remove-icon filter-red"></div>
                                   <div class="today-meals-added-inputBox">
-                                    <input class="new-today-meal-input-quantity" name="${getMealObject.en_name}" type="number" placeholder="${getMealObject.unit_name}">
-                                    <label for="${getMealObject.en_name}">x ${getMealObject.unit_name}</label>
+                                    <input class="new-today-meal-input-quantity" name="${getMealObject.en_name}" type="number" placeholder="${getMealObject.unit_name_pl}">
+                                    <label for="${getMealObject.en_name}">x ${getMealObject.unit_name_pl}</label>
                                   </div>
                         </div>
                       `
@@ -105,6 +115,7 @@ const ajaxCallSave = (mealItems) => {
     })
     const url = window.location.origin + '/meals/data/save/added-meal'
     const ingredients = JSON.stringify(ingredientsArr)
+    console.log(ingredients)
     $.ajax({
         type: "POST",
         url: url,
@@ -115,7 +126,7 @@ const ajaxCallSave = (mealItems) => {
         success: function (response){
             const status = response.status
             if (status === 200) {
-                console.log('esasasas')
+                console.log('Dodano produkty!')
             }
             else if (status === 404) {
                 // const searchElements = Array.from(searchResponseBox.children)

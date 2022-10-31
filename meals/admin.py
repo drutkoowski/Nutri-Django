@@ -5,7 +5,7 @@ from .models import IngredientUnit, Ingredient, Meal, IngredientCategory
 # Register your models here.
 
 class IngredientUnitAdmin(admin.ModelAdmin):
-    list_display = ("en_name", "pl_name",)
+    list_display = ("en_name", "pl_name", "multiplier",)
 
 
 class CategoryIngredientAdmin(admin.ModelAdmin):
@@ -19,7 +19,8 @@ class IngredientAdmin(admin.ModelAdmin):
         "cholesterol", "sodium", "sugar", "potassium", "serving_grams", "serving_ml")
     ordering = ('en_name', 'kcal',)
     search_fields = ("pl_name",)
-    list_filter = ('category', 'unit', )
+    list_filter = ('category', 'unit',)
+
     def unit(self, obj):
         return "\n".join(f'{obj.unit.pl_name} / {obj.unit.en_name}')
 
@@ -28,7 +29,8 @@ class IngredientAdmin(admin.ModelAdmin):
 
 
 class MealAdmin(admin.ModelAdmin):
-    list_display = ("ingredient", "created_at", "quantity", "created_by")
+    list_display = ("ingredient", "created_by", "quantity", "kcal", "carbs", "protein", "fat", "fiber", "saturated_fat",
+                    "cholesterol", "sodium", "sugar", "potassium", "serving_grams", "serving_ml")
 
     def ingredients(self, obj):
         return "\n".join([a.ingredients for a in obj.ingredients.all()])

@@ -3253,18 +3253,31 @@ body {
     .add-meals__already__added--item {
       display: grid;
       grid-template-columns: 0.8fr 0.2fr;
-      grid-template-rows: 1fr;
+      grid-template-rows: 0.8fr 0.5fr 1fr;
       align-items: center;
       border-bottom: 1px solid #f2f2f2;
       transition: all .3s ease-in;
       margin-top: 0.5rem; }
+      .add-meals__already__added--item__category {
+        grid-row: 2/3;
+        grid-column: 1/-1;
+        font-size: 0.5rem; }
+        .add-meals__already__added--item__category span {
+          color: green;
+          margin-left: 0.5rem; }
+      .add-meals__already__added--item__details-box {
+        grid-row: 3/4;
+        grid-column: 1 /-1;
+        display: flex; }
       .add-meals__already__added--item p {
         grid-column: 1/2;
         margin-left: 1.5rem;
         font-size: 1.5rem;
         margin-right: 2.5rem; }
-      .add-meals__already__added--item div {
-        grid-column: 2/3; }
+      .add-meals__already__added--item .today-meals-added-remove-btn {
+        grid-column: 2/3;
+        justify-self: center;
+        align-self: center; }
   .add-meals__search {
     height: 55rem;
     display: flex;
@@ -3376,7 +3389,7 @@ body {
     box-shadow: 0px 0px 8px 2px #42445a;
     display: grid;
     grid-template-rows: 0.3fr 3fr 0.3fr;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 0.5fr;
     color: white;
     animation-name: fade-right;
     animation-duration: 1s;
@@ -3601,6 +3614,13 @@ body {
   animation-name: fade-bottom;
   animation-duration: 1s;
   animation-timing-function: ease-out; }
+
+.search-category-small {
+  margin-left: 2rem; }
+  .search-category-small__text {
+    color: green;
+    font-size: 1.8rem;
+    margin-left: 0.5rem; }
 
 .meals-propositions-layout-container {
   width: 100vw;

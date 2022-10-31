@@ -7,6 +7,7 @@ from accounts.models import UserProfile
 class IngredientUnit(models.Model):
     pl_name = models.CharField(max_length=50)
     en_name = models.CharField(max_length=50)
+    multiplier = models.IntegerField(default=0, blank=True)
 
     def __str__(self):
         return f"{self.pl_name} / {self.en_name}"
@@ -14,10 +15,19 @@ class IngredientUnit(models.Model):
     def get_unit_name_en(self):
         return f"{self.en_name}"
 
+    def get_unit_name_pl(self):
+        return f"{self.pl_name}"
+
 
 class IngredientCategory(models.Model):
     pl_category_name = models.CharField(max_length=100, blank=True)
     en_category_name = models.CharField(max_length=100, blank=True)
+
+    def get_category_name_en(self):
+        return f"{self.en_category_name}"
+
+    def get_category_name_pl(self):
+        return f"{self.pl_category_name}"
 
     class Meta:
         verbose_name_plural = "Ingredient categories"
@@ -36,7 +46,7 @@ class Ingredient(models.Model):
     protein = models.FloatField(blank=True, default=None, null=True)
     fat = models.FloatField(blank=True, default=None, null=True)
     fiber = models.FloatField(blank=True, default=None, null=True)
-    saturated_fat = models.FloatField(blank=True,default=None, null=True)
+    saturated_fat = models.FloatField(blank=True, default=None, null=True)
     cholesterol = models.FloatField(blank=True, default=None, null=True)
     sodium = models.FloatField(blank=True, default=None, null=True)
     sugar = models.FloatField(blank=True, default=None, null=True)
@@ -52,4 +62,16 @@ class Meal(models.Model):
     ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE, default='')
     created_at = models.DateTimeField(auto_now_add=True)
     quantity = models.FloatField(blank=False)
+    kcal = models.FloatField(blank=False, default=None)
+    carbs = models.FloatField(blank=True, default=None, null=True)
+    protein = models.FloatField(blank=True, default=None, null=True)
+    fat = models.FloatField(blank=True, default=None, null=True)
+    fiber = models.FloatField(blank=True, default=None, null=True)
+    saturated_fat = models.FloatField(blank=True, default=None, null=True)
+    cholesterol = models.FloatField(blank=True, default=None, null=True)
+    sodium = models.FloatField(blank=True, default=None, null=True)
+    sugar = models.FloatField(blank=True, default=None, null=True)
+    potassium = models.FloatField(blank=True, default=None, null=True)
+    serving_grams = models.FloatField(blank=True, default=None, null=True)
+    serving_ml = models.FloatField(blank=True, default=None, null=True)
     created_by = models.ForeignKey(UserProfile, on_delete=models.CASCADE)

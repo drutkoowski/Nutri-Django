@@ -45,13 +45,19 @@ def live_search_ingredients(request):
                 Ingredient.objects.filter(
                     pl_name__iregex=r"\b{0}\b".format(query)
                 )).all()
-            # "\y" or "\b" depends or postgres or not (\y - postgres)
+            # "\y" or "\b" depends on postgres or not (\y - postgres)
             if check_if_ingredient_exists is not None:
                 ingredients = list(check_if_ingredient_exists.values())
                 for i in ingredients:
                     unit_id = i['unit_id']
+                    category_id = i['category_id']
                     unit_name = IngredientUnit.objects.filter(pk=unit_id).first()
-                    i['unit_name'] = unit_name.get_unit_name_en()
+                    category = IngredientCategory.objects.filter(pk=category_id).first()
+                    i['unit_name_en'] = unit_name.get_unit_name_en()
+                    i['unit_name_pl'] = unit_name.get_unit_name_pl()
+                    i['category_name_en'] = category.get_category_name_en()
+                    i['category_name_pl'] = category.get_category_name_pl()
+                    i['unit_multiplier'] = unit_name.multiplier
                 return JsonResponse({'status': 200, 'text': 'There are ingredients found.', 'ingredients': ingredients})
             else:
                 return JsonResponse({'status': 404, 'text': 'There are not ingredients found.', 'ingredients': []})
@@ -68,10 +74,34 @@ def add_today_meal_ajax(request):
             user_profile = UserProfile.objects.filter(user=request.user).first()
             for item in data_array:
                 ingredient = Ingredient.objects.filter(pk=item['ingredientId']).first()
-                meal = Meal.objects.create(created_by=user_profile, quantity=item['quantity'], ingredient=ingredient)
+                unit_ml_g = ingredient.unit.en_name == 'g' or ingredient.unit.en_name == 'ml'
+                quantity = float(item['quantity'])
+                if (unit_ml_g):
+                    multiplier = quantity / 100.0
+                else:
+                    multiplier = quantity
+                meal_kcal = float(ingredient.kcal) * float(multiplier)
+                meal_carbs = float(ingredient.carbs) * float(multiplier)
+                meal_protein = None if ingredient.protein is None else round(float(ingredient.protein) * float(multiplier),5)
+                meal_fat = None if ingredient.fat is None else round(float(ingredient.fat) * float(multiplier),5)
+                meal_fiber = None if ingredient.fiber is None else round(float(ingredient.fiber) * float(multiplier),5)
+                meal_saturated_fat = None if ingredient.saturated_fat is None else round(float(ingredient.saturated_fat) * float(multiplier),5)
+                meal_cholesterol = None if ingredient.cholesterol is None else round(float(ingredient.cholesterol) * float(multiplier),5)
+                meal_sodium = None if ingredient.sodium is None else round(float(ingredient.sodium) * float(multiplier),5)
+                meal_sugar = None if ingredient.sugar is None else round(float(ingredient.sugar) * float(multiplier),5)
+                meal_potassium = None if ingredient.potassium is None else round(float(ingredient.potassium) * float(multiplier),5)
+                meal_serving_grams = None if ingredient.serving_grams is None else float(ingredient.serving_grams) * float(multiplier)
+                meal_serving_ml = None if ingredient.serving_ml is None else float(ingredient.serving_ml) * float(multiplier)
+                meal = Meal.objects.create(created_by=user_profile, quantity=quantity, ingredient=ingredient,
+                                           kcal=meal_kcal, carbs=meal_carbs, protein=meal_protein, fat=meal_fat,
+                                           fiber=meal_fiber, saturated_fat=meal_saturated_fat,
+                                           cholesterol=meal_cholesterol, sodium=meal_sodium, sugar=meal_sugar,
+                                           potassium=meal_potassium, serving_grams=meal_serving_grams,
+                                           serving_ml=meal_serving_ml)
                 meal.save()
-            return JsonResponse({'status': 404, 'text': 'There are not ingredients found.', 'ingredients': []})
-        return JsonResponse({'status': 404, 'text': 'There are not ingredients found.', 'ingredients': []})
+
+                return JsonResponse({'status': 201, 'text': 'Created.'})
+        return JsonResponse({'status': 400, 'text': 'Not Created.'})
 
 
 # def test(request):
