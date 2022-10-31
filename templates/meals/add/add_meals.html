@@ -35,12 +35,12 @@
                     </div>
                     <div class="add-meals__added--added__content">
                     {% if todayMeals %}
-                        <h3>Meals on {% now "l" %}</h3>
+                        <h3 class="meals-on-date">Meals on {% now "l" %}</h3>
                          <div class="add-meals__already__added">
                              {% for meal in todayMeals %}
                             <div class="add-meals__already__added--item">
                               <p><b>{{ meal.ingredient.pl_name }}</b> x {{ meal.quantity|floatformat:"-3" }} {{ meal.ingredient.unit.pl_name }} ({{ meal.ingredient.kcal }} kcal / {{ meal.ingredient.serving_grams|floatformat:"-3" }} g)</p>
-                              <div class="today-meals-added-remove-btn remove-icon filter-red"></div>
+                              <div class="today-meals-added-remove-btn remove-icon filter-red meal-saved" data-mealObjId="{{ meal.id }}"></div>
                               <p class="add-meals__already__added--item__category">Kategoria: <span>{{ meal.ingredient.category.pl_category_name }}</span></p>
                               <div class="add-meals__already__added--item__details-box">
                                 <p>Kcal: {{ meal.kcal }}</p>
@@ -54,7 +54,7 @@
                         {% else %}
                         <div class="saved-results-info">No meals added for today...</div>
                     {% endif %}
-
+                     <div class="saved-results-info not-visible">No meals added for today...</div>
                     </div>
                     <div class="add-meals__added--saved">
                        <div class="add-meals__added--saved__heading">

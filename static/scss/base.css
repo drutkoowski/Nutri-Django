@@ -3454,6 +3454,8 @@ body {
           animation-name: fade-bottom;
           animation-duration: 1s;
           animation-timing-function: ease-out; }
+          .add-meals__added--added__content__item:first-of-type {
+            margin-top: 1rem; }
           @media only screen and (max-width: 84.375em) {
             .add-meals__added--added__content__item {
               grid-template-columns: 1fr 0.1fr; } }

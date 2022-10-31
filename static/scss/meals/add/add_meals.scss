@@ -295,6 +295,9 @@
           animation-name: fade-bottom;
           animation-duration: 1s;
           animation-timing-function: ease-out;
+           &:first-of-type{
+             margin-top: 1rem;
+           }
            @include respond(tab-desktop) {
             grid-template-columns: 1fr 0.1fr;
           }

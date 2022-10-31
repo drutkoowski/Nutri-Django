@@ -34,6 +34,7 @@ const ajaxCallSearch = (query) => {
                    let unit_multiplier = ingredient.unit_multiplier
                    let isGram = ingredient.unit_name_pl === 'g' ? '' : `lub ${Math.round(ingredient.serving_grams)} g`
                    let categoryName = ingredient.category_name_pl
+
                     contentToAppend = `
                     <div class="add-meals__search__results__container__item">
                         <p><b>${ingredient.pl_name}</b> (${Math.trunc(ingredient.kcal)} kcal / ${unit_multiplier} ${ingredient.unit_name_pl} ${isGram})</p>
@@ -42,21 +43,19 @@ const ajaxCallSearch = (query) => {
                     </div>
                    `
 
-
-
                    searchResponseBox.insertAdjacentHTML('beforeend', contentToAppend)
                })
-                //
+                // after clicking + on search
                 const addButtons = document.querySelectorAll('.new-meal-item-add')
                 addButtons.forEach(button => {
                     button.addEventListener('click', e =>{
 
                         const mealContent = document.querySelector('.add-meals__added--added__content')
-                        const infoResults = document.querySelector('.saved-results-info')
-                        infoResults.classList.add('not-visible')
                         const getMealObject = JSON.parse(decodeURIComponent(e.target.dataset.object));
                         let unit_multiplier = getMealObject.unit_multiplier
                         let isGram = getMealObject.unit_name_pl === 'g' ? '' : `lub ${Math.round(getMealObject.serving_grams)} g`
+                        const infoResults = document.querySelector('.saved-results-info')
+                        infoResults.classList.add('not-visible')
                         const mealItemAppend = `
                                <div data-object="${e.target.dataset.object}" class="add-meals__added--added__content__item">
                                    <p><b>${getMealObject.pl_name}</b> (${Math.trunc(getMealObject.kcal)} kcal / ${unit_multiplier} ${getMealObject.unit_name_pl} ${isGram})</p>
@@ -144,6 +143,63 @@ const ajaxCallSave = (mealItems) => {
         },
     })
 }
+
+
+const ajaxCallDelete = (mealId) => {
+       const url = location.origin + '/meals/data/delete/added-meal'
+       $.ajax({
+        type: "POST",
+        url: url,
+        data: {
+            'meal_id': mealId,
+            'csrfmiddlewaretoken': csrfToken,
+        },
+        success: function (response){
+            const status = response.status
+            if (status === 200) {
+                console.log('Usunieto meal!')
+            }
+            else if (status === 404) {
+                // const searchElements = Array.from(searchResponseBox.children)
+                // searchElements.forEach(el => {
+                //     el.remove()
+                // })
+            }
+
+            },
+        error: function (error) {
+            // const searchElements = Array.from(searchResponseBox.children)
+            //     searchElements.forEach(el => {
+            //         el.remove()
+            //     })
+        },
+    })
+}
+
+
+const alreadySavedButtons = document.querySelectorAll('.meal-saved')
+alreadySavedButtons?.forEach(button => {
+
+    button.addEventListener('click', e=> {
+        const mealId = button.dataset.mealobjid
+        ajaxCallDelete(mealId)
+        const alreadyAddedBox = document.querySelector('.add-meals__already__added')
+        const heading = document.querySelector('.meals-on-date')
+        const item = button.parentElement
+        item.remove()
+        if (alreadyAddedBox.children.length === 0) {
+            button.remove()
+            heading.remove()
+            alreadyAddedBox.remove()
+            const infoResults = document.querySelector('.saved-results-info')
+            infoResults.classList.remove('not-visible')
+        }
+
+    })
+})
+
+
+
 
 const searchInput = document.querySelector('.search-meal-add')
 searchInput.addEventListener('input', e => {
