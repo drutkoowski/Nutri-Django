@@ -110,6 +110,9 @@ saveNewMealButton.addEventListener('click', e => {
         }
         else {
             inputNameEl.classList.add('color-error')
+             setInterval(function () {
+                inputNameElement.classList.remove('color-error')
+            }, 1500);
         }
     })
 })

@@ -72,9 +72,11 @@ def add_today_meal_ajax(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
         ingredients_array = request.POST.get('ingredientsArray')
         data_array = json.loads(ingredients_array)
+        print(data_array)
         if ingredients_array is not None:
             user_profile = UserProfile.objects.filter(user=request.user).first()
             for item in data_array:
+                print(item)
                 ingredient = Ingredient.objects.filter(pk=item['ingredientId']).first()
                 unit_ml_g = ingredient.unit.en_name == 'g' or ingredient.unit.en_name == 'ml'
                 quantity = float(item['quantity'])
@@ -119,7 +121,7 @@ def add_today_meal_ajax(request):
                                            potassium=meal_potassium, serving_grams=meal_serving_grams,
                                            serving_ml=meal_serving_ml)
                 meal.save()
-                return JsonResponse({'status': 201, 'text': 'Created.'})
+            return JsonResponse({'status': 201, 'text': 'Created.'})
         return JsonResponse({'status': 400, 'text': 'Not Created.'})
     else:
         return redirect('home')

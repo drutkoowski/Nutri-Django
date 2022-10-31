@@ -60,7 +60,7 @@ class Ingredient(models.Model):
 
 class Meal(models.Model):
     ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE, default='')
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateField(auto_now_add=True)
     quantity = models.FloatField(blank=False)
     kcal = models.FloatField(blank=False, default=None)
     carbs = models.FloatField(blank=True, default=None, null=True)

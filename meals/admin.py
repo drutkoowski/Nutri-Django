@@ -29,7 +29,7 @@ class IngredientAdmin(admin.ModelAdmin):
 
 
 class MealAdmin(admin.ModelAdmin):
-    list_display = ("ingredient", "created_by", "quantity", "kcal", "carbs", "protein", "fat", "fiber", "saturated_fat",
+    list_display = ("ingredient", "created_by", "created_at", "quantity", "kcal", "carbs", "protein", "fat", "fiber", "saturated_fat",
                     "cholesterol", "sodium", "sugar", "potassium", "serving_grams", "serving_ml")
 
     def ingredients(self, obj):

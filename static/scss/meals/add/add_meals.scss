@@ -464,6 +464,7 @@
   }
 }
 
+
 .save-add-today-meals{
   grid-row: 3/4;
   grid-column: 1/-1;
@@ -522,8 +523,8 @@
   height: 4rem;
   font-size: 1.5rem;
   border: 1px solid #13aa52;
-  background-color: white;
-  color: #13aa52;
+  background-color: #13aa52;
+  color: white;
   cursor: pointer;
   text-transform: uppercase;
   font-weight: bold;
@@ -538,11 +539,12 @@
   height: 4rem;
   font-size: 1.5rem;
   border: 1px solid #ff041b;
-  background-color: white;
-  color: #ff0000;
+  background-color: rgba(255, 4, 27, 0.63);
+  color: white;
   cursor: pointer;
   text-transform: uppercase;
   font-weight: bold;
+  margin-left: 1rem;
    &:hover {
      transform: scale(1.02);
    }
