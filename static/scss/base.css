@@ -79,6 +79,10 @@ ORDER: Base + typography > general layout + grid > page layout > components
 .input-scale:focus {
   transform: scale(1.05); }
 
+.shake-animation {
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  transform: translate3d(0, 0, 0); }
+
 .grid-full-span {
   grid-column: 1/-1; }
 
@@ -390,6 +394,16 @@ ORDER: Base + typography > general layout + grid > page layout > components
   100% {
     transform: translateX(0);
     opacity: 1; } }
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0); }
+  20%, 80% {
+    transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0); }
+  40%, 60% {
+    transform: translate3d(4px, 0, 0); } }
 
 .about {
   display: grid;
@@ -1050,7 +1064,10 @@ ORDER: Base + typography > general layout + grid > page layout > components
   height: 100vh;
   z-index: 1000;
   background-color: rgba(112, 111, 111, 0.7);
-  display: flex; }
+  display: flex;
+  animation-name: fade-bottom;
+  animation-duration: 1s;
+  animation-timing-function: ease-out; }
   .modal__content {
     display: flex;
     flex-direction: column;
@@ -1065,10 +1082,59 @@ ORDER: Base + typography > general layout + grid > page layout > components
     margin-right: auto;
     margin-left: auto;
     background-color: #dedbdb; }
+    .modal__content h1 {
+      margin-bottom: 1rem;
+      animation-name: fade-left;
+      animation-duration: 1s;
+      animation-timing-function: ease-out; }
+    .modal__content__buttons {
+      display: flex; }
   .modal__close-button {
     justify-self: end;
     align-self: end;
-    font-size: 1.5rem; }
+    font-size: 1.5rem;
+    cursor: pointer; }
+
+.modal-queued {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  background-color: rgba(112, 111, 111, 0.7);
+  display: flex;
+  animation-name: fade-bottom;
+  animation-duration: 1s;
+  animation-timing-function: ease-out; }
+  .modal-queued__content {
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    -webkit-box-shadow: 0px 0px 7px 4px #42445a;
+    -moz-box-shadow: 0px 0px 7px 4px #42445a;
+    box-shadow: 0px 0px 7px 4px #42445a;
+    padding: 5rem 5rem;
+    transition: all .2s ease-in;
+    justify-self: center;
+    align-self: center;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: #afe0a5;
+    color: white;
+    position: relative; }
+    .modal-queued__content h1 {
+      margin-bottom: 5rem;
+      font-size: 3rem;
+      animation-name: fade-left;
+      animation-duration: 1s;
+      animation-timing-function: ease-out; }
+  .modal-queued__close-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2.5rem;
+    cursor: pointer; }
 
 .fix-navbar .navigation--dashboard__button {
   top: 2rem; }
@@ -1709,7 +1775,7 @@ body {
 
 .loader--signup {
   border: 4px solid #f3f3f3;
-  border-top: 4px solid gold;
+  border-top-color: #52e040;
   border-radius: 50%;
   width: 2.5rem;
   height: 2.5rem;
@@ -3257,7 +3323,12 @@ body {
       align-items: center;
       border-bottom: 1px solid #f2f2f2;
       transition: all .3s ease-in;
-      margin-top: 0.5rem; }
+      margin-top: 0.5rem;
+      animation-name: fade-bottom;
+      animation-duration: 1s;
+      animation-timing-function: ease-out; }
+      .add-meals__already__added--item:hover {
+        transform: scale(1.02); }
       .add-meals__already__added--item__category {
         grid-row: 2/3;
         grid-column: 1/-1;
@@ -3350,7 +3421,7 @@ body {
         font-size: 1.3rem; }
         @media only screen and (max-width: 75em) {
           .add-meals__search__results__container {
-            height: 35rem; } }
+            height: 25rem; } }
         .add-meals__search__results__container p {
           margin: 3rem 2rem;
           font-size: 2rem; }
@@ -3592,10 +3663,14 @@ body {
   align-self: center;
   justify-self: center;
   font-size: 2rem;
-  border: none;
-  background-color: #75ad7c;
-  color: white;
-  cursor: pointer; }
+  border: 1px solid #13aa52;
+  background-color: white;
+  color: #13aa52;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all .2s ease-in; }
+  .save-add-today-meals:hover {
+    transform: scale(1.05); }
 
 .search-results-info {
   display: flex;
@@ -3623,6 +3698,34 @@ body {
     color: green;
     font-size: 1.8rem;
     margin-left: 0.5rem; }
+
+.accept-delete-today-meal {
+  border-radius: 5px;
+  width: 6rem;
+  height: 4rem;
+  font-size: 1.5rem;
+  border: 1px solid #13aa52;
+  background-color: white;
+  color: #13aa52;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold; }
+  .accept-delete-today-meal:hover {
+    transform: scale(1.02); }
+
+.deny-delete-today-meal {
+  border-radius: 5px;
+  width: 6rem;
+  height: 4rem;
+  font-size: 1.5rem;
+  border: 1px solid #ff041b;
+  background-color: white;
+  color: #ff0000;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold; }
+  .deny-delete-today-meal:hover {
+    transform: scale(1.02); }
 
 .meals-propositions-layout-container {
   width: 100vw;
@@ -3822,11 +3925,12 @@ body {
   grid-template-rows: 0.30fr 1fr 0.15fr;
   align-items: center;
   justify-items: center;
-  position: relative; }
+  position: relative;
+  overflow-y: hidden; }
   @media only screen and (max-width: 84.375em) {
     .saved-meals-layout-container {
       grid-template-columns: 0.05fr 1fr 0.05fr;
-      grid-template-rows: 0.30fr 2fr 0.15fr;
+      grid-template-rows: 0.30fr 2.5fr 0.15fr;
       height: auto;
       background-image: linear-gradient(to bottom, rgba(246, 244, 244, 0.5), rgba(148, 147, 147, 0.84)), url("https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80");
       background-position: center;
@@ -3834,7 +3938,7 @@ body {
       background-size: cover; } }
 .saved-meals {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr 1.5fr;
   grid-template-rows: 1fr;
   grid-column: 2/3;
   grid-row: 2/3;
@@ -3941,6 +4045,7 @@ body {
     -moz-box-shadow: 0px 0px 8px 2px #42445a;
     box-shadow: 0px 0px 8px 2px #42445a;
     color: white;
+    transition: all .2s ease-in;
     animation-name: fade-right;
     animation-duration: 1s;
     animation-timing-function: ease-out; }
@@ -3971,8 +4076,8 @@ body {
         border-radius: 10px;
         height: 90%; }
         .saved-meals__added--saved__content__save {
-          margin-top: 2rem;
-          padding: 1rem 2rem;
+          margin-left: 2rem;
+          padding: 0.75rem 2rem;
           border: none;
           border-radius: 10px;
           color: white;
@@ -3981,7 +4086,10 @@ body {
           transition: all .2s ease-in;
           justify-self: center;
           align-self: center;
-          text-align: center; }
+          text-align: center;
+          animation-name: fade-bottom;
+          animation-duration: 1s;
+          animation-timing-function: ease-out; }
           .saved-meals__added--saved__content__save:hover {
             transform: scale(1.05); }
         .saved-meals__added--saved__content__search-response::-webkit-scrollbar-track {
@@ -3996,7 +4104,7 @@ body {
           -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
           background-color: #afe0a5; }
         .saved-meals__added--saved__content__search-response {
-          height: 10rem;
+          height: 13rem;
           padding: 2rem 2rem;
           font-size: 1.5rem;
           overflow-y: auto;
@@ -4007,40 +4115,24 @@ body {
           animation-timing-function: ease-out; }
           .saved-meals__added--saved__content__search-response__item {
             display: grid;
+            margin-top: 0.5rem;
             grid-template-rows: 1fr;
             grid-template-columns: 0.8fr 0.2fr;
             transition: all .3s ease-out;
             animation-name: fade-bottom;
             animation-duration: 0.5s;
             animation-timing-function: ease-out; }
+            .saved-meals__added--saved__content__search-response__item:hover {
+              transform: scale(1.02); }
             .saved-meals__added--saved__content__search-response__item:not(:last-of-type) {
               border-bottom: 1px solid #f2f2f2; }
             .saved-meals__added--saved__content__search-response__item p {
               grid-column: 1/2; }
-            .saved-meals__added--saved__content__search-response__item button {
-              justify-self: end;
-              border-radius: 5px;
-              border: none;
-              width: 1.5rem;
-              height: 1.5rem;
-              grid-column: 2/3;
-              font-size: 1rem;
-              font-weight: bold;
-              cursor: pointer;
-              transition: all .3s ease-in;
-              background-color: #bde7c5;
-              color: white; }
-              .saved-meals__added--saved__content__search-response__item button:hover {
-                transform: scale(1.25); }
-              @media only screen and (max-width: 37.5em) {
-                .saved-meals__added--saved__content__search-response__item button {
-                  margin-right: 1rem; } }
-              @media only screen and (max-width: 28.5em) {
-                .saved-meals__added--saved__content__search-response__item button {
-                  width: 2rem;
-                  height: 2rem; } }
+            .saved-meals__added--saved__content__search-response__item div {
+              justify-self: flex-end;
+              align-self: flex-end; }
         .saved-meals__added--saved__content__meal {
-          height: 10rem;
+          height: 100%;
           font-size: 1.5rem;
           transition: all .3s ease-out;
           animation-name: fade-bottom;
@@ -4060,44 +4152,27 @@ body {
             -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
             background-color: #afe0a5; }
           .saved-meals__added--saved__content__meal__items {
-            height: 10rem;
+            height: 12rem;
             overflow-y: auto;
             overflow-x: hidden; }
           .saved-meals__added--saved__content__meal__item {
             display: grid;
             grid-template-rows: 1fr;
             grid-template-columns: 0.8fr 0.2fr;
-            margin: 0 2rem;
+            margin: 1rem 2rem;
             transition: all .3s ease-out;
             animation-name: fade-bottom;
             animation-duration: 0.5s;
             animation-timing-function: ease-out; }
+            .saved-meals__added--saved__content__meal__item:hover {
+              transform: scale(1.02); }
             .saved-meals__added--saved__content__meal__item:not(:last-of-type) {
               border-bottom: 1px solid #f2f2f2; }
             .saved-meals__added--saved__content__meal__item p {
               grid-column: 1/2; }
-            .saved-meals__added--saved__content__meal__item button {
-              justify-self: end;
-              border-radius: 5px;
-              border: none;
-              width: 1.5rem;
-              height: 1.5rem;
-              grid-column: 2/3;
-              font-size: 1rem;
-              font-weight: bold;
-              cursor: pointer;
-              transition: all .3s ease-in;
-              background-color: #bde7c5;
-              color: white; }
-              .saved-meals__added--saved__content__meal__item button:hover {
-                transform: scale(1.25); }
-              @media only screen and (max-width: 37.5em) {
-                .saved-meals__added--saved__content__meal__item button {
-                  margin-right: 1rem; } }
-              @media only screen and (max-width: 28.5em) {
-                .saved-meals__added--saved__content__meal__item button {
-                  width: 2rem;
-                  height: 2rem; } }
+            .saved-meals__added--saved__content__meal__item div.remove-icon {
+              justify-self: flex-end;
+              align-self: flex-end; }
           .saved-meals__added--saved__content__meal__items::-webkit-scrollbar-track {
             -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
             border-radius: 10px;
@@ -4154,11 +4229,12 @@ body {
 
 .saved-new-meals-buttons-container {
   display: flex;
-  flex-direction: column;
-  margin: 0 2rem 5rem 2rem; }
+  flex-direction: row;
+  margin: auto 2rem 1rem 2rem; }
 
 .meal_name_input {
   height: 3rem;
+  width: 25rem;
   text-align: center;
   border: 0;
   border-radius: 5px;
@@ -4171,6 +4247,24 @@ body {
 .color-error {
   background-color: rgba(243, 152, 152, 0.82);
   color: white; }
+
+.search-category-small--saved__text {
+  color: green;
+  font-size: 1.8rem;
+  margin-left: 0.5rem; }
+
+.today-meals-saved-inputBox {
+  display: flex;
+  font-size: 1.5rem; }
+  .today-meals-saved-inputBox input {
+    width: 8rem;
+    height: 2rem;
+    text-align: center;
+    border-radius: 10px;
+    border: none;
+    background-color: rgba(200, 243, 195, 0.69); }
+  .today-meals-saved-inputBox label {
+    margin-left: 1rem; }
 
 *,
 *::after,

@@ -8,9 +8,10 @@
   align-items: center;
   justify-items: center;
   position: relative;
+  overflow-y: hidden;
   @include respond(tab-desktop) {
     grid-template-columns: 0.05fr 1fr 0.05fr;
-    grid-template-rows: 0.30fr 2fr 0.15fr;
+    grid-template-rows: 0.30fr 2.5fr 0.15fr;
     height: auto;
     background-image: linear-gradient(to bottom, rgba(246, 244, 244, 0.5), rgba(148, 147, 147, 0.84)), url("https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80");
     background-position: center;
@@ -21,7 +22,7 @@
 
 .saved-meals {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr 1.5fr;
   grid-template-rows: 1fr;
   grid-column: 2/3;
   grid-row: 2/3;
@@ -153,6 +154,7 @@
     -moz-box-shadow: 0px 0px 8px 2px rgba(66, 68, 90, 1);
     box-shadow: 0px 0px 8px 2px rgba(66, 68, 90, 1);
     color: white;
+    transition: all .2s ease-in;
     animation-name: fade-right;
     animation-duration: 1s;
     animation-timing-function: ease-out;
@@ -184,8 +186,8 @@
         border-radius: 10px;
         height: 90%;
         &__save {
-            margin-top: 2rem;
-            padding: 1rem 2rem;
+            margin-left: 2rem;
+            padding: 0.75rem 2rem;
             border: none;
             border-radius: 10px;
             color: white;
@@ -195,6 +197,9 @@
             justify-self: center;
             align-self: center;
             text-align: center;
+            animation-name: fade-bottom;
+            animation-duration: 1s;
+            animation-timing-function: ease-out;
             &:hover {
               transform: scale(1.05);
             }
@@ -215,7 +220,7 @@
         }
 
         &__search-response {
-          height: 10rem;
+          height: 13rem;
           padding: 2rem 2rem;
           font-size: 1.5rem;
           overflow-y: auto;
@@ -227,46 +232,30 @@
 
           &__item {
             display: grid;
+            margin-top: 0.5rem;
             grid-template-rows: 1fr;
             grid-template-columns: 0.8fr 0.2fr;
             transition: all .3s ease-out;
             animation-name: fade-bottom;
             animation-duration: 0.5s;
             animation-timing-function: ease-out;
+            &:hover {
+              transform: scale(1.02);
+            }
             &:not(:last-of-type) {
               border-bottom: 1px solid #f2f2f2;
             }
             p {
               grid-column: 1/2;
             }
-            button {
-              justify-self: end;
-              border-radius: 5px;
-              border: none;
-              width: 1.5rem;
-              height: 1.5rem;
-              grid-column: 2/3;
-              font-size: 1rem;
-              font-weight: bold;
-              cursor: pointer;
-              transition: all .3s ease-in;
-              background-color: rgb(189, 231, 197);
-              color: white;
-               &:hover {
-                transform: scale(1.25);
-              }
-              @include respond(phone-lg){
-                margin-right: 1rem;
-              }
-              @include respond(phone-md){
-                width: 2rem;
-                height: 2rem;
-              }
+            div {
+              justify-self: flex-end;
+              align-self: flex-end;
             }
           }
         }
         &__meal {
-          height: 10rem;
+          height: 100%;
           font-size: 1.5rem;
           transition: all .3s ease-out;
           animation-name: fade-bottom;
@@ -290,7 +279,7 @@
             background-color: #afe0a5;
           }
           &__items {
-            height: 10rem;
+            height: 12rem;
             overflow-y: auto;
             overflow-x: hidden;
           }
@@ -298,41 +287,23 @@
             display: grid;
             grid-template-rows: 1fr;
             grid-template-columns: 0.8fr 0.2fr;
-            margin: 0 2rem;
+            margin: 1rem 2rem;
             transition: all .3s ease-out;
             animation-name: fade-bottom;
             animation-duration: 0.5s;
             animation-timing-function: ease-out;
-
+            &:hover {
+              transform: scale(1.02);
+            }
             &:not(:last-of-type) {
               border-bottom: 1px solid #f2f2f2;
             }
             p {
               grid-column: 1/2;
             }
-            button {
-              justify-self: end;
-              border-radius: 5px;
-              border: none;
-              width: 1.5rem;
-              height: 1.5rem;
-              grid-column: 2/3;
-              font-size: 1rem;
-              font-weight: bold;
-              cursor: pointer;
-              transition: all .3s ease-in;
-              background-color: rgb(189, 231, 197);
-              color: white;
-               &:hover {
-                transform: scale(1.25);
-              }
-              @include respond(phone-lg){
-                margin-right: 1rem;
-              }
-              @include respond(phone-md){
-                width: 2rem;
-                height: 2rem;
-              }
+            div.remove-icon {
+              justify-self: flex-end;
+              align-self: flex-end;
             }
           }
           &__items::-webkit-scrollbar-track {
@@ -410,12 +381,13 @@
 
 .saved-new-meals-buttons-container{
   display: flex;
-  flex-direction: column;
-  margin: 0 2rem 5rem 2rem;
+  flex-direction: row;
+  margin: auto 2rem 1rem 2rem;
 }
 
 .meal_name_input {
   height: 3rem;
+  width: 25rem;
   text-align: center;
   border: 0;
   border-radius: 5px;
@@ -431,4 +403,30 @@
 .color-error {
     background-color: rgba(243, 152, 152, 0.82);
     color: white;
+}
+
+.search-category-small--saved {
+
+  &__text {
+    color:green;
+    font-size: 1.8rem;
+    margin-left: 0.5rem;
+  }
+}
+
+
+.today-meals-saved-inputBox{
+  display: flex;
+  font-size: 1.5rem;
+  input {
+    width: 8rem;
+    height: 2rem;
+    text-align: center;
+    border-radius: 10px;
+    border: none;
+    background-color: rgba(200, 243, 195, 0.69);
+  }
+  label {
+    margin-left: 1rem;
+  }
 }

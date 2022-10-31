@@ -1,8 +1,9 @@
 // cards
 const searchContainer = document.querySelector('.saved-meals__search')
 const adjustableCard = document.querySelector('.saved-meals__added')
+const navbar = document.querySelector('.navbar--dashboard')
 
-
+navbar.classList.toggle('fix-navbar')
 // buttons
 const saveNewMealButton = document.querySelector('.saved-meals__search__save-new__button')
 const detailsButtons = document.querySelectorAll('.details-saved-meals')
@@ -153,10 +154,12 @@ const ajaxCall = (query) => {
                searchResponseBox.classList.remove('not-visible')
                let ingredients = [...response.ingredients]
                ingredients.forEach(ingredient => {
+                   let isGram = ingredient.unit_name_pl === 'g' ? '' : `lub ${Math.round(ingredient.serving_grams)} g`
                    let contentToAppend = `
                     <div class="saved-meals__added--saved__content__search-response__item">
-                        <p>${ingredient.en_name}</p>
-                        <button id='${ingredient.pk}' class="new-meal-add-item">+</button>
+                        <p><b>${ingredient.pl_name}</b> (${Math.trunc(ingredient.kcal)} kcal / ${ingredient.unit_multiplier} ${ingredient.unit_name_pl} ${isGram})</p>
+                        <div data-mealObj='${encodeURIComponent(JSON.stringify(ingredient))}' class="new-meal-add-item add-icon filter-green"></div>
+                         <small class="search-category-small--saved">Kategoria: <span class="search-category-small--saved__text">${ingredient.category_name_pl}</span></small>
                     </div>
                    `
                    searchResponseBox.insertAdjacentHTML('beforeend', contentToAppend)
@@ -164,14 +167,20 @@ const ajaxCall = (query) => {
                 const addButtons = document.querySelectorAll('.new-meal-add-item')
                 addButtons.forEach(button => {
                     button.addEventListener('click', e=>{
+                        const ingredientObj = JSON.parse(decodeURIComponent(button.dataset.mealobj))
+                        let isGram = ingredientObj.unit_name_pl === 'g' ? '' : `lub ${Math.round(ingredientObj.serving_grams)} g`
                         const mealContent = document.querySelector('.saved-meals__added--saved__content__meal')
                         const mealNameSaveContainer = document.querySelector('.saved-new-meals-buttons-container')
                         mealContent.classList.remove('not-visible')
                         mealNameSaveContainer.classList.remove('not-visible')
                         const mealItemAppend = `
                                <div class="saved-meals__added--saved__content__meal__item">
-                                   <p class="${e.target.previousElementSibling.innerText}">${e.target.previousElementSibling.innerText}</p>
-                                   <button class="saved-meals__added--saved__content__meal__item--remove">-</button>
+                                   <p><b>${ingredientObj.pl_name}</b> (${Math.trunc(ingredientObj.kcal)} kcal / ${ingredientObj.unit_multiplier} ${ingredientObj.unit_name_pl} ${isGram})</p>
+                                   <div class="saved-meals__added--saved__content__meal__item--remove remove-icon filter-red"></div>
+                                    <div class="today-meals-saved-inputBox">
+                                       <input min="1" max="1000" class="new-today-meal-input-quantity" name="${ingredientObj.pl_name}" type="number" placeholder="${ingredientObj.unit_name_pl}">
+                                       <label for="${ingredientObj.pl_name}">x ${ingredientObj.unit_name_pl}</label>
+                                   </div>
                                </div>
                       `
                         const mealContentItems = document.querySelector('.saved-meals__added--saved__content__meal__items')
@@ -219,6 +228,5 @@ const saveNewMeal = () => {
     const mealName = document.querySelector('.meal_name_input')
     const ingredientsEl = document.querySelectorAll('.saved-meals__added--saved__content__meal__item')
     console.log(ingredientsEl)
-
 }
 

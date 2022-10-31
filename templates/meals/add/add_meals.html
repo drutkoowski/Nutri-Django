@@ -43,10 +43,10 @@
                               <div class="today-meals-added-remove-btn remove-icon filter-red meal-saved" data-mealObjId="{{ meal.id }}"></div>
                               <p class="add-meals__already__added--item__category">Kategoria: <span>{{ meal.ingredient.category.pl_category_name }}</span></p>
                               <div class="add-meals__already__added--item__details-box">
-                                <p>Kcal: {{ meal.kcal }}</p>
-                                <p>Protein: {{ meal.protein }}</p>
-                                <p>Carbs: {{ meal.carbs }}</p>
-                                <p>Fat: {{ meal.fat }}</p>
+                                <p>Kcal: <b>{{ meal.kcal|floatformat:"-2" }}</b></p>
+                                <p>Protein: <b>{{ meal.protein|floatformat:"-2" }}</b></p>
+                                <p>Carbs: <b>{{ meal.carbs|floatformat:"-2" }}</b></p>
+                                <p>Fat: <b>{{ meal.fat|floatformat:"-2" }}</b></p>
                               </div>
                             </div>
                              {% endfor %}
@@ -72,6 +72,24 @@
                 </div>
             </div>
         </div>
+ <div class="modal-queued not-visible">
+     <div class="modal-queued__content">
+         <div class="modal-queued__close-button">&times;</div>
+         <h1>Adding your meal to our database..</h1>
+         <div class="loader--signup"></div>
+     </div>
+ </div>
 
+ <div class="modal-queued modal-accept-delete not-visible">
+     <div class="modal-queued__content">
+         <div class="modal-queued__close-button modal-accept-delete-close">&times;</div>
+         <h1>Are you sure you want to delete this meal?</h1>
+         <div class="modal-queued__content__buttons">
+            <button class="accept-delete-today-meal">Yes</button>
+            <button class="deny-delete-today-meal">No</button>
+         </div>
+
+     </div>
+ </div>
 
 {% endblock %}

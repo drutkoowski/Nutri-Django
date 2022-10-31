@@ -75,3 +75,5 @@ class Meal(models.Model):
     serving_grams = models.FloatField(blank=True, default=None, null=True)
     serving_ml = models.FloatField(blank=True, default=None, null=True)
     created_by = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+
+

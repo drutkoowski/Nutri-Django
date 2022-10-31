@@ -87,6 +87,8 @@ def login_user(request):
             return JsonResponse({'status': 200, 'text': 'User logged in'})
         else:
             return JsonResponse({'status': 404, 'text': 'Error while trying to log in the user'})
+    else:
+        return redirect('home')
 
 
 def check_if_taken(request):
@@ -99,3 +101,5 @@ def check_if_taken(request):
             return JsonResponse({'status': 200, 'text': 'User already exists.'})
         else:
             return JsonResponse({'status': 404, 'text': 'User not exists.'})
+    else:
+        return redirect('home')

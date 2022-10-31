@@ -65,6 +65,12 @@
       border-bottom: 1px solid #f2f2f2;
       transition: all .3s ease-in;
       margin-top: 0.5rem;
+      animation-name: fade-bottom;
+      animation-duration: 1s;
+      animation-timing-function: ease-out;
+      &:hover {
+        transform: scale(1.02);
+      }
 
       &__category {
         grid-row: 2/3;
@@ -176,7 +182,7 @@
         height: 25rem;
         font-size: 1.3rem;
         @include respond(tab-land) {
-          height: 35rem;
+          height: 25rem;
         }
 
         p {
@@ -467,10 +473,15 @@
   align-self: center;
   justify-self: center;
   font-size: 2rem;
-  border: none;
-  background-color: rgb(117, 173, 124);
-  color: white;
+  border: 1px solid #13aa52;
+  background-color: white;
+  color: #13aa52;
   cursor: pointer;
+  font-weight: bold;
+  transition: all .2s ease-in;
+   &:hover {
+     transform: scale(1.05);
+   }
 }
 
 .search-results-info{
@@ -505,5 +516,36 @@
   }
 }
 
+.accept-delete-today-meal{
+  border-radius: 5px;
+  width: 6rem;
+  height: 4rem;
+  font-size: 1.5rem;
+  border: 1px solid #13aa52;
+  background-color: white;
+  color: #13aa52;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  &:hover {
+     transform: scale(1.02);
+   }
+}
+
+.deny-delete-today-meal{
+  border-radius: 5px;
+  width: 6rem;
+  height: 4rem;
+  font-size: 1.5rem;
+  border: 1px solid #ff041b;
+  background-color: white;
+  color: #ff0000;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+   &:hover {
+     transform: scale(1.02);
+   }
+}
 
 

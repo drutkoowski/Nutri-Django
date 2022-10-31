@@ -2,7 +2,7 @@ import json
 
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from accounts.models import UserProfile
 from .models import Ingredient, IngredientUnit, Meal, IngredientCategory
@@ -63,6 +63,8 @@ def live_search_ingredients(request):
                 return JsonResponse({'status': 404, 'text': 'There are not ingredients found.', 'ingredients': []})
         else:
             return JsonResponse({'status': 404, 'text': 'There are not ingredients found.', 'ingredients': []})
+    else:
+        return redirect('home')
 
 
 @login_required(login_url='login')
@@ -82,23 +84,34 @@ def add_today_meal_ajax(request):
                     multiplier = quantity
                 meal_kcal = float(ingredient.kcal) * float(multiplier)
                 meal_carbs = float(ingredient.carbs) * float(multiplier)
+
                 meal_protein = None if ingredient.protein is None else round(
                     float(ingredient.protein) * float(multiplier), 5)
+
                 meal_fat = None if ingredient.fat is None else round(float(ingredient.fat) * float(multiplier), 5)
+
                 meal_fiber = None if ingredient.fiber is None else round(float(ingredient.fiber) * float(multiplier), 5)
+
                 meal_saturated_fat = None if ingredient.saturated_fat is None else round(
                     float(ingredient.saturated_fat) * float(multiplier), 5)
+
                 meal_cholesterol = None if ingredient.cholesterol is None else round(
                     float(ingredient.cholesterol) * float(multiplier), 5)
+
                 meal_sodium = None if ingredient.sodium is None else round(float(ingredient.sodium) * float(multiplier),
                                                                            5)
+
                 meal_sugar = None if ingredient.sugar is None else round(float(ingredient.sugar) * float(multiplier), 5)
+
                 meal_potassium = None if ingredient.potassium is None else round(
                     float(ingredient.potassium) * float(multiplier), 5)
-                meal_serving_grams = None if ingredient.serving_grams is None else float(
-                    ingredient.serving_grams) * float(multiplier)
-                meal_serving_ml = None if ingredient.serving_ml is None else float(ingredient.serving_ml) * float(
-                    multiplier)
+
+                meal_serving_grams = None if ingredient.serving_grams is None else round(float(
+                    ingredient.serving_grams) * float(multiplier), 5)
+
+                meal_serving_ml = None if ingredient.serving_ml is None else round(float(ingredient.serving_ml) * float(
+                    multiplier), 5)
+
                 meal = Meal.objects.create(created_by=user_profile, quantity=quantity, ingredient=ingredient,
                                            kcal=meal_kcal, carbs=meal_carbs, protein=meal_protein, fat=meal_fat,
                                            fiber=meal_fiber, saturated_fat=meal_saturated_fat,
@@ -106,16 +119,23 @@ def add_today_meal_ajax(request):
                                            potassium=meal_potassium, serving_grams=meal_serving_grams,
                                            serving_ml=meal_serving_ml)
                 meal.save()
-
                 return JsonResponse({'status': 201, 'text': 'Created.'})
         return JsonResponse({'status': 400, 'text': 'Not Created.'})
+    else:
+        return redirect('home')
 
 
 def delete_today_meal_ajax(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
         meal_id = request.POST.get('meal_id')
-        print(meal_id)
-        return JsonResponse({'status': 200, 'text': 'There are ingredients found.'})
+        try:
+            meal = Meal.objects.get(pk=meal_id)
+            meal.delete()
+            return JsonResponse({'status': 200, 'text': f'Item with id {meal_id} successfully deleted!'})
+        except:
+            return JsonResponse({'status': 400, 'text': f'Item with id {meal_id} was not deleted!'})
+    else:
+        return redirect('home')
 
 # def test(request):
 #     import json
