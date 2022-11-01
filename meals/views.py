@@ -41,9 +41,9 @@ def live_search_ingredients(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
         query = request.GET.get('query')
         if query != '':
-            check_if_ingredient_exists = Ingredient.objects.filter(pl_name__istartswith=query).union(
+            check_if_ingredient_exists = Ingredient.objects.filter(pl_name__iregex=r"\b{0}\b".format(query)).union(
                 Ingredient.objects.filter(
-                    pl_name__iregex=r"\b{0}\b".format(query)
+                    pl_name__istartswith=query
                 )).all()
             # "\y" or "\b" depends on postgres or not (\y - postgres)
             if check_if_ingredient_exists is not None:
@@ -72,11 +72,9 @@ def add_today_meal_ajax(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
         ingredients_array = request.POST.get('ingredientsArray')
         data_array = json.loads(ingredients_array)
-        print(data_array)
         if ingredients_array is not None:
             user_profile = UserProfile.objects.filter(user=request.user).first()
             for item in data_array:
-                print(item)
                 ingredient = Ingredient.objects.filter(pk=item['ingredientId']).first()
                 unit_ml_g = ingredient.unit.en_name == 'g' or ingredient.unit.en_name == 'ml'
                 quantity = float(item['quantity'])

@@ -56,7 +56,7 @@
     max-height: 15rem;
     overflow-y: auto;
     overflow-x: hidden;
-    border-bottom: 1px solid #afe0a5;
+    border-bottom: 3px solid #afe0a5;
     &--item {
       display: grid;
       grid-template-columns: 0.8fr 0.2fr;
@@ -430,20 +430,6 @@
   @include respond(tab-land) {
     display: none;
   }
-}
-
-.add-icon {
-  background-image: url("/static/images/svg/plus.svg");
-  width: 2rem;
-  height: 2rem;
-  cursor: pointer;
-}
-
-.remove-icon {
-  background-image: url("/static/images/svg/minus.svg");
-  width: 2rem;
-  height: 2rem;
-  cursor: pointer;
 }
 
 .today-meals-added-inputBox{

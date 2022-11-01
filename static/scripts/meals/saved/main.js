@@ -30,6 +30,15 @@ const clearCardContent = () => {
     }
 }
 
+function hideModal(modalClass) {
+    $("." + modalClass).fadeOut(900, e => {
+         const modal = document.querySelector(`.${modalClass}`)
+         modal.classList.add('not-visible')
+         modal.style.removeProperty('display')
+    });
+}
+
+
 const shakeAnimation = (contentBox) => {
     setTimeout(() => {
        contentBox.classList.toggle('shake-animation')

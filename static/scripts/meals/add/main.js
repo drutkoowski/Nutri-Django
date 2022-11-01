@@ -1,3 +1,30 @@
+function hideModal(modalClass) {
+    $("." + modalClass).fadeOut(900, e => {
+         const modal = document.querySelector(`.${modalClass}`)
+         modal.classList.add('not-visible')
+         modal.style.removeProperty('display')
+    });
+}
+
+let openModal = function (modalClass) {
+        let div = document.querySelector(modalClass);
+        div.classList.remove('not-visible')
+        let Mwidth = div.offsetWidth;
+        let Mheight = div.offsetHeight;
+        let Wwidth = window.innerWidth;
+        let Wheight = window.innerHeight;
+
+        div.style.position = "absolute";
+        div.style.top = ((Wheight - Mheight ) / 2 +window.pageYOffset ) + "px";
+        div.style.left = ((Wwidth - Mwidth) / 2 +window.pageXOffset ) + "px";
+        $(modalClass).on('scroll touchmove mousewheel', function(e){
+          e.preventDefault();
+          e.stopPropagation();
+          return false;
+        })
+};
+
+
 const mealsVideo = document.getElementById('add-meals-video')
 const navbar = document.querySelector('.navbar--dashboard')
 
@@ -9,6 +36,12 @@ navbar.classList.toggle('fix-navbar')
 if (mealsVideo) {
     mealsVideo.playbackRate = 0.5;
 }
+const shakeAnimation = (contentBox) => {
+    setTimeout(() => {
+       contentBox.classList.toggle('shake-animation')
+    }, 1000);
+}
+
 
 const ajaxCallSearch = (query) => {
     const url = window.location.origin + '/meals/data/live-search-ingredients'
@@ -190,16 +223,16 @@ alreadySavedButtons?.forEach(button => {
 
     button.addEventListener('click', e=> {
         const mealId = button.dataset.mealobjid
-        const modalAccept = document.querySelector('.modal-accept-delete')
-        modalAccept.classList.remove('not-visible')
+        openModal('.modal-accept-delete')
         const acceptBtn = document.querySelector('.accept-delete-today-meal')
         const denyBtn = document.querySelector('.deny-delete-today-meal')
         const modalCloseBtn = document.querySelector('.modal-accept-delete-close')
          denyBtn.addEventListener('click', e => {
-             modalAccept.classList.add('not-visible')
+             hideModal('modal-accept-delete')
         })
          modalCloseBtn.addEventListener('click', e => {
-             modalAccept.classList.add('not-visible')
+             hideModal('modal-accept-delete')
+
         })
         acceptBtn.addEventListener('click', e => {
             ajaxCallDelete(mealId)
@@ -207,13 +240,13 @@ alreadySavedButtons?.forEach(button => {
             const heading = document.querySelector('.meals-on-date')
             const item = button.parentElement
             item.remove()
+            hideModal('modal-accept-delete')
             if (alreadyAddedBox.children.length === 0) {
                 button.remove()
                 heading.remove()
                 alreadyAddedBox.remove()
                 const infoResults = document.querySelector('.saved-results-info')
                 infoResults.classList.remove('not-visible')
-                modalAccept.classList.add('not-visible')
             }
         })
     })
@@ -234,28 +267,23 @@ searchInput.addEventListener('input', e => {
 })
 
 
-const shakeAnimation = (contentBox) => {
-    setTimeout(() => {
-       contentBox.classList.toggle('shake-animation')
-    }, 1000);
-}
-
 const saveMealBtn = document.querySelector('.save-add-today-meals')
 saveMealBtn.addEventListener('click', e => {
     const mealsItems = Array.from(document.querySelectorAll('.add-meals__added--added__content__item'))
     const quantityInputs = document.querySelectorAll('.new-today-meal-input-quantity')
-    const contentBox = document.querySelector('.add-meals__added--added__content')
     let inputsValid = true
-    quantityInputs.forEach(el => {
-        if(!el.value || el.value === '') {
+    quantityInputs.forEach(inputEl => {
+        if(!inputEl.value || inputEl.value.length === 0 || inputEl.value === '') {
+            inputEl.classList.add('color-error')
+            inputEl.classList.toggle('shake-animation')
+            shakeAnimation(inputEl)
+            setTimeout(function () {
+                inputEl.classList.remove('color-error')
+            }, 1500);
             inputsValid = false
         }
     })
     if(mealsItems.length > 0 && inputsValid) {
         ajaxCallSave(mealsItems)
-    }
-    else {
-        contentBox.classList.toggle('shake-animation')
-        shakeAnimation(contentBox)
     }
 })

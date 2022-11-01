@@ -83,6 +83,24 @@ ORDER: Base + typography > general layout + grid > page layout > components
   animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
   transform: translate3d(0, 0, 0); }
 
+.add-icon {
+  background-image: url("/static/images/svg/plus.svg");
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer; }
+
+.remove-icon {
+  background-image: url("/static/images/svg/minus.svg");
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer; }
+
+.center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); }
+
 .grid-full-span {
   grid-column: 1/-1; }
 
@@ -3315,7 +3333,7 @@ body {
     max-height: 15rem;
     overflow-y: auto;
     overflow-x: hidden;
-    border-bottom: 1px solid #afe0a5; }
+    border-bottom: 3px solid #afe0a5; }
     .add-meals__already__added--item {
       display: grid;
       grid-template-columns: 0.8fr 0.2fr;
@@ -3627,18 +3645,6 @@ body {
   @media only screen and (max-width: 75em) {
     #add-meals-video {
       display: none; } }
-.add-icon {
-  background-image: url("/static/images/svg/plus.svg");
-  width: 2rem;
-  height: 2rem;
-  cursor: pointer; }
-
-.remove-icon {
-  background-image: url("/static/images/svg/minus.svg");
-  width: 2rem;
-  height: 2rem;
-  cursor: pointer; }
-
 .today-meals-added-inputBox {
   grid-row: 2/3;
   grid-column: 1 / -1;
