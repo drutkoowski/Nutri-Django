@@ -4133,14 +4133,15 @@ body {
               justify-self: flex-end;
               align-self: flex-end; }
         .saved-meals__added--saved__content__meal {
-          height: 100%;
+          height: 90%;
           font-size: 1.5rem;
           transition: all .3s ease-out;
           animation-name: fade-bottom;
           animation-duration: 1s;
           animation-timing-function: ease-out; }
           .saved-meals__added--saved__content__meal h2 {
-            margin-left: 2rem; }
+            margin-left: 2rem;
+            margin-top: 2rem; }
           .saved-meals__added--saved__content__meal__items::-webkit-scrollbar-track {
             -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
             border-radius: 10px;
@@ -4153,7 +4154,7 @@ body {
             -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
             background-color: #afe0a5; }
           .saved-meals__added--saved__content__meal__items {
-            height: 12rem;
+            height: 14rem;
             overflow-y: auto;
             overflow-x: hidden; }
           .saved-meals__added--saved__content__meal__item {
@@ -4165,6 +4166,8 @@ body {
             animation-name: fade-bottom;
             animation-duration: 0.5s;
             animation-timing-function: ease-out; }
+            .saved-meals__added--saved__content__meal__item:first-of-type {
+              margin-top: 0; }
             .saved-meals__added--saved__content__meal__item:hover {
               transform: scale(1.02); }
             .saved-meals__added--saved__content__meal__item:not(:last-of-type) {
@@ -4246,7 +4249,7 @@ body {
   animation-timing-function: ease-out; }
 
 .color-error {
-  background-color: rgba(243, 152, 152, 0.82);
+  background-color: rgba(243, 152, 152, 0.82) !important;
   color: white; }
 
 .search-category-small--saved__text {

@@ -30,7 +30,11 @@ const clearCardContent = () => {
     }
 }
 
-
+const shakeAnimation = (contentBox) => {
+    setTimeout(() => {
+       contentBox.classList.toggle('shake-animation')
+    }, 1000);
+}
 
 detailsButtons.forEach(button => button.addEventListener('click', e => {
     if (!isCardVisible) {
@@ -103,6 +107,17 @@ saveNewMealButton.addEventListener('click', e => {
     mealSaveButton.addEventListener('click', e => {
         const mealItems = document.querySelector('.saved-meals__added--saved__content__meal__items').children
         const inputNameEl = document.querySelector('.meal_name_input')
+        const inputsQuantity = document.querySelectorAll('.new-today-meal-input-quantity')
+        inputsQuantity.forEach(inputEl => {
+            if(!inputEl.value || inputEl.value.length === 0 || inputEl.value === '') {
+                inputEl.classList.add('color-error')
+                inputEl.classList.toggle('shake-animation')
+                shakeAnimation(inputEl)
+                setTimeout(function () {
+                    inputEl.classList.remove('color-error')
+                }, 1500);
+            }
+        })
         if (mealItems.length > 0 && inputNameEl.value && inputNameEl.value.length > 3) {
             console.log(inputNameEl.value)
             console.log('you are able to save')
@@ -110,9 +125,12 @@ saveNewMealButton.addEventListener('click', e => {
         }
         else {
             inputNameEl.classList.add('color-error')
-             setInterval(function () {
+            inputNameEl.parentElement.classList.toggle('shake-animation')
+            shakeAnimation(inputNameEl.parentElement)
+            setTimeout(function () {
                 inputNameElement.classList.remove('color-error')
             }, 1500);
+
         }
     })
 })

@@ -255,7 +255,7 @@
           }
         }
         &__meal {
-          height: 100%;
+          height: 90%;
           font-size: 1.5rem;
           transition: all .3s ease-out;
           animation-name: fade-bottom;
@@ -263,6 +263,7 @@
           animation-timing-function: ease-out;
           h2 {
             margin-left: 2rem;
+            margin-top: 2rem;
           }
           &__items::-webkit-scrollbar-track {
             -webkit-box-shadow:  inset 0 0 6px rgba(0,0,0,0.3);
@@ -279,7 +280,7 @@
             background-color: #afe0a5;
           }
           &__items {
-            height: 12rem;
+            height: 14rem;
             overflow-y: auto;
             overflow-x: hidden;
           }
@@ -292,6 +293,9 @@
             animation-name: fade-bottom;
             animation-duration: 0.5s;
             animation-timing-function: ease-out;
+            &:first-of-type{
+              margin-top: 0;
+            }
             &:hover {
               transform: scale(1.02);
             }
@@ -401,7 +405,7 @@
 
 
 .color-error {
-    background-color: rgba(243, 152, 152, 0.82);
+    background-color: rgba(243, 152, 152, 0.82)!important;
     color: white;
 }
 
