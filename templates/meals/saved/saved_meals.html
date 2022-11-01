@@ -26,31 +26,34 @@
                         <h3>Your Saved Meals</h3>
                         <hr>
                         <div class="saved-meals__search__results__container">
-                            <div class="saved-meals__search__results__container__item">
-                                <div class="saved-meals__search__results__container__item__recipe"><p>Spaghetti Carbonara</p></div>
-                                <div class="saved-meals__search__results__container__item__buttons">
-                                    <button class="details-saved-meals" data-meal='432'>Details</button>
-                                    <button class="edit-saved-meals">Edit</button>
-                                    <button class="">Delete</button>
+                            {% for item in saved_templates %}
+                                <div class="saved-meals__search__results__container__item">
+                                    <div class="saved-meals__search__results__container__item__recipe"><p>{{ item.meal_name }}</p></div>
+                                    <div class="saved-meals__search__results__container__item__buttons">
+                                        <button class="details-saved-meals" data-meal='{{ item.id }}'>Details</button>
+                                        <button class="edit-saved-meals">Edit</button>
+                                        <button class="">Delete</button>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="saved-meals__search__results__container__item">
-                                <div class="saved-meals__search__results__container__item__recipe"><p>Jajecznica Damiana</p></div>
-                                <div class="saved-meals__search__results__container__item__buttons">
-                                    <button class="details-saved-meals" data-meal='3212'>Details</button>
-                                    <button class="edit-saved-meals">Edit</button>
-                                    <button>Delete</button>
-                                </div>
-                            </div>
+                            {% endfor %}
                         </div>
                     </div>
                     <div class="saved-meals__search__save-new">
                         <p>Do you want to create new meal?</p>
-                        <button class="saved-meals__search__save-new__button">Create New Meal</button>
+                        <button class="saved-meals__search__save-new__button">Create New Template</button>
                     </div>
                 </div>
+                <div class="modal-queued not-visible">
+                     <div class="modal-queued__content">
+                         <div class="modal-queued__close-button">&times;</div>
+                         <h1>Adding your meal template to our database..</h1>
+                         <div class="loader--signup"></div>
+                     </div>
+                 </div>
+
                 <div class="saved-meals__added not-visible">
                     <div class="saved-meals__added--saved">
+                        {% csrf_token %}
                         <div class="saved-meals__added--saved__heading">
                             <h2 class="saved-meals__added--saved__heading--item">&nbsp;</h2>
                         </div>

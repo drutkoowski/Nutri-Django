@@ -77,3 +77,23 @@ class Meal(models.Model):
     created_by = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
 
 
+class MealTemplateElement(models.Model):
+    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE, default='')
+    quantity = models.FloatField(blank=False)
+    created_by = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.ingredient.en_name} / {self.created_by} ({self.pk})'
+
+
+class MealTemplate(models.Model):
+    meal_elements = models.ManyToManyField(MealTemplateElement, default='')
+    meal_name = models.CharField(max_length=50, blank=False)
+    kcal = models.FloatField(blank=True, null=True, default=None)
+    carbs = models.FloatField(blank=True, default=None, null=True)
+    protein = models.FloatField(blank=True, default=None, null=True)
+    fat = models.FloatField(blank=True, default=None, null=True)
+    created_by = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.meal_name}"

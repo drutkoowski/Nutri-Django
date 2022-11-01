@@ -3734,6 +3734,14 @@ body {
   .deny-delete-today-meal:hover {
     transform: scale(1.02); }
 
+.info-search-saved {
+  font-size: 2.5rem;
+  margin: auto auto;
+  text-align: center;
+  animation-name: fade-bottom;
+  animation-duration: 1s;
+  animation-timing-function: ease-out; }
+
 .meals-propositions-layout-container {
   width: 100vw;
   height: auto;

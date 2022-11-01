@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import IngredientUnit, Ingredient, Meal, IngredientCategory
+from .models import IngredientUnit, Ingredient, Meal, IngredientCategory, MealTemplateElement, MealTemplate
 
 
 # Register your models here.
@@ -29,15 +29,24 @@ class IngredientAdmin(admin.ModelAdmin):
 
 
 class MealAdmin(admin.ModelAdmin):
-    list_display = ("ingredient", "created_by", "created_at", "quantity", "kcal", "carbs", "protein", "fat", "fiber", "saturated_fat",
-                    "cholesterol", "sodium", "sugar", "potassium", "serving_grams", "serving_ml")
+    list_display = (
+    "ingredient", "created_by", "created_at", "quantity", "kcal", "carbs", "protein", "fat", "fiber", "saturated_fat",
+    "cholesterol", "sodium", "sugar", "potassium", "serving_grams", "serving_ml")
 
     def ingredients(self, obj):
         return "\n".join([a.ingredients for a in obj.ingredients.all()])
 
+
+class MealTemplateAdmin(admin.ModelAdmin):
+    list_display = ("meal_elements_list", "meal_name", "kcal", "carbs", "protein", "fat", "created_by")
+
+    def meal_elements_list(self, obj):
+        return ",\n".join([a.ingredient.en_name for a in obj.meal_elements.all()])
 
 #
 admin.site.register(IngredientUnit)
 admin.site.register(Ingredient, IngredientAdmin)
 admin.site.register(Meal, MealAdmin)
 admin.site.register(IngredientCategory, CategoryIngredientAdmin)
+admin.site.register(MealTemplateElement)
+admin.site.register(MealTemplate, MealTemplateAdmin)

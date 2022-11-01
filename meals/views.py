@@ -5,7 +5,7 @@ from django.http import JsonResponse
 from django.shortcuts import render, redirect
 
 from accounts.models import UserProfile
-from .models import Ingredient, IngredientUnit, Meal, IngredientCategory
+from .models import Ingredient, IngredientUnit, Meal, IngredientCategory, MealTemplateElement, MealTemplate
 
 
 # Create your views here.
@@ -32,7 +32,12 @@ def meal_propositions_view(request):
 
 @login_required(login_url='login')
 def saved_meals_view(request):
-    return render(request, 'meals/saved/saved_meals.html')
+    user_profile = UserProfile.objects.filter(user=request.user)
+    meal_templates = MealTemplate.objects.filter(created_by__in=user_profile).all()
+    context = {
+        "saved_templates" : meal_templates
+    }
+    return render(request, 'meals/saved/saved_meals.html', context)
 
 
 # ajax calls
@@ -41,7 +46,8 @@ def live_search_ingredients(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
         query = request.GET.get('query')
         if query != '':
-            check_if_ingredient_exists = Ingredient.objects.filter(pl_name__iregex=r"\b{0}\b".format(query)).union(
+            check_if_ingredient_exists = Ingredient.objects.filter(
+                pl_name__iregex=r"\b{0}\b".format(query)).all().union(
                 Ingredient.objects.filter(
                     pl_name__istartswith=query
                 )).all()
@@ -123,6 +129,40 @@ def add_today_meal_ajax(request):
         return JsonResponse({'status': 400, 'text': 'Not Created.'})
     else:
         return redirect('home')
+
+
+def add_saved_meal_element(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
+        ingredients_array = request.POST.get('ingredientsArray')
+        data = json.loads(ingredients_array)
+        meal_name = request.POST.get('mealName')
+        try:
+            user_profile = UserProfile.objects.get(user=request.user)
+            meal_template = MealTemplate(meal_name=meal_name, created_by=user_profile)
+            meal_template.save()
+            sum_kcal = 0
+            sum_carbs = 0
+            sum_protein = 0
+            sum_fat = 0
+            for ingredient in data:
+                ing_obj = ingredient["ingObj"]
+                ing_id = ing_obj["id"]
+                quantity = ingredient["quantity"]
+                sum_kcal = sum_kcal + None if ing_obj['kcal'] is None else round(float(ing_obj['kcal']) * float(quantity), 5)
+                sum_carbs = sum_carbs + None if ing_obj['carbs'] is None else round(float(ing_obj['carbs']) * float(quantity), 5)
+                sum_protein = sum_protein + None if ing_obj['protein'] is None else round(float(ing_obj['protein']) * float(quantity), 5)
+                sum_fat = sum_fat + None if ing_obj['fat'] is None else round(float(ing_obj['fat']) * float(quantity), 5)
+                meal_el = MealTemplateElement.objects.create(ingredient_id=ing_id, quantity=quantity,
+                                                             created_by=user_profile)
+                meal_template.meal_elements.add(meal_el)
+            meal_template.kcal = sum_kcal
+            meal_template.carbs = sum_carbs
+            meal_template.protein = sum_protein
+            meal_template.fat = sum_fat
+            meal_template.save()
+            return JsonResponse({'status': 201, 'text': 'Meal template created!'})
+        except:
+            return JsonResponse({'status': 400, 'text': 'Some error occurred, meal template not created!'})
 
 
 def delete_today_meal_ajax(request):

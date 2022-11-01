@@ -11,6 +11,10 @@ const editButtons = document.querySelectorAll('.edit-saved-meals')
 // others
 const headingAdjustableCard = document.querySelector('.saved-meals__added--saved__heading--item')
 
+// csrf
+const csrf = document.getElementsByName('csrfmiddlewaretoken')
+const csrfToken = csrf[0].value
+
 let isCardVisible = false
 
 const clearCardContent = () => {
@@ -71,7 +75,7 @@ saveNewMealButton.addEventListener('click', e => {
     }
      clearCardContent()
      saveNewMealButton.disabled = true
-     headingAdjustableCard.innerHTML = `Save New Meal`
+     headingAdjustableCard.innerHTML = `Create New Meal Template`
      const cardContentParent = document.querySelector('.saved-meals__added--saved__content')
      let contentToAppend = `
        <div class="saved-meals__added--saved__content__search-bar"><input class="new-saved-meal-search input-scale" type="text" placeholder="Search"/><span><img class="add-meals__search__bar__icon" src="${searchIconPath}" alt="Search Icon" /></span></div>
@@ -79,6 +83,7 @@ saveNewMealButton.addEventListener('click', e => {
               <div class="saved-meals__added--saved__content__search-response__item">
               </div>
           </div>
+          <div class="info-search-saved">Search results will appear here.</div>
           <div class="saved-meals__added--saved__content__meal not-visible">
                <h2 class="your-meal-heading">Your Meal</h2>
                <div class="saved-meals__added--saved__content__meal__items"></div>
@@ -105,6 +110,15 @@ saveNewMealButton.addEventListener('click', e => {
     const searchInput = document.querySelector('.new-saved-meal-search')
     searchInput.addEventListener('input', e => {
         const searchValue = e.target.value
+        const addedContent = document.querySelector('.saved-meals__added--saved__content__meal')
+        if(searchValue.length > 0 && addedContent.classList.contains('not-visible')) {
+            document.querySelector('.info-search-saved').classList.add('not-visible')
+        }
+        else if (searchValue.length === 0 && addedContent.classList.contains('not-visible')) {
+            $('.info-search-saved').fadeOut('350', e => {
+                document.querySelector('.info-search-saved').classList.remove('not-visible')
+            })
+        }
         const searchResponseBox = document.querySelector('.saved-meals__added--saved__content__search-response')
         const searchElements = Array.from(searchResponseBox.children)
         searchElements.forEach(el => {
@@ -117,8 +131,10 @@ saveNewMealButton.addEventListener('click', e => {
         const mealItems = document.querySelector('.saved-meals__added--saved__content__meal__items').children
         const inputNameEl = document.querySelector('.meal_name_input')
         const inputsQuantity = document.querySelectorAll('.new-today-meal-input-quantity')
+        let isValid = true
         inputsQuantity.forEach(inputEl => {
             if(!inputEl.value || inputEl.value.length === 0 || inputEl.value === '') {
+                isValid = false
                 inputEl.classList.add('color-error')
                 inputEl.classList.toggle('shake-animation')
                 shakeAnimation(inputEl)
@@ -127,10 +143,8 @@ saveNewMealButton.addEventListener('click', e => {
                 }, 1500);
             }
         })
-        if (mealItems.length > 0 && inputNameEl.value && inputNameEl.value.length > 3) {
-            console.log(inputNameEl.value)
-            console.log('you are able to save')
-
+        if (mealItems.length > 0 && inputNameEl.value && inputNameEl.value.length > 3 && isValid) {
+            saveNewMeal()
         }
         else {
             inputNameEl.classList.add('color-error')
@@ -204,7 +218,7 @@ const ajaxCall = (query) => {
                         mealContent.classList.remove('not-visible')
                         mealNameSaveContainer.classList.remove('not-visible')
                         const mealItemAppend = `
-                               <div class="saved-meals__added--saved__content__meal__item">
+                               <div data-ingredientObj='${encodeURIComponent(JSON.stringify(ingredientObj))}' class="saved-meals__added--saved__content__meal__item">
                                    <p><b>${ingredientObj.pl_name}</b> (${Math.trunc(ingredientObj.kcal)} kcal / ${ingredientObj.unit_multiplier} ${ingredientObj.unit_name_pl} ${isGram})</p>
                                    <div class="saved-meals__added--saved__content__meal__item--remove remove-icon filter-red"></div>
                                     <div class="today-meals-saved-inputBox">
@@ -256,7 +270,56 @@ const ajaxCall = (query) => {
 
 const saveNewMeal = () => {
     const mealName = document.querySelector('.meal_name_input')
-    const ingredientsEl = document.querySelectorAll('.saved-meals__added--saved__content__meal__item')
-    console.log(ingredientsEl)
+    const ingredientsElements = document.querySelectorAll('.saved-meals__added--saved__content__meal__item')
+    let ingredientsArr = []
+    ingredientsElements.forEach(item => {
+        const mealObj = JSON.parse(decodeURIComponent(item.dataset.ingredientobj));
+        const inputEl = item.querySelector('.new-today-meal-input-quantity')
+        const ingredientObj = {
+            'ingObj': mealObj,
+            'quantity': inputEl.value,
+        }
+        ingredientsArr.push(ingredientObj)
+    })
+    const url = window.location.origin + '/meals/data/save/saved-meal/element'
+    const ingredients = JSON.stringify(ingredientsArr)
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: {
+            'ingredientsArray': ingredients,
+            'mealName': mealName.value,
+            'csrfmiddlewaretoken': csrfToken,
+        },
+        success: function (response){
+            const status = response.status
+            if (status === 201) {
+                const modal = document.querySelector('.modal-queued')
+                console.log()
+                modal.classList.toggle('not-visible')
+                const closeModalBtn = document.querySelector('.modal-queued__close-button')
+                closeModalBtn.addEventListener('click', e => {
+                    window.location = window.location.href;
+                })
+                setInterval(function () {
+                    window.location = window.location.href;
+                }, 2500);
+
+            }
+            else if (status === 404) {
+                // const searchElements = Array.from(searchResponseBox.children)
+                // searchElements.forEach(el => {
+                //     el.remove()
+                // })
+            }
+
+            },
+        error: function (error) {
+            // const searchElements = Array.from(searchResponseBox.children)
+            //     searchElements.forEach(el => {
+            //         el.remove()
+            //     })
+        },
+    })
 }
 
