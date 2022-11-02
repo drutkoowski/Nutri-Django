@@ -56,7 +56,10 @@
     max-height: 15rem;
     overflow-y: auto;
     overflow-x: hidden;
-    border-bottom: 3px solid #afe0a5;
+    // border-bottom-left-radius: 10px;
+    //border-bottom-right-radius: 10px;
+    border-bottom: 5px solid #afe0a5;
+    margin-bottom: 1rem;
     &--item {
       display: grid;
       grid-template-columns: 0.8fr 0.2fr;

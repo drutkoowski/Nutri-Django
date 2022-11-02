@@ -62,10 +62,12 @@
                         </div>
                     </div>
                      <div class="add-meals__added--saved__content">
-                         <div class="add-meals__added--saved__content__item">
-                             <p>Damian's Pizza - 1239 kcalaaaa</p>
-                            <div class="add-icon filter-green"></div>
-                        </div>
+                         {% for item in saved_templates %}
+                             <div data-objectId='{{ item.pk }}' class="add-meals__added--saved__content__item">
+                                 <p><b>{{ item.meal_name }}</b>  {{ item.kcal|floatformat:"-3" }} kcal</p>
+                                <div class="add-icon filter-green"></div>
+                            </div>
+                         {% endfor %}
                      </div>
                     {% csrf_token %}
                     <button class="save-add-today-meals">Save</button>

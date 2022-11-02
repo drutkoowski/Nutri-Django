@@ -277,7 +277,7 @@ const saveNewMeal = () => {
         const inputEl = item.querySelector('.new-today-meal-input-quantity')
         const ingredientObj = {
             'ingObj': mealObj,
-            'quantity': inputEl.value,
+            'quantity': inputEl.value / mealObj.unit_multiplier,
         }
         ingredientsArr.push(ingredientObj)
     })
@@ -295,7 +295,6 @@ const saveNewMeal = () => {
             const status = response.status
             if (status === 201) {
                 const modal = document.querySelector('.modal-queued')
-                console.log()
                 modal.classList.toggle('not-visible')
                 const closeModalBtn = document.querySelector('.modal-queued__close-button')
                 closeModalBtn.addEventListener('click', e => {

@@ -42,6 +42,18 @@ const shakeAnimation = (contentBox) => {
     }, 1000);
 }
 
+const saveMeal = (ingredients) => {
+    const url = window.location.origin + '/meals/data/save/added-meal'
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: {
+            'ingredientsArray': ingredients,
+            'csrfmiddlewaretoken': csrfToken,
+        },
+    })
+}
+
 
 const ajaxCallSearch = (query) => {
     const url = window.location.origin + '/meals/data/live-search-ingredients'
@@ -133,17 +145,54 @@ const ajaxCallSearch = (query) => {
     })
 }
 
+const getMealTemplateElement = (id, inputValue) => {
+    const url = window.location.origin + '/meals/data/get/saved-meal/template/element'
+    $.ajax({
+        'type': 'get',
+         url: url,
+         data: {
+            'mealElementId': id,
+         },
+        success: function (response){
+            const ingredients_arr = []
+            const obj = JSON.parse(response['mealTemplateElement'])
+            const ingredient_id = obj.ingredientId
+            const quantity = obj.quantity * inputValue
+            let meal_obj = {
+                'ingredientId': ingredient_id,
+                'quantity': quantity,
+            }
+            ingredients_arr.push(meal_obj)
+            console.log(ingredients_arr)
+            saveMeal(JSON.stringify(ingredients_arr))
+        },
+        error: function (error){
+
+        }
+    })
+}
+
 const ajaxCallSave = (mealItems) => {
     let ingredientsArr = []
     mealItems.forEach(item => {
-        const mealObj = JSON.parse(decodeURIComponent(item.dataset.object));
-        const parent = item.children[2]
-        const inputValue = parent.children[0].value
-        let obj = {
-            'ingredientId': mealObj.id,
-            'quantity': inputValue,
+        if (item.dataset.objecttemplate) {
+            const mealObj = JSON.parse(decodeURIComponent(item.dataset.objecttemplate));
+            const parent = item.children[2]
+            const inputValue = parent.children[0].value
+            mealObj.forEach(el => {
+                getMealTemplateElement(el, inputValue)
+            })
         }
-        ingredientsArr.push(obj)
+        else if (item.dataset.object) {
+            const mealObj = JSON.parse(decodeURIComponent(item.dataset.object));
+            const parent = item.children[2]
+            const inputValue = parent.children[0].value
+            let obj = {
+                'ingredientId': mealObj.id,
+                'quantity': inputValue,
+            }
+            ingredientsArr.push(obj)
+        }
     })
     const url = window.location.origin + '/meals/data/save/added-meal'
     const ingredients = JSON.stringify(ingredientsArr)
@@ -185,7 +234,6 @@ const ajaxCallSave = (mealItems) => {
     })
 }
 
-
 const ajaxCallDelete = (mealId) => {
        const url = location.origin + '/meals/data/delete/added-meal'
        $.ajax({
@@ -214,6 +262,51 @@ const ajaxCallDelete = (mealId) => {
             //         el.remove()
             //     })
         },
+    })
+}
+
+const ajaxCallSearchTemplate = (id) => {
+    const url = '/meals/data/get/saved-meal/template'
+    $.ajax({
+        "type": "GET",
+        url: url,
+        data: {
+            "templateId": id,
+        },
+        success: function (response) {
+           const mealObj = JSON.parse(response.mealTemplateObj)
+            console.log(mealObj)
+           const mealName = mealObj.meal_name
+           const kcal = mealObj.kcal
+           const infoResults = document.querySelector('.saved-results-info')
+           infoResults.classList.add('not-visible')
+          const mealItemAppend = `
+                <div data-objectTemplate="${encodeURIComponent(JSON.stringify(mealObj.meal_elements_ids))}" class="add-meals__added--added__content__item">
+                    <p><b>${mealName}</b> (${Math.trunc(kcal)} kcal)</p>
+                    <div class="today-meals-added-remove-btn temporary-meal-today remove-icon filter-red"></div>
+                    <div class="today-meals-added-inputBox">
+                        <input min="1" max="1000" class="new-today-meal-input-quantity" name="${mealName}-${mealObj.mealId}" type="number" placeholder="Sztuk">
+                        <label for="${mealName}-${mealObj.mealId}">x Sztuk</label>
+                    </div>
+                </div>
+         `
+        const mealContent = document.querySelector('.add-meals__added--added__content')
+        mealContent.insertAdjacentHTML('beforeend', mealItemAppend)
+        const removeAddedBtn = document.querySelectorAll('.temporary-meal-today')
+            removeAddedBtn.forEach(button => {
+                button.addEventListener('click', e => {
+                    const parentEl = button.parentNode
+                    if(mealContent.children.length === 1) {
+                        const infoResults = document.querySelector('.saved-results-info')
+                        infoResults.classList.remove('not-visible')
+                    }
+                    parentEl.remove()
+                })
+         })
+        },
+        error: function (error) {
+
+        }
     })
 }
 
@@ -286,4 +379,23 @@ saveMealBtn.addEventListener('click', e => {
     if(mealsItems.length > 0 && inputsValid) {
         ajaxCallSave(mealsItems)
     }
+})
+
+
+
+const savedTemplateItems = document.querySelectorAll('.add-meals__added--saved__content__item')
+savedTemplateItems.forEach(item => {
+    const addSavedButton = item.children[1]
+    addSavedButton.addEventListener('click', e => {
+        let mealTemplateObjId = item.dataset.objectid
+        console.log(mealTemplateObjId)
+        ajaxCallSearchTemplate(mealTemplateObjId)
+        // let contentToAppend = `
+        //             <div class="add-meals__search__results__container__item">
+        //                 <p><b>${ingredient.pl_name}</b> (${Math.trunc(ingredient.kcal)} kcal / ${unit_multiplier} ${ingredient.unit_name_pl} ${isGram})</p>
+        //                 <div data-object='${encodeURIComponent(JSON.stringify(ingredient))}' id='${ingredient.id}' class="new-meal-item-add add-icon filter-green"></div>
+        //                 <small class="search-category-small">Kategoria: <span class="search-category-small__text">${categoryName}</span></small>
+        //             </div>
+        //            `
+    })
 })

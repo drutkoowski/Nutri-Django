@@ -19,8 +19,10 @@ def add_meal_view(request):
     user_profile = UserProfile.objects.get(user=request.user)
     from datetime import datetime
     meals_added_today = Meal.objects.filter(created_by=user_profile, created_at__contains=datetime.today().date()).all()
+    meal_templates = MealTemplate.objects.filter(created_by=user_profile).all()
     context = {
         'todayMeals': meals_added_today,
+        'saved_templates': meal_templates
     }
     return render(request, 'meals/add/add_meals.html', context)
 
@@ -35,7 +37,7 @@ def saved_meals_view(request):
     user_profile = UserProfile.objects.filter(user=request.user)
     meal_templates = MealTemplate.objects.filter(created_by__in=user_profile).all()
     context = {
-        "saved_templates" : meal_templates
+        "saved_templates": meal_templates
     }
     return render(request, 'meals/saved/saved_meals.html', context)
 
@@ -78,6 +80,7 @@ def add_today_meal_ajax(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
         ingredients_array = request.POST.get('ingredientsArray')
         data_array = json.loads(ingredients_array)
+        print(data_array)
         if ingredients_array is not None:
             user_profile = UserProfile.objects.filter(user=request.user).first()
             for item in data_array:
@@ -148,10 +151,14 @@ def add_saved_meal_element(request):
                 ing_obj = ingredient["ingObj"]
                 ing_id = ing_obj["id"]
                 quantity = ingredient["quantity"]
-                sum_kcal = sum_kcal + None if ing_obj['kcal'] is None else round(float(ing_obj['kcal']) * float(quantity), 5)
-                sum_carbs = sum_carbs + None if ing_obj['carbs'] is None else round(float(ing_obj['carbs']) * float(quantity), 5)
-                sum_protein = sum_protein + None if ing_obj['protein'] is None else round(float(ing_obj['protein']) * float(quantity), 5)
-                sum_fat = sum_fat + None if ing_obj['fat'] is None else round(float(ing_obj['fat']) * float(quantity), 5)
+                sum_kcal = sum_kcal + (None if ing_obj['kcal'] is None else round(
+                    float(ing_obj['kcal']) * float(quantity), 5))
+                sum_carbs = sum_carbs + (None if ing_obj['carbs'] is None else round(
+                    float(ing_obj['carbs']) * float(quantity), 5))
+                sum_protein = sum_protein + (None if ing_obj['protein'] is None else round(
+                    float(ing_obj['protein']) * float(quantity), 5))
+                sum_fat = sum_fat + (None if ing_obj['fat'] is None else round(float(ing_obj['fat']) * float(quantity),
+                                                                              5))
                 meal_el = MealTemplateElement.objects.create(ingredient_id=ing_id, quantity=quantity,
                                                              created_by=user_profile)
                 meal_template.meal_elements.add(meal_el)
@@ -163,6 +170,40 @@ def add_saved_meal_element(request):
             return JsonResponse({'status': 201, 'text': 'Meal template created!'})
         except:
             return JsonResponse({'status': 400, 'text': 'Some error occurred, meal template not created!'})
+    return redirect('home')
+
+
+def get_saved_meal_template_element(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
+        element_id = request.GET.get('mealElementId')
+        template_element = MealTemplateElement.objects.get(pk=element_id)
+        template_obj_dict = {
+            "mealTemplateElementId": template_element.pk,
+            "ingredientId": template_element.ingredient.pk,
+            "quantity": template_element.quantity
+        }
+        return JsonResponse(
+            {'status': 302, 'text': 'Meal Template Element Found', "mealTemplateElement": json.dumps(template_obj_dict)})
+    return redirect('home')
+
+
+def get_saved_meal_template(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
+        template_id = request.GET.get('templateId')
+        template = MealTemplate.objects.get(pk=template_id)
+        template_obj_dict = {
+            "meal_name": template.meal_name,
+            "meal_elements_ids": [],
+            "mealId": template_id,
+            "kcal": template.kcal,
+            "created_by_id": template.created_by.pk,
+        }
+        for element in template.meal_elements.all():
+            arr = template_obj_dict['meal_elements_ids']
+            arr.append(element.pk)
+            template_obj_dict['meal_elements_ids'] = arr
+        return JsonResponse({'status': 302, 'text': 'Meal Template Found', "mealTemplateObj": json.dumps(template_obj_dict)})
+    return redirect('home')
 
 
 def delete_today_meal_ajax(request):

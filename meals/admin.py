@@ -38,7 +38,7 @@ class MealAdmin(admin.ModelAdmin):
 
 
 class MealTemplateAdmin(admin.ModelAdmin):
-    list_display = ("meal_elements_list", "meal_name", "kcal", "carbs", "protein", "fat", "created_by")
+    list_display = ("meal_name", "meal_elements_list", "kcal", "carbs", "protein", "fat", "created_by")
 
     def meal_elements_list(self, obj):
         return ",\n".join([a.ingredient.en_name for a in obj.meal_elements.all()])
