@@ -397,6 +397,14 @@ ORDER: Base + typography > general layout + grid > page layout > components
     transform: translateY(0);
     opacity: 1; } }
 
+@keyframes fade-top {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0; }
+  100% {
+    transform: translateY(0);
+    opacity: 1; } }
+
 @keyframes fade-left {
   0% {
     transform: translateX(-100px);
@@ -4090,7 +4098,10 @@ body {
         flex-direction: column;
         background-color: white;
         border-radius: 10px;
-        height: 90%; }
+        height: 90%;
+        max-height: 40rem;
+        overflow-y: auto;
+        overflow-x: hidden; }
         .saved-meals__added--saved__content__save {
           margin-left: 2rem;
           padding: 0.75rem 2rem;
@@ -4272,9 +4283,43 @@ body {
   font-size: 1.8rem;
   margin-left: 0.5rem; }
 
+.today-meals-saved-edit-inputBox {
+  display: flex;
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  margin-left: 2rem;
+  transition: all .2s ease-in;
+  animation-name: fade-bottom;
+  animation-duration: 1s;
+  animation-timing-function: ease-out; }
+  .today-meals-saved-edit-inputBox:hover {
+    transform: scale(1.03); }
+  .today-meals-saved-edit-inputBox input {
+    width: 8rem;
+    height: 2rem;
+    text-align: center;
+    border-radius: 10px;
+    border: none;
+    margin-left: 0.5rem;
+    background-color: rgba(200, 243, 195, 0.69); }
+  .today-meals-saved-edit-inputBox label {
+    margin-left: 1rem; }
+  .today-meals-saved-edit-inputBox div.edit-remove-item {
+    margin-left: auto;
+    margin-right: 5rem;
+    transition: all .2s ease-in; }
+    .today-meals-saved-edit-inputBox div.edit-remove-item:hover {
+      transform: scale(1.03); }
+
 .today-meals-saved-inputBox {
   display: flex;
-  font-size: 1.5rem; }
+  font-size: 1.5rem;
+  transition: all .2s ease-in;
+  animation-name: fade-bottom;
+  animation-duration: 1s;
+  animation-timing-function: ease-out; }
+  .today-meals-saved-inputBox:hover {
+    transform: scale(1.03); }
   .today-meals-saved-inputBox input {
     width: 8rem;
     height: 2rem;
@@ -4284,6 +4329,75 @@ body {
     background-color: rgba(200, 243, 195, 0.69); }
   .today-meals-saved-inputBox label {
     margin-left: 1rem; }
+
+.saved-template-edit__heading {
+  margin: 1rem 2rem 0 2rem; }
+  .saved-template-edit__heading b {
+    font-size: 3rem;
+    letter-spacing: 1.2px; }
+
+.saved-template-edit__add-new {
+  padding: 2rem 2rem; }
+  .saved-template-edit__add-new div.new-meal-add-item:hover {
+    transform: scale(1.02); }
+  .saved-template-edit__add-new__trigger-search {
+    margin: 1rem 1rem 1rem 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all .2s ease-in; }
+    .saved-template-edit__add-new__trigger-search:hover {
+      transform: scale(1.02); }
+
+.add-new-element-box {
+  display: flex;
+  align-items: center;
+  margin: 0 2rem; }
+  .add-new-element-box div {
+    margin-bottom: 1rem; }
+
+.add-new-element-template-search-bar {
+  margin: 0 auto 0 2rem;
+  position: relative;
+  transition: all .3s ease-in;
+  animation-name: fade-top;
+  animation-duration: 1s;
+  animation-timing-function: ease-out; }
+  @media only screen and (max-width: 46.875em) {
+    .add-new-element-template-search-bar {
+      width: 85%; } }
+  .add-new-element-template-search-bar input {
+    border-radius: 5px;
+    border: 1px solid black;
+    text-align: center;
+    width: 25rem;
+    height: 4rem;
+    font-size: 1.5rem; }
+    @media only screen and (max-width: 46.875em) {
+      .add-new-element-template-search-bar input {
+        width: 100%; } }
+  .add-new-element-template-search-bar__icon {
+    position: absolute;
+    top: 20%;
+    right: 2%; }
+
+.edit-meal-added-items {
+  height: 15rem;
+  overflow-y: auto;
+  overflow-x: hidden; }
+
+.edit-meal-added-items::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #F5F5F5; }
+
+.edit-meal-added-items::-webkit-scrollbar {
+  width: 7px;
+  background-color: #F5F5F5; }
+
+.edit-meal-added-items::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #afe0a5; }
 
 *,
 *::after,
