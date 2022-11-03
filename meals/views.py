@@ -80,7 +80,6 @@ def add_today_meal_ajax(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
         ingredients_array = request.POST.get('ingredientsArray')
         data_array = json.loads(ingredients_array)
-        print(data_array)
         if ingredients_array is not None:
             user_profile = UserProfile.objects.filter(user=request.user).first()
             for item in data_array:
@@ -158,14 +157,14 @@ def add_saved_meal_element(request):
                 sum_protein = sum_protein + (None if ing_obj['protein'] is None else round(
                     float(ing_obj['protein']) * float(quantity), 5))
                 sum_fat = sum_fat + (None if ing_obj['fat'] is None else round(float(ing_obj['fat']) * float(quantity),
-                                                                              5))
+                                                                               5))
                 meal_el = MealTemplateElement.objects.create(ingredient_id=ing_id, quantity=quantity,
                                                              created_by=user_profile)
                 meal_template.meal_elements.add(meal_el)
-            meal_template.kcal = sum_kcal
-            meal_template.carbs = sum_carbs
-            meal_template.protein = sum_protein
-            meal_template.fat = sum_fat
+            meal_template.kcal = round(sum_kcal, 5)
+            meal_template.carbs = round(sum_carbs, 5)
+            meal_template.protein = round(sum_protein, 5)
+            meal_template.fat = round(sum_fat, 5)
             meal_template.save()
             return JsonResponse({'status': 201, 'text': 'Meal template created!'})
         except:
@@ -180,10 +179,42 @@ def get_saved_meal_template_element(request):
         template_obj_dict = {
             "mealTemplateElementId": template_element.pk,
             "ingredientId": template_element.ingredient.pk,
-            "quantity": template_element.quantity
+            "quantity": template_element.quantity,
+            "templateElementName_en": template_element.ingredient.en_name,
+            "templateElementName_pl": template_element.ingredient.pl_name,
+            "unit_multiplier": template_element.ingredient.unit.multiplier,
+            "unit_name_pl": template_element.ingredient.unit.pl_name,
+            "unit_name_en": template_element.ingredient.unit.en_name,
+            "kcal": template_element.ingredient.kcal,
+            "serving_grams": template_element.ingredient.serving_grams
+        }
+        ingredient_obj_dict = {
+            "id": template_element.ingredient.pk,
+            'en_name': template_element.ingredient.en_name,
+            'category_id': template_element.ingredient.category.pk,
+            'unit_id': template_element.ingredient.unit.pk,
+            'kcal': template_element.ingredient.kcal,
+            'carbs': template_element.ingredient.carbs,
+            'protein': template_element.ingredient.protein,
+            'fat': template_element.ingredient.fat,
+            'fiber': template_element.ingredient.fiber,
+            'saturated_fat': template_element.ingredient.saturated_fat,
+            'cholesterol': template_element.ingredient.cholesterol,
+            'sodium': template_element.ingredient.sodium,
+            'sugar': template_element.ingredient.sugar,
+            'potassium': template_element.ingredient.potassium,
+            'serving_grams': template_element.ingredient.serving_grams,
+            'serving_ml': template_element.ingredient.serving_ml,
+            'unit_name_en': template_element.ingredient.unit.en_name,
+            'unit_name_pl': template_element.ingredient.unit.pl_name,
+            'category_name_en': template_element.ingredient.category.en_category_name,
+            'category_name_pl': template_element.ingredient.category.pl_category_name,
+            'unit_multiplier': template_element.ingredient.unit.multiplier
         }
         return JsonResponse(
-            {'status': 302, 'text': 'Meal Template Element Found', "mealTemplateElement": json.dumps(template_obj_dict)})
+            {'status': 302, 'text': 'Meal Template Element Found',
+             "mealTemplateElement": json.dumps(template_obj_dict),
+             "ingredientElement": json.dumps(ingredient_obj_dict)})
     return redirect('home')
 
 
@@ -202,8 +233,17 @@ def get_saved_meal_template(request):
             arr = template_obj_dict['meal_elements_ids']
             arr.append(element.pk)
             template_obj_dict['meal_elements_ids'] = arr
-        return JsonResponse({'status': 302, 'text': 'Meal Template Found', "mealTemplateObj": json.dumps(template_obj_dict)})
+        return JsonResponse(
+            {'status': 302, 'text': 'Meal Template Found', "mealTemplateObj": json.dumps(template_obj_dict)})
     return redirect('home')
+
+
+def delete_saved_meal_template(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
+        meal_template_id = request.POST.get('mealTemplateId')
+        meal_template = MealTemplate.objects.get(pk=meal_template_id)
+        meal_template.delete()
+        return JsonResponse({'status': 200, 'text': 'Object deleted successfully!'})
 
 
 def delete_today_meal_ajax(request):

@@ -8,6 +8,8 @@ navbar.classList.toggle('fix-navbar')
 const saveNewMealButton = document.querySelector('.saved-meals__search__save-new__button')
 const detailsButtons = document.querySelectorAll('.details-saved-meals')
 const editButtons = document.querySelectorAll('.edit-saved-meals')
+const deleteButtons = document.querySelectorAll('.delete-saved-meals')
+
 // others
 const headingAdjustableCard = document.querySelector('.saved-meals__added--saved__heading--item')
 
@@ -49,6 +51,210 @@ const shakeAnimation = (contentBox) => {
     }, 1000);
 }
 
+const createNewMealTemplate = (ingredientsArr,mealName) => {
+     const url = window.location.origin + '/meals/data/save/saved-meal/element'
+     const ingredients = JSON.stringify(ingredientsArr)
+     $.ajax({
+         type: "POST",
+         url: url,
+         data: {
+             'ingredientsArray': ingredients,
+             'mealName': mealName.value,
+             'csrfmiddlewaretoken': csrfToken,
+         },
+         success: function (response){
+             const status = response.status
+             if (status === 201) {
+                 const modal = document.querySelector('.modal-queued')
+                 modal.classList.toggle('not-visible')
+                 const closeModalBtn = document.querySelector('.modal-queued__close-button')
+                 closeModalBtn.addEventListener('click', e => {
+                     window.location = window.location.href;
+                 })
+                 setInterval(function () {
+                     window.location = window.location.href;
+                     }, 2500);
+
+             }
+             },
+     })
+}
+
+const deleteAndCreateMealTemplate = (mealTemplateId, ingredientsArr, mealName) => {
+    const url = window.location.origin + '/meals/data/delete/saved-meal/template'
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: {
+            'mealTemplateId': mealTemplateId,
+            'csrfmiddlewaretoken': csrfToken
+        },
+        success: function (response) {
+            createNewMealTemplate(ingredientsArr, mealName)
+        },
+    })
+}
+
+const deleteMealTemplate = (id) => {
+    const url = window.location.origin + '/meals/data/delete/saved-meal/template'
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: {
+            'mealTemplateId': id,
+            'csrfmiddlewaretoken': csrfToken
+        },
+        success: function (response){
+            const status = response.status
+            if (status === 200) {
+                const modal = document.querySelector('.modal-queued')
+                modal.classList.toggle('not-visible')
+                const closeModalBtn = document.querySelector('.modal-queued__close-button')
+                const modalHeading = modal.querySelector('.modal-queued--heading')
+                modalHeading.innerHTML = `Removing selected meal template from database..`
+                closeModalBtn.addEventListener('click', e => {
+                    window.location = window.location.href;
+                })
+                setInterval(function () {
+                    window.location = window.location.href;
+                    }, 2500);
+
+             }
+             },
+    })
+}
+
+const getMealTemplateElement = (mealObj, mealName, kcal, ids_array) => {
+    const url = window.location.origin + '/meals/data/get/saved-meal/template/element'
+    const contentContainer = document.querySelector('.saved-meals__added--saved__content')
+    let contentToAppend = `
+        <div class="saved-meals__added--saved__content__item" id="${mealObj.mealId}">
+            <p>${mealName} - ${kcal} kcal</p>
+        </div
+         <div> 
+            <button>Dodaj nowy element dla Twojego posiłku</button>
+            <div class="saved-meals__added--saved__content__search-bar"><input class="new-saved-meal-search input-scale" type="text" placeholder="Search"/><span><img class="add-meals__search__bar__icon" src="${searchIconPath}" alt="Search Icon" /></span></div>
+                <div class="saved-meals__added--saved__content__search-response not-visible">
+                    <div class="saved-meals__added--saved__content__search-response__item">
+                    </div>
+                </div>
+            </div>
+        </div>
+    `
+    let saveButtonAppend = `
+       <div class="saved-new-meals-buttons-container">
+              <input type="text" placeholder="${mealName}" value="${mealName}" class="meal_name_input">
+              <button class="saved-meals__added--saved__content__save save-updated-template-meal">Save</button>
+         </div>
+        `
+    contentContainer.insertAdjacentHTML('beforeend', contentToAppend)
+    contentContainer.insertAdjacentHTML('afterend', saveButtonAppend)
+    const mealSaveButton = document.querySelector('.save-updated-template-meal')
+    mealSaveButton.addEventListener('click', e => {
+        const mealItems = document.querySelector('.today-meals-saved-inputBox').children
+        const inputNameEl = document.querySelector('.meal_name_input')
+        const inputsQuantity = document.querySelectorAll('.updated-meal-element-input')
+        let isValid = true
+        inputsQuantity.forEach(inputEl => {
+            if(!inputEl.value || inputEl.value.length === 0 || inputEl.value === '') {
+                isValid = false
+                inputEl.classList.add('color-error')
+                inputEl.classList.toggle('shake-animation')
+                shakeAnimation(inputEl)
+                setTimeout(function () {
+                    inputEl.classList.remove('color-error')
+                }, 1500);
+            }
+        })
+        if (mealItems.length > 0 && inputNameEl.value && inputNameEl.value.length > 3 && isValid) {
+            updateMeal(mealObj)
+        }
+        else if(!mealItems.length > 0 || !inputNameEl.value || !inputNameEl.value.length > 3) {
+            inputNameEl.classList.add('color-error')
+            inputNameEl.parentElement.classList.toggle('shake-animation')
+            shakeAnimation(inputNameEl.parentElement)
+            setTimeout(function () {
+                inputNameEl.classList.remove('color-error')
+            }, 1500);
+
+        }
+    })
+    const searchInput = document.querySelector('.new-saved-meal-search')
+    searchInput.addEventListener('input', e => {
+        const searchValue = e.target.value
+        const searchResponseBox = document.querySelector('.saved-meals__added--saved__content__search-response')
+        const searchElements = Array.from(searchResponseBox.children)
+        searchElements.forEach(el => {
+            el.remove()
+        })
+        ajaxCallEditMeal(searchValue)
+    })
+    ids_array.forEach(id => {
+         $.ajax({
+             type: 'GET',
+             url: url,
+             data: {
+                'mealElementId': id,
+             },
+            success: function (response){
+                const obj = JSON.parse(response['mealTemplateElement'])
+                console.log(obj)
+                const objDataSet = JSON.parse(response['ingredientElement'])
+                let isGram = obj.unit_name_pl === 'g' ? '' : `lub ${Math.round(obj.serving_grams)} g`
+                let appendItemElement = `
+                <div class="today-meals-saved-inputBox" data-object="${encodeURIComponent(JSON.stringify(objDataSet))}">
+                    <p><b>${obj.templateElementName_pl}</b> (${Math.trunc(obj.kcal)} kcal / ${obj.unit_multiplier} ${obj.unit_name_pl} ${isGram})</p>
+                    <input name="${obj.mealTemplateElementId}" min="0" max="1000" value="${obj.quantity * obj.unit_multiplier}" class='updated-meal-element-input' type="number" placeholder="${obj.quantity}">
+                    <label for="${obj.mealTemplateElementId}">x ${obj.unit_name_pl}</label>
+                </div>
+                `
+                contentContainer.insertAdjacentHTML('beforeend', appendItemElement)
+            },
+          })
+    })
+}
+
+const getTemplateElement = (id) => {
+    const url = window.location.origin + '/meals/data/get/saved-meal/template'
+    $.ajax({
+        "type": "GET",
+        url: url,
+        data: {
+            "templateId": id,
+        },
+        success: function (response) {
+           const mealObj = JSON.parse(response.mealTemplateObj)
+           const mealName = mealObj.meal_name
+           const kcal = mealObj.kcal
+           const ids_array = mealObj.meal_elements_ids
+           getMealTemplateElement(mealObj, mealName, kcal, ids_array)
+        },
+        error: function (error) {
+
+        }
+    })
+}
+
+const updateMeal = (mealObj) => {
+    const mealName = document.querySelector('.meal_name_input')
+    const ingredientsElements = document.querySelectorAll('.today-meals-saved-inputBox')
+    let ingredientsArr = []
+    ingredientsElements.forEach(item => {
+        const mealObj = JSON.parse(decodeURIComponent(item.dataset.object));
+        const unit_multiplier = mealObj?.unit_multiplier ? mealObj.unit_multiplier : mealObj.unit_multiplier
+        const inputEl = item.querySelector('.updated-meal-element-input')
+        const ingredientObj = {
+            'ingObj': mealObj,
+            'quantity': inputEl.value / unit_multiplier,
+        }
+        ingredientsArr.push(ingredientObj)
+    })
+    deleteAndCreateMealTemplate(mealObj.mealId, ingredientsArr, mealName)
+
+}
+
+
+
 detailsButtons.forEach(button => button.addEventListener('click', e => {
     if (!isCardVisible) {
         searchContainer.style.gridColumn = '1/2'
@@ -87,7 +293,7 @@ saveNewMealButton.addEventListener('click', e => {
           <div class="saved-meals__added--saved__content__meal not-visible">
                <h2 class="your-meal-heading">Your Meal</h2>
                <div class="saved-meals__added--saved__content__meal__items"></div>
-        </div>
+      </div>
      `
     let saveButtonAppend = `
      <div class="saved-new-meals-buttons-container not-visible">
@@ -167,16 +373,18 @@ editButtons.forEach(button => button.addEventListener('click', e => {
     }
     clearCardContent()
     headingAdjustableCard.innerHTML = `Edit Meal`
-    let contentToAppend = `<div class="saved-meals__added--saved__content__item">
-    <p>212121</p>
-    </div`
-    let saveButtonAppend = `
-     <div class="saved-new-meals-buttons-container">
-        <input type="text" placeholder="Meal Name" class="meal_name_input">
-        <button class="saved-meals__added--saved__content__save">Save</button>
-    </div>
-    `
+    const objectToEditId = button.dataset.meal;
+    getTemplateElement(objectToEditId)
 }))
+
+
+deleteButtons.forEach(button => {
+    button.addEventListener('click', e => {
+        const mealTemplateId = e.target.dataset.meal
+        deleteMealTemplate(mealTemplateId)
+    })
+})
+
 
 
 const ajaxCall = (query) => {
@@ -267,7 +475,6 @@ const ajaxCall = (query) => {
     })
 }
 
-
 const saveNewMeal = () => {
     const mealName = document.querySelector('.meal_name_input')
     const ingredientsElements = document.querySelectorAll('.saved-meals__added--saved__content__meal__item')
@@ -322,3 +529,67 @@ const saveNewMeal = () => {
     })
 }
 
+const ajaxCallEditMeal = (query) => {
+    const url = window.location.origin + '/meals/data/live-search-ingredients'
+     const searchResponseBox = document.querySelector('.saved-meals__added--saved__content__search-response')
+    $.ajax({
+        type: "GET",
+        url: url,
+        data: {
+            'query': query,
+        },
+        success: function (response){
+            const status = response.status
+            if (status === 200) {
+                const searchElements = Array.from(searchResponseBox.children)
+                searchElements.forEach(el => {
+                    el.remove()
+                })
+               searchResponseBox.classList.remove('not-visible')
+               let ingredients = [...response.ingredients]
+               ingredients.forEach(ingredient => {
+                   let isGram = ingredient.unit_name_pl === 'g' ? '' : `lub ${Math.round(ingredient.serving_grams)} g`
+                   let contentToAppend = `
+                    <div class="saved-meals__added--saved__content__search-response__item">
+                        <p><b>${ingredient.pl_name}</b> (${Math.trunc(ingredient.kcal)} kcal / ${ingredient.unit_multiplier} ${ingredient.unit_name_pl} ${isGram})</p>
+                        <div data-mealObj='${encodeURIComponent(JSON.stringify(ingredient))}' class="new-meal-add-item add-icon filter-green"></div>
+                         <small class="search-category-small--saved">Kategoria: <span class="search-category-small--saved__text">${ingredient.category_name_pl}</span></small>
+                    </div>
+                   `
+                   searchResponseBox.insertAdjacentHTML('beforeend', contentToAppend)
+               })
+                const addButtons = document.querySelectorAll('.new-meal-add-item')
+                addButtons.forEach(button => {
+                    button.addEventListener('click', e=>{
+                        const ingredientObj = JSON.parse(decodeURIComponent(button.dataset.mealobj))
+                        let isGram = ingredientObj.unit_name_pl === 'g' ? '' : `lub ${Math.round(ingredientObj.serving_grams)} g`
+                        const mealItemAppend = `
+                            <div class="today-meals-saved-inputBox" data-object="${encodeURIComponent(JSON.stringify(ingredientObj))}">
+                              <p><b>${ingredientObj.pl_name}</b> (${Math.trunc(ingredientObj.kcal)} kcal / ${ingredientObj.unit_multiplier} ${ingredientObj.unit_name_pl} ${isGram})</p>
+                             <input name="${ingredientObj.pl_name}" min="0" max="1000" class='updated-meal-element-input' type="number" placeholder="${ingredientObj.unit_name_pl}">
+                             <label for="${ingredientObj.pl_name}">x ${ingredientObj.unit_multiplier} ${ingredientObj.unit_name_pl}</label>
+                        </div>
+                      `
+                        const contentContainer = document.querySelector('.saved-meals__added--saved__content')
+                        contentContainer.insertAdjacentHTML('beforeend', mealItemAppend)
+
+                    })
+                })
+            }
+            else if (status === 404) {
+                const searchElements = Array.from(searchResponseBox.children)
+                searchElements.forEach(el => {
+                    el.remove()
+                })
+                searchResponseBox.classList.add('not-visible')
+            }
+
+            },
+        error: function (error) {
+            const searchElements = Array.from(searchResponseBox.children)
+                searchElements.forEach(el => {
+                    el.remove()
+                })
+        },
+    })
+}
