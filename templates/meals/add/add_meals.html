@@ -18,12 +18,14 @@
              {% include 'accounts/navbar_small.html' %}
             <div class="add-meals grid-full-span">
                 <div class="add-meals__search">
-                    <div class="add-meals__search__bar"><input class="search-meal-add" type="text" placeholder="Search"/><span><img class="add-meals__search__bar__icon" src="{% sass_src 'images/svg/search.svg' %}" alt="Search Icon" /></span></div>
+                    <div class="add-meals__search__bar"><input class="search-meal-add search-input" type="text" placeholder="Search"/><span><img class="add-meals__search__bar__icon" src="{% sass_src 'images/svg/search.svg' %}" alt="Search Icon" /></span></div>
                     <div class="add-meals__search__results">
-                        <h3>Your search results</h3>
-                        <hr>
+                        <div class="saved-meals__search__results__heading-box">
+                            <h3>Your search results</h3>
+                        </div>
                         <div class="add-meals__search__results__container">
-                           `<h3 class="search-results-info">No search results.</h3>`
+                           `<h3 class="search-results-info" style="text-align: center">Try to search meal or ingredients that have you eaten today.
+                            <br>Results will appear here.</h3>`
                         </div>
                     </div>
                 </div>

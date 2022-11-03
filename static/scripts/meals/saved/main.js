@@ -6,7 +6,6 @@ const navbar = document.querySelector('.navbar--dashboard')
 navbar.classList.toggle('fix-navbar')
 // buttons
 const saveNewMealButton = document.querySelector('.saved-meals__search__save-new__button')
-const detailsButtons = document.querySelectorAll('.details-saved-meals')
 const editButtons = document.querySelectorAll('.edit-saved-meals')
 const deleteButtons = document.querySelectorAll('.delete-saved-meals')
 
@@ -45,12 +44,9 @@ function hideModal(modalClass) {
     });
 }
 
+searchContainer.style.width = '50%'
+searchContainer.style.justifySelf = 'center'
 
-const shakeAnimation = (contentBox) => {
-    setTimeout(() => {
-       contentBox.classList.toggle('shake-animation')
-    }, 1000);
-}
 
 // search
 const ajaxCall = (query) => {
@@ -189,14 +185,14 @@ const ajaxCallEditMeal = (query) => {
                         btnRemove.addEventListener('click', e => {
                             const parent = e.target.parentNode
                             const itemsCount = document.querySelector('.edit-meal-added-items').children.length
-                            console.log(itemsCount)
                             if (itemsCount >= 2) {
+                                $(parent).fadeOut(300)
                                 parent.remove()
                             }
                         })
                         btnRemove.removeAttribute('id')
-                            })
-                        })
+                    })
+                })
             }
             else if (status === 404) {
                 const searchElements = Array.from(searchResponseBox.children)
@@ -392,8 +388,6 @@ const getMealTemplateElement = (mealObj, mealName, kcal, ids_array) => {
     contentContainer.insertAdjacentHTML('afterend', saveButtonAppend)
     const addNewElementBtn = document.querySelector('.add-new-element-box')
     addNewElementBtn.addEventListener('click', e => {
-        const responseItems = document.querySelector('.saved-meals__added--saved__content__search-response')
-        responseItems.classList.toggle('')
         animateDeletingElementByClass(".add-new-element-template-search-bar")
     })
     const mealSaveButton = document.querySelector('.save-updated-template-meal')
@@ -462,8 +456,8 @@ const getMealTemplateElement = (mealObj, mealName, kcal, ids_array) => {
                 btnRemove.addEventListener('click', e => {
                     const parent = e.target.parentNode
                     const itemsCount = document.querySelector('.edit-meal-added-items').children.length
-                    console.log(itemsCount)
                     if (itemsCount >= 2) {
+                        $(parent).fadeOut(300)
                         parent.remove()
                     }
 
@@ -493,33 +487,27 @@ const updateMeal = (mealObj) => {
 
 
 // buttons listeners
-
+$(searchContainer).addClass('animate-left').on("animationend", function(){
+    $(this).removeClass('animate-left');
+});
 
 // details
-detailsButtons.forEach(button => button.addEventListener('click', e => {
-    if (!isCardVisible) {
-        searchContainer.style.gridColumn = '1/2'
-        adjustableCard.classList.remove('not-visible')
-        isCardVisible = true
-    }
-    clearCardContent()
-    headingAdjustableCard.innerHTML = `Meal Details`
-    const content = button.dataset.meal
-    let contentToAppend = `<div class="saved-meals__added--saved__content__item">
-    <p>${content}</p>
-    </div`
-    const cardContentParent = document.querySelector('.saved-meals__added--saved__content')
-    cardContentParent.insertAdjacentHTML('beforeend', contentToAppend)
-
-}))
 
 // save
 saveNewMealButton.addEventListener('click', e => {
      if (!isCardVisible) {
         searchContainer.style.gridColumn = '1/2'
+        searchContainer.style.removeProperty('width')
+        searchContainer.style.removeProperty('justify-self')
+         $(searchContainer).addClass('animate-left').on("animationend", function(){
+            $(this).removeClass('animate-left');
+         });
         adjustableCard.classList.toggle('not-visible')
         isCardVisible = true
     }
+     $(adjustableCard).addClass('animate').on("animationend", function(){
+            $(this).removeClass('animate');
+     });
      clearCardContent()
      saveNewMealButton.disabled = true
      headingAdjustableCard.innerHTML = `Create New Meal Template`
@@ -530,7 +518,7 @@ saveNewMealButton.addEventListener('click', e => {
               <div class="saved-meals__added--saved__content__search-response__item">
               </div>
           </div>
-          <div class="info-search-saved">Search results will appear here.</div>
+          <div class="info-search-saved">Search to fill your template with meals.</div>
           <div class="saved-meals__added--saved__content__meal not-visible">
                <h2 class="your-meal-heading">Your Meal</h2>
                <div class="saved-meals__added--saved__content__meal__items"></div>
@@ -605,13 +593,21 @@ saveNewMealButton.addEventListener('click', e => {
     })
 })
 
-// edit
+// manage
 editButtons.forEach(button => button.addEventListener('click', e => {
     if (!isCardVisible) {
         searchContainer.style.gridColumn = '1/2'
+        searchContainer.style.removeProperty('width')
+        searchContainer.style.removeProperty('justify-self')
+        $(searchContainer).addClass('animate-left').on("animationend", function(){
+            $(this).removeClass('animate-left');
+         });
         adjustableCard.classList.remove('not-visible')
         isCardVisible = true
     }
+    $(adjustableCard).addClass('animate').on("animationend", function(){
+            $(this).removeClass('animate');
+    });
     clearCardContent()
     headingAdjustableCard.innerHTML = `Edit Meal`
     const objectToEditId = button.dataset.meal;
@@ -649,5 +645,9 @@ const animateDeletingElementByClass = (elementClass) => {
         }
 }
 
-
+const shakeAnimation = (contentBox) => {
+    setTimeout(() => {
+       contentBox.classList.toggle('shake-animation')
+    }, 1000);
+}
 

@@ -23,15 +23,15 @@
             <div class="saved-meals grid-full-span">
                 <div class="saved-meals__search">
                     <div class="saved-meals__search__results">
+                    <div class="saved-meals__search__results__heading-box">
                         <h3>Your Saved Meals</h3>
-                        <hr>
+                    </div>
                         <div class="saved-meals__search__results__container">
                             {% for item in saved_templates %}
                                 <div class="saved-meals__search__results__container__item">
                                     <div class="saved-meals__search__results__container__item__recipe"><p><b>{{ item.meal_name }}</b> - {{ item.kcal|floatformat:"-3" }} kcal</p></div>
                                     <div class="saved-meals__search__results__container__item__buttons">
-                                        <button class="details-saved-meals" data-meal='{{ item.id }}'>Details</button>
-                                        <button class="edit-saved-meals" data-meal='{{ item.id }}'>Edit</button>
+                                        <button class="edit-saved-meals" data-meal='{{ item.id }}'>Manage</button>
                                         <button class="delete-saved-meals" data-meal='{{ item.id }}'>Delete</button>
                                     </div>
                                 </div>

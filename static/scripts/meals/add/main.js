@@ -355,7 +355,8 @@ searchInput.addEventListener('input', e => {
 
     }
     else {
-        searchResponseBox.innerHTML = `<h3 class="search-results-info">No search results.</h3>`
+        searchResponseBox.innerHTML = `<h3 class="search-results-info" style="text-align: center">Try to search meal or ingredients that have you eaten today.
+                            <br>Results will appear here.</h3>`
     }
 })
 

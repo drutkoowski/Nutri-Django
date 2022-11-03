@@ -44,23 +44,21 @@
     -webkit-box-shadow: 0px 0px 8px 2px rgba(66, 68, 90, 1);
     -moz-box-shadow: 0px 0px 8px 2px rgba(66, 68, 90, 1);
     box-shadow: 0px 0px 8px 2px rgba(66, 68, 90, 1);
-    animation-name: fade-bottom;
-    animation-duration: 1s;
-    animation-timing-function: ease-out;
     &__save-new {
-      margin-top: 2rem;
+      margin-top: 1rem;
       justify-self: center;
       align-self: center;
       text-align: center;
       color: white;
       p {
-        font-size: 1.5rem;
+        font-size: 2rem;
       }
       button {
         padding: 1rem 2rem;
         border: none;
         border-radius: 10px;
         color: white;
+        margin-bottom: 1rem;
         background-color: #5ec251;
         cursor: pointer;
         transition: all .2s ease-in;
@@ -70,10 +68,9 @@
       }
     }
     &__results {
-      margin: 5rem 5rem 0 5rem;
+      margin: 5rem 2.5rem 0 2.5rem;
       height: 40rem;
       border-radius: 5px;
-      background-color: white;
       &__container::-webkit-scrollbar-track {
         -webkit-box-shadow:  inset 0 0 6px rgba(0,0,0,0.3);
 	    border-radius: 10px;
@@ -93,7 +90,11 @@
         overflow-x: hidden;
         height: 25rem;
         font-size: 1.3rem;
-
+        background-color: white;
+        border-radius: 10px;
+        -webkit-box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
+        -moz-box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
+        box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
         &__item {
           max-height: 10rem;
           display: grid;
@@ -131,7 +132,7 @@
               background-color: rgb(189, 231, 197);
               color: white;
               &:hover {
-                transform: scale(1.25);
+                transform: scale(1.05);
               }
             }
           }
@@ -141,6 +142,10 @@
       h3 {
         margin: 2rem 2rem;
         font-size: 2.3rem;
+      }
+      &__heading-box {
+        background-color: rgb(189, 231, 197);
+        color: white;
       }
     }
   }
@@ -154,10 +159,10 @@
     -moz-box-shadow: 0px 0px 8px 2px rgba(66, 68, 90, 1);
     box-shadow: 0px 0px 8px 2px rgba(66, 68, 90, 1);
     color: white;
-    transition: all .2s ease-in;
-    animation-name: fade-right;
-    animation-duration: 1s;
-    animation-timing-function: ease-out;
+    //transition: all .2s ease-in;
+    //animation-name: fade-right;
+    //animation-duration: 1s;
+    //animation-timing-function: ease-out;
     &--saved {
       height: 100%;
       grid-row: 1/2;
@@ -188,6 +193,9 @@
         max-height: 40rem;
         overflow-y: auto;
         overflow-x: hidden;
+        -webkit-box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
+        -moz-box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
+        box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
         &__save {
             margin-left: 2rem;
             padding: 0.75rem 2rem;
@@ -431,6 +439,9 @@
   animation-name: fade-bottom;
   animation-duration: 1s;
   animation-timing-function: ease-out;
+  &:first-of-type{
+    margin-top: 2rem;
+  }
 
   &:hover {
     transform: scale(1.03);
@@ -574,5 +585,24 @@
   background-color: #afe0a5;
 }
 
+.animate {
+  transition: all .2s ease-in;
+  animation-name: fade-right;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+}
 
+.animate-left {
+  transition: all .2s ease-in;
+  animation-name: fade-left;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+}
+
+.animate-bottom {
+  transition: all .2s ease-in;
+  animation-name: fade-bottom;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+}
 
