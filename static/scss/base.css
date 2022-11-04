@@ -1166,7 +1166,10 @@ ORDER: Base + typography > general layout + grid > page layout > components
   transition: all .2s ease-in;
   animation-name: fade-bottom;
   animation-duration: 1s;
-  animation-timing-function: ease-out; }
+  animation-timing-function: ease-out;
+  -webkit-box-shadow: 0px 0px 18px -7px #42445a;
+  -moz-box-shadow: 0px 0px 18px -7px #42445a;
+  box-shadow: 0px 0px 18px -7px #42445a; }
   .modal-edit-search__heading {
     text-align: center; }
   .modal-edit-search__content {
@@ -1182,15 +1185,43 @@ ORDER: Base + typography > general layout + grid > page layout > components
         animation-timing-function: ease-out; }
     .modal-edit-search__content__search-response {
       background-color: white;
-      color: black;
       height: 25rem !important;
+      color: black;
       margin-top: 3rem;
       border-radius: 10px; }
 
 .blink-background-green {
   background-color: #afe0a5 !important;
-  margin-left: -1rem;
-  margin-right: -1rem; }
+  margin-left: -1.25rem;
+  margin-right: -1.25rem; }
+
+.modal-add-search {
+  transition: all .2s ease-in;
+  animation-name: fade-bottom;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  -webkit-box-shadow: 0px 0px 18px -7px #42445a;
+  -moz-box-shadow: 0px 0px 18px -7px #42445a;
+  box-shadow: 0px 0px 18px -7px #42445a; }
+  .modal-add-search__heading {
+    text-align: center; }
+  .modal-add-search__content {
+    height: 55rem;
+    width: 80rem; }
+    .modal-add-search__content__search {
+      margin: 0 1rem !important; }
+      .modal-add-search__content__search-bar {
+        width: 100% !important;
+        transition: all .2s ease-in;
+        animation-name: fade-bottom;
+        animation-duration: 1s;
+        animation-timing-function: ease-out; }
+    .modal-add-search__content__search-response {
+      background-color: white;
+      color: black;
+      height: 25rem !important;
+      margin-top: 3rem;
+      border-radius: 10px; }
 
 .fix-navbar .navigation--dashboard__button {
   top: 2rem; }
@@ -4230,7 +4261,7 @@ body {
             -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
             background-color: #afe0a5; }
           .saved-meals__added--saved__content__meal__items {
-            height: 14rem;
+            height: 80%;
             overflow-y: auto;
             overflow-x: hidden; }
           .saved-meals__added--saved__content__meal__item {

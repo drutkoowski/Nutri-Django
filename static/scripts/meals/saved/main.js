@@ -9,6 +9,7 @@ const saveNewMealButton = document.querySelector('.saved-meals__search__save-new
 const editButtons = document.querySelectorAll('.edit-saved-meals')
 const deleteButtons = document.querySelectorAll('.delete-saved-meals')
 const modalCloseEdit = document.querySelector('.modal-edit-search__close-button')
+const modalCloseAdd = document.querySelector('.modal-add-search__close-button')
 
 // others
 const headingAdjustableCard = document.querySelector('.saved-meals__added--saved__heading--item')
@@ -49,9 +50,8 @@ searchContainer.style.justifySelf = 'center'
 
 
 // search
-const ajaxCall = (query) => {
+const ajaxCall = (query, searchResponseBox) => {
     const url = window.location.origin + '/meals/data/live-search-ingredients'
-     const searchResponseBox = document.querySelector('.saved-meals__added--saved__content__search-response')
     $.ajax({
         type: "GET",
         url: url,
@@ -80,7 +80,11 @@ const ajaxCall = (query) => {
                })
                 const addButtons = document.querySelectorAll('.new-meal-add-item')
                 addButtons.forEach(button => {
-                    button.addEventListener('click', e=>{
+                    button.addEventListener('click', e => {
+                        button.parentElement.classList.add('blink-background-green')
+                        setTimeout(() => {
+                            button.parentElement.classList.remove('blink-background-green')
+                        },1000)
                         const ingredientObj = JSON.parse(decodeURIComponent(button.dataset.mealobj))
                         let isGram = ingredientObj.unit_name_pl === 'g' ? '' : `lub ${Math.round(ingredientObj.serving_grams)} g`
                         const mealContent = document.querySelector('.saved-meals__added--saved__content__meal')
@@ -217,7 +221,7 @@ const ajaxCallEditMeal = (query) => {
 }
 
 // create
-const createNewMealTemplate = (ingredientsArr,mealName) => {
+const createNewMealTemplate = (ingredientsArr,mealName, text) => {
      const url = window.location.origin + '/meals/data/save/saved-meal/element'
      const ingredients = JSON.stringify(ingredientsArr)
      $.ajax({
@@ -283,18 +287,18 @@ const saveNewMeal = () => {
 
             }
             else if (status === 404) {
-                // const searchElements = Array.from(searchResponseBox.children)
-                // searchElements.forEach(el => {
-                //     el.remove()
-                // })
+                const searchElements = Array.from(searchResponseBox.children)
+                searchElements.forEach(el => {
+                    el.remove()
+                })
             }
 
             },
         error: function (error) {
-            // const searchElements = Array.from(searchResponseBox.children)
-            //     searchElements.forEach(el => {
-            //         el.remove()
-            //     })
+            const searchElements = Array.from(searchResponseBox.children)
+                searchElements.forEach(el => {
+                    el.remove()
+                })
         },
     })
 }
@@ -310,7 +314,7 @@ const deleteAndCreateMealTemplate = (mealTemplateId, ingredientsArr, mealName) =
             'csrfmiddlewaretoken': csrfToken
         },
         success: function (response) {
-            createNewMealTemplate(ingredientsArr, mealName)
+            createNewMealTemplate(ingredientsArr, mealName, 'Updating your meal template in our database.')
         },
     })
 }
@@ -490,10 +494,15 @@ $(searchContainer).addClass('animate-left').on("animationend", function(){
     $(this).removeClass('animate-left');
 });
 
-// modal close listener
+// modal close listeners
 modalCloseEdit.addEventListener('click', e => {
     animateDeletingElementByClass('.modal-edit-search', 1200)
 })
+
+modalCloseAdd.addEventListener('click', e=> {
+    animateDeletingElementByClass('.modal-add-search', 1200)
+})
+
 
 // save
 saveNewMealButton.addEventListener('click', e => {
@@ -513,18 +522,16 @@ saveNewMealButton.addEventListener('click', e => {
      clearCardContent()
      saveNewMealButton.disabled = true
      headingAdjustableCard.innerHTML = `Create New Meal Template`
+     const modalAddMeal = document.querySelector('.modal-add-search')
+     modalAddMeal.classList.remove('not-visible')
      const cardContentParent = document.querySelector('.saved-meals__added--saved__content')
      let contentToAppend = `
-       <div class="saved-meals__added--saved__content__search-bar"><input class="new-saved-meal-search input-scale" type="text" placeholder="Search"/><span><img class="add-meals__search__bar__icon" src="${searchIconPath}" alt="Search Icon" /></span></div>
-          <div class="saved-meals__added--saved__content__search-response not-visible">
-              <div class="saved-meals__added--saved__content__search-response__item">
-              </div>
-          </div>
+     
           <div class="info-search-saved">Search to fill your template with meals.</div>
           <div class="saved-meals__added--saved__content__meal not-visible">
                <h2 class="your-meal-heading">Your Meal</h2>
                <div class="saved-meals__added--saved__content__meal__items"></div>
-      </div>
+          </div>
      `
     let saveButtonAppend = `
      <div class="saved-new-meals-buttons-container not-visible">
@@ -533,8 +540,21 @@ saveNewMealButton.addEventListener('click', e => {
     </div>
     
     `
+    let addButtonMarkup = `
+     <div> 
+          <div class="add-new-element-box add-meal-template">
+               <div class="add-icon filter-green"></div>
+               <a class="saved-template-edit__add-new__trigger-search add-meal-template__trigger-search">Dodaj nowy element dla Twojego posiłku</a>
+           </div>
+     </div>
+    `
+    cardContentParent.insertAdjacentHTML('afterbegin', addButtonMarkup)
     cardContentParent.insertAdjacentHTML('beforeend', contentToAppend)
     cardContentParent.insertAdjacentHTML('afterend', saveButtonAppend)
+    const addNewElBtn = document.querySelector('.add-meal-template__trigger-search')
+    addNewElBtn.addEventListener('click', e => {
+        modalAddMeal.classList.remove('not-visible')
+    })
     const inputNameElement = document.querySelector('.meal_name_input')
     inputNameElement.addEventListener('input', e => {
         if(e.target.value.length < 3) {
@@ -544,7 +564,7 @@ saveNewMealButton.addEventListener('click', e => {
             inputNameElement.classList.remove('color-error')
         }
     })
-    const searchInput = document.querySelector('.new-saved-meal-search')
+    const searchInput = document.querySelector('.modal-add-search__content__search-bar')
     searchInput.addEventListener('input', e => {
         const searchValue = e.target.value
         const addedContent = document.querySelector('.saved-meals__added--saved__content__meal')
@@ -556,12 +576,12 @@ saveNewMealButton.addEventListener('click', e => {
                 document.querySelector('.info-search-saved').classList.remove('not-visible')
             })
         }
-        const searchResponseBox = document.querySelector('.saved-meals__added--saved__content__search-response')
+        const searchResponseBox = document.querySelector('.modal-add-search__content__search-response')
         const searchElements = Array.from(searchResponseBox.children)
         searchElements.forEach(el => {
             el.remove()
         })
-        ajaxCall(searchValue)
+        ajaxCall(searchValue, searchResponseBox)
     })
     const mealSaveButton = document.querySelector('.saved-meals__added--saved__content__save')
     mealSaveButton.addEventListener('click', e => {
