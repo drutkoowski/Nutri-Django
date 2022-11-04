@@ -8,7 +8,7 @@ navbar.classList.toggle('fix-navbar')
 const saveNewMealButton = document.querySelector('.saved-meals__search__save-new__button')
 const editButtons = document.querySelectorAll('.edit-saved-meals')
 const deleteButtons = document.querySelectorAll('.delete-saved-meals')
-
+const modalCloseEdit = document.querySelector('.modal-edit-search__close-button')
 
 // others
 const headingAdjustableCard = document.querySelector('.saved-meals__added--saved__heading--item')
@@ -168,6 +168,10 @@ const ajaxCallEditMeal = (query) => {
                 const addButtons = document.querySelectorAll('.new-meal-add-item')
                 addButtons.forEach(button => {
                     button.addEventListener('click', e=>{
+                        button.parentElement.classList.add('blink-background-green')
+                        setTimeout(() => {
+                            button.parentElement.classList.remove('blink-background-green')
+                        },1000)
                         const ingredientObj = JSON.parse(decodeURIComponent(button.dataset.mealobj))
                         let isGram = ingredientObj.unit_name_pl === 'g' ? '' : `lub ${Math.round(ingredientObj.serving_grams)} g`
                         const randomId = "Id" + ingredientObj.ingredientId * Math.floor(Math.random() * (100 - 1 + 1)) + 1;
@@ -369,12 +373,6 @@ const getMealTemplateElement = (mealObj, mealName, kcal, ids_array) => {
                 <div class="add-icon filter-green"></div>
                 <a class="saved-template-edit__add-new__trigger-search">Dodaj nowy element dla Twojego posiłku</a>
             </div>
-            <div class="add-new-element-template-search-bar not-visible"><input class="new-saved-meal-search input-scale" type="text" placeholder="Search"/><span><img class="add-meals__search__bar__icon" src="${searchIconPath}" alt="Search Icon" /></span></div>
-                <div class="saved-meals__added--saved__content__search-response not-visible">
-                    <div class="saved-meals__added--saved__content__search-response__item">
-                    </div>
-                </div>
-            </div>
         </div>
         <div class="edit-meal-added-items"></div>
     `
@@ -388,7 +386,8 @@ const getMealTemplateElement = (mealObj, mealName, kcal, ids_array) => {
     contentContainer.insertAdjacentHTML('afterend', saveButtonAppend)
     const addNewElementBtn = document.querySelector('.add-new-element-box')
     addNewElementBtn.addEventListener('click', e => {
-        animateDeletingElementByClass(".add-new-element-template-search-bar")
+        const modalAddSearch = document.querySelector('.modal-edit-search')
+        modalAddSearch.classList.toggle('not-visible')
     })
     const mealSaveButton = document.querySelector('.save-updated-template-meal')
     mealSaveButton.addEventListener('click', e => {
@@ -491,7 +490,10 @@ $(searchContainer).addClass('animate-left').on("animationend", function(){
     $(this).removeClass('animate-left');
 });
 
-// details
+// modal close listener
+modalCloseEdit.addEventListener('click', e => {
+    animateDeletingElementByClass('.modal-edit-search', 1200)
+})
 
 // save
 saveNewMealButton.addEventListener('click', e => {
@@ -624,26 +626,29 @@ deleteButtons.forEach(button => {
 })
 
 // animations
-const animateDeletingElementByClass = (elementClass) => {
+const animateDeletingElementByClass = (elementClass, duration) => {
     const element = document.querySelector(elementClass)
      if (!element.classList.contains('not-visible')) {
          $(elementClass).animate({
-                top: '-3rem',
+                top: '-15rem',
                 opacity: '0',
 
             }, 300)
              setTimeout(function () {
-                 element.classList.toggle('not-visible')
+                 element.classList.add('not-visible')
                  element.style.removeProperty('display')
-             }, 600)
+                 element.style.removeProperty('opacity')
+                element.style.removeProperty('top')
+             }, duration)
      }
      else {
             element.style.removeProperty('opacity')
             element.style.removeProperty('top')
-            element.classList.toggle('not-visible')
+            element.classList.remove('not-visible')
             element.style.removeProperty('display')
         }
 }
+
 
 const shakeAnimation = (contentBox) => {
     setTimeout(() => {

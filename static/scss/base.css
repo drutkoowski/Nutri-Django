@@ -1162,6 +1162,36 @@ ORDER: Base + typography > general layout + grid > page layout > components
     font-size: 2.5rem;
     cursor: pointer; }
 
+.modal-edit-search {
+  transition: all .2s ease-in;
+  animation-name: fade-bottom;
+  animation-duration: 1s;
+  animation-timing-function: ease-out; }
+  .modal-edit-search__heading {
+    text-align: center; }
+  .modal-edit-search__content {
+    height: 55rem;
+    width: 80rem; }
+    .modal-edit-search__content__search {
+      margin: 0 1rem !important; }
+      .modal-edit-search__content__search-bar {
+        width: 100% !important;
+        transition: all .2s ease-in;
+        animation-name: fade-bottom;
+        animation-duration: 1s;
+        animation-timing-function: ease-out; }
+    .modal-edit-search__content__search-response {
+      background-color: white;
+      color: black;
+      height: 25rem !important;
+      margin-top: 3rem;
+      border-radius: 10px; }
+
+.blink-background-green {
+  background-color: #afe0a5 !important;
+  margin-left: -1rem;
+  margin-right: -1rem; }
+
 .fix-navbar .navigation--dashboard__button {
   top: 2rem; }
 
