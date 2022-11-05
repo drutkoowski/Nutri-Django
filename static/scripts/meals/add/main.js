@@ -31,17 +31,23 @@ const navbar = document.querySelector('.navbar--dashboard')
 const csrf = document.getElementsByName('csrfmiddlewaretoken')
 const csrfToken = csrf[0].value
 
+const checkYourMealsBtn = document.querySelector('.check-today-meals')
+
 navbar.classList.toggle('fix-navbar')
 
 if (mealsVideo) {
     mealsVideo.playbackRate = 0.5;
 }
+
+// animations
 const shakeAnimation = (contentBox) => {
     setTimeout(() => {
        contentBox.classList.toggle('shake-animation')
     }, 1000);
 }
 
+
+// save
 const saveMeal = (ingredients) => {
     const url = window.location.origin + '/meals/data/save/added-meal'
     $.ajax({
@@ -53,8 +59,69 @@ const saveMeal = (ingredients) => {
         },
     })
 }
+const ajaxCallSave = (mealItems) => {
+    let ingredientsArr = []
+    mealItems.forEach(item => {
+        if (item.dataset.objecttemplate) {
+            const mealObj = JSON.parse(decodeURIComponent(item.dataset.objecttemplate));
+            const parent = item.children[2]
+            const inputValue = parent.children[0].value
+            mealObj.forEach(el => {
+                getMealTemplateElement(el, inputValue)
+            })
+        }
+        else if (item.dataset.object) {
+            const mealObj = JSON.parse(decodeURIComponent(item.dataset.object));
+            const parent = item.children[2]
+            const inputValue = parent.children[0].value
+            let obj = {
+                'ingredientId': mealObj.id,
+                'quantity': inputValue,
+            }
+            ingredientsArr.push(obj)
+        }
+    })
+    const url = window.location.origin + '/meals/data/save/added-meal'
+    const ingredients = JSON.stringify(ingredientsArr)
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: {
+            'ingredientsArray': ingredients,
+            'csrfmiddlewaretoken': csrfToken,
+        },
+        success: function (response){
+            const status = response.status
+            if (status === 201) {
+                const modal = document.querySelector('.modal-queued')
+                modal.classList.toggle('not-visible')
+                const closeModalBtn = document.querySelector('.modal-queued__close-button')
+                closeModalBtn.addEventListener('click', e => {
+                    window.location = window.location.href;
+                })
+                setInterval(function () {
+                    window.location = window.location.href;
+                }, 2500);
 
+            }
+            else if (status === 404) {
+                // const searchElements = Array.from(searchResponseBox.children)
+                // searchElements.forEach(el => {
+                //     el.remove()
+                // })
+            }
 
+            },
+        error: function (error) {
+            // const searchElements = Array.from(searchResponseBox.children)
+            //     searchElements.forEach(el => {
+            //         el.remove()
+            //     })
+        },
+    })
+}
+
+// search
 const ajaxCallSearch = (query) => {
     const url = window.location.origin + '/meals/data/live-search-ingredients'
     const searchResponseBox = document.querySelector('.add-meals__search__results__container')
@@ -171,100 +238,6 @@ const getMealTemplateElement = (id, inputValue) => {
         }
     })
 }
-
-const ajaxCallSave = (mealItems) => {
-    let ingredientsArr = []
-    mealItems.forEach(item => {
-        if (item.dataset.objecttemplate) {
-            const mealObj = JSON.parse(decodeURIComponent(item.dataset.objecttemplate));
-            const parent = item.children[2]
-            const inputValue = parent.children[0].value
-            mealObj.forEach(el => {
-                getMealTemplateElement(el, inputValue)
-            })
-        }
-        else if (item.dataset.object) {
-            const mealObj = JSON.parse(decodeURIComponent(item.dataset.object));
-            const parent = item.children[2]
-            const inputValue = parent.children[0].value
-            let obj = {
-                'ingredientId': mealObj.id,
-                'quantity': inputValue,
-            }
-            ingredientsArr.push(obj)
-        }
-    })
-    const url = window.location.origin + '/meals/data/save/added-meal'
-    const ingredients = JSON.stringify(ingredientsArr)
-    $.ajax({
-        type: "POST",
-        url: url,
-        data: {
-            'ingredientsArray': ingredients,
-            'csrfmiddlewaretoken': csrfToken,
-        },
-        success: function (response){
-            const status = response.status
-            if (status === 201) {
-                const modal = document.querySelector('.modal-queued')
-                modal.classList.toggle('not-visible')
-                const closeModalBtn = document.querySelector('.modal-queued__close-button')
-                closeModalBtn.addEventListener('click', e => {
-                    window.location = window.location.href;
-                })
-                setInterval(function () {
-                    window.location = window.location.href;
-                }, 2500);
-
-            }
-            else if (status === 404) {
-                // const searchElements = Array.from(searchResponseBox.children)
-                // searchElements.forEach(el => {
-                //     el.remove()
-                // })
-            }
-
-            },
-        error: function (error) {
-            // const searchElements = Array.from(searchResponseBox.children)
-            //     searchElements.forEach(el => {
-            //         el.remove()
-            //     })
-        },
-    })
-}
-
-const ajaxCallDelete = (mealId) => {
-       const url = location.origin + '/meals/data/delete/added-meal'
-       $.ajax({
-        type: "POST",
-        url: url,
-        data: {
-            'meal_id': mealId,
-            'csrfmiddlewaretoken': csrfToken,
-        },
-        success: function (response){
-            const status = response.status
-            if (status === 200) {
-                console.log('Usunieto meal!')
-            }
-            else if (status === 404) {
-                // const searchElements = Array.from(searchResponseBox.children)
-                // searchElements.forEach(el => {
-                //     el.remove()
-                // })
-            }
-
-            },
-        error: function (error) {
-            // const searchElements = Array.from(searchResponseBox.children)
-            //     searchElements.forEach(el => {
-            //         el.remove()
-            //     })
-        },
-    })
-}
-
 const ajaxCallSearchTemplate = (id) => {
     const url = '/meals/data/get/saved-meal/template'
     $.ajax({
@@ -311,6 +284,41 @@ const ajaxCallSearchTemplate = (id) => {
 }
 
 
+// delete
+const ajaxCallDelete = (mealId) => {
+       const url = location.origin + '/meals/data/delete/added-meal'
+       $.ajax({
+        type: "POST",
+        url: url,
+        data: {
+            'meal_id': mealId,
+            'csrfmiddlewaretoken': csrfToken,
+        },
+        success: function (response){
+            const status = response.status
+            if (status === 200) {
+                console.log('Usunieto meal!')
+            }
+            else if (status === 404) {
+                // const searchElements = Array.from(searchResponseBox.children)
+                // searchElements.forEach(el => {
+                //     el.remove()
+                // })
+            }
+
+            },
+        error: function (error) {
+            // const searchElements = Array.from(searchResponseBox.children)
+            //     searchElements.forEach(el => {
+            //         el.remove()
+            //     })
+        },
+    })
+}
+
+
+
+// listeners
 const alreadySavedButtons = document.querySelectorAll('.meal-saved')
 alreadySavedButtons?.forEach(button => {
 
@@ -383,7 +391,6 @@ saveMealBtn.addEventListener('click', e => {
 })
 
 
-
 const savedTemplateItems = document.querySelectorAll('.add-meals__added--saved__content__item')
 savedTemplateItems.forEach(item => {
     const addSavedButton = item.children[1]
@@ -391,12 +398,38 @@ savedTemplateItems.forEach(item => {
         let mealTemplateObjId = item.dataset.objectid
         console.log(mealTemplateObjId)
         ajaxCallSearchTemplate(mealTemplateObjId)
-        // let contentToAppend = `
-        //             <div class="add-meals__search__results__container__item">
-        //                 <p><b>${ingredient.pl_name}</b> (${Math.trunc(ingredient.kcal)} kcal / ${unit_multiplier} ${ingredient.unit_name_pl} ${isGram})</p>
-        //                 <div data-object='${encodeURIComponent(JSON.stringify(ingredient))}' id='${ingredient.id}' class="new-meal-item-add add-icon filter-green"></div>
-        //                 <small class="search-category-small">Kategoria: <span class="search-category-small__text">${categoryName}</span></small>
-        //             </div>
-        //            `
     })
 })
+
+checkYourMealsBtn.addEventListener('click', e => {
+    openModal('.modal-queued__today-meals-list')
+})
+
+const animateDeletingElementByClass = (elementClass, duration) => {
+    const element = document.querySelector(elementClass)
+     if (!element.classList.contains('not-visible')) {
+         $(elementClass).animate({
+                top: '-15rem',
+                opacity: '0',
+
+            }, 300)
+             setTimeout(function () {
+                 element.classList.add('not-visible')
+                 element.style.removeProperty('display')
+                 element.style.removeProperty('opacity')
+                element.style.removeProperty('top')
+             }, duration)
+     }
+     else {
+            element.style.removeProperty('opacity')
+            element.style.removeProperty('top')
+            element.classList.remove('not-visible')
+            element.style.removeProperty('display')
+        }
+}
+
+const modalCloseTodayMeals = document.querySelector('.modal-queued__today-meals__close-button')
+modalCloseTodayMeals.addEventListener('click', e=> {
+    animateDeletingElementByClass('.modal-queued__today-meals-list', 1200)
+})
+

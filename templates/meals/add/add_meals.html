@@ -28,6 +28,7 @@
                             <br>Results will appear here.</h3>`
                         </div>
                     </div>
+                    <button class="check-today-meals"><span>Check your meals</span></button>
                 </div>
                 <div class="add-meals__added">
                     <div class="add-meals__added--added">
@@ -36,27 +37,7 @@
                         </div>
                     </div>
                     <div class="add-meals__added--added__content">
-                    {% if todayMeals %}
-                        <h3 class="meals-on-date">Meals on {% now "l" %}</h3>
-                         <div class="add-meals__already__added">
-                             {% for meal in todayMeals %}
-                            <div class="add-meals__already__added--item">
-                              <p><b>{{ meal.ingredient.pl_name }}</b> x {{ meal.quantity|floatformat:"-3" }} {{ meal.ingredient.unit.pl_name }} ({{ meal.ingredient.kcal }} kcal / {{ meal.ingredient.serving_grams|floatformat:"-3" }} g)</p>
-                              <div class="today-meals-added-remove-btn remove-icon filter-red meal-saved" data-mealObjId="{{ meal.id }}"></div>
-                              <p class="add-meals__already__added--item__category">Kategoria: <span>{{ meal.ingredient.category.pl_category_name }}</span></p>
-                              <div class="add-meals__already__added--item__details-box">
-                                <p>Kcal: <b>{{ meal.kcal|floatformat:"-2" }}</b></p>
-                                <p>Protein: <b>{{ meal.protein|floatformat:"-2" }}</b></p>
-                                <p>Carbs: <b>{{ meal.carbs|floatformat:"-2" }}</b></p>
-                                <p>Fat: <b>{{ meal.fat|floatformat:"-2" }}</b></p>
-                              </div>
-                            </div>
-                             {% endfor %}
-                         </div>
-                        {% else %}
-                        <div class="saved-results-info">No meals added for today...</div>
-                    {% endif %}
-                     <div class="saved-results-info not-visible">No meals added for today...</div>
+                      <div class="saved-results-info">Your meal composition will appear here</div>
                     </div>
                     <div class="add-meals__added--saved">
                        <div class="add-meals__added--saved__heading">
@@ -92,8 +73,35 @@
             <button class="accept-delete-today-meal">Yes</button>
             <button class="deny-delete-today-meal">No</button>
          </div>
-
      </div>
  </div>
+
+<div class="modal-queued modal-queued__today-meals-list not-visible">
+    <div class="modal-queued__content modal-queued__today-meals-list__content">
+        <div class="modal-queued__close-button modal-queued__today-meals__close-button">&times;</div>
+        <h1 class="modal-queued--heading">Your added meals for today.</h1>
+          {% if todayMeals %}
+              <h3 class="meals-on-date">Meals on {% now "l" %}</h3>
+              <div class="add-meals__already__added">
+                  {% for meal in todayMeals %}
+                      <div class="add-meals__already__added--item">
+                          <p><b>{{ meal.ingredient.pl_name }}</b> x {{ meal.quantity|floatformat:"-3" }} {{ meal.ingredient.unit.pl_name }} ({{ meal.ingredient.kcal }} kcal / {{ meal.ingredient.serving_grams|floatformat:"-3" }} g)</p>
+                          <div class="today-meals-added-remove-btn remove-icon filter-red meal-saved" data-mealObjId="{{ meal.id }}"></div>
+                          <p class="add-meals__already__added--item__category">Kategoria: <span>{{ meal.ingredient.category.pl_category_name }}</span></p>
+                          <div class="add-meals__already__added--item__details-box">
+                              <p>Kcal: <b>{{ meal.kcal|floatformat:"-2" }}</b></p>
+                              <p>Protein: <b>{{ meal.protein|floatformat:"-2" }}</b></p>
+                              <p>Carbs: <b>{{ meal.carbs|floatformat:"-2" }}</b></p>
+                              <p>Fat: <b>{{ meal.fat|floatformat:"-2" }}</b></p>
+                          </div>
+                      </div>
+                  {% endfor %}
+              </div>
+          {% else %}
+              <div class="saved-results-info">No meals added for today...</div>
+          {% endif %}
+    </div>
+</div>
+
 
 {% endblock %}

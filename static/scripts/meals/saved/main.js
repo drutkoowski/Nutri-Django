@@ -676,3 +676,4 @@ const shakeAnimation = (contentBox) => {
     }, 1000);
 }
 
+export {animateDeletingElementByClass};

@@ -167,3 +167,10 @@
     }
   }
 }
+
+.modal-queued__today-meals-list{
+  &__content {
+     height: 55rem;
+     width: 80rem;
+  }
+}
