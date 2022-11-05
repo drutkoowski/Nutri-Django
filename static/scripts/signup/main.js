@@ -99,26 +99,28 @@ function getChildren(parent) {
 }
 
 
-
-
 function appendContent(parent, iteration) {
     const arr = getChildren(parent)
     clearQuestions(parent,arr)
     let contentToAppend
     if (iteration === 0) {
+        const headerText = gettext('"What\'s your weight goal?"')
+        const gwText = gettext('Gain Weight')
+        const mwText = gettext('Maintain Weight')
+        const lwText = gettext('Lose Weight')
         let currentHeading = document.querySelector('.signup__card__heading')
-        currentHeading.innerHTML = "What's your weight goal?"
+        currentHeading.innerHTML = headerText
         contentToAppend = `
-          <button id='gain-weight' class="signup__card__button">Gain Weight</button>
-          <button id='maintain-weight' class="signup__card__button">Maintain Weight</button>
-          <button id='lose-weight' class="signup__card__button">Lose Weight</button>`
+          <button id='gain-weight' class="signup__card__button">${gwText}</button>
+          <button id='maintain-weight' class="signup__card__button">${mwText}</button>
+          <button id='lose-weight' class="signup__card__button">${lwText}</button>`
     }
     if (iteration === 1) {
         let currentHeading = document.querySelector('.signup__card__heading')
-        currentHeading.innerHTML = `What's your activity level?`
+        currentHeading.innerHTML =  gettext('What\'s your activity level?')
         contentToAppend = `
-         <button id='not-active' class="signup__card__button">Not-active</button>
-          <button id='lightly-active' class="signup__card__button">Lightly-active</button>
+         <button id='not-active' class="signup__card__button">${gettext('Not-active')}</button>
+          <button id='lightly-active' class="signup__card__button">${gettext('Lightly-active')}</button>
           <button id='active' class="signup__card__button">Active</button>
           <button id='very-active' class="signup__card__button">Very-active</button>`
     }

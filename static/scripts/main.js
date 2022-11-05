@@ -1,4 +1,5 @@
-if (location.href !== location.origin && location.href !== location.origin + '/') {
+const flag = document.querySelector('.about')
+if ((location.href === location.origin + '/pl' || location.href === location.origin + '/en' || location.href === location.origin + '/pl/' || location.href === location.origin + '/en/') && !flag) {
     const hamburgerNav = document.getElementById('navi-toggle')
     const navigationList = document.getElementsByClassName('navigation--dashboard__list')[0]
 

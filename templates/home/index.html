@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 {% block content %}
 {#    spinner #}
 <div class="loader"></div>
@@ -19,7 +20,7 @@
         </div>
         <div class="about grid-full-span reveal fade-bottom">
             <p class="about__paragraph about__paragraph--1">
-                <span class="about__paragraph--tabulator">People</span> who discovered and analysed their food habits achieve more than double weight loss comparing to the people who didn't<span class="header__nutri-dot">.</span>
+                <span class="about__paragraph--tabulator">{% trans 'People' %}</span> who discovered and analysed their food habits achieve more than double weight loss comparing to the people who didn't<span class="header__nutri-dot">.</span>
                 The right supplementation, adapted to your eating customs, is the main key to your success<span class="header__nutri-dot">.</span>
                 Proper personalisation of results and accurate suggestions will help you understand appropriate eating habits regarding your diet and exercise regime<span class="header__nutri-dot">.</span>
             </p>
@@ -49,23 +50,23 @@
                 </video>
             </div>
               <div class="make-goals-real__flex-container">
-                    <h2 id='make-goals-real-upper' class="make-goals-real__quote--upper">Using Nutri<span class="header__nutri-dot" style="margin-right: 1px">.</span> You can make your goal real<span class="header__nutri-dot">.</span></h2>
+                    <h2 id='make-goals-real-upper' class="make-goals-real__quote--upper">{% trans 'Using Nutri' %}<span class="header__nutri-dot" style="margin-right: 1px">.</span> {% trans 'You can make your goal real' %}<span class="header__nutri-dot">.</span></h2>
                 </div>
         </div>
 
         <div class="why-nutri grid-full-span reveal fade-bottom">
-            <h3 class="why-nutri__title">Discover Your Nutrition<span class="header__nutri-dot">.</span></h3>
+            <h3 class="why-nutri__title">{% trans 'Discover Your Nutrition' %}<span class="header__nutri-dot">.</span></h3>
             <div class="why-nutri__card-1 why-nutri__card">
                 <img class="why-nutri__card__icon filter-gold" src="{% static 'images/svg/phone-approved.svg' %}" alt="Phone approved Icon" />
-                <p class="why-nutri__card__description">Desktop and Mobile accessibility<span class="header__nutri-dot">.</span></p>
+                <p class="why-nutri__card__description">{% trans 'Desktop and Mobile accessibility' %}<span class="header__nutri-dot">.</span></p>
             </div>
             <div class="why-nutri__card-2 why-nutri__card">
                 <img class="why-nutri__card__icon filter-gold" src="{% static 'images/svg/save-money.svg' %}" alt="Free of charge Icon" />
-                <p class="why-nutri__card__description">Completely free of charge<span class="header__nutri-dot">.</span></p>
+                <p class="why-nutri__card__description">{% trans 'Completely free of charge' %}<span class="header__nutri-dot">.</span></p>
             </div>
             <div class="why-nutri__card-3 why-nutri__card">
                  <img class="why-nutri__card__icon filter-gold" src="{% static 'images/svg/approved.svg' %}" alt="Approved Icon" />
-                <p class="why-nutri__card__description">Appreciated by <b>172</b> users<span class="header__nutri-dot">.</span></p>
+                <p class="why-nutri__card__description">{% trans 'Appreciated by' %} <b>172</b> {% trans 'users' %}<span class="header__nutri-dot">.</span></p>
             </div>
         </div>
 
@@ -76,33 +77,33 @@
                 <video id="gains-video" class="bg-video__content" autoplay muted loop>
                     <source src="{% static 'video/bg_video_gains.mp4' %}" type="video/mp4">
                     <source src="{% static 'video/bg_video_gains.webm' %}" type="video/webm">
-                    Your browser is not supported!
+                    {% trans 'Your browser is not supported!' %}
                 </video>
             </div>
             <div class="gains__card">
                  <img class="gains__card__icon filter-gold" src="{% static 'images/svg/calculator.svg' %}" alt="Calculator Icon" />
-                <p class="gains__card__description">Calculate daily KCAL<span class="header__nutri-dot">.</span></p>
+                <p class="gains__card__description">{% trans 'Calculate daily KCAL' %}<span class="header__nutri-dot">.</span></p>
             </div>
 
             <div class="gains__card ">
                 <img class="gains__card__icon filter-gold" src="{% static 'images/svg/recipe.svg' %}" alt="Recipe Icon" />
-                <p class="gains__card__description">Search for recipes<span class="header__nutri-dot">.</span></p>
+                <p class="gains__card__description">{% trans 'Search for recipes' %}<span class="header__nutri-dot">.</span></p>
             </div>
             <div class="gains__card ">
                 <img class="gains__card__icon filter-gold" src="{% static 'images/svg/save.svg' %}" alt="Save Icon" />
-                <p class="gains__card__description">Save your progress<span class="header__nutri-dot">.</span></p>
+                <p class="gains__card__description">{% trans 'Save your progress' %}<span class="header__nutri-dot">.</span></p>
                 </div>
             <div class="gains__card margin-bottom-md">
                 <img class="gains__card__icon filter-gold" src="{% static 'images/svg/options.svg' %}" alt="Options Icon" />
-                <p class="gains__card__description">Many personalization methods<span class="header__nutri-dot">.</span></p>
+                <p class="gains__card__description">{% trans 'Many personalization methods' %}<span class="header__nutri-dot">.</span></p>
             </div>
             <div class="gains__card margin-bottom-md">
                 <img class="gains__card__icon filter-gold" src="{% static 'images/svg/exercise.svg' %}" alt="Exercise Icon" />
-                <p class="gains__card__description">Add your exercises<span class="header__nutri-dot">.</span></p>
+                <p class="gains__card__description">{% trans 'Add your exercises' %}<span class="header__nutri-dot">.</span></p>
             </div>
             <div class="gains__card margin-bottom-md">
                 <img class="gains__card__icon filter-gold" src="{% static 'images/svg/share.svg' %}" alt="Share Icon" />
-                <p class="gains__card__description">Share your progress<span class="header__nutri-dot">.</span></p>
+                <p class="gains__card__description">{% trans 'Share your progress' %}<span class="header__nutri-dot">.</span></p>
             </div>
         </div>
 
@@ -113,7 +114,7 @@
         <div class="grid-full-span" style="margin-bottom: 15rem;"></div>
         <div class="footer grid-full-span">
             <div class="footer__flex-container">
-                <div class="footer__creator">Created with &hearts; by Damian Rutkowski</div>
+                <div class="footer__creator">{% trans 'Created with &hearts; by' %} Damian Rutkowski</div>
                 <div class="footer__copyright">Copyright &copy; 2022<span class="header__nutri-dot">.</span> All rights reserved<span class="header__nutri-dot">.</span></div>
                 <div class="footer__contact">
 {#                    <img class="footer__contact__image" src="{% static 'images/svg/github.svg' %}" alt="Github Icon" />#}
