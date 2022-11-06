@@ -1,11 +1,12 @@
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.db.models import Q
+from django.utils import translation
+
+from Nutri import settings
 from accounts.models import Account, UserProfile
-from django.utils.translation import gettext_lazy as _
-from django.utils.translation import get_language, activate, gettext
 # Create your views here.
 
 
@@ -14,6 +15,11 @@ def home_page(request):
 
 
 def signup_view(request):
+    # user_language = 'pl'
+    # translation.activate(user_language)
+    # response = HttpResponse(...)
+    # response.set_cookie(settings.LANGUAGE_COOKIE_NAME, user_language)
+    # print(translation.get_language())
     if request.user.is_authenticated:
         return redirect('dashboard')
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == "POST":

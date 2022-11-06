@@ -54,9 +54,9 @@ const sendData = () => {
             iteration += 1
             progressBar.classList.add(`progress--${iteration}`)
             modal.classList.remove('not-visible')
-
+            const langPrefix = window.location.href.split('/')[3];
             setInterval(function () {
-                window.location = window.location.origin + '/login';
+                window.location = window.location.origin + `/${langPrefix}/login`;
             }, 4000);
             },
         error: function (error) {
@@ -104,16 +104,12 @@ function appendContent(parent, iteration) {
     clearQuestions(parent,arr)
     let contentToAppend
     if (iteration === 0) {
-        const headerText = gettext('"What\'s your weight goal?"')
-        const gwText = gettext('Gain Weight')
-        const mwText = gettext('Maintain Weight')
-        const lwText = gettext('Lose Weight')
         let currentHeading = document.querySelector('.signup__card__heading')
-        currentHeading.innerHTML = headerText
+        currentHeading.innerHTML = gettext('"What\'s your weight goal?"')
         contentToAppend = `
-          <button id='gain-weight' class="signup__card__button">${gwText}</button>
-          <button id='maintain-weight' class="signup__card__button">${mwText}</button>
-          <button id='lose-weight' class="signup__card__button">${lwText}</button>`
+          <button id='gain-weight' class="signup__card__button">${gettext('Gain Weight')}</button>
+          <button id='maintain-weight' class="signup__card__button">${gettext('Maintain Weight')}</button>
+          <button id='lose-weight' class="signup__card__button">${gettext('Lose Weight')}</button>`
     }
     if (iteration === 1) {
         let currentHeading = document.querySelector('.signup__card__heading')
@@ -121,13 +117,13 @@ function appendContent(parent, iteration) {
         contentToAppend = `
          <button id='not-active' class="signup__card__button">${gettext('Not-active')}</button>
           <button id='lightly-active' class="signup__card__button">${gettext('Lightly-active')}</button>
-          <button id='active' class="signup__card__button">Active</button>
-          <button id='very-active' class="signup__card__button">Very-active</button>`
+          <button id='active' class="signup__card__button">${gettext('Active')}</button>
+          <button id='very-active' class="signup__card__button">${gettext('Very-active')}</button>`
     }
 
      if (iteration === 2) {
          let currentHeading = document.querySelector('.signup__card__heading')
-         currentHeading.innerHTML = `What's your body parameters?`
+         currentHeading.innerHTML = gettext("What's your body parameters?")
          contentToAppend = `
          <div class="signup__card__input__container"><input id='tall' class="signup__card__input"/><span class="signup__card__input__span">cm</span></div>
          <div class="signup__card__input__container"><input id='weight' class="signup__card__input"/><span class="signup__card__input__span">kg</span></div>
@@ -136,22 +132,22 @@ function appendContent(parent, iteration) {
 
      if (iteration === 3) {
         let currentHeading = document.querySelector('.signup__card__heading')
-        currentHeading.innerHTML = `What's your personal info?`
+        currentHeading.innerHTML = gettext("What's your personal info?")
         currentHeading.classList.add('signup__card__heading--3')
         contentToAppend = `
-             <input id='first-name' class="signup__card__input" placeholder="First Name"/>
+             <input id='first-name' class="signup__card__input" placeholder="${gettext('First Name')}"/>
             
-             <input id='last-name' class="signup__card__input" placeholder="Last Name"/>
+             <input id='last-name' class="signup__card__input" placeholder="${gettext('Last Name')}"/>
             
              <div class="gender__container">
               <input type="radio" id="gender-men" name="gender" value="Male">
-              <label class="gender__container__label" for="gender-men">Male</label>
+              <label class="gender__container__label" for="gender-men">${gettext('Male')}</label>
             </div>
              <div class="gender__container">
                <input type="radio" id="gender-woman" name="gender" value="Female">
-               <label class="gender__container__label" for="gender-woman">Female</label>
+               <label class="gender__container__label" for="gender-woman">${gettext('Female')}</label>
             </div>
-           <label class="year" style="font-size: 2rem" for="year">How old are you?</label>
+           <label class="year" style="font-size: 2rem" for="year">${gettext('How old are you?')}</label>
               <select class="year-select" name="year" id="year">
                 <option value="6">6</option>
                 <option value="7">7</option>
@@ -245,13 +241,13 @@ function appendContent(parent, iteration) {
 
      if (iteration === 4) {
         let currentHeading = document.querySelector('.signup__card__heading')
-        currentHeading.innerHTML = `What's your email address and password?`
+        currentHeading.innerHTML = gettext('What\'s your email address and password?')
         currentHeading.classList.toggle('signup__card__heading--3')
         currentHeading.classList.add('signup__card__heading--4')
         contentToAppend = `
-            <input id='email' type="email" class="signup__card__input" placeholder="Email Address" required/>
-            <input id='username' type="text" class="signup__card__input" placeholder="Username" required/>
-             <input id='password' type="password" class="signup__card__input" placeholder="Password" required/>
+            <input id='email' type="email" class="signup__card__input" placeholder="${gettext('Email Address')}" required/>
+            <input id='username' type="text" class="signup__card__input" placeholder="${gettext('Username')}" required/>
+             <input id='password' type="password" class="signup__card__input" placeholder="${gettext('Password')}" required/>
            
              
           `
@@ -308,7 +304,7 @@ buttonNext.addEventListener('click', e => {
             clearAlerts()
             }
             else {
-                alertMsg.innerHTML = `You have to choose one option.`
+                alertMsg.innerHTML = gettext('You have to choose one option.')
                 alertMsg.classList.remove('not-visible')
                 currentChoice = null
             }
@@ -329,13 +325,13 @@ buttonNext.addEventListener('click', e => {
                      clearAlerts()
                  }
                  else {
-                     alertMsg.innerHTML = `You have filled inputs incorrectly.`
+                     alertMsg.innerHTML = gettext('You have filled inputs incorrectly.')
                      alertMsg.classList?.remove('not-visible')
                  }
 
             }
             else {
-                alertMsg.innerHTML = `You have to fill the inputs.`
+                alertMsg.innerHTML = gettext('You have to fill the inputs.')
                 alertMsg.classList?.remove('not-visible')
 
             }
@@ -348,7 +344,7 @@ buttonNext.addEventListener('click', e => {
             if (firstName !== null && lastName !== null && (gender === 'Male' || gender ==='Female') && !isEmpty(firstName) && !isEmpty(lastName) && (yearsOld > 5 && yearsOld < 91)) {
                 if(firstName.length < 3 || lastName.length < 3)
                 {
-                    alertMsg.innerHTML = `You have filled incorrect name or last name field.`
+                    alertMsg.innerHTML = gettext('You have filled incorrect name or last name field.')
                     alertMsg.classList?.remove('not-visible')
                 }
                 else {
@@ -368,7 +364,7 @@ buttonNext.addEventListener('click', e => {
 
             }
             else {
-                alertMsg.innerHTML = `You have filled inputs incorrectly.`
+                alertMsg.innerHTML = gettext('You have filled inputs incorrectly.')
                 alertMsg.classList?.remove('not-visible')
             }
         }
@@ -380,11 +376,11 @@ buttonNext.addEventListener('click', e => {
             const username = document.querySelector('#username').value
             if (emailAddress !== null && password !== null && username !== null && !isEmpty(emailAddress) && !isEmpty(username) && !isEmpty(password) && validateEmail(emailAddress)){
                  if(password.length < 4){
-                     alertMsg.innerHTML = `Your password is too short!`
+                     alertMsg.innerHTML = gettext('Your password is too short!')
                      alertMsg.classList?.remove('not-visible')
                  }
                  if(password.length > 35){
-                     alertMsg.innerHTML = `Your password is too long!`
+                     alertMsg.innerHTML = gettext('Your password is too long!')
                      alertMsg.classList?.remove('not-visible')
                  }
                  if (password.length >= 4 && password.length <= 35) {
@@ -392,7 +388,8 @@ buttonNext.addEventListener('click', e => {
                      choices.push(username)
                      choices.push(password)
                      // ajax call to check if desired username/email address is not taken
-                     const getUrl = window.location.origin + '/data/check-if-taken'
+                     const langPrefix = window.location.href.split('/')[3];
+                     const getUrl = window.location.origin + `/${langPrefix}/data/check-if-taken`
                      $.ajax({
                         type: "GET",
                         url: getUrl,
@@ -404,7 +401,7 @@ buttonNext.addEventListener('click', e => {
                             const status = response.status
                             if (status === 200) {
 
-                                alertMsg.innerHTML = `User with these credentials already exists.`
+                                alertMsg.innerHTML = gettext('User with these credentials already exists.')
                                 choices = choices.slice(0, 8)
                                 alertMsg.classList?.remove('not-visible')
                             }
@@ -413,23 +410,23 @@ buttonNext.addEventListener('click', e => {
                             }
                         },
                         error: function (error) {
-                            alertMsg.innerHTML = `Something went wrong, try again.`
+                            alertMsg.innerHTML = gettext('Something went wrong, try again.')
                             alertMsg.classList?.remove('not-visible')
                         },
                     })
                  }
                  else if (password.length < 4) {
-                    alertMsg.innerHTML = `Your password is too short!`
+                    alertMsg.innerHTML = gettext('Your password is too short!')
                      alertMsg.classList?.remove('not-visible')
                  }
                  else if (password.length > 35) {
-                    alertMsg.innerHTML = `Your password is too long!`
+                    alertMsg.innerHTML = gettext('Your password is too long!')
                      alertMsg.classList?.remove('not-visible')
                  }
             }
 
             else {
-                alertMsg.innerHTML = `You have filled inputs incorrectly.`
+                alertMsg.innerHTML = gettext('You have filled inputs incorrectly.')
                 alertMsg.classList?.remove('not-visible')
             }
         }
