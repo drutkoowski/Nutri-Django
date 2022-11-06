@@ -49,7 +49,8 @@ const shakeAnimation = (contentBox) => {
 
 // save
 const saveMeal = (ingredients) => {
-    const url = window.location.origin + '/meals/data/save/added-meal'
+    const langPrefix = window.location.href.split('/')[3];
+    const url = window.location.origin + `/${langPrefix}/meals/data/save/added-meal`
     $.ajax({
         type: "POST",
         url: url,
@@ -81,7 +82,8 @@ const ajaxCallSave = (mealItems) => {
             ingredientsArr.push(obj)
         }
     })
-    const url = window.location.origin + '/meals/data/save/added-meal'
+    const langPrefix = window.location.href.split('/')[3];
+    const url = window.location.origin + `/${langPrefix}/meals/data/save/added-meal`
     const ingredients = JSON.stringify(ingredientsArr)
     $.ajax({
         type: "POST",
@@ -120,10 +122,10 @@ const ajaxCallSave = (mealItems) => {
         },
     })
 }
-
 // search
 const ajaxCallSearch = (query) => {
-    const url = window.location.origin + '/meals/data/live-search-ingredients'
+    const langPrefix = window.location.href.split('/')[3];
+    const url = window.location.origin + `/${langPrefix}/meals/data/live-search-ingredients`
     const searchResponseBox = document.querySelector('.add-meals__search__results__container')
 
     $.ajax({
@@ -144,14 +146,29 @@ const ajaxCallSearch = (query) => {
                ingredients.forEach(ingredient => {
                    let contentToAppend
                    let unit_multiplier = ingredient.unit_multiplier
-                   let isGram = ingredient.unit_name_pl === 'g' ? '' : `lub ${Math.round(ingredient.serving_grams)} g`
-                   let categoryName = ingredient.category_name_pl
+                   const langPrefix = window.location.href.split('/')[3];
+                   let isGram = ''
+                   let categoryName
+                   let ingredientName
+                   let unit_name
+                   if (langPrefix === 'pl'){
+                       isGram = ingredient.unit_name_pl === 'g' ? '' : `lub ${Math.round(ingredient.serving_grams)} g`
+                       categoryName = ingredient.category_name_pl
+                       ingredientName = ingredient.pl_name
+                       unit_name = ingredient.unit_name_pl
+                   }
+                   else {
+                       isGram = ingredient.unit_name_en === 'g' ? '' : `or ${Math.round(ingredient.serving_grams)} g`
+                       categoryName = ingredient.category_name_en
+                       ingredientName = ingredient.en_name
+                       unit_name = ingredient.unit_name_en
+                   }
 
                     contentToAppend = `
                     <div class="add-meals__search__results__container__item">
-                        <p><b>${ingredient.pl_name}</b> (${Math.trunc(ingredient.kcal)} kcal / ${unit_multiplier} ${ingredient.unit_name_pl} ${isGram})</p>
+                        <p><b>${ingredientName}</b> (${Math.trunc(ingredient.kcal)} kcal / ${unit_multiplier} ${unit_name} ${isGram})</p>
                         <div data-object='${encodeURIComponent(JSON.stringify(ingredient))}' id='${ingredient.id}' class="new-meal-item-add add-icon filter-green"></div>
-                        <small class="search-category-small">Kategoria: <span class="search-category-small__text">${categoryName}</span></small>
+                        <small class="search-category-small">${gettext('Category')}: <span class="search-category-small__text">${categoryName}</span></small>
                     </div>
                    `
 
@@ -165,16 +182,29 @@ const ajaxCallSearch = (query) => {
                         const mealContent = document.querySelector('.add-meals__added--added__content')
                         const getMealObject = JSON.parse(decodeURIComponent(e.target.dataset.object));
                         let unit_multiplier = getMealObject.unit_multiplier
-                        let isGram = getMealObject.unit_name_pl === 'g' ? '' : `lub ${Math.round(getMealObject.serving_grams)} g`
+                        const langPrefix = window.location.href.split('/')[3];
+                        let isGram
+                        let mealName
+                        let unitName
+                        if (langPrefix === 'pl') {
+                            isGram = getMealObject.unit_name_pl === 'g' ? '' : `lub ${Math.round(getMealObject.serving_grams)} g`
+                            mealName = getMealObject.pl_name
+                            unitName = getMealObject.unit_name_pl
+                        }
+                        else {
+                            isGram = getMealObject.unit_name_en === 'g' ? '' : `or ${Math.round(getMealObject.serving_grams)} g`
+                            mealName = getMealObject.en_name
+                            unitName = getMealObject.unit_name_en
+                        }
                         const infoResults = document.querySelector('.saved-results-info')
                         infoResults.classList.add('not-visible')
                         const mealItemAppend = `
                                <div data-object="${e.target.dataset.object}" class="add-meals__added--added__content__item">
-                                   <p><b>${getMealObject.pl_name}</b> (${Math.trunc(getMealObject.kcal)} kcal / ${unit_multiplier} ${getMealObject.unit_name_pl} ${isGram})</p>
+                                   <p><b>${mealName}</b> (${Math.trunc(getMealObject.kcal)} kcal / ${unit_multiplier} ${unitName} ${isGram})</p>
                                   <div class="today-meals-added-remove-btn temporary-meal-today remove-icon filter-red"></div>
                                   <div class="today-meals-added-inputBox">
-                                    <input min="1" max="1000" class="new-today-meal-input-quantity" name="${getMealObject.en_name}" type="number" placeholder="${getMealObject.unit_name_pl}">
-                                    <label for="${getMealObject.en_name}">x ${getMealObject.unit_name_pl}</label>
+                                    <input min="1" max="1000" class="new-today-meal-input-quantity" name="${mealName}" type="number" placeholder="${unitName}">
+                                    <label for="${mealName}">x ${unitName}</label>
                                   </div>
                         </div>
                       `
@@ -198,12 +228,12 @@ const ajaxCallSearch = (query) => {
                 searchElements.forEach(el => {
                     el.remove()
                 })
-                searchResponseBox.innerHTML = `<h3 class="search-results-info">No search results.</h3>`
+                searchResponseBox.innerHTML = `<h3 class="search-results-info">${gettext('No search results.')}</h3>`
             }
 
             },
         error: function (error) {
-            searchResponseBox.innerHTML = `<h3 class="search-results-info">No search results.</h3>`
+            searchResponseBox.innerHTML = `<h3 class="search-results-info">${gettext('No search results.')}</h3>`
             const searchElements = Array.from(searchResponseBox.children)
                 searchElements.forEach(el => {
                     el.remove()
@@ -213,7 +243,8 @@ const ajaxCallSearch = (query) => {
 }
 
 const getMealTemplateElement = (id, inputValue) => {
-    const url = window.location.origin + '/meals/data/get/saved-meal/template/element'
+    const langPrefix = window.location.href.split('/')[3];
+    const url = window.location.origin + `/${langPrefix}/meals/data/get/saved-meal/template/element`
     $.ajax({
         'type': 'get',
          url: url,
@@ -239,7 +270,8 @@ const getMealTemplateElement = (id, inputValue) => {
     })
 }
 const ajaxCallSearchTemplate = (id) => {
-    const url = '/meals/data/get/saved-meal/template'
+    const langPrefix = window.location.href.split('/')[3];
+    const url = `/${langPrefix}/meals/data/get/saved-meal/template`
     $.ajax({
         "type": "GET",
         url: url,
@@ -248,21 +280,28 @@ const ajaxCallSearchTemplate = (id) => {
         },
         success: function (response) {
            const mealObj = JSON.parse(response.mealTemplateObj)
-            console.log(mealObj)
            const mealName = mealObj.meal_name
            const kcal = mealObj.kcal
            const infoResults = document.querySelector('.saved-results-info')
            infoResults.classList.add('not-visible')
-          const mealItemAppend = `
+           const langPrefix = window.location.href.split('/')[3];
+           let placeholder
+           if (langPrefix === 'pl') {
+               placeholder = 'Sztuk'
+           }
+           else {
+               placeholder = 'Pieces'
+           }
+           const mealItemAppend = `
                 <div data-objectTemplate="${encodeURIComponent(JSON.stringify(mealObj.meal_elements_ids))}" class="add-meals__added--added__content__item">
                     <p><b>${mealName}</b> (${Math.trunc(kcal)} kcal)</p>
                     <div class="today-meals-added-remove-btn temporary-meal-today remove-icon filter-red"></div>
                     <div class="today-meals-added-inputBox">
-                        <input min="1" max="1000" class="new-today-meal-input-quantity" name="${mealName}-${mealObj.mealId}" type="number" placeholder="Sztuk">
-                        <label for="${mealName}-${mealObj.mealId}">x Sztuk</label>
+                        <input min="1" max="1000" class="new-today-meal-input-quantity" name="${mealName}-${mealObj.mealId}" type="number" placeholder="${placeholder}">
+                        <label for="${mealName}-${mealObj.mealId}">x ${placeholder}</label>
                     </div>
                 </div>
-         `
+            `
         const mealContent = document.querySelector('.add-meals__added--added__content')
         mealContent.insertAdjacentHTML('beforeend', mealItemAppend)
         const removeAddedBtn = document.querySelectorAll('.temporary-meal-today')
@@ -286,7 +325,8 @@ const ajaxCallSearchTemplate = (id) => {
 
 // delete
 const ajaxCallDelete = (mealId) => {
-       const url = location.origin + '/meals/data/delete/added-meal'
+       const langPrefix = window.location.href.split('/')[3];
+       const url = location.origin + `/${langPrefix}/meals/data/delete/added-meal`
        $.ajax({
         type: "POST",
         url: url,
@@ -297,7 +337,6 @@ const ajaxCallDelete = (mealId) => {
         success: function (response){
             const status = response.status
             if (status === 200) {
-                console.log('Usunieto meal!')
             }
             else if (status === 404) {
                 // const searchElements = Array.from(searchResponseBox.children)
@@ -363,8 +402,8 @@ searchInput.addEventListener('input', e => {
 
     }
     else {
-        searchResponseBox.innerHTML = `<h3 class="search-results-info" style="text-align: center">Try to search meal or ingredients that have you eaten today.
-                            <br>Results will appear here.</h3>`
+        searchResponseBox.innerHTML = `<h3 class="search-results-info" style="text-align: center">${gettext('Try to search meal or ingredients that have you eaten today.')}
+                            <br>${gettext('Results will appear here.')}</h3>`
     }
 })
 

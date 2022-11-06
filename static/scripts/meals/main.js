@@ -12,15 +12,18 @@ window.onresize = function(){ location.reload(); }
 
 const mealsAddCard = document.querySelector('.meals__card--add')
 mealsAddCard.addEventListener('click', e => {
-    location.href = location.origin + '/meals/add'
+    const langPrefix = window.location.href.split('/')[3];
+    location.href = location.origin + `/${langPrefix}/meals/add`
 })
 
 const mealsPropositionCard = document.querySelector('.meals__card--proposition')
 mealsPropositionCard.addEventListener('click', e => {
-    location.href = location.origin + '/meals/propositions'
+    const langPrefix = window.location.href.split('/')[3];
+    location.href = location.origin + `/${langPrefix}/meals/propositions`
 })
 
 const mealsSaved = document.querySelector('.meals__card--saved')
 mealsSaved.addEventListener('click', e => {
-    location.href = location.origin + '/meals/saved'
+    const langPrefix = window.location.href.split('/')[3];
+    location.href = location.origin + `/${langPrefix}/meals/saved`
 })

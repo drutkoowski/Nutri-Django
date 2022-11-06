@@ -47,12 +47,21 @@ def saved_meals_view(request):
 def live_search_ingredients(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
         query = request.GET.get('query')
+        lang_code = request.path.split('/')[1]
         if query != '':
-            check_if_ingredient_exists = Ingredient.objects.filter(
-                pl_name__iregex=r"\b{0}\b".format(query)).all().union(
-                Ingredient.objects.filter(
-                    pl_name__istartswith=query
-                )).all()
+            if (lang_code == 'pl'):
+                check_if_ingredient_exists = Ingredient.objects.filter(
+                    pl_name__iregex=r"\b{0}\b".format(query)).all().union(
+                    Ingredient.objects.filter(
+                        pl_name__istartswith=query
+                    )).all()
+            else:
+                check_if_ingredient_exists = Ingredient.objects.filter(
+                    en_name__iregex=r"\b{0}\b".format(query)).all().union(
+                    Ingredient.objects.filter(
+                        en_name__istartswith=query
+                    )).all()
+
             # "\y" or "\b" depends on postgres or not (\y - postgres)
             if check_if_ingredient_exists is not None:
                 ingredients = list(check_if_ingredient_exists.values())

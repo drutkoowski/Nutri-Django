@@ -1,4 +1,5 @@
 {% load sass_tags %}
+{% load i18n %}
 <div class="dashboard__sidebar">
     <div class="dashboard__sidebar__avatar">
         <img src="{% sass_src 'images/svg/default_user.svg' %}" alt="User Avatar">
@@ -13,7 +14,7 @@
         {{ get_current_user_profile.gender}}
     </div>
     <div class="dashboard__sidebar__years">
-        {{ get_current_user_profile.years_old }} years old
+        {{ get_current_user_profile.years_old }} {% trans 'years old' %}
     </div>
     <div class="dashboard__sidebar__height">
         {{ get_current_user_profile.height }} cm
@@ -22,15 +23,15 @@
          {{ get_current_user_profile.weight }} kg
     </div>
     <div class="dashboard__sidebar__goal">
-        Goal:  {{ get_current_user_profile.goal_weight|title }}
+        {% trans 'Goal' %}:  {{ get_current_user_profile.goal_weight|title }}
     </div>
     <div class="dashboard__sidebar__activity-level">
-        Activity: {{ get_current_user_profile.activity_level |title}}
+        {% trans 'Activity' %}: {{ get_current_user_profile.activity_level |title}}
     </div>
     <div class="dashboard__sidebar__settings">
-        Settings
+        {% trans 'Settings' %}
     </div>
     <div class="dashboard__sidebar__log-out">
-        <a class="" href="{% url 'logout' %}"> Logout</a>
+        <a class="" href="{% url 'logout' %}"> {% trans 'Logout' %}</a>
     </div>
 </div>

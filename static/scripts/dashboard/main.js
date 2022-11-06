@@ -144,10 +144,10 @@ window.onresize = function(){ location.reload(); }
 
 const todayDate = new Date().toLocaleDateString()
 const graphDate = document.querySelector('.graph-date')
-graphDate.textContent = `Summary ${todayDate}`
+graphDate.textContent = `${gettext('Summary')} ${todayDate}`
 
 const meals = document.querySelector('.dashboard__content__summary__item--meal')
 meals.addEventListener('click', e => {
-
-    location.href = location.origin + '/meals'
+    const langPrefix = window.location.href.split('/')[3];
+    location.href = location.origin + `/${langPrefix}/meals`
 })

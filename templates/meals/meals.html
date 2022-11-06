@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load sass_tags %}
 {% block scripts %}
      <script src="{% sass_src 'scripts/meals/main.js' %}" defer></script>
@@ -9,7 +10,7 @@
          <video id="meals-video" class="bg-video__content" autoplay muted loop>
              <source src="{% sass_src 'video/meals_bg_video.mp4' %}" type="video/mp4">
              <source src="{% sass_src 'video/meals_bg_video.webm' %}" type="video/webm">
-             Your browser is not supported!
+             {% trans 'Your browser is not supported!' %}
          </video>
      </div>
     <div class="meals-layout-container">
@@ -17,16 +18,16 @@
          {% include 'accounts/navbar_small.html' %}
         <div class="meals grid-full-span">
             <div class="meals__card meals__card--add">
-                <h1>Add Today's Meal</h1>
-                <p>Fill your day with the foods you eat today and find out more about their calorie content and the ingredients they contain such as protein,carbohydrates and many more.</p>
+                <h1>{% trans "Add Today's Meal" %}</h1>
+                <p>{% trans 'Fill your day with the foods you eat today and find out more about their calorie content and the ingredients they contain such as protein,carbohydrates and many more.' %}</p>
             </div>
             <div class="meals__card meals__card--proposition">
-                <h1>Meals Propositions</h1>
-                <p>Browse the dish suggestions with their recipes and other information constructed by us just for you.</p>
+                <h1>{% trans 'Meals Propositions' %}</h1>
+                <p>{% trans 'Browse the dish suggestions with their recipes and other information constructed by us just for you.' %}</p>
             </div>
             <div class="meals__card meals__card--saved">
-                <h1>Saved Meals</h1>
-                <p>View and modify your saved dishes to make it easier and quicker to use the add meals option.</p>
+                <h1>{% trans 'Saved Meals' %}</h1>
+                <p>{% trans 'View and modify your saved dishes to make it easier and quicker to use the add meals option.' %}</p>
             </div>
         </div>
     </div>

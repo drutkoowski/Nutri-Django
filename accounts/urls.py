@@ -13,6 +13,4 @@ urlpatterns = [
     # ajax views
     path('data/login-user', views.login_user, name='login-user'),
     path('data/check-if-taken', views.check_if_taken, name='check-if-taken'),
-
-
 ]

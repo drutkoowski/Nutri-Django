@@ -1,11 +1,9 @@
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse
 from django.db.models import Q
-from django.utils import translation
 
-from Nutri import settings
 from accounts.models import Account, UserProfile
 # Create your views here.
 
@@ -94,7 +92,7 @@ def login_user(request):
         else:
             return JsonResponse({'status': 404, 'text': 'Error while trying to log in the user'})
     else:
-        return redirect('home')
+        return redirect('home-page')
 
 
 def check_if_taken(request):
@@ -108,4 +106,4 @@ def check_if_taken(request):
         else:
             return JsonResponse({'status': 404, 'text': 'User not exists.'})
     else:
-        return redirect('home')
+        return redirect('home-page')

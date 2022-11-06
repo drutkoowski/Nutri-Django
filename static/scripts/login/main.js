@@ -18,8 +18,9 @@ function isEmpty(str) {
 }
 
 const logIn = (password, emailAddress) => {
-    const url = window.location.origin + '/data/login-user'
-    const nextUrl = window.location.origin + '/dashboard'
+    const langPrefix = window.location.href.split('/')[3];
+    const url = window.location.origin + `/${langPrefix}/data/login-user`
+    const nextUrl = window.location.origin + `/${langPrefix}/dashboard`
     $.ajax({
         type: "POST",
         url: url,
@@ -34,13 +35,13 @@ const logIn = (password, emailAddress) => {
                 window.location = nextUrl;
             }
             else if (status === 404) {
-                alertMsg.innerHTML = `We could not match any user with these credentials.`
+                alertMsg.innerHTML = gettext('We could not match any user with these credentials.')
                 alertMsg.classList?.remove('not-visible')
             }
 
             },
         error: function (error) {
-            alertMsg.innerHTML = `Error occurred.. try again.`
+            alertMsg.innerHTML = gettext('Error occurred.. try again.')
             alertMsg.classList?.remove('not-visible')
         },
     })
@@ -53,7 +54,7 @@ loginButton.addEventListener('click', (e) => {
     const password = document.querySelector('#password').value
     if (validateEmail(emailAddress) && !isEmpty(password)) {
         if (password.length < 3) {
-            alertMsg.innerHTML = `Password is too short!`
+            alertMsg.innerHTML = gettext('Password is too short!')
             alertMsg.classList?.remove('not-visible')
         }
         else {
@@ -63,7 +64,7 @@ loginButton.addEventListener('click', (e) => {
         }
     }
     else {
-        alertMsg.innerHTML = `Email or password field is not valid.`
+        alertMsg.innerHTML = gettext('Email or password field is not valid.')
         alertMsg.classList.remove('not-visible')
     }
 

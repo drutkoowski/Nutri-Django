@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load sass_tags %}
+{% load i18n %}
 {% block scripts %}
     <script src="{% sass_src 'scripts/dashboard/main.js' %}" defer></script>
      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -11,34 +12,34 @@
         <div class="dashboard__content">
             {% include 'components/sidebar/sidebar_small.html' %}
             <div class="dashboard__content__welcome-text">
-                 <h1>Welcome back, {{ get_current_user_profile.user.first_name}}.</h1>
-                <p>Let's check quality of your nutrition for today!</p>
+                 <h1>{% trans 'Welcome back' %}, {{ get_current_user_profile.user.first_name}}.</h1>
+                <p>{% trans "Let's check quality of your nutrition for today!" %}</p>
                 {% include 'accounts/navbar.html' %}
             </div>
 
             <div class="dashboard__content__summary">
                 <div class="dashboard__content__summary__item dashboard__content__summary__item--meal">
-                    <h2 class="dashboard__content__summary__item__header">Meals</h2>
+                    <h2 class="dashboard__content__summary__item__header">{% trans 'Meals'%}</h2>
                 </div>
                 <div class="dashboard__content__summary__item dashboard__content__summary__item--workout">
-                    <h2 class="dashboard__content__summary__item__header">Exercises</h2>
+                    <h2 class="dashboard__content__summary__item__header">{% trans 'Exercises' %}</h2>
                 </div>
                 <div class="dashboard__content__summary__item dashboard__content__summary__item--manage">
-                    <h2 class="dashboard__content__summary__item__header">Manage Plans</h2>
+                    <h2 class="dashboard__content__summary__item__header">{% trans 'Manage Plans' %}</h2>
                 </div>
                  <div class="dashboard__content__summary__item dashboard__content__summary__item--graph">
                     <div class="dashboard__content__summary__item--graph__content">
-                        <h4 class="graph-date">Summary</h4>
-                        <p>Goal: <b>1827</b> kcal</p>
-                        <p>Eaten: <b>1084</b> kcal</p>
-                        <p>Burnt: <b>274</b> kcal</p>
-                        <p>Remaining: <b>534</b> kcal</p>
+                        <h4 class="graph-date">{% trans 'Summary' %}</h4>
+                        <p>{% trans 'Goal' %}: <b>1827</b> kcal</p>
+                        <p>{% trans 'Eaten' %}: <b>1084</b> kcal</p>
+                        <p>{% trans 'Burnt' %}: <b>274</b> kcal</p>
+                        <p>{% trans 'Remaining' %}: <b>534</b> kcal</p>
                     </div>
                       <div class="dashboard__content__summary__item--graph__graph">
                           <div class="dashboard__content__summary__item--graph__graph__container">
                                <canvas id="summaryChart" class="summaryChart"></canvas>
                                <p class="summaryChart__description"><span class="summaryChart__description--percent"><b>60%</b></span></p>
-                               <p class="summaryChart__description--goal">of the goal</p>
+                               <p class="summaryChart__description--goal">{% trans 'of the goal' %}</p>
                           </div>
 
                     </div>
@@ -47,34 +48,34 @@
 
             <div class="dashboard__content__daily-summary">
                 <div class="dashboard__content__daily-summary__item dashboard__content__daily-summary__item--calories">
-                    <h4>Calories</h4>
+                    <h4>{% trans 'Calories' %}</h4>
                     <p><span>1084</span> / 1827 kcal</p>
                 </div>
                 <div class="dashboard__content__daily-summary__item dashboard__content__daily-summary__item--carbs">
-                     <h4>Carbs</h4>
+                     <h4>{% trans 'Carbs' %}</h4>
                     <p><span>13</span> / 73 g</p>
                 </div>
 
                 <div class="dashboard__content__daily-summary__item dashboard__content__daily-summary__item--protein">
-                    <h4>Protein</h4>
+                    <h4>{% trans 'Protein' %}</h4>
                     <p><span>84</span> / 121 g</p>
                 </div>
 
                  <div class="dashboard__content__daily-summary__item dashboard__content__daily-summary__item--fat">
-                    <h4>Fat</h4>
+                    <h4>{% trans 'Fat' %}</h4>
                     <p><span>41</span> / 63 g</p>
                 </div>
             </div>
 
             <div class="dashboard__content__graphs">
                  <div class="dashboard__content__graphs__item dashboard__content__graphs__item--details">
-                    <h3>Nutrition Daily Details</h3>
+                    <h3>{% trans 'Nutrition Daily Details' %}</h3>
                     <div class="summaryNutritionDetails__container">
                         <canvas id="summaryNutritionDetails" class="summaryNutritionDetails"></canvas>
                     </div>
                 </div>
                 <div class="dashboard__content__graphs__item dashboard__content__graphs__item--weekly">
-                    <h3>Weekly Calorie Graph</h3>
+                    <h3>{% trans 'Weekly Calorie Graph' %}</h3>
                     <div class="summaryWeekly__container">
                         <canvas id="summaryWeekly" class="summaryWeekly"></canvas>
                     </div>

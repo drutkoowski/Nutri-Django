@@ -1,4 +1,5 @@
 {% load sass_tags %}
+{% load i18n %}
 <div class="navbar--dashboard">
         <input type="checkbox" class="navigation--dashboard__checkbox" id="navi-toggle">
 
@@ -9,10 +10,10 @@
         <div class="navigation--dashboard__background">&nbsp;</div>
             <nav class="navigation--dashboard__nav">
                 <ul class="navigation--dashboard__list not-visible">
-                    <li class="navigation--dashboard__item"><a href="{% url 'dashboard' %}" class="navigation--dashboard__link"><span><img class="navigation--dashboard__link__icon filter-gold" src="{% sass_src 'images/svg/dashboard.svg' %}" alt="Dashboard Icon" /></span>Dashboard</a></li>
-                    <li class="navigation--dashboard__item"><a href="{% url 'stats' %}" class="navigation--dashboard__link"><span><img class="navigation--dashboard__link__icon filter-gold" src="{% sass_src 'images/svg/stats.svg' %}" alt="Stats Icon" /></span>Stats</a></li>
-                    <li class="navigation--dashboard__item"><a href="{% url 'activity-calendar' %}" class="navigation--dashboard__link"><span><img class="navigation--dashboard__link__icon filter-gold" src="{% sass_src 'images/svg/activity.svg' %}" alt="Activity Icon" /></span>Activity</a></li>
-                    <li class="navigation--dashboard__item"><a href="{% url 'logout' %}" class="navigation--dashboard__link"><span><img class="navigation--dashboard__link__icon filter-gold" src="{% sass_src 'images/svg/logout.svg' %}" alt="Logout Icon" /></span>Logout</a></li>
+                    <li class="navigation--dashboard__item"><a href="{% url 'dashboard' %}" class="navigation--dashboard__link"><span><img class="navigation--dashboard__link__icon filter-gold" src="{% sass_src 'images/svg/dashboard.svg' %}" alt="Dashboard Icon" /></span>{% trans 'Dashboard' %}</a></li>
+                    <li class="navigation--dashboard__item"><a href="{% url 'stats' %}" class="navigation--dashboard__link"><span><img class="navigation--dashboard__link__icon filter-gold" src="{% sass_src 'images/svg/stats.svg' %}" alt="Stats Icon" /></span>{% trans 'Stats' %}</a></li>
+                    <li class="navigation--dashboard__item"><a href="{% url 'activity-calendar' %}" class="navigation--dashboard__link"><span><img class="navigation--dashboard__link__icon filter-gold" src="{% sass_src 'images/svg/activity.svg' %}" alt="Activity Icon" /></span>{% trans 'Activity' %}</a></li>
+                    <li class="navigation--dashboard__item"><a href="{% url 'logout' %}" class="navigation--dashboard__link"><span><img class="navigation--dashboard__link__icon filter-gold" src="{% sass_src 'images/svg/logout.svg' %}" alt="Logout Icon" /></span>{% trans 'Logout' %}</a></li>
                 </ul>
             </nav>
 </div>

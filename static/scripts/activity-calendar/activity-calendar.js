@@ -1,7 +1,7 @@
 const daysTag = document.querySelector(".days")
 
 const eventList = [new Date('2022-10-22'), new Date('2022-10-24'), new Date('2022-09-01')]
-currentDate = document.querySelector(".current-date"),
+currentDate = document.querySelector(".current-date")
 prevNextIcon = document.querySelectorAll(".icons span");
 
 
