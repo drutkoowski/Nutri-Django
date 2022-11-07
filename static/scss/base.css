@@ -111,20 +111,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
   grid-auto-flow: dense; }
 
 :root {
-  --color-primary: #55c57a;
-  --color-primary-light: #7ed56f;
-  --color-primary-dark: #28b485;
-  --color-secondary-light: #ffb900;
-  --color-secondary-dark: #ff7730;
-  --color-tertiary-light: #2998ff;
-  --color-tertiary-dark: #5643fa;
-  --color-grey-light-1: #f7f7f7;
-  --color-grey-light-2: #eee;
-  --color-grey-dark: #777;
-  --color-grey-dark-2: #999;
-  --color-grey-dark-3: #333;
-  --color-white: #fff;
-  --color-black: #000;
   --default-font-size: 1.6rem; }
 
 .loader {
@@ -1690,8 +1676,8 @@ body {
         margin-right: auto; } }
     .signup__card__links {
       text-decoration: none;
-      font-size: 1.2rem;
-      color: black;
+      font-size: 1.4rem;
+      color: white;
       margin-top: 1rem; }
       .signup__card__links:first-of-type {
         margin-top: 2rem; }
@@ -1880,9 +1866,6 @@ body {
   100% {
     transform: rotate(360deg); } }
 
-body {
-  height: 100%; }
-
 .login {
   margin-top: 10rem;
   display: grid;
@@ -1898,16 +1881,17 @@ body {
     margin-left: auto;
     margin-right: auto;
     grid-column: 2/3;
-    background-image: linear-gradient(to bottom, #eeecec, #d7d4d4);
+    background-color: #bde7c5;
     height: 60rem;
-    width: 70rem;
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    -webkit-box-shadow: 0px 0px 7px 4px #42445a;
-    -moz-box-shadow: 0px 0px 7px 4px #42445a;
-    box-shadow: 0px 0px 7px 4px #42445a; }
+    width: 100rem;
+    border-radius: 20px;
+    color: white;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 0.5fr 1fr;
+    -webkit-box-shadow: 0px 0px 8px 2px #42445a;
+    -moz-box-shadow: 0px 0px 8px 2px #42445a;
+    box-shadow: 0px 0px 8px 2px #42445a; }
     @media only screen and (max-width: 75em) {
       .login__card {
         height: 50rem;
@@ -1930,6 +1914,23 @@ body {
         height: 40rem;
         width: 25rem; } }
     .login__card__content {
+      grid-column: 2/3;
+      display: flex;
+      flex-direction: column;
+      align-items: center; }
+      .login__card__content p {
+        font-size: 2rem; }
+      .login__card__content small {
+        font-size: 1.3rem; }
+    .login__card__image {
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+      grid-column: 1/2;
+      background-image: url("https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat; }
+    .login__card__main-content {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -1939,8 +1940,11 @@ body {
       text-align: center;
       padding: 2rem 5rem;
       border-radius: 10px;
-      font-size: 2rem;
-      width: 50rem; }
+      font-size: 2.3rem;
+      width: 50rem;
+      outline: none;
+      border: none;
+      transition: all .3s ease-in; }
       @media only screen and (max-width: 75em) {
         .login__card__input {
           margin-left: auto;
@@ -1980,14 +1984,20 @@ body {
         .login__card__alert {
           font-size: 1rem; } }
     .login__card__button {
-      background-color: black;
+      background-color: rgba(82, 224, 64, 0.77);
       color: white;
       margin-top: 4rem;
       cursor: pointer;
       padding: 2rem 15rem;
       border-radius: 10px;
+      border: none;
+      outline: none;
       font-size: 2rem;
-      width: 50rem; }
+      width: 50rem;
+      transition: all .3s ease-in;
+      font-weight: bold; }
+      .login__card__button:hover {
+        transform: scale(1.03); }
       @media only screen and (max-width: 75em) {
         .login__card__button {
           width: 40rem; } }
@@ -3781,7 +3791,6 @@ body {
   margin: 15rem auto;
   text-align: center;
   display: block;
-  font-weight: bold;
   transition: all .2s ease-in;
   animation-name: fade-bottom;
   animation-duration: 1.5s;
@@ -3869,6 +3878,15 @@ body {
 
 .meals-on-date {
   font-size: 2rem; }
+
+.no-saved-templates-info {
+  margin: 15rem 0 auto 0;
+  text-align: center;
+  font-size: 2rem;
+  transition: all .2s ease-in;
+  animation-name: fade-bottom;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out; }
 
 .meals-propositions-layout-container {
   width: 100vw;

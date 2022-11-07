@@ -323,7 +323,7 @@ msgstr "Ukryj"
 
 #: .\static\scripts\dashboard\main.js:147
 msgid "Summary"
-msgstr ""
+msgstr "Podsumowanie"
 
 #: .\static\scripts\login\main.js:38
 msgid "We could not match any user with these credentials."

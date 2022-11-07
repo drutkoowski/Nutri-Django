@@ -504,7 +504,6 @@
   margin: 15rem auto;
   text-align: center;
   display: block;
-  font-weight: bold;
   transition: all .2s ease-in;
   animation-name: fade-bottom;
   animation-duration: 1.5s;
@@ -611,4 +610,14 @@
 
 .meals-on-date {
   font-size: 2rem;
+}
+
+.no-saved-templates-info{
+  margin: 15rem 0 auto 0;
+  text-align: center;
+  font-size: 2rem;
+  transition: all .2s ease-in;
+  animation-name: fade-bottom;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
 }

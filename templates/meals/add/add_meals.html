@@ -25,8 +25,8 @@
                             <h3>{% trans 'Your search results' %}</h3>
                         </div>
                         <div class="add-meals__search__results__container">
-                           `<h3 class="search-results-info" style="text-align: center">{% trans 'Try to search meal or ingredients that have you eaten today.' %}
-                            <br>{% trans 'Results will appear here.' %}</h3>`
+                            <p class="search-results-info" style="text-align: center">{% trans 'Try to search meal or ingredients that have you eaten today.' %}
+                            <br>{% trans 'Results will appear here.' %}</p>
                         </div>
                     </div>
                     <button class="check-today-meals"><span>{% trans 'Check your meals' %}</span></button>
@@ -46,12 +46,16 @@
                         </div>
                     </div>
                      <div class="add-meals__added--saved__content">
+                     {% if saved_templates %}
                          {% for item in saved_templates %}
                              <div data-objectId='{{ item.pk }}' class="add-meals__added--saved__content__item">
                                  <p><b>{{ item.meal_name }}</b>  {{ item.kcal|floatformat:"-3" }} kcal</p>
                                 <div class="add-icon filter-green"></div>
                             </div>
                          {% endfor %}
+                         {% else %}
+                         <p class="no-saved-templates-info">{% trans 'No saved templates yet' %}</p>
+                     {% endif %}
                      </div>
                     {% csrf_token %}
                     <button class="save-add-today-meals">{% trans 'Save' %}</button>

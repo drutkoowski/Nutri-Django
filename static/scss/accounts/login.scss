@@ -1,11 +1,6 @@
-body {
-  height: 100%;
-
-}
 
 .login {
   margin-top: 10rem;
-
   display: grid;
   grid-template-columns: 0.25fr 1fr 0.25fr;
   grid-template-rows: 1fr;
@@ -19,17 +14,17 @@ body {
     margin-left: auto;
     margin-right: auto;
     grid-column: 2/3;
-    background-image: linear-gradient(to bottom, rgb(238, 236, 236), rgb(215, 212, 212));
+    background-color: rgb(189, 231, 197);
     height: 60rem;
-    width: 70rem;
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    -webkit-box-shadow: 0px 0px 7px 4px rgba(66, 68, 90, 1);
-    -moz-box-shadow: 0px 0px 7px 4px rgba(66, 68, 90, 1);
-    box-shadow: 0px 0px 7px 4px rgba(66, 68, 90, 1);
-
+    width: 100rem;
+    border-radius: 20px;
+    color: white;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 0.5fr 1fr;
+   -webkit-box-shadow: 0px 0px 8px 2px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 0px 0px 8px 2px rgba(66, 68, 90, 1);
+    box-shadow: 0px 0px 8px 2px rgba(66, 68, 90, 1);
      @include respond(tab-land) {
        height: 50rem;
        width: 60rem;
@@ -55,8 +50,28 @@ body {
        height: 40rem;
        width: 25rem;
      }
-
     &__content {
+      grid-column: 2/3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      p {
+        font-size: 2rem;
+      }
+      small {
+        font-size: 1.3rem;
+      }
+    }
+    &__image {
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+      grid-column: 1/2;
+      background-image: url("https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    &__main-content {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -68,8 +83,11 @@ body {
       text-align: center;
       padding: 2rem 5rem;
       border-radius: 10px;
-      font-size: 2rem;
+      font-size: 2.3rem;
       width: 50rem;
+      outline: none;
+      border: none;
+      transition: all .3s ease-in;
       @include respond(tab-land) {
         margin-left: auto;
         margin-right: auto;
@@ -93,7 +111,6 @@ body {
     }
 
      &__heading {
-
       margin-top: 5rem;
       font-size: 5rem;
       @include respond(phone-lg) {
@@ -118,14 +135,21 @@ body {
     }
 
     &__button {
-      background-color: black;
+      background-color: rgba(82, 224, 64, 0.77);
       color: white;
       margin-top: 4rem;
       cursor: pointer;
       padding: 2rem 15rem;
       border-radius: 10px;
+      border: none;
+      outline: none;
       font-size: 2rem;
       width: 50rem;
+      transition: all .3s ease-in;
+      font-weight: bold;
+      &:hover {
+        transform: scale(1.03);
+      }
       @include respond(tab-land) {
         width: 40rem;
      }

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-07 00:03+0100\n"
+"POT-Creation-Date: 2022-11-07 01:47+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -79,17 +79,17 @@ msgid "Calories"
 msgstr "Kalorie"
 
 #: .\templates\accounts\dashboard.html:55
-#: .\templates\meals\add\add_meals.html:95
+#: .\templates\meals\add\add_meals.html:99
 msgid "Carbs"
 msgstr "Węglowodany"
 
 #: .\templates\accounts\dashboard.html:60
-#: .\templates\meals\add\add_meals.html:94
+#: .\templates\meals\add\add_meals.html:98
 msgid "Protein"
 msgstr "Białko"
 
 #: .\templates\accounts\dashboard.html:65
-#: .\templates\meals\add\add_meals.html:96
+#: .\templates\meals\add\add_meals.html:100
 msgid "Fat"
 msgstr "Tłuszcze"
 
@@ -235,30 +235,34 @@ msgstr "Zjedzone Kcal"
 msgid "Your browser is not supported!"
 msgstr "Twoja przeglądarka nie jest obsługiwana!"
 
-#: .\templates\accounts\login.html:21
-msgid "Log in to Nutri"
-msgstr "Zaloguj się do Nutri"
+#: .\templates\accounts\login.html:24
+msgid "Sign into your account"
+msgstr "Zaloguj się do swojego konta"
 
-#: .\templates\accounts\login.html:25
+#: .\templates\accounts\login.html:28
 msgid "Email Address"
 msgstr "Adres Email"
 
-#: .\templates\accounts\login.html:26
+#: .\templates\accounts\login.html:29
 msgid "Password"
 msgstr "Hasło"
 
-#: .\templates\accounts\login.html:28
+#: .\templates\accounts\login.html:31
 #: .\templates\components\navbar\navbar.html:16
 msgid "Log in"
 msgstr "Zaloguj się"
 
-#: .\templates\accounts\login.html:30
+#: .\templates\accounts\login.html:33
 msgid "Don't you have an account?"
 msgstr "Masz już konto?"
 
-#: .\templates\accounts\login.html:31 .\templates\accounts\signup.html:37
+#: .\templates\accounts\login.html:34 .\templates\accounts\signup.html:37
 msgid "Forgot password?"
 msgstr "Zapomniałeś hasła?"
+
+#: .\templates\accounts\login.html:35
+msgid "By logging in you are accepting our terms of use and privacy policy."
+msgstr "Logując się do serwisu, akceptujesz jego regulamin i politykę prywatności."
 
 #: .\templates\accounts\navbar.html:13
 #: .\templates\accounts\navbar_small.html:13
@@ -419,44 +423,48 @@ msgid "Saved Meals"
 msgstr "Zapisane Posiłki"
 
 #: .\templates\meals\add\add_meals.html:57
+msgid "No saved templates yet"
+msgstr "Brak zapisanych szablonów"
+
+#: .\templates\meals\add\add_meals.html:61
 msgid "Save"
 msgstr "Zapisz"
 
-#: .\templates\meals\add\add_meals.html:64
+#: .\templates\meals\add\add_meals.html:68
 msgid "Adding your meal to our database..."
 msgstr "Dodawanie Twojego posiłku do bazy..."
 
-#: .\templates\meals\add\add_meals.html:72
+#: .\templates\meals\add\add_meals.html:76
 msgid "Are you sure you want to delete this meal?"
 msgstr "Czy jesteś pewien, że chcesz usunąć ten posiłek?"
 
-#: .\templates\meals\add\add_meals.html:74
+#: .\templates\meals\add\add_meals.html:78
 #: .\venv\Lib\site-packages\django\forms\widgets.py:771
 msgid "Yes"
 msgstr "Tak"
 
-#: .\templates\meals\add\add_meals.html:75
+#: .\templates\meals\add\add_meals.html:79
 #: .\venv\Lib\site-packages\django\forms\widgets.py:772
 msgid "No"
 msgstr "Nie"
 
-#: .\templates\meals\add\add_meals.html:83
+#: .\templates\meals\add\add_meals.html:87
 msgid "Your added meals for today."
 msgstr "Twoje dzisiejsze dodane posiłki."
 
-#: .\templates\meals\add\add_meals.html:85
+#: .\templates\meals\add\add_meals.html:89
 msgid "Meals on"
 msgstr "Posiłki w"
 
-#: .\templates\meals\add\add_meals.html:91
+#: .\templates\meals\add\add_meals.html:95
 msgid "Category"
 msgstr "Kategoria"
 
-#: .\templates\meals\add\add_meals.html:93
+#: .\templates\meals\add\add_meals.html:97
 msgid "Kcal"
 msgstr "Kcal"
 
-#: .\templates\meals\add\add_meals.html:102
+#: .\templates\meals\add\add_meals.html:106
 msgid "No meals added for today..."
 msgstr "Brak posiłków dodanych dzisiaj..."
 
@@ -470,6 +478,9 @@ msgid ""
 "calorie content and the ingredients they contain such as protein,"
 "carbohydrates and many more."
 msgstr ""
+"Wypełnij swój dzień posiłkami, które dziś spożyłeś/aś i dowiedz się więcej o "
+"ichzawartości kalorycznej oraz zawartych w nich składników, takich jak "
+"białko,węglowodany i wiele innych."
 
 #: .\templates\meals\meals.html:25
 msgid "Meals Propositions"
@@ -488,8 +499,8 @@ msgid ""
 "View and modify your saved dishes to make it easier and quicker to use the "
 "add meals option."
 msgstr ""
-"Przeglądaj i modyfikuj swoje zapisane dania, aby łatwiej i szybciej korzystać z opcji dodawania posiłków."
-
+"Przeglądaj i modyfikuj swoje zapisane dania, aby łatwiej i szybciej "
+"korzystać z opcji dodawania posiłków."
 
 #: .\venv\Lib\site-packages\django\contrib\messages\apps.py:15
 msgid "Messages"
@@ -1701,3 +1712,6 @@ msgid ""
 "Set the precision for numeric computations in the SASS processor. Default: "
 "settings.SASS_PRECISION."
 msgstr ""
+
+#~ msgid "Log in to Nutri"
+#~ msgstr "Zaloguj się do Nutri"
