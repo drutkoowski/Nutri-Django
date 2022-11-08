@@ -180,8 +180,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   z-index: 2000;
   box-shadow: 0 1rem 3rem rgba(255, 255, 255, 0.1);
   text-align: center;
-  cursor: pointer;
-  border: 1px solid black; }
+  cursor: pointer; }
   @media only screen and (max-width: 75em) {
     .navigation__button {
       height: 6rem;
@@ -199,7 +198,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   position: fixed;
   top: 4.5rem;
   right: 6.5rem;
-  background-image: radial-gradient(#2e2e2f, #1a1a1a);
+  background-image: radial-gradient(#c3f1c3, #86f87a);
   z-index: 1000;
   transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1); }
   @media only screen and (max-width: 75em) {
@@ -1926,7 +1925,7 @@ body {
       border-top-left-radius: 20px;
       border-bottom-left-radius: 20px;
       grid-column: 1/2;
-      background-image: url("https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
+      background-image: url("../../../static/images/login_page_card_img.jpg");
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat; }

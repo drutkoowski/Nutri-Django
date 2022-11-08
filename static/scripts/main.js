@@ -1,5 +1,5 @@
 const flag = document.querySelector('.about')
-if ((location.href !== location.origin + '/pl' || location.href !== location.origin + '/en' || location.href !== location.origin + '/pl/' || location.href !== location.origin + '/en/') && !flag) {
+if ((location.href !== location.origin + '/pl' || location.href !== location.origin + '/en' || location.href !== location.origin + '/pl/' || location.href !== location.origin + '/en/') && !flag && location.href !== location.origin + '/pl/login/' && location.href !== location.origin + '/pl/login' && location.href !== location.origin + '/en/login/' && location.href !== location.origin + '/en/login' && location.href !== location.origin + '/pl/signup/' && location.href !== location.origin + '/pl/signup' && location.href !== location.origin + '/en/signup/' && location.href !== location.origin + '/en/signup') {
     const hamburgerNav = document.getElementById('navi-toggle')
     const navigationList = document.getElementsByClassName('navigation--dashboard__list')[0]
 
