@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-07 01:47+0100\n"
+"POT-Creation-Date: 2022-11-09 00:42+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -229,40 +229,41 @@ msgstr "Spalone Kcal"
 msgid "Kcal Eaten"
 msgstr "Zjedzone Kcal"
 
-#: .\templates\accounts\login.html:14 .\templates\accounts\signup.html:14
+#: .\templates\accounts\login.html:15 .\templates\accounts\signup.html:14
 #: .\templates\home\index.html:80 .\templates\meals\add\add_meals.html:13
 #: .\templates\meals\meals.html:13
 msgid "Your browser is not supported!"
 msgstr "Twoja przeglądarka nie jest obsługiwana!"
 
-#: .\templates\accounts\login.html:24
+#: .\templates\accounts\login.html:25
 msgid "Sign into your account"
 msgstr "Zaloguj się do swojego konta"
 
-#: .\templates\accounts\login.html:28
+#: .\templates\accounts\login.html:29
 msgid "Email Address"
 msgstr "Adres Email"
 
-#: .\templates\accounts\login.html:29
+#: .\templates\accounts\login.html:30
 msgid "Password"
 msgstr "Hasło"
 
-#: .\templates\accounts\login.html:31
+#: .\templates\accounts\login.html:32
 #: .\templates\components\navbar\navbar.html:16
 msgid "Log in"
 msgstr "Zaloguj się"
 
-#: .\templates\accounts\login.html:33
+#: .\templates\accounts\login.html:34
 msgid "Don't you have an account?"
 msgstr "Masz już konto?"
 
-#: .\templates\accounts\login.html:34 .\templates\accounts\signup.html:37
+#: .\templates\accounts\login.html:35 .\templates\accounts\signup.html:37
 msgid "Forgot password?"
 msgstr "Zapomniałeś hasła?"
 
-#: .\templates\accounts\login.html:35
+#: .\templates\accounts\login.html:36
 msgid "By logging in you are accepting our terms of use and privacy policy."
-msgstr "Logując się do serwisu, akceptujesz jego regulamin i politykę prywatności."
+msgstr ""
+"Logując się do serwisu, akceptujesz jego regulamin i politykę prywatności."
 
 #: .\templates\accounts\navbar.html:13
 #: .\templates\accounts\navbar_small.html:13

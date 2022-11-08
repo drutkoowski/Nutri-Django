@@ -14,17 +14,18 @@
     margin-left: auto;
     margin-right: auto;
     grid-column: 2/3;
-    background-color: rgb(189, 231, 197);
-    height: 60rem;
-    width: 100rem;
+    background-color: var(--green-light);
+    height: 65rem;
+    width: 120rem;
     border-radius: 20px;
     color: white;
     display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: 0.5fr 1fr;
-   -webkit-box-shadow: 0px 0px 8px 2px rgba(66, 68, 90, 1);
-    -moz-box-shadow: 0px 0px 8px 2px rgba(66, 68, 90, 1);
-    box-shadow: 0px 0px 8px 2px rgba(66, 68, 90, 1);
+    transition: all .3s ease-in;
+    animation-name: fade-bottom;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
      @include respond(tab-land) {
        height: 50rem;
        width: 60rem;
@@ -56,10 +57,17 @@
       flex-direction: column;
       align-items: center;
       p {
-        font-size: 2rem;
+        font-size: 1.5rem;
+        animation-name: fade-bottom;
+        animation-duration: 0.5s;
+        animation-timing-function: ease-out;
       }
       small {
         font-size: 1.3rem;
+        transition: all .3s ease-in;
+        animation-name: fade-bottom;
+        animation-duration: 1.5s;
+        animation-timing-function: ease-out;
       }
     }
     &__image {
@@ -70,6 +78,9 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
+      animation-name: fade-left;
+      animation-duration: 1.5s;
+      animation-timing-function: ease-out;
     }
     &__main-content {
       display: flex;
@@ -88,6 +99,9 @@
       outline: none;
       border: none;
       transition: all .3s ease-in;
+      animation-name: fade-bottom;
+      animation-duration: 1.5s;
+      animation-timing-function: ease-out;
       @include respond(tab-land) {
         margin-left: auto;
         margin-right: auto;
@@ -113,6 +127,12 @@
      &__heading {
       margin-top: 5rem;
       font-size: 5rem;
+      animation-name: fade-bottom;
+      animation-duration: 1.5s;
+      animation-timing-function: ease-out;
+      &__lower {
+        font-weight: bold;
+      }
       @include respond(phone-lg) {
          font-size: 4.5rem;
          margin-top: 3rem;
@@ -147,6 +167,10 @@
       width: 50rem;
       transition: all .3s ease-in;
       font-weight: bold;
+      animation-name: fade-bottom;
+      animation-duration: 1s;
+      animation-timing-function: ease-out;
+
       &:hover {
         transform: scale(1.03);
       }

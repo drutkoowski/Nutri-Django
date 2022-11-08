@@ -1,4 +1,3 @@
-const cardContent = document.querySelector('.login__card__content')
 const alertMsg = document.querySelector('.login__card__alert')
 const loginButton = document.querySelector('#login-button')
 
@@ -16,6 +15,43 @@ const validateEmail = (email) => {
 function isEmpty(str) {
     return !str.trim().length;
 }
+
+const emailAddressInput = document.querySelector('#email')
+emailAddressInput.addEventListener('input', e => {
+    const val = emailAddressInput.value
+    const infoBox = document.querySelector('.input-validity-info')
+    if (!validateEmail(val) && !isEmpty(val)){
+        emailAddressInput.classList.add('input-invalid')
+        infoBox.style.opacity = '1'
+        infoBox.querySelector('.info-input1').innerHTML = gettext('Email input is not valid email.')
+    }
+    else {
+        emailAddressInput.classList.remove('input-invalid')
+        if(passwordInput.value.length < 3 && !isEmpty(passwordInput.value)){
+            infoBox.style.opacity = '0'
+        }
+        infoBox.querySelector('.info-input1').innerHTML = ''
+    }
+})
+
+const passwordInput = document.querySelector('#password')
+passwordInput.addEventListener('input', e => {
+    const val = passwordInput.value
+    const infoBox = document.querySelector('.input-validity-info')
+    if (val.length < 3 && !isEmpty(val)){
+        passwordInput.classList.add('input-invalid')
+        infoBox.style.opacity = '1'
+        infoBox.querySelector('.info-input2').innerHTML = gettext('Password too short.')
+    }
+    else {
+        passwordInput.classList.remove('input-invalid')
+        if(validateEmail(emailAddressInput.value) && !isEmpty(emailAddressInput.value)){
+            infoBox.style.opacity = '0'
+        }
+        infoBox.querySelector('.info-input2').innerHTML = ''
+    }
+})
+
 
 const logIn = (password, emailAddress) => {
     const langPrefix = window.location.href.split('/')[3];
@@ -46,24 +82,24 @@ const logIn = (password, emailAddress) => {
         },
     })
 }
+const shakeAnimation = (contentBox) => {
+    setTimeout(() => {
+       contentBox.classList.toggle('shake-animation')
+    }, 1000);
+}
 
 loginButton.addEventListener('click', (e) => {
     e.preventDefault()
     alertMsg.classList.add('not-visible')
     const emailAddress = document.querySelector('#email').value
     const password = document.querySelector('#password').value
-    if (validateEmail(emailAddress) && !isEmpty(password)) {
-        if (password.length < 3) {
-            alertMsg.innerHTML = gettext('Password is too short!')
-            alertMsg.classList?.remove('not-visible')
-        }
-        else {
-            // ajax call to check if user exist
-            logIn(password, emailAddress)
-
-        }
+    if (validateEmail(emailAddress) && !isEmpty(password) && password.length > 3) {
+        // ajax call to login
+        logIn(password, emailAddress)
     }
     else {
+        shakeAnimation(passwordInput)
+        shakeAnimation(emailAddressInput)
         alertMsg.innerHTML = gettext('Email or password field is not valid.')
         alertMsg.classList.remove('not-visible')
     }

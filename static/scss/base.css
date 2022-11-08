@@ -101,6 +101,21 @@ ORDER: Base + typography > general layout + grid > page layout > components
   top: 50%;
   transform: translate(-50%, -50%); }
 
+.input-invalid {
+  background-color: rgba(241, 81, 81, 0.69);
+  color: white; }
+
+.input-validity-info {
+  height: 2rem;
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+  color: rgba(255, 0, 0, 0.69);
+  font-weight: bold;
+  transition: all .3s ease-in;
+  animation-name: fade-bottom;
+  animation-duration: 1s;
+  animation-timing-function: ease-out; }
+
 .grid-full-span {
   grid-column: 1/-1; }
 
@@ -111,6 +126,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
   grid-auto-flow: dense; }
 
 :root {
+  --green-light: rgb(189, 231, 197);
+  --green-dark: rgb(147, 238, 163);
+  --green-darker: rgba(8, 245, 53, 0.5);
   --default-font-size: 1.6rem; }
 
 .loader {
@@ -1067,6 +1085,16 @@ ORDER: Base + typography > general layout + grid > page layout > components
     width: 100%;
     object-fit: cover; }
 
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle, rgba(117, 111, 111, 0.2) 0%, black 100%);
+  /*background-image: radial-gradient(circle at center, rgba(47, 47, 49, 0.8),*/
+  /*rgba(31, 29, 29, 0.9));*/ }
+
 .modal {
   position: absolute;
   top: 0;
@@ -1675,8 +1703,12 @@ body {
         margin-right: auto; } }
     .signup__card__links {
       text-decoration: none;
-      font-size: 1.4rem;
+      font-size: 2rem;
       color: white;
+      transition: all .3s ease-in;
+      animation-name: fade-bottom;
+      animation-duration: 1s;
+      animation-timing-function: ease-out;
       margin-top: 1rem; }
       .signup__card__links:first-of-type {
         margin-top: 2rem; }
@@ -1880,17 +1912,18 @@ body {
     margin-left: auto;
     margin-right: auto;
     grid-column: 2/3;
-    background-color: #bde7c5;
-    height: 60rem;
-    width: 100rem;
+    background-color: var(--green-light);
+    height: 65rem;
+    width: 120rem;
     border-radius: 20px;
     color: white;
     display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: 0.5fr 1fr;
-    -webkit-box-shadow: 0px 0px 8px 2px #42445a;
-    -moz-box-shadow: 0px 0px 8px 2px #42445a;
-    box-shadow: 0px 0px 8px 2px #42445a; }
+    transition: all .3s ease-in;
+    animation-name: fade-bottom;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out; }
     @media only screen and (max-width: 75em) {
       .login__card {
         height: 50rem;
@@ -1918,9 +1951,16 @@ body {
       flex-direction: column;
       align-items: center; }
       .login__card__content p {
-        font-size: 2rem; }
+        font-size: 1.5rem;
+        animation-name: fade-bottom;
+        animation-duration: 0.5s;
+        animation-timing-function: ease-out; }
       .login__card__content small {
-        font-size: 1.3rem; }
+        font-size: 1.3rem;
+        transition: all .3s ease-in;
+        animation-name: fade-bottom;
+        animation-duration: 1.5s;
+        animation-timing-function: ease-out; }
     .login__card__image {
       border-top-left-radius: 20px;
       border-bottom-left-radius: 20px;
@@ -1928,7 +1968,10 @@ body {
       background-image: url("../../../static/images/login_page_card_img.jpg");
       background-size: cover;
       background-position: center;
-      background-repeat: no-repeat; }
+      background-repeat: no-repeat;
+      animation-name: fade-left;
+      animation-duration: 1.5s;
+      animation-timing-function: ease-out; }
     .login__card__main-content {
       display: flex;
       flex-direction: column;
@@ -1943,7 +1986,10 @@ body {
       width: 50rem;
       outline: none;
       border: none;
-      transition: all .3s ease-in; }
+      transition: all .3s ease-in;
+      animation-name: fade-bottom;
+      animation-duration: 1.5s;
+      animation-timing-function: ease-out; }
       @media only screen and (max-width: 75em) {
         .login__card__input {
           margin-left: auto;
@@ -1964,7 +2010,12 @@ body {
           font-size: 1rem; } }
     .login__card__heading {
       margin-top: 5rem;
-      font-size: 5rem; }
+      font-size: 5rem;
+      animation-name: fade-bottom;
+      animation-duration: 1.5s;
+      animation-timing-function: ease-out; }
+      .login__card__heading__lower {
+        font-weight: bold; }
       @media only screen and (max-width: 37.5em) {
         .login__card__heading {
           font-size: 4.5rem;
@@ -1994,7 +2045,10 @@ body {
       font-size: 2rem;
       width: 50rem;
       transition: all .3s ease-in;
-      font-weight: bold; }
+      font-weight: bold;
+      animation-name: fade-bottom;
+      animation-duration: 1s;
+      animation-timing-function: ease-out; }
       .login__card__button:hover {
         transform: scale(1.03); }
       @media only screen and (max-width: 75em) {

@@ -181,3 +181,20 @@ ORDER: Base + typography > general layout + grid > page layout > components
   top: 50%;
   transform: translate(-50%, -50%);
 }
+
+.input-invalid {
+  background-color: rgba(241, 81, 81, 0.69);
+  color: white;
+}
+
+.input-validity-info{
+  height: 2rem;
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+  color: rgba(255, 0, 0, 0.69);
+  font-weight: bold;
+  transition: all .3s ease-in;
+  animation-name: fade-bottom;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+}

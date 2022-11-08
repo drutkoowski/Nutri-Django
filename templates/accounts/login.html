@@ -8,6 +8,7 @@
 {% block content %}
     <div class="loader"></div>
      <div class="bg-video">
+     <div class="overlay"></div>
          <video id="login-video" class="bg-video__content" autoplay muted loop>
              <source src="{% sass_src 'video/bg_video_login.mp4' %}" type="video/mp4">
              <source src="{% sass_src 'video/bg_video_login.webm' %}" type="video/webm">
@@ -21,13 +22,13 @@
                 <div class="login__card__image"></div>
                 <div class="login__card__content">
                     <h4 class="login__card__heading">Nutri<span class="header__nutri-dot">.</span></h4>
-                    <p>{% trans 'Sign into your account' %}<span class="header__nutri-dot">.</span></p>
+                    <p class="login__card__heading__lower">{% trans 'Sign into your account' %}<span class="header__nutri-dot">.</span></p>
                     <p class="login__card__alert not-visible"></p>
                     <div class="login__card__main-content">
                         {% csrf_token %}
                         <input id='email' name="email" type="email" class="login__card__input input-scale" placeholder="{% trans 'Email Address' %}" required/>
                         <input id='password' name="password" type="password" class="login__card__input input-scale" placeholder="{% trans 'Password' %}" required/>
-
+                        <p class="input-validity-info"><span class="info-input1"></span> <span class="info-input2"></span></p>
                         <button class="login__card__button" id="login-button">{% trans 'Log in' %}</button>
                     </div>
                     <a href="" class="signup__card__links">{% trans "Don't you have an account?" %}</a>

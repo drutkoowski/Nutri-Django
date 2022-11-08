@@ -67,8 +67,12 @@ body {
 
     &__links {
       text-decoration: none;
-      font-size: 1.4rem;
+      font-size:2rem;
       color: white;
+      transition: all .3s ease-in;
+      animation-name: fade-bottom;
+      animation-duration: 1s;
+      animation-timing-function: ease-out;
       &:first-of-type{
         margin-top: 2rem;
       }

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-07 00:41+0100\n"
+"POT-Creation-Date: 2022-11-09 00:43+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -325,19 +325,27 @@ msgstr "Ukryj"
 msgid "Summary"
 msgstr "Podsumowanie"
 
-#: .\static\scripts\login\main.js:38
+#: .\static\scripts\login\main.js:26
+msgid "Email input is not valid email."
+msgstr "Pole email lub hasła jest nieprawidłowe."
+
+#: .\static\scripts\login\main.js:42
+msgid "Password too short."
+msgstr "Twoje hasło jest zbyt krótkie!"
+
+#: .\static\scripts\login\main.js:70
 msgid "We could not match any user with these credentials."
 msgstr "Nie udało nam się znaleźć użytkownika z podanymi danymi."
 
-#: .\static\scripts\login\main.js:44
+#: .\static\scripts\login\main.js:76
 msgid "Error occurred.. try again."
 msgstr "Wystąpił błąd.. spróbuj jeszcze raz."
 
-#: .\static\scripts\login\main.js:57
+#: .\static\scripts\login\main.js:89
 msgid "Password is too short!"
 msgstr "Twoje hasło jest zbyt krótkie!"
 
-#: .\static\scripts\login\main.js:67
+#: .\static\scripts\login\main.js:99
 msgid "Email or password field is not valid."
 msgstr "Pole email lub hasła jest nieprawidłowe."
 
