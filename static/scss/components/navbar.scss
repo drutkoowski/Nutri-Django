@@ -18,6 +18,13 @@
 
         &--site-name {
             margin-left: 4rem;
+            transition: all .3s ease-in;
+            animation-name: fade-left;
+            animation-duration: 1s;
+            animation-timing-function: ease-out;
+            &:hover {
+                transform: scale(1.04);
+            }
         }
         &--first:first-of-type {
             margin-right: auto;
@@ -114,16 +121,29 @@
 
     &__item {
         margin: 1rem;
-
         &__container{
             display: flex;
         }
     }
 
     &__link {
+        transition: all .3s ease-in;
         &__icon {
-            width: 2.5rem;
-            height: 2.5rem;
+            width: 3.5rem;
+            height: 3.5rem;
+            vertical-align: middle;
+            &--flag{
+                width: 3.5rem;
+                height: 3.5rem;
+                cursor: pointer;
+                transition: all .3s ease-in;
+                &:nth-of-type(n+1){
+                    margin-left: 1rem;
+                }
+                &:hover {
+                    transform: scale(1.10);
+                }
+            }
         }
         &:link,
         &:visited {

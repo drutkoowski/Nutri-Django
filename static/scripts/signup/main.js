@@ -6,7 +6,7 @@ const alertMsg = document.querySelector('.signup__card__alert')
 const progressBar = document.querySelector('.progress-bar--active')
 const csrf = document.getElementsByName('csrfmiddlewaretoken')
 const csrfToken = csrf[0].value
-const modal = document.querySelector(".modal");
+const modal = document.querySelector(".modal-signup");
 
 let iteration = 0
 let choices = []
@@ -21,7 +21,7 @@ const capitalize = (word) => {
 
 
 const sendData = () => {
-       // 0 - GOAL WEIGHT
+    // 0 - GOAL WEIGHT
     // 1 - ACTIVITY LEVEL
     // 2 - body parameter (cm)
     // 3 - body parameter (kg)
@@ -125,7 +125,7 @@ function appendContent(parent, iteration) {
          let currentHeading = document.querySelector('.signup__card__heading')
          currentHeading.innerHTML = gettext("What's your body parameters?")
          contentToAppend = `
-         <div class="signup__card__input__container"><input id='tall' class="signup__card__input"/><span class="signup__card__input__span">cm</span></div>
+         <div class="signup__card__input__container top-margin-md"><input id='tall' class="signup__card__input"/><span class="signup__card__input__span">cm</span></div>
          <div class="signup__card__input__container"><input id='weight' class="signup__card__input"/><span class="signup__card__input__span">kg</span></div>
           `
     }
@@ -138,104 +138,18 @@ function appendContent(parent, iteration) {
              <input id='first-name' class="signup__card__input" placeholder="${gettext('First Name')}"/>
             
              <input id='last-name' class="signup__card__input" placeholder="${gettext('Last Name')}"/>
-            
-             <div class="gender__container">
-              <input type="radio" id="gender-men" name="gender" value="Male">
-              <label class="gender__container__label" for="gender-men">${gettext('Male')}</label>
+            <div class="gender-box">
+                <div class="gender-box__male gender-box__card gender-box__item-active" data-gender="Male"><h2>${gettext('Male')}</h2></div>
+                <div class="gender-box__female gender-box__card" data-gender="Female"><h2>${gettext('Female')}</h2></div>
             </div>
-             <div class="gender__container">
-               <input type="radio" id="gender-woman" name="gender" value="Female">
-               <label class="gender__container__label" for="gender-woman">${gettext('Female')}</label>
+        <div class="year-box">
+            <h3>${gettext('How old are you?')}</h3>     
+            <div class="slider">
+                <input type="range" name="yearsOld" min="10" max="100" value="20" oninput="rangeValue.innerText = this.value">
+                 <p id="rangeValue"><b>20</b></p>
             </div>
-           <label class="year" style="font-size: 2rem" for="year">${gettext('How old are you?')}</label>
-              <select class="year-select" name="year" id="year">
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-                <option value="13">13</option>
-                <option value="14">14</option>
-                <option value="15">15</option>
-                <option value="16">16</option>
-                <option value="17">17</option>
-                <option value="18">18</option>
-                <option value="19">19</option>
-                <option value="20">20</option>
-                <option value="21">21</option>
-                <option value="22">22</option>
-                <option value="23">23</option>
-                <option value="24">24</option>
-                <option value="25">25</option>
-                <option value="26">26</option>
-                <option value="27">27</option>
-                <option value="28">28</option>
-                <option value="29">29</option>
-                <option value="30">30</option>
-                <option value="31">31</option>
-                <option value="32">32</option>
-                <option value="33">33</option>
-                <option value="34">34</option>
-                <option value="35">35</option>
-                <option value="36">36</option>
-                <option value="37">37</option>
-                <option value="38">38</option>
-                <option value="39">39</option>
-                <option value="40">40</option>
-                <option value="41">41</option>
-                <option value="42">42</option>
-                <option value="43">43</option>
-                <option value="44">44</option>
-                <option value="45">45</option>
-                <option value="46">46</option>
-                <option value="47">47</option>
-                <option value="48">48</option>
-                <option value="49">49</option>
-                <option value="50">50</option>
-                <option value="51">51</option>
-                <option value="52">52</option>
-                <option value="53">53</option>
-                <option value="54">54</option>
-                <option value="55">55</option>
-                <option value="56">56</option>
-                <option value="57">57</option>
-                <option value="58">58</option>
-                <option value="59">59</option>
-                <option value="60">60</option>
-                <option value="61">61</option>
-                <option value="62">62</option>
-                <option value="63">63</option>
-                <option value="64">64</option>
-                <option value="65">65</option>
-                <option value="66">66</option>
-                <option value="67">67</option>
-                <option value="68">68</option>
-                <option value="69">69</option>
-                <option value="70">70</option>
-                <option value="71">71</option>
-                <option value="72">72</option>
-                <option value="73">73</option>
-                <option value="74">74</option>
-                <option value="75">75</option>
-                <option value="76">76</option>
-                <option value="77">77</option>
-                <option value="78">78</option>
-                <option value="79">79</option>
-                <option value="80">80</option>
-                <option value="81">81</option>
-                <option value="82">82</option>
-                <option value="83">83</option>
-                <option value="84">84</option>
-                <option value="85">85</option>
-                <option value="86">86</option>
-                <option value="87">87</option>
-                <option value="88">88</option>
-                <option value="89">89</option>
-                <option value="90">90</option>
-              </select>
-             
+        </div>    
+
           `
     }
 
@@ -255,6 +169,27 @@ function appendContent(parent, iteration) {
     parent.insertAdjacentHTML("afterbegin", contentToAppend)
      if (iteration < 2) {
          addListeners(parent)
+    }
+    if (iteration === 3 ){
+        const male = document.querySelector('.gender-box__male')
+        const female = document.querySelector('.gender-box__female')
+        male.addEventListener('click', e => {
+            if (!male.classList.contains('gender-box__item-active')){
+                female.getElementsByTagName('h2')[0].classList.remove('gender-animation-label')
+                male.classList.add('gender-box__item-active')
+                female.classList.remove('gender-box__item-active')
+                male.getElementsByTagName('h2')[0].classList.add('gender-animation-label')
+            }
+        })
+        female.addEventListener('click', e => {
+            if (!female.classList.contains('gender-box__item-active')){
+                male.getElementsByTagName('h2')[0].classList.remove('gender-animation-label')
+                female.classList.add('gender-box__item-active')
+                male.classList.remove('gender-box__item-active')
+                female.getElementsByTagName('h2')[0].classList.add('gender-animation-label')
+
+            }
+        })
     }
 
 }
@@ -279,7 +214,7 @@ function addListeners(parent) {
          el.addEventListener("click", e => {
             resetButtons(arr)
             currentChoice = e.target.id
-            e.target.style.backgroundColor = "black";
+            e.target.style.backgroundColor = "rgba(8, 245, 53, 0.5)"
             e.target.style.color = "white";
          });
     })
@@ -289,19 +224,20 @@ addListeners(cardContent)
 
 
 buttonNext.addEventListener('click', e => {
-
+    const parent = document.querySelector('.signup__card__content')
         if(iteration < 2){
             if (currentChoice !== null) {
             alertMsg.classList?.add('not-visible')
             choices.push(currentChoice)
             currentChoice = null
-            const parent = document.querySelector('.signup__card__content')
             progressBar.classList.remove(`progress--${iteration}`)
             iteration += 1
             progressBar.classList.add(`progress--${iteration}`)
-            if(buttonBack.disabled === true) buttonBack.disabled = false
-            appendContent(parent, iteration)
-            clearAlerts()
+            // animation
+          if(buttonBack.disabled === true) buttonBack.disabled = false
+                    appendContent(parent, iteration)
+                    clearAlerts()
+
             }
             else {
                 alertMsg.innerHTML = gettext('You have to choose one option.')
@@ -316,7 +252,6 @@ buttonNext.addEventListener('click', e => {
                  if(tall < 230 && tall > 60 && weight > 30 && weight < 200){
                      choices.push(tall)
                      choices.push(weight)
-                     const parent = document.querySelector('.signup__card__content')
                      progressBar.classList.remove(`progress--${iteration}`)
                      iteration += 1
                      progressBar.classList.add(`progress--${iteration}`)
@@ -339,8 +274,8 @@ buttonNext.addEventListener('click', e => {
          else if (iteration === 3) {
             const firstName = document.querySelector('#first-name').value
             const lastName = document.querySelector('#last-name').value
-            const yearsOld = document.querySelector(".year-select").value
-            const gender = document.querySelector("input[type='radio'][name=gender]:checked")?.value;
+            const yearsOld = document.getElementsByName("yearsOld")[0].value
+            const gender = document.querySelector(".gender-box__item-active").dataset.gender
             if (firstName !== null && lastName !== null && (gender === 'Male' || gender ==='Female') && !isEmpty(firstName) && !isEmpty(lastName) && (yearsOld > 5 && yearsOld < 91)) {
                 if(firstName.length < 3 || lastName.length < 3)
                 {
@@ -352,7 +287,6 @@ buttonNext.addEventListener('click', e => {
                     choices.push(lastName)
                     choices.push(gender)
                     choices.push(yearsOld)
-                    const parent = document.querySelector('.signup__card__content')
                     progressBar.classList.remove(`progress--${iteration}`)
                     iteration += 1
                     progressBar.classList.add(`progress--${iteration}`)
@@ -433,7 +367,6 @@ buttonNext.addEventListener('click', e => {
 })
 
 buttonBack.addEventListener('click', (e) => {
-
     let parent = document.querySelector('.signup__card__content')
     const children = Array.from(parent.children)
     progressBar.classList.remove(`progress--${iteration}`)

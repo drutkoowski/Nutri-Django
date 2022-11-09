@@ -13,6 +13,10 @@
 
         <nav class="navigation__nav">
             <ul class="navigation__list not-visible">
+                <li class="navigation__item">
+                    <img class="navigation__link__icon navigation__link__icon--flag" data-langPrefix='pl' src="{% static 'images/svg/poland.svg' %}" alt="Polish Flag Icon"/>
+                    <img  class="navigation__link__icon navigation__link__icon--flag" data-langPrefix='en' src="{% static 'images/svg/uk.svg' %}" alt="English Flag Icon"/>
+                </li>
                 <li class="navigation__item"><a href="{% url 'login' %}" class="navigation__link"><span><img class="navigation__link__icon filter-gold" src="{% static 'images/svg/key.svg' %}" alt="Log in Icon" /></span>{% trans 'Log in' %}</a></li>
                 <li class="navigation__item"><a href="{% url 'signup' %}" class="navigation__link"><span><img class="navigation__link__icon filter-gold" src="{% static 'images/svg/new.svg' %}" alt="Sign up Icon" /></span>{% trans 'Sign up' %}</a></li>
                 <li class="navigation__item"><a href="#" class="navigation__link"><span><img class="navigation__link__icon filter-gold" src="{% static 'images/svg/about.svg' %}" alt="About Icon" /></span>{% trans 'About' %}</a></li>

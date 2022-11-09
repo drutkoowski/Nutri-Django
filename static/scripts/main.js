@@ -1,5 +1,16 @@
-const flag = document.querySelector('.about')
-if ((location.href !== location.origin + '/pl' || location.href !== location.origin + '/en' || location.href !== location.origin + '/pl/' || location.href !== location.origin + '/en/') && !flag && location.href !== location.origin + '/pl/login/' && location.href !== location.origin + '/pl/login' && location.href !== location.origin + '/en/login/' && location.href !== location.origin + '/en/login' && location.href !== location.origin + '/pl/signup/' && location.href !== location.origin + '/pl/signup' && location.href !== location.origin + '/en/signup/' && location.href !== location.origin + '/en/signup') {
+const flagsIcons = document.querySelectorAll('.navigation__link__icon--flag')
+
+flagsIcons.forEach(flag => {
+    flag.addEventListener('click', e => {
+
+        const langPrefix = flag.dataset.langprefix
+        const currentLoc = window.location.pathname;
+        window.location = window.origin + '/' + langPrefix + '/' + currentLoc.split('/').slice(2).join('/')
+    })
+})
+
+
+if ((location.href !== location.origin + '/pl' || location.href !== location.origin + '/en' || location.href !== location.origin + '/pl/' || location.href !== location.origin + '/en/') && location.href !== location.origin + '/pl/login/' && location.href !== location.origin + '/pl/login' && location.href !== location.origin + '/en/login/' && location.href !== location.origin + '/en/login' && location.href !== location.origin + '/pl/signup/' && location.href !== location.origin + '/pl/signup' && location.href !== location.origin + '/en/signup/' && location.href !== location.origin + '/en/signup') {
     const hamburgerNav = document.getElementById('navi-toggle')
     const navigationList = document.getElementsByClassName('navigation--dashboard__list')[0]
 
@@ -27,6 +38,25 @@ if ((location.href !== location.origin + '/pl' || location.href !== location.ori
     })
     }
 
+}
+if (location.href !== location.origin + '/pl' || location.href !== location.origin + '/en' || location.href !== location.origin + '/pl/' || location.href !== location.origin + '/en/'){
+    const gainsVideo = document.getElementById('gains-video')
+    const goalsVideo = document.getElementById('goals-video')
+    if (gainsVideo && goalsVideo) {
+        gainsVideo.playbackRate = 0.75;
+        goalsVideo.playbackRate = 0.75;
+    }
+    const hamburgerNav = document.querySelector('#navi-toggle')
+    const navigationList = document.getElementsByClassName('navigation__list')[0]
+     hamburgerNav.addEventListener('click', () => {
+
+        if (!navigationList.classList.contains('not-visible') && !hamburgerNav.checked) {
+            navigationList.classList.add('not-visible')
+        }
+        else if (navigationList.classList.contains('not-visible') && hamburgerNav.checked) {
+             navigationList.classList.remove('not-visible')
+        }
+    })
 }
 else {
     const gainsVideo = document.getElementById('gains-video')

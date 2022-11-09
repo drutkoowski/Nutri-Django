@@ -8,6 +8,7 @@
 {% block content %}
     <div class="container ">
      <div class="bg-video">
+         <div class="overlay"></div>
          <video id="signup-video" class="bg-video__content" autoplay muted loop>
              <source src="{% sass_src 'video/bg_video_login.mp4' %}" type="video/mp4">
              <source src="{% sass_src 'video/bg_video_login.webm' %}" type="video/webm">
@@ -30,16 +31,16 @@
                         <button id='lose-weight' class="signup__card__button">{% trans 'Lose Weight' %}</button>
                 </div>
                 <div class="signup__card__buttons">
-                    <button class="signup__card__buttons__button signup__card__buttons__button--back">{% trans 'Back' %}</button>
+                    <button class="signup__card__buttons__button signup__card__buttons__button--back" disabled>{% trans 'Back' %}</button>
                     <button class="signup__card__buttons__button signup__card__buttons__button--next" >{% trans 'Next' %}</button>
                 </div>
                 <a href="" class="signup__card__links">{% trans 'Do you have an account?' %}</a>
                 <a href="" class="signup__card__links">{% trans 'Forgot password?' %}</a>
             </div>
         </div>
-     <div class="modal not-visible">
-        <div class="modal__content">
-            <div class="modal__close-button">&times;</div>
+     <div class="modal-signup not-visible">
+        <div class="modal-signup__content">
+            <div class="modal-signup__close-button">&times;</div>
             <h1>{% trans 'Signed up successfully... Redirecting to login page.' %}</h1>
             <div class="loader--signup"></div>
         </div>

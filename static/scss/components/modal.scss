@@ -24,7 +24,7 @@
        align-self: center;
        margin-right: auto;
        margin-left: auto;
-       background-color: rgb(222, 219, 219);
+        background-color: var(--green-modal);
      h1{
       margin-bottom: 1rem;
       animation-name: fade-left;
@@ -71,7 +71,7 @@
        align-self: center;
        margin-right: auto;
        margin-left: auto;
-       background-color: #afe0a5;
+       background-color: var(--green-modal);
        color: white;
        position: relative;
     h1{
@@ -172,5 +172,51 @@
   &__content {
      height: 55rem;
      width: 80rem;
+  }
+}
+
+.modal-signup {
+   position: absolute;
+   top:0;
+   left: 0;
+   width: 100vw;
+   height: 100vh;
+   z-index: 1000;
+   background-color: rgba(112, 111, 111, 0.7);
+   display: flex;
+   animation-name: fade-bottom;
+   animation-duration: 1s;
+   animation-timing-function: ease-out;
+
+  &__content {
+       display: flex;
+       flex-direction: column;
+       border-radius: 20px;
+       -webkit-box-shadow: 0px 0px 7px 4px rgba(66, 68, 90, 1);
+       -moz-box-shadow: 0px 0px 7px 4px rgba(66, 68, 90, 1);
+       box-shadow: 0px 0px 7px 4px rgba(66, 68, 90, 1);
+       padding: 5rem 5rem;
+       transition: all .2s ease-in;
+       justify-self: center;
+       align-self: center;
+       margin-right: auto;
+       margin-left: auto;
+       background-color: var(--green-modal);
+       position: relative;
+       color: white;
+     h1{
+      margin-bottom: 3rem;
+      animation-name: fade-left;
+      animation-duration: 1s;
+      animation-timing-function: ease-out;
+    }
+  }
+
+  &__close-button {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 1.5rem;
+    cursor: pointer;
   }
 }

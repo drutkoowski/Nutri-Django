@@ -1,6 +1,6 @@
 const alertMsg = document.querySelector('.login__card__alert')
 const loginButton = document.querySelector('#login-button')
-
+const infoBox = document.querySelector('.input-validity-info')
 const csrf = document.getElementsByName('csrfmiddlewaretoken')
 const csrfToken = csrf[0].value
 
@@ -18,8 +18,10 @@ function isEmpty(str) {
 
 const emailAddressInput = document.querySelector('#email')
 emailAddressInput.addEventListener('input', e => {
+    if(!alertMsg.classList.contains('not-visible')) {
+        alertMsg.classList.add('not-visible')
+    }
     const val = emailAddressInput.value
-    const infoBox = document.querySelector('.input-validity-info')
     if (!validateEmail(val) && !isEmpty(val)){
         emailAddressInput.classList.add('input-invalid')
         infoBox.style.opacity = '1'
@@ -36,8 +38,10 @@ emailAddressInput.addEventListener('input', e => {
 
 const passwordInput = document.querySelector('#password')
 passwordInput.addEventListener('input', e => {
+    if(!alertMsg.classList.contains('not-visible')) {
+        alertMsg.classList.add('not-visible')
+    }
     const val = passwordInput.value
-    const infoBox = document.querySelector('.input-validity-info')
     if (val.length < 3 && !isEmpty(val)){
         passwordInput.classList.add('input-invalid')
         infoBox.style.opacity = '1'
@@ -82,15 +86,11 @@ const logIn = (password, emailAddress) => {
         },
     })
 }
-const shakeAnimation = (contentBox) => {
-    setTimeout(() => {
-       contentBox.classList.toggle('shake-animation')
-    }, 1000);
-}
 
 loginButton.addEventListener('click', (e) => {
     e.preventDefault()
     alertMsg.classList.add('not-visible')
+    infoBox.style.opacity = '0'
     const emailAddress = document.querySelector('#email').value
     const password = document.querySelector('#password').value
     if (validateEmail(emailAddress) && !isEmpty(password) && password.length > 3) {
@@ -98,10 +98,27 @@ loginButton.addEventListener('click', (e) => {
         logIn(password, emailAddress)
     }
     else {
-        shakeAnimation(passwordInput)
+        emailAddressInput.classList.add('color-error')
+        emailAddressInput.classList.toggle('shake-animation')
         shakeAnimation(emailAddressInput)
+        setTimeout(function () {
+            emailAddressInput.classList.remove('color-error')
+        }, 1500);
+        passwordInput.classList.add('color-error')
+        passwordInput.classList.toggle('shake-animation')
+        shakeAnimation(passwordInput)
+        setTimeout(function () {
+            passwordInput.classList.remove('color-error')
+        }, 1500);
         alertMsg.innerHTML = gettext('Email or password field is not valid.')
         alertMsg.classList.remove('not-visible')
     }
 
 })
+
+
+const shakeAnimation = (contentBox) => {
+    setTimeout(() => {
+       contentBox.classList.toggle('shake-animation')
+    }, 1000);
+}

@@ -147,7 +147,7 @@
     }
 
      &__alert {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       color: red;
      @include respond(phone-sm) {
         font-size: 1rem;
@@ -155,9 +155,9 @@
     }
 
     &__button {
-      background-color: rgba(82, 224, 64, 0.77);
+      background-color: var(--green);
       color: white;
-      margin-top: 4rem;
+      margin-top: 2rem;
       cursor: pointer;
       padding: 2rem 15rem;
       border-radius: 10px;

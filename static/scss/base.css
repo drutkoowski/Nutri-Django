@@ -116,6 +116,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
   animation-duration: 1s;
   animation-timing-function: ease-out; }
 
+.top-margin-md {
+  margin-top: 5rem !important; }
+
 .grid-full-span {
   grid-column: 1/-1; }
 
@@ -127,8 +130,13 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 :root {
   --green-light: rgb(189, 231, 197);
-  --green-dark: rgb(147, 238, 163);
-  --green-darker: rgba(8, 245, 53, 0.5);
+  --green-light-secondary: rgb(147, 238, 163);
+  --green: rgba(8, 245, 53, 0.5);
+  --green-secondary: rgba(82, 224, 64, 0.77);
+  --green-third: rgb(23, 248, 0);
+  --green-modal: #afe0a5;
+  --red: rgba(241, 2, 2, 0.69);
+  --black-muted: rgba(1, 1, 1, 0.75);
   --default-font-size: 1.6rem; }
 
 .loader {
@@ -172,7 +180,13 @@ ORDER: Base + typography > general layout + grid > page layout > components
   .navbar__href:visited {
     color: white; }
   .navbar__item--site-name {
-    margin-left: 4rem; }
+    margin-left: 4rem;
+    transition: all .3s ease-in;
+    animation-name: fade-left;
+    animation-duration: 1s;
+    animation-timing-function: ease-out; }
+    .navbar__item--site-name:hover {
+      transform: scale(1.04); }
   .navbar__item--first:first-of-type {
     margin-right: auto;
     font-size: 4rem;
@@ -252,26 +266,36 @@ ORDER: Base + typography > general layout + grid > page layout > components
   .navigation__item__container {
     display: flex; }
 
-.navigation__link__icon {
-  width: 2.5rem;
-  height: 2.5rem; }
-
-.navigation__link:link, .navigation__link:visited {
-  display: inline-block;
-  font-size: 4rem;
-  font-weight: bold;
-  padding: 1rem 2rem;
-  color: #fff;
-  text-decoration: none;
-  text-transform: uppercase; }
-  .navigation__link:link span, .navigation__link:visited span {
-    margin-right: 1.5rem;
-    display: inline-block; }
-
-.navigation__link:hover, .navigation__link:active {
-  background-position: 100%;
-  color: #ffffff;
-  transform: scale(1.08); }
+.navigation__link {
+  transition: all .3s ease-in; }
+  .navigation__link__icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    vertical-align: middle; }
+    .navigation__link__icon--flag {
+      width: 3.5rem;
+      height: 3.5rem;
+      cursor: pointer;
+      transition: all .3s ease-in; }
+      .navigation__link__icon--flag:nth-of-type(n+1) {
+        margin-left: 1rem; }
+      .navigation__link__icon--flag:hover {
+        transform: scale(1.1); }
+  .navigation__link:link, .navigation__link:visited {
+    display: inline-block;
+    font-size: 4rem;
+    font-weight: bold;
+    padding: 1rem 2rem;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase; }
+    .navigation__link:link span, .navigation__link:visited span {
+      margin-right: 1.5rem;
+      display: inline-block; }
+  .navigation__link:hover, .navigation__link:active {
+    background-position: 100%;
+    color: #ffffff;
+    transform: scale(1.08); }
 
 .navigation__checkbox:checked ~ .navigation__background {
   transform: scale(80); }
@@ -1120,7 +1144,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
     align-self: center;
     margin-right: auto;
     margin-left: auto;
-    background-color: #dedbdb; }
+    background-color: var(--green-modal); }
     .modal__content h1 {
       margin-bottom: 1rem;
       animation-name: fade-left;
@@ -1159,7 +1183,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
     align-self: center;
     margin-right: auto;
     margin-left: auto;
-    background-color: #afe0a5;
+    background-color: var(--green-modal);
     color: white;
     position: relative; }
     .modal-queued__content h1 {
@@ -1239,6 +1263,46 @@ ORDER: Base + typography > general layout + grid > page layout > components
 .modal-queued__today-meals-list__content {
   height: 55rem;
   width: 80rem; }
+
+.modal-signup {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  background-color: rgba(112, 111, 111, 0.7);
+  display: flex;
+  animation-name: fade-bottom;
+  animation-duration: 1s;
+  animation-timing-function: ease-out; }
+  .modal-signup__content {
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    -webkit-box-shadow: 0px 0px 7px 4px #42445a;
+    -moz-box-shadow: 0px 0px 7px 4px #42445a;
+    box-shadow: 0px 0px 7px 4px #42445a;
+    padding: 5rem 5rem;
+    transition: all .2s ease-in;
+    justify-self: center;
+    align-self: center;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: var(--green-modal);
+    position: relative;
+    color: white; }
+    .modal-signup__content h1 {
+      margin-bottom: 3rem;
+      animation-name: fade-left;
+      animation-duration: 1s;
+      animation-timing-function: ease-out; }
+  .modal-signup__close-button {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 1.5rem;
+    cursor: pointer; }
 
 .fix-navbar .navigation--dashboard__button {
   top: 2rem; }
@@ -1652,7 +1716,10 @@ body {
   grid-template-columns: 0.25fr 1fr 0.25fr;
   grid-template-rows: 1fr;
   justify-items: center;
-  align-items: center; }
+  align-items: center;
+  animation-name: fade-bottom;
+  animation-duration: 1s;
+  animation-timing-function: ease-out; }
   @media only screen and (max-width: 46.875em) {
     .signup {
       grid-template-columns: 0.1fr 1fr 0.1fr; } }
@@ -1661,11 +1728,17 @@ body {
       margin-top: 5rem;
       grid-template-columns: 1fr; } }
   .signup__card {
+    margin: 5rem 0;
     grid-column: 2/3;
-    background-image: linear-gradient(to bottom, #eeecec, #d7d4d4);
+    background-color: var(--green-light);
+    color: white;
+    min-height: 65rem;
     height: auto;
-    width: 70rem;
-    border-radius: 15px;
+    width: 90rem;
+    border-bottom-left-radius: 15px;
+    -moz-border-radius-bottomleft: 15px;
+    border-bottom-right-radius: 15px;
+    -moz-border-radius-bottomright: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1719,8 +1792,16 @@ body {
       text-align: center;
       padding: 2rem 5rem;
       border-radius: 10px;
+      border: 1px solid var(--green);
       font-size: 2rem;
-      width: 42rem; }
+      width: 42rem;
+      animation-name: fade-left;
+      animation-duration: 1s;
+      animation-timing-function: ease-out;
+      color: var(--black-muted); }
+      .signup__card__input:focus {
+        outline: none !important;
+        border: 3px solid var(--green); }
       @media only screen and (max-width: 56.25em) {
         .signup__card__input {
           width: 35rem; } }
@@ -1747,10 +1828,17 @@ body {
         display: flex; }
     .signup__card__alert {
       font-size: 1.5rem;
-      color: red; }
+      color: red;
+      transition: all .3s ease-in;
+      animation-name: fade-bottom;
+      animation-duration: 0.5s;
+      animation-timing-function: ease-out; }
     .signup__card__heading {
       margin-top: 3rem;
-      font-size: 5rem; }
+      font-size: 5rem;
+      animation-name: fade-bottom;
+      animation-duration: 1s;
+      animation-timing-function: ease-out; }
       .signup__card__heading--4 {
         text-align: center; }
         @media only screen and (max-width: 75em) {
@@ -1782,13 +1870,21 @@ body {
     .signup__card__button {
       cursor: pointer;
       margin-top: 2rem;
-      padding: 2rem 15rem;
+      padding: 2rem 5rem;
       border-radius: 10px;
-      outline: gold;
+      background: white;
+      border: 1px solid var(--green);
+      color: var(--black-muted);
       font-size: 2rem;
-      width: 45rem; }
+      width: 45rem;
+      transition: all .3s ease-in;
+      animation-name: fade-left;
+      animation-duration: 1s;
+      animation-timing-function: ease-out; }
       .signup__card__button:first-of-type {
         margin-top: 3rem; }
+      .signup__card__button:hover {
+        transform: translateY(-5px); }
       @media only screen and (max-width: 75em) {
         .signup__card__button {
           width: 40rem;
@@ -1811,14 +1907,24 @@ body {
           padding: 2rem 2rem; } }
     .signup__card__content {
       display: flex;
-      flex-direction: column; }
+      flex-direction: column;
+      margin-bottom: auto; }
+      .signup__card__content select {
+        transition: all .3s ease-in;
+        animation-name: fade-left;
+        animation-duration: 1s;
+        animation-timing-function: ease-out; }
     .signup__card__buttons {
       display: grid;
       grid-template-rows: 1fr;
       grid-template-columns: 1fr 1fr;
       width: 45rem;
       margin-top: 3rem;
-      grid-column-gap: 3rem; }
+      grid-column-gap: 3rem;
+      transition: all .3s ease-in;
+      animation-name: fade-bottom;
+      animation-duration: 1s;
+      animation-timing-function: ease-out; }
       @media only screen and (max-width: 75em) {
         .signup__card__buttons {
           width: 40rem; } }
@@ -1845,37 +1951,47 @@ body {
           .signup__card__buttons__button {
             padding: 1.5rem 2rem;
             font-size: 1rem; } }
-        .signup__card__buttons__button:active {
-          background-color: black;
-          color: white; }
         .signup__card__buttons__button--back {
-          grid-column: 1/2; }
+          grid-column: 1/2;
+          color: white;
+          border: none;
+          background-color: var(--red); }
         .signup__card__buttons__button--next {
           grid-column: 2/3;
-          background-color: black;
-          color: white; }
+          background-color: var(--green);
+          color: white;
+          outline: none;
+          border: none; }
 
 .progress-bar {
   width: 100%;
-  background-color: #a2a1a0;
-  height: 10px;
+  background-color: white;
+  height: 25px;
   overflow: hidden;
   position: relative;
   display: block;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
   z-index: 0; }
   .progress-bar--active {
-    height: 10px;
+    height: 25px;
     position: absolute;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
     top: 0;
     left: 0;
     width: 100%;
     transform-origin: left center;
-    background-color: black;
+    background-color: var(--green-third);
     transition: transform 0.4s linear 0s; }
 
 .gender__container {
   margin-top: 2rem;
-  display: flex; }
+  display: flex;
+  transition: all .3s ease-in;
+  animation-name: fade-bottom;
+  animation-duration: 1s;
+  animation-timing-function: ease-out; }
   .gender__container__label {
     font-size: 2rem;
     margin-left: 1.5rem;
@@ -1896,6 +2012,91 @@ body {
     transform: rotate(0deg); }
   100% {
     transform: rotate(360deg); } }
+
+.gender-box {
+  display: grid;
+  margin-top: 2rem;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  justify-items: center;
+  align-items: center;
+  grid-column-gap: 1rem; }
+  .gender-box__card {
+    background-color: white;
+    color: var(--green);
+    height: 4rem;
+    justify-self: stretch;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    transition: all .3s ease-in;
+    animation-name: fade-bottom;
+    animation-duration: 1s;
+    animation-timing-function: ease-out; }
+    .gender-box__card:hover {
+      transform: scale(1.03); }
+  .gender-box__item-active {
+    background-color: var(--green);
+    color: white; }
+
+.gender-animation-label {
+  animation-name: fade-bottom;
+  animation-duration: 300ms;
+  animation-timing-function: ease-out; }
+
+label.year {
+  font-size: 2rem;
+  margin-top: 2rem; }
+
+.slider {
+  margin-top: 1rem;
+  width: auto;
+  height: 1.5rem;
+  padding: 2rem;
+  background: #fcfcfc;
+  border-radius: 2rem;
+  display: flex;
+  align-items: center;
+  box-shadow: 0px 15px 40px #7E6D5766; }
+
+.slider p {
+  font-size: 26px;
+  font-weight: 600;
+  padding-left: 3rem;
+  color: var(--green); }
+
+.slider input[type="range"] {
+  -webkit-appearance: none !important;
+  width: 100%;
+  height: .2rem;
+  background: var(--green-light-secondary);
+  border: none;
+  outline: none; }
+
+.slider input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none !important;
+  width: 2rem;
+  height: 2rem;
+  background: var(--green-light-secondary);
+  border: 3px solid var(--green-light-secondary);
+  border-radius: 50%;
+  cursor: pointer; }
+
+.slider input[type="range"]::-webkit-slider-thumb:hover {
+  background: var(--green-light-secondary); }
+
+.year-box {
+  margin-top: 2rem;
+  transition: all .3s ease-in;
+  animation-name: fade-bottom;
+  animation-duration: 1s;
+  animation-timing-function: ease-out; }
+  .year-box h3 {
+    font-size: 2.3rem; }
 
 .login {
   margin-top: 10rem;
@@ -2028,15 +2229,15 @@ body {
         .login__card__heading {
           font-size: 3rem; } }
     .login__card__alert {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       color: red; }
       @media only screen and (max-width: 21.875em) {
         .login__card__alert {
           font-size: 1rem; } }
     .login__card__button {
-      background-color: rgba(82, 224, 64, 0.77);
+      background-color: var(--green);
       color: white;
-      margin-top: 4rem;
+      margin-top: 2rem;
       cursor: pointer;
       padding: 2rem 15rem;
       border-radius: 10px;
