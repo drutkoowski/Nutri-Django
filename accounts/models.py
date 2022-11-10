@@ -73,6 +73,7 @@ class UserProfile(models.Model):
     weight = models.CharField(max_length=5)
     years_old = models.CharField(max_length=3)
     gender = models.CharField(max_length=6)
+    goal_kg = models.CharField(max_length=3, default='0')
     user = models.OneToOneField(Account, on_delete=models.CASCADE)
 
     def __str__(self):

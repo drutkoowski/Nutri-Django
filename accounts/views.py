@@ -13,11 +13,6 @@ def home_page(request):
 
 
 def signup_view(request):
-    # user_language = 'pl'
-    # translation.activate(user_language)
-    # response = HttpResponse(...)
-    # response.set_cookie(settings.LANGUAGE_COOKIE_NAME, user_language)
-    # print(translation.get_language())
     if request.user.is_authenticated:
         return redirect('dashboard')
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == "POST":
@@ -25,6 +20,7 @@ def signup_view(request):
         activity_level = request.POST.get('activity-level')
         body_cm = request.POST.get('body-cm')
         body_kg = request.POST.get('body-kg')
+        body_goal = request.POST.get('kg-goal')
         first_name = request.POST.get('first-name')
         last_name = request.POST.get('last-name')
         gender = request.POST.get('gender')
@@ -42,6 +38,7 @@ def signup_view(request):
         profile.height = body_cm
         profile.weight = body_kg
         profile.years_old = years_old
+        profile.goal_kg = body_goal
         profile.gender = gender
         profile.save()
         user.save()

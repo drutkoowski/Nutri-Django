@@ -31,13 +31,14 @@ const sendData = () => {
     // 1 - ACTIVITY LEVEL
     // 2 - body parameter (cm)
     // 3 - body parameter (kg)
-    //  4 - first name
-    // 5 - last name
-    // 6 - gender
-    // 7 - years old
-    // 8 - email address
-    // 9 - username
-    // 10 - password
+    // 4 - body goal (kg)
+    //  5 - first name
+    // 6 - last name
+    // 7 - gender
+    // 8 - years old
+    // 9 - email address
+    // 10 - username
+    // 11 - password
     $.ajax({
         type: "POST",
         url: '',
@@ -47,13 +48,14 @@ const sendData = () => {
             'activity-level': choices[1],
             'body-cm': choices[2],
             'body-kg': choices[3],
-            'first-name': capitalize(choices[4]),
-            'last-name': capitalize(choices[5]),
-            'gender': choices[6],
-            'years-old': choices[7],
-            'email': choices[8],
-            'username': choices[9],
-            'password': choices[10],
+            'kg-goal': choices[4],
+            'first-name': capitalize(choices[5]),
+            'last-name': capitalize(choices[6]),
+            'gender': choices[7],
+            'years-old': choices[8],
+            'email': choices[9],
+            'username': choices[10],
+            'password': choices[11],
         },
         success: function (response){
             progressBar.classList.remove(`progress--${iteration}`)
@@ -321,10 +323,17 @@ buttonNext.addEventListener('click', e => {
         else if (iteration === 2) {
             const tall = document.querySelector('#tall').value
             const weight = document.querySelector('#weight').value
+            const weightBarInput = document.querySelector('#rangeValueWeightInput')
             if (tall !== null && weight !== null && !isEmpty(tall) && !isEmpty(weight)){
                  if(tall < 230 && tall > 60 && weight > 30 && weight < 200){
                      choices.push(tall)
                      choices.push(weight)
+                     if (weightBarInput) {
+                        choices.push(weightBarInput.value)
+                    }
+                    else {
+                        choices.push(weight)
+                    }
                      progressBar.classList.remove(`progress--${iteration}`)
                      iteration += 1
                      progressBar.classList.add(`progress--${iteration}`)
