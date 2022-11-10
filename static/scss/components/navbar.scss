@@ -132,11 +132,19 @@
             width: 3.5rem;
             height: 3.5rem;
             vertical-align: middle;
+            @include respond(phone-md){
+                width: 2.5rem;
+                height: 2.5rem;
+            }
             &--flag{
                 width: 3.5rem;
                 height: 3.5rem;
                 cursor: pointer;
                 transition: all .3s ease-in;
+                @include respond(phone-md){
+                      width: 2.5rem;
+                      height: 2.5rem;
+                }
                 &:nth-of-type(n+1){
                     margin-left: 1rem;
                 }
@@ -154,7 +162,9 @@
             color: #fff;
             text-decoration: none;
             text-transform: uppercase;
-
+            @include respond(phone-md){
+                font-size: 2rem;
+            }
             span {
                 margin-right: 1.5rem;
                 display: inline-block;

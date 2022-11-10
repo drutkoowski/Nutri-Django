@@ -274,11 +274,19 @@ ORDER: Base + typography > general layout + grid > page layout > components
     width: 3.5rem;
     height: 3.5rem;
     vertical-align: middle; }
+    @media only screen and (max-width: 28.5em) {
+      .navigation__link__icon {
+        width: 2.5rem;
+        height: 2.5rem; } }
     .navigation__link__icon--flag {
       width: 3.5rem;
       height: 3.5rem;
       cursor: pointer;
       transition: all .3s ease-in; }
+      @media only screen and (max-width: 28.5em) {
+        .navigation__link__icon--flag {
+          width: 2.5rem;
+          height: 2.5rem; } }
       .navigation__link__icon--flag:nth-of-type(n+1) {
         margin-left: 1rem; }
       .navigation__link__icon--flag:hover {
@@ -291,6 +299,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
     color: #fff;
     text-decoration: none;
     text-transform: uppercase; }
+    @media only screen and (max-width: 28.5em) {
+      .navigation__link:link, .navigation__link:visited {
+        font-size: 2rem; } }
     .navigation__link:link span, .navigation__link:visited span {
       margin-right: 1.5rem;
       display: inline-block; }
@@ -1758,35 +1769,31 @@ body {
     -webkit-box-shadow: 0px 0px 7px 4px #42445a;
     -moz-box-shadow: 0px 0px 7px 4px #42445a;
     box-shadow: 0px 0px 7px 4px #42445a; }
-    @media only screen and (max-width: 75em) {
+    @media only screen and (max-width: 84.375em) {
       .signup__card {
         width: 60rem; } }
     @media only screen and (max-width: 56.25em) {
       .signup__card {
         width: 50rem;
         margin-left: auto;
-        margin-right: auto; } }
+        margin-right: auto;
+        min-height: unset; } }
     @media only screen and (max-width: 46.875em) {
       .signup__card {
-        width: 50rem;
-        margin-left: auto;
-        margin-right: auto; } }
+        width: 50rem; } }
     @media only screen and (max-width: 37.5em) {
       .signup__card {
         width: 40rem;
-        margin-left: auto;
-        margin-right: auto;
         grid-column: 1/2; } }
     @media only screen and (max-width: 28.5em) {
       .signup__card {
-        width: 35rem;
-        margin-left: auto;
-        margin-right: auto; } }
+        width: 35rem; } }
     @media only screen and (max-width: 21.875em) {
       .signup__card {
-        width: 26rem;
-        margin-left: auto;
-        margin-right: auto; } }
+        width: 30rem; } }
+    @media only screen and (max-width: 18.75em) {
+      .signup__card {
+        width: 25rem; } }
     .signup__card__links {
       text-decoration: none;
       font-size: 2rem;
@@ -1835,7 +1842,7 @@ body {
           padding: 1rem 4rem; } }
       @media only screen and (max-width: 21.875em) {
         .signup__card__input {
-          width: 15rem;
+          width: 20rem;
           font-size: 1.2rem; } }
       .signup__card__input__span {
         margin-top: 2rem;
@@ -1858,6 +1865,9 @@ body {
       animation-name: fade-bottom;
       animation-duration: 1s;
       animation-timing-function: ease-out; }
+      @media only screen and (max-width: 84.375em) {
+        .signup__card__heading {
+          font-size: 4rem; } }
       .signup__card__heading--4 {
         text-align: center; }
         @media only screen and (max-width: 75em) {
@@ -1874,18 +1884,15 @@ body {
           font-size: 4rem; } }
       @media only screen and (max-width: 56.25em) {
         .signup__card__heading {
-          font-size: 3.5rem; } }
+          font-size: 3rem; } }
       @media only screen and (max-width: 37.5em) {
         .signup__card__heading {
-          font-size: 3rem; } }
+          font-size: 2.5rem; } }
       @media only screen and (max-width: 28.5em) {
         .signup__card__heading {
-          font-size: 2.5rem; }
+          font-size: 2rem; }
           .signup__card__heading .signup__card__heading--3 {
             font-size: 2rem !important; } }
-      @media only screen and (max-width: 21.875em) {
-        .signup__card__heading {
-          font-size: 2rem; } }
     .signup__card__button {
       cursor: pointer;
       margin-top: 2rem;
@@ -1921,9 +1928,9 @@ body {
           padding: 2rem 5rem; } }
       @media only screen and (max-width: 21.875em) {
         .signup__card__button {
-          width: 18rem;
+          width: 25rem;
           font-size: 1.3rem;
-          padding: 2rem 2rem; } }
+          padding: 1.5rem 2rem; } }
     .signup__card__content {
       display: flex;
       flex-direction: column;
@@ -1952,7 +1959,7 @@ body {
           width: 30rem; } }
       @media only screen and (max-width: 21.875em) {
         .signup__card__buttons {
-          width: 20rem;
+          width: 25rem;
           grid-column-gap: 1rem; } }
       .signup__card__buttons__button {
         padding: 1.5rem 5rem;
@@ -2081,13 +2088,18 @@ label.year {
   display: flex;
   align-items: center;
   box-shadow: 0px 15px 40px #7E6D5766; }
-
+  @media only screen and (max-width: 21.875em) {
+    .slider {
+      padding: 1rem;
+      height: 2.5rem; } }
 .slider p {
-  font-size: 26px;
+  font-size: 2.6rem;
   padding-left: 3rem;
   color: var(--green);
   font-weight: bold; }
-
+  @media only screen and (max-width: 21.875em) {
+    .slider p {
+      font-size: 2rem; } }
 .slider input[type="range"] {
   -webkit-appearance: none !important;
   width: 100%;
@@ -2095,7 +2107,9 @@ label.year {
   background: var(--green-light-secondary);
   border: none;
   outline: none; }
-
+  @media only screen and (max-width: 21.875em) {
+    .slider input[type="range"] {
+      font-size: .15rem; } }
 .slider input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none !important;
   width: 2rem;
@@ -2104,7 +2118,10 @@ label.year {
   border: 3px solid var(--green-light-secondary);
   border-radius: 50%;
   cursor: pointer; }
-
+  @media only screen and (max-width: 21.875em) {
+    .slider input[type="range"]::-webkit-slider-thumb {
+      width: 1.5rem;
+      height: 1.5rem; } }
 .slider input[type="range"]::-webkit-slider-thumb:hover {
   background: var(--green-light-secondary); }
 
@@ -2118,7 +2135,18 @@ label.year {
     transform: scale(1.04); }
   .slider-bar h3 {
     font-size: 2.3rem; }
-
+    @media only screen and (max-width: 75em) {
+      .slider-bar h3 {
+        font-size: 4rem; } }
+    @media only screen and (max-width: 56.25em) {
+      .slider-bar h3 {
+        font-size: 3rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .slider-bar h3 {
+        font-size: 2.5rem; } }
+    @media only screen and (max-width: 28.5em) {
+      .slider-bar h3 {
+        font-size: 2rem; } }
 .login {
   margin-top: 10rem;
   display: grid;
