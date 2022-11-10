@@ -8,6 +8,12 @@ const csrf = document.getElementsByName('csrfmiddlewaretoken')
 const csrfToken = csrf[0].value
 const modal = document.querySelector(".modal-signup");
 
+
+// fix bg - video stretch and nav adjustments
+const navBarEl = document.querySelector('.navbar')
+navBarEl.style.marginTop = '0'
+navBarEl.style.paddingTop = '3rem'
+///
 let iteration = 0
 let choices = []
 let currentChoice = null
@@ -70,6 +76,45 @@ function isEmpty(str) {
     return !str.trim().length;
 }
 
+const fixInputMax = function (input) {
+   input.addEventListener('input', e => {
+       let inputLength = input.value.length
+       if (inputLength > 3) {
+           input.value = input.value.slice(0, 3)
+           setAttributesRangeBar()
+       }
+       if (input.value > 230) {
+           input.value = 230
+           setAttributesRangeBar()
+       }
+   })
+}
+const fixInputMin = function (input) {
+     input.addEventListener('focusout', e => {
+         if (input.value < 30 && input !== document.activeElement) {
+                input.value = 30
+                setAttributesRangeBar()
+            }
+        })
+}
+
+const setAttributesRangeBar = function () {
+    const weightBarInput = document.querySelector('#rangeValueWeightInput')
+    let weightGoal = choices[0]
+    const weightInput = document.querySelector('#weight')
+    if (weightGoal === 'gain-weight') {
+        weightBarInput.setAttribute("min", weightInput.value)
+        weightBarInput.setAttribute("max", '200')
+    }
+    if (weightGoal === 'lose-weight') {
+        weightBarInput.setAttribute("min", '30')
+        weightBarInput.setAttribute("max", weightInput.value)
+    }
+    weightBarInput.setAttribute("value", weightInput.value)
+    document.querySelector('#rangeValueWeight').textContent = weightInput.value
+}
+
+
 const validateEmail = (email) => {
   return String(email)
     .toLowerCase()
@@ -115,8 +160,8 @@ function appendContent(parent, iteration) {
         let currentHeading = document.querySelector('.signup__card__heading')
         currentHeading.innerHTML =  gettext('What\'s your activity level?')
         contentToAppend = `
-         <button id='not-active' class="signup__card__button">${gettext('Not-active')}</button>
-          <button id='lightly-active' class="signup__card__button">${gettext('Lightly-active')}</button>
+         <button id='not-active' class="signup__card__button">${gettext('Not active')}</button>
+          <button id='lightly-active' class="signup__card__button">${gettext('Lightly active')}</button>
           <button id='active' class="signup__card__button">${gettext('Active')}</button>
           <button id='very-active' class="signup__card__button">${gettext('Very-active')}</button>`
     }
@@ -124,9 +169,17 @@ function appendContent(parent, iteration) {
      if (iteration === 2) {
          let currentHeading = document.querySelector('.signup__card__heading')
          currentHeading.innerHTML = gettext("What's your body parameters?")
+
          contentToAppend = `
-         <div class="signup__card__input__container top-margin-md"><input id='tall' class="signup__card__input"/><span class="signup__card__input__span">cm</span></div>
-         <div class="signup__card__input__container"><input id='weight' class="signup__card__input"/><span class="signup__card__input__span">kg</span></div>
+         <div class="signup__card__input__container top-margin-md"><input id='tall' name="number-tall" type="number" class="signup__card__input"/><span class="signup__card__input__span">cm</span></div>
+         <div class="signup__card__input__container"><input id='weight' name="number-weight"  type="number" class="signup__card__input"/><span class="signup__card__input__span">kg</span></div>
+         <div class="slider-bar weight-bar not-visible">
+            <h3>${gettext("What's your weight goal?")}</h3>     
+            <div class="slider">
+                <input id="rangeValueWeightInput" type="range" name="weightGoal" min="10" max="100" value="20" oninput="rangeValueWeight.innerText = this.value">
+                 <p id="rangeValueWeight">20</p>
+            </div>
+        </div>
           `
     }
 
@@ -142,11 +195,11 @@ function appendContent(parent, iteration) {
                 <div class="gender-box__male gender-box__card gender-box__item-active" data-gender="Male"><h2>${gettext('Male')}</h2></div>
                 <div class="gender-box__female gender-box__card" data-gender="Female"><h2>${gettext('Female')}</h2></div>
             </div>
-        <div class="year-box">
+        <div class="year-box slider-bar">
             <h3>${gettext('How old are you?')}</h3>     
             <div class="slider">
                 <input type="range" name="yearsOld" min="10" max="100" value="20" oninput="rangeValue.innerText = this.value">
-                 <p id="rangeValue"><b>20</b></p>
+                 <p id="rangeValue">20</p>
             </div>
         </div>    
 
@@ -169,6 +222,26 @@ function appendContent(parent, iteration) {
     parent.insertAdjacentHTML("afterbegin", contentToAppend)
      if (iteration < 2) {
          addListeners(parent)
+    }
+    if (iteration === 2) {
+        const weightBarElement = document.querySelector('.weight-bar')
+        let weightGoal = choices[0]
+        const weightInput = document.querySelector('#weight')
+        const heightInput = document.querySelector('#tall')
+
+        fixInputMax(heightInput)
+        fixInputMin(heightInput)
+        fixInputMax(weightInput)
+        fixInputMin(weightInput)
+
+        weightInput.addEventListener('input', e => {
+            if (weightGoal === 'gain-weight' || weightGoal === 'lose-weight') {
+                if(!isEmpty(weightInput.value) && !isEmpty(heightInput.value)) {
+                     setAttributesRangeBar()
+                     weightBarElement.classList.remove('not-visible')
+                 }
+             }
+            })
     }
     if (iteration === 3 ){
         const male = document.querySelector('.gender-box__male')
@@ -227,22 +300,22 @@ buttonNext.addEventListener('click', e => {
     const parent = document.querySelector('.signup__card__content')
         if(iteration < 2){
             if (currentChoice !== null) {
-            alertMsg.classList?.add('not-visible')
-            choices.push(currentChoice)
-            currentChoice = null
-            progressBar.classList.remove(`progress--${iteration}`)
-            iteration += 1
-            progressBar.classList.add(`progress--${iteration}`)
-            // animation
-          if(buttonBack.disabled === true) buttonBack.disabled = false
+                alertMsg.classList?.add('not-visible')
+                choices.push(currentChoice)
+                currentChoice = null
+                progressBar.classList.remove(`progress--${iteration}`)
+                iteration += 1
+                progressBar.classList.add(`progress--${iteration}`)
+                // animation
+                if(buttonBack.disabled === true) buttonBack.disabled = false
                     appendContent(parent, iteration)
                     clearAlerts()
 
             }
-            else {
-                alertMsg.innerHTML = gettext('You have to choose one option.')
-                alertMsg.classList.remove('not-visible')
-                currentChoice = null
+        else {
+            alertMsg.innerHTML = gettext('You have to choose one option.')
+            alertMsg.classList.remove('not-visible')
+            currentChoice = null
             }
         }
         else if (iteration === 2) {
@@ -276,7 +349,7 @@ buttonNext.addEventListener('click', e => {
             const lastName = document.querySelector('#last-name').value
             const yearsOld = document.getElementsByName("yearsOld")[0].value
             const gender = document.querySelector(".gender-box__item-active").dataset.gender
-            if (firstName !== null && lastName !== null && (gender === 'Male' || gender ==='Female') && !isEmpty(firstName) && !isEmpty(lastName) && (yearsOld > 5 && yearsOld < 91)) {
+            if (firstName !== null && lastName !== null && (gender === 'Male' || gender ==='Female') && !isEmpty(firstName) && !isEmpty(lastName) && (yearsOld > 9 && yearsOld < 101)) {
                 if(firstName.length < 3 || lastName.length < 3)
                 {
                     alertMsg.innerHTML = gettext('You have filled incorrect name or last name field.')

@@ -4,6 +4,11 @@ const infoBox = document.querySelector('.input-validity-info')
 const csrf = document.getElementsByName('csrfmiddlewaretoken')
 const csrfToken = csrf[0].value
 
+// fix bg - video stretch and nav adjustments
+const navBarEl = document.querySelector('.navbar')
+navBarEl.style.marginTop = '0'
+navBarEl.style.paddingTop = '3rem'
+///
 const validateEmail = (email) => {
   return String(email)
     .toLowerCase()

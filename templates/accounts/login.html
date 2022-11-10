@@ -7,7 +7,7 @@
 {% endblock scripts %}
 {% block content %}
     <div class="loader"></div>
-     <div class="bg-video">
+     <div class="bg-video-fixed">
      <div class="overlay"></div>
          <video id="login-video" class="bg-video__content" autoplay muted loop>
              <source src="{% sass_src 'video/bg_video_login.mp4' %}" type="video/mp4">
@@ -31,8 +31,8 @@
                         <p class="input-validity-info"><span class="info-input1"></span> <span class="info-input2"></span></p>
                         <button class="login__card__button" id="login-button">{% trans 'Log in' %}</button>
                     </div>
-                    <a href="" class="signup__card__links">{% trans "Don't you have an account?" %}</a>
-                    <a href="" class="signup__card__links">{% trans 'Forgot password?' %}</a>
+                    <a href="" class="signup__card__links login__card__links">{% trans "Don't you have an account?" %}</a>
+                    <a href="" class="signup__card__links login__card__links">{% trans 'Forgot password?' %}</a>
                     <small>{% trans 'By logging in you are accepting our terms of use and privacy policy.' %}</small>
                 </div>
             </div>

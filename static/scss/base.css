@@ -137,6 +137,8 @@ ORDER: Base + typography > general layout + grid > page layout > components
   --green-modal: #afe0a5;
   --red: rgba(241, 2, 2, 0.69);
   --black-muted: rgba(1, 1, 1, 0.75);
+  --color-white: rgba(255, 255, 255, 1);
+  --font-color-default: rgba(1, 1, 1, 0.75);
   --default-font-size: 1.6rem; }
 
 .loader {
@@ -1119,6 +1121,17 @@ ORDER: Base + typography > general layout + grid > page layout > components
   /*background-image: radial-gradient(circle at center, rgba(47, 47, 49, 0.8),*/
   /*rgba(31, 29, 29, 0.9));*/ }
 
+.bg-video-fixed {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  overflow: hidden; }
+  .bg-video-fixed__content {
+    height: 100%;
+    width: 100%;
+    object-fit: cover; }
+
 .modal {
   position: absolute;
   top: 0;
@@ -1731,7 +1744,7 @@ body {
     margin: 5rem 0;
     grid-column: 2/3;
     background-color: var(--green-light);
-    color: white;
+    color: var(--font-color-default);
     min-height: 65rem;
     height: auto;
     width: 90rem;
@@ -1777,16 +1790,22 @@ body {
     .signup__card__links {
       text-decoration: none;
       font-size: 2rem;
-      color: white;
+      color: var(--font-color-default);
       transition: all .3s ease-in;
       animation-name: fade-bottom;
       animation-duration: 1s;
       animation-timing-function: ease-out;
       margin-top: 1rem; }
+      @media only screen and (max-width: 31.25em) {
+        .signup__card__links {
+          font-size: 1.4rem; } }
       .signup__card__links:first-of-type {
         margin-top: 2rem; }
       .signup__card__links:last-of-type {
         margin-bottom: 3rem; }
+        @media only screen and (max-width: 31.25em) {
+          .signup__card__links:last-of-type {
+            margin-bottom: 1rem; } }
     .signup__card__input {
       margin-top: 2rem;
       text-align: center;
@@ -1872,7 +1891,7 @@ body {
       margin-top: 2rem;
       padding: 2rem 5rem;
       border-radius: 10px;
-      background: white;
+      background: var(--color-white);
       border: 1px solid var(--green);
       color: var(--black-muted);
       font-size: 2rem;
@@ -1953,19 +1972,19 @@ body {
             font-size: 1rem; } }
         .signup__card__buttons__button--back {
           grid-column: 1/2;
-          color: white;
+          color: var(--font-color-default);
           border: none;
           background-color: var(--red); }
         .signup__card__buttons__button--next {
           grid-column: 2/3;
           background-color: var(--green);
-          color: white;
+          color: var(--font-color-default);
           outline: none;
           border: none; }
 
 .progress-bar {
   width: 100%;
-  background-color: white;
+  background-color: var(--color-white);
   height: 25px;
   overflow: hidden;
   position: relative;
@@ -2041,7 +2060,7 @@ body {
       transform: scale(1.03); }
   .gender-box__item-active {
     background-color: var(--green);
-    color: white; }
+    color: var(--font-color-default); }
 
 .gender-animation-label {
   animation-name: fade-bottom;
@@ -2065,9 +2084,9 @@ label.year {
 
 .slider p {
   font-size: 26px;
-  font-weight: 600;
   padding-left: 3rem;
-  color: var(--green); }
+  color: var(--green);
+  font-weight: bold; }
 
 .slider input[type="range"] {
   -webkit-appearance: none !important;
@@ -2089,29 +2108,35 @@ label.year {
 .slider input[type="range"]::-webkit-slider-thumb:hover {
   background: var(--green-light-secondary); }
 
-.year-box {
+.slider-bar {
   margin-top: 2rem;
   transition: all .3s ease-in;
   animation-name: fade-bottom;
   animation-duration: 1s;
   animation-timing-function: ease-out; }
-  .year-box h3 {
+  .slider-bar:hover {
+    transform: scale(1.04); }
+  .slider-bar h3 {
     font-size: 2.3rem; }
 
 .login {
   margin-top: 10rem;
   display: grid;
-  grid-template-columns: 0.25fr 1fr 0.25fr;
+  grid-template-columns: 0.10fr 1fr 0.10fr;
   grid-template-rows: 1fr; }
-  @media only screen and (max-width: 56.25em) {
+  @media only screen and (min-width: 112.5em) {
     .login {
-      grid-template-columns: 0.1fr 1fr 0.1fr; } }
-  @media only screen and (max-width: 37.5em) {
+      grid-template-columns: 0.25fr 1fr 0.25fr; } }
+  @media only screen and (max-width: 93.75em) {
+    .login {
+      grid-template-columns: 0.05fr 1fr 0.05fr; } }
+  @media only screen and (max-width: 62.5em) {
     .login {
       grid-template-columns: 1fr; } }
   .login__card {
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 5rem;
     grid-column: 2/3;
     background-color: var(--green-light);
     height: 65rem;
@@ -2125,32 +2150,52 @@ label.year {
     animation-name: fade-bottom;
     animation-duration: 1.5s;
     animation-timing-function: ease-out; }
+    @media only screen and (max-width: 93.75em) {
+      .login__card {
+        height: auto;
+        width: 100rem; } }
     @media only screen and (max-width: 75em) {
       .login__card {
-        height: 50rem;
-        width: 60rem; } }
+        height: auto;
+        width: 85rem; } }
+    @media only screen and (max-width: 62.5em) {
+      .login__card {
+        grid-column: 1 / -1;
+        height: auto;
+        width: 75rem; } }
     @media only screen and (max-width: 46.875em) {
       .login__card {
-        height: 50rem;
-        width: 50rem; } }
+        height: auto;
+        width: 60rem; } }
     @media only screen and (max-width: 37.5em) {
       .login__card {
-        grid-column: 1/2;
-        height: 45rem;
-        width: 45rem; } }
+        height: auto;
+        width: 50rem; } }
+    @media only screen and (max-width: 31.25em) {
+      .login__card {
+        width: 40rem;
+        height: auto;
+        margin-top: 5rem; } }
     @media only screen and (max-width: 28.5em) {
       .login__card {
         height: 45rem;
         width: 35rem; } }
     @media only screen and (max-width: 21.875em) {
       .login__card {
-        height: 40rem;
+        height: 55rem;
+        width: 30rem; } }
+    @media only screen and (max-width: 18.75em) {
+      .login__card {
+        height: 55rem;
         width: 25rem; } }
     .login__card__content {
       grid-column: 2/3;
       display: flex;
       flex-direction: column;
       align-items: center; }
+      @media only screen and (max-width: 37.5em) {
+        .login__card__content {
+          grid-column: 1 / -1; } }
       .login__card__content p {
         font-size: 1.5rem;
         animation-name: fade-bottom;
@@ -2161,7 +2206,15 @@ label.year {
         transition: all .3s ease-in;
         animation-name: fade-bottom;
         animation-duration: 1.5s;
-        animation-timing-function: ease-out; }
+        animation-timing-function: ease-out;
+        margin-bottom: 1.5rem;
+        text-align: center; }
+        @media only screen and (max-width: 31.25em) {
+          .login__card__content small {
+            font-size: 1rem; } }
+        @media only screen and (max-width: 28.5em) {
+          .login__card__content small {
+            font-size: 1.3rem; } }
     .login__card__image {
       border-top-left-radius: 20px;
       border-bottom-left-radius: 20px;
@@ -2173,11 +2226,17 @@ label.year {
       animation-name: fade-left;
       animation-duration: 1.5s;
       animation-timing-function: ease-out; }
+      @media only screen and (max-width: 37.5em) {
+        .login__card__image {
+          display: none; } }
     .login__card__main-content {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-content: center; }
+      @media only screen and (max-width: 21.875em) {
+        .login__card__main-content {
+          margin-top: 4rem; } }
     .login__card__input {
       margin-top: 2rem;
       text-align: center;
@@ -2195,10 +2254,12 @@ label.year {
         .login__card__input {
           margin-left: auto;
           margin-right: auto;
-          width: 40rem; } }
+          width: 35rem;
+          font-size: 1.8rem; } }
       @media only screen and (max-width: 37.5em) {
         .login__card__input {
-          width: 35rem;
+          width: 25rem;
+          padding: 1.5rem 3rem;
           margin-top: 1.5rem;
           font-size: 1.5rem; } }
       @media only screen and (max-width: 28.5em) {
@@ -2207,8 +2268,12 @@ label.year {
           width: 30rem; } }
       @media only screen and (max-width: 21.875em) {
         .login__card__input {
-          width: 20rem;
-          font-size: 1rem; } }
+          width: 25rem;
+          font-size: 1.5rem;
+          padding: 1.5rem 5rem; } }
+      @media only screen and (max-width: 18.75em) {
+        .login__card__input {
+          width: 20rem; } }
     .login__card__heading {
       margin-top: 5rem;
       font-size: 5rem;
@@ -2227,7 +2292,7 @@ label.year {
           margin-top: 2rem; } }
       @media only screen and (max-width: 21.875em) {
         .login__card__heading {
-          font-size: 3rem; } }
+          font-size: 3.5rem; } }
     .login__card__alert {
       font-size: 1.8rem;
       color: red; }
@@ -2254,18 +2319,36 @@ label.year {
         transform: scale(1.03); }
       @media only screen and (max-width: 75em) {
         .login__card__button {
-          width: 40rem; } }
-      @media only screen and (max-width: 37.5em) {
-        .login__card__button {
           width: 35rem;
           padding: 2rem 5rem; } }
+      @media only screen and (max-width: 37.5em) {
+        .login__card__button {
+          width: 25rem;
+          padding: 1rem 3rem; } }
       @media only screen and (max-width: 28.5em) {
         .login__card__button {
-          width: 30rem; } }
+          width: 30rem;
+          margin-top: 0.5rem; } }
       @media only screen and (max-width: 21.875em) {
         .login__card__button {
-          width: 20rem;
-          font-size: 1rem; } }
+          width: 25rem;
+          font-size: 1.5rem;
+          padding: 1.5rem 1.5rem; } }
+      @media only screen and (max-width: 18.75em) {
+        .login__card__button {
+          width: 20rem; } }
+.input-validity-info {
+  text-align: center; }
+  @media only screen and (max-width: 37.5em) {
+    .input-validity-info {
+      font-size: 1.3rem !important; } }
+@media only screen and (max-width: 21.875em) {
+  .login__card__links:first-of-type {
+    margin-top: auto; } }
+
+.login-video {
+  object-fit: fill !important; }
+
 .grid-layout-container {
   display: grid;
   height: auto;

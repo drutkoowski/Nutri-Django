@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-09 00:42+0100\n"
+"POT-Creation-Date: 2022-11-09 17:45+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -138,17 +138,17 @@ msgid "Very Active"
 msgstr "Bardzo aktywny"
 
 #: .\templates\accounts\dashboard_stats.html:46
-#: .\templates\accounts\signup.html:28
+#: .\templates\accounts\signup.html:29
 msgid "Gain Weight"
 msgstr "Przybrać na wadze"
 
 #: .\templates\accounts\dashboard_stats.html:47
-#: .\templates\accounts\signup.html:29
+#: .\templates\accounts\signup.html:30
 msgid "Maintain Weight"
 msgstr "Utrzymać wagę"
 
 #: .\templates\accounts\dashboard_stats.html:48
-#: .\templates\accounts\signup.html:30
+#: .\templates\accounts\signup.html:31
 msgid "Lose Weight"
 msgstr "Schudnąć"
 
@@ -229,7 +229,7 @@ msgstr "Spalone Kcal"
 msgid "Kcal Eaten"
 msgstr "Zjedzone Kcal"
 
-#: .\templates\accounts\login.html:15 .\templates\accounts\signup.html:14
+#: .\templates\accounts\login.html:15 .\templates\accounts\signup.html:15
 #: .\templates\home\index.html:80 .\templates\meals\add\add_meals.html:13
 #: .\templates\meals\meals.html:13
 msgid "Your browser is not supported!"
@@ -248,7 +248,7 @@ msgid "Password"
 msgstr "Hasło"
 
 #: .\templates\accounts\login.html:32
-#: .\templates\components\navbar\navbar.html:16
+#: .\templates\components\navbar\navbar.html:20
 msgid "Log in"
 msgstr "Zaloguj się"
 
@@ -256,7 +256,7 @@ msgstr "Zaloguj się"
 msgid "Don't you have an account?"
 msgstr "Masz już konto?"
 
-#: .\templates\accounts\login.html:35 .\templates\accounts\signup.html:37
+#: .\templates\accounts\login.html:35 .\templates\accounts\signup.html:38
 msgid "Forgot password?"
 msgstr "Zapomniałeś hasła?"
 
@@ -287,39 +287,39 @@ msgstr "Aktywności"
 msgid "Logout"
 msgstr "Wyloguj"
 
-#: .\templates\accounts\signup.html:24
+#: .\templates\accounts\signup.html:25
 msgid "What's your weight goal?"
 msgstr "Jaki jest Twój cel wagowy?"
 
-#: .\templates\accounts\signup.html:33
+#: .\templates\accounts\signup.html:34
 msgid "Back"
 msgstr "Cofnij"
 
-#: .\templates\accounts\signup.html:34
+#: .\templates\accounts\signup.html:35
 msgid "Next"
 msgstr "Dalej"
 
-#: .\templates\accounts\signup.html:36
+#: .\templates\accounts\signup.html:37
 msgid "Do you have an account?"
 msgstr "Masz już konto?"
 
-#: .\templates\accounts\signup.html:43
+#: .\templates\accounts\signup.html:44
 msgid "Signed up successfully... Redirecting to login page."
 msgstr "Zarejestrowano pomyślnie... Przenoszenie na stronę logowania."
 
-#: .\templates\components\navbar\navbar.html:17
+#: .\templates\components\navbar\navbar.html:21
 msgid "Sign up"
 msgstr "Zarejestruj"
 
-#: .\templates\components\navbar\navbar.html:18
+#: .\templates\components\navbar\navbar.html:22
 msgid "About"
 msgstr "O nas"
 
-#: .\templates\components\navbar\navbar.html:19
+#: .\templates\components\navbar\navbar.html:23
 msgid "Reviews"
 msgstr "Oceny"
 
-#: .\templates\components\navbar\navbar.html:20
+#: .\templates\components\navbar\navbar.html:24
 msgid "Contact"
 msgstr "Kontakt"
 

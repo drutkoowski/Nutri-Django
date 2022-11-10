@@ -2,17 +2,22 @@
 .login {
   margin-top: 10rem;
   display: grid;
-  grid-template-columns: 0.25fr 1fr 0.25fr;
+  grid-template-columns: 0.10fr 1fr 0.10fr;
   grid-template-rows: 1fr;
-  @include respond(tab-port) {
-     grid-template-columns: 0.1fr 1fr 0.1fr;
+   @include respond(big-desktop) {
+     grid-template-columns: 0.25fr 1fr 0.25fr;
   }
-  @include respond(phone-lg) {
-     grid-template-columns: 1fr;
+  @include respond(md-desktop) {
+     grid-template-columns: 0.05fr 1fr 0.05fr;
   }
+  @include  respond(tab-md) {
+   grid-template-columns: 1fr;
+  }
+
   &__card {
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 5rem;
     grid-column: 2/3;
     background-color: var(--green-light);
     height: 65rem;
@@ -26,21 +31,34 @@
     animation-name: fade-bottom;
     animation-duration: 1.5s;
     animation-timing-function: ease-out;
+    @include respond(md-desktop) {
+       height: auto;
+       width: 100rem;
+    }
      @include respond(tab-land) {
-       height: 50rem;
+        height: auto;
+        width: 85rem;
+     }
+    @include  respond(tab-md) {
+       grid-column: 1 / -1;
+        height: auto;
+        width: 75rem;
+    }
+    @include respond(tab-sm) {
+       height: auto;
        width: 60rem;
      }
 
-    @include respond(tab-sm) {
-       height: 50rem;
+    @include respond(phone-lg) {
+       height: auto;
        width: 50rem;
      }
 
-    @include respond(phone-lg) {
-      grid-column: 1/2;
-       height: 45rem;
-       width: 45rem;
-     }
+    @include respond(phone-md-lg){
+       width: 40rem;
+       height: auto;
+      margin-top: 5rem;
+    }
 
     @include respond(phone-md) {
        height: 45rem;
@@ -48,14 +66,22 @@
      }
 
     @include respond(phone-sm) {
-       height: 40rem;
-       width: 25rem;
+       height: 55rem;
+       width: 30rem;
      }
+    @include respond(phone-ultra-sm) {
+      height: 55rem;
+      width: 25rem;
+    }
+
     &__content {
       grid-column: 2/3;
       display: flex;
       flex-direction: column;
       align-items: center;
+      @include respond(phone-lg){
+        grid-column: 1 / -1;
+      }
       p {
         font-size: 1.5rem;
         animation-name: fade-bottom;
@@ -68,6 +94,14 @@
         animation-name: fade-bottom;
         animation-duration: 1.5s;
         animation-timing-function: ease-out;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        @include respond(phone-md-lg) {
+          font-size: 1rem;
+        }
+        @include respond(phone-md) {
+          font-size: 1.3rem;
+        }
       }
     }
     &__image {
@@ -81,12 +115,18 @@
       animation-name: fade-left;
       animation-duration: 1.5s;
       animation-timing-function: ease-out;
+      @include respond(phone-lg){
+        display: none;
+      }
     }
     &__main-content {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-content: center;
+      @include respond(phone-sm) {
+        margin-top: 4rem;
+      }
     }
 
     &__input {
@@ -105,11 +145,13 @@
       @include respond(tab-land) {
         margin-left: auto;
         margin-right: auto;
-        width: 40rem;
+        width: 35rem;
+        font-size: 1.8rem;
      }
 
       @include respond(phone-lg) {
-        width: 35rem;
+        width: 25rem;
+        padding: 1.5rem 3rem;
         margin-top: 1.5rem;
         font-size: 1.5rem;
      }
@@ -119,9 +161,13 @@
      }
 
       @include respond(phone-sm) {
-        width: 20rem;
-        font-size: 1rem;
+        width: 25rem;
+        font-size: 1.5rem;
+        padding: 1.5rem 5rem;
      }
+      @include respond(phone-ultra-sm) {
+        width: 20rem;
+      }
     }
 
      &__heading {
@@ -142,7 +188,7 @@
          margin-top: 2rem;
      }
      @include respond(phone-sm) {
-        font-size: 3rem;
+        font-size: 3.5rem;
      }
     }
 
@@ -175,23 +221,53 @@
         transform: scale(1.03);
       }
       @include respond(tab-land) {
-        width: 40rem;
+        width: 35rem;
+        padding: 2rem 5rem;
+
      }
       @include respond(phone-lg) {
-          width: 35rem;
-          padding: 2rem 5rem;
+          width: 25rem;
+          padding: 1rem 3rem;
      }
       @include respond(phone-md) {
        width: 30rem;
+       margin-top: 0.5rem;
 
      }
       @include respond(phone-sm) {
+        width: 25rem;
+        font-size: 1.5rem;
+        padding: 1.5rem 1.5rem;
+      }
+      @include respond(phone-ultra-sm) {
         width: 20rem;
-         font-size: 1rem;
       }
     }
 
   }
+}
+
+
+
+.input-validity-info {
+  text-align: center;
+  @include respond(phone-lg) {
+    font-size: 1.3rem!important;
+  }
+
+}
+
+.login__card__links{
+  @include respond(phone-sm) {
+    &:first-of-type{
+      margin-top: auto;
+    }
+
+  }
+}
+
+.login-video {
+  object-fit: fill!important;
 }
 
 

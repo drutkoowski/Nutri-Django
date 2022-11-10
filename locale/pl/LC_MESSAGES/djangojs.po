@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-09 00:43+0100\n"
+"POT-Creation-Date: 2022-11-10 19:34+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -325,27 +325,23 @@ msgstr "Ukryj"
 msgid "Summary"
 msgstr "Podsumowanie"
 
-#: .\static\scripts\login\main.js:26
+#: .\static\scripts\login\main.js:33
 msgid "Email input is not valid email."
 msgstr "Pole email lub hasła jest nieprawidłowe."
 
-#: .\static\scripts\login\main.js:42
+#: .\static\scripts\login\main.js:53
 msgid "Password too short."
 msgstr "Twoje hasło jest zbyt krótkie!"
 
-#: .\static\scripts\login\main.js:70
+#: .\static\scripts\login\main.js:83
 msgid "We could not match any user with these credentials."
 msgstr "Nie udało nam się znaleźć użytkownika z podanymi danymi."
 
-#: .\static\scripts\login\main.js:76
+#: .\static\scripts\login\main.js:89
 msgid "Error occurred.. try again."
 msgstr "Wystąpił błąd.. spróbuj jeszcze raz."
 
-#: .\static\scripts\login\main.js:89
-msgid "Password is too short!"
-msgstr "Twoje hasło jest zbyt krótkie!"
-
-#: .\static\scripts\login\main.js:99
+#: .\static\scripts\login\main.js:118
 msgid "Email or password field is not valid."
 msgstr "Pole email lub hasła jest nieprawidłowe."
 
@@ -366,115 +362,122 @@ msgstr "Spróbuj wyszukać posiłek lub składniki, które zjadłeś/aś dzisiaj
 msgid "Results will appear here."
 msgstr "Wyniki pojawią się tutaj."
 
-#: .\static\scripts\signup\main.js:108
+#: .\static\scripts\signup\main.js:153
 msgid "\"What's your weight goal?\""
 msgstr "Jaki jest Twój cel wagowy?"
 
-#: .\static\scripts\signup\main.js:110
+#: .\static\scripts\signup\main.js:155
 msgid "Gain Weight"
 msgstr "Przybrać na wadze"
 
-#: .\static\scripts\signup\main.js:111
+#: .\static\scripts\signup\main.js:156
 msgid "Maintain Weight"
 msgstr "Utrzymać wagę"
 
-#: .\static\scripts\signup\main.js:112
+#: .\static\scripts\signup\main.js:157
 msgid "Lose Weight"
 msgstr "Schudnąć"
 
-#: .\static\scripts\signup\main.js:116
+#: .\static\scripts\signup\main.js:161
 msgid "What's your activity level?"
 msgstr "Jaki jest Twój poziom aktywności?"
 
-#: .\static\scripts\signup\main.js:118
-msgid "Not-active"
+#: .\static\scripts\signup\main.js:163
+msgid "Not active"
 msgstr "Nieaktywny"
 
-#: .\static\scripts\signup\main.js:119
-msgid "Lightly-active"
+#: .\static\scripts\signup\main.js:164
+msgid "Lightly active"
 msgstr "Lekko aktywny"
 
-#: .\static\scripts\signup\main.js:120
+#: .\static\scripts\signup\main.js:165
 msgid "Active"
 msgstr "Aktywny"
 
-#: .\static\scripts\signup\main.js:121
+#: .\static\scripts\signup\main.js:166
 msgid "Very-active"
 msgstr "Bardzo aktywny"
 
-#: .\static\scripts\signup\main.js:126
+#: .\static\scripts\signup\main.js:171
 msgid "What's your body parameters?"
 msgstr "Jakie są Twoje parametry fizyczne?"
 
-#: .\static\scripts\signup\main.js:135
+#: .\static\scripts\signup\main.js:177
+msgid "What's your weight goal?"
+msgstr "Jaki jest Twój cel wagowy?"
+
+#: .\static\scripts\signup\main.js:188
 msgid "What's your personal info?"
 msgstr "Podaj swoje informacje personalne."
 
-#: .\static\scripts\signup\main.js:138
+#: .\static\scripts\signup\main.js:191
 msgid "First Name"
 msgstr "Imię"
 
-#: .\static\scripts\signup\main.js:140
+#: .\static\scripts\signup\main.js:193
 msgid "Last Name"
 msgstr "Nazwisko"
 
-#: .\static\scripts\signup\main.js:144
+#: .\static\scripts\signup\main.js:195
 msgid "Male"
 msgstr "Mężczyzna"
 
-#: .\static\scripts\signup\main.js:148
+#: .\static\scripts\signup\main.js:196
 msgid "Female"
 msgstr "Kobieta"
 
-#: .\static\scripts\signup\main.js:150
+#: .\static\scripts\signup\main.js:199
 msgid "How old are you?"
 msgstr "Ile masz lat?"
 
-#: .\static\scripts\signup\main.js:244
+#: .\static\scripts\signup\main.js:211
 msgid "What's your email address and password?"
 msgstr "Wpisz swój adres email oraz hasło."
 
-#: .\static\scripts\signup\main.js:248
+#: .\static\scripts\signup\main.js:215
 msgid "Email Address"
 msgstr "Adres Email"
 
-#: .\static\scripts\signup\main.js:249
+#: .\static\scripts\signup\main.js:216
 msgid "Username"
 msgstr "Nazwa użytkownika"
 
-#: .\static\scripts\signup\main.js:250
+#: .\static\scripts\signup\main.js:217
 msgid "Password"
 msgstr "Hasło"
 
-#: .\static\scripts\signup\main.js:307
+#: .\static\scripts\signup\main.js:316
 msgid "You have to choose one option."
 msgstr "Musisz wybrać jedną opcję."
 
-#: .\static\scripts\signup\main.js:328 .\static\scripts\signup\main.js:367
-#: .\static\scripts\signup\main.js:429
+#: .\static\scripts\signup\main.js:336 .\static\scripts\signup\main.js:374
+#: .\static\scripts\signup\main.js:436
 msgid "You have filled inputs incorrectly."
 msgstr "Wypełniłeś formularz niepoprawnie."
 
-#: .\static\scripts\signup\main.js:334
+#: .\static\scripts\signup\main.js:342
 msgid "You have to fill the inputs."
 msgstr "Musisz wypełnić formularz."
 
-#: .\static\scripts\signup\main.js:347
+#: .\static\scripts\signup\main.js:355
 msgid "You have filled incorrect name or last name field."
 msgstr "Wypełniłeś pole imienia lub nazwiska nieprawidłowo."
 
-#: .\static\scripts\signup\main.js:379 .\static\scripts\signup\main.js:419
+#: .\static\scripts\signup\main.js:386 .\static\scripts\signup\main.js:426
 msgid "Your password is too short!"
 msgstr "Twoje hasło jest zbyt krótkie!"
 
-#: .\static\scripts\signup\main.js:383 .\static\scripts\signup\main.js:423
+#: .\static\scripts\signup\main.js:390 .\static\scripts\signup\main.js:430
 msgid "Your password is too long!"
 msgstr "Twoje hasło jest za długie!"
 
-#: .\static\scripts\signup\main.js:404
+#: .\static\scripts\signup\main.js:411
 msgid "User with these credentials already exists."
 msgstr "Użytkownik z tymi danymi uwierzytelniającymi już istnieje."
 
-#: .\static\scripts\signup\main.js:413
+#: .\static\scripts\signup\main.js:420
 msgid "Something went wrong, try again."
 msgstr "Coś poszło nie tak, spróbuj ponownie."
+
+#~ msgid "Password is too short!"
+#~ msgstr "Twoje hasło jest zbyt krótkie!"

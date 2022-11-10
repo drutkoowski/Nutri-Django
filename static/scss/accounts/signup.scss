@@ -24,7 +24,7 @@ body {
     margin: 5rem 0;
     grid-column: 2/3;
     background-color: var(--green-light);
-    color: white;
+    color: var(--font-color-default);
     min-height: 65rem;
     height: auto;
     width: 90rem;
@@ -76,17 +76,23 @@ body {
     &__links {
       text-decoration: none;
       font-size:2rem;
-      color: white;
+      color: var(--font-color-default);
       transition: all .3s ease-in;
       animation-name: fade-bottom;
       animation-duration: 1s;
       animation-timing-function: ease-out;
+      @include respond(phone-md-lg){
+        font-size:1.4rem;
+      }
       &:first-of-type{
         margin-top: 2rem;
       }
       margin-top: 1rem;
       &:last-of-type {
         margin-bottom: 3rem;
+        @include respond(phone-md-lg) {
+         margin-bottom: 1rem;
+      }
       }
     }
     &__input {
@@ -196,7 +202,7 @@ body {
       margin-top: 2rem;
       padding: 2rem 5rem;
       border-radius: 10px;
-      background: white;
+      background: var(--color-white);
       border: 1px solid var(--green);
       color: var(--black-muted);
       font-size: 2rem;
@@ -284,14 +290,14 @@ body {
       }
         &--back {
           grid-column: 1/2;
-          color: white;
+          color: var(--font-color-default);
           border: none;
           background-color: var(--red);
         }
         &--next {
           grid-column: 2/3;
           background-color: var(--green);
-          color: white;
+          color: var(--font-color-default);
           outline: none;
           border: none;
         }
@@ -303,7 +309,7 @@ body {
 
 .progress-bar {
   width: 100%;
-  background-color: white;
+  background-color: var(--color-white);
   height: 25px;
   overflow: hidden;
   position: relative;
@@ -391,7 +397,7 @@ body {
   }
   &__item-active {
      background-color:var(--green);
-     color: white;
+     color: var(--font-color-default);
 
   }
 }
@@ -421,9 +427,9 @@ label.year{
 }
 .slider p {
   font-size: 26px;
-  font-weight: 600;
   padding-left: 3rem;
   color: var(--green);
+  font-weight: bold;
 }
 .slider input[type="range"] {
   -webkit-appearance:none !important;
@@ -446,12 +452,15 @@ label.year{
   background: var(--green-light-secondary);
 }
 
-.year-box {
+.slider-bar {
   margin-top: 2rem;
   transition: all .3s ease-in;
   animation-name: fade-bottom;
   animation-duration: 1s;
   animation-timing-function: ease-out;
+  &:hover {
+    transform: scale(1.04);
+  }
   h3 {
     font-size: 2.3rem;
   }
