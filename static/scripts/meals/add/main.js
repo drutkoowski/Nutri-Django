@@ -1,3 +1,9 @@
+// fix bg - video stretch and nav adjustments
+const navBarEl = document.querySelector('.navbar--dashboard')
+navBarEl.style.marginTop = '0'
+navBarEl.style.paddingTop = '3rem'
+///
+
 function hideModal(modalClass) {
     $("." + modalClass).fadeOut(900, e => {
          const modal = document.querySelector(`.${modalClass}`)

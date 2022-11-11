@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-09 17:45+0100\n"
+"POT-Creation-Date: 2022-11-11 01:40+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,7 +36,8 @@ msgstr "Witamy z powrotem"
 msgid "Let's check quality of your nutrition for today!"
 msgstr "Sprawdźmy jakość Twojego dzisiejszego odżywiania!"
 
-#: .\templates\accounts\dashboard.html:22
+#: .\templates\accounts\dashboard.html:22 .\templates\accounts\navbar.html:20
+#: .\templates\accounts\navbar_small.html:20
 msgid "Meals"
 msgstr "Posiłki"
 
@@ -231,7 +232,7 @@ msgstr "Zjedzone Kcal"
 
 #: .\templates\accounts\login.html:15 .\templates\accounts\signup.html:15
 #: .\templates\home\index.html:80 .\templates\meals\add\add_meals.html:13
-#: .\templates\meals\meals.html:13
+#: .\templates\meals\meals.html:13 .\templates\workouts\workouts.html:13
 msgid "Your browser is not supported!"
 msgstr "Twoja przeglądarka nie jest obsługiwana!"
 
@@ -265,24 +266,34 @@ msgid "By logging in you are accepting our terms of use and privacy policy."
 msgstr ""
 "Logując się do serwisu, akceptujesz jego regulamin i politykę prywatności."
 
-#: .\templates\accounts\navbar.html:13
-#: .\templates\accounts\navbar_small.html:13
+#: .\templates\accounts\navbar.html:18
+#: .\templates\accounts\navbar_small.html:18
 msgid "Dashboard"
 msgstr "Panel główny"
 
-#: .\templates\accounts\navbar.html:14
-#: .\templates\accounts\navbar_small.html:14
+#: .\templates\accounts\navbar.html:19
+#: .\templates\accounts\navbar_small.html:19
 msgid "Stats"
 msgstr "Statystyki"
 
-#: .\templates\accounts\navbar.html:15
-#: .\templates\accounts\navbar_small.html:15
+#: .\templates\accounts\navbar.html:21
+#: .\templates\accounts\navbar_small.html:21
+msgid "Workouts"
+msgstr "Treningi"
+
+#: .\templates\accounts\navbar.html:22
+#: .\templates\accounts\navbar_small.html:22
+msgid "Plans"
+msgstr "Plany"
+
+#: .\templates\accounts\navbar.html:23
+#: .\templates\accounts\navbar_small.html:23
 #: .\templates\components\sidebar\sidebar.html:29
 msgid "Activity"
 msgstr "Aktywności"
 
-#: .\templates\accounts\navbar.html:16
-#: .\templates\accounts\navbar_small.html:16
+#: .\templates\accounts\navbar.html:24
+#: .\templates\accounts\navbar_small.html:24
 #: .\templates\components\sidebar\sidebar.html:35
 msgid "Logout"
 msgstr "Wyloguj"
@@ -502,6 +513,42 @@ msgid ""
 msgstr ""
 "Przeglądaj i modyfikuj swoje zapisane dania, aby łatwiej i szybciej "
 "korzystać z opcji dodawania posiłków."
+
+#: .\templates\workouts\workouts.html:21
+msgid "Add Workout"
+msgstr "Dodaj Trening"
+
+#: .\templates\workouts\workouts.html:22
+msgid ""
+"Fill your day with the workout you have done today and find out more about "
+"quality of your activities."
+msgstr ""
+"Wypełnij swój dzień ćwiczeniami, które dzisiaj wykonałeś/aś i dowiedz się "
+"więcej o jakości Twoich treningów lub aktywności."
+
+#: .\templates\workouts\workouts.html:25
+msgid "Workout Propositions"
+msgstr "Propozycje Posiłków"
+
+#: .\templates\workouts\workouts.html:26
+msgid ""
+"Browse the workout suggestions with their description and other information "
+"constructed by us just for you."
+msgstr ""
+"Przeglądaj propozycje ćwiczeń wraz z ich opisem i innymi informacjami "
+"skonstruowanych przez nas specjalnie dla Ciebie."
+
+#: .\templates\workouts\workouts.html:29
+msgid "Saved Workouts"
+msgstr "Zapisane Treningi"
+
+#: .\templates\workouts\workouts.html:30
+msgid ""
+"View and modify your saved workouts templates to make it easier and quicker "
+"to use the add workout option."
+msgstr ""
+"Przeglądaj i modyfikuj swoje zapisane plany ćwiczeń, aby łatwiej i szybciej "
+"korzystać z opcji ich dodawania."
 
 #: .\venv\Lib\site-packages\django\contrib\messages\apps.py:15
 msgid "Messages"
@@ -1477,7 +1524,7 @@ msgstr ""
 
 #: .\venv\Lib\site-packages\django\utils\text.py:252
 msgid "or"
-msgstr ""
+msgstr "lub"
 
 #. Translators: This string is used as a separator between list elements
 #: .\venv\Lib\site-packages\django\utils\text.py:271

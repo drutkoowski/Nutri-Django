@@ -282,7 +282,7 @@ body {
          font-size: 1.2rem;
         }
         @include respond(phone-sm) {
-          padding: 1.5rem 2rem;
+          padding: 1rem 1rem;
           font-size: 1rem;
       }
         &--back {

@@ -151,3 +151,9 @@ meals.addEventListener('click', e => {
     const langPrefix = window.location.href.split('/')[3];
     location.href = location.origin + `/${langPrefix}/meals`
 })
+
+const workout = document.querySelector('.dashboard__content__summary__item--workout')
+workout.addEventListener('click', e => {
+    const langPrefix = window.location.href.split('/')[3];
+    location.href = location.origin + `/${langPrefix}/workouts`
+})

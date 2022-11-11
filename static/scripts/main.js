@@ -23,6 +23,12 @@ if ((location.href !== location.origin + '/pl' || location.href !== location.ori
         }
         else if (navigationList.classList.contains('not-visible') && hamburgerNav.checked) {
              navigationList.classList.remove('not-visible')
+             const navbar = document.querySelector('.navbar--dashboard')
+                $(navbar).on('scroll touchmove mousewheel', function(e){
+                  e.preventDefault();
+                  e.stopPropagation();
+                  return false;
+             })
         }
     })
     if (hamburgerNavSmall)
@@ -34,6 +40,12 @@ if ((location.href !== location.origin + '/pl' || location.href !== location.ori
         }
         else if (navigationListSmall.classList.contains('not-visible') && hamburgerNavSmall.checked) {
              navigationListSmall.classList.remove('not-visible')
+             const navbar = document.querySelector('.navbar--dashboard--small')
+                $(navbar).on('scroll touchmove mousewheel', function(e){
+                  e.preventDefault();
+                  e.stopPropagation();
+                  return false;
+             })
         }
     })
     }
@@ -55,6 +67,12 @@ if (location.href !== location.origin + '/pl' || location.href !== location.orig
         }
         else if (navigationList.classList.contains('not-visible') && hamburgerNav.checked) {
              navigationList.classList.remove('not-visible')
+             const navbar = document.querySelector('.navbar')
+                $(navbar).on('scroll touchmove mousewheel', function(e){
+                  e.preventDefault();
+                  e.stopPropagation();
+                  return false;
+             })
         }
     })
 }
@@ -74,6 +92,13 @@ else {
         }
         else if (navigationList.classList.contains('not-visible') && hamburgerNav.checked) {
              navigationList.classList.remove('not-visible')
+             const navbar = document.querySelector('.navbar')
+                $(navbar).on('scroll touchmove mousewheel', function(e){
+                  e.preventDefault();
+                  e.stopPropagation();
+                  return false;
+                })
         }
     })
 }
+

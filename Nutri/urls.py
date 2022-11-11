@@ -31,6 +31,7 @@ urlpatterns = [
 urlpatterns += i18n_patterns(
     path('', include('accounts.urls')),
     path('meals', include('meals.urls')),
+    path('workouts', include('workouts.urls')),
     path('jsi18n/', JavaScriptCatalog.as_view(), name='javascript-catalog'),
 
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

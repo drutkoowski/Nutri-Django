@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-10 19:34+0100\n"
+"POT-Creation-Date: 2022-11-11 01:18+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -345,137 +345,137 @@ msgstr "Wystąpił błąd.. spróbuj jeszcze raz."
 msgid "Email or password field is not valid."
 msgstr "Pole email lub hasła jest nieprawidłowe."
 
-#: .\static\scripts\meals\add\main.js:171
+#: .\static\scripts\meals\add\main.js:177
 msgid "Category"
 msgstr "Kategoria"
 
-#: .\static\scripts\meals\add\main.js:231
-#: .\static\scripts\meals\add\main.js:236
+#: .\static\scripts\meals\add\main.js:237
+#: .\static\scripts\meals\add\main.js:242
 msgid "No search results."
 msgstr "Brak rezultatów wyszukiwania."
 
-#: .\static\scripts\meals\add\main.js:405
+#: .\static\scripts\meals\add\main.js:411
 msgid "Try to search meal or ingredients that have you eaten today."
 msgstr "Spróbuj wyszukać posiłek lub składniki, które zjadłeś/aś dzisiaj."
 
-#: .\static\scripts\meals\add\main.js:406
+#: .\static\scripts\meals\add\main.js:412
 msgid "Results will appear here."
 msgstr "Wyniki pojawią się tutaj."
 
-#: .\static\scripts\signup\main.js:153
+#: .\static\scripts\signup\main.js:155
 msgid "\"What's your weight goal?\""
 msgstr "Jaki jest Twój cel wagowy?"
 
-#: .\static\scripts\signup\main.js:155
+#: .\static\scripts\signup\main.js:157
 msgid "Gain Weight"
 msgstr "Przybrać na wadze"
 
-#: .\static\scripts\signup\main.js:156
+#: .\static\scripts\signup\main.js:158
 msgid "Maintain Weight"
 msgstr "Utrzymać wagę"
 
-#: .\static\scripts\signup\main.js:157
+#: .\static\scripts\signup\main.js:159
 msgid "Lose Weight"
 msgstr "Schudnąć"
 
-#: .\static\scripts\signup\main.js:161
+#: .\static\scripts\signup\main.js:163
 msgid "What's your activity level?"
 msgstr "Jaki jest Twój poziom aktywności?"
 
-#: .\static\scripts\signup\main.js:163
+#: .\static\scripts\signup\main.js:165
 msgid "Not active"
 msgstr "Nieaktywny"
 
-#: .\static\scripts\signup\main.js:164
+#: .\static\scripts\signup\main.js:166
 msgid "Lightly active"
 msgstr "Lekko aktywny"
 
-#: .\static\scripts\signup\main.js:165
+#: .\static\scripts\signup\main.js:167
 msgid "Active"
 msgstr "Aktywny"
 
-#: .\static\scripts\signup\main.js:166
+#: .\static\scripts\signup\main.js:168
 msgid "Very-active"
 msgstr "Bardzo aktywny"
 
-#: .\static\scripts\signup\main.js:171
+#: .\static\scripts\signup\main.js:173
 msgid "What's your body parameters?"
 msgstr "Jakie są Twoje parametry fizyczne?"
 
-#: .\static\scripts\signup\main.js:177
+#: .\static\scripts\signup\main.js:179
 msgid "What's your weight goal?"
 msgstr "Jaki jest Twój cel wagowy?"
 
-#: .\static\scripts\signup\main.js:188
+#: .\static\scripts\signup\main.js:190
 msgid "What's your personal info?"
 msgstr "Podaj swoje informacje personalne."
 
-#: .\static\scripts\signup\main.js:191
+#: .\static\scripts\signup\main.js:193
 msgid "First Name"
 msgstr "Imię"
 
-#: .\static\scripts\signup\main.js:193
+#: .\static\scripts\signup\main.js:195
 msgid "Last Name"
 msgstr "Nazwisko"
 
-#: .\static\scripts\signup\main.js:195
+#: .\static\scripts\signup\main.js:197
 msgid "Male"
 msgstr "Mężczyzna"
 
-#: .\static\scripts\signup\main.js:196
+#: .\static\scripts\signup\main.js:198
 msgid "Female"
 msgstr "Kobieta"
 
-#: .\static\scripts\signup\main.js:199
+#: .\static\scripts\signup\main.js:201
 msgid "How old are you?"
 msgstr "Ile masz lat?"
 
-#: .\static\scripts\signup\main.js:211
+#: .\static\scripts\signup\main.js:213
 msgid "What's your email address and password?"
 msgstr "Wpisz swój adres email oraz hasło."
 
-#: .\static\scripts\signup\main.js:215
+#: .\static\scripts\signup\main.js:217
 msgid "Email Address"
 msgstr "Adres Email"
 
-#: .\static\scripts\signup\main.js:216
+#: .\static\scripts\signup\main.js:218
 msgid "Username"
 msgstr "Nazwa użytkownika"
 
-#: .\static\scripts\signup\main.js:217
+#: .\static\scripts\signup\main.js:219
 msgid "Password"
 msgstr "Hasło"
 
-#: .\static\scripts\signup\main.js:316
+#: .\static\scripts\signup\main.js:318
 msgid "You have to choose one option."
 msgstr "Musisz wybrać jedną opcję."
 
-#: .\static\scripts\signup\main.js:336 .\static\scripts\signup\main.js:374
-#: .\static\scripts\signup\main.js:436
+#: .\static\scripts\signup\main.js:345 .\static\scripts\signup\main.js:383
+#: .\static\scripts\signup\main.js:445
 msgid "You have filled inputs incorrectly."
 msgstr "Wypełniłeś formularz niepoprawnie."
 
-#: .\static\scripts\signup\main.js:342
+#: .\static\scripts\signup\main.js:351
 msgid "You have to fill the inputs."
 msgstr "Musisz wypełnić formularz."
 
-#: .\static\scripts\signup\main.js:355
+#: .\static\scripts\signup\main.js:364
 msgid "You have filled incorrect name or last name field."
 msgstr "Wypełniłeś pole imienia lub nazwiska nieprawidłowo."
 
-#: .\static\scripts\signup\main.js:386 .\static\scripts\signup\main.js:426
+#: .\static\scripts\signup\main.js:395 .\static\scripts\signup\main.js:435
 msgid "Your password is too short!"
 msgstr "Twoje hasło jest zbyt krótkie!"
 
-#: .\static\scripts\signup\main.js:390 .\static\scripts\signup\main.js:430
+#: .\static\scripts\signup\main.js:399 .\static\scripts\signup\main.js:439
 msgid "Your password is too long!"
 msgstr "Twoje hasło jest za długie!"
 
-#: .\static\scripts\signup\main.js:411
+#: .\static\scripts\signup\main.js:420
 msgid "User with these credentials already exists."
 msgstr "Użytkownik z tymi danymi uwierzytelniającymi już istnieje."
 
-#: .\static\scripts\signup\main.js:420
+#: .\static\scripts\signup\main.js:429
 msgid "Something went wrong, try again."
 msgstr "Coś poszło nie tak, spróbuj ponownie."
 
