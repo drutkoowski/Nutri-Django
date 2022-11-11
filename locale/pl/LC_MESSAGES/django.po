@@ -528,7 +528,7 @@ msgstr ""
 
 #: .\templates\workouts\workouts.html:25
 msgid "Workout Propositions"
-msgstr "Propozycje Posiłków"
+msgstr "Propozycje Treningów"
 
 #: .\templates\workouts\workouts.html:26
 msgid ""

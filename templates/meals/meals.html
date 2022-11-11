@@ -6,8 +6,8 @@
 {% endblock scripts %}
 {% block content %}
     <div class="loader"></div>
-     <div class="bg-video" id="meals-video-container">
-         <video id="meals-video" class="bg-video__content" autoplay muted loop>
+     <div class="bg-video-fixed" id="meals-video-container">
+         <video id="meals-video" class="bg-video-fixed__content" autoplay muted loop>
              <source src="{% sass_src 'video/meals_bg_video.mp4' %}" type="video/mp4">
              <source src="{% sass_src 'video/meals_bg_video.webm' %}" type="video/webm">
              {% trans 'Your browser is not supported!' %}
