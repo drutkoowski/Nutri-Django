@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load sass_tags %}
+{% load i18n %}
+{% block scripts %}
+     <script src="{% sass_src 'scripts/workouts/add/main.js' %}" defer></script>
+{% endblock scripts %}
+{% block content %}
+    <div class="loader"></div>
+      <div class="bg-video-fixed" id="add-meals-video-container">
+       <div class="overlay"></div>
+         <video id="add-meals-video" class="bg-video-fixed__content" autoplay muted loop>
+             <source src="{% sass_src 'video/add_meal_bg_video.mp4' %}" type="video/mp4">
+             <source src="{% sass_src 'video/add_meal_bg_video.webm' %}" type="video/webm">
+             {% trans 'Your browser is not supported!' %}
+         </video>
+     </div>
+
+        <div class="add-workouts-layout-container">
+            {% include 'accounts/navbar.html' %}
+             {% include 'accounts/navbar_small.html' %}
+            <div class="add-workouts grid-full-span">
+                <div class="add-workouts__search">
+                    <div class="add-workouts__search__bar"><input class="search-workout-add search-input" type="text" placeholder="{% trans 'Search' %}"/><span><img class="add-workouts__search__bar__icon" src="{% sass_src 'images/svg/search.svg' %}" alt="Search Icon" /></span></div>
+                    <div class="add-workouts__search__results">
+                        <div class="saved-workouts__search__results__heading-box">
+                            <h3>{% trans 'Your search results' %}</h3>
+                        </div>
+                        <div class="add-workouts__search__results__container">
+                            <p class="search-results-info" style="text-align: center">{% trans 'Try to search exercises that have you done today.' %}
+                            <br>{% trans 'Results will appear here.' %}</p>
+                        </div>
+                    </div>
+                    <button class="check-today-workouts"><span>{% trans 'Check your exercises' %}</span></button>
+                </div>
+                <div class="add-workouts__added">
+                    <div class="add-workouts__added--added">
+                        <div class="add-workouts__added--added__heading">
+                            <h2>{% trans "Today's Exercises" %}</h2>
+                        </div>
+                    </div>
+                    <div class="add-workouts__added--added__content">
+                      <div class="saved-results-info">{% trans 'Your workout will appear here' %}</div>
+                    </div>
+                    <div class="add-workouts__added--saved">
+                       <div class="add-workouts__added--saved__heading">
+                            <h2>{% trans 'Saved Workouts' %}</h2>
+                        </div>
+                    </div>
+                     <div class="add-workouts__added--saved__content">
+                     {% if saved_templates %}
+                         {% for item in saved_templates %}
+                             <div data-objectId='{{ item.pk }}' class="add-workouts__added--saved__content__item">
+                                 <p><b>{{ item.meal_name }}</b>  {{ item.kcal|floatformat:"-3" }} kcal</p>
+                                <div class="add-icon filter-green"></div>
+                            </div>
+                         {% endfor %}
+                         {% else %}
+                         <p class="no-saved-templates-info">{% trans 'No saved workouts yet' %}</p>
+                     {% endif %}
+                     </div>
+                    {% csrf_token %}
+                    <button class="save-add-today-workouts">{% trans 'Save' %}</button>
+                </div>
+            </div>
+        </div>
+ <div class="modal-queued not-visible">
+     <div class="modal-queued__content">
+         <div class="modal-queued__close-button">&times;</div>
+         <h1>{% trans 'Adding your workout to our database...' %}</h1>
+         <div class="loader--signup"></div>
+     </div>
+ </div>
+
+ <div class="modal-queued modal-accept-delete not-visible">
+     <div class="modal-queued__content">
+         <div class="modal-queued__close-button modal-accept-delete-close">&times;</div>
+         <h1>{% trans 'Are you sure you want to delete this workout?' %}</h1>
+         <div class="modal-queued__content__buttons">
+            <button class="accept-delete-today-workouts">{% trans 'Yes' %}</button>
+            <button class="deny-delete-today-workouts">{% trans 'No' %}</button>
+         </div>
+     </div>
+ </div>
+
+<div class="modal-queued modal-queued__today-workouts-list not-visible">
+    <div class="modal-queued__content modal-queued__today-workouts-list__content">
+        <div class="modal-queued__close-button modal-queued__today-workouts__close-button">&times;</div>
+        <h1 class="modal-queued--heading">{% trans 'Your added exercises for today.' %}</h1>
+          {% if todayMeals %}
+              <h3 class="meals-on-date">{% trans 'Workouts on' %} {% now "l" %}</h3>
+              <div class="add-meals__already__added">
+{#                  {% for meal in todayMeals %}#}
+{#                      <div class="add-meals__already__added--item">#}
+{#                          <p><b>{% if '/pl/' in request.path %}{{ meal.ingredient.pl_name }}{% else %}{{ meal.ingredient.en_name }}{% endif %}</b> x {{ meal.quantity|floatformat:"-3" }} {% if '/pl/' in request.path %}{{ meal.ingredient.unit.pl_name }} {% else %} {{ meal.ingredient.unit.en_name }}{% endif %}({{ meal.ingredient.kcal }} kcal / {{ meal.ingredient.serving_grams|floatformat:"-3" }} g)</p>#}
+{#                          <div class="today-meals-added-remove-btn remove-icon filter-red meal-saved" data-mealObjId="{{ meal.id }}"></div>#}
+{#                          <p class="add-meals__already__added--item__category">{% trans 'Category' %}: <span>{% if '/pl/' in request.path %}{{ meal.ingredient.category.pl_category_name }}{% else %}{{ meal.ingredient.category.en_category_name }}{% endif %}</span></p>#}
+{#                          <div class="add-meals__already__added--item__details-box">#}
+{#                              <p>{% trans 'Kcal' %}: <b>{{ meal.kcal|floatformat:"-2" }}</b></p>#}
+{#                              <p>{% trans 'Protein' %}: <b>{{ meal.protein|floatformat:"-2" }}</b></p>#}
+{#                              <p>{% trans 'Carbs' %}: <b>{{ meal.carbs|floatformat:"-2" }}</b></p>#}
+{#                              <p>{% trans 'Fat' %}: <b>{{ meal.fat|floatformat:"-2" }}</b></p>#}
+{#                          </div>#}
+{#                      </div>#}
+{#                  {% endfor %}#}
+              </div>
+          {% else %}
+              <div class="saved-results-info">{% trans 'No exercises added for today...' %}</div>
+          {% endif %}
+    </div>
+</div>
+
+
+{% endblock %}

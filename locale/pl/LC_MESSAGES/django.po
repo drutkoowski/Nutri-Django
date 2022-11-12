@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-11 01:40+0100\n"
+"POT-Creation-Date: 2022-11-11 14:20+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -232,7 +232,9 @@ msgstr "Zjedzone Kcal"
 
 #: .\templates\accounts\login.html:15 .\templates\accounts\signup.html:15
 #: .\templates\home\index.html:80 .\templates\meals\add\add_meals.html:13
-#: .\templates\meals\meals.html:13 .\templates\workouts\workouts.html:13
+#: .\templates\meals\meals.html:13
+#: .\templates\workouts\add\add_workouts.html:14
+#: .\templates\workouts\workouts.html:13
 msgid "Your browser is not supported!"
 msgstr "Twoja przeglądarka nie jest obsługiwana!"
 
@@ -403,10 +405,12 @@ msgid "Created with &hearts; by"
 msgstr "Stworzone z &hearts; przez"
 
 #: .\templates\meals\add\add_meals.html:22
+#: .\templates\workouts\add\add_workouts.html:23
 msgid "Search"
 msgstr "Szukaj"
 
 #: .\templates\meals\add\add_meals.html:25
+#: .\templates\workouts\add\add_workouts.html:26
 msgid "Your search results"
 msgstr "Twoje rezultaty wyszukiwania"
 
@@ -415,6 +419,7 @@ msgid "Try to search meal or ingredients that have you eaten today."
 msgstr "Spróbuj wyszukać posiłek lub składnik, który zjadłeś/aś."
 
 #: .\templates\meals\add\add_meals.html:29
+#: .\templates\workouts\add\add_workouts.html:30
 msgid "Results will appear here."
 msgstr "Twoje rezultaty wyszukiwania pojawią się tutaj."
 
@@ -439,6 +444,7 @@ msgid "No saved templates yet"
 msgstr "Brak zapisanych szablonów"
 
 #: .\templates\meals\add\add_meals.html:61
+#: .\templates\workouts\add\add_workouts.html:62
 msgid "Save"
 msgstr "Zapisz"
 
@@ -451,11 +457,13 @@ msgid "Are you sure you want to delete this meal?"
 msgstr "Czy jesteś pewien, że chcesz usunąć ten posiłek?"
 
 #: .\templates\meals\add\add_meals.html:78
+#: .\templates\workouts\add\add_workouts.html:79
 #: .\venv\Lib\site-packages\django\forms\widgets.py:771
 msgid "Yes"
 msgstr "Tak"
 
 #: .\templates\meals\add\add_meals.html:79
+#: .\templates\workouts\add\add_workouts.html:80
 #: .\venv\Lib\site-packages\django\forms\widgets.py:772
 msgid "No"
 msgstr "Nie"
@@ -514,9 +522,54 @@ msgstr ""
 "Przeglądaj i modyfikuj swoje zapisane dania, aby łatwiej i szybciej "
 "korzystać z opcji dodawania posiłków."
 
+#: .\templates\workouts\add\add_workouts.html:29
+msgid "Try to search exercises that have you done today."
+msgstr "Spróbuj wyszukać ćwiczenia, które dziś wykonałeś/aś."
+
+#: .\templates\workouts\add\add_workouts.html:33
+msgid "Check your exercises"
+msgstr "Sprawdzaj swoje ćwiczenia"
+
+#: .\templates\workouts\add\add_workouts.html:38
+msgid "Today's Exercises"
+msgstr "Dzisiejsze Ćwiczenia"
+
+#: .\templates\workouts\add\add_workouts.html:42
+msgid "Your workout will appear here"
+msgstr "Twoja kompozycja treningowa pojawi się tutaj"
+
+#: .\templates\workouts\add\add_workouts.html:46
+#: .\templates\workouts\workouts.html:29
+msgid "Saved Workouts"
+msgstr "Zapisane Treningi"
+
+#: .\templates\workouts\add\add_workouts.html:58
+msgid "No saved workouts yet"
+msgstr "Brak zapisanych szablonów"
+
+#: .\templates\workouts\add\add_workouts.html:69
+msgid "Adding your workout to our database..."
+msgstr "Dodawanie Twojego treningu do bazy..."
+
+#: .\templates\workouts\add\add_workouts.html:77
+msgid "Are you sure you want to delete this workout?"
+msgstr "Czy jesteś pewien, że chcesz usunąć ten trening?"
+
+#: .\templates\workouts\add\add_workouts.html:88
+msgid "Your added exercises for today."
+msgstr "Twoje dzisiejsze dodane ćwiczenia."
+
+#: .\templates\workouts\add\add_workouts.html:90
+msgid "Workouts on"
+msgstr "Treningi w"
+
+#: .\templates\workouts\add\add_workouts.html:107
+msgid "No exercises added for today..."
+msgstr "Brak ćwiczeń dodanych dzisiaj..."
+
 #: .\templates\workouts\workouts.html:21
-msgid "Add Workout"
-msgstr "Dodaj Trening"
+msgid "Add Exercise"
+msgstr "Dodaj Ćwiczenia"
 
 #: .\templates\workouts\workouts.html:22
 msgid ""
@@ -537,10 +590,6 @@ msgid ""
 msgstr ""
 "Przeglądaj propozycje ćwiczeń wraz z ich opisem i innymi informacjami "
 "skonstruowanych przez nas specjalnie dla Ciebie."
-
-#: .\templates\workouts\workouts.html:29
-msgid "Saved Workouts"
-msgstr "Zapisane Treningi"
 
 #: .\templates\workouts\workouts.html:30
 msgid ""
@@ -1760,6 +1809,9 @@ msgid ""
 "Set the precision for numeric computations in the SASS processor. Default: "
 "settings.SASS_PRECISION."
 msgstr ""
+
+#~ msgid "Add Workout"
+#~ msgstr "Dodaj Trening"
 
 #~ msgid "Log in to Nutri"
 #~ msgstr "Zaloguj się do Nutri"

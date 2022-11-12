@@ -3609,13 +3609,15 @@ label.year {
   grid-row: 2/3;
   width: 100%;
   height: 100%;
-  grid-column-gap: 5rem; }
+  grid-column-gap: 5rem;
+  margin-top: 15rem; }
   @media only screen and (max-width: 84.375em) {
     .meals {
       grid-template-columns: 1fr;
       grid-template-rows: 1fr 1fr 1fr;
       grid-column-gap: 0;
-      grid-row-gap: 15rem; } }
+      grid-row-gap: 15rem;
+      margin-top: 10rem; } }
   .meals__card {
     display: flex;
     flex-direction: column;
@@ -3885,7 +3887,8 @@ label.year {
         border-radius: 5px;
         -webkit-box-shadow: 0px 0px 18px -7px #42445a;
         -moz-box-shadow: 0px 0px 18px -7px #42445a;
-        box-shadow: 0px 0px 18px -7px #42445a; }
+        box-shadow: 0px 0px 18px -7px #42445a;
+        color: var(--black-muted); }
         @media only screen and (max-width: 75em) {
           .add-meals__search__results__container {
             height: 25rem; } }
@@ -3973,7 +3976,8 @@ label.year {
         overflow-x: hidden;
         -webkit-box-shadow: 0px 0px 18px -7px #42445a;
         -moz-box-shadow: 0px 0px 18px -7px #42445a;
-        box-shadow: 0px 0px 18px -7px #42445a; }
+        box-shadow: 0px 0px 18px -7px #42445a;
+        color: var(--black-muted); }
         .add-meals__added--added__content h3 {
           margin-top: 1rem;
           margin-left: 1.5rem;
@@ -4243,6 +4247,7 @@ label.year {
   transition: all .2s ease-in;
   animation-name: fade-bottom;
   animation-duration: 1.5s;
+  color: var(--black-muted);
   animation-timing-function: ease-out; }
 
 .meals-propositions-layout-container {
@@ -4957,13 +4962,14 @@ label.year {
   width: 100%;
   height: 100%;
   grid-column-gap: 5rem;
-  margin-top: 10rem; }
+  margin-top: 15rem; }
   @media only screen and (max-width: 84.375em) {
     .workouts {
       grid-template-columns: 1fr;
       grid-template-rows: 1fr 1fr 1fr;
       grid-column-gap: 0;
-      grid-row-gap: 15rem; } }
+      grid-row-gap: 15rem;
+      margin-top: 10rem; } }
   .workouts__card {
     display: flex;
     flex-direction: column;
@@ -5067,6 +5073,535 @@ label.year {
 @media only screen and (max-width: 75em) {
   .meals-video-container {
     display: none; } }
+
+.add-workouts-layout-container {
+  width: 100vw;
+  height: auto;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 0.05fr 1fr 0.05fr;
+  grid-template-rows: 0.30fr 1fr 0.15fr;
+  align-items: center;
+  justify-items: center;
+  position: relative; }
+  @media only screen and (max-width: 84.375em) {
+    .add-workouts-layout-container {
+      grid-template-columns: 0.05fr 1fr 0.05fr;
+      grid-template-rows: 0.30fr 2fr 0.15fr;
+      height: auto;
+      background-image: linear-gradient(to bottom, rgba(246, 244, 244, 0.5), rgba(148, 147, 147, 0.84)), url("https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover; } }
+.add-workouts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-column: 2/3;
+  grid-row: 2/3;
+  width: 100%;
+  height: 100%;
+  grid-column-gap: 5rem;
+  border-radius: 10px;
+  padding: 5rem 2rem; }
+  @media only screen and (max-width: 84.375em) {
+    .add-workouts {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr;
+      grid-column-gap: 0;
+      grid-row-gap: 5rem; } }
+  .add-workouts__already__added::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5; }
+  .add-workouts__already__added::-webkit-scrollbar {
+    width: 7px;
+    background-color: #F5F5F5; }
+  .add-workouts__already__added::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #afe0a5; }
+  .add-workouts__already__added {
+    max-height: 35rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    -webkit-box-shadow: 0px 0px 18px -7px #42445a;
+    -moz-box-shadow: 0px 0px 18px -7px #42445a;
+    box-shadow: 0px 0px 18px -7px #42445a; }
+    .add-workouts__already__added--item {
+      display: grid;
+      grid-template-columns: 0.8fr 0.2fr;
+      grid-template-rows: 0.8fr 0.5fr 1fr;
+      align-items: center;
+      border-bottom: 1px solid #f2f2f2;
+      color: black;
+      transition: all .3s ease-in;
+      margin-top: 0.5rem;
+      animation-name: fade-bottom;
+      animation-duration: 1s;
+      animation-timing-function: ease-out; }
+      .add-workouts__already__added--item:hover {
+        transform: scale(1.02); }
+      .add-workouts__already__added--item__category {
+        grid-row: 2/3;
+        grid-column: 1/-1;
+        font-size: 0.5rem; }
+        .add-workouts__already__added--item__category span {
+          color: green;
+          margin-left: 0.5rem; }
+      .add-workouts__already__added--item__details-box {
+        grid-row: 3/4;
+        grid-column: 1 /-1;
+        display: flex; }
+      .add-workouts__already__added--item p {
+        grid-column: 1/2;
+        margin-left: 1.5rem;
+        font-size: 1.5rem;
+        margin-right: 2.5rem; }
+      .add-workouts__already__added--item .today-workouts-added-remove-btn {
+        grid-column: 2/3;
+        justify-self: center;
+        align-self: center; }
+  .add-workouts__search {
+    height: 55rem;
+    display: flex;
+    flex-direction: column;
+    grid-row: 1/2;
+    grid-column: 1/2;
+    background-color: #bde7c5;
+    border-radius: 20px;
+    -webkit-box-shadow: 0px 0px 8px 2px #42445a;
+    -moz-box-shadow: 0px 0px 8px 2px #42445a;
+    box-shadow: 0px 0px 8px 2px #42445a;
+    animation-name: fade-left;
+    animation-duration: 1s;
+    animation-timing-function: ease-out; }
+    @media only screen and (max-width: 84.375em) {
+      .add-workouts__search {
+        grid-row: 1/2;
+        grid-column: 1/2;
+        height: auto; } }
+    .add-workouts__search__bar {
+      margin: 2rem auto;
+      position: relative; }
+      @media only screen and (max-width: 46.875em) {
+        .add-workouts__search__bar {
+          width: 85%; } }
+      .add-workouts__search__bar input {
+        border-radius: 5px;
+        border: none;
+        text-align: center;
+        width: 55rem;
+        height: 4rem;
+        font-size: 1.5rem; }
+        @media only screen and (max-width: 46.875em) {
+          .add-workouts__search__bar input {
+            width: 100%; } }
+      .add-workouts__search__bar__icon {
+        position: absolute;
+        top: 20%;
+        right: 2%;
+        cursor: pointer; }
+    .add-workouts__search hr {
+      color: white;
+      height: 1px; }
+    .add-workouts__search__results {
+      margin: 0 5rem 0 5rem;
+      height: 35rem;
+      border-radius: 5px;
+      color: var(--color-white); }
+      @media only screen and (max-width: 84.375em) {
+        .add-workouts__search__results {
+          height: 35rem;
+          margin: 5rem 5rem 5rem 5rem; } }
+      @media only screen and (max-width: 37.5em) {
+        .add-workouts__search__results {
+          margin: 5rem 1.5rem 5rem 1.5rem; } }
+      .add-workouts__search__results__container::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        background-color: #F5F5F5; }
+      .add-workouts__search__results__container::-webkit-scrollbar {
+        width: 7px;
+        background-color: #F5F5F5; }
+      .add-workouts__search__results__container::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: #afe0a5; }
+      .add-workouts__search__results__container {
+        overflow-y: auto;
+        overflow-x: hidden;
+        height: 25rem;
+        font-size: 1.3rem;
+        background-color: white;
+        border-radius: 5px;
+        -webkit-box-shadow: 0px 0px 18px -7px #42445a;
+        -moz-box-shadow: 0px 0px 18px -7px #42445a;
+        box-shadow: 0px 0px 18px -7px #42445a;
+        color: var(--black-muted); }
+        @media only screen and (max-width: 75em) {
+          .add-workouts__search__results__container {
+            height: 25rem; } }
+        .add-workouts__search__results__container p {
+          margin: 3rem 2rem;
+          font-size: 2rem; }
+          @media only screen and (max-width: 31.25em) {
+            .add-workouts__search__results__container p {
+              font-size: 1.6rem; } }
+        .add-workouts__search__results__container__item {
+          display: grid;
+          grid-template-columns: 0.8fr 0.2fr;
+          grid-template-rows: 1fr;
+          align-items: center;
+          transition: all .3s ease-in;
+          animation-name: fade-bottom;
+          animation-duration: 1s;
+          animation-timing-function: ease-out; }
+          @media only screen and (max-width: 84.375em) {
+            .add-workouts__search__results__container__item {
+              grid-template-columns: 1fr 0.1fr; } }
+          .add-workouts__search__results__container__item:not(:last-of-type) {
+            border-bottom: 2px solid #f2f2f2; }
+          .add-workouts__search__results__container__item:hover {
+            transform: scale(1.02); }
+          .add-workouts__search__results__container__item p {
+            grid-column: 1/2; }
+      .add-workouts__search__results h3 {
+        margin: 4rem 2rem;
+        font-size: 2rem;
+        font-weight: bold; }
+  .add-workouts__added {
+    height: 55rem;
+    background-color: #bde7c5;
+    border-radius: 20px;
+    grid-column: 2/3;
+    grid-row: 1/2;
+    -webkit-box-shadow: 0px 0px 8px 2px #42445a;
+    -moz-box-shadow: 0px 0px 8px 2px #42445a;
+    box-shadow: 0px 0px 8px 2px #42445a;
+    display: grid;
+    grid-template-rows: 0.3fr 3fr 0.3fr;
+    grid-template-columns: 1fr 0.5fr;
+    color: white;
+    animation-name: fade-right;
+    animation-duration: 1s;
+    animation-timing-function: ease-out; }
+    @media only screen and (max-width: 84.375em) {
+      .add-workouts__added {
+        grid-row: 2/3;
+        grid-column: 1/2; } }
+    @media only screen and (max-width: 37.5em) {
+      .add-workouts__added {
+        grid-template-rows: 0.3fr 1fr 0.3fr 1fr;
+        grid-template-columns: 1fr; } }
+    .add-workouts__added--added {
+      grid-row: 1/2;
+      grid-column: 1/2; }
+      @media only screen and (max-width: 37.5em) {
+        .add-workouts__added--added {
+          grid-row: 1/2;
+          grid-column: 1/2; } }
+      .add-workouts__added--added__heading {
+        margin: 1.5rem 2rem;
+        font-size: 1.5rem;
+        text-align: center; }
+        @media only screen and (max-width: 75em) {
+          .add-workouts__added--added__heading {
+            font-size: 2rem; } }
+        @media only screen and (max-width: 37.5em) {
+          .add-workouts__added--added__heading {
+            font-size: 2.5rem;
+            margin: 2.5rem 2rem; } }
+        @media only screen and (max-width: 25em) {
+          .add-workouts__added--added__heading {
+            font-size: 2rem; } }
+      .add-workouts__added--added__content {
+        grid-row: 2/3;
+        grid-column: 1/2;
+        background-color: white;
+        margin: 2rem 1rem 2rem 1rem;
+        border-radius: 10px;
+        color: black;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-box-shadow: 0px 0px 18px -7px #42445a;
+        -moz-box-shadow: 0px 0px 18px -7px #42445a;
+        box-shadow: 0px 0px 18px -7px #42445a; }
+        .add-workouts__added--added__content h3 {
+          margin-top: 1rem;
+          margin-left: 1.5rem;
+          font-size: 1.5rem; }
+        @media only screen and (max-width: 37.5em) {
+          .add-workouts__added--added__content {
+            grid-row: 2/3;
+            grid-column: 1/2; } }
+        .add-workouts__added--added__content__item {
+          margin-top: 0.5rem;
+          display: grid;
+          grid-template-columns: 0.8fr 0.2fr;
+          grid-template-rows: 1fr;
+          align-items: center;
+          border-bottom: 1px solid #f2f2f2;
+          transition: all .3s ease-in;
+          animation-name: fade-bottom;
+          animation-duration: 1s;
+          animation-timing-function: ease-out; }
+          .add-workouts__added--added__content__item:first-of-type {
+            margin-top: 1rem; }
+          @media only screen and (max-width: 84.375em) {
+            .add-workouts__added--added__content__item {
+              grid-template-columns: 1fr 0.1fr; } }
+          .add-workouts__added--added__content__item:hover {
+            transform: scale(1.02); }
+          .add-workouts__added--added__content__item p {
+            margin-left: 1.5rem;
+            grid-column: 1/2;
+            font-size: 1.5rem;
+            margin-right: 2.5rem; }
+            @media only screen and (max-width: 93.75em) {
+              .add-workouts__added--added__content__item p {
+                font-size: 2rem; } }
+      .add-workouts__added--added__content::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        background-color: #F5F5F5; }
+      .add-workouts__added--added__content::-webkit-scrollbar {
+        width: 7px;
+        background-color: #F5F5F5; }
+      .add-workouts__added--added__content::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: #afe0a5; }
+    .add-workouts__added--saved {
+      grid-row: 1/2;
+      grid-column: 2/3; }
+      @media only screen and (max-width: 37.5em) {
+        .add-workouts__added--saved {
+          grid-row: 3/4;
+          grid-column: 1/2; } }
+      .add-workouts__added--saved__heading {
+        margin: 1.5rem 2rem;
+        font-size: 1.5rem;
+        text-align: center; }
+        @media only screen and (max-width: 93.75em) {
+          .add-workouts__added--saved__heading {
+            font-size: 1.5rem; } }
+        @media only screen and (max-width: 75em) {
+          .add-workouts__added--saved__heading {
+            font-size: 2rem; } }
+        @media only screen and (max-width: 37.5em) {
+          .add-workouts__added--saved__heading {
+            font-size: 2.5rem;
+            margin: 2.5rem 2rem; } }
+        @media only screen and (max-width: 25em) {
+          .add-workouts__added--saved__heading {
+            font-size: 2rem; } }
+      .add-workouts__added--saved__content {
+        color: black;
+        grid-row: 2/3;
+        grid-column: 2/3;
+        background-color: white;
+        margin: 2rem 1rem 2rem 1rem;
+        border-radius: 10px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-box-shadow: 0px 0px 18px -7px #42445a;
+        -moz-box-shadow: 0px 0px 18px -7px #42445a;
+        box-shadow: 0px 0px 18px -7px #42445a; }
+        @media only screen and (max-width: 37.5em) {
+          .add-workouts__added--saved__content {
+            grid-row: 4/5;
+            grid-column: 1/2; } }
+        .add-workouts__added--saved__content__item {
+          margin-top: 0.5rem;
+          display: grid;
+          grid-template-columns: 0.8fr 0.2fr;
+          grid-template-rows: 1fr 0.5fr;
+          align-items: center;
+          border-bottom: 1px solid #f2f2f2;
+          transition: all .3s ease-in; }
+          @media only screen and (max-width: 84.375em) {
+            .add-workouts__added--saved__content__item {
+              grid-template-columns: 1fr 0.1fr; } }
+          .add-workouts__added--saved__content__item:hover {
+            transform: scale(1.02); }
+          .add-workouts__added--saved__content__item p {
+            margin-left: 1.5rem;
+            grid-column: 1/2;
+            font-size: 1.5rem;
+            margin-right: 2.5rem; }
+            @media only screen and (max-width: 93.75em) {
+              .add-workouts__added--saved__content__item p {
+                font-size: 2rem; } }
+      .add-workouts__added--saved__content::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        background-color: #F5F5F5; }
+      .add-workouts__added--saved__content::-webkit-scrollbar {
+        width: 7px;
+        background-color: #F5F5F5; }
+      .add-workouts__added--saved__content::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: #afe0a5; }
+
+#add-meals-video {
+  opacity: 0.8;
+  filter: blur(5px); }
+  @media only screen and (max-width: 75em) {
+    #add-meals-video {
+      display: none; } }
+.today-workouts-added-inputBox {
+  grid-row: 2/3;
+  grid-column: 1 / -1;
+  margin: 0.5rem 1.5rem 0 1.5rem;
+  font-size: 1.5rem; }
+  .today-workouts-added-inputBox input {
+    width: 8rem;
+    height: 2rem;
+    text-align: center;
+    border-radius: 10px;
+    border: none;
+    background-color: rgba(200, 243, 195, 0.69); }
+  .today-workouts-added-inputBox label {
+    margin-left: 1rem; }
+
+.save-add-today-workouts {
+  grid-row: 3/4;
+  grid-column: 1/-1;
+  border-radius: 5px;
+  width: 15rem;
+  height: 3rem;
+  align-self: center;
+  justify-self: center;
+  font-size: 2rem;
+  border: none;
+  background-color: var(--green);
+  color: var(--color-white);
+  cursor: pointer;
+  font-weight: bold;
+  transition: all .2s ease-in; }
+  .save-add-today-workouts:hover {
+    transform: scale(1.05); }
+
+.search-results-info {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  animation-name: fade-bottom;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+  transition: all .2s ease-in; }
+
+.saved-results-info {
+  font-size: 2rem;
+  margin: 15rem auto;
+  text-align: center;
+  display: block;
+  transition: all .2s ease-in;
+  animation-name: fade-bottom;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+  color: var(--black-muted); }
+
+.search-category-small {
+  margin-left: 2rem; }
+  .search-category-small__text {
+    color: green;
+    font-size: 1.8rem;
+    margin-left: 0.5rem; }
+
+.accept-delete-today-workout {
+  border-radius: 5px;
+  width: 6rem;
+  height: 4rem;
+  font-size: 1.5rem;
+  border: 1px solid #13aa52;
+  background-color: #13aa52;
+  color: white;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold; }
+  .accept-delete-today-workout:hover {
+    transform: scale(1.02); }
+
+.deny-delete-today-workout {
+  border-radius: 5px;
+  width: 6rem;
+  height: 4rem;
+  font-size: 1.5rem;
+  border: 1px solid #ff041b;
+  background-color: rgba(255, 4, 27, 0.63);
+  color: white;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-left: 1rem; }
+  .deny-delete-today-workout:hover {
+    transform: scale(1.02); }
+
+.info-search-saved {
+  font-size: 2.5rem;
+  margin: auto auto;
+  text-align: center;
+  animation-name: fade-bottom;
+  animation-duration: 1s;
+  animation-timing-function: ease-out; }
+
+.search-input {
+  -webkit-box-shadow: 0px 0px 18px -7px #42445a;
+  -moz-box-shadow: 0px 0px 18px -7px #42445a;
+  box-shadow: 0px 0px 18px -7px #42445a;
+  border: none;
+  outline: none;
+  transition: all .2s ease-in; }
+  .search-input:active {
+    transform: scale(1.04); }
+  .search-input:hover {
+    transform: scale(1.02); }
+
+.check-today-workouts {
+  display: flex;
+  text-align: center;
+  margin: 7.5rem auto auto auto;
+  border-radius: 5px;
+  height: 3rem;
+  padding: 1rem 4em;
+  font-size: 2rem;
+  border: none;
+  background-color: var(--green);
+  color: var(--color-white);
+  cursor: pointer;
+  font-weight: bold;
+  transition: all .2s ease-in; }
+  @media only screen and (max-width: 84.375em) {
+    .check-today-workouts {
+      margin: 1.5rem auto 1.5rem auto; } }
+  .check-today-workouts span {
+    align-self: center;
+    justify-self: center; }
+  .check-today-workouts:hover {
+    transform: scale(1.05); }
+
+.saved-workouts__search__results__heading-box h3 {
+  font-size: 3rem;
+  font-weight: bold; }
+
+.workouts-on-date {
+  font-size: 2rem; }
+
+.no-saved-templates-info {
+  margin: 15rem 0 auto 0;
+  text-align: center;
+  font-size: 2rem;
+  transition: all .2s ease-in;
+  animation-name: fade-bottom;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+  color: var(--black-muted); }
 
 *,
 *::after,

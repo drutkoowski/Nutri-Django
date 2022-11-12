@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-11 01:18+0100\n"
+"POT-Creation-Date: 2022-11-11 14:22+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -346,11 +346,14 @@ msgid "Email or password field is not valid."
 msgstr "Pole email lub hasła jest nieprawidłowe."
 
 #: .\static\scripts\meals\add\main.js:177
+#: .\static\scripts\workouts\add\main.js:177
 msgid "Category"
 msgstr "Kategoria"
 
 #: .\static\scripts\meals\add\main.js:237
 #: .\static\scripts\meals\add\main.js:242
+#: .\static\scripts\workouts\add\main.js:237
+#: .\static\scripts\workouts\add\main.js:242
 msgid "No search results."
 msgstr "Brak rezultatów wyszukiwania."
 
@@ -359,6 +362,7 @@ msgid "Try to search meal or ingredients that have you eaten today."
 msgstr "Spróbuj wyszukać posiłek lub składniki, które zjadłeś/aś dzisiaj."
 
 #: .\static\scripts\meals\add\main.js:412
+#: .\static\scripts\workouts\add\main.js:411
 msgid "Results will appear here."
 msgstr "Wyniki pojawią się tutaj."
 
@@ -478,6 +482,12 @@ msgstr "Użytkownik z tymi danymi uwierzytelniającymi już istnieje."
 #: .\static\scripts\signup\main.js:429
 msgid "Something went wrong, try again."
 msgstr "Coś poszło nie tak, spróbuj ponownie."
+
+#: .\static\scripts\workouts\add\main.js:410
+#, fuzzy
+#| msgid "Try to search meal or ingredients that have you eaten today."
+msgid "Try to search exercise or exercises that have you eaten today."
+msgstr "Spróbuj wyszukać posiłek lub składniki, które zjadłeś/aś dzisiaj."
 
 #~ msgid "Password is too short!"
 #~ msgstr "Twoje hasło jest zbyt krótkie!"

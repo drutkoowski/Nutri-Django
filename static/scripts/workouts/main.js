@@ -8,3 +8,9 @@ if (mealsVideo) {
 }
 
 window.onresize = function(){ location.reload(); }
+
+const workoutAddCard = document.querySelector('.workouts__card--add')
+workoutAddCard.addEventListener('click', e => {
+    const langPrefix = window.location.href.split('/')[3];
+    location.href = location.origin + `/${langPrefix}/workouts/add`
+})
