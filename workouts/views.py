@@ -72,9 +72,9 @@ def test(request):
     translator = Translator()
     for exercise in data:
 
-        met = exercise['met']
+        met = exercise[0]['met']
         exercise_met = round(float(met),2)
-        exercise_name = exercise['exerciseName']
+        exercise_name = exercise[0]['exerciseName']
         try:
 
             translation = translator.translate(exercise_name, dest='pl')
@@ -82,16 +82,18 @@ def test(request):
             # unit = ExerciseUnit.objects.filter(en_name__iexact='km').first()
             time_unit = ExerciseTimeUnit.objects.filter(en_time_unit_name__iexact='minutes').first()
             if_exists = Exercise.objects.filter(pl_name__iexact=translation.text, en_name__iexact=exercise_name).first()
+            if_exists2 = Exercise.objects.filter(en_name__iexact=exercise_name, met=met).first()
             # print(exercise_met, exercise_name, unit, category, time_unit, translation.text)
-            if if_exists is None:
+            if if_exists is None and if_exists2 is None:
                 new_ingredient = Exercise.objects.create(pl_name=translation.text, en_name=exercise_name,
                                                          category=category, time_unit=time_unit, met=exercise_met)
                 new_ingredient.save()
                 print(f'{exercise_name} dodano')
         except:
-            print('nie dodano')
+            pass
         else:
-            print(f'{exercise_name} nie dodano')
+            # print(f'{exercise_name} nie dodano')
+            pass
     return render(request, 'workouts/test.html')
 
 def test2(request):
