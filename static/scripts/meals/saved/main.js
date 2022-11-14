@@ -526,7 +526,7 @@ saveNewMealButton.addEventListener('click', e => {
      const cardContentParent = document.querySelector('.saved-meals__added--saved__content')
      let contentToAppend = `
      
-          <div class="info-search-saved">Search to fill your template with meals.</div>
+          <div class="info-search-saved ">Search to fill your template with meals.</div>
           <div class="saved-meals__added--saved__content__meal not-visible">
                <h2 class="your-meal-heading">${gettext('Your Meal')}</h2>
                <div class="saved-meals__added--saved__content__meal__items"></div>

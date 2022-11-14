@@ -129,9 +129,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
   transition: all .2s ease-in;
   align-self: center;
   justify-self: center;
-  -webkit-box-shadow: 0px 0px 3px 0px #42445a;
-  -moz-box-shadow: 0px 0px 3px 0px #42445a;
-  box-shadow: 0px 0px 3px 0px #42445a; }
+  -webkit-box-shadow: 0px 0px 22px -11px #42445a;
+  -moz-box-shadow: 0px 0px 22px -11px #42445a;
+  box-shadow: 0px 0px 22px -11px #42445a; }
   .btn:hover {
     transform: scale(1.05); }
 

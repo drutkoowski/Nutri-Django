@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-14 23:39+0100\n"
+"POT-Creation-Date: 2022-11-15 00:19+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -366,21 +366,26 @@ msgstr "Spróbuj wyszukać posiłek lub składniki, które zjadłeś/aś dzisiaj
 msgid "Results will appear here."
 msgstr "Wyniki pojawią się tutaj."
 
-#: .\static\scripts\meals\saved\main.js:524
+#: .\static\scripts\meals\saved\main.js:377
+msgid "Add new element for your meal"
+msgstr ""
+
+#: .\static\scripts\meals\saved\main.js:385
+#: .\static\scripts\meals\saved\main.js:538
+msgid "Save"
+msgstr "Zapisz"
+
+#: .\static\scripts\meals\saved\main.js:523
 msgid "Create New Meal Template"
 msgstr "Stwórz Nowy Szablon Posiłku"
 
-#: .\static\scripts\meals\saved\main.js:532
+#: .\static\scripts\meals\saved\main.js:531
 msgid "Your Meal"
 msgstr "Twój Posiłek"
 
-#: .\static\scripts\meals\saved\main.js:538
+#: .\static\scripts\meals\saved\main.js:537
 msgid "Meal Name"
 msgstr "Nazwa posiłku"
-
-#: .\static\scripts\meals\saved\main.js:539
-msgid "Save"
-msgstr "Zapisz"
 
 #: .\static\scripts\signup\main.js:155
 msgid "\"What's your weight goal?\""
