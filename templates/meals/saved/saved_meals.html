@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load sass_tags %}
-
+{% load i18n %}
 {% block scripts %}
      <script src="{% sass_src 'scripts/meals/saved/main.js' %}" defer></script>
     <script>
@@ -8,6 +8,7 @@
     </script>
 {% endblock scripts %}
 {% block content %}
+    {% csrf_token %}
     <div class="loader"></div>
       <div class="bg-video" id="add-meals-video-container">
          <video id="add-meals-video" class="bg-video__content" autoplay muted loop>
@@ -24,36 +25,39 @@
                 <div class="saved-meals__search">
                     <div class="saved-meals__search__results">
                     <div class="saved-meals__search__results__heading-box">
-                        <h3>Your Saved Meals</h3>
+                        <h3>{% trans 'Your Saved Meals' %}</h3>
                     </div>
                         <div class="saved-meals__search__results__container">
+                        {% if saved_templates %}
                             {% for item in saved_templates %}
                                 <div class="saved-meals__search__results__container__item">
                                     <div class="saved-meals__search__results__container__item__recipe"><p><b>{{ item.meal_name }}</b> - {{ item.kcal|floatformat:"-3" }} kcal</p></div>
                                     <div class="saved-meals__search__results__container__item__buttons">
-                                        <button class="edit-saved-meals" data-meal='{{ item.id }}'>Manage</button>
-                                        <button class="delete-saved-meals" data-meal='{{ item.id }}'>Delete</button>
+                                        <button class="edit-saved-meals btn-light" data-meal='{{ item.id }}'>{% trans 'Manage' %}</button>
+                                        <button class="delete-saved-meals btn-light" data-meal='{{ item.id }}'>{% trans 'Delete' %}</button>
                                     </div>
                                 </div>
                             {% endfor %}
+                            {% else %}
+                            <p class="no-saved-templates-info">{% trans 'No saved templates yet' %}</p>
+                        {% endif %}
                         </div>
                     </div>
                     <div class="saved-meals__search__save-new">
-                        <p>Do you want to create new meal?</p>
-                        <button class="saved-meals__search__save-new__button">Create New Template</button>
+                        <p>{% trans 'Do you want to create new meal template?' %}</p>
+                        <button class="saved-meals__search__save-new__button btn">{% trans 'Create New Template' %}</button>
                     </div>
                 </div>
                 <div class="modal-queued not-visible">
                      <div class="modal-queued__content">
                          <div class="modal-queued__close-button">&times;</div>
-                         <h1 class="modal-queued--heading">Adding your meal template to our database..</h1>
+                         <h1 class="modal-queued--heading">{% trans 'Adding your meal template to our database..' %}</h1>
                          <div class="loader--signup"></div>
                      </div>
                  </div>
 
                 <div class="saved-meals__added not-visible">
                     <div class="saved-meals__added--saved">
-                        {% csrf_token %}
                         <div class="saved-meals__added--saved__heading">
                             <h2 class="saved-meals__added--saved__heading--item">&nbsp;</h2>
                         </div>
@@ -65,8 +69,8 @@
                 <div class="modal-queued modal-edit-search not-visible">
                      <div class="modal-queued__content modal-edit-search__content">
                          <div class="modal-queued__close-button modal-edit-search__close-button">&times;</div>
-                         <h1 class="modal-queued--heading modal-edit-search__heading">Search for your meal components</h1>
-                         <div class="add-new-element-template-search-bar modal-edit-search__content__search"><input class="new-saved-meal-search input-scale modal-edit-search__content__search-bar" type="text" placeholder="Search"/><span><img class="add-meals__search__bar__icon" src="{% sass_src 'images/svg/search.svg' %}" alt="Search Icon" /></span></div>
+                         <h1 class="modal-queued--heading modal-edit-search__heading">{% trans 'Search for your meal components' %}</h1>
+                         <div class="add-new-element-template-search-bar modal-edit-search__content__search"><input class="new-saved-meal-search input-scale modal-edit-search__content__search-bar" type="text" placeholder="{% trans 'Search' %}"/><span><img class="add-meals__search__bar__icon" src="{% sass_src 'images/svg/search.svg' %}" alt="Search Icon" /></span></div>
                             <div class="saved-meals__added--saved__content__search-response modal-edit-search__content__search-response not-visible">
                                 <div class="saved-meals__added--saved__content__search-response__item"></div>
                             </div>
@@ -76,8 +80,8 @@
                 <div class="modal-queued modal-add-search not-visible">
                      <div class="modal-queued__content modal-add-search__content">
                          <div class="modal-queued__close-button modal-add-search__close-button">&times;</div>
-                         <h1 class="modal-queued--heading modal-add-search__heading">Search for your meal components</h1>
-                         <div class="saved-meals__added--saved__content__search-bar modal-add-search__content__search"><input class="new-saved-meal-search input-scale modal-add-search__content__search-bar" type="text" placeholder="Search"/><span><img class="add-meals__search__bar__icon" src="{% sass_src 'images/svg/search.svg' %}" alt="Search Icon" /></span></div>
+                         <h1 class="modal-queued--heading modal-add-search__heading">{% trans 'Search for your meal components' %}</h1>
+                         <div class="saved-meals__added--saved__content__search-bar modal-add-search__content__search"><input class="new-saved-meal-search input-scale modal-add-search__content__search-bar" type="text" placeholder="{% trans 'Search' %}"/><span><img class="add-meals__search__bar__icon" src="{% sass_src 'images/svg/search.svg' %}" alt="Search Icon" /></span></div>
                           <div class="saved-meals__added--saved__content__search-response modal-add-search__content__search-response not-visible">
                               <div class="saved-meals__added--saved__content__search-response__item"></div>
                           </div>

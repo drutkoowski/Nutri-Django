@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-11 14:22+0100\n"
+"POT-Creation-Date: 2022-11-14 23:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -345,26 +345,42 @@ msgstr "Wystąpił błąd.. spróbuj jeszcze raz."
 msgid "Email or password field is not valid."
 msgstr "Pole email lub hasła jest nieprawidłowe."
 
-#: .\static\scripts\meals\add\main.js:177
-#: .\static\scripts\workouts\add\main.js:177
+#: .\static\scripts\meals\add\main.js:178
+#: .\static\scripts\workouts\add\main.js:175
 msgid "Category"
 msgstr "Kategoria"
 
-#: .\static\scripts\meals\add\main.js:237
-#: .\static\scripts\meals\add\main.js:242
-#: .\static\scripts\workouts\add\main.js:237
-#: .\static\scripts\workouts\add\main.js:242
+#: .\static\scripts\meals\add\main.js:238
+#: .\static\scripts\meals\add\main.js:243
+#: .\static\scripts\workouts\add\main.js:231
+#: .\static\scripts\workouts\add\main.js:236
 msgid "No search results."
 msgstr "Brak rezultatów wyszukiwania."
 
-#: .\static\scripts\meals\add\main.js:411
+#: .\static\scripts\meals\add\main.js:412
 msgid "Try to search meal or ingredients that have you eaten today."
 msgstr "Spróbuj wyszukać posiłek lub składniki, które zjadłeś/aś dzisiaj."
 
-#: .\static\scripts\meals\add\main.js:412
-#: .\static\scripts\workouts\add\main.js:411
+#: .\static\scripts\meals\add\main.js:413
+#: .\static\scripts\workouts\add\main.js:414
 msgid "Results will appear here."
 msgstr "Wyniki pojawią się tutaj."
+
+#: .\static\scripts\meals\saved\main.js:524
+msgid "Create New Meal Template"
+msgstr "Stwórz Nowy Szablon Posiłku"
+
+#: .\static\scripts\meals\saved\main.js:532
+msgid "Your Meal"
+msgstr "Twój Posiłek"
+
+#: .\static\scripts\meals\saved\main.js:538
+msgid "Meal Name"
+msgstr "Nazwa posiłku"
+
+#: .\static\scripts\meals\saved\main.js:539
+msgid "Save"
+msgstr "Zapisz"
 
 #: .\static\scripts\signup\main.js:155
 msgid "\"What's your weight goal?\""
@@ -483,11 +499,9 @@ msgstr "Użytkownik z tymi danymi uwierzytelniającymi już istnieje."
 msgid "Something went wrong, try again."
 msgstr "Coś poszło nie tak, spróbuj ponownie."
 
-#: .\static\scripts\workouts\add\main.js:410
-#, fuzzy
-#| msgid "Try to search meal or ingredients that have you eaten today."
+#: .\static\scripts\workouts\add\main.js:413
 msgid "Try to search exercise or exercises that have you eaten today."
-msgstr "Spróbuj wyszukać posiłek lub składniki, które zjadłeś/aś dzisiaj."
+msgstr "Spróbuj wyszukać aktywność lub ćwiczenia, które wykonałaś/eś dziś."
 
 #~ msgid "Password is too short!"
 #~ msgstr "Twoje hasło jest zbyt krótkie!"

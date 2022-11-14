@@ -141,9 +141,11 @@ def add_today_meal_ajax(request):
     else:
         return redirect('home')
 
+
 @login_required(login_url='login')
 def add_saved_meal_element(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
+        print(request.method, 'asdasd')
         ingredients_array = request.POST.get('ingredientsArray')
         data = json.loads(ingredients_array)
         meal_name = request.POST.get('mealName')
@@ -178,7 +180,7 @@ def add_saved_meal_element(request):
             return JsonResponse({'status': 201, 'text': 'Meal template created!'})
         except:
             return JsonResponse({'status': 400, 'text': 'Some error occurred, meal template not created!'})
-    return redirect('home')
+
 
 @login_required(login_url='login')
 def get_saved_meal_template_element(request):
@@ -226,6 +228,7 @@ def get_saved_meal_template_element(request):
              "ingredientElement": json.dumps(ingredient_obj_dict)})
     return redirect('home')
 
+
 @login_required(login_url='login')
 def get_saved_meal_template(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
@@ -246,25 +249,27 @@ def get_saved_meal_template(request):
             {'status': 302, 'text': 'Meal Template Found', "mealTemplateObj": json.dumps(template_obj_dict)})
     return redirect('home')
 
+
 @login_required(login_url='login')
 def delete_saved_meal_template(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
         meal_template_id = request.POST.get('mealTemplateId')
-        meal_template = MealTemplate.objects.get(pk=meal_template_id)
+        user_profile = UserProfile.objects.get(user=request.user)
+        meal_template = MealTemplate.objects.get(pk=meal_template_id, created_by=user_profile)
         meal_template.delete()
         return JsonResponse({'status': 200, 'text': 'Object deleted successfully!'})
+
 
 @login_required(login_url='login')
 def delete_today_meal_ajax(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
         meal_id = request.POST.get('meal_id')
         try:
-            meal = Meal.objects.get(pk=meal_id)
+            user_profile = UserProfile.objects.get(user=request.user)
+            meal = Meal.objects.get(pk=meal_id, created_by=user_profile)
             meal.delete()
             return JsonResponse({'status': 200, 'text': f'Item with id {meal_id} successfully deleted!'})
         except:
             return JsonResponse({'status': 400, 'text': f'Item with id {meal_id} was not deleted!'})
     else:
         return redirect('home')
-
-

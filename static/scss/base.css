@@ -135,6 +135,22 @@ ORDER: Base + typography > general layout + grid > page layout > components
   .btn:hover {
     transform: scale(1.05); }
 
+.btn-light {
+  background-color: var(--green);
+  color: var(--color-white);
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all .2s ease-in;
+  align-self: center;
+  justify-self: center;
+  -webkit-box-shadow: 0px 0px 15px -11px #42445a;
+  -moz-box-shadow: 0px 0px 15px -11px #42445a;
+  box-shadow: 0px 0px 15px -11px #42445a; }
+  .btn-light:hover {
+    transform: scale(1.05); }
+
 .bolded {
   font-weight: bold; }
 
@@ -163,6 +179,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   --green-third: rgb(23, 248, 0);
   --green-modal: #afe0a5;
   --red: rgba(241, 2, 2, 0.69);
+  --red-light: rgba(241, 2, 2, 0.49);
   --black-muted: rgba(1, 1, 1, 0.75);
   --color-white: rgba(255, 255, 255, 1);
   --font-color-default:  rgba(255, 255, 255, 1);
@@ -1386,7 +1403,10 @@ ORDER: Base + typography > general layout + grid > page layout > components
     margin-left: auto;
     background-color: var(--green-modal);
     color: white;
-    position: relative; }
+    position: relative;
+    -webkit-box-shadow: 0px 0px 18px -7px #42445a;
+    -moz-box-shadow: 0px 0px 18px -7px #42445a;
+    box-shadow: 0px 0px 18px -7px #42445a; }
     .modal__today-workouts-list__content__elements {
       margin-top: 2rem;
       background-color: white;
@@ -4651,16 +4671,10 @@ label.year {
       .saved-meals__search__save-new p {
         font-size: 2rem; }
       .saved-meals__search__save-new button {
-        padding: 1rem 2rem;
-        border: none;
-        border-radius: 10px;
-        color: white;
-        margin-bottom: 1rem;
-        background-color: #5ec251;
+        padding: 1rem 3rem;
         cursor: pointer;
-        transition: all .2s ease-in; }
-        .saved-meals__search__save-new button:hover {
-          transform: scale(1.05); }
+        margin-top: 2rem;
+        margin-bottom: 2rem; }
     .saved-meals__search__results {
       margin: 5rem 2.5rem 0 2.5rem;
       height: 40rem;
@@ -4722,10 +4736,11 @@ label.year {
                 transform: scale(1.05); }
       .saved-meals__search__results h3 {
         margin: 2rem 2rem;
-        font-size: 2.3rem; }
+        font-size: 3.3rem; }
       .saved-meals__search__results__heading-box {
         background-color: #bde7c5;
-        color: white; }
+        color: white;
+        text-align: center; }
   .saved-meals__added {
     background-color: #bde7c5;
     border-radius: 20px;
@@ -4769,12 +4784,7 @@ label.year {
         box-shadow: 0px 0px 18px -7px #42445a; }
         .saved-meals__added--saved__content__save {
           margin-left: 2rem;
-          padding: 0.75rem 2rem;
-          border: none;
-          border-radius: 10px;
-          color: white;
-          background-color: #5ec251;
-          cursor: pointer;
+          padding: 0.75rem 3rem;
           transition: all .2s ease-in;
           justify-self: center;
           align-self: center;
@@ -5083,6 +5093,9 @@ label.year {
   animation-name: fade-bottom;
   animation-duration: 1s;
   animation-timing-function: ease-in-out; }
+
+.delete-saved-meals {
+  background-color: var(--red-light) !important; }
 
 .workouts-layout-container {
   width: 100vw;

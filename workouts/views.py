@@ -27,6 +27,10 @@ def add_workout_view(request):
     }
     return render(request, 'workouts/add/add_workouts.html', context)
 
+def saved_workout_view(request):
+    return None
+
+
 
 # ajax calls
 @login_required(login_url='login')
@@ -89,7 +93,7 @@ def add_today_exercise(request):
             for item in data_array:
                 exercise = Exercise.objects.filter(pk=item['exerciseId']).first()
                 quantity_minutes = round(float(item['quantity']), 2)
-                exercise_kcal = ((exercise.met * 3.5 * float(user_profile.weight)) / 200) * quantity_minutes
+                exercise_kcal = round(((exercise.met * 3.5 * float(user_profile.weight)) / 200) * quantity_minutes, 2)
                 workout_element = WorkoutElement.objects.create(exercise=exercise, min_spent=quantity_minutes,
                                                                 kcal_burnt=exercise_kcal)
                 workout_element.save()
@@ -110,7 +114,11 @@ def delete_today_workout(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
         workout_id = request.POST.get('workout_id')
         try:
-            workout = Workout.objects.get(pk=workout_id)
+            user_profile = UserProfile.objects.get(user=request.user)
+            workout = Workout.objects.get(pk=workout_id, created_by=user_profile)
+            workout_elements = WorkoutElement.objects.filter(workout__pk=workout_id).all()
+            for el in workout_elements:
+                el.delete()
             workout.delete()
             return JsonResponse({'status': 200, 'text': f'Item with id {workout_id} successfully deleted!'})
         except:
@@ -119,6 +127,28 @@ def delete_today_workout(request):
         return redirect('home')
 
 
+@login_required(login_url='login')
+def delete_today_workout_element(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
+        workout_element_id = request.POST.get('workout_element_id')
+        try:
+            user_profile = UserProfile.objects.get(user=request.user)
+            workouts = Workout.objects.filter(created_by=user_profile).all()
+            for workout in workouts:
+                for element in workout.workout_elements.all():
+                    elements_count = len(workout.workout_elements.all())
+                    if int(element.pk) == int(workout_element_id):
+                        element = WorkoutElement.objects.get(pk=element.pk)
+                        workout.workout_elements.remove(element)
+                        workout.save()
+                        element.delete()
+                        if elements_count == 1:
+                            workout.delete()
+            return JsonResponse({'status': 200, 'text': f'Item with id {workout_element_id} successfully deleted!'})
+        except:
+            return JsonResponse({'status': 400, 'text': f'Item with id {workout_element_id} was not deleted!'})
+    else:
+        return redirect('home')
 
 def test(request):
     import json
@@ -210,4 +240,3 @@ def test2(request):
 #             return JsonResponse({'status': 302})
 #     else:
 #         return JsonResponse({'status': 404})
-

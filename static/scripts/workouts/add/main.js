@@ -323,7 +323,7 @@ const ajaxCallSearchTemplate = (id) => {
 
 
 // delete
-const ajaxCallDelete = (workoutId) => {
+const ajaxCallDeleteWorkout = (workoutId) => {
        const langPrefix = window.location.href.split('/')[3];
        const url = location.origin + `/${langPrefix}/workouts/data/delete/added-workout`
        $.ajax({
@@ -341,7 +341,28 @@ const ajaxCallDelete = (workoutId) => {
         },
     })
 }
+const ajaxCallDeleteWorkoutElement = (elementId) => {
+    const langPrefix = window.location.href.split('/')[3];
+    const url = location.origin + `/${langPrefix}/workouts/data/delete/added-workout/element`
+     $.ajax({
+        type: "POST",
+        url: url,
+        data: {
+            'workout_element_id': elementId,
+            'csrfmiddlewaretoken': csrfToken,
+        },
+        success: function (response){
+            const status = response.status
+            console.log(response.text)
+            if (status === 200) {
+               location.reload()
+            }
+        },
+        error: function (error) {
 
+        }
+    })
+}
 
 
 // listeners
@@ -452,17 +473,8 @@ const animateDeletingElementByClass = (elementClass, duration) => {
             element.style.removeProperty('display')
         }
 }
-
-const modalCloseTodayWorkouts = document.querySelector('.modal__today-workouts-list__close-button')
-modalCloseTodayWorkouts.addEventListener('click', e => {
-    animateDeletingElementByClass('.modal__today-workouts-list', 1200)
-})
-
-const removeWorkoutBtns = document.querySelectorAll('.remove-workout')
-removeWorkoutBtns.forEach(btn => {
-    btn.addEventListener('click', e => {
-        const workoutId = e.target.dataset.workoutobjid
-        const modalAccept = document.querySelector('.modal-accept-delete')
+const openModalAcceptDeny = (handler, id) => {
+    const modalAccept = document.querySelector('.modal-accept-delete')
         modalAccept.classList.remove('not-visible')
         modalAccept.classList.add('modal-active')
         modalAccept.style.zIndex = '45000'
@@ -475,13 +487,32 @@ removeWorkoutBtns.forEach(btn => {
              modalAccept.classList.remove('modal-active')
         })
         acceptBtn.addEventListener('click', e => {
-            ajaxCallDelete(workoutId)
+            handler(id)
         })
         denyBtn.addEventListener('click', e => {
             $('.modal-accept-delete').css('z-index', 'initial')
              modalAccept.classList.add('not-visible')
              modalAccept.classList.remove('modal-active')
         })
+}
+
+const modalCloseTodayWorkouts = document.querySelector('.modal__today-workouts-list__close-button')
+modalCloseTodayWorkouts.addEventListener('click', e => {
+    animateDeletingElementByClass('.modal__today-workouts-list', 1200)
+})
+
+const removeWorkoutBtns = document.querySelectorAll('.remove-workout')
+removeWorkoutBtns.forEach(btn => {
+    btn.addEventListener('click', e => {
+        const workoutId = e.target.dataset.workoutobjid
+        openModalAcceptDeny(ajaxCallDeleteWorkout, workoutId)
     })
 })
 
+const removeWorkoutElementBtns = document.querySelectorAll('.remove-workout-element')
+removeWorkoutElementBtns.forEach(btn => {
+    btn.addEventListener('click', e => {
+        const workoutElementId = e.target.dataset.workoutelobjid
+        openModalAcceptDeny(ajaxCallDeleteWorkoutElement, workoutElementId)
+    })
+})

@@ -14,3 +14,9 @@ workoutAddCard.addEventListener('click', e => {
     const langPrefix = window.location.href.split('/')[3];
     location.href = location.origin + `/${langPrefix}/workouts/add`
 })
+
+const savedWorkoutsCard = document.querySelector('.workouts__card--saved')
+savedWorkoutsCard.addEventListener('click', e => {
+    const langPrefix = window.location.href.split('/')[3];
+    location.href = location.origin + `/${langPrefix}/workouts/saved`
+})

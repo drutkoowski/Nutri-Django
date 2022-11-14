@@ -51,7 +51,8 @@ searchContainer.style.justifySelf = 'center'
 
 // search
 const ajaxCall = (query, searchResponseBox) => {
-    const url = window.location.origin + '/meals/data/live-search-ingredients'
+    const langPrefix = window.location.href.split('/')[3];
+    const url = window.location.origin + `/${langPrefix}/meals/data/live-search-ingredients`
     $.ajax({
         type: "GET",
         url: url,
@@ -141,7 +142,8 @@ const ajaxCall = (query, searchResponseBox) => {
     })
 }
 const ajaxCallEditMeal = (query) => {
-    const url = window.location.origin + '/meals/data/live-search-ingredients'
+     const langPrefix = window.location.href.split('/')[3];
+    const url = window.location.origin + `/${langPrefix}/meals/data/live-search-ingredients`
      const searchResponseBox = document.querySelector('.saved-meals__added--saved__content__search-response')
     $.ajax({
         type: "GET",
@@ -222,7 +224,8 @@ const ajaxCallEditMeal = (query) => {
 
 // create
 const createNewMealTemplate = (ingredientsArr,mealName, text) => {
-     const url = window.location.origin + '/meals/data/save/saved-meal/element'
+    const langPrefix = window.location.href.split('/')[3];
+     const url = window.location.origin + `${langPrefix}/meals/data/save/saved-meal/element`
      const ingredients = JSON.stringify(ingredientsArr)
      $.ajax({
          type: "POST",
@@ -262,7 +265,8 @@ const saveNewMeal = () => {
         }
         ingredientsArr.push(ingredientObj)
     })
-    const url = window.location.origin + '/meals/data/save/saved-meal/element'
+    const langPrefix = window.location.href.split('/')[3];
+    const url = window.location.origin + `/${langPrefix}/meals/data/save/saved-meal/element`
     const ingredients = JSON.stringify(ingredientsArr)
     $.ajax({
         type: "POST",
@@ -286,26 +290,18 @@ const saveNewMeal = () => {
                 }, 2500);
 
             }
-            else if (status === 404) {
-                const searchElements = Array.from(searchResponseBox.children)
-                searchElements.forEach(el => {
-                    el.remove()
-                })
-            }
 
             },
         error: function (error) {
-            const searchElements = Array.from(searchResponseBox.children)
-                searchElements.forEach(el => {
-                    el.remove()
-                })
+            console.log(error)
         },
     })
 }
 
 // delete
 const deleteAndCreateMealTemplate = (mealTemplateId, ingredientsArr, mealName) => {
-    const url = window.location.origin + '/meals/data/delete/saved-meal/template'
+    const langPrefix = window.location.href.split('/')[3];
+    const url = window.location.origin + `/${langPrefix}/meals/data/delete/saved-meal/template`
     $.ajax({
         type: "POST",
         url: url,
@@ -319,7 +315,8 @@ const deleteAndCreateMealTemplate = (mealTemplateId, ingredientsArr, mealName) =
     })
 }
 const deleteMealTemplate = (id) => {
-    const url = window.location.origin + '/meals/data/delete/saved-meal/template'
+    const langPrefix = window.location.href.split('/')[3];
+    const url = window.location.origin + `/${langPrefix}/meals/data/delete/saved-meal/template`
     $.ajax({
         type: "POST",
         url: url,
@@ -349,7 +346,8 @@ const deleteMealTemplate = (id) => {
 
 // edit
 const getTemplateElement = (id) => {
-    const url = window.location.origin + '/meals/data/get/saved-meal/template'
+    const langPrefix = window.location.href.split('/')[3];
+    const url = window.location.origin + `/${langPrefix}/meals/data/get/saved-meal/template`
     $.ajax({
         "type": "GET",
         url: url,
@@ -366,7 +364,8 @@ const getTemplateElement = (id) => {
     })
 }
 const getMealTemplateElement = (mealObj, mealName, kcal, ids_array) => {
-    const url = window.location.origin + '/meals/data/get/saved-meal/template/element'
+    const langPrefix = window.location.href.split('/')[3];
+    const url = window.location.origin + `/${langPrefix}/meals/data/get/saved-meal/template/element`
     const contentContainer = document.querySelector('.saved-meals__added--saved__content')
     let contentToAppend = `
         <div class="saved-meals__added--saved__content__item saved-template-edit__heading" id="${mealObj.mealId}">
@@ -375,7 +374,7 @@ const getMealTemplateElement = (mealObj, mealName, kcal, ids_array) => {
          <div> 
             <div class="add-new-element-box">
                 <div class="add-icon filter-green"></div>
-                <a class="saved-template-edit__add-new__trigger-search">Dodaj nowy element dla Twojego posiłku</a>
+                <a class="saved-template-edit__add-new__trigger-search">${gettext('Add new element for your meal')}</a>
             </div>
         </div>
         <div class="edit-meal-added-items"></div>
@@ -383,7 +382,7 @@ const getMealTemplateElement = (mealObj, mealName, kcal, ids_array) => {
     let saveButtonAppend = `
        <div class="saved-new-meals-buttons-container">
               <input type="text" placeholder="${mealName}" value="${mealName}" class="meal_name_input">
-              <button class="saved-meals__added--saved__content__save save-updated-template-meal">Save</button>
+              <button class="saved-meals__added--saved__content__save save-updated-template-meal btn">${gettext('Save')}</button>
          </div>
         `
     contentContainer.insertAdjacentHTML('beforeend', contentToAppend)
@@ -521,7 +520,7 @@ saveNewMealButton.addEventListener('click', e => {
      });
      clearCardContent()
      saveNewMealButton.disabled = true
-     headingAdjustableCard.innerHTML = `Create New Meal Template`
+     headingAdjustableCard.innerHTML = gettext("Create New Meal Template")
      const modalAddMeal = document.querySelector('.modal-add-search')
      modalAddMeal.classList.remove('not-visible')
      const cardContentParent = document.querySelector('.saved-meals__added--saved__content')
@@ -529,14 +528,14 @@ saveNewMealButton.addEventListener('click', e => {
      
           <div class="info-search-saved">Search to fill your template with meals.</div>
           <div class="saved-meals__added--saved__content__meal not-visible">
-               <h2 class="your-meal-heading">Your Meal</h2>
+               <h2 class="your-meal-heading">${gettext('Your Meal')}</h2>
                <div class="saved-meals__added--saved__content__meal__items"></div>
           </div>
      `
     let saveButtonAppend = `
      <div class="saved-new-meals-buttons-container not-visible">
-        <input type="text" placeholder="Meal Name" class="meal_name_input input-scale">
-        <button class="saved-meals__added--saved__content__save">Save</button>
+        <input type="text" placeholder="${gettext('Meal Name')}" class="meal_name_input input-scale">
+        <button class="saved-meals__added--saved__content__save btn">${gettext('Save')}</button>
     </div>
     
     `
@@ -676,4 +675,4 @@ const shakeAnimation = (contentBox) => {
     }, 1000);
 }
 
-export {animateDeletingElementByClass};
+

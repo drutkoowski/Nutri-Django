@@ -193,7 +193,6 @@
    animation-name: fade-bottom;
    animation-duration: 1s;
    animation-timing-function: ease-out;
-
   &__content {
        display: flex;
        flex-direction: column;
@@ -255,7 +254,9 @@
        background-color: var(--green-modal);
        color: white;
        position: relative;
-
+       -webkit-box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
+       -moz-box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
+       box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
 
        &__elements {
          margin-top: 2rem;
