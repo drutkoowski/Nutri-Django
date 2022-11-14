@@ -139,9 +139,9 @@
    animation-name: fade-bottom;
    animation-duration: 1s;
    animation-timing-function: ease-out;
-  -webkit-box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
-  -moz-box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
-  box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
+   -webkit-box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
+   -moz-box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
+   box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
   &__heading {
     text-align: center;
   }
@@ -264,19 +264,19 @@
          max-height: 65rem;
          overflow-y: auto;
          overflow-x: hidden;
-
+         font-size: 2rem;
          &__item {
            margin-top: 2rem;
-
+           display: grid;
+           grid-template-columns: 1fr 0.2fr;
+           grid-template-rows: 0.3fr 1fr;
+           height: auto;
+           &:not(&:last-of-type){
+             border-bottom: 2px solid #f2f2f2;
+           }
            &:first-of-type{
              margin-top: 0;
            }
-           display: grid;
-           grid-template-columns: 1fr 0.2fr;
-           grid-template-rows: 1fr 1fr;
-           height: 25rem;
-           overflow-y: auto;
-           overflow-x: hidden;
            div.today-workouts-list__content-summary {
              grid-column: 1/2;
              grid-row: 1/2;
@@ -284,10 +284,13 @@
            div.remove-icon {
              grid-column: 2/3;
              grid-row: 1/2;
+             justify-self: end;
+             margin-right: 3rem;
            }
            div.today-workouts-list__workout-elements {
            grid-column: 1/-1;
            grid-row: 2/3;
+           border-bottom: 1px solid #f2f2f2;
          }
          }
 
@@ -326,6 +329,7 @@
 
 .today-workouts-list__content-summary{
   font-size: 2rem;
+  height: auto;
   span {
     font-weight: bold;
   }
@@ -333,4 +337,12 @@
     margin-bottom: 0;
     font-size: 3rem;
   }
+}
+
+.today-workouts-list__content__workout-elements__element{
+  height: auto;
+  &:first-of-type{
+    margin-top: 2rem;
+  }
+  margin-top: 1rem;
 }

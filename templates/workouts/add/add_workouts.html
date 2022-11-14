@@ -26,24 +26,24 @@
                             <h3>{% trans 'Your search results' %}</h3>
                         </div>
                         <div class="add-workouts__search__results__container">
-                            <p class="search-results-info" style="text-align: center">{% trans 'Try to search exercises that have you done today.' %}
+                            <p class="search-results-info" style="text-align: center">{% trans 'Try to search activities that have you done today.' %}
                             <br>{% trans 'Results will appear here.' %}</p>
                         </div>
                     </div>
-                    <button class="check-today-workouts btn"><span>{% trans 'Check your exercises' %}</span></button>
+                    <button class="check-today-workouts btn"><span>{% trans 'Check your activities' %}</span></button>
                 </div>
                 <div class="add-workouts__added">
                     <div class="add-workouts__added--added">
                         <div class="add-workouts__added--added__heading">
-                            <h2>{% trans "Today's Exercises" %}</h2>
+                            <h2>{% trans "Today's Activities" %}</h2>
                         </div>
                     </div>
                     <div class="add-workouts__added--added__content">
-                      <div class="saved-results-info">{% trans 'Your workout will appear here' %}</div>
+                      <div class="saved-results-info">{% trans 'Your activity will appear here' %}</div>
                     </div>
                     <div class="add-workouts__added--saved">
                        <div class="add-workouts__added--saved__heading">
-                            <h2>{% trans 'Saved Workouts' %}</h2>
+                            <h2>{% trans 'Saved Activities' %}</h2>
                         </div>
                     </div>
                      <div class="add-workouts__added--saved__content">
@@ -56,7 +56,7 @@
 {#                         {% endfor %}#}
                          saved template
                          {% else %}
-                         <p class="no-saved-templates-info">{% trans 'No saved workouts yet' %}</p>
+                         <p class="no-saved-templates-info">{% trans 'No saved activities yet' %}</p>
                      {% endif %}
                      </div>
                     {% csrf_token %}
@@ -67,7 +67,7 @@
  <div class="modal-queued not-visible">
      <div class="modal-queued__content">
          <div class="modal-queued__close-button">&times;</div>
-         <h1>{% trans 'Adding your workout to our database...' %}</h1>
+         <h1>{% trans 'Adding your activity to our database...' %}</h1>
          <div class="loader--signup"></div>
      </div>
  </div>
@@ -75,7 +75,7 @@
  <div class="modal-queued modal-accept-delete not-visible">
      <div class="modal-queued__content">
          <div class="modal-queued__close-button modal-accept-delete-close">&times;</div>
-         <h1>{% trans 'Are you sure you want to delete this workout?' %}</h1>
+         <h1>{% trans 'Are you sure you want to delete this activity?' %}</h1>
          <div class="modal-queued__content__buttons">
             <button class="accept-delete-today-workouts">{% trans 'Yes' %}</button>
             <button class="deny-delete-today-workouts">{% trans 'No' %}</button>
@@ -84,7 +84,7 @@
  </div>
 
 
-<div class="modal__today-workouts-list not-visible">
+<div class="modal__today-workouts-list">
     <div class="modal__today-workouts-list__content">
         <div class="modal__today-workouts-list__close-button">&times;</div>
         <h1 class="modal__today-workouts-list--heading">{% trans 'Your added activities for today.' %}</h1>
@@ -96,17 +96,17 @@
                           <div class="remove-icon filter-red" data-mealObjId="{{ workout.id }}"></div>
                           <div class="today-workouts-list__content-summary">
                               <h2 class="workout-counter">{% trans 'Activity' %} #{{ forloop.counter }}</h2>
-                              <div>{% trans 'Summary Kcal' %}: <span>{{ workout.kcal_burnt_sum }}</span> kcal</div>
-                              <div>{% trans 'Summary Duration' %}: <span>{{ workout.min_spent_sum }}</span> min</div>
+                              <div>{% trans 'Summary Kcal' %}: <span>{{ workout.kcal_burnt_sum|floatformat:"-2" }}</span> kcal</div>
+                              <div>{% trans 'Summary Duration' %}: <span>{{ workout.min_spent_sum| stringformat:'d'  }}</span> min</div>
+                              <div>{% trans 'Created at' %}: <span>{{ workout.created_at }}</span></div>
                           </div>
                           <div class="today-workouts-list__content__workout-elements">
                               {% for element in workout.workout_elements.all %}
-                                  <div>
-                                     <p>{% if '/pl/' in request.path %}{{ element.exercise.pl_name }}{% elif '/en/' in request.path %}{{ element.exercise.en_name }}{% endif %}</p>
-                                     <p>{{ element.min_spent }}</p>
-                                     <p>{{ element.kcal_burnt }}</p>
+                                  <div class="today-workouts-list__content__workout-elements__element">
+                                     <p class="bolded">{{ forloop.counter }}. {% if '/pl/' in request.path %}{{ element.exercise.pl_name }}{% elif '/en/' in request.path %}{{ element.exercise.en_name }}{% endif %}</p>
+                                     <p>{% trans 'Burnt Kcal' %}: <b>{{ element.kcal_burnt |floatformat:"-2" }}</b> kcal</p>
+                                     <p>{% trans 'Duration'%}: <b>{{ element.min_spent| stringformat:'d' }}</b> min</p>
                                   </div>
-
                               {% endfor %}
                           </div>
                       </div>
