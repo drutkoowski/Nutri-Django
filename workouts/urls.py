@@ -9,5 +9,6 @@ urlpatterns = [
     # ajax
     path('/data/live-search-exercises', views.live_search_exercises, name='live_search_exercises-ajax'),
     path('/data/save/added-workout', views.add_today_exercise, name='add-today-exercise'),
+    path('/data/delete/added-workout', views.delete_today_workout, name='delete-today-workout'),
     path('/data/add-data', views.test2, name='add-data'),
 ]

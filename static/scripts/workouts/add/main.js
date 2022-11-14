@@ -336,21 +336,9 @@ const ajaxCallDelete = (workoutId) => {
         success: function (response){
             const status = response.status
             if (status === 200) {
+               location.reload()
             }
-            else if (status === 404) {
-                // const searchElements = Array.from(searchResponseBox.children)
-                // searchElements.forEach(el => {
-                //     el.remove()
-                // })
-            }
-
             },
-        error: function (error) {
-            // const searchElements = Array.from(searchResponseBox.children)
-            //     searchElements.forEach(el => {
-            //         el.remove()
-            //     })
-        },
     })
 }
 
@@ -468,5 +456,29 @@ const animateDeletingElementByClass = (elementClass, duration) => {
 const modalCloseTodayWorkouts = document.querySelector('.modal__today-workouts-list__close-button')
 modalCloseTodayWorkouts.addEventListener('click', e => {
     animateDeletingElementByClass('.modal__today-workouts-list', 1200)
+})
+
+const removeWorkoutBtns = document.querySelectorAll('.remove-workout')
+removeWorkoutBtns.forEach(btn => {
+    btn.addEventListener('click', e => {
+        const workoutId = e.target.dataset.workoutobjid
+        const modalAccept = document.querySelector('.modal-accept-delete')
+        modalAccept.classList.remove('not-visible')
+        modalAccept.style.zIndex = '45000'
+        const acceptBtn = document.querySelector('.accept-delete-today-workouts')
+        const denyBtn = document.querySelector('.deny-delete-today-workouts')
+        const closeBtn = document.querySelector('.modal-accept-delete-close')
+        closeBtn.addEventListener('click', e => {
+             $('.modal-accept-delete').css('z-index', 'initial');
+             hideModal('.modal-accept-delete')
+        })
+        acceptBtn.addEventListener('click', e => {
+            ajaxCallDelete(workoutId)
+        })
+        denyBtn.addEventListener('click', e => {
+            $('.modal-accept-delete').css('z-index', 'initial');
+            hideModal('.modal-accept-delete')
+        })
+    })
 })
 

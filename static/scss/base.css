@@ -138,6 +138,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
 .bolded {
   font-weight: bold; }
 
+.color-black {
+  color: var(--black-muted) !important; }
+
 .grid-full-span {
   grid-column: 1/-1; }
 
@@ -1446,8 +1449,33 @@ ORDER: Base + typography > general layout + grid > page layout > components
 .today-workouts-list__content__workout-elements__element {
   height: auto;
   margin-top: 1rem; }
+  .today-workouts-list__content__workout-elements__element__title p {
+    display: inline-block; }
+  .today-workouts-list__content__workout-elements__element__title div.remove-icon {
+    display: inline-block;
+    margin-left: 1rem; }
   .today-workouts-list__content__workout-elements__element:first-of-type {
     margin-top: 2rem; }
+
+.accept-delete-today-workouts {
+  padding: 1rem 2rem;
+  text-transform: uppercase;
+  -webkit-box-shadow: 0px 0px 3px 0px #42445a;
+  -moz-box-shadow: 0px 0px 3px 0px #42445a;
+  box-shadow: 0px 0px 3px 0px #42445a; }
+  .accept-delete-today-workouts:hover {
+    transform: scale(1.05); }
+
+.deny-delete-today-workouts {
+  text-transform: uppercase;
+  margin-left: 1.5rem;
+  background-color: var(--red);
+  padding: 1rem 2rem;
+  -webkit-box-shadow: 0px 0px 3px 0px #42445a;
+  -moz-box-shadow: 0px 0px 3px 0px #42445a;
+  box-shadow: 0px 0px 3px 0px #42445a; }
+  .deny-delete-today-workouts:hover {
+    transform: scale(1.05); }
 
 .fix-navbar .navigation--dashboard__button {
   top: 2rem; }
@@ -5615,7 +5643,7 @@ label.year {
   animation-name: fade-bottom;
   animation-duration: 1.5s;
   animation-timing-function: ease-out;
-  color: var(--black-muted); }
+  color: var(--color-white); }
 
 .search-category-small {
   margin-left: 2rem; }

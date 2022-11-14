@@ -74,13 +74,14 @@
        background-color: var(--green-modal);
        color: white;
        position: relative;
-    h1{
-      margin-bottom: 5rem;
-      font-size: 3rem;
-      animation-name: fade-left;
-      animation-duration: 1s;
-      animation-timing-function: ease-out;
-    }
+
+      h1{
+        margin-bottom: 5rem;
+        font-size: 3rem;
+        animation-name: fade-left;
+        animation-duration: 1s;
+        animation-timing-function: ease-out;
+      }
   }
 
   &__close-button {
@@ -341,8 +342,41 @@
 
 .today-workouts-list__content__workout-elements__element{
   height: auto;
+  &__title {
+    p {
+      display: inline-block;
+    }
+    div.remove-icon {
+      display: inline-block;
+      margin-left: 1rem;
+    }
+  }
   &:first-of-type{
     margin-top: 2rem;
   }
   margin-top: 1rem;
+}
+
+
+.accept-delete-today-workouts{
+  padding: 1rem 2rem;
+  text-transform: uppercase;
+  -webkit-box-shadow: 0px 0px 3px 0px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 0px 0px 3px 0px rgba(66, 68, 90, 1);
+  box-shadow: 0px 0px 3px 0px rgba(66, 68, 90, 1);
+   &:hover {
+     transform: scale(1.05);
+   }
+}
+.deny-delete-today-workouts{
+  text-transform: uppercase;
+  margin-left: 1.5rem;
+  background-color: var(--red);
+  padding: 1rem 2rem;
+  -webkit-box-shadow: 0px 0px 3px 0px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 0px 0px 3px 0px rgba(66, 68, 90, 1);
+  box-shadow: 0px 0px 3px 0px rgba(66, 68, 90, 1);
+   &:hover {
+     transform: scale(1.05);
+   }
 }

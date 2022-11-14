@@ -105,7 +105,18 @@ def add_today_exercise(request):
         return redirect('home')
 
 
-
+@login_required(login_url='login')
+def delete_today_workout(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
+        workout_id = request.POST.get('workout_id')
+        try:
+            workout = Workout.objects.get(pk=workout_id)
+            workout.delete()
+            return JsonResponse({'status': 200, 'text': f'Item with id {workout_id} successfully deleted!'})
+        except:
+            return JsonResponse({'status': 400, 'text': f'Item with id {workout_id} was not deleted!'})
+    else:
+        return redirect('home')
 
 
 
@@ -145,6 +156,11 @@ def test(request):
             # print(f'{exercise_name} nie dodano')
             pass
     return render(request, 'workouts/test.html')
+
+
+
+
+
 def test2(request):
     return
 
@@ -194,3 +210,4 @@ def test2(request):
 #             return JsonResponse({'status': 302})
 #     else:
 #         return JsonResponse({'status': 404})
+

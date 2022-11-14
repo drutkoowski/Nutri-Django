@@ -228,3 +228,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 .bolded {
   font-weight: bold;
 }
+
+.color-black{
+  color: var(--black-muted)!important;
+}

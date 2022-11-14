@@ -29,7 +29,7 @@
                             <br>{% trans 'Results will appear here.' %}</p>
                         </div>
                     </div>
-                    <button class="check-today-meals"><span>{% trans 'Check your meals' %}</span></button>
+                    <button class="check-today-meals btn"><span>{% trans 'Check your meals' %}</span></button>
                 </div>
                 <div class="add-meals__added">
                     <div class="add-meals__added--added">
@@ -38,7 +38,7 @@
                         </div>
                     </div>
                     <div class="add-meals__added--added__content">
-                      <div class="saved-results-info">{% trans 'Your meal composition will appear here' %}</div>
+                      <div class="saved-results-info color-black">{% trans 'Your meal composition will appear here' %}</div>
                     </div>
                     <div class="add-meals__added--saved">
                        <div class="add-meals__added--saved__heading">
@@ -58,7 +58,7 @@
                      {% endif %}
                      </div>
                     {% csrf_token %}
-                    <button class="save-add-today-meals">{% trans 'Save' %}</button>
+                    <button class="save-add-today-meals btn">{% trans 'Save' %}</button>
                 </div>
             </div>
         </div>
