@@ -8,5 +8,6 @@ urlpatterns = [
     path('/test', views.test, name='asdas'),
     # ajax
     path('/data/live-search-exercises', views.live_search_exercises, name='live_search_exercises-ajax'),
-    path('/data/add-data', views.test2, name='add-data')
+    path('/data/save/added-workout', views.add_today_exercise, name='add-today-exercise'),
+    path('/data/add-data', views.test2, name='add-data'),
 ]

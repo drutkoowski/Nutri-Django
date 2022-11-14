@@ -152,21 +152,20 @@ const ajaxCallSearch = (query) => {
                exercises.forEach(exercise => {
                    let contentToAppend
                    const langPrefix = window.location.href.split('/')[3];
-                   console.log(exercise)
                    let categoryName
                    let exerciseName
-                   let unit_name
+
                    if (langPrefix === 'pl'){
 
                        categoryName = exercise.category_name_pl
                        exerciseName = exercise.pl_name
-                       unit_name = exercise.unit_name_pl
+
                    }
                    else {
 
                        categoryName = exercise.category_name_en
                        exerciseName = exercise.en_name
-                       unit_name = exercise.unit_name_en
+
                    }
 
                     contentToAppend = `
@@ -467,7 +466,7 @@ const animateDeletingElementByClass = (elementClass, duration) => {
 }
 
 const modalCloseTodayWorkouts = document.querySelector('.modal-queued__today-workouts__close-button')
-modalCloseTodayWorkouts.addEventListener('click', e=> {
+modalCloseTodayWorkouts.addEventListener('click', e => {
     animateDeletingElementByClass('.modal-queued__today-workouts-list', 1200)
 })
 

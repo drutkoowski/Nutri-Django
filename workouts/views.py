@@ -1,10 +1,13 @@
+import json
+
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 
 
 # Create your views here.
-from workouts.models import Exercise, ExerciseUnit, ExerciseCategory, ExerciseTimeUnit
+from accounts.models import UserProfile
+from workouts.models import Exercise, ExerciseUnit, ExerciseCategory, ExerciseTimeUnit, Workout, WorkoutElement
 
 
 @login_required(login_url='login')
@@ -66,6 +69,42 @@ def live_search_exercises(request):
         return redirect('home')
 
 
+###
+
+@login_required(login_url='login')
+def add_today_exercise(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
+        exercise_array = request.POST.get('exercisesArray')
+        data_array = json.loads(exercise_array)
+        if exercise_array is not None:
+            user_profile = UserProfile.objects.filter(user=request.user).first()
+            workout = Workout.objects.create(created_by=user_profile)
+            workout_kcal_burnt = []
+            workout_minutes = []
+            for item in data_array:
+                exercise = Exercise.objects.filter(pk=item['exerciseId']).first()
+                quantity_minutes = round(float(item['quantity']), 2)
+                exercise_kcal = ((exercise.met * 3.5 * float(user_profile.weight)) / 200) * quantity_minutes
+                workout_element = WorkoutElement.objects.create(exercise=exercise, min_spent=quantity_minutes,
+                                                                kcal_burnt=exercise_kcal)
+                workout_element.save()
+                workout.workout_elements.add(workout_element)
+                workout_minutes.append(quantity_minutes)
+                workout_kcal_burnt.append(exercise_kcal)
+            print(workout_kcal_burnt, workout_minutes)
+            workout.kcal_burnt_sum = sum(workout_kcal_burnt)
+            workout.min_spent_sum = sum(workout_minutes)
+            workout.save()
+            return JsonResponse({'status': 201, 'text': 'Created.'})
+        return JsonResponse({'status': 400, 'text': 'Not Created.'})
+    else:
+        return redirect('home')
+
+
+
+
+
+
 def test(request):
     import json
 
@@ -102,7 +141,6 @@ def test(request):
             # print(f'{exercise_name} nie dodano')
             pass
     return render(request, 'workouts/test.html')
-
 def test2(request):
     return
 
