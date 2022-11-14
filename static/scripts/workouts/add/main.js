@@ -151,9 +151,8 @@ const ajaxCallSearch = (query) => {
                let exercises = [...response.exercises]
                exercises.forEach(exercise => {
                    let contentToAppend
-                   let unit_multiplier = exercise.unit_multiplier
                    const langPrefix = window.location.href.split('/')[3];
-
+                   console.log(exercise)
                    let categoryName
                    let exerciseName
                    let unit_name
@@ -187,17 +186,16 @@ const ajaxCallSearch = (query) => {
 
                         const workoutContent = document.querySelector('.add-workouts__added--added__content')
                         const getWorkoutObject = JSON.parse(decodeURIComponent(e.target.dataset.object));
-                        // let unit_multiplier = getWorkoutObject.unit_multiplier
                         const langPrefix = window.location.href.split('/')[3];
                         let workoutName
                         let unitName
                         if (langPrefix === 'pl') {
                             workoutName = getWorkoutObject.pl_name
-                            unitName = getWorkoutObject.unit_name_pl
+                            unitName = getWorkoutObject.time_unit_pl
                         }
                         else {
                             workoutName = getWorkoutObject.en_name
-                            unitName = getWorkoutObject.unit_name_en
+                            unitName = getWorkoutObject.time_unit_en
                         }
                         const infoResults = document.querySelector('.saved-results-info')
                         infoResults.classList.add('not-visible')
@@ -208,9 +206,6 @@ const ajaxCallSearch = (query) => {
                                   <div class="today-workouts-added-inputBox">
                                     <input min="1" max="1000" class="new-today-workout-input-quantity" name="${workoutName}" type="number" placeholder="${unitName}">
                                     <label for="${workoutName}">x ${unitName}</label>
-                                    
-                                    <input min="1" max="1000" class="new-today-workout-input-quantity" name="${workoutName}" type="number" placeholder="minut">
-                                    <label for="${workoutName}">x minut</label>
                                   </div>
                         </div>
                       `

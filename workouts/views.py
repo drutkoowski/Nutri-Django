@@ -43,13 +43,20 @@ def live_search_exercises(request):
                 for i in exercises:
                     unit_id = i['unit_id']
                     category_id = i['category_id']
+                    time_unit_id = i['time_unit_id']
                     unit_name = ExerciseUnit.objects.filter(pk=unit_id).first()
+                    time_unit = ExerciseTimeUnit.objects.filter(pk=time_unit_id).first()
+                    if unit_name is not None:
+                        i['unit_name_en'] = unit_name.en_name
+                        i['unit_name_pl'] = unit_name.pl_name
+                    else:
+                        i['unit_name_en'] = ''
+                        i['unit_name_pl'] = ''
                     category = ExerciseCategory.objects.filter(pk=category_id).first()
-                    i['unit_name_en'] = unit_name.get_unit_name_en()
-                    i['unit_name_pl'] = unit_name.get_unit_name_pl()
                     i['category_name_en'] = category.get_category_name_en()
                     i['category_name_pl'] = category.get_category_name_pl()
-                    i['unit_multiplier'] = unit_name.multiplier
+                    i['time_unit_en'] = time_unit.get_time_unit_name_en()
+                    i['time_unit_pl'] = time_unit.get_time_unit_name_pl()
                 return JsonResponse({'status': 200, 'text': 'There are exercises found.', 'exercises': exercises})
             else:
                 return JsonResponse({'status': 404, 'text': 'There are not exercises found.', 'exercises': []})
