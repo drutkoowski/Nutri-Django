@@ -7,6 +7,7 @@
    z-index: 1000;
    background-color: rgba(112, 111, 111, 0.7);
    display: flex;
+   transition: all .3s ease-in;
    animation-name: fade-bottom;
    animation-duration: 1s;
    animation-timing-function: ease-out;
@@ -24,7 +25,7 @@
        align-self: center;
        margin-right: auto;
        margin-left: auto;
-        background-color: var(--green-modal);
+       background-color: var(--green-modal);
      h1{
       margin-bottom: 1rem;
       animation-name: fade-left;
@@ -34,6 +35,10 @@
 
     &__buttons {
       display: flex;
+      transition: all .3s ease-in;
+      animation-name: fade-bottom;
+      animation-duration: 1s;
+      animation-timing-function: ease-out;
     }
   }
 
@@ -287,6 +292,10 @@
              grid-row: 1/2;
              justify-self: end;
              margin-right: 3rem;
+             transition: all .3s ease-in;
+             &:hover {
+               transform: scale(1.1)
+             }
            }
            div.today-workouts-list__workout-elements {
            grid-column: 1/-1;

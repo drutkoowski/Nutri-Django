@@ -13,9 +13,9 @@ function hideModal(modalClass) {
 }
 
 let openModal = function (modalClass) {
-        let div = document.querySelector(modalClass);
-        div.classList.remove('not-visible')
-        div.classList.add('modal-active')
+        const el = document.querySelector(modalClass);
+        el.classList.remove('not-visible')
+        el.classList.add('modal-active')
         // let Mwidth = div.offsetWidth;
         // let Mheight = div.offsetHeight;
         // let Wwidth = window.innerWidth;
@@ -338,7 +338,7 @@ const ajaxCallDelete = (workoutId) => {
             if (status === 200) {
                location.reload()
             }
-            },
+        },
     })
 }
 
@@ -464,20 +464,23 @@ removeWorkoutBtns.forEach(btn => {
         const workoutId = e.target.dataset.workoutobjid
         const modalAccept = document.querySelector('.modal-accept-delete')
         modalAccept.classList.remove('not-visible')
+        modalAccept.classList.add('modal-active')
         modalAccept.style.zIndex = '45000'
         const acceptBtn = document.querySelector('.accept-delete-today-workouts')
         const denyBtn = document.querySelector('.deny-delete-today-workouts')
         const closeBtn = document.querySelector('.modal-accept-delete-close')
         closeBtn.addEventListener('click', e => {
-             $('.modal-accept-delete').css('z-index', 'initial');
-             hideModal('.modal-accept-delete')
+             $('.modal-accept-delete').css('z-index', 'initial')
+             modalAccept.classList.add('not-visible')
+             modalAccept.classList.remove('modal-active')
         })
         acceptBtn.addEventListener('click', e => {
             ajaxCallDelete(workoutId)
         })
         denyBtn.addEventListener('click', e => {
-            $('.modal-accept-delete').css('z-index', 'initial');
-            hideModal('.modal-accept-delete')
+            $('.modal-accept-delete').css('z-index', 'initial')
+             modalAccept.classList.add('not-visible')
+             modalAccept.classList.remove('modal-active')
         })
     })
 })

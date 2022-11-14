@@ -1,9 +1,12 @@
 const flagsIcons = document.querySelectorAll('.navigation__link__icon--flag')
+
 function hideModal() {
-    const modal = document.querySelector('.modal-active')
-    if (modal) {
-        modal.classList.add('not-visible')
-        modal.classList.remove('modal-active')
+    const activeModals = document.querySelectorAll('.modal-active')
+    if (activeModals) {
+        activeModals.forEach(modal => {
+            modal.classList.add('not-visible')
+            modal.classList.remove('modal-active')
+        })
     }
 }
 flagsIcons.forEach(flag => {
@@ -71,7 +74,7 @@ if (location.href !== location.origin + '/pl' || location.href !== location.orig
     const navigationList = document.getElementsByClassName('navigation__list')[0]
      hamburgerNav.addEventListener('click', () => {
         hideModal()
-        if (!navigationList.classList.contains('not-visible') && !hamburgerNav.checked) {
+        if (!navigationList.classList?.contains('not-visible') && !hamburgerNav.checked) {
             navigationList.classList.add('not-visible')
         }
         else if (navigationList.classList.contains('not-visible') && hamburgerNav.checked) {

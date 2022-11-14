@@ -232,3 +232,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
 .color-black{
   color: var(--black-muted)!important;
 }
+
+.fade-bottom-animation {
+   animation-name: fade-bottom;
+   animation-duration: 1s;
+   animation-timing-function: ease-out;
+}
