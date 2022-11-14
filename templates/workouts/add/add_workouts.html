@@ -30,7 +30,7 @@
                             <br>{% trans 'Results will appear here.' %}</p>
                         </div>
                     </div>
-                    <button class="check-today-workouts"><span>{% trans 'Check your exercises' %}</span></button>
+                    <button class="check-today-workouts btn"><span>{% trans 'Check your exercises' %}</span></button>
                 </div>
                 <div class="add-workouts__added">
                     <div class="add-workouts__added--added">
@@ -48,18 +48,19 @@
                     </div>
                      <div class="add-workouts__added--saved__content">
                      {% if saved_templates %}
-                         {% for item in saved_templates %}
-                             <div data-objectId='{{ item.pk }}' class="add-workouts__added--saved__content__item">
-                                 <p><b>{{ item.meal_name }}</b>  {{ item.kcal|floatformat:"-3" }} kcal</p>
-                                <div class="add-icon filter-green"></div>
-                            </div>
-                         {% endfor %}
+{#                         {% for item in saved_templates %}#}
+{#                             <div data-objectId='{{ item.pk }}' class="add-workouts__added--saved__content__item">#}
+{#                                 <p><b>{{ item.meal_name }}</b>  {{ item.kcal|floatformat:"-3" }} kcal</p>#}
+{#                                <div class="add-icon filter-green"></div>#}
+{#                            </div>#}
+{#                         {% endfor %}#}
+                         saved template
                          {% else %}
                          <p class="no-saved-templates-info">{% trans 'No saved workouts yet' %}</p>
                      {% endif %}
                      </div>
                     {% csrf_token %}
-                    <button class="save-add-today-workouts">{% trans 'Save' %}</button>
+                    <button class="save-add-today-workouts btn">{% trans 'Save' %}</button>
                 </div>
             </div>
         </div>
@@ -82,26 +83,34 @@
      </div>
  </div>
 
-<div class="modal-queued modal-queued__today-workouts-list not-visible">
-    <div class="modal-queued__content modal-queued__today-workouts-list__content">
-        <div class="modal-queued__close-button modal-queued__today-workouts__close-button">&times;</div>
-        <h1 class="modal-queued--heading">{% trans 'Your added exercises for today.' %}</h1>
-          {% if todayMeals %}
-              <h3 class="meals-on-date">{% trans 'Workouts on' %} {% now "l" %}</h3>
-              <div class="add-meals__already__added">
-{#                  {% for meal in todayMeals %}#}
-{#                      <div class="add-meals__already__added--item">#}
-{#                          <p><b>{% if '/pl/' in request.path %}{{ meal.ingredient.pl_name }}{% else %}{{ meal.ingredient.en_name }}{% endif %}</b> x {{ meal.quantity|floatformat:"-3" }} {% if '/pl/' in request.path %}{{ meal.ingredient.unit.pl_name }} {% else %} {{ meal.ingredient.unit.en_name }}{% endif %}({{ meal.ingredient.kcal }} kcal / {{ meal.ingredient.serving_grams|floatformat:"-3" }} g)</p>#}
-{#                          <div class="today-meals-added-remove-btn remove-icon filter-red meal-saved" data-mealObjId="{{ meal.id }}"></div>#}
-{#                          <p class="add-meals__already__added--item__category">{% trans 'Category' %}: <span>{% if '/pl/' in request.path %}{{ meal.ingredient.category.pl_category_name }}{% else %}{{ meal.ingredient.category.en_category_name }}{% endif %}</span></p>#}
-{#                          <div class="add-meals__already__added--item__details-box">#}
-{#                              <p>{% trans 'Kcal' %}: <b>{{ meal.kcal|floatformat:"-2" }}</b></p>#}
-{#                              <p>{% trans 'Protein' %}: <b>{{ meal.protein|floatformat:"-2" }}</b></p>#}
-{#                              <p>{% trans 'Carbs' %}: <b>{{ meal.carbs|floatformat:"-2" }}</b></p>#}
-{#                              <p>{% trans 'Fat' %}: <b>{{ meal.fat|floatformat:"-2" }}</b></p>#}
-{#                          </div>#}
-{#                      </div>#}
-{#                  {% endfor %}#}
+
+<div class="modal__today-workouts-list not-visible">
+    <div class="modal__today-workouts-list__content">
+        <div class="modal__today-workouts-list__close-button">&times;</div>
+        <h1 class="modal__today-workouts-list--heading">{% trans 'Your added activities for today.' %}</h1>
+          {% if todayWorkouts %}
+              <h3 class="meals-on-date">{% trans 'Activities on' %} {% now "l" %}</h3>
+              <div class="modal__today-workouts-list__content__elements">
+                  {% for workout in todayWorkouts %}
+                      <div class="modal__today-workouts-list__content__elements__item">
+                          <div class="remove-icon filter-red" data-mealObjId="{{ workout.id }}"></div>
+                          <div class="today-workouts-list__content-summary">
+                              <h2 class="workout-counter">{% trans 'Activity' %} #{{ forloop.counter }}</h2>
+                              <div>{% trans 'Summary Kcal' %}: <span>{{ workout.kcal_burnt_sum }}</span> kcal</div>
+                              <div>{% trans 'Summary Duration' %}: <span>{{ workout.min_spent_sum }}</span> min</div>
+                          </div>
+                          <div class="today-workouts-list__content__workout-elements">
+                              {% for element in workout.workout_elements.all %}
+                                  <div>
+                                     <p>{% if '/pl/' in request.path %}{{ element.exercise.pl_name }}{% elif '/en/' in request.path %}{{ element.exercise.en_name }}{% endif %}</p>
+                                     <p>{{ element.min_spent }}</p>
+                                     <p>{{ element.kcal_burnt }}</p>
+                                  </div>
+
+                              {% endfor %}
+                          </div>
+                      </div>
+                  {% endfor %}
               </div>
           {% else %}
               <div class="saved-results-info">{% trans 'No exercises added for today...' %}</div>

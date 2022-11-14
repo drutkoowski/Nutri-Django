@@ -15,19 +15,20 @@ function hideModal(modalClass) {
 let openModal = function (modalClass) {
         let div = document.querySelector(modalClass);
         div.classList.remove('not-visible')
-        let Mwidth = div.offsetWidth;
-        let Mheight = div.offsetHeight;
-        let Wwidth = window.innerWidth;
-        let Wheight = window.innerHeight;
+        div.classList.add('modal-active')
+        // let Mwidth = div.offsetWidth;
+        // let Mheight = div.offsetHeight;
+        // let Wwidth = window.innerWidth;
+        // let Wheight = window.innerHeight;
+        // div.style.position = "absolute";
+        // div.style.top = ((Wheight - Mheight ) / 2 +window.pageYOffset ) + "px";
+        // div.style.left = ((Wwidth - Mwidth) / 2 +window.pageXOffset ) + "px";
+        // $(modalClass).on('scroll touchmove mousewheel', function(e){
+        //   e.preventDefault();
+        //   e.stopPropagation();
+        //   return false;
+        // })
 
-        div.style.position = "absolute";
-        div.style.top = ((Wheight - Mheight ) / 2 +window.pageYOffset ) + "px";
-        div.style.left = ((Wwidth - Mwidth) / 2 +window.pageXOffset ) + "px";
-        $(modalClass).on('scroll touchmove mousewheel', function(e){
-          e.preventDefault();
-          e.stopPropagation();
-          return false;
-        })
 };
 
 
@@ -101,8 +102,7 @@ const ajaxCallSave = (workoutItems) => {
         success: function (response){
             const status = response.status
             if (status === 201) {
-                const modal = document.querySelector('.modal-queued')
-                modal.classList.toggle('not-visible')
+                openModal('.modal-queued')
                 const closeModalBtn = document.querySelector('.modal-queued__close-button')
                 closeModalBtn.addEventListener('click', e => {
                     window.location = window.location.href;
@@ -439,7 +439,7 @@ savedTemplateItems.forEach(item => {
 })
 
 checkYourWorkoutsBtn.addEventListener('click', e => {
-    openModal('.modal-queued__today-workouts-list')
+    openModal('.modal__today-workouts-list')
 })
 
 const animateDeletingElementByClass = (elementClass, duration) => {
@@ -465,8 +465,8 @@ const animateDeletingElementByClass = (elementClass, duration) => {
         }
 }
 
-const modalCloseTodayWorkouts = document.querySelector('.modal-queued__today-workouts__close-button')
+const modalCloseTodayWorkouts = document.querySelector('.modal__today-workouts-list__close-button')
 modalCloseTodayWorkouts.addEventListener('click', e => {
-    animateDeletingElementByClass('.modal-queued__today-workouts-list', 1200)
+    animateDeletingElementByClass('.modal__today-workouts-list', 1200)
 })
 

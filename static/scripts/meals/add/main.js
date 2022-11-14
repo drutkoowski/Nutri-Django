@@ -15,19 +15,20 @@ function hideModal(modalClass) {
 let openModal = function (modalClass) {
         let div = document.querySelector(modalClass);
         div.classList.remove('not-visible')
-        let Mwidth = div.offsetWidth;
-        let Mheight = div.offsetHeight;
-        let Wwidth = window.innerWidth;
-        let Wheight = window.innerHeight;
-
-        div.style.position = "absolute";
-        div.style.top = ((Wheight - Mheight ) / 2 +window.pageYOffset ) + "px";
-        div.style.left = ((Wwidth - Mwidth) / 2 +window.pageXOffset ) + "px";
-        $(modalClass).on('scroll touchmove mousewheel', function(e){
-          e.preventDefault();
-          e.stopPropagation();
-          return false;
-        })
+        div.classList.add('modal-active')
+        // let Mwidth = div.offsetWidth;
+        // let Mheight = div.offsetHeight;
+        // let Wwidth = window.innerWidth;
+        // let Wheight = window.innerHeight;
+        // document.querySelector(modalClass).classList.add('modal-active')
+        // div.style.position = "absolute";
+        // div.style.top = ((Wheight - Mheight ) / 2 +window.pageYOffset ) + "px";
+        // div.style.left = ((Wwidth - Mwidth) / 2 +window.pageXOffset ) + "px";
+        // $(modalClass).on('scroll touchmove mousewheel', function(e){
+        //   e.preventDefault();
+        //   e.stopPropagation();
+        //   return false;
+        // })
 };
 
 

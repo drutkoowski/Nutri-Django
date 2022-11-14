@@ -474,21 +474,9 @@
 .save-add-today-workouts{
   grid-row: 3/4;
   grid-column: 1/-1;
-  border-radius: 5px;
   width: 15rem;
   height: 3rem;
-  align-self: center;
-  justify-self: center;
   font-size: 2rem;
-  border: none;
-  background-color: var(--green);
-  color: var(--color-white);
-  cursor: pointer;
-  font-weight: bold;
-  transition: all .2s ease-in;
-   &:hover {
-     transform: scale(1.05);
-   }
 }
 
 .search-results-info{
@@ -585,22 +573,15 @@
   display: flex;
   text-align: center;
   margin: 7.5rem auto auto auto;
-  border-radius: 5px;
   height: 3rem;
   padding: 1rem 4em;
   font-size: 2rem;
-  border: none;
-  background-color: var(--green);
-  color: var(--color-white);
-  cursor: pointer;
-  font-weight: bold;
-  transition: all .2s ease-in;
   @include respond(tab-desktop) {
     margin: 1.5rem auto 1.5rem auto;
   }
   span {
     align-self: center;
-  justify-self: center;
+    justify-self: center;
   }
    &:hover {
      transform: scale(1.05);

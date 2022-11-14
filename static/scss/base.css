@@ -119,6 +119,22 @@ ORDER: Base + typography > general layout + grid > page layout > components
 .top-margin-md {
   margin-top: 5rem !important; }
 
+.btn {
+  background-color: var(--green);
+  color: var(--color-white);
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all .2s ease-in;
+  align-self: center;
+  justify-self: center;
+  -webkit-box-shadow: 0px 0px 3px 0px #42445a;
+  -moz-box-shadow: 0px 0px 3px 0px #42445a;
+  box-shadow: 0px 0px 3px 0px #42445a; }
+  .btn:hover {
+    transform: scale(1.05); }
+
 .grid-full-span {
   grid-column: 1/-1; }
 
@@ -1183,7 +1199,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
     cursor: pointer; }
 
 .modal-queued {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
@@ -1327,6 +1343,97 @@ ORDER: Base + typography > general layout + grid > page layout > components
     right: 2rem;
     font-size: 1.5rem;
     cursor: pointer; }
+
+.modal__today-workouts-list {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  background-color: rgba(112, 111, 111, 0.7);
+  display: flex;
+  animation-name: fade-bottom;
+  animation-duration: 1s;
+  animation-timing-function: ease-out; }
+  .modal__today-workouts-list__content {
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    width: 70%;
+    max-height: 65%;
+    padding: 5rem 5rem;
+    transition: all .2s ease-in;
+    justify-self: center;
+    align-self: center;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: var(--green-modal);
+    color: white;
+    position: relative; }
+    .modal__today-workouts-list__content__elements {
+      margin-top: 2rem;
+      background-color: white;
+      color: var(--black-muted);
+      border-radius: 5px;
+      -webkit-box-shadow: 0px 0px 18px -7px #42445a;
+      -moz-box-shadow: 0px 0px 18px -7px #42445a;
+      box-shadow: 0px 0px 18px -7px #42445a;
+      padding: 2rem 2rem;
+      height: auto;
+      max-height: 65rem;
+      overflow-y: auto;
+      overflow-x: hidden; }
+      .modal__today-workouts-list__content__elements__item {
+        margin-top: 2rem;
+        display: grid;
+        grid-template-columns: 1fr 0.2fr;
+        grid-template-rows: 1fr 1fr;
+        height: 25rem;
+        overflow-y: auto;
+        overflow-x: hidden; }
+        .modal__today-workouts-list__content__elements__item:first-of-type {
+          margin-top: 0; }
+        .modal__today-workouts-list__content__elements__item div.today-workouts-list__content-summary {
+          grid-column: 1/2;
+          grid-row: 1/2; }
+        .modal__today-workouts-list__content__elements__item div.remove-icon {
+          grid-column: 2/3;
+          grid-row: 1/2; }
+        .modal__today-workouts-list__content__elements__item div.today-workouts-list__workout-elements {
+          grid-column: 1/-1;
+          grid-row: 2/3; }
+    .modal__today-workouts-list__content__elements::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      background-color: #F5F5F5; }
+    .modal__today-workouts-list__content__elements::-webkit-scrollbar {
+      width: 7px;
+      background-color: #F5F5F5; }
+    .modal__today-workouts-list__content__elements::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      background-color: #afe0a5; }
+    .modal__today-workouts-list__content h1 {
+      margin-bottom: 5rem;
+      font-size: 3rem;
+      animation-name: fade-left;
+      animation-duration: 1s;
+      animation-timing-function: ease-out; }
+  .modal__today-workouts-list__close-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2.5rem;
+    cursor: pointer; }
+
+.today-workouts-list__content-summary {
+  font-size: 2rem; }
+  .today-workouts-list__content-summary span {
+    font-weight: bold; }
+  .today-workouts-list__content-summary .workout-counter {
+    margin-bottom: 0;
+    font-size: 3rem; }
 
 .fix-navbar .navigation--dashboard__button {
   top: 2rem; }
@@ -3775,6 +3882,7 @@ label.year {
     overflow-x: hidden;
     background-color: white;
     border-radius: 10px;
+    color: var(--black-muted);
     margin-bottom: 1rem;
     -webkit-box-shadow: 0px 0px 18px -7px #42445a;
     -moz-box-shadow: 0px 0px 18px -7px #42445a;
@@ -3785,7 +3893,7 @@ label.year {
       grid-template-rows: 0.8fr 0.5fr 1fr;
       align-items: center;
       border-bottom: 1px solid #f2f2f2;
-      color: black;
+      color: var(--black-muted);
       transition: all .3s ease-in;
       margin-top: 0.5rem;
       animation-name: fade-bottom;
@@ -3971,13 +4079,12 @@ label.year {
         background-color: white;
         margin: 2rem 1rem 2rem 1rem;
         border-radius: 10px;
-        color: black;
+        color: var(--black-muted);
         overflow-y: auto;
         overflow-x: hidden;
         -webkit-box-shadow: 0px 0px 18px -7px #42445a;
         -moz-box-shadow: 0px 0px 18px -7px #42445a;
-        box-shadow: 0px 0px 18px -7px #42445a;
-        color: var(--black-muted); }
+        box-shadow: 0px 0px 18px -7px #42445a; }
         .add-meals__added--added__content h3 {
           margin-top: 1rem;
           margin-left: 1.5rem;
@@ -5472,20 +5579,9 @@ label.year {
 .save-add-today-workouts {
   grid-row: 3/4;
   grid-column: 1/-1;
-  border-radius: 5px;
   width: 15rem;
   height: 3rem;
-  align-self: center;
-  justify-self: center;
-  font-size: 2rem;
-  border: none;
-  background-color: var(--green);
-  color: var(--color-white);
-  cursor: pointer;
-  font-weight: bold;
-  transition: all .2s ease-in; }
-  .save-add-today-workouts:hover {
-    transform: scale(1.05); }
+  font-size: 2rem; }
 
 .search-results-info {
   display: flex;
@@ -5567,16 +5663,9 @@ label.year {
   display: flex;
   text-align: center;
   margin: 7.5rem auto auto auto;
-  border-radius: 5px;
   height: 3rem;
   padding: 1rem 4em;
-  font-size: 2rem;
-  border: none;
-  background-color: var(--green);
-  color: var(--color-white);
-  cursor: pointer;
-  font-weight: bold;
-  transition: all .2s ease-in; }
+  font-size: 2rem; }
   @media only screen and (max-width: 84.375em) {
     .check-today-workouts {
       margin: 1.5rem auto 1.5rem auto; } }

@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import ExerciseUnit, Exercise, Workout, ExerciseCategory, ExerciseTemplateElement, ExerciseTemplate, \
-    ExerciseTimeUnit, WorkoutElement
+from .models import ExerciseUnit, Exercise, Workout, ExerciseCategory, \
+    ExerciseTimeUnit, WorkoutElement, WorkoutTemplateElement, WorkoutTemplate
 
 
 # Register your models here.
@@ -42,7 +42,7 @@ class WorkoutElementAdmin(admin.ModelAdmin):
         "exercise", "min_spent", "kcal_burnt",)
 
 
-class ExerciseTemplateAdmin(admin.ModelAdmin):
+class WorkoutTemplateAdmin(admin.ModelAdmin):
     list_display = ("workout_name", "workout_elements_list", "kcal_burnt", "created_by")
 
     def workout_elements_list(self, obj):
@@ -56,5 +56,5 @@ admin.site.register(Exercise, ExerciseAdmin)
 admin.site.register(Workout, WorkoutAdmin)
 admin.site.register(WorkoutElement, WorkoutElementAdmin)
 admin.site.register(ExerciseCategory, CategoryExerciseAdmin)
-admin.site.register(ExerciseTemplateElement)
-admin.site.register(ExerciseTemplate, ExerciseTemplateAdmin)
+admin.site.register(WorkoutTemplateElement)
+admin.site.register(WorkoutTemplate, WorkoutTemplateAdmin)

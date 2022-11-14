@@ -73,6 +73,7 @@ class WorkoutElement(models.Model):
     def __str__(self):
         return f'{self.exercise}'
 
+
 class Workout(models.Model):
     workout_elements = models.ManyToManyField(WorkoutElement, default='')
     created_at = models.DateField(auto_now_add=True)
@@ -83,17 +84,18 @@ class Workout(models.Model):
     def __str__(self):
         return f'{self.id} / {self.created_by}'
 
-class ExerciseTemplateElement(models.Model):
+
+class WorkoutTemplateElement(models.Model):
     exercise = models.ForeignKey(Exercise, on_delete=models.CASCADE, default='')
-    quantity = models.FloatField(blank=False)
+    min_spent = models.FloatField(blank=False)
     created_by = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
 
     def __str__(self):
         return f'{self.exercise.en_name} / {self.created_by} ({self.pk})'
 
 
-class ExerciseTemplate(models.Model):
-    workout_elements = models.ManyToManyField(ExerciseTemplateElement, default='')
+class WorkoutTemplate(models.Model):
+    workout_elements = models.ManyToManyField(WorkoutTemplateElement, default='')
     workout_name = models.CharField(max_length=50, blank=False)
     kcal_burnt = models.FloatField(blank=True, null=True, default=None)
     created_by = models.ForeignKey(UserProfile, on_delete=models.CASCADE)

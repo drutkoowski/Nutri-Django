@@ -57,8 +57,7 @@
     overflow-x: hidden;
     background-color: white;
     border-radius: 10px;
-    // border-bottom-left-radius: 10px;
-    //border-bottom-right-radius: 10px;
+    color: var(--black-muted);
     margin-bottom: 1rem;
     -webkit-box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
     -moz-box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
@@ -69,7 +68,7 @@
       grid-template-rows: 0.8fr 0.5fr 1fr;
       align-items: center;
       border-bottom: 1px solid #f2f2f2;
-      color: black;
+      color: var(--black-muted);
       transition: all .3s ease-in;
       margin-top: 0.5rem;
       animation-name: fade-bottom;
@@ -290,13 +289,12 @@
        background-color: white;
        margin: 2rem 1rem 2rem 1rem;
        border-radius: 10px;
-       color: black;
+       color: var(--black-muted);
        overflow-y: auto;
        overflow-x: hidden;
        -webkit-box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
        -moz-box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
        box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
-        color: var(--black-muted);
         h3 {
           margin-top: 1rem;
           margin-left: 1.5rem;

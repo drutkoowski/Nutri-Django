@@ -90,7 +90,7 @@
               <div class="add-meals__already__added">
                   {% for meal in todayMeals %}
                       <div class="add-meals__already__added--item">
-                          <p><b>{% if '/pl/' in request.path %}{{ meal.ingredient.pl_name }}{% else %}{{ meal.ingredient.en_name }}{% endif %}</b> x {{ meal.quantity|floatformat:"-3" }} {% if '/pl/' in request.path %}{{ meal.ingredient.unit.pl_name }} {% else %} {{ meal.ingredient.unit.en_name }}{% endif %}({{ meal.ingredient.kcal }} kcal / {{ meal.ingredient.serving_grams|floatformat:"-3" }} g)</p>
+                          <p><b>{% if '/pl/' in request.path %}{{ meal.ingredient.pl_name }}{% else %}{{ meal.ingredient.en_name }}{% endif %}</b> x {{ meal.quantity|floatformat:"-3" }} {% if '/pl/' in request.path %}{{ meal.ingredient.unit.pl_name }} {% else %} {{ meal.ingredient.unit.en_name }}{% endif %} ({{ meal.ingredient.kcal }} kcal / {{ meal.ingredient.serving_grams|floatformat:"-3" }} g)</p>
                           <div class="today-meals-added-remove-btn remove-icon filter-red meal-saved" data-mealObjId="{{ meal.id }}"></div>
                           <p class="add-meals__already__added--item__category">{% trans 'Category' %}: <span>{% if '/pl/' in request.path %}{{ meal.ingredient.category.pl_category_name }}{% else %}{{ meal.ingredient.category.en_category_name }}{% endif %}</span></p>
                           <div class="add-meals__already__added--item__details-box">

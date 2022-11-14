@@ -3,11 +3,11 @@ import json
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
-
+from accounts.models import UserProfile
+from workouts.models import Exercise, ExerciseUnit, ExerciseCategory, ExerciseTimeUnit, Workout, WorkoutElement, \
+    WorkoutTemplate
 
 # Create your views here.
-from accounts.models import UserProfile
-from workouts.models import Exercise, ExerciseUnit, ExerciseCategory, ExerciseTimeUnit, Workout, WorkoutElement
 
 
 @login_required(login_url='login')
@@ -17,7 +17,15 @@ def workouts_view(request):
 
 @login_required(login_url='login')
 def add_workout_view(request):
-    return render(request, 'workouts/add/add_workouts.html')
+    user_profile = UserProfile.objects.get(user=request.user)
+    from datetime import datetime
+    workouts_added_today = Workout.objects.filter(created_by=user_profile, created_at__contains=datetime.today().date()).all()
+    workout_templates = WorkoutTemplate.objects.filter(created_by=user_profile).all()
+    context = {
+        'todayWorkouts': workouts_added_today,
+        'saved_templates': workout_templates
+    }
+    return render(request, 'workouts/add/add_workouts.html', context)
 
 
 # ajax calls
@@ -68,9 +76,6 @@ def live_search_exercises(request):
     else:
         return redirect('home')
 
-
-###
-
 @login_required(login_url='login')
 def add_today_exercise(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
@@ -91,9 +96,8 @@ def add_today_exercise(request):
                 workout.workout_elements.add(workout_element)
                 workout_minutes.append(quantity_minutes)
                 workout_kcal_burnt.append(exercise_kcal)
-            print(workout_kcal_burnt, workout_minutes)
-            workout.kcal_burnt_sum = sum(workout_kcal_burnt)
-            workout.min_spent_sum = sum(workout_minutes)
+            workout.kcal_burnt_sum = round(sum(workout_kcal_burnt), 2)
+            workout.min_spent_sum = round(sum(workout_minutes), 2)
             workout.save()
             return JsonResponse({'status': 201, 'text': 'Created.'})
         return JsonResponse({'status': 400, 'text': 'Not Created.'})
