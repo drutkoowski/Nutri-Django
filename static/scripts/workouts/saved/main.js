@@ -169,28 +169,50 @@ const ajaxCallEditWorkout = (query) => {
                         setTimeout(() => {
                             button.parentElement.classList.remove('blink-background-green')
                         },1000)
-                        const ingredientObj = JSON.parse(decodeURIComponent(button.dataset.mealobj))
-                        const randomId = "Id" + ingredientObj.ingredientId * Math.floor(Math.random() * (100 - 1 + 1)) + 1;
-                        const workoutItemAppend = `
-                            <div class="today-workouts-saved-edit-inputBox" data-object="">
-                              <p><b>${ingredientObj.pl_name}</b> (${Math.trunc(ingredientObj.kcal)} kcal / ${ingredientObj.unit_multiplier} ${ingredientObj.unit_name_pl} ${isGram})</p>
-                             <input name="${ingredientObj.pl_name}" min="0" max="1000" class='updated-workout-element-input' type="number" placeholder="${ingredientObj.unit_name_pl}">
-                             <label for="${ingredientObj.pl_name}">x ${ingredientObj.unit_multiplier} ${ingredientObj.unit_name_pl}</label>
-                             <div id="${randomId}" class="edit-remove-item remove-icon filter-red"></div>
-                        </div>
-                      `
-                        const itemsContainer = document.querySelector('.edit-workout-added-items')
-                        itemsContainer.insertAdjacentHTML('beforeend', workoutItemAppend)
-                        const btnRemove = itemsContainer.querySelector(`#${randomId}`)
-                        btnRemove.addEventListener('click', e => {
-                            const parent = e.target.parentNode
-                            const itemsCount = document.querySelector('.edit-workout-added-items').children.length
-                            if (itemsCount >= 2) {
-                                $(parent).fadeOut(300)
-                                parent.remove()
-                            }
-                        })
-                        btnRemove.removeAttribute('id')
+                        const exercisePk = button.dataset.exercisepk
+                        const url = window.location.origin + `/${langPrefix}/workouts/data/get-exercise`
+                        $.ajax({
+                            type: 'get',
+                            url: url,
+                            data: {
+                                "exerciseId": exercisePk
+                            },
+                            success: function (response){
+                                const exercise = JSON.parse(response.exercise)
+                                const randomId = "Id" + exercisePk * Math.floor(Math.random() * (100 - 1 + 1)) + 1;
+                                let exerciseName
+                                let unitName
+                                if (langPrefix === 'pl'){
+                                   exerciseName = exercise.pl_name
+                                   unitName = 'minut'
+                                }
+                                else {
+                                   exerciseName = exercise.en_name
+                                   unitName = 'minutes'
+                                }
+                                const workoutItemAppend = `
+                                    <div class="today-workouts-saved-edit-inputBox" data-exercisePK='${exercisePk}'>
+                                      <p><b>${exerciseName}</b></p>
+                                     <input name="${exercisePk}" min="0" max="1000" class='updated-workout-element-input' type="number" placeholder="${unitName}">
+                                     <label for="${exercisePk}">x ${unitName}</label>
+                                     <div id="${randomId}" class="edit-remove-item remove-icon filter-red"></div>
+                                    </div>
+                                  `
+                                    const itemsContainer = document.querySelector('.edit-workout-added-items')
+                                    itemsContainer.insertAdjacentHTML('beforeend', workoutItemAppend)
+                                    const btnRemove = itemsContainer.querySelector(`#${randomId}`)
+                                    btnRemove.addEventListener('click', e => {
+                                        const parent = e.target.parentNode
+                                        const itemsCount = document.querySelector('.edit-workout-added-items').children.length
+                                        if (itemsCount >= 2) {
+                                            $(parent).fadeOut(300)
+                                            parent.remove()
+                                        }
+                                    })
+                                    btnRemove.removeAttribute('id')
+                                    }
+                                })
+
                     })
                 })
             }
