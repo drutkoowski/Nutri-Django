@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load sass_tags %}
+{% load i18n %}
+{% block scripts %}
+     <script src="{% sass_src 'scripts/workouts/saved/main.js' %}" defer></script>
+    <script>
+        let searchIconPath = "{% sass_src 'images/svg/search.svg' %}"
+    </script>
+{% endblock scripts %}
+{% block content %}
+    {% csrf_token %}
+    <div class="loader"></div>
+      <div class="bg-video" id="add-meals-video-container">
+         <video id="add-meals-video" class="bg-video__content" autoplay muted loop>
+             <source src="{% sass_src 'video/add_meal_bg_video.mp4' %}" type="video/mp4">
+             <source src="{% sass_src 'video/add_meal_bg_video.webm' %}" type="video/webm">
+             Your browser is not supported!
+         </video>
+     </div>
+
+        <div class="saved-workouts-layout-container">
+            {% include 'accounts/navbar.html' %}
+             {% include 'accounts/navbar_small.html' %}
+            <div class="saved-workouts grid-full-span">
+                <div class="saved-workouts__search">
+                    <div class="saved-workouts__search__results">
+                    <div class="saved-workouts__search__results__heading-box">
+                        <h3>{% trans 'Your Saved Activities' %}</h3>
+                    </div>
+                        <div class="saved-workouts__search__results__container">
+                        {% if saved_templates %}
+                            {% for item in saved_templates %}
+                                <div class="saved-workouts__search__results__container__item">
+                                    <div class="saved-workouts__search__results__container__item__recipe"><p><b>{{ item.workout_name }}</b> - {{ item.kcal_burnt_sum|floatformat:"-3" }} kcal</p></div>
+                                    <div class="saved-workouts__search__results__container__item__buttons">
+                                        <button class="edit-saved-workouts btn-light" data-activity='{{ item.id }}'>{% trans 'Manage' %}</button>
+                                        <button class="delete-saved-workouts btn-light" data-activity='{{ item.id }}'>{% trans 'Delete' %}</button>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            {% else %}
+                            <p class="no-saved-templates-info">{% trans 'No saved templates yet' %}</p>
+                        {% endif %}
+                        </div>
+                    </div>
+                    <div class="saved-workouts__search__save-new">
+                        <p>{% trans 'Do you want to create new activity template?' %}</p>
+                        <button class="saved-workouts__search__save-new__button btn">{% trans 'Create New Template' %}</button>
+                    </div>
+                </div>
+                <div class="modal-queued not-visible">
+                     <div class="modal-queued__content">
+                         <div class="modal-queued__close-button">&times;</div>
+                         <h1 class="modal-queued--heading">{% trans 'Adding your activity template to our database..' %}</h1>
+                         <div class="loader--signup"></div>
+                     </div>
+                 </div>
+
+                <div class="saved-workouts__added not-visible">
+                    <div class="saved-workouts__added--saved">
+                        <div class="saved-workouts__added--saved__heading">
+                            <h2 class="saved-workouts__added--saved__heading--item">&nbsp;</h2>
+                        </div>
+                        <div class="saved-workouts__added--saved__content"></div>
+                    </div>
+                </div>
+
+
+                <div class="modal-queued modal-edit-search not-visible">
+                     <div class="modal-queued__content modal-edit-search__content">
+                         <div class="modal-queued__close-button modal-edit-search__close-button">&times;</div>
+                         <h1 class="modal-queued--heading modal-edit-search__heading">{% trans 'Search for your activity components' %}</h1>
+                         <div class="add-new-element-template-search-bar modal-edit-search__content__search"><input class="new-saved-workout-search input-scale modal-edit-search__content__search-bar" type="text" placeholder="{% trans 'Search' %}"/><span><img class="add-workouts__search__bar__icon" src="{% sass_src 'images/svg/search.svg' %}" alt="Search Icon" /></span></div>
+                            <div class="saved-workouts__added--saved__content__search-response modal-edit-search__content__search-response not-visible">
+                                <div class="saved-workouts__added--saved__content__search-response__item"></div>
+                            </div>
+                        </div>
+                     </div>
+
+                <div class="modal-queued modal-add-search not-visible">
+                     <div class="modal-queued__content modal-add-search__content">
+                         <div class="modal-queued__close-button modal-add-search__close-button">&times;</div>
+                         <h1 class="modal-queued--heading modal-add-search__heading">{% trans 'Search for your activity components' %}</h1>
+                         <div class="saved-workouts__added--saved__content__search-bar modal-add-search__content__search"><input class="new-saved-workout-search input-scale modal-add-search__content__search-bar" type="text" placeholder="{% trans 'Search' %}"/><span><img class="add-workouts__search__bar__icon" src="{% sass_src 'images/svg/search.svg' %}" alt="Search Icon" /></span></div>
+                          <div class="saved-workouts__added--saved__content__search-response modal-add-search__content__search-response not-visible">
+                              <div class="saved-workouts__added--saved__content__search-response__item"></div>
+                          </div>
+                        </div>
+                     </div>
+                 </div>
+
+                </div>
+            </div>
+        </div>
+
+
+{% endblock %}

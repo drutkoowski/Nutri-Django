@@ -1,11 +1,13 @@
 import json
+from datetime import datetime
 
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from accounts.models import UserProfile
 from workouts.models import Exercise, ExerciseUnit, ExerciseCategory, ExerciseTimeUnit, Workout, WorkoutElement, \
-    WorkoutTemplate
+    WorkoutTemplate, WorkoutTemplateElement
+
 
 # Create your views here.
 
@@ -19,7 +21,8 @@ def workouts_view(request):
 def add_workout_view(request):
     user_profile = UserProfile.objects.get(user=request.user)
     from datetime import datetime
-    workouts_added_today = Workout.objects.filter(created_by=user_profile, created_at__contains=datetime.today().date()).all()
+    workouts_added_today = Workout.objects.filter(created_by=user_profile,
+                                                  created_at__contains=datetime.today().date()).all()
     workout_templates = WorkoutTemplate.objects.filter(created_by=user_profile).all()
     context = {
         'todayWorkouts': workouts_added_today,
@@ -27,9 +30,14 @@ def add_workout_view(request):
     }
     return render(request, 'workouts/add/add_workouts.html', context)
 
-def saved_workout_view(request):
-    return None
 
+def saved_workout_view(request):
+    user_profile = UserProfile.objects.filter(user=request.user)
+    workout_templates = WorkoutTemplate.objects.filter(created_by__in=user_profile).all()
+    context = {
+        "saved_templates": workout_templates
+    }
+    return render(request, 'workouts/saved/saved_workouts.html', context)
 
 
 # ajax calls
@@ -80,6 +88,34 @@ def live_search_exercises(request):
     else:
         return redirect('home')
 
+
+@login_required(login_url='login')
+def get_exercise_by_id(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
+        exercise_id = request.GET.get('exerciseId')
+        try:
+            exercise = Exercise.objects.get(pk=exercise_id)
+            exercise_dict = {
+                'pl_name': exercise.pl_name,
+                'en_name': exercise.en_name,
+                'id': exercise.pk,
+                'time_unit_en': exercise.time_unit.en_time_unit_name,
+                'time_unit_pl': exercise.time_unit.pl_time_unit_name,
+                'category_name_pl': exercise.category.pl_category_name,
+                'category_name_en': exercise.category.en_category_name,
+            }
+            return JsonResponse(
+                {'status': 200, 'text': 'There is exercise found.', 'exercise': json.dumps(exercise_dict)})
+        except:
+            return JsonResponse({'status': 404, 'text': 'There is not exercise found.', 'exercise': []})
+
+
+@login_required(login_url='login')
+def get_saved_workout_template(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
+        template_id = request.GET.get('templateId')
+
+
 @login_required(login_url='login')
 def add_today_exercise(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
@@ -107,6 +143,47 @@ def add_today_exercise(request):
         return JsonResponse({'status': 400, 'text': 'Not Created.'})
     else:
         return redirect('home')
+
+
+@login_required(login_url='login')
+def save_workout_template(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
+        workout_name = request.POST.get('workoutName')
+        try:
+            user_profile = UserProfile.objects.get(user=request.user)
+            workout = WorkoutTemplate.objects.create(created_by=user_profile, workout_name=workout_name)
+            workout.save()
+            return JsonResponse({'status': 200, 'text': 'Workout Created.', 'workoutId': workout.pk})
+        except:
+            return JsonResponse({'status': 500, 'text': 'Workout not created.', 'workoutId': ''})
+
+
+@login_required(login_url='login')
+def save_workout_template_element(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
+        workout_template_id = request.POST.get('workoutId')
+        exercise_obj_arr_json = json.loads(request.POST.get('exerciseObjArr'))
+        user_profile = UserProfile.objects.get(user=request.user)
+        workout_template = WorkoutTemplate.objects.get(pk=workout_template_id, created_by=user_profile)
+        try:
+            for i in exercise_obj_arr_json:
+                exercise = Exercise.objects.get(pk=i['exercisePk'])
+                min_spent = float(i['quantity'])
+                exercise_kcal = round(((exercise.met * 3.5 * float(user_profile.weight)) / 200) * min_spent, 2)
+                workout_template_element = WorkoutTemplateElement.objects.create(exercise=exercise,
+                                                                                 min_spent=min_spent,
+                                                                                 kcal_burnt=exercise_kcal,
+                                                                                 created_by=user_profile)
+                workout_template_element.save()
+                workout_template.workout_elements.add(workout_template_element)
+                workout_template.kcal_burnt_sum = round(float((0.0 if workout_template.kcal_burnt_sum is None else
+                                                               workout_template.kcal_burnt_sum) + exercise_kcal), 2)
+                workout_template.min_spent_sum = round(float((0.0 if workout_template.min_spent_sum is None else
+                                                              workout_template.min_spent_sum) + min_spent), 2)
+                workout_template.save()
+            return JsonResponse({'status': 201, 'text': 'Workout Element Created.'})
+        except:
+            return JsonResponse({'status': 400, 'text': 'Workout Element Not Created.'})
 
 
 @login_required(login_url='login')
@@ -150,6 +227,21 @@ def delete_today_workout_element(request):
     else:
         return redirect('home')
 
+
+def delete_workout_template_element(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
+        workout_template_id = request.POST.get('workoutTemplateId')
+        try:
+            user_profile = UserProfile.objects.get(user=request.user)
+            workout_template = WorkoutTemplate.objects.get(pk=workout_template_id, created_by=user_profile)
+            workout_template.delete()
+            return JsonResponse({'status': 200, 'text': f'Item with id {workout_template_id} successfully deleted!'})
+        except:
+            return JsonResponse({'status': 400, 'text': f'Item with id {workout_template_id} was not deleted!'})
+    else:
+        return redirect('home')
+
+
 def test(request):
     import json
 
@@ -164,7 +256,7 @@ def test(request):
     for exercise in data:
 
         met = exercise[0]['met']
-        exercise_met = round(float(met),2)
+        exercise_met = round(float(met), 2)
         exercise_name = exercise[0]['exerciseName']
         try:
 
@@ -183,12 +275,8 @@ def test(request):
         except:
             pass
         else:
-            # print(f'{exercise_name} nie dodano')
             pass
     return render(request, 'workouts/test.html')
-
-
-
 
 
 def test2(request):

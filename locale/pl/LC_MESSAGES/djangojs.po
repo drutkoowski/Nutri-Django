@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-15 00:19+0100\n"
+"POT-Creation-Date: 2022-11-16 13:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -346,7 +346,10 @@ msgid "Email or password field is not valid."
 msgstr "Pole email lub hasła jest nieprawidłowe."
 
 #: .\static\scripts\meals\add\main.js:178
+#: .\static\scripts\meals\saved\main.js:77
+#: .\static\scripts\meals\saved\main.js:169
 #: .\static\scripts\workouts\add\main.js:175
+#: .\static\scripts\workouts\saved\main.js:76
 msgid "Category"
 msgstr "Kategoria"
 
@@ -372,12 +375,18 @@ msgstr ""
 
 #: .\static\scripts\meals\saved\main.js:385
 #: .\static\scripts\meals\saved\main.js:538
+#: .\static\scripts\workouts\saved\main.js:402
+#: .\static\scripts\workouts\saved\main.js:556
 msgid "Save"
 msgstr "Zapisz"
 
 #: .\static\scripts\meals\saved\main.js:523
 msgid "Create New Meal Template"
 msgstr "Stwórz Nowy Szablon Posiłku"
+
+#: .\static\scripts\meals\saved\main.js:529
+msgid "Search to fill your template with meals."
+msgstr ""
 
 #: .\static\scripts\meals\saved\main.js:531
 msgid "Your Meal"
@@ -386,6 +395,10 @@ msgstr "Twój Posiłek"
 #: .\static\scripts\meals\saved\main.js:537
 msgid "Meal Name"
 msgstr "Nazwa posiłku"
+
+#: .\static\scripts\meals\saved\main.js:546
+msgid "Dodaj nowy element dla Twojego posiłku"
+msgstr ""
 
 #: .\static\scripts\signup\main.js:155
 msgid "\"What's your weight goal?\""
@@ -507,6 +520,31 @@ msgstr "Coś poszło nie tak, spróbuj ponownie."
 #: .\static\scripts\workouts\add\main.js:413
 msgid "Try to search exercise or exercises that have you eaten today."
 msgstr "Spróbuj wyszukać aktywność lub ćwiczenia, które wykonałaś/eś dziś."
+
+#: .\static\scripts\workouts\saved\main.js:394
+#: .\static\scripts\workouts\saved\main.js:564
+msgid "Add new element for your activity"
+msgstr ""
+
+#: .\static\scripts\workouts\saved\main.js:541
+#, fuzzy
+#| msgid "Create New Meal Template"
+msgid "Create New Activity Template"
+msgstr "Stwórz Nowy Szablon Posiłku"
+
+#: .\static\scripts\workouts\saved\main.js:547
+msgid "Search to fill your template with activity"
+msgstr ""
+
+#: .\static\scripts\workouts\saved\main.js:549
+msgid "Your Activity"
+msgstr ""
+
+#: .\static\scripts\workouts\saved\main.js:555
+#, fuzzy
+#| msgid "Active"
+msgid "Activity Name"
+msgstr "Aktywny"
 
 #~ msgid "Password is too short!"
 #~ msgstr "Twoje hasło jest zbyt krótkie!"

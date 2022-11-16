@@ -74,18 +74,21 @@ if (location.href !== location.origin + '/pl' || location.href !== location.orig
     const navigationList = document.getElementsByClassName('navigation__list')[0]
      hamburgerNav.addEventListener('click', () => {
         hideModal()
-        if (!navigationList.classList?.contains('not-visible') && !hamburgerNav.checked) {
-            navigationList.classList.add('not-visible')
+        if(navigationList){
+            if (!navigationList.classList?.contains('not-visible') && !hamburgerNav.checked) {
+                navigationList.classList.add('not-visible')
+             }
+            else if (navigationList.classList.contains('not-visible') && hamburgerNav.checked) {
+                navigationList.classList.remove('not-visible')
+                const navbar = document.querySelector('.navbar')
+                    $(navbar).on('scroll touchmove mousewheel', function(e){
+                    e.preventDefault();
+                    e.stopPropagation();
+                    return false;
+                })
+            }
         }
-        else if (navigationList.classList.contains('not-visible') && hamburgerNav.checked) {
-             navigationList.classList.remove('not-visible')
-             const navbar = document.querySelector('.navbar')
-                $(navbar).on('scroll touchmove mousewheel', function(e){
-                  e.preventDefault();
-                  e.stopPropagation();
-                  return false;
-             })
-        }
+
     })
 }
 else {

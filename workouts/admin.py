@@ -43,10 +43,10 @@ class WorkoutElementAdmin(admin.ModelAdmin):
 
 
 class WorkoutTemplateAdmin(admin.ModelAdmin):
-    list_display = ("workout_name", "workout_elements_list", "kcal_burnt", "created_by")
+    list_display = ("workout_name", "workout_elements_list", "kcal_burnt_sum", "min_spent_sum", "created_by")
 
     def workout_elements_list(self, obj):
-        return ",\n".join([a.exercise.en_name for a in obj.exercise_elements.all()])
+        return ",\n".join([a.exercise.en_name for a in obj.workout_elements.all()])
 
 
 #

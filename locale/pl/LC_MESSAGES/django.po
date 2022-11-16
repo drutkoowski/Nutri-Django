@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-15 00:19+0100\n"
+"POT-Creation-Date: 2022-11-16 13:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -411,6 +411,8 @@ msgstr "Stworzone z &hearts; przez"
 #: .\templates\meals\saved\saved_meals.html:73
 #: .\templates\meals\saved\saved_meals.html:84
 #: .\templates\workouts\add\add_workouts.html:23
+#: .\templates\workouts\saved\saved_workouts.html:73
+#: .\templates\workouts\saved\saved_workouts.html:84
 msgid "Search"
 msgstr "Szukaj"
 
@@ -446,6 +448,7 @@ msgstr "Zapisane Posiłki"
 
 #: .\templates\meals\add\add_meals.html:57
 #: .\templates\meals\saved\saved_meals.html:42
+#: .\templates\workouts\saved\saved_workouts.html:42
 msgid "No saved templates yet"
 msgstr "Brak zapisanych szablonów"
 
@@ -533,10 +536,12 @@ msgid "Your Saved Meals"
 msgstr "Zapisane Posiłki"
 
 #: .\templates\meals\saved\saved_meals.html:36
+#: .\templates\workouts\saved\saved_workouts.html:36
 msgid "Manage"
 msgstr "Zarządzaj"
 
 #: .\templates\meals\saved\saved_meals.html:37
+#: .\templates\workouts\saved\saved_workouts.html:37
 #: .\venv\Lib\site-packages\django\forms\formsets.py:496
 msgid "Delete"
 msgstr "Usuń"
@@ -546,6 +551,7 @@ msgid "Do you want to create new meal template?"
 msgstr "Chcesz utworzyć nowy szablon posiłku?"
 
 #: .\templates\meals\saved\saved_meals.html:48
+#: .\templates\workouts\saved\saved_workouts.html:48
 msgid "Create New Template"
 msgstr "Utwórz Szablon Posiłku"
 
@@ -614,6 +620,31 @@ msgstr "Utworzone w"
 #: .\templates\workouts\add\add_workouts.html:119
 msgid "No exercises added for today..."
 msgstr "Brak ćwiczeń dodanych dzisiaj..."
+
+#: .\templates\workouts\saved\saved_workouts.html:28
+#, fuzzy
+#| msgid "Saved Activities"
+msgid "Your Saved Activities"
+msgstr "Zapisane aktywności"
+
+#: .\templates\workouts\saved\saved_workouts.html:47
+#, fuzzy
+#| msgid "Do you want to create new meal template?"
+msgid "Do you want to create new activity template?"
+msgstr "Chcesz utworzyć nowy szablon posiłku?"
+
+#: .\templates\workouts\saved\saved_workouts.html:54
+#, fuzzy
+#| msgid "Adding your meal template to our database.."
+msgid "Adding your activity template to our database.."
+msgstr "Dodawanie Twojego szablonu posiłku do bazy..."
+
+#: .\templates\workouts\saved\saved_workouts.html:72
+#: .\templates\workouts\saved\saved_workouts.html:83
+#, fuzzy
+#| msgid "Search for your meal components"
+msgid "Search for your activity components"
+msgstr "Szukaj składowych posiłku"
 
 #: .\templates\workouts\workouts.html:21
 msgid "Add Activity"
