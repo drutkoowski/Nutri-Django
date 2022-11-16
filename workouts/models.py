@@ -90,6 +90,7 @@ class WorkoutTemplateElement(models.Model):
     min_spent = models.FloatField(blank=False)
     created_by = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     kcal_burnt = models.FloatField(blank=False)
+
     def __str__(self):
         return f'{self.exercise.en_name} / {self.created_by} ({self.pk})'
 

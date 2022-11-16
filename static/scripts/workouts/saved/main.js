@@ -122,9 +122,10 @@ const ajaxCall = (query, searchResponseBox) => {
         },
     })
 }
+//do zrobienia////////////////////////////////////////////////////////////////
 const ajaxCallEditWorkout = (query) => {
     const langPrefix = window.location.href.split('/')[3];
-    const url = window.location.origin + `/${langPrefix}/workouts/data/live-search-ingredients`
+    const url = window.location.origin + `/${langPrefix}/workouts/data/live-search-exercises`
     const searchResponseBox = document.querySelector('.saved-workouts__added--saved__content__search-response')
     $.ajax({
         type: "GET",
@@ -169,10 +170,9 @@ const ajaxCallEditWorkout = (query) => {
                             button.parentElement.classList.remove('blink-background-green')
                         },1000)
                         const ingredientObj = JSON.parse(decodeURIComponent(button.dataset.mealobj))
-                        let isGram = ingredientObj.unit_name_pl === 'g' ? '' : `lub ${Math.round(ingredientObj.serving_grams)} g`
                         const randomId = "Id" + ingredientObj.ingredientId * Math.floor(Math.random() * (100 - 1 + 1)) + 1;
                         const workoutItemAppend = `
-                            <div class="today-workouts-saved-edit-inputBox" data-object="${encodeURIComponent(JSON.stringify(ingredientObj))}">
+                            <div class="today-workouts-saved-edit-inputBox" data-object="">
                               <p><b>${ingredientObj.pl_name}</b> (${Math.trunc(ingredientObj.kcal)} kcal / ${ingredientObj.unit_multiplier} ${ingredientObj.unit_name_pl} ${isGram})</p>
                              <input name="${ingredientObj.pl_name}" min="0" max="1000" class='updated-workout-element-input' type="number" placeholder="${ingredientObj.unit_name_pl}">
                              <label for="${ingredientObj.pl_name}">x ${ingredientObj.unit_multiplier} ${ingredientObj.unit_name_pl}</label>
@@ -262,33 +262,46 @@ const getExerciseById = (id) => {
     })
 }
 // create
-const createNewWorkoutTemplate = (exercisesArr,workoutName, text) => {
+const createNewWorkoutTemplate = (exercisesArr,workoutName) => {
      const langPrefix = window.location.href.split('/')[3];
-     const url = window.location.origin + `${langPrefix}/meals/data/save/saved-meal/element`
-     const exercises = JSON.stringify(exercisesArr)
+     const url = window.location.origin + `/${langPrefix}/workouts/data/save/workout-template`
      $.ajax({
          type: "POST",
          url: url,
          data: {
-             'ingredientsArray': exercises,
-             'workoutName': workoutName.value,
+             'workoutName': workoutName,
              'csrfmiddlewaretoken': csrfToken,
          },
          success: function (response){
-             const status = response.status
-             if (status === 201) {
-                 const modal = document.querySelector('.modal-queued')
-                 modal.classList.toggle('not-visible')
-                 const closeModalBtn = document.querySelector('.modal-queued__close-button')
-                 closeModalBtn.addEventListener('click', e => {
-                     window.location = window.location.href;
-                 })
-                 setInterval(function () {
-                     window.location = window.location.href;
-                     }, 2500);
-
-             }
+             const workoutId = response.workoutId
+             $.ajax({
+                 type: 'POST',
+                 url: window.location.origin + `/${langPrefix}/workouts/data/save/workout-template/element`,
+                 data: {
+                     'workoutId': workoutId,
+                     'exerciseObjArr': JSON.stringify(exercisesArr),
+                     'csrfmiddlewaretoken': csrfToken,
+                 },
+                 success: function (response) {
+                     console.log(response)
+                     const status = response.status
+                     if (status === 201) {
+                         const modal = document.querySelector('.modal-queued')
+                         modal.classList.toggle('not-visible')
+                         const closeModalBtn = document.querySelector('.modal-queued__close-button')
+                         closeModalBtn.addEventListener('click', e => {
+                             window.location = window.location.href;
+                         })
+                         setInterval(function () {
+                             window.location = window.location.href;
+                         }, 2500);
+                        }
+                    }
+                })
          },
+         error: function (error){
+             console.log(error)
+         }
      })
 }
 const saveNewWorkout = () => {
@@ -344,9 +357,9 @@ const saveNewWorkout = () => {
 
 }
 // delete
-const deleteAndCreateWorkoutTemplate = (workoutTemplateId, ingredientsArr, workoutName) => {
+const deleteAndCreateWorkoutTemplate = (workoutTemplateId, exercisesArrPk, workoutName) => {
     const langPrefix = window.location.href.split('/')[3];
-    const url = window.location.origin + `/${langPrefix}/meals/data/delete/saved-meal/template`
+    const url = window.location.origin + `/${langPrefix}/workouts/data/delete/saved-workout/template`
     $.ajax({
         type: "POST",
         url: url,
@@ -355,7 +368,8 @@ const deleteAndCreateWorkoutTemplate = (workoutTemplateId, ingredientsArr, worko
             'csrfmiddlewaretoken': csrfToken
         },
         success: function (response) {
-            createNewWorkoutTemplate(ingredientsArr, workoutName, 'Updating your activity template in our database.')
+            console.log(exercisesArrPk, workoutName)
+            createNewWorkoutTemplate(exercisesArrPk, workoutName)
         },
     })
 }
@@ -383,9 +397,8 @@ const deleteWorkoutTemplate = (id) => {
                 setInterval(function () {
                     window.location = window.location.href;
                     }, 1000);
-
              }
-             },
+        },
     })
 }
 
@@ -401,7 +414,6 @@ const getTemplateElement = (id) => {
         },
         success: function (response) {
            const workoutObj = JSON.parse(response.workoutTemplateObj)
-           console.log(workoutObj)
            const workoutName = workoutObj.workout_name
            const kcal = workoutObj.kcal_burnt_sum
            const ids_array = workoutObj.workout_elements_ids
@@ -410,8 +422,6 @@ const getTemplateElement = (id) => {
     })
 }
 const getWorkoutTemplateElement = (workoutObj, workoutName, kcal, ids_array) => {
-    const langPrefix = window.location.href.split('/')[3];
-    const url = window.location.origin + `/${langPrefix}/workouts/data/get/saved-workout/template/element`
     const contentContainer = document.querySelector('.saved-workouts__added--saved__content')
     let contentToAppend = `
         <div class="saved-workouts__added--saved__content__item saved-template-edit__heading" id="${workoutObj.workoutId}">
@@ -456,7 +466,7 @@ const getWorkoutTemplateElement = (workoutObj, workoutName, kcal, ids_array) => 
             }
         })
         if (workoutItems.length > 0 && inputNameEl.value && inputNameEl.value.length > 3 && isValid) {
-            updateMeal(workoutObj)
+            updateWorkout(workoutObj)
         }
         else if(!workoutItems.length > 0 || !inputNameEl.value || !inputNameEl.value.length > 3) {
             inputNameEl.classList.add('color-error')
@@ -469,6 +479,8 @@ const getWorkoutTemplateElement = (workoutObj, workoutName, kcal, ids_array) => 
         }
     })
     const searchInput = document.querySelector('.new-saved-workout-search')
+    const langPrefix = window.location.href.split('/')[3];
+    const url = window.location.origin + `/${langPrefix}/workouts/data/get/saved-workout/template/element`
     searchInput.addEventListener('input', e => {
         const searchValue = e.target.value
         const searchResponseBox = document.querySelector('.saved-workouts__added--saved__content__search-response')
@@ -487,14 +499,23 @@ const getWorkoutTemplateElement = (workoutObj, workoutName, kcal, ids_array) => 
              },
             success: function (response){
                 const obj = JSON.parse(response['workoutTemplateElement'])
-                const objDataSet = JSON.parse(response['ingredientElement'])
-                let isGram = obj.unit_name_pl === 'g' ? '' : `lub ${Math.round(obj.serving_grams)} g`
+                const objDataSet = JSON.parse(response['workoutElement'])
                 const randomId = "Id" + obj.workoutTemplateElementId * Math.floor(Math.random() * (100 - 1 + 1)) + 1;
+                let elementName
+                let unitName
+                if (langPrefix === 'pl') {
+                    elementName = obj.templateElementName_pl
+                    unitName = 'minut'
+                }
+                else {
+                    elementName = obj.templateElementName_en
+                    unitName = 'minutes'
+                }
                 let appendItemElement = `
-                <div class="today-workouts-saved-edit-inputBox" data-object="${encodeURIComponent(JSON.stringify(objDataSet))}">
-                    <p><b>${obj.templateElementName_pl}</b> (${Math.trunc(obj.kcal)} kcal / ${obj.unit_multiplier} ${obj.unit_name_pl} ${isGram})</p>
-                    <input name="${obj.workoutTemplateElementId}" min="0" max="1000" value="${obj.quantity * obj.unit_multiplier}" class='updated-workout-element-input' type="number" placeholder="${obj.quantity}">
-                    <label for="${obj.workoutTemplateElementId}">x ${obj.unit_name_pl}</label>
+                <div class="today-workouts-saved-edit-inputBox" data-exercisePk="${objDataSet.id}">
+                    <p><b>${elementName}</b> ${Math.trunc(obj.kcal_burnt)} kcal</p>
+                    <input name="${obj.workoutTemplateElementId}" min="0" max="1000" value="${obj.min_spent}" class='updated-workout-element-input' type="number" placeholder="${obj.min_spent}">
+                    <label for="${obj.workoutTemplateElementId}">x ${unitName}</label>
                     <div id='${randomId}' class="edit-remove-item remove-icon filter-red"></div>
                 </div>
                 `
@@ -516,20 +537,19 @@ const getWorkoutTemplateElement = (workoutObj, workoutName, kcal, ids_array) => 
     })
 }
 const updateWorkout = (workoutObj) => {
-    const workoutName = document.querySelector('.workout_name_input')
-    const ingredientsElements = document.querySelectorAll('.today-workouts-saved-edit-inputBox')
-    let ingredientsArr = []
-    ingredientsElements.forEach(item => {
-        const workoutObj = JSON.parse(decodeURIComponent(item.dataset.object));
-        const unit_multiplier = workoutObj?.unit_multiplier ? workoutObj.unit_multiplier : workoutObj.unit_multiplier
+    const workoutName = document.querySelector('.workout_name_input').value
+    const workoutElements = document.querySelectorAll('.today-workouts-saved-edit-inputBox')
+    let exercisesArrPk = []
+    workoutElements.forEach(item => {
+        const workoutObjPk = item.dataset.exercisepk;
         const inputEl = item.querySelector('.updated-workout-element-input')
-        const ingredientObj = {
-            'ingObj': workoutObj,
-            'quantity': inputEl.value / unit_multiplier,
+        const exerciseObj = {
+            'exercisePk': workoutObjPk,
+            'quantity': inputEl.value,
         }
-        ingredientsArr.push(ingredientObj)
+        exercisesArrPk.push(exerciseObj)
     })
-    deleteAndCreateWorkoutTemplate(workoutObj.workoutId, ingredientsArr, workoutName)
+    deleteAndCreateWorkoutTemplate(workoutObj.workoutId, exercisesArrPk, workoutName)
 
 }
 

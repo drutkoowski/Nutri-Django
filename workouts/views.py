@@ -139,53 +139,39 @@ def get_saved_workout_template(request):
 @login_required(login_url='login')
 def get_saved_workout_template_element(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
-        element_id = request.GET.get('mealElementId')
+        element_id = request.GET.get('workoutElementId')
         try:
-            template_element = MealTemplateElement.objects.get(pk=element_id)
+            template_element = WorkoutTemplateElement.objects.get(pk=element_id)
             template_obj_dict = {
-                "mealTemplateElementId": template_element.pk,
-                "ingredientId": template_element.ingredient.pk,
-                "quantity": template_element.quantity,
-                "templateElementName_en": template_element.ingredient.en_name,
-                "templateElementName_pl": template_element.ingredient.pl_name,
-                "unit_multiplier": template_element.ingredient.unit.multiplier,
-                "unit_name_pl": template_element.ingredient.unit.pl_name,
-                "unit_name_en": template_element.ingredient.unit.en_name,
-                "kcal": template_element.ingredient.kcal,
-                "serving_grams": template_element.ingredient.serving_grams
+                "workoutTemplateElementId": template_element.pk,
+                "exerciseId": template_element.exercise.pk,
+                "min_spent": template_element.min_spent,
+                "kcal_burnt": template_element.kcal_burnt,
+                "templateElementName_en": template_element.exercise.en_name,
+                "templateElementName_pl": template_element.exercise.pl_name,
+                "unit_name_pl": template_element.exercise.unit.pl_name,
+                "unit_name_en": template_element.exercise.unit.en_name
             }
-            ingredient_obj_dict = {
-                "id": template_element.ingredient.pk,
-                'en_name': template_element.ingredient.en_name,
-                'category_id': template_element.ingredient.category.pk,
-                'unit_id': template_element.ingredient.unit.pk,
-                'kcal': template_element.ingredient.kcal,
-                'carbs': template_element.ingredient.carbs,
-                'protein': template_element.ingredient.protein,
-                'fat': template_element.ingredient.fat,
-                'fiber': template_element.ingredient.fiber,
-                'saturated_fat': template_element.ingredient.saturated_fat,
-                'cholesterol': template_element.ingredient.cholesterol,
-                'sodium': template_element.ingredient.sodium,
-                'sugar': template_element.ingredient.sugar,
-                'potassium': template_element.ingredient.potassium,
-                'serving_grams': template_element.ingredient.serving_grams,
-                'serving_ml': template_element.ingredient.serving_ml,
-                'unit_name_en': template_element.ingredient.unit.en_name,
-                'unit_name_pl': template_element.ingredient.unit.pl_name,
-                'category_name_en': template_element.ingredient.category.en_category_name,
-                'category_name_pl': template_element.ingredient.category.pl_category_name,
-                'unit_multiplier': template_element.ingredient.unit.multiplier
+            exercise_obj_dict = {
+                "id": template_element.exercise.pk,
+                'en_name': template_element.exercise.en_name,
+                'pl_name': template_element.exercise.pl_name,
+                'category_id': template_element.exercise.category.pk,
+                'unit_id': template_element.exercise.unit.pk,
+                'unit_name_en': template_element.exercise.unit.en_name,
+                'unit_name_pl': template_element.exercise.unit.pl_name,
+                'category_name_en': template_element.exercise.category.en_category_name,
+                'category_name_pl': template_element.exercise.category.pl_category_name,
             }
             return JsonResponse(
-                {'status': 302, 'text': 'Meal Template Element Found',
-                 "mealTemplateElement": json.dumps(template_obj_dict),
-                 "ingredientElement": json.dumps(ingredient_obj_dict)})
+                {'status': 302, 'text': 'Workout Template Element Found',
+                 "workoutTemplateElement": json.dumps(template_obj_dict),
+                 "workoutElement": json.dumps(exercise_obj_dict)})
         except:
             return JsonResponse(
-                {'status': 404, 'text': 'Meal Template Element Found',
-                 "mealTemplateElement": '',
-                 "ingredientElement": ''
+                {'status': 404, 'text': 'Workout Template Element Not Found',
+                 "workoutTemplateElement": '',
+                 "workoutElement": ''
                  })
     return redirect('home')
 
@@ -314,6 +300,19 @@ def delete_workout_template_element(request):
             return JsonResponse({'status': 400, 'text': f'Item with id {workout_template_id} was not deleted!'})
     else:
         return redirect('home')
+
+
+@login_required(login_url='login')
+def delete_saved_workout_template(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
+        workout_template_id = request.POST.get('workoutTemplateId')
+        try:
+            user_profile = UserProfile.objects.get(user=request.user)
+            meal_template = WorkoutTemplate.objects.get(pk=workout_template_id, created_by=user_profile)
+            meal_template.delete()
+            return JsonResponse({'status': 200, 'text': 'Object deleted successfully!'})
+        except:
+            return JsonResponse({'status': 401, 'text': 'Object not deleted!'})
 
 
 def test(request):

@@ -15,6 +15,7 @@ urlpatterns = [
     path('/data/save/workout-template', views.save_workout_template, name='save-workout-template'),
     path('/data/save/workout-template/element', views.save_workout_template_element, name='save-workout-template-element'),
     path('/data/save/added-workout', views.add_today_exercise, name='add-today-exercise'),
+    path('/data/delete/saved-workout/template', views.delete_saved_workout_template, name='delete-saved-workout-template'),
     path('/data/delete/added-workout', views.delete_today_workout, name='delete-today-workout'),
     path('/data/delete/added-workout/element', views.delete_today_workout_element, name='delete-today-workout-element'),
     path('/data/delete/workout-template/element', views.delete_workout_template_element, name='delete-workout-template-element'),
