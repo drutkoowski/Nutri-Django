@@ -69,11 +69,21 @@ const ajaxCall = (query, searchResponseBox) => {
                searchResponseBox.classList.remove('not-visible')
                let exercises = [...response.exercises]
                exercises.forEach(exercise => {
+                   let exerciseName
+                   let exerciseCategoryName
+                   if (langPrefix === 'pl'){
+                       exerciseName = exercise.pl_name
+                       exerciseCategoryName = exercise.category_name_pl
+                   }
+                   else {
+                       exerciseName = exercise.en_name
+                       exerciseCategoryName = exercise.category_name_en
+                   }
                    let contentToAppend = `
                     <div class="saved-workouts__added--saved__content__search-response__item">
-                        <p><b>${exercise.pl_name}</b></p>
+                        <p><b>${exerciseName}</b></p>
                         <div data-exercisePK='${exercise.id}' class="new-workout-add-item add-icon filter-green"></div>
-                         <small class="search-category-small--saved">${gettext('Category')} <span class="search-category-small--saved__text">${exercise.category_name_pl}</span></small>
+                         <small class="search-category-small--saved">${gettext('Category')} <span class="search-category-small--saved__text">${exerciseCategoryName}</span></small>
                     </div>
                    `
                    searchResponseBox.insertAdjacentHTML('beforeend', contentToAppend)
@@ -114,7 +124,7 @@ const ajaxCall = (query, searchResponseBox) => {
 }
 const ajaxCallEditWorkout = (query) => {
     const langPrefix = window.location.href.split('/')[3];
-    const url = window.location.origin + `/${langPrefix}/meals/data/live-search-ingredients`
+    const url = window.location.origin + `/${langPrefix}/workouts/data/live-search-ingredients`
     const searchResponseBox = document.querySelector('.saved-workouts__added--saved__content__search-response')
     $.ajax({
         type: "GET",
@@ -130,14 +140,23 @@ const ajaxCallEditWorkout = (query) => {
                     el.remove()
                 })
                searchResponseBox.classList.remove('not-visible')
-               let ingredients = [...response.ingredients]
-               ingredients.forEach(ingredient => {
-                   let isGram = ingredient.unit_name_pl === 'g' ? '' : `lub ${Math.round(ingredient.serving_grams)} g`
+               let exercises = [...response.exercises]
+               exercises.forEach(exercise => {
+                   let exerciseName
+                   let exerciseCategoryName
+                   if (langPrefix === 'pl'){
+                       exerciseName = exercise.pl_name
+                       exerciseCategoryName = exercise.category_name_pl
+                   }
+                   else {
+                       exerciseName = exercise.en_name
+                       exerciseCategoryName = exercise.category_name_en
+                   }
                    let contentToAppend = `
                     <div class="saved-workouts__added--saved__content__search-response__item">
-                        <p><b>${ingredient.pl_name}</b> (${Math.trunc(ingredient.kcal)} kcal / ${ingredient.unit_multiplier} ${ingredient.unit_name_pl} ${isGram})</p>
-                        <div data-mealObj='${encodeURIComponent(JSON.stringify(ingredient))}' class="new-workout-add-item add-icon filter-green"></div>
-                         <small class="search-category-small--saved">Kategoria: <span class="search-category-small--saved__text">${ingredient.category_name_pl}</span></small>
+                        <p><b>${exerciseName}</b></p>
+                        <div data-exercisePK='${exercise.id}' class="new-workout-add-item add-icon filter-green"></div>
+                         <small class="search-category-small--saved">${gettext('Category')}<span class="search-category-small--saved__text">${exerciseCategoryName}</span></small>
                     </div>
                    `
                    searchResponseBox.insertAdjacentHTML('beforeend', contentToAppend)
@@ -392,7 +411,7 @@ const getTemplateElement = (id) => {
 }
 const getWorkoutTemplateElement = (workoutObj, workoutName, kcal, ids_array) => {
     const langPrefix = window.location.href.split('/')[3];
-    const url = window.location.origin + `/${langPrefix}/meals/data/get/saved-meal/template/element`
+    const url = window.location.origin + `/${langPrefix}/workouts/data/get/saved-workout/template/element`
     const contentContainer = document.querySelector('.saved-workouts__added--saved__content')
     let contentToAppend = `
         <div class="saved-workouts__added--saved__content__item saved-template-edit__heading" id="${workoutObj.workoutId}">
@@ -415,12 +434,12 @@ const getWorkoutTemplateElement = (workoutObj, workoutName, kcal, ids_array) => 
     contentContainer.insertAdjacentHTML('beforeend', contentToAppend)
     contentContainer.insertAdjacentHTML('afterend', saveButtonAppend)
     const addNewElementBtn = document.querySelector('.add-new-element-box')
-    addNewElementBtn.addEventListener('click', e => {
+    addNewElementBtn.addEventListener('click', () => {
         const modalAddSearch = document.querySelector('.modal-edit-search')
         modalAddSearch.classList.toggle('not-visible')
     })
     const workoutSaveButton = document.querySelector('.save-updated-template-workout')
-    workoutSaveButton.addEventListener('click', e => {
+    workoutSaveButton.addEventListener('click', () => {
         const workoutItems = document.querySelector('.today-workouts-saved-edit-inputBox').children
         const inputNameEl = document.querySelector('.workout_name_input')
         const inputsQuantity = document.querySelectorAll('.updated-workout-element-input')

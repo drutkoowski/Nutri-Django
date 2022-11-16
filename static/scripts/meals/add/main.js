@@ -268,7 +268,6 @@ const getMealTemplateElement = (id, inputValue) => {
                 'quantity': quantity,
             }
             ingredients_arr.push(meal_obj)
-            console.log(ingredients_arr)
             saveMeal(JSON.stringify(ingredients_arr))
         },
         error: function (error){
