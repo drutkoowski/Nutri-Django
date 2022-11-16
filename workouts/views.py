@@ -114,6 +114,27 @@ def get_exercise_by_id(request):
 def get_saved_workout_template(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
         template_id = request.GET.get('templateId')
+        try:
+            template = WorkoutTemplate.objects.get(pk=template_id)
+            template_obj_dict = {
+                "workout_name": template.workout_name,
+                "workout_elements_ids": [],
+                "workoutId": template_id,
+                "kcal_burnt_sum": template.kcal_burnt_sum,
+                "min_spent_sum": template.min_spent_sum,
+                "created_by_id": template.created_by.pk,
+            }
+            for element in template.workout_elements.all():
+                arr = template_obj_dict['workout_elements_ids']
+                arr.append(element.pk)
+                template_obj_dict['workout_elements_ids'] = arr
+            return JsonResponse({'status': 302, 'text': 'Workout Template Found',
+                                 "workoutTemplateObj": json.dumps(template_obj_dict)})
+        except:
+            return JsonResponse({'status': 404, 'text': 'Workout Template Not Found',
+                                 "workoutTemplateObj": ''})
+    return redirect('home')
+
 
 
 @login_required(login_url='login')

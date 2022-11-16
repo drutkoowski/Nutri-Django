@@ -373,7 +373,7 @@ const deleteWorkoutTemplate = (id) => {
 // edit
 const getTemplateElement = (id) => {
     const langPrefix = window.location.href.split('/')[3];
-    const url = window.location.origin + `/${langPrefix}/meals/data/get/saved-workout/template`
+    const url = window.location.origin + `/${langPrefix}/workouts/data/get/saved-workout/template`
     $.ajax({
         type: "GET",
         url: url,
@@ -381,10 +381,10 @@ const getTemplateElement = (id) => {
             "templateId": id,
         },
         success: function (response) {
-           console.log(response)
            const workoutObj = JSON.parse(response.workoutTemplateObj)
+           console.log(workoutObj)
            const workoutName = workoutObj.workout_name
-           const kcal = workoutObj.kcal
+           const kcal = workoutObj.kcal_burnt_sum
            const ids_array = workoutObj.workout_elements_ids
            getWorkoutTemplateElement(workoutObj, workoutName, kcal, ids_array)
         },
