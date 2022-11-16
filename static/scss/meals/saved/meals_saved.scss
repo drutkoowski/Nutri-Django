@@ -4,11 +4,12 @@
   min-height: 100vh;
   display: grid;
   grid-template-columns: 0.05fr 1fr 0.05fr;
-  grid-template-rows: 0.30fr 1fr 0.15fr;
+  grid-template-rows: 0.70fr 1fr 0.15fr;
   align-items: center;
   justify-items: center;
   position: relative;
   overflow-y: hidden;
+  overflow-x: hidden;
   @include respond(tab-desktop) {
     grid-template-columns: 0.05fr 1fr 0.05fr;
     grid-template-rows: 0.30fr 2.5fr 0.15fr;

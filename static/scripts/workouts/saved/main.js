@@ -26,11 +26,15 @@ const clearCardContent = () => {
     childrenContent.forEach(child => {
         parentContent.removeChild(child)
     })
-    const inputEl = document.querySelector('.meal_name_input')
+    const inputEl = document.querySelector('.workout_name_input')
     const saveEl = document.querySelector('.saved-workouts__added--saved__content__save')
     if(inputEl && saveEl) {
         inputEl.remove()
         saveEl.remove()
+    }
+    const inputBox= document.querySelector('.saved-new-workouts-buttons-container')
+    if (inputBox){
+        inputBox.remove()
     }
     if (saveNewWorkoutButton.disabled) {
         saveNewWorkoutButton.disabled = false
@@ -122,7 +126,6 @@ const ajaxCall = (query, searchResponseBox) => {
         },
     })
 }
-//do zrobienia////////////////////////////////////////////////////////////////
 const ajaxCallEditWorkout = (query) => {
     const langPrefix = window.location.href.split('/')[3];
     const url = window.location.origin + `/${langPrefix}/workouts/data/live-search-exercises`
@@ -305,7 +308,6 @@ const createNewWorkoutTemplate = (exercisesArr,workoutName) => {
                      'csrfmiddlewaretoken': csrfToken,
                  },
                  success: function (response) {
-                     console.log(response)
                      const status = response.status
                      if (status === 201) {
                          const modal = document.querySelector('.modal-queued')
@@ -390,7 +392,6 @@ const deleteAndCreateWorkoutTemplate = (workoutTemplateId, exercisesArrPk, worko
             'csrfmiddlewaretoken': csrfToken
         },
         success: function (response) {
-            console.log(exercisesArrPk, workoutName)
             createNewWorkoutTemplate(exercisesArrPk, workoutName)
         },
     })

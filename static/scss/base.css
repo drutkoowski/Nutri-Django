@@ -4627,11 +4627,12 @@ label.year {
   min-height: 100vh;
   display: grid;
   grid-template-columns: 0.05fr 1fr 0.05fr;
-  grid-template-rows: 0.30fr 1fr 0.15fr;
+  grid-template-rows: 0.70fr 1fr 0.15fr;
   align-items: center;
   justify-items: center;
   position: relative;
-  overflow-y: hidden; }
+  overflow-y: hidden;
+  overflow-x: hidden; }
   @media only screen and (max-width: 84.375em) {
     .saved-meals-layout-container {
       grid-template-columns: 0.05fr 1fr 0.05fr;
@@ -6224,6 +6225,9 @@ label.year {
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: #afe0a5; }
+
+.delete-saved-workouts {
+  background-color: var(--red-light) !important; }
 
 *,
 *::after,
