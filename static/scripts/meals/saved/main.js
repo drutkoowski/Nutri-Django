@@ -69,12 +69,27 @@ const ajaxCall = (query, searchResponseBox) => {
                searchResponseBox.classList.remove('not-visible')
                let ingredients = [...response.ingredients]
                ingredients.forEach(ingredient => {
-                   let isGram = ingredient.unit_name_pl === 'g' ? '' : `lub ${Math.round(ingredient.serving_grams)} g`
+                   let mealName
+                   let unitName
+                   let categoryName
+                   let isGram
+                   if (langPrefix === 'pl') {
+                       mealName = ingredient.pl_name
+                       unitName = ingredient.unit_name_pl
+                       categoryName = ingredient.category_name_pl
+                       isGram = ingredient.unit_name_pl === 'g' ? '' : `lub ${Math.round(ingredient.serving_grams)} g`
+                   }
+                   else {
+                       mealName = ingredient.en_name
+                       unitName = ingredient.unit_name_en
+                       categoryName = ingredient.category_name_en
+                       isGram = ingredient.unit_name_en === 'g' ? '' : `or ${Math.round(ingredient.serving_grams)} g`
+                   }
                    let contentToAppend = `
                     <div class="saved-meals__added--saved__content__search-response__item">
-                        <p><b>${ingredient.pl_name}</b> (${Math.trunc(ingredient.kcal)} kcal / ${ingredient.unit_multiplier} ${ingredient.unit_name_pl} ${isGram})</p>
+                        <p><b>${mealName}</b> (${Math.trunc(ingredient.kcal)} kcal / ${ingredient.unit_multiplier} ${unitName} ${isGram})</p>
                         <div data-mealObj='${encodeURIComponent(JSON.stringify(ingredient))}' class="new-meal-add-item add-icon filter-green"></div>
-                         <small class="search-category-small--saved">${gettext('Category')}: <span class="search-category-small--saved__text">${ingredient.category_name_pl}</span></small>
+                        <small class="search-category-small--saved">${gettext('Category')}: <span class="search-category-small--saved__text">${categoryName}</span></small>
                     </div>
                    `
                    searchResponseBox.insertAdjacentHTML('beforeend', contentToAppend)
@@ -87,18 +102,30 @@ const ajaxCall = (query, searchResponseBox) => {
                             button.parentElement.classList.remove('blink-background-green')
                         },1000)
                         const ingredientObj = JSON.parse(decodeURIComponent(button.dataset.mealobj))
-                        let isGram = ingredientObj.unit_name_pl === 'g' ? '' : `lub ${Math.round(ingredientObj.serving_grams)} g`
+                        let mealName
+                        let unitName
+                        let isGram
+                        if (langPrefix === 'pl') {
+                           mealName = ingredientObj.pl_name
+                           unitName = ingredientObj.unit_name_pl
+                           isGram = ingredientObj.unit_name_pl === 'g' ? '' : `lub ${Math.round(ingredientObj.serving_grams)} g`
+                        }
+                        else {
+                           mealName = ingredientObj.en_name
+                           unitName = ingredientObj.unit_name_en
+                           isGram = ingredient.unit_name_en === 'g' ? '' : `or ${Math.round(ingredient.serving_grams)} g`
+                        }
                         const mealContent = document.querySelector('.saved-meals__added--saved__content__meal')
                         const mealNameSaveContainer = document.querySelector('.saved-new-meals-buttons-container')
                         mealContent.classList.remove('not-visible')
                         mealNameSaveContainer.classList.remove('not-visible')
                         const mealItemAppend = `
                                <div data-ingredientObj='${encodeURIComponent(JSON.stringify(ingredientObj))}' class="saved-meals__added--saved__content__meal__item">
-                                   <p><b>${ingredientObj.pl_name}</b> (${Math.trunc(ingredientObj.kcal)} kcal / ${ingredientObj.unit_multiplier} ${ingredientObj.unit_name_pl} ${isGram})</p>
+                                   <p><b>${mealName}</b> (${Math.trunc(ingredientObj.kcal)} kcal / ${ingredientObj.unit_multiplier} ${unitName} ${isGram})</p>
                                    <div class="saved-meals__added--saved__content__meal__item--remove remove-icon filter-red"></div>
                                     <div class="today-meals-saved-inputBox">
-                                       <input min="1" max="1000" class="new-today-meal-input-quantity" name="${ingredientObj.pl_name}" type="number" placeholder="${ingredientObj.unit_name_pl}">
-                                       <label for="${ingredientObj.pl_name}">x ${ingredientObj.unit_name_pl}</label>
+                                       <input min="1" max="1000" class="new-today-meal-input-quantity" name="${unitName}" type="number" placeholder="${unitName}">
+                                       <label for="${mealName}">x ${unitName}</label>
                                    </div>
                                </div>
                       `
@@ -143,9 +170,9 @@ const ajaxCall = (query, searchResponseBox) => {
 }
 const ajaxCallEditMeal = (query) => {
      const langPrefix = window.location.href.split('/')[3];
-    const url = window.location.origin + `/${langPrefix}/meals/data/live-search-ingredients`
+     const url = window.location.origin + `/${langPrefix}/meals/data/live-search-ingredients`
      const searchResponseBox = document.querySelector('.saved-meals__added--saved__content__search-response')
-    $.ajax({
+     $.ajax({
         type: "GET",
         url: url,
         data: {
@@ -161,12 +188,27 @@ const ajaxCallEditMeal = (query) => {
                searchResponseBox.classList.remove('not-visible')
                let ingredients = [...response.ingredients]
                ingredients.forEach(ingredient => {
-                   let isGram = ingredient.unit_name_pl === 'g' ? '' : `lub ${Math.round(ingredient.serving_grams)} g`
+                   let mealName
+                   let unitName
+                   let categoryName
+                   let isGram
+                   if (langPrefix === 'pl'){
+                       mealName = ingredient.pl_name
+                       unitName = ingredient.unit_name_pl
+                       categoryName = ingredient.category_name_pl
+                       isGram = unitName === 'g' ? '' : `lub ${Math.round(ingredient.serving_grams)} g`
+                   }
+                   else {
+                       mealName = ingredient.en_name
+                       unitName = ingredient.unit_name_en
+                       categoryName = ingredient.category_name_en
+                       isGram = unitName === 'g' ? '' : `or ${Math.round(ingredient.serving_grams)} g`
+                   }
                    let contentToAppend = `
                     <div class="saved-meals__added--saved__content__search-response__item">
-                        <p><b>${ingredient.pl_name}</b> (${Math.trunc(ingredient.kcal)} kcal / ${ingredient.unit_multiplier} ${ingredient.unit_name_pl} ${isGram})</p>
+                        <p><b>${mealName}</b> (${Math.trunc(ingredient.kcal)} kcal / ${ingredient.unit_multiplier} ${unitName} ${isGram})</p>
                         <div data-mealObj='${encodeURIComponent(JSON.stringify(ingredient))}' class="new-meal-add-item add-icon filter-green"></div>
-                         <small class="search-category-small--saved">${gettext('Category')}: <span class="search-category-small--saved__text">${ingredient.category_name_pl}</span></small>
+                         <small class="search-category-small--saved">${gettext('Category')}: <span class="search-category-small--saved__text">${categoryName}</span></small>
                     </div>
                    `
                    searchResponseBox.insertAdjacentHTML('beforeend', contentToAppend)
@@ -179,13 +221,25 @@ const ajaxCallEditMeal = (query) => {
                             button.parentElement.classList.remove('blink-background-green')
                         },1000)
                         const ingredientObj = JSON.parse(decodeURIComponent(button.dataset.mealobj))
-                        let isGram = ingredientObj.unit_name_pl === 'g' ? '' : `lub ${Math.round(ingredientObj.serving_grams)} g`
+                        let mealName
+                        let unitName
+                        let isGram
+                        if (langPrefix === 'pl'){
+                           mealName = ingredientObj.pl_name
+                           unitName = ingredientObj.unit_name_pl
+                           isGram = ingredientObj.unit_name_pl === 'g' ? '' : `lub ${Math.round(ingredientObj.serving_grams)} g`
+                        }
+                        else {
+                           mealName = ingredientObj.en_name
+                           unitName = ingredientObj.unit_name_en
+                           isGram = ingredientObj.unit_name_en === 'g' ? '' : `or ${Math.round(ingredientObj.serving_grams)} g`
+                        }
                         const randomId = "Id" + ingredientObj.ingredientId * Math.floor(Math.random() * (100 - 1 + 1)) + 1;
                         const mealItemAppend = `
                             <div class="today-meals-saved-edit-inputBox" data-object="${encodeURIComponent(JSON.stringify(ingredientObj))}">
-                              <p><b>${ingredientObj.pl_name}</b> (${Math.trunc(ingredientObj.kcal)} kcal / ${ingredientObj.unit_multiplier} ${ingredientObj.unit_name_pl} ${isGram})</p>
-                             <input name="${ingredientObj.pl_name}" min="0" max="1000" class='updated-meal-element-input' type="number" placeholder="${ingredientObj.unit_name_pl}">
-                             <label for="${ingredientObj.pl_name}">x ${ingredientObj.unit_multiplier} ${ingredientObj.unit_name_pl}</label>
+                              <p><b>${mealName}</b> (${Math.trunc(ingredientObj.kcal)} kcal / ${ingredientObj.unit_multiplier} ${unitName} ${isGram})</p>
+                             <input name="${mealName}" min="0" max="1000" class='updated-meal-element-input' type="number" placeholder="${unitName}">
+                             <label for="${mealName}">x ${ingredientObj.unit_multiplier} ${unitName}</label>
                              <div id="${randomId}" class="edit-remove-item remove-icon filter-red"></div>
                         </div>
                       `
@@ -439,13 +493,26 @@ const getMealTemplateElement = (mealObj, mealName, kcal, ids_array) => {
             success: function (response){
                 const obj = JSON.parse(response['mealTemplateElement'])
                 const objDataSet = JSON.parse(response['ingredientElement'])
-                let isGram = obj.unit_name_pl === 'g' ? '' : `lub ${Math.round(obj.serving_grams)} g`
+                const langPrefix = window.location.href.split('/')[3];
+                let templateElementName
+                let unitName
+                let isGram
+                if (langPrefix === 'pl'){
+                    templateElementName = obj.templateElementName_pl
+                    unitName = obj.unit_name_pl
+                    isGram = obj.unit_name_pl === 'g' ? '' : `lub ${Math.round(obj.serving_grams)} g`
+                }
+                else {
+                    templateElementName = obj.templateElementName_en
+                    unitName = obj.unit_name_en
+                    isGram = obj.unit_name_en === 'g' ? '' : `or ${Math.round(obj.serving_grams)} g`
+                }
                 const randomId = "Id" + obj.mealTemplateElementId * Math.floor(Math.random() * (100 - 1 + 1)) + 1;
                 let appendItemElement = `
                 <div class="today-meals-saved-edit-inputBox" data-object="${encodeURIComponent(JSON.stringify(objDataSet))}">
-                    <p><b>${obj.templateElementName_pl}</b> (${Math.trunc(obj.kcal)} kcal / ${obj.unit_multiplier} ${obj.unit_name_pl} ${isGram})</p>
+                    <p><b>${templateElementName}</b> (${Math.trunc(obj.kcal)} kcal / ${obj.unit_multiplier} ${unitName} ${isGram})</p>
                     <input name="${obj.mealTemplateElementId}" min="0" max="1000" value="${obj.quantity * obj.unit_multiplier}" class='updated-meal-element-input' type="number" placeholder="${obj.quantity}">
-                    <label for="${obj.mealTemplateElementId}">x ${obj.unit_name_pl}</label>
+                    <label for="${obj.mealTemplateElementId}">x ${unitName}</label>
                     <div id='${randomId}' class="edit-remove-item remove-icon filter-red"></div>
                 </div>
                 `

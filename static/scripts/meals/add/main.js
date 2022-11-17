@@ -154,7 +154,7 @@ const ajaxCallSearch = (query) => {
                    let contentToAppend
                    let unit_multiplier = ingredient.unit_multiplier
                    const langPrefix = window.location.href.split('/')[3];
-                   let isGram = ''
+                   let isGram
                    let categoryName
                    let ingredientName
                    let unit_name
@@ -185,48 +185,57 @@ const ajaxCallSearch = (query) => {
                 const addButtons = document.querySelectorAll('.new-meal-item-add')
                 addButtons.forEach(button => {
                     button.addEventListener('click', e =>{
-
                         const mealContent = document.querySelector('.add-meals__added--added__content')
                         const getMealObject = JSON.parse(decodeURIComponent(e.target.dataset.object));
-                        let unit_multiplier = getMealObject.unit_multiplier
-                        const langPrefix = window.location.href.split('/')[3];
-                        let isGram
-                        let mealName
-                        let unitName
-                        if (langPrefix === 'pl') {
-                            isGram = getMealObject.unit_name_pl === 'g' ? '' : `lub ${Math.round(getMealObject.serving_grams)} g`
-                            mealName = getMealObject.pl_name
-                            unitName = getMealObject.unit_name_pl
-                        }
-                        else {
-                            isGram = getMealObject.unit_name_en === 'g' ? '' : `or ${Math.round(getMealObject.serving_grams)} g`
-                            mealName = getMealObject.en_name
-                            unitName = getMealObject.unit_name_en
-                        }
-                        const infoResults = document.querySelector('.saved-results-info')
-                        infoResults.classList.add('not-visible')
-                        const mealItemAppend = `
-                               <div data-object="${e.target.dataset.object}" class="add-meals__added--added__content__item">
-                                   <p><b>${mealName}</b> (${Math.trunc(getMealObject.kcal)} kcal / ${unit_multiplier} ${unitName} ${isGram})</p>
-                                  <div class="today-meals-added-remove-btn temporary-meal-today remove-icon filter-red"></div>
-                                  <div class="today-meals-added-inputBox">
-                                    <input min="1" max="1000" class="new-today-meal-input-quantity" name="${mealName}" type="number" placeholder="${unitName}">
-                                    <label for="${mealName}">x ${unitName}</label>
-                                  </div>
-                        </div>
-                      `
-                        mealContent.insertAdjacentHTML('beforeend', mealItemAppend)
-                        const removeAddedBtn = document.querySelectorAll('.temporary-meal-today')
-                        removeAddedBtn.forEach(button => {
-                            button.addEventListener('click', e => {
-                                const parentEl = button.parentNode
-                                if(mealContent.children.length === 1) {
-                                    const infoResults = document.querySelector('.saved-results-info')
-                                    infoResults.classList.remove('not-visible')
-                                }
-                                parentEl.remove()
-                            })
+                        const allAddedItems = document.querySelectorAll('.add-meals__added--added__content__item')
+                        let isAlreadyAdded = false
+                        allAddedItems.forEach(item => {
+                            const pk = item.dataset.pk
+                            if (parseInt(pk) === getMealObject.id){
+                                isAlreadyAdded = true
+                            }
                         })
+                        if (!isAlreadyAdded){
+                            let unit_multiplier = getMealObject.unit_multiplier
+                            const langPrefix = window.location.href.split('/')[3];
+                            let isGram
+                            let mealName
+                            let unitName
+                            if (langPrefix === 'pl') {
+                                isGram = getMealObject.unit_name_pl === 'g' ? '' : `lub ${Math.round(getMealObject.serving_grams)} g`
+                                mealName = getMealObject.pl_name
+                                unitName = getMealObject.unit_name_pl
+                            }
+                            else {
+                                isGram = getMealObject.unit_name_en === 'g' ? '' : `or ${Math.round(getMealObject.serving_grams)} g`
+                                mealName = getMealObject.en_name
+                                unitName = getMealObject.unit_name_en
+                            }
+                            const infoResults = document.querySelector('.saved-results-info')
+                            infoResults.classList.add('not-visible')
+                            const mealItemAppend = `
+                                   <div data-object="${e.target.dataset.object}" data-pk='${getMealObject.id}' class="add-meals__added--added__content__item">
+                                       <p><b>${mealName}</b> (${Math.trunc(getMealObject.kcal)} kcal / ${unit_multiplier} ${unitName} ${isGram})</p>
+                                      <div class="today-meals-added-remove-btn temporary-meal-today remove-icon filter-red"></div>
+                                      <div class="today-meals-added-inputBox">
+                                        <input min="1" max="1000" class="new-today-meal-input-quantity" name="${mealName}" type="number" placeholder="${unitName}">
+                                        <label for="${mealName}">x ${unitName}</label>
+                                      </div>
+                            </div>
+                          `
+                            mealContent.insertAdjacentHTML('beforeend', mealItemAppend)
+                            const removeAddedBtn = document.querySelectorAll('.temporary-meal-today')
+                            removeAddedBtn.forEach(button => {
+                                button.addEventListener('click', e => {
+                                    const parentEl = button.parentNode
+                                    if(mealContent.children.length === 1) {
+                                        const infoResults = document.querySelector('.saved-results-info')
+                                        infoResults.classList.remove('not-visible')
+                                    }
+                                    parentEl.remove()
+                                })
+                            })
+                        }
                     })
                 })
             }
@@ -291,15 +300,24 @@ const ajaxCallSearchTemplate = (id) => {
            const infoResults = document.querySelector('.saved-results-info')
            infoResults.classList.add('not-visible')
            const langPrefix = window.location.href.split('/')[3];
-           let placeholder
-           if (langPrefix === 'pl') {
-               placeholder = 'Sztuk'
-           }
-           else {
-               placeholder = 'Pieces'
-           }
-           const mealItemAppend = `
-                <div data-objectTemplate="${encodeURIComponent(JSON.stringify(mealObj.meal_elements_ids))}" class="add-meals__added--added__content__item">
+           const allAlreadyAddedItems = document.querySelectorAll('.meal-from-template')
+           let isAlreadyAdded = false
+           allAlreadyAddedItems.forEach(item => {
+               const pk = item.dataset.pk
+               if (pk === mealObj.mealId){
+                    isAlreadyAdded = true
+               }
+           })
+           if(!isAlreadyAdded) {
+               let placeholder
+               if (langPrefix === 'pl') {
+                   placeholder = 'razy'
+                }
+               else {
+                   placeholder = 'times'
+               }
+               const mealItemAppend = `
+                <div data-objectTemplate="${encodeURIComponent(JSON.stringify(mealObj.meal_elements_ids))}" data-pk='${mealObj.mealId}' class="add-meals__added--added__content__item meal-from-template">
                     <p><b>${mealName}</b> (${Math.trunc(kcal)} kcal)</p>
                     <div class="today-meals-added-remove-btn temporary-meal-today remove-icon filter-red"></div>
                     <div class="today-meals-added-inputBox">
@@ -308,19 +326,20 @@ const ajaxCallSearchTemplate = (id) => {
                     </div>
                 </div>
             `
-        const mealContent = document.querySelector('.add-meals__added--added__content')
-        mealContent.insertAdjacentHTML('beforeend', mealItemAppend)
-        const removeAddedBtn = document.querySelectorAll('.temporary-meal-today')
-            removeAddedBtn.forEach(button => {
-                button.addEventListener('click', e => {
-                    const parentEl = button.parentNode
-                    if(mealContent.children.length === 1) {
-                        const infoResults = document.querySelector('.saved-results-info')
-                        infoResults.classList.remove('not-visible')
-                    }
-                    parentEl.remove()
-                })
-         })
+                const mealContent = document.querySelector('.add-meals__added--added__content')
+                mealContent.insertAdjacentHTML('beforeend', mealItemAppend)
+                const removeAddedBtn = document.querySelectorAll('.temporary-meal-today')
+                    removeAddedBtn.forEach(button => {
+                        button.addEventListener('click', e => {
+                            const parentEl = button.parentNode
+                            if(mealContent.children.length === 1) {
+                                const infoResults = document.querySelector('.saved-results-info')
+                                infoResults.classList.remove('not-visible')
+                            }
+                            parentEl.remove()
+                        })
+                 })
+           }
         },
         error: function (error) {
 
@@ -415,7 +434,7 @@ searchInput.addEventListener('input', e => {
 
 
 const saveMealBtn = document.querySelector('.save-add-today-meals')
-saveMealBtn.addEventListener('click', e => {
+saveMealBtn.addEventListener('click', () => {
     const mealsItems = Array.from(document.querySelectorAll('.add-meals__added--added__content__item'))
     const quantityInputs = document.querySelectorAll('.new-today-meal-input-quantity')
     let inputsValid = true
@@ -441,7 +460,6 @@ savedTemplateItems.forEach(item => {
     const addSavedButton = item.children[1]
     addSavedButton.addEventListener('click', e => {
         let mealTemplateObjId = item.dataset.objectid
-        console.log(mealTemplateObjId)
         ajaxCallSearchTemplate(mealTemplateObjId)
     })
 })

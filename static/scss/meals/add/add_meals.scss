@@ -216,6 +216,10 @@
           @include respond(tab-desktop) {
             grid-template-columns: 1fr 0.1fr;
           }
+          div.new-meal-item-add {
+            justify-self: end;
+            margin-right: 3rem;
+          }
           &:not(:last-of-type) {
             border-bottom: 2px solid #f2f2f2;
           }

@@ -4093,6 +4093,9 @@ label.year {
           @media only screen and (max-width: 84.375em) {
             .add-meals__search__results__container__item {
               grid-template-columns: 1fr 0.1fr; } }
+          .add-meals__search__results__container__item div.new-meal-item-add {
+            justify-self: end;
+            margin-right: 3rem; }
           .add-meals__search__results__container__item:not(:last-of-type) {
             border-bottom: 2px solid #f2f2f2; }
           .add-meals__search__results__container__item:hover {

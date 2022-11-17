@@ -381,7 +381,7 @@ msgstr "Usuwanie wskazanego szablonu aktywności z bazy.."
 
 #: .\static\scripts\meals\saved\main.js:374
 msgid "Add new element for your meal"
-msgstr "Dodaj nowy element dla swojego posiłku+"
+msgstr "Dodaj nowy element dla swojego posiłku"
 
 #: .\static\scripts\meals\saved\main.js:382
 #: .\static\scripts\meals\saved\main.js:535
