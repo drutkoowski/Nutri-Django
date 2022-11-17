@@ -86,7 +86,7 @@ const ajaxCall = (query, searchResponseBox) => {
                        isGram = ingredient.unit_name_en === 'g' ? '' : `or ${Math.round(ingredient.serving_grams)} g`
                    }
                    let contentToAppend = `
-                    <div class="saved-meals__added--saved__content__search-response__item">
+                    <div class="saved-meals__added--saved__content__search-response__item" >
                         <p><b>${mealName}</b> (${Math.trunc(ingredient.kcal)} kcal / ${ingredient.unit_multiplier} ${unitName} ${isGram})</p>
                         <div data-mealObj='${encodeURIComponent(JSON.stringify(ingredient))}' class="new-meal-add-item add-icon filter-green"></div>
                         <small class="search-category-small--saved">${gettext('Category')}: <span class="search-category-small--saved__text">${categoryName}</span></small>
@@ -113,7 +113,7 @@ const ajaxCall = (query, searchResponseBox) => {
                         else {
                            mealName = ingredientObj.en_name
                            unitName = ingredientObj.unit_name_en
-                           isGram = ingredient.unit_name_en === 'g' ? '' : `or ${Math.round(ingredient.serving_grams)} g`
+                           isGram = ingredientObj.unit_name_en === 'g' ? '' : `or ${Math.round(ingredient.serving_grams)} g`
                         }
                         const mealContent = document.querySelector('.saved-meals__added--saved__content__meal')
                         const mealNameSaveContainer = document.querySelector('.saved-new-meals-buttons-container')
@@ -215,46 +215,57 @@ const ajaxCallEditMeal = (query) => {
                })
                 const addButtons = document.querySelectorAll('.new-meal-add-item')
                 addButtons.forEach(button => {
-                    button.addEventListener('click', e=>{
+                    button.addEventListener('click', () => {
+
                         button.parentElement.classList.add('blink-background-green')
                         setTimeout(() => {
                             button.parentElement.classList.remove('blink-background-green')
                         },1000)
-                        const ingredientObj = JSON.parse(decodeURIComponent(button.dataset.mealobj))
-                        let mealName
-                        let unitName
-                        let isGram
-                        if (langPrefix === 'pl'){
-                           mealName = ingredientObj.pl_name
-                           unitName = ingredientObj.unit_name_pl
-                           isGram = ingredientObj.unit_name_pl === 'g' ? '' : `lub ${Math.round(ingredientObj.serving_grams)} g`
-                        }
-                        else {
-                           mealName = ingredientObj.en_name
-                           unitName = ingredientObj.unit_name_en
-                           isGram = ingredientObj.unit_name_en === 'g' ? '' : `or ${Math.round(ingredientObj.serving_grams)} g`
-                        }
-                        const randomId = "Id" + ingredientObj.ingredientId * Math.floor(Math.random() * (100 - 1 + 1)) + 1;
-                        const mealItemAppend = `
-                            <div class="today-meals-saved-edit-inputBox" data-object="${encodeURIComponent(JSON.stringify(ingredientObj))}">
-                              <p><b>${mealName}</b> (${Math.trunc(ingredientObj.kcal)} kcal / ${ingredientObj.unit_multiplier} ${unitName} ${isGram})</p>
-                             <input name="${mealName}" min="0" max="1000" class='updated-meal-element-input' type="number" placeholder="${unitName}">
-                             <label for="${mealName}">x ${ingredientObj.unit_multiplier} ${unitName}</label>
-                             <div id="${randomId}" class="edit-remove-item remove-icon filter-red"></div>
-                        </div>
-                      `
-                        const itemsContainer = document.querySelector('.edit-meal-added-items')
-                        itemsContainer.insertAdjacentHTML('beforeend', mealItemAppend)
-                        const btnRemove = itemsContainer.querySelector(`#${randomId}`)
-                        btnRemove.addEventListener('click', e => {
-                            const parent = e.target.parentNode
-                            const itemsCount = document.querySelector('.edit-meal-added-items').children.length
-                            if (itemsCount >= 2) {
-                                $(parent).fadeOut(300)
-                                parent.remove()
-                            }
+                        const responseItems = [...document.querySelectorAll('.saved-meals__added--saved__content__meal__item'), ...document.querySelectorAll('.today-meals-saved-edit-inputBox')]
+                        let isAlreadyAdded = false
+                        responseItems.forEach(item => {
+                           const pk = item.dataset.pk
+                           if (pk === item.id) {
+                               isAlreadyAdded = true
+                           }
                         })
-                        btnRemove.removeAttribute('id')
+                        if (!isAlreadyAdded) {
+                            const ingredientObj = JSON.parse(decodeURIComponent(button.dataset.mealobj))
+                            let mealName
+                            let unitName
+                            let isGram
+                            if (langPrefix === 'pl'){
+                               mealName = ingredientObj.pl_name
+                               unitName = ingredientObj.unit_name_pl
+                               isGram = ingredientObj.unit_name_pl === 'g' ? '' : `lub ${Math.round(ingredientObj.serving_grams)} g`
+                            }
+                            else {
+                               mealName = ingredientObj.en_name
+                               unitName = ingredientObj.unit_name_en
+                               isGram = ingredientObj.unit_name_en === 'g' ? '' : `or ${Math.round(ingredientObj.serving_grams)} g`
+                            }
+                            const randomId = "Id" + ingredientObj.ingredientId * Math.floor(Math.random() * (100 - 1 + 1)) + 1;
+                            const mealItemAppend = `
+                                <div class="today-meals-saved-edit-inputBox" data-object="${encodeURIComponent(JSON.stringify(ingredientObj))}" data-pk="${ingredientObj.id}">
+                                  <p><b>${mealName}</b> (${Math.trunc(ingredientObj.kcal)} kcal / ${ingredientObj.unit_multiplier} ${unitName} ${isGram})</p>
+                                 <input name="${mealName}" min="0" max="1000" class='updated-meal-element-input' type="number" placeholder="${unitName}">
+                                 <label for="${mealName}">x ${unitName}</label>
+                                 <div id="${randomId}" class="edit-remove-item remove-icon filter-red"></div>
+                            </div>
+                          `
+                            const itemsContainer = document.querySelector('.edit-meal-added-items')
+                            itemsContainer.insertAdjacentHTML('beforeend', mealItemAppend)
+                            const btnRemove = itemsContainer.querySelector(`#${randomId}`)
+                            btnRemove.addEventListener('click', e => {
+                                const parent = e.target.parentNode
+                                const itemsCount = document.querySelector('.edit-meal-added-items').children.length
+                                if (itemsCount >= 2) {
+                                    $(parent).fadeOut(300)
+                                    parent.remove()
+                                }
+                            })
+                            btnRemove.removeAttribute('id')
+                        }
                     })
                 })
             }
@@ -509,7 +520,7 @@ const getMealTemplateElement = (mealObj, mealName, kcal, ids_array) => {
                 }
                 const randomId = "Id" + obj.mealTemplateElementId * Math.floor(Math.random() * (100 - 1 + 1)) + 1;
                 let appendItemElement = `
-                <div class="today-meals-saved-edit-inputBox" data-object="${encodeURIComponent(JSON.stringify(objDataSet))}">
+                <div class="today-meals-saved-edit-inputBox" data-object="${encodeURIComponent(JSON.stringify(objDataSet))}" data-pk="${objDataSet.id}">
                     <p><b>${templateElementName}</b> (${Math.trunc(obj.kcal)} kcal / ${obj.unit_multiplier} ${unitName} ${isGram})</p>
                     <input name="${obj.mealTemplateElementId}" min="0" max="1000" value="${obj.quantity * obj.unit_multiplier}" class='updated-meal-element-input' type="number" placeholder="${obj.quantity}">
                     <label for="${obj.mealTemplateElementId}">x ${unitName}</label>
@@ -607,7 +618,7 @@ saveNewMealButton.addEventListener('click', e => {
      <div> 
           <div class="add-new-element-box add-meal-template">
                <div class="add-icon filter-green"></div>
-               <a class="saved-template-edit__add-new__trigger-search add-meal-template__trigger-search">${gettext('Dodaj nowy element dla Twojego posiłku')}</a>
+               <a class="saved-template-edit__add-new__trigger-search add-meal-template__trigger-search">${gettext('Add new element to your meal')}</a>
            </div>
      </div>
     `
@@ -615,7 +626,7 @@ saveNewMealButton.addEventListener('click', e => {
     cardContentParent.insertAdjacentHTML('beforeend', contentToAppend)
     cardContentParent.insertAdjacentHTML('afterend', saveButtonAppend)
     const addNewElBtn = document.querySelector('.add-meal-template__trigger-search')
-    addNewElBtn.addEventListener('click', e => {
+    addNewElBtn.addEventListener('click', () => {
         modalAddMeal.classList.remove('not-visible')
     })
     const inputNameElement = document.querySelector('.meal_name_input')

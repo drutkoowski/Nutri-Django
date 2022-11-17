@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-16 13:24+0100\n"
+"POT-Creation-Date: 2022-11-17 23:03+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -80,17 +80,20 @@ msgid "Calories"
 msgstr "Kalorie"
 
 #: .\templates\accounts\dashboard.html:55
-#: .\templates\meals\add\add_meals.html:99
+#: .\templates\meals\add\add_meals.html:93
+#: .\templates\meals\add\add_meals.html:105
 msgid "Carbs"
 msgstr "Węglowodany"
 
 #: .\templates\accounts\dashboard.html:60
-#: .\templates\meals\add\add_meals.html:98
+#: .\templates\meals\add\add_meals.html:92
+#: .\templates\meals\add\add_meals.html:104
 msgid "Protein"
 msgstr "Białko"
 
 #: .\templates\accounts\dashboard.html:65
-#: .\templates\meals\add\add_meals.html:100
+#: .\templates\meals\add\add_meals.html:94
+#: .\templates\meals\add\add_meals.html:106
 msgid "Fat"
 msgstr "Tłuszcze"
 
@@ -485,15 +488,15 @@ msgstr "Twoje dzisiejsze dodane posiłki."
 msgid "Meals on"
 msgstr "Posiłki w"
 
-#: .\templates\meals\add\add_meals.html:95
+#: .\templates\meals\add\add_meals.html:101
 msgid "Category"
 msgstr "Kategoria"
 
-#: .\templates\meals\add\add_meals.html:97
+#: .\templates\meals\add\add_meals.html:103
 msgid "Kcal"
 msgstr "Kcal"
 
-#: .\templates\meals\add\add_meals.html:106
+#: .\templates\meals\add\add_meals.html:112
 msgid "No meals added for today..."
 msgstr "Brak posiłków dodanych dzisiaj..."
 
@@ -551,8 +554,9 @@ msgid "Do you want to create new meal template?"
 msgstr "Chcesz utworzyć nowy szablon posiłku?"
 
 #: .\templates\meals\saved\saved_meals.html:48
-#: .\templates\workouts\saved\saved_workouts.html:48
-msgid "Create New Template"
+#, fuzzy
+#| msgid "Create New Template"
+msgid "Create Template"
 msgstr "Utwórz Szablon"
 
 #: .\templates\meals\saved\saved_meals.html:54
@@ -626,12 +630,14 @@ msgid "Your Saved Activities"
 msgstr "Zapisane aktywności"
 
 #: .\templates\workouts\saved\saved_workouts.html:47
-
 msgid "Do you want to create new activity template?"
 msgstr "Chcesz utworzyć nowy szablon aktywności?"
 
-#: .\templates\workouts\saved\saved_workouts.html:54
+#: .\templates\workouts\saved\saved_workouts.html:48
+msgid "Create New Template"
+msgstr "Utwórz Szablon"
 
+#: .\templates\workouts\saved\saved_workouts.html:54
 msgid "Adding your activity template to our database.."
 msgstr "Dodawanie Twojego szablonu posiłku do bazy..."
 

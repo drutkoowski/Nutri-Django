@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-16 22:27+0100\n"
+"POT-Creation-Date: 2022-11-17 23:03+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -345,68 +345,76 @@ msgstr "Wystąpił błąd.. spróbuj jeszcze raz."
 msgid "Email or password field is not valid."
 msgstr "Pole email lub hasła jest nieprawidłowe."
 
-#: .\static\scripts\meals\add\main.js:178
-#: .\static\scripts\meals\saved\main.js:77
-#: .\static\scripts\meals\saved\main.js:169
+#: .\static\scripts\meals\add\main.js:182
+#: .\static\scripts\meals\saved\main.js:92
+#: .\static\scripts\meals\saved\main.js:211
 #: .\static\scripts\workouts\add\main.js:175
-#: .\static\scripts\workouts\saved\main.js:86
-#: .\static\scripts\workouts\saved\main.js:160
+#: .\static\scripts\workouts\saved\main.js:90
+#: .\static\scripts\workouts\saved\main.js:163
 msgid "Category"
 msgstr "Kategoria"
 
-#: .\static\scripts\meals\add\main.js:238
-#: .\static\scripts\meals\add\main.js:243
+#: .\static\scripts\meals\add\main.js:251
+#: .\static\scripts\meals\add\main.js:256
 #: .\static\scripts\workouts\add\main.js:231
 #: .\static\scripts\workouts\add\main.js:236
 msgid "No search results."
 msgstr "Brak rezultatów wyszukiwania."
 
-#: .\static\scripts\meals\add\main.js:411
+#: .\static\scripts\meals\add\main.js:415
+msgid "No saved templates yet"
+msgstr ""
+
+#: .\static\scripts\meals\add\main.js:434
 msgid "Try to search meal or ingredients that have you eaten today."
 msgstr "Spróbuj wyszukać posiłek lub składniki, które zjadłeś/aś dzisiaj."
 
-#: .\static\scripts\meals\add\main.js:412
+#: .\static\scripts\meals\add\main.js:435
 #: .\static\scripts\workouts\add\main.js:414
 msgid "Results will appear here."
 msgstr "Wyniki pojawią się tutaj."
 
-#: .\static\scripts\meals\saved\main.js:310
+#: .\static\scripts\meals\saved\main.js:364
 msgid "Updating your meal template in our database."
 msgstr "Aktualizowanie Twojego szablonu w naszej bazie."
 
-#: .\static\scripts\meals\saved\main.js:331
-#: .\static\scripts\workouts\saved\main.js:413
+#: .\static\scripts\meals\saved\main.js:385
+#: .\static\scripts\workouts\saved\main.js:416
 msgid "Removing selected activity template from database.."
 msgstr "Usuwanie wskazanego szablonu aktywności z bazy.."
 
-#: .\static\scripts\meals\saved\main.js:374
+#: .\static\scripts\meals\saved\main.js:428
 msgid "Add new element for your meal"
 msgstr "Dodaj nowy element dla swojego posiłku"
 
-#: .\static\scripts\meals\saved\main.js:382
-#: .\static\scripts\meals\saved\main.js:535
-#: .\static\scripts\workouts\saved\main.js:461
-#: .\static\scripts\workouts\saved\main.js:624
+#: .\static\scripts\meals\saved\main.js:436
+#: .\static\scripts\meals\saved\main.js:602
+#: .\static\scripts\workouts\saved\main.js:464
+#: .\static\scripts\workouts\saved\main.js:627
 msgid "Save"
 msgstr "Zapisz"
 
-#: .\static\scripts\meals\saved\main.js:520
+#: .\static\scripts\meals\saved\main.js:587
 msgid "Create New Meal Template"
 msgstr "Stwórz Nowy Szablon Posiłku"
 
-#: .\static\scripts\meals\saved\main.js:526
+#: .\static\scripts\meals\saved\main.js:593
 msgid "Search to fill your template with meals."
 msgstr "Szukaj, aby uzupełnić szablon posiłkami."
 
-#: .\static\scripts\meals\saved\main.js:528
+#: .\static\scripts\meals\saved\main.js:595
 msgid "Your Meal"
 msgstr "Twój Posiłek"
 
-#: .\static\scripts\meals\saved\main.js:534
+#: .\static\scripts\meals\saved\main.js:601
 msgid "Meal Name"
 msgstr "Nazwa posiłku"
 
-#: .\static\scripts\meals\saved\main.js:630
+#: .\static\scripts\meals\saved\main.js:610
+msgid "Dodaj nowy element dla Twojego posiłku"
+msgstr ""
+
+#: .\static\scripts\meals\saved\main.js:697
 msgid "Edit Meal"
 msgstr "Edytuj Posiłek"
 
@@ -531,28 +539,28 @@ msgstr "Coś poszło nie tak, spróbuj ponownie."
 msgid "Try to search exercise or exercises that have you eaten today."
 msgstr "Spróbuj wyszukać aktywność lub ćwiczenia, które wykonałaś/eś dziś."
 
-#: .\static\scripts\workouts\saved\main.js:453
-#: .\static\scripts\workouts\saved\main.js:632
+#: .\static\scripts\workouts\saved\main.js:456
+#: .\static\scripts\workouts\saved\main.js:635
 msgid "Add new element for your activity"
 msgstr "Dodaj nowy element dla swojej aktywności"
 
-#: .\static\scripts\workouts\saved\main.js:609
+#: .\static\scripts\workouts\saved\main.js:612
 msgid "Create New Activity Template"
 msgstr "Stwórz Nowy Szablon Posiłku"
 
-#: .\static\scripts\workouts\saved\main.js:615
+#: .\static\scripts\workouts\saved\main.js:618
 msgid "Search to fill your template with activity"
 msgstr "Szukaj, aby wypełnić szablon aktywnościami"
 
-#: .\static\scripts\workouts\saved\main.js:617
+#: .\static\scripts\workouts\saved\main.js:620
 msgid "Your Activity"
 msgstr "Twoja aktywność"
 
-#: .\static\scripts\workouts\saved\main.js:623
+#: .\static\scripts\workouts\saved\main.js:626
 msgid "Activity Name"
 msgstr "Nazwa Aktywności"
 
-#: .\static\scripts\workouts\saved\main.js:719
+#: .\static\scripts\workouts\saved\main.js:722
 msgid "Edit Activity"
 msgstr "Edytuj Aktywność"
 
