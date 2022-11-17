@@ -86,18 +86,26 @@ def live_search_ingredients(request):
 
 
 @login_required(login_url='login')
-def get_eaten_kcal_today(request):
+def get_eaten_macro_today(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
         user_profile = UserProfile.objects.get(user=request.user)
         today = datetime.date.today()
         try:
             meals = Meal.objects.filter(created_by=user_profile, created_at=today)
             kcal_sum = 0
+            protein_sum = 0
+            carbs_sum = 0
+            fat_sum = 0
             for meal in meals:
                 kcal_sum = kcal_sum + meal.kcal
-            return JsonResponse({'status': 200, 'text': 'Meals found.', 'kcalEaten': kcal_sum})
+                protein_sum = protein_sum + meal.protein
+                carbs_sum = carbs_sum + meal.carbs
+                fat_sum = fat_sum + meal.fat
+            return JsonResponse({'status': 200, 'text': 'Meals found.', 'kcalEaten': kcal_sum,
+                                 'proteinEaten': protein_sum, 'carbsEaten': carbs_sum, 'fatEaten': fat_sum})
         except:
-            return JsonResponse({'status': 404, 'text': 'Meals not found.', 'kcalEaten': ''})
+            return JsonResponse({'status': 404, 'text': 'Meals not found.', 'kcalEaten': '', 'proteinEaten': '',
+                                 'carbsEaten': '', "fatEaten": ''})
 
 
 @login_required(login_url='login')

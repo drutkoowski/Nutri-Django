@@ -4366,7 +4366,7 @@ label.year {
   height: 4rem;
   font-size: 1.5rem;
   border: 1px solid #ff041b;
-  background-color: rgba(255, 4, 27, 0.63);
+  background-color: var(--red);
   color: white;
   cursor: pointer;
   text-transform: uppercase;
@@ -4438,6 +4438,10 @@ label.year {
 .modal-queued__daily-summary {
   margin: 0.5rem 0 1rem 0;
   font-size: 1.5rem; }
+  .modal-queued__daily-summary div {
+    display: inline-block; }
+    .modal-queued__daily-summary div:not(:first-of-type) {
+      margin-left: 1rem; }
 
 .meals-propositions-layout-container {
   width: 100vw;

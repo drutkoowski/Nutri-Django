@@ -498,15 +498,26 @@ const animateDeletingElementByClass = (elementClass, duration) => {
 
 const updateSummary = () => {
     const langPrefix = window.location.href.split('/')[3];
-    const url = window.location.origin + `/${langPrefix}/meals/data/get/saved-meal/kcal-summary`
+    const url = window.location.origin + `/${langPrefix}/meals/data/get/saved-meal/macro-summary`
     $.ajax({
         type: 'get',
         url: url,
         success: function (response) {
             const kcalEaten = Math.round(response.kcalEaten, 2)
+            const proteinEaten = Math.round(response.proteinEaten, 2)
+            const fatEaten = Math.round(response.fatEaten, 2)
+            const carbsEaten = Math.round(response.carbsEaten, 2)
             const summary = document.querySelector('.modal-queued__daily-summary')
+            const kcal = summary.querySelector('.kcal')
+            const protein = summary.querySelector('.protein')
+            const carbs = summary.querySelector('.carbs')
+            const fat = summary.querySelector('.fat')
+
             if (summary) {
-                summary.innerHTML = gettext('Eaten Kcal Summary: ') + `${kcalEaten}` + ' kcal'
+                kcal.innerHTML = kcalEaten
+                protein.innerHTML =  proteinEaten + ' g'
+                carbs.innerHTML = fatEaten + ' g'
+                fat.innerHTML = carbsEaten + ' g'
             }
         },
     })

@@ -75,8 +75,8 @@
          <div class="modal-queued__close-button modal-accept-delete-close">&times;</div>
          <h1>{% trans 'Are you sure you want to delete this meal?' %}</h1>
          <div class="modal-queued__content__buttons">
-            <button class="accept-delete-today-meal">{% trans 'Yes' %}</button>
-            <button class="deny-delete-today-meal">{% trans 'No' %}</button>
+            <button class="accept-delete-today-meal btn-light">{% trans 'Yes' %}</button>
+            <button class="deny-delete-today-meal btn-light">{% trans 'No' %}</button>
          </div>
      </div>
  </div>
@@ -87,7 +87,12 @@
         <h1 class="modal-queued--heading">{% trans 'Your added meals for today.' %}</h1>
           {% if todayMeals %}
               <h3 class="meals-on-date">{% trans 'Meals on' %} {% now "l" %}</h3>
-              <div class="modal-queued__daily-summary"></div>
+              <div class="modal-queued__daily-summary">
+                  <div>Kcal: <span class="kcal"></span></div>
+                  <div>{% trans 'Protein' %}: <span class="protein"></span></div>
+                  <div>{% trans 'Carbs' %}: <span class="carbs"></span></div>
+                  <div>{% trans 'Fat' %}: <span class="fat"></span></div>
+              </div>
               <div class="add-meals__already__added">
                   {% for meal in todayMeals %}
                       <div class="add-meals__already__added--item">
