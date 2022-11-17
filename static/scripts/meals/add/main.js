@@ -274,9 +274,7 @@ const getMealTemplateElement = (id, inputValue) => {
             const ingredients_arr = []
             const obj = JSON.parse(response['mealTemplateElement'])
             const ingredient_id = obj.ingredientId
-            console.log(obj.quantity)
             const quantity = obj.quantity * inputValue * obj.unit_multiplier
-            console.log(quantity, ingredient_id)
             let meal_obj = {
                 'ingredientId': ingredient_id,
                 'quantity': quantity,
@@ -382,10 +380,12 @@ alreadySavedButtons?.forEach(button => {
          denyBtn.addEventListener('click', () => {
              hideModal('modal-accept-delete')
              modal.style.zIndex = '1'
+             openModal('.modal-queued__today-meals-list')
         })
          modalCloseBtn.addEventListener('click', () => {
              hideModal('modal-accept-delete')
              modal.style.zIndex = '1'
+             openModal('.modal-queued__today-meals-list')
 
         })
         acceptBtn.addEventListener('click', () => {
@@ -503,21 +503,24 @@ const updateSummary = () => {
         type: 'get',
         url: url,
         success: function (response) {
-            const kcalEaten = Math.round(response.kcalEaten, 2)
-            const proteinEaten = Math.round(response.proteinEaten, 2)
-            const fatEaten = Math.round(response.fatEaten, 2)
-            const carbsEaten = Math.round(response.carbsEaten, 2)
-            const summary = document.querySelector('.modal-queued__daily-summary')
-            const kcal = summary.querySelector('.kcal')
-            const protein = summary.querySelector('.protein')
-            const carbs = summary.querySelector('.carbs')
-            const fat = summary.querySelector('.fat')
 
-            if (summary) {
-                kcal.innerHTML = kcalEaten
-                protein.innerHTML =  proteinEaten + ' g'
-                carbs.innerHTML = fatEaten + ' g'
-                fat.innerHTML = carbsEaten + ' g'
+            const items = document.querySelectorAll('.add-meals__already__added--item')
+            if (items.length > 0){
+                const kcalEaten = Math.round(response.kcalEaten, 2)
+                const proteinEaten = Math.round(response.proteinEaten, 2)
+                const fatEaten = Math.round(response.fatEaten, 2)
+                const carbsEaten = Math.round(response.carbsEaten, 2)
+                const summary = document.querySelector('.modal-queued__daily-summary')
+                const kcal = summary.querySelector('.kcal')
+                const protein = summary.querySelector('.protein')
+                const carbs = summary.querySelector('.carbs')
+                const fat = summary.querySelector('.fat')
+                if (summary) {
+                    kcal.innerHTML = kcalEaten
+                    protein.innerHTML =  proteinEaten + ' g'
+                    carbs.innerHTML = fatEaten + ' g'
+                    fat.innerHTML = carbsEaten + ' g'
+                }
             }
         },
     })
@@ -525,7 +528,7 @@ const updateSummary = () => {
 
 
 const modalCloseTodayMeals = document.querySelector('.modal-queued__today-meals__close-button')
-modalCloseTodayMeals.addEventListener('click', e=> {
+modalCloseTodayMeals.addEventListener('click', () => {
     animateDeletingElementByClass('.modal-queued__today-meals-list', 1200)
 })
 
