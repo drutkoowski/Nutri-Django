@@ -274,7 +274,9 @@ const getMealTemplateElement = (id, inputValue) => {
             const ingredients_arr = []
             const obj = JSON.parse(response['mealTemplateElement'])
             const ingredient_id = obj.ingredientId
-            const quantity = obj.quantity * inputValue
+            console.log(obj.quantity)
+            const quantity = obj.quantity * inputValue * obj.unit_multiplier
+            console.log(quantity, ingredient_id)
             let meal_obj = {
                 'ingredientId': ingredient_id,
                 'quantity': quantity,
@@ -282,9 +284,7 @@ const getMealTemplateElement = (id, inputValue) => {
             ingredients_arr.push(meal_obj)
             saveMeal(JSON.stringify(ingredients_arr))
         },
-        error: function (error){
 
-        }
     })
 }
 const ajaxCallSearchTemplate = (id) => {
@@ -335,7 +335,7 @@ const ajaxCallSearchTemplate = (id) => {
                     removeAddedBtn.forEach(button => {
                         button.addEventListener('click', e => {
                             const parentEl = button.parentNode
-                            if(mealContent.children.length === 1) {
+                            if(mealContent.children.length === 2) {
                                 const infoResults = document.querySelector('.saved-results-info')
                                 infoResults.classList.remove('not-visible')
                             }
@@ -392,6 +392,7 @@ alreadySavedButtons?.forEach(button => {
             ajaxCallDelete(mealId)
             updateSummary()
             const alreadyAddedBox = document.querySelector('.add-meals__already__added')
+            const temporaryMealContent = document.querySelector('.add-meals__added--added__content')
             const heading = document.querySelector('.meals-on-date')
             const summary = document.querySelector('.modal-queued__daily-summary')
             const item = button.parentElement
@@ -404,6 +405,10 @@ alreadySavedButtons?.forEach(button => {
                 heading.remove()
                 alreadyAddedBox.remove()
                 summary.remove()
+                const items = temporaryMealContent.querySelectorAll('.add-meals__added--added__content__item')
+                items.forEach(item => {
+                    item.remove()
+                })
                 const infoResults = document.querySelector('.saved-results-info')
                 infoResults.classList.remove('not-visible')
                 let contentToAppend = `
@@ -465,7 +470,6 @@ savedTemplateItems.forEach(item => {
 
 checkYourMealsBtn.addEventListener('click', () => {
     openModal('.modal-queued__today-meals-list')
-
 })
 
 const animateDeletingElementByClass = (elementClass, duration) => {
@@ -501,7 +505,9 @@ const updateSummary = () => {
         success: function (response) {
             const kcalEaten = Math.round(response.kcalEaten, 2)
             const summary = document.querySelector('.modal-queued__daily-summary')
-            summary.innerHTML = gettext('Eaten Kcal Summary: ') + `${kcalEaten}` + ' kcal'
+            if (summary) {
+                summary.innerHTML = gettext('Eaten Kcal Summary: ') + `${kcalEaten}` + ' kcal'
+            }
         },
     })
 }

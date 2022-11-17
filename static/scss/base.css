@@ -4435,6 +4435,10 @@ label.year {
   color: var(--black-muted);
   animation-timing-function: ease-out; }
 
+.modal-queued__daily-summary {
+  margin: 0.5rem 0 1rem 0;
+  font-size: 1.5rem; }
+
 .meals-propositions-layout-container {
   width: 100vw;
   height: auto;
