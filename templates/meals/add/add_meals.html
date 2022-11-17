@@ -87,6 +87,7 @@
         <h1 class="modal-queued--heading">{% trans 'Your added meals for today.' %}</h1>
           {% if todayMeals %}
               <h3 class="meals-on-date">{% trans 'Meals on' %} {% now "l" %}</h3>
+              <div class="modal-queued__daily-summary"></div>
               <div class="add-meals__already__added">
                   {% for meal in todayMeals %}
                       <div class="add-meals__already__added--item">

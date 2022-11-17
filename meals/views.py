@@ -1,3 +1,4 @@
+import datetime
 import json
 
 from django.contrib.auth.decorators import login_required
@@ -82,6 +83,21 @@ def live_search_ingredients(request):
             return JsonResponse({'status': 404, 'text': 'There are not ingredients found.', 'ingredients': []})
     else:
         return redirect('home')
+
+
+@login_required(login_url='login')
+def get_eaten_kcal_today(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
+        user_profile = UserProfile.objects.get(user=request.user)
+        today = datetime.date.today()
+        try:
+            meals = Meal.objects.filter(created_by=user_profile, created_at=today)
+            kcal_sum = 0
+            for meal in meals:
+                kcal_sum = kcal_sum + meal.kcal
+            return JsonResponse({'status': 200, 'text': 'Meals found.', 'kcalEaten': kcal_sum})
+        except:
+            return JsonResponse({'status': 404, 'text': 'Meals not found.', 'kcalEaten': ''})
 
 
 @login_required(login_url='login')
@@ -263,11 +279,14 @@ def get_saved_meal_template(request):
 @login_required(login_url='login')
 def delete_saved_meal_template(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
-        meal_template_id = request.POST.get('mealTemplateId')
-        user_profile = UserProfile.objects.get(user=request.user)
-        meal_template = MealTemplate.objects.get(pk=meal_template_id, created_by=user_profile)
-        meal_template.delete()
-        return JsonResponse({'status': 200, 'text': 'Object deleted successfully!'})
+        meal_template_id = int(request.POST.get('mealTemplateId'))
+        try:
+            user_profile = UserProfile.objects.get(user=request.user)
+            meal_template = MealTemplate.objects.get(pk=meal_template_id, created_by=user_profile)
+            meal_template.delete()
+            return JsonResponse({'status': 200, 'text': 'Object deleted successfully!'})
+        except:
+            return JsonResponse({'status': 404, 'text': 'Object not deleted!'})
 
 
 @login_required(login_url='login')

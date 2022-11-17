@@ -14,6 +14,9 @@ function hideModal(modalClass) {
 
 let openModal = function (modalClass) {
         let div = document.querySelector(modalClass);
+        if (modalClass === '.modal-queued__today-meals-list'){
+            updateSummary()
+        }
         div.classList.remove('not-visible')
         div.classList.add('modal-active')
         // let Mwidth = div.offsetWidth;
@@ -129,6 +132,7 @@ const ajaxCallSave = (mealItems) => {
         },
     })
 }
+
 // search
 const ajaxCallSearch = (query) => {
     const langPrefix = window.location.href.split('/')[3];
@@ -257,7 +261,6 @@ const ajaxCallSearch = (query) => {
         },
     })
 }
-
 const getMealTemplateElement = (id, inputValue) => {
     const langPrefix = window.location.href.split('/')[3];
     const url = window.location.origin + `/${langPrefix}/meals/data/get/saved-meal/template/element`
@@ -359,24 +362,6 @@ const ajaxCallDelete = (mealId) => {
             'meal_id': mealId,
             'csrfmiddlewaretoken': csrfToken,
         },
-        success: function (response){
-            const status = response.status
-            if (status === 200) {
-            }
-            else if (status === 404) {
-                // const searchElements = Array.from(searchResponseBox.children)
-                // searchElements.forEach(el => {
-                //     el.remove()
-                // })
-            }
-
-            },
-        error: function (error) {
-            // const searchElements = Array.from(searchResponseBox.children)
-            //     searchElements.forEach(el => {
-            //         el.remove()
-            //     })
-        },
     })
 }
 
@@ -386,32 +371,46 @@ const ajaxCallDelete = (mealId) => {
 const alreadySavedButtons = document.querySelectorAll('.meal-saved')
 alreadySavedButtons?.forEach(button => {
 
-    button.addEventListener('click', e=> {
+    button.addEventListener('click', () => {
         const mealId = button.dataset.mealobjid
         openModal('.modal-accept-delete')
+        const modal = document.querySelector('.modal-accept-delete')
+        modal.style.zIndex = '5678'
         const acceptBtn = document.querySelector('.accept-delete-today-meal')
         const denyBtn = document.querySelector('.deny-delete-today-meal')
         const modalCloseBtn = document.querySelector('.modal-accept-delete-close')
-         denyBtn.addEventListener('click', e => {
+         denyBtn.addEventListener('click', () => {
              hideModal('modal-accept-delete')
+             modal.style.zIndex = '1'
         })
-         modalCloseBtn.addEventListener('click', e => {
+         modalCloseBtn.addEventListener('click', () => {
              hideModal('modal-accept-delete')
+             modal.style.zIndex = '1'
 
         })
-        acceptBtn.addEventListener('click', e => {
+        acceptBtn.addEventListener('click', () => {
             ajaxCallDelete(mealId)
+            updateSummary()
             const alreadyAddedBox = document.querySelector('.add-meals__already__added')
             const heading = document.querySelector('.meals-on-date')
+            const summary = document.querySelector('.modal-queued__daily-summary')
             const item = button.parentElement
             item.remove()
             hideModal('modal-accept-delete')
+            modal.style.zIndex = '1'
+            openModal('.modal-queued__today-meals-list')
             if (alreadyAddedBox.children.length === 0) {
                 button.remove()
                 heading.remove()
                 alreadyAddedBox.remove()
+                summary.remove()
                 const infoResults = document.querySelector('.saved-results-info')
                 infoResults.classList.remove('not-visible')
+                let contentToAppend = `
+                 <p class="no-saved-templates-info" style="color: rgba(255,255,255, 0.75);">${gettext('No saved templates yet')}</p>
+                `
+                const modalContentBox = document.querySelector('.modal-queued__today-meals-list__content')
+                modalContentBox.insertAdjacentHTML('beforeend', contentToAppend)
             }
         })
     })
@@ -464,8 +463,9 @@ savedTemplateItems.forEach(item => {
     })
 })
 
-checkYourMealsBtn.addEventListener('click', e => {
+checkYourMealsBtn.addEventListener('click', () => {
     openModal('.modal-queued__today-meals-list')
+
 })
 
 const animateDeletingElementByClass = (elementClass, duration) => {
@@ -490,6 +490,22 @@ const animateDeletingElementByClass = (elementClass, duration) => {
             element.style.removeProperty('display')
         }
 }
+
+
+const updateSummary = () => {
+    const langPrefix = window.location.href.split('/')[3];
+    const url = window.location.origin + `/${langPrefix}/meals/data/get/saved-meal/kcal-summary`
+    $.ajax({
+        type: 'get',
+        url: url,
+        success: function (response) {
+            const kcalEaten = Math.round(response.kcalEaten, 2)
+            const summary = document.querySelector('.modal-queued__daily-summary')
+            summary.innerHTML = gettext('Eaten Kcal Summary: ') + `${kcalEaten}` + ' kcal'
+        },
+    })
+}
+
 
 const modalCloseTodayMeals = document.querySelector('.modal-queued__today-meals__close-button')
 modalCloseTodayMeals.addEventListener('click', e=> {

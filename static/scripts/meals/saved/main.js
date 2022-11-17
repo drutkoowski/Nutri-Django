@@ -278,8 +278,8 @@ const ajaxCallEditMeal = (query) => {
 
 // create
 const createNewMealTemplate = (ingredientsArr,mealName, text) => {
-    const langPrefix = window.location.href.split('/')[3];
-     const url = window.location.origin + `${langPrefix}/meals/data/save/saved-meal/element`
+     const langPrefix = window.location.href.split('/')[3];
+     const url = window.location.origin + `/${langPrefix}/meals/data/save/saved-meal/element`
      const ingredients = JSON.stringify(ingredientsArr)
      $.ajax({
          type: "POST",
