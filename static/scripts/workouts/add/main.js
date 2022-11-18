@@ -6,14 +6,20 @@ navBarEl.style.paddingTop = '3rem'
 
 const updateSummary = () => {
     const langPrefix = window.location.href.split('/')[3];
-    const url = window.location.origin + `/${langPrefix}/meals/data/get/saved-meal/macro-summary`
+    const url = window.location.origin + `/${langPrefix}/workouts/data/get/saved-workout/daily-summary`
     $.ajax({
         type: 'get',
         url: url,
         success: function (response) {
-            const items = document.querySelectorAll('.add-meals__already__added--item')
+            const items = document.querySelectorAll('.modal__today-workouts-list__content__elements__item')
             if (items.length > 0){
-
+                const dailySummary = document.querySelector('.modal__today-workouts-list__daily-summary')
+                const kcal = dailySummary.querySelector('.kcal')
+                const duration = dailySummary.querySelector('.duration')
+                if (dailySummary) {
+                    kcal.innerHTML = response.kcalBurntSum
+                    duration.innerHTML =  response.durationSum + ' min'
+                }
             }
         },
     })
@@ -30,6 +36,9 @@ function hideModal(modalClass) {
 
 let openModal = function (modalClass) {
         const el = document.querySelector(modalClass);
+        if (modalClass === '.modal__today-workouts-list'){
+            updateSummary()
+        }
         el.classList.remove('not-visible')
         el.classList.add('modal-active')
         // let Mwidth = div.offsetWidth;

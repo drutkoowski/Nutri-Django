@@ -10,6 +10,7 @@ urlpatterns = [
     # ajax
     path('/data/live-search-exercises', views.live_search_exercises, name='live-search-exercises-ajax'),
     path('/data/get-exercise', views.get_exercise_by_id, name='get-exercise-by-id'),
+    path('/data/get/saved-workout/daily-summary', views.get_daily_summary, name='get-daily-summary'),
     path('/data/get/saved-workout/template', views.get_saved_workout_template, name='get-saved-workout-template'),
     path('/data/get/saved-workout/template/element', views.get_saved_workout_template_element, name='get-saved-workout-template-element'),
     path('/data/save/workout', views.save_workout, name='save-workout'),

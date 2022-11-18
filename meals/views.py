@@ -91,7 +91,7 @@ def get_eaten_macro_today(request):
         user_profile = UserProfile.objects.get(user=request.user)
         today = datetime.date.today()
         try:
-            meals = Meal.objects.filter(created_by=user_profile, created_at=today)
+            meals = Meal.objects.filter(created_by=user_profile, created_at=today).all()
             kcal_sum = 0
             protein_sum = 0
             carbs_sum = 0

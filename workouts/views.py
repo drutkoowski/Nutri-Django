@@ -1,3 +1,4 @@
+import datetime
 import json
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
@@ -107,6 +108,24 @@ def get_exercise_by_id(request):
                 {'status': 200, 'text': 'There is exercise found.', 'exercise': json.dumps(exercise_dict)})
         except:
             return JsonResponse({'status': 404, 'text': 'There is not exercise found.', 'exercise': []})
+
+
+@login_required(login_url='login')
+def get_daily_summary(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
+        user_profile = UserProfile.objects.get(user=request.user)
+        today = datetime.date.today()
+        try:
+            workouts = Workout.objects.filter(created_by=user_profile, created_at=today).all()
+            kcal_burnt_sum = 0
+            duration_sum = 0
+            for workout in workouts:
+                kcal_burnt_sum = kcal_burnt_sum + workout.kcal_burnt_sum
+                duration_sum = duration_sum + workout.min_spent_sum
+            return JsonResponse({'status': 200, 'text': 'Workouts found.', 'kcalBurntSum': kcal_burnt_sum,
+                                 'durationSum': duration_sum})
+        except:
+            return JsonResponse({'status': 404, 'text': 'Workouts not found.', 'kcalBurntSum': '', 'durationSum': ''})
 
 
 @login_required(login_url='login')
