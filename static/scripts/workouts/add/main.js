@@ -333,11 +333,8 @@ const ajaxCallDeleteWorkout = (workoutId) => {
             'csrfmiddlewaretoken': csrfToken,
         },
         success: function (response){
-            const status = response.status
-            if (status === 200) {
-               location.reload()
-            }
-        },
+            openModal('.modal__today-workouts-list')
+        }
     })
 }
 const ajaxCallDeleteWorkoutElement = (elementId) => {
@@ -350,16 +347,6 @@ const ajaxCallDeleteWorkoutElement = (elementId) => {
             'workout_element_id': elementId,
             'csrfmiddlewaretoken': csrfToken,
         },
-        success: function (response){
-            const status = response.status
-            console.log(response.text)
-            if (status === 200) {
-               location.reload()
-            }
-        },
-        error: function (error) {
-
-        }
     })
 }
 
@@ -368,32 +355,46 @@ const ajaxCallDeleteWorkoutElement = (elementId) => {
 const alreadySavedButtons = document.querySelectorAll('.workout-saved')
 alreadySavedButtons?.forEach(button => {
 
-    button.addEventListener('click', e=> {
+    button.addEventListener('click', () => {
         const workoutId = button.dataset.workoutobjid
         openModal('.modal-accept-delete')
         const acceptBtn = document.querySelector('.accept-delete-today-workout')
         const denyBtn = document.querySelector('.deny-delete-today-workout')
         const modalCloseBtn = document.querySelector('.modal-accept-delete-close')
-         denyBtn.addEventListener('click', e => {
+        denyBtn.addEventListener('click', () => {
              hideModal('modal-accept-delete')
         })
-         modalCloseBtn.addEventListener('click', e => {
+        modalCloseBtn.addEventListener('click', () => {
              hideModal('modal-accept-delete')
-
         })
-        acceptBtn.addEventListener('click', e => {
+        acceptBtn.addEventListener('click', () => {
             ajaxCallDelete(workoutId)
+            updateSummary()
             const alreadyAddedBox = document.querySelector('.add-workouts__already__added')
+            const temporaryMealContent = document.querySelector('.add-workouts__added--added__content')
             const heading = document.querySelector('.workouts-on-date')
+            const summary = document.querySelector('.modal__today-workouts-list__daily-summary')
             const item = button.parentElement
             item.remove()
             hideModal('modal-accept-delete')
+            modal.style.zIndex = '1'
+            openModal('.modal-queued__today-meals-list')
             if (alreadyAddedBox.children.length === 0) {
                 button.remove()
                 heading.remove()
+                summary.remove()
+                const items = temporaryMealContent.querySelectorAll('.add-meals__added--added__content__item')
+                items.forEach(item => {
+                    item.remove()
+                })
                 alreadyAddedBox.remove()
                 const infoResults = document.querySelector('.saved-results-info')
                 infoResults.classList.remove('not-visible')
+                 let contentToAppend = `
+                 <p class="no-saved-templates-info" style="color: rgba(255,255,255, 0.75);">${gettext('No activities added for today...')}</p>
+                `
+                const modalContentBox = document.querySelector('.modal__today-workouts-list__content')
+                modalContentBox.insertAdjacentHTML('beforeend', contentToAppend)
             }
         })
     })
@@ -472,26 +473,53 @@ const animateDeletingElementByClass = (elementClass, duration) => {
             element.style.removeProperty('display')
         }
 }
-const openModalAcceptDeny = (handler, id) => {
-    const modalAccept = document.querySelector('.modal-accept-delete')
-        modalAccept.classList.remove('not-visible')
-        modalAccept.classList.add('modal-active')
+const openModalAcceptDeny = (handler, id, button) => {
+        openModal('.modal-accept-delete')
+        const modalAccept = document.querySelector('.modal-accept-delete')
         modalAccept.style.zIndex = '45000'
         const acceptBtn = document.querySelector('.accept-delete-today-workouts')
         const denyBtn = document.querySelector('.deny-delete-today-workouts')
         const closeBtn = document.querySelector('.modal-accept-delete-close')
-        closeBtn.addEventListener('click', e => {
-             $('.modal-accept-delete').css('z-index', 'initial')
-             modalAccept.classList.add('not-visible')
-             modalAccept.classList.remove('modal-active')
+        closeBtn.addEventListener('click', () => {
+             hideModal('modal-accept-delete')
+             modalAccept.style.zIndex = '1'
+             openModal('.modal__today-workouts-list')
         })
-        acceptBtn.addEventListener('click', e => {
+        acceptBtn.addEventListener('click', () => {
             handler(id)
+            updateSummary()
+            const alreadyAddedBox = document.querySelector('.modal__today-workouts-list__content__elements')
+            const temporaryMealContent = document.querySelector('.add-workouts__added--added__content')
+            const heading = document.querySelector('.workouts-on-date')
+            const summary = document.querySelector('.modal__today-workouts-list__daily-summary')
+            const item = button.parentElement
+            item.remove()
+            hideModal('modal-accept-delete')
+            const modal = document.querySelector('.modal-accept-delete')
+            modal.style.zIndex = '1'
+            openModal('.modal__today-workouts-list')
+               if (alreadyAddedBox.children.length === 0) {
+                button.remove()
+                heading.remove()
+                alreadyAddedBox.remove()
+                summary.remove()
+                const items = temporaryMealContent.querySelectorAll('.add-workouts__added--added__content__item')
+                items.forEach(item => {
+                    item.remove()
+                })
+                const infoResults = document.querySelector('.saved-results-info')
+                infoResults.classList.remove('not-visible')
+                let contentToAppend = `
+                 <p class="no-saved-templates-info" style="color: rgba(255,255,255, 0.75);">${gettext('No activities added for today...')}</p>
+                `
+                const modalContentBox = document.querySelector('.modal__today-workouts-list__content')
+                modalContentBox.insertAdjacentHTML('beforeend', contentToAppend)
+            }
         })
-        denyBtn.addEventListener('click', e => {
-            $('.modal-accept-delete').css('z-index', 'initial')
-             modalAccept.classList.add('not-visible')
-             modalAccept.classList.remove('modal-active')
+        denyBtn.addEventListener('click', () => {
+             hideModal('modal-accept-delete')
+             modalAccept.style.zIndex = '1'
+             openModal('.modal__today-workouts-list')
         })
 }
 
@@ -504,7 +532,7 @@ const removeWorkoutBtns = document.querySelectorAll('.remove-workout')
 removeWorkoutBtns.forEach(btn => {
     btn.addEventListener('click', e => {
         const workoutId = e.target.dataset.workoutobjid
-        openModalAcceptDeny(ajaxCallDeleteWorkout, workoutId)
+        openModalAcceptDeny(ajaxCallDeleteWorkout, workoutId, e.target)
     })
 })
 
@@ -512,6 +540,6 @@ const removeWorkoutElementBtns = document.querySelectorAll('.remove-workout-elem
 removeWorkoutElementBtns.forEach(btn => {
     btn.addEventListener('click', e => {
         const workoutElementId = e.target.dataset.workoutelobjid
-        openModalAcceptDeny(ajaxCallDeleteWorkoutElement, workoutElementId)
+        openModalAcceptDeny(ajaxCallDeleteWorkoutElement, workoutElementId, e.target)
     })
 })

@@ -265,7 +265,7 @@ const getMealTemplateElement = (id, inputValue) => {
     const langPrefix = window.location.href.split('/')[3];
     const url = window.location.origin + `/${langPrefix}/meals/data/get/saved-meal/template/element`
     $.ajax({
-        'type': 'get',
+         type: 'get',
          url: url,
          data: {
             'mealElementId': id,
@@ -289,7 +289,7 @@ const ajaxCallSearchTemplate = (id) => {
     const langPrefix = window.location.href.split('/')[3];
     const url = `/${langPrefix}/meals/data/get/saved-meal/template`
     $.ajax({
-        "type": "GET",
+        type: "GET",
         url: url,
         data: {
             "templateId": id,
@@ -342,9 +342,6 @@ const ajaxCallSearchTemplate = (id) => {
                  })
            }
         },
-        error: function (error) {
-
-        }
     })
 }
 

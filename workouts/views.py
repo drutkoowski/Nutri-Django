@@ -120,8 +120,8 @@ def get_daily_summary(request):
             kcal_burnt_sum = 0
             duration_sum = 0
             for workout in workouts:
-                kcal_burnt_sum = kcal_burnt_sum + workout.kcal_burnt_sum
-                duration_sum = duration_sum + workout.min_spent_sum
+                kcal_burnt_sum = round(kcal_burnt_sum + workout.kcal_burnt_sum, 2)
+                duration_sum = round(duration_sum + workout.min_spent_sum, 2)
             return JsonResponse({'status': 200, 'text': 'Workouts found.', 'kcalBurntSum': kcal_burnt_sum,
                                  'durationSum': duration_sum})
         except:
@@ -326,6 +326,8 @@ def delete_today_workout_element(request):
                     elements_count = len(workout.workout_elements.all())
                     if int(element.pk) == int(workout_element_id):
                         element = WorkoutElement.objects.get(pk=element.pk)
+                        workout.kcal_burnt_sum = workout.kcal_burnt_sum - element.kcal_burnt
+                        workout.min_spent_sum = workout.min_spent_sum - element.min_spent
                         workout.workout_elements.remove(element)
                         workout.save()
                         element.delete()
@@ -338,6 +340,7 @@ def delete_today_workout_element(request):
         return redirect('home')
 
 
+@login_required(login_url='login')
 def delete_workout_template_element(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
         workout_template_id = request.POST.get('workoutTemplateId')
@@ -358,8 +361,10 @@ def delete_saved_workout_template(request):
         workout_template_id = request.POST.get('workoutTemplateId')
         try:
             user_profile = UserProfile.objects.get(user=request.user)
-            meal_template = WorkoutTemplate.objects.get(pk=workout_template_id, created_by=user_profile)
-            meal_template.delete()
+            workout_template = WorkoutTemplate.objects.get(pk=workout_template_id, created_by=user_profile)
+            for element in workout_template.workout_elements.all():
+                element.delete()
+            workout_template.delete()
             return JsonResponse({'status': 200, 'text': 'Object deleted successfully!'})
         except:
             return JsonResponse({'status': 401, 'text': 'Object not deleted!'})

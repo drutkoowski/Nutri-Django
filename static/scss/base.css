@@ -5788,6 +5788,9 @@ label.year {
     .modal__today-workouts-list__daily-summary div:not(:first-of-type) {
       margin-left: 1rem; }
 
+.workouts-on-date {
+  font-size: 2rem; }
+
 .saved-workouts-layout-container {
   width: 100vw;
   height: 100vh;

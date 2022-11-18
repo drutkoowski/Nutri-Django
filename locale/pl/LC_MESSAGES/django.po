@@ -625,7 +625,7 @@ msgstr "Utworzone w"
 
 #: .\templates\workouts\add\add_workouts.html:122
 msgid "No activities added for today..."
-msgstr "Brak ćwiczeń dodanych dzisiaj..."
+msgstr "Brak aktywności dodanych dzisiaj..."
 
 #: .\templates\workouts\saved\saved_workouts.html:28
 msgid "Your Saved Activities"
