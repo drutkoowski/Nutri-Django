@@ -86,7 +86,7 @@ const ajaxCall = (query, searchResponseBox) => {
                        isGram = ingredient.unit_name_en === 'g' ? '' : `or ${Math.round(ingredient.serving_grams)} g`
                    }
                    let contentToAppend = `
-                    <div class="saved-meals__added--saved__content__search-response__item" >
+                    <div class="saved-meals__added--saved__content__search-response__item">
                         <p><b>${mealName}</b> (${Math.trunc(ingredient.kcal)} kcal / ${ingredient.unit_multiplier} ${unitName} ${isGram})</p>
                         <div data-mealObj='${encodeURIComponent(JSON.stringify(ingredient))}' class="new-meal-add-item add-icon filter-green"></div>
                         <small class="search-category-small--saved">${gettext('Category')}: <span class="search-category-small--saved__text">${categoryName}</span></small>

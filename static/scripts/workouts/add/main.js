@@ -391,7 +391,7 @@ alreadySavedButtons?.forEach(button => {
                 const infoResults = document.querySelector('.saved-results-info')
                 infoResults.classList.remove('not-visible')
                  let contentToAppend = `
-                 <p class="no-saved-templates-info" style="color: rgba(255,255,255, 0.75);">${gettext('No activities added for today...')}</p>
+                 <p class="saved-results-info" style="color: rgba(255,255,255, 0.75);">${gettext('No activities added for today...')}</p>
                 `
                 const modalContentBox = document.querySelector('.modal__today-workouts-list__content')
                 modalContentBox.insertAdjacentHTML('beforeend', contentToAppend)
@@ -510,7 +510,7 @@ const openModalAcceptDeny = (handler, id, button) => {
                 const infoResults = document.querySelector('.saved-results-info')
                 infoResults.classList.remove('not-visible')
                 let contentToAppend = `
-                 <p class="no-saved-templates-info" style="color: rgba(255,255,255, 0.75);">${gettext('No activities added for today...')}</p>
+                 <p class="saved-results-info" style="color: rgba(255,255,255, 0.75);">${gettext('No activities added for today...')}</p>
                 `
                 const modalContentBox = document.querySelector('.modal__today-workouts-list__content')
                 modalContentBox.insertAdjacentHTML('beforeend', contentToAppend)

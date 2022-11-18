@@ -6087,7 +6087,6 @@ label.year {
           border-bottom: 1px solid #f2f2f2;
           transition: all .3s ease-in; }
           .saved-workouts__added--saved__content__item p {
-            margin-left: 1.5rem;
             grid-column: 1/2;
             font-size: 2.5rem;
             margin-right: 2.5rem; }

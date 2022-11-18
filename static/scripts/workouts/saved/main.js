@@ -84,7 +84,7 @@ const ajaxCall = (query, searchResponseBox) => {
                        exerciseCategoryName = exercise.category_name_en
                    }
                    let contentToAppend = `
-                    <div class="saved-workouts__added--saved__content__search-response__item">
+                    <div class="saved-workouts__added--saved__content__search-response__item" data-pk="${exercise.id}">
                         <p><b>${exerciseName}</b></p>
                         <div data-exercisePK='${exercise.id}' class="new-workout-add-item add-icon filter-green"></div>
                          <small class="search-category-small--saved">${gettext('Category')} <span class="search-category-small--saved__text">${exerciseCategoryName}</span></small>
@@ -105,7 +105,6 @@ const ajaxCall = (query, searchResponseBox) => {
                         workoutContent.classList.remove('not-visible')
                         workoutNameSaveContainer.classList.remove('not-visible')
                         getExerciseById(exercisePK)
-
                     })
                 })
             }
@@ -167,12 +166,24 @@ const ajaxCallEditWorkout = (query) => {
                })
                 const addButtons = document.querySelectorAll('.new-workout-add-item')
                 addButtons.forEach(button => {
-                    button.addEventListener('click', e=>{
+                    button.addEventListener('click', () => {
+
                         button.parentElement.classList.add('blink-background-green')
                         setTimeout(() => {
                             button.parentElement.classList.remove('blink-background-green')
                         },1000)
+
                         const exercisePk = button.dataset.exercisepk
+                        const alreadyItemsAll = document.querySelector('.edit-workout-added-items').children
+
+                        let alreadyAdded = false
+                        Array.from(alreadyItemsAll).forEach(item => {
+                            const itemPk = item.dataset.exercisepk
+                            if (itemPk === exercisePk) {
+                                alreadyAdded = true
+                            }
+                        })
+                        if (!alreadyAdded) {
                         const url = window.location.origin + `/${langPrefix}/workouts/data/get-exercise`
                         $.ajax({
                             type: 'get',
@@ -215,6 +226,7 @@ const ajaxCallEditWorkout = (query) => {
                                     btnRemove.removeAttribute('id')
                                     }
                                 })
+                        }
 
                     })
                 })
@@ -247,42 +259,57 @@ const getExerciseById = (id) => {
         },
         success: function (response){
             const exercise = JSON.parse(response.exercise)
-            let exerciseName = exercise['en_name']
-            let exerciseUnitName = exercise['time_unit_en']
-            if(langPrefix === 'pl') {
-                exerciseName = exercise["pl_name"]
-                exerciseUnitName = exercise["time_unit_pl"]
-            }
-            const workoutItemAppend = `
-            <div data-exercisePK='${exercise.id}' class="saved-workouts__added--saved__content__workout__item">
-            <p><b>${exerciseName}</b></p>
-            <div class="saved-workouts__added--saved__content__workout__item--remove remove-icon filter-red"></div>
-            <div class="today-workouts-saved-inputBox">
-                <input min="1" max="1000" class="new-today-workout-input-quantity" name="${exerciseName}" type="number" placeholder="${exerciseUnitName}">
-                <label for="${exerciseName}">x ${exerciseUnitName}</label>
-            </div>
-            </div>
-            `
-            const workoutContentItems = document.querySelector('.saved-workouts__added--saved__content__workout__items')
-            workoutContentItems.insertAdjacentHTML('beforeend', workoutItemAppend)
-            const workoutItems = document.querySelectorAll('.saved-workouts__added--saved__content__workout__item--remove')
-            const workoutContent = document.querySelector('.saved-workouts__added--saved__content__workout')
-            workoutItems.forEach(workoutEl => {
-                workoutEl.addEventListener('click', e => {
-                    const parent = workoutContentItems
-                    const removeEl = e.target.parentNode
-                    removeEl.remove()
-                    const parentChildrenCount = parent.children.length
-                    const workoutNameSaveContainer = document.querySelector('.saved-new-workouts-buttons-container')
-                    if (parentChildrenCount === 0) {
-                        workoutContent.classList.add('not-visible')
-                        workoutNameSaveContainer.classList.add('not-visible')
-                    }
-                    else {
-                        workoutNameSaveContainer.classList.remove('not-visible')
-                    }
-                })
+            const exercisePk = exercise.id
+            const alreadyItemsAll = document.querySelector('.saved-workouts__added--saved__content__workout__items').children
+            let alreadyAdded = false
+            Array.from(alreadyItemsAll).forEach(item => {
+                const itemPk = item.dataset.exercisepk
+                if (parseInt(itemPk) === exercisePk) {
+                    alreadyAdded = true
+                }
             })
+            if (!alreadyAdded) {
+                let exerciseName = exercise['en_name']
+                let exerciseUnitName = exercise['time_unit_en']
+                if(langPrefix === 'pl') {
+                    exerciseName = exercise["pl_name"]
+                    exerciseUnitName = exercise["time_unit_pl"]
+                }
+                const workoutItemAppend = `
+                <div data-exercisePK='${exercise.id}' class="saved-workouts__added--saved__content__workout__item">
+                <p><b>${exerciseName}</b></p>
+                <div class="saved-workouts__added--saved__content__workout__item--remove remove-icon filter-red"></div>
+                <div class="today-workouts-saved-inputBox">
+                    <input min="1" max="1000" class="new-today-workout-input-quantity" name="${exerciseName}" type="number" placeholder="${exerciseUnitName}">
+                    <label for="${exerciseName}">x ${exerciseUnitName}</label>
+                </div>
+                </div>
+                `
+                const workoutContentItems = document.querySelector('.saved-workouts__added--saved__content__workout__items')
+                workoutContentItems.insertAdjacentHTML('beforeend', workoutItemAppend)
+                const workoutItems = document.querySelectorAll('.saved-workouts__added--saved__content__workout__item--remove')
+                const workoutContent = document.querySelector('.saved-workouts__added--saved__content__workout')
+                workoutItems.forEach(workoutEl => {
+                    workoutEl.addEventListener('click', e => {
+                        const parent = workoutContentItems
+                        const removeEl = e.target.parentNode
+                        removeEl.remove()
+                        const parentChildrenCount = parent.children.length
+                        const workoutNameSaveContainer = document.querySelector('.saved-new-workouts-buttons-container')
+                        if (parentChildrenCount === 0) {
+
+
+                            const infoBox = document.querySelector('.info-search-saved')
+                            infoBox.classList.remove('not-visible')
+                            workoutContent.classList.add('not-visible')
+                            workoutNameSaveContainer.classList.add('not-visible')
+                        }
+                        else {
+                            workoutNameSaveContainer.classList.remove('not-visible')
+                        }
+                    })
+                })
+            }
         }
     })
 }
