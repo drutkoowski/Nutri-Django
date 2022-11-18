@@ -12,6 +12,7 @@ urlpatterns = [
     path('/data/get-exercise', views.get_exercise_by_id, name='get-exercise-by-id'),
     path('/data/get/saved-workout/template', views.get_saved_workout_template, name='get-saved-workout-template'),
     path('/data/get/saved-workout/template/element', views.get_saved_workout_template_element, name='get-saved-workout-template-element'),
+    path('/data/save/workout', views.save_workout, name='save-workout'),
     path('/data/save/workout-template', views.save_workout_template, name='save-workout-template'),
     path('/data/save/workout-template/element', views.save_workout_template_element, name='save-workout-template-element'),
     path('/data/save/added-workout', views.add_today_exercise, name='add-today-exercise'),

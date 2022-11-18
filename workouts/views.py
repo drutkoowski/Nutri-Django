@@ -1,6 +1,4 @@
 import json
-from datetime import datetime
-
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
@@ -31,6 +29,7 @@ def add_workout_view(request):
     return render(request, 'workouts/add/add_workouts.html', context)
 
 
+@login_required(login_url='login')
 def saved_workout_view(request):
     user_profile = UserProfile.objects.filter(user=request.user)
     workout_templates = WorkoutTemplate.objects.filter(created_by__in=user_profile).all()
@@ -180,22 +179,42 @@ def get_saved_workout_template_element(request):
 def add_today_exercise(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
         exercise_array = request.POST.get('exercisesArray')
+        workout_id = request.POST.get('workoutId')
         data_array = json.loads(exercise_array)
         if exercise_array is not None:
             user_profile = UserProfile.objects.filter(user=request.user).first()
-            workout = Workout.objects.create(created_by=user_profile)
             workout_kcal_burnt = []
             workout_minutes = []
+            workout = Workout.objects.get(pk=workout_id)
             for item in data_array:
-                exercise = Exercise.objects.filter(pk=item['exerciseId']).first()
-                quantity_minutes = round(float(item['quantity']), 2)
-                exercise_kcal = round(((exercise.met * 3.5 * float(user_profile.weight)) / 200) * quantity_minutes, 2)
-                workout_element = WorkoutElement.objects.create(exercise=exercise, min_spent=quantity_minutes,
-                                                                kcal_burnt=exercise_kcal)
-                workout_element.save()
-                workout.workout_elements.add(workout_element)
-                workout_minutes.append(quantity_minutes)
-                workout_kcal_burnt.append(exercise_kcal)
+                item_type = item['type']
+                if item_type == 'exerciseElement':
+                    exercise = Exercise.objects.get(pk=item['id'])
+                    quantity_minutes = round(float(item['quantity']), 2)
+                    exercise_kcal = round(((exercise.met * 3.5 * float(user_profile.weight)) / 200)
+                                          * quantity_minutes, 2)
+                    workout_element = WorkoutElement.objects.create(exercise=exercise,
+                                                                    min_spent=quantity_minutes,
+                                                                    kcal_burnt=exercise_kcal)
+                    workout_element.save()
+                    workout.workout_elements.add(workout_element)
+                    workout_minutes.append(quantity_minutes)
+                    workout_kcal_burnt.append(exercise_kcal)
+                elif item_type == 'templateElement':
+                    quantity = round(float(item['quantity']), 2)
+                    for exercise_el_id in item['id']:
+                        exercise_el = WorkoutTemplateElement.objects.get(pk=exercise_el_id)
+                        exercise_minutes = exercise_el.min_spent * quantity
+                        exercise_kcal = round(((exercise_el.exercise.met * 3.5 * float(user_profile.weight)) / 200)
+                                              * exercise_minutes, 2)
+
+                        workout_element = WorkoutElement.objects.create(exercise=exercise_el.exercise,
+                                                                        min_spent=exercise_minutes,
+                                                                        kcal_burnt=exercise_kcal)
+                        workout_element.save()
+                        workout.workout_elements.add(workout_element)
+                        workout_minutes.append(exercise_minutes)
+                        workout_kcal_burnt.append(exercise_kcal)
             workout.kcal_burnt_sum = round(sum(workout_kcal_burnt), 2)
             workout.min_spent_sum = round(sum(workout_minutes), 2)
             workout.save()
@@ -206,6 +225,18 @@ def add_today_exercise(request):
 
 
 @login_required(login_url='login')
+def save_workout(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
+        try:
+            user_profile = UserProfile.objects.get(user=request.user)
+            workout = Workout.objects.create(created_by=user_profile)
+            workout_pk = workout.pk
+            return JsonResponse({'status': 201, 'text': 'Created.', 'workoutId': workout_pk})
+        except:
+            return JsonResponse({'status': 401, 'text': 'Not created.', 'workoutId': ''})
+
+
+@login_required(login_url='login')
 def save_workout_template(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
         workout_name = request.POST.get('workoutName')
@@ -213,9 +244,9 @@ def save_workout_template(request):
             user_profile = UserProfile.objects.get(user=request.user)
             workout = WorkoutTemplate.objects.create(created_by=user_profile, workout_name=workout_name)
             workout.save()
-            return JsonResponse({'status': 200, 'text': 'Workout Created.', 'workoutId': workout.pk})
+            return JsonResponse({'status': 200, 'text': 'Workout Template Created.', 'workoutId': workout.pk})
         except:
-            return JsonResponse({'status': 500, 'text': 'Workout not created.', 'workoutId': ''})
+            return JsonResponse({'status': 500, 'text': 'Workout template not created.', 'workoutId': ''})
 
 
 @login_required(login_url='login')

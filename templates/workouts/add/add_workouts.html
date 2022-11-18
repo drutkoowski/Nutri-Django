@@ -48,13 +48,12 @@
                     </div>
                      <div class="add-workouts__added--saved__content">
                      {% if saved_templates %}
-{#                         {% for item in saved_templates %}#}
-{#                             <div data-objectId='{{ item.pk }}' class="add-workouts__added--saved__content__item">#}
-{#                                 <p><b>{{ item.meal_name }}</b>  {{ item.kcal|floatformat:"-3" }} kcal</p>#}
-{#                                <div class="add-icon filter-green"></div>#}
-{#                            </div>#}
-{#                         {% endfor %}#}
-                         saved template
+                         {% for item in saved_templates %}
+                             <div data-objectId='{{ item.pk }}' class="add-workouts__added--saved__content__item">
+                                 <p><b>{{ item.workout_name }}</b>  {{ item.kcal_burnt_sum|floatformat:"-3" }} kcal</p>
+                                <div class="add-icon filter-green"></div>
+                            </div>
+                         {% endfor %}
                          {% else %}
                          <p class="no-saved-templates-info">{% trans 'No saved activities yet' %}</p>
                      {% endif %}
@@ -90,12 +89,16 @@
         <h1 class="modal__today-workouts-list--heading">{% trans 'Your added activities for today.' %}</h1>
           {% if todayWorkouts %}
               <h3 class="meals-on-date">{% trans 'Activities on' %} {% now "l" %}</h3>
+               <div class="modal-queued__daily-summary">
+                  <div>Kcal: <span class="kcal"></span></div>
+                  <div>{% trans 'Duration' %}: <span class="duration"></span></div>
+              </div>
               <div class="modal__today-workouts-list__content__elements">
                   {% for workout in todayWorkouts %}
                       <div class="modal__today-workouts-list__content__elements__item">
                           <div class="remove-icon filter-red remove-workout" data-workoutObjId="{{ workout.id }}"></div>
                           <div class="today-workouts-list__content-summary">
-                              <h2 class="workout-counter">{% trans 'Activity' %} #{{ forloop.counter }}</h2>
+                              <h2 class="workout-counter">{% trans 'Activity #' %}{{ forloop.counter }}</h2>
                               <div>{% trans 'Summary Kcal' %}: <span>{{ workout.kcal_burnt_sum|floatformat:"-2" }}</span> kcal</div>
                               <div>{% trans 'Summary Duration' %}: <span>{{ workout.min_spent_sum| stringformat:'d'  }}</span> min</div>
                               <div>{% trans 'Created at' %}: <span>{{ workout.created_at }}</span></div>
@@ -116,7 +119,7 @@
                   {% endfor %}
               </div>
           {% else %}
-              <div class="saved-results-info">{% trans 'No exercises added for today...' %}</div>
+              <div class="saved-results-info">{% trans 'No activities added for today...' %}</div>
           {% endif %}
     </div>
 </div>

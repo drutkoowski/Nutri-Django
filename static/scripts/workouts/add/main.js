@@ -4,6 +4,22 @@ navBarEl.style.marginTop = '0'
 navBarEl.style.paddingTop = '3rem'
 ///
 
+const updateSummary = () => {
+    const langPrefix = window.location.href.split('/')[3];
+    const url = window.location.origin + `/${langPrefix}/meals/data/get/saved-meal/macro-summary`
+    $.ajax({
+        type: 'get',
+        url: url,
+        success: function (response) {
+            const items = document.querySelectorAll('.add-meals__already__added--item')
+            if (items.length > 0){
+
+            }
+        },
+    })
+}
+
+
 function hideModal(modalClass) {
     $("." + modalClass).fadeOut(900, e => {
          const modal = document.querySelector(`.${modalClass}`)
@@ -55,7 +71,7 @@ const shakeAnimation = (contentBox) => {
 
 
 // save
-const saveWorkout = (exercises) => {
+const saveWorkout = (exercises, workoutId) => {
     const langPrefix = window.location.href.split('/')[3];
     const url = window.location.origin + `/${langPrefix}/workouts/data/save/added-workout`
     $.ajax({
@@ -63,68 +79,57 @@ const saveWorkout = (exercises) => {
         url: url,
         data: {
             'exercisesArray': exercises,
+            'workoutId': workoutId,
             'csrfmiddlewaretoken': csrfToken,
         },
+        success: function (response) {
+                const status = response.status
+                if (status === 201) {
+                    openModal('.modal-queued')
+                    const closeModalBtn = document.querySelector('.modal-queued__close-button')
+                    closeModalBtn.addEventListener('click', () => {
+                        window.location = window.location.href;
+                    })
+                    setInterval(function () {
+                        window.location = window.location.href;
+                    }, 2500);
+                }
+        }
     })
 }
 const ajaxCallSave = (workoutItems) => {
     let exercisesArr = []
-    workoutItems.forEach(item => {
-        if (item.dataset.objecttemplate) {
-            const workoutObj = JSON.parse(decodeURIComponent(item.dataset.objecttemplate));
-            const parent = item.children[2]
-            const inputValue = parent.children[0].value
-            workoutObj.forEach(el => {
-                getWorkoutTemplateElement(el, inputValue)
-            })
-        }
-        else if (item.dataset.object) {
-            const workoutObj = JSON.parse(decodeURIComponent(item.dataset.object));
-            const parent = item.children[2]
-            const inputValue = parent.children[0].value
-            let obj = {
-                'exerciseId': workoutObj.id,
-                'quantity': inputValue,
-            }
-            exercisesArr.push(obj)
-        }
-    })
     const langPrefix = window.location.href.split('/')[3];
-    const url = window.location.origin + `/${langPrefix}/workouts/data/save/added-workout`
-    const exercises = JSON.stringify(exercisesArr)
     $.ajax({
-        type: "POST",
-        url: url,
-        data: {
-            'exercisesArray': exercises,
-            'csrfmiddlewaretoken': csrfToken,
-        },
-        success: function (response){
-            const status = response.status
-            if (status === 201) {
-                openModal('.modal-queued')
-                const closeModalBtn = document.querySelector('.modal-queued__close-button')
-                closeModalBtn.addEventListener('click', e => {
-                    window.location = window.location.href;
-                })
-                setInterval(function () {
-                    window.location = window.location.href;
-                }, 2500);
-
-            }
-            else if (status === 404) {
-                // const searchElements = Array.from(searchResponseBox.children)
-                // searchElements.forEach(el => {
-                //     el.remove()
-                // })
-            }
-
-            },
-        error: function (error) {
-            // const searchElements = Array.from(searchResponseBox.children)
-            //     searchElements.forEach(el => {
-            //         el.remove()
-            //     })
+        type: 'GET',
+        url: `/${langPrefix}/workouts/data/save/workout`,
+        success: function (response) {
+            const workoutId = response.workoutId
+            workoutItems.forEach(item => {
+                const parent = item.children[2]
+                const inputValue = parent.children[0].value
+                let obj
+                const objectTemplate = item.dataset?.objecttemplate
+                const object = item.dataset?.object
+                if (objectTemplate){
+                    const workoutObj = JSON.parse(decodeURIComponent(item.dataset.objecttemplate));
+                     obj = {
+                        'type': 'templateElement',
+                        'id': workoutObj,
+                        'quantity': inputValue,
+                    }
+                }
+               else if (object){
+                   const workoutObj = JSON.parse(decodeURIComponent(item.dataset.object));
+                   obj = {
+                        'type': 'exerciseElement',
+                        'id': workoutObj.id,
+                        'quantity': inputValue,
+                    }
+                }
+                exercisesArr.push(obj)
+               })
+                saveWorkout(JSON.stringify(exercisesArr), workoutId)
         },
     })
 }
@@ -147,7 +152,7 @@ const ajaxCallSearch = (query) => {
                 searchElements.forEach(el => {
                     el.remove()
                 })
-                searchResponseBox.innerHTML = ``
+               searchResponseBox.innerHTML = ``
                let exercises = [...response.exercises]
                exercises.forEach(exercise => {
                    let contentToAppend
@@ -156,16 +161,12 @@ const ajaxCallSearch = (query) => {
                    let exerciseName
 
                    if (langPrefix === 'pl'){
-
                        categoryName = exercise.category_name_pl
                        exerciseName = exercise.pl_name
-
                    }
                    else {
-
                        categoryName = exercise.category_name_en
                        exerciseName = exercise.en_name
-
                    }
 
                     contentToAppend = `
@@ -175,7 +176,6 @@ const ajaxCallSearch = (query) => {
                         <small class="search-category-small">${gettext('Category')}: <span class="search-category-small__text">${categoryName}</span></small>
                     </div>
                    `
-
                    searchResponseBox.insertAdjacentHTML('beforeend', contentToAppend)
                })
                 // after clicking + on search
@@ -186,40 +186,50 @@ const ajaxCallSearch = (query) => {
                         const workoutContent = document.querySelector('.add-workouts__added--added__content')
                         const getWorkoutObject = JSON.parse(decodeURIComponent(e.target.dataset.object));
                         const langPrefix = window.location.href.split('/')[3];
-                        let workoutName
-                        let unitName
-                        if (langPrefix === 'pl') {
-                            workoutName = getWorkoutObject.pl_name
-                            unitName = getWorkoutObject.time_unit_pl
-                        }
-                        else {
-                            workoutName = getWorkoutObject.en_name
-                            unitName = getWorkoutObject.time_unit_en
-                        }
-                        const infoResults = document.querySelector('.saved-results-info')
-                        infoResults.classList.add('not-visible')
-                        const workoutItemAppend = `
-                               <div data-object="${e.target.dataset.object}" class="add-workouts__added--added__content__item">
-                                   <p><b>${workoutName}</b></p>
-                                  <div class="today-workouts-added-remove-btn temporary-workout-today remove-icon filter-red"></div>
-                                  <div class="today-workouts-added-inputBox">
-                                    <input min="1" max="1000" class="new-today-workout-input-quantity" name="${workoutName}" type="number" placeholder="${unitName}">
-                                    <label for="${workoutName}">x ${unitName}</label>
-                                  </div>
-                        </div>
-                      `
-                        workoutContent.insertAdjacentHTML('beforeend', workoutItemAppend)
-                        const removeAddedBtn = document.querySelectorAll('.temporary-workout-today')
-                        removeAddedBtn.forEach(button => {
-                            button.addEventListener('click', e => {
-                                const parentEl = button.parentNode
-                                if(workoutContent.children.length === 1) {
-                                    const infoResults = document.querySelector('.saved-results-info')
-                                    infoResults.classList.remove('not-visible')
-                                }
-                                parentEl.remove()
-                            })
+                        const allCompositionItems = document.querySelectorAll('.add-workouts__added--added__content__item')
+                        let isAlreadyAdded = false
+                        allCompositionItems.forEach(item => {
+                            const itemPk = item.dataset.pk
+                            if (parseInt(itemPk) === getWorkoutObject.id){
+                                isAlreadyAdded = true
+                            }
                         })
+                        if (!isAlreadyAdded) {
+                            let workoutName
+                            let unitName
+                            if (langPrefix === 'pl') {
+                                workoutName = getWorkoutObject.pl_name
+                                unitName = getWorkoutObject.time_unit_pl
+                            }
+                            else {
+                                workoutName = getWorkoutObject.en_name
+                                unitName = getWorkoutObject.time_unit_en
+                            }
+                            const infoResults = document.querySelector('.saved-results-info')
+                            infoResults.classList.add('not-visible')
+                            const workoutItemAppend = `
+                                   <div data-object="${e.target.dataset.object}" class="add-workouts__added--added__content__item" data-pk="${getWorkoutObject.id}">
+                                       <p><b>${workoutName}</b></p>
+                                      <div class="today-workouts-added-remove-btn temporary-workout-today remove-icon filter-red"></div>
+                                      <div class="today-workouts-added-inputBox">
+                                        <input min="1" max="1000" class="new-today-workout-input-quantity" name="${workoutName}" type="number" placeholder="${unitName}">
+                                        <label for="${workoutName}">x ${unitName}</label>
+                                      </div>
+                            </div>
+                          `
+                            workoutContent.insertAdjacentHTML('beforeend', workoutItemAppend)
+                            const removeAddedBtn = document.querySelectorAll('.temporary-workout-today')
+                            removeAddedBtn.forEach(button => {
+                                button.addEventListener('click', e => {
+                                    const parentEl = button.parentNode
+                                    if(workoutContent.children.length === 2) {
+                                        const infoResults = document.querySelector('.saved-results-info')
+                                        infoResults.classList.remove('not-visible')
+                                    }
+                                    parentEl.remove()
+                                })
+                            })
+                        }
                     })
                 })
             }
@@ -241,38 +251,11 @@ const ajaxCallSearch = (query) => {
         },
     })
 }
-
-const getWorkoutTemplateElement = (id, inputValue) => {
-    const langPrefix = window.location.href.split('/')[3];
-    const url = window.location.origin + `/${langPrefix}/workouts/data/get/saved-workout/template/element`
-    $.ajax({
-        'type': 'get',
-         url: url,
-         data: {
-            'mealElementId': id,
-         },
-        success: function (response){
-            const exercises_arr = []
-            const obj = JSON.parse(response['workoutTemplateElement'])
-            const exercise_id = obj.exerciseId
-            const quantity = obj.quantity * inputValue
-            let workout_obj = {
-                'exerciseId': exercise_id,
-                'quantity': quantity,
-            }
-            exercises_arr.push(workout_obj)
-            saveWorkout(JSON.stringify(exercises_arr))
-        },
-        error: function (error){
-
-        }
-    })
-}
 const ajaxCallSearchTemplate = (id) => {
     const langPrefix = window.location.href.split('/')[3];
     const url = `/${langPrefix}/workouts/data/get/saved-workout/template`
     $.ajax({
-        "type": "GET",
+        type: "GET",
         url: url,
         data: {
             "templateId": id,
@@ -280,19 +263,28 @@ const ajaxCallSearchTemplate = (id) => {
         success: function (response) {
            const workoutObj = JSON.parse(response.workoutTemplateObj)
            const workoutName = workoutObj.workout_name
-           const kcal = workoutObj.kcal
+           const kcal = workoutObj.kcal_burnt_sum
            const infoResults = document.querySelector('.saved-results-info')
            infoResults.classList.add('not-visible')
            const langPrefix = window.location.href.split('/')[3];
-           let placeholder
-           if (langPrefix === 'pl') {
-               placeholder = 'Sztuk'
-           }
-           else {
-               placeholder = 'Pieces'
-           }
-           const workoutItemAppend = `
-                <div data-objectTemplate="${encodeURIComponent(JSON.stringify(workoutObj.workout_elements_ids))}" class="add-workouts__added--added__content__item">
+           const allCompositionItems = document.querySelectorAll('.add-workouts__added--added__content__item')
+           let isAlreadyAdded = false
+           allCompositionItems.forEach(item => {
+               const itemPk = item.dataset.pk
+               if (parseInt(itemPk) === parseInt(workoutObj.workoutId)){
+                   isAlreadyAdded = true
+               }
+           })
+           if(!isAlreadyAdded) {
+               let placeholder
+               if (langPrefix === 'pl') {
+                   placeholder = 'razy'
+               }
+               else {
+                   placeholder = 'times'
+               }
+               const workoutItemAppend = `
+                <div data-objectTemplate="${encodeURIComponent(JSON.stringify(workoutObj.workout_elements_ids))}" class="add-workouts__added--added__content__item" data-pk="${workoutObj.workoutId}">
                     <p><b>${workoutName}</b> (${Math.trunc(kcal)} kcal)</p>
                     <div class="today-workouts-added-remove-btn temporary-workout-today remove-icon filter-red"></div>
                     <div class="today-workouts-added-inputBox">
@@ -300,24 +292,22 @@ const ajaxCallSearchTemplate = (id) => {
                         <label for="${workoutName}-${workoutObj.workoutId}">x ${placeholder}</label>
                     </div>
                 </div>
-            `
-        const workoutContent = document.querySelector('.add-workouts__added--added__content')
-        workoutContent.insertAdjacentHTML('beforeend', workoutItemAppend)
-        const removeAddedBtn = document.querySelectorAll('.temporary-workout-today')
-            removeAddedBtn.forEach(button => {
-                button.addEventListener('click', e => {
-                    const parentEl = button.parentNode
-                    if(workoutContent.children.length === 1) {
-                        const infoResults = document.querySelector('.saved-results-info')
-                        infoResults.classList.remove('not-visible')
-                    }
-                    parentEl.remove()
-                })
-         })
+                `
+                const workoutContent = document.querySelector('.add-workouts__added--added__content')
+                workoutContent.insertAdjacentHTML('beforeend', workoutItemAppend)
+                const removeAddedBtn = document.querySelectorAll('.temporary-workout-today')
+                    removeAddedBtn.forEach(button => {
+                        button.addEventListener('click', () => {
+                            const parentEl = button.parentNode
+                            if(workoutContent.children.length === 2) {
+                                const infoResults = document.querySelector('.saved-results-info')
+                                infoResults.classList.remove('not-visible')
+                            }
+                            parentEl.remove()
+                        })
+                 })
+           }
         },
-        error: function (error) {
-
-        }
     })
 }
 
@@ -417,7 +407,7 @@ searchInput.addEventListener('input', e => {
 
 
 const saveWorkoutBtn = document.querySelector('.save-add-today-workouts')
-saveWorkoutBtn.addEventListener('click', e => {
+saveWorkoutBtn.addEventListener('click', () => {
     const workoutsItems = Array.from(document.querySelectorAll('.add-workouts__added--added__content__item'))
     const quantityInputs = document.querySelectorAll('.new-today-workout-input-quantity')
     let inputsValid = true
@@ -447,7 +437,7 @@ savedTemplateItems.forEach(item => {
     })
 })
 
-checkYourWorkoutsBtn.addEventListener('click', e => {
+checkYourWorkoutsBtn.addEventListener('click', () => {
     openModal('.modal__today-workouts-list')
 })
 
@@ -497,7 +487,7 @@ const openModalAcceptDeny = (handler, id) => {
 }
 
 const modalCloseTodayWorkouts = document.querySelector('.modal__today-workouts-list__close-button')
-modalCloseTodayWorkouts.addEventListener('click', e => {
+modalCloseTodayWorkouts.addEventListener('click', () => {
     animateDeletingElementByClass('.modal__today-workouts-list', 1200)
 })
 
