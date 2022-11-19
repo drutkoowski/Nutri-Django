@@ -52,6 +52,10 @@ function hideModal(modalClass) {
 searchContainer.style.width = '50%'
 searchContainer.style.justifySelf = 'center'
 
+const workoutsVideo = document.getElementById('save-workouts-video')
+if (workoutsVideo) {
+    workoutsVideo.playbackRate = 0.5;
+}
 
 // search
 const ajaxCall = (query, searchResponseBox) => {

@@ -11,9 +11,10 @@
     {% csrf_token %}
     <div class="loader"></div>
       <div class="bg-video" id="add-meals-video-container">
+        <div class="overlay-large"></div>
          <video id="add-meals-video" class="bg-video__content" autoplay muted loop>
-             <source src="{% sass_src 'video/add_meal_bg_video.mp4' %}" type="video/mp4">
-             <source src="{% sass_src 'video/add_meal_bg_video.webm' %}" type="video/webm">
+             <source src="{% sass_src 'video/meals_bg_video.mp4' %}" type="video/mp4">
+             <source src="{% sass_src 'video/meals_bg_video.webm' %}" type="video/webm">
              Your browser is not supported!
          </video>
      </div>

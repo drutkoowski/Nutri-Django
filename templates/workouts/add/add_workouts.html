@@ -6,11 +6,11 @@
 {% endblock scripts %}
 {% block content %}
     <div class="loader"></div>
-      <div class="bg-video-fixed" id="add-meals-video-container">
-       <div class="overlay"></div>
-         <video id="add-meals-video" class="bg-video-fixed__content" autoplay muted loop>
-             <source src="{% sass_src 'video/add_meal_bg_video.mp4' %}" type="video/mp4">
-             <source src="{% sass_src 'video/add_meal_bg_video.webm' %}" type="video/webm">
+      <div class="bg-video-fixed" id="add-workouts-video-container">
+      <div class="overlay-large"></div>
+         <video id="add-workouts-video" class="bg-video-fixed__content" autoplay muted loop>
+             <source src="{% sass_src 'video/bg_video_login.mp4' %}" type="video/mp4">
+             <source src="{% sass_src 'video/bg_video_login.webm' %}" type="video/webm">
              {% trans 'Your browser is not supported!' %}
          </video>
      </div>

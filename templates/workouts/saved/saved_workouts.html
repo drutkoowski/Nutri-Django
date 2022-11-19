@@ -10,10 +10,11 @@
 {% block content %}
     {% csrf_token %}
     <div class="loader"></div>
-      <div class="bg-video" id="add-meals-video-container">
-         <video id="add-meals-video" class="bg-video__content" autoplay muted loop>
-             <source src="{% sass_src 'video/add_meal_bg_video.mp4' %}" type="video/mp4">
-             <source src="{% sass_src 'video/add_meal_bg_video.webm' %}" type="video/webm">
+      <div class="bg-video" id="save-workouts-video-container">
+      <div class="overlay-large"></div>
+         <video id="save-workouts-video" class="bg-video__content" autoplay muted loop>
+             <source src="{% sass_src 'video/bg_video_login.mp4' %}" type="video/mp4">
+             <source src="{% sass_src 'video/bg_video_login.webm' %}" type="video/webm">
              Your browser is not supported!
          </video>
      </div>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-18 20:05+0100\n"
+"POT-Creation-Date: 2022-11-19 14:11+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -238,9 +238,9 @@ msgstr "Zjedzone Kcal"
 
 #: .\templates\accounts\login.html:15 .\templates\accounts\signup.html:15
 #: .\templates\home\index.html:80 .\templates\meals\add\add_meals.html:13
-#: .\templates\meals\meals.html:13
+#: .\templates\meals\meals.html:14
 #: .\templates\workouts\add\add_workouts.html:14
-#: .\templates\workouts\workouts.html:13
+#: .\templates\workouts\workouts.html:14
 msgid "Your browser is not supported!"
 msgstr "Twoja przeglądarka nie jest obsługiwana!"
 
@@ -414,8 +414,8 @@ msgstr "Stworzone z &hearts; przez"
 #: .\templates\meals\saved\saved_meals.html:73
 #: .\templates\meals\saved\saved_meals.html:84
 #: .\templates\workouts\add\add_workouts.html:23
-#: .\templates\workouts\saved\saved_workouts.html:73
-#: .\templates\workouts\saved\saved_workouts.html:84
+#: .\templates\workouts\saved\saved_workouts.html:76
+#: .\templates\workouts\saved\saved_workouts.html:87
 msgid "Search"
 msgstr "Szukaj"
 
@@ -445,13 +445,13 @@ msgstr "Dzisiejsze Posiłki"
 msgid "Your meal composition will appear here"
 msgstr "Twoja kompozycja posiłku pojawi się tutaj"
 
-#: .\templates\meals\add\add_meals.html:45 .\templates\meals\meals.html:29
+#: .\templates\meals\add\add_meals.html:45 .\templates\meals\meals.html:30
 msgid "Saved Meals"
 msgstr "Zapisane Posiłki"
 
 #: .\templates\meals\add\add_meals.html:57
 #: .\templates\meals\saved\saved_meals.html:42
-#: .\templates\workouts\saved\saved_workouts.html:42
+#: .\templates\workouts\saved\saved_workouts.html:43
 msgid "No saved templates yet"
 msgstr "Brak zapisanych szablonów"
 
@@ -500,11 +500,11 @@ msgstr "Kcal"
 msgid "No meals added for today..."
 msgstr "Brak posiłków dodanych dzisiaj..."
 
-#: .\templates\meals\meals.html:21
+#: .\templates\meals\meals.html:22
 msgid "Add Today's Meal"
 msgstr "Dodaj dzisiejszy posiłek"
 
-#: .\templates\meals\meals.html:22
+#: .\templates\meals\meals.html:23
 msgid ""
 "Fill your day with the foods you eat today and find out more about their "
 "calorie content and the ingredients they contain such as protein,"
@@ -514,11 +514,11 @@ msgstr ""
 "ichzawartości kalorycznej oraz zawartych w nich składników, takich jak "
 "białko,węglowodany i wiele innych."
 
-#: .\templates\meals\meals.html:25
+#: .\templates\meals\meals.html:26
 msgid "Meals Propositions"
 msgstr "Propozycje Posiłków"
 
-#: .\templates\meals\meals.html:26
+#: .\templates\meals\meals.html:27
 msgid ""
 "Browse the dish suggestions with their recipes and other information "
 "constructed by us just for you."
@@ -526,7 +526,7 @@ msgstr ""
 "Przeglądaj propozycje dań z ich przepisami i innymi informacjami "
 "skonstruowane przez nas specjalnie dla Ciebie."
 
-#: .\templates\meals\meals.html:30
+#: .\templates\meals\meals.html:31
 msgid ""
 "View and modify your saved dishes to make it easier and quicker to use the "
 "add meals option."
@@ -539,12 +539,12 @@ msgid "Your Saved Meals"
 msgstr "Zapisane Posiłki"
 
 #: .\templates\meals\saved\saved_meals.html:36
-#: .\templates\workouts\saved\saved_workouts.html:36
+#: .\templates\workouts\saved\saved_workouts.html:37
 msgid "Manage"
 msgstr "Zarządzaj"
 
 #: .\templates\meals\saved\saved_meals.html:37
-#: .\templates\workouts\saved\saved_workouts.html:37
+#: .\templates\workouts\saved\saved_workouts.html:38
 #: .\venv\Lib\site-packages\django\forms\formsets.py:496
 msgid "Delete"
 msgstr "Usuń"
@@ -583,7 +583,7 @@ msgid "Your activity will appear here"
 msgstr "Kompozycja Twojej aktywności pojawi się tutaj"
 
 #: .\templates\workouts\add\add_workouts.html:46
-#: .\templates\workouts\workouts.html:29
+#: .\templates\workouts\workouts.html:30
 msgid "Saved Activities"
 msgstr "Zapisane aktywności"
 
@@ -627,44 +627,48 @@ msgstr "Utworzone w"
 msgid "No activities added for today..."
 msgstr "Brak aktywności dodanych dzisiaj..."
 
-#: .\templates\workouts\saved\saved_workouts.html:28
+#: .\templates\workouts\saved\saved_workouts.html:29
 msgid "Your Saved Activities"
 msgstr "Zapisane aktywności"
 
-#: .\templates\workouts\saved\saved_workouts.html:47
+#: .\templates\workouts\saved\saved_workouts.html:48
 msgid "Do you want to create new activity template?"
 msgstr "Chcesz utworzyć nowy szablon aktywności?"
 
-#: .\templates\workouts\saved\saved_workouts.html:48
+#: .\templates\workouts\saved\saved_workouts.html:49
 msgid "Create New Template"
 msgstr "Utwórz Szablon"
 
-#: .\templates\workouts\saved\saved_workouts.html:54
+#: .\templates\workouts\saved\saved_workouts.html:57
 msgid "Adding your activity template to our database.."
 msgstr "Dodawanie Twojego szablonu posiłku do bazy..."
 
-#: .\templates\workouts\saved\saved_workouts.html:72
-#: .\templates\workouts\saved\saved_workouts.html:83
+#: .\templates\workouts\saved\saved_workouts.html:75
+#: .\templates\workouts\saved\saved_workouts.html:86
 msgid "Search for your activity components"
 msgstr "Szukaj składowych posiłku"
 
-#: .\templates\workouts\workouts.html:21
+#: .\templates\workouts\workouts.html:22
 msgid "Add Activity"
 msgstr "Dodaj Aktywności"
 
-#: .\templates\workouts\workouts.html:22
+#: .\templates\workouts\workouts.html:23
+#, fuzzy
+#| msgid ""
+#| "Fill your day with the workout you have done today and find out more "
+#| "about quality of your activities."
 msgid ""
-"Fill your day with the workout you have done today and find out more about "
-"quality of your activities."
+"Fill your day with the activities you have done today and find out more "
+"about their quality."
 msgstr ""
 "Wypełnij swój dzień ćwiczeniami, które dzisiaj wykonałeś/aś i dowiedz się "
 "więcej o jakości Twoich treningów lub aktywności."
 
-#: .\templates\workouts\workouts.html:25
+#: .\templates\workouts\workouts.html:26
 msgid "Activity Propositions"
 msgstr "Propozycje Aktywności"
 
-#: .\templates\workouts\workouts.html:26
+#: .\templates\workouts\workouts.html:27
 msgid ""
 "Browse the workout suggestions with their description and other information "
 "constructed by us just for you."
@@ -672,7 +676,7 @@ msgstr ""
 "Przeglądaj propozycje ćwiczeń wraz z ich opisem i innymi informacjami "
 "skonstruowanych przez nas specjalnie dla Ciebie."
 
-#: .\templates\workouts\workouts.html:30
+#: .\templates\workouts\workouts.html:31
 msgid ""
 "View and modify your saved workouts templates to make it easier and quicker "
 "to use the add workout option."

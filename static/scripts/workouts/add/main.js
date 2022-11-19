@@ -1,7 +1,6 @@
 // fix bg - video stretch and nav adjustments
 const navBarEl = document.querySelector('.navbar--dashboard')
-navBarEl.style.marginTop = '0'
-navBarEl.style.paddingTop = '3rem'
+navBarEl.classList.toggle('fix-navbar')
 ///
 
 const updateSummary = () => {
@@ -57,7 +56,10 @@ let openModal = function (modalClass) {
 };
 
 
-const mealsVideo = document.getElementById('add-meals-video')
+const workoutsVideo = document.getElementById('add-workouts-video')
+if (workoutsVideo) {
+    workoutsVideo.playbackRate = 0.5;
+}
 const navbar = document.querySelector('.navbar--dashboard')
 
 const csrf = document.getElementsByName('csrfmiddlewaretoken')
@@ -65,11 +67,6 @@ const csrfToken = csrf[0].value
 
 const checkYourWorkoutsBtn = document.querySelector('.check-today-workouts')
 
-navbar.classList.toggle('fix-navbar')
-
-if (mealsVideo) {
-    mealsVideo.playbackRate = 0.5;
-}
 
 // animations
 const shakeAnimation = (contentBox) => {

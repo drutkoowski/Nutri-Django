@@ -1172,7 +1172,18 @@ ORDER: Base + typography > general layout + grid > page layout > components
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: radial-gradient(circle, rgba(117, 111, 111, 0.2) 0%, black 100%);
+  background: radial-gradient(circle, rgba(49, 50, 49, 0.30716) 0%, black 100%);
+  /*background-image: radial-gradient(circle at center, rgba(47, 47, 49, 0.8),*/
+  /*rgba(31, 29, 29, 0.9));*/ }
+
+.overlay-large {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background-image: radial-gradient(circle at center, rgba(51, 49, 49, 0.3) 0%, black 100%);
   /*background-image: radial-gradient(circle at center, rgba(47, 47, 49, 0.8),*/
   /*rgba(31, 29, 29, 0.9));*/ }
 
@@ -3806,9 +3817,9 @@ label.year {
     border-radius: 20px;
     background: white;
     background: linear-gradient(90deg, white 0%, #dbdbee 35%, #cdcecf 100%);
-    -webkit-box-shadow: 0px 0px 8px 5px #42445a;
-    -moz-box-shadow: 0px 0px 8px 5px #42445a;
-    box-shadow: 0px 0px 8px 5px #42445a;
+    -webkit-box-shadow: inset 0px 0px 5px 0px #42445a;
+    -moz-box-shadow: inset 0px 0px 5px 0px #42445a;
+    box-shadow: inset 0px 0px 5px 0px #42445a;
     align-content: center;
     padding: 0 2rem;
     transition: all .2s ease-out;
@@ -4282,8 +4293,7 @@ label.year {
         background-color: #afe0a5; }
 
 #add-meals-video {
-  opacity: 0.8;
-  filter: blur(5px); }
+  opacity: 1; }
   @media only screen and (max-width: 75em) {
     #add-meals-video {
       display: none; } }
@@ -5162,9 +5172,9 @@ label.year {
     border-radius: 20px;
     background: white;
     background: linear-gradient(90deg, white 0%, #dbdbee 35%, #cdcecf 100%);
-    -webkit-box-shadow: 0px 0px 8px 5px #42445a;
-    -moz-box-shadow: 0px 0px 8px 5px #42445a;
-    box-shadow: 0px 0px 8px 5px #42445a;
+    -webkit-box-shadow: inset 0px 0px 5px 0px #42445a;
+    -moz-box-shadow: inset 0px 0px 5px 0px #42445a;
+    box-shadow: inset 0px 0px 5px 0px #42445a;
     align-content: center;
     padding: 0 2rem;
     transition: all .2s ease-out;
@@ -5231,21 +5241,22 @@ label.year {
         .workouts__card p {
           font-size: 1.7rem; } }
     .workouts__card--add {
-      background-image: linear-gradient(to right bottom, rgba(241, 241, 241, 0.3), rgba(82, 82, 82, 0.5)), url("/static/images/add_meals_card.png"); }
+      background-image: linear-gradient(to right bottom, rgba(241, 241, 241, 0.3), rgba(82, 82, 82, 0.5)), url("/static/images/add_workouts.jpg");
+      background-size: 100% 100%; }
       @media only screen and (max-width: 84.375em) {
         .workouts__card--add {
           grid-column: 1/2;
-          grid-row: 1/2;
-          background-size: cover; } }
+          grid-row: 1/2; } }
     .workouts__card--proposition {
-      background-image: linear-gradient(to right bottom, rgba(241, 241, 241, 0.3), rgba(82, 82, 82, 0.5)), url("/static/images/meal_proposition_card.jpg");
+      background-image: linear-gradient(to right bottom, rgba(241, 241, 241, 0.3), rgba(82, 82, 82, 0.5)), url("/static/images/workout_propostions.jpg");
       background-size: cover; }
       @media only screen and (max-width: 84.375em) {
         .workouts__card--proposition {
           grid-column: 1/2;
           grid-row: 2/3; } }
     .workouts__card--saved {
-      background-image: linear-gradient(to right bottom, rgba(241, 241, 241, 0.3), rgba(82, 82, 82, 0.5)), url("/static/images/saved_meals_card.jpg"); }
+      background-image: linear-gradient(to right bottom, rgba(241, 241, 241, 0.3), rgba(82, 82, 82, 0.5)), url("/static/images/workout_saved.jpg");
+      background-size: 100% 100%; }
       @media only screen and (max-width: 84.375em) {
         .workouts__card--saved {
           grid-column: 1/2;
@@ -6268,5 +6279,8 @@ body {
 ::selection {
   background-color: blue;
   color: white; }
+
+a {
+  color: inherit; }
 
 /*# sourceMappingURL=base.css.map */

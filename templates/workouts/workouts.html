@@ -6,10 +6,11 @@
 {% endblock scripts %}
 {% block content %}
     <div class="loader"></div>
-     <div class="bg-video-fixed" id="meals-video-container">
-         <video id="meals-video" class="bg-video-fixed__content" autoplay muted loop>
-             <source src="{% sass_src 'video/meals_bg_video.mp4' %}" type="video/mp4">
-             <source src="{% sass_src 'video/meals_bg_video.webm' %}" type="video/webm">
+     <div class="bg-video-fixed" id="menu-workouts-video">
+     <div class="overlay-large"></div>
+         <video id="menu-workouts-video" class="bg-video-fixed__content" autoplay muted loop>
+             <source src="{% sass_src 'video/workouts_menu_video.mp4' %}" type="video/mp4">
+             <source src="{% sass_src 'video/workouts_menu_video.webm' %}" type="video/webm">
              {% trans 'Your browser is not supported!' %}
          </video>
      </div>
@@ -19,7 +20,7 @@
         <div class="workouts grid-full-span">
             <div class="workouts__card workouts__card--add">
                 <h1>{% trans "Add Activity" %}</h1>
-                <p>{% trans 'Fill your day with the workout you have done today and find out more about quality of your activities.' %}</p>
+                <p>{% trans 'Fill your day with the activities you have done today and find out more about their quality.' %}</p>
             </div>
             <div class="workouts__card workouts__card--proposition">
                 <h1>{% trans 'Activity Propositions' %}</h1>
