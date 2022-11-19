@@ -409,20 +409,14 @@
           &:hover {
             transform: scale(1.02);
           }
-        p{
-          margin-left: 1.5rem;
-          grid-column: 1/2;
-          font-size: 1.5rem;
-          margin-right: 2.5rem;
-
-          // margin-left: 1.5rem;
-          //          grid-column: 1/2;
-          //          font-size: 1.5rem;
-          //          margin-right: 2.5rem;
-          @include respond(md-desktop){
-            font-size: 2rem;
-          }
-
+          p{
+            margin-left: 1.5rem;
+            grid-column: 1/2;
+            font-size: 1.5rem;
+            margin-right: 2.5rem;
+            @include respond(md-desktop){
+              font-size: 2rem;
+            }
         }
       }
       }
@@ -444,12 +438,9 @@
   }
 }
 
-#add-meals-video {
+#add-workouts-video {
   opacity: 0.8;
   filter: blur(5px);
-  @include respond(tab-land) {
-    display: none;
-  }
 }
 
 .today-workouts-added-inputBox{
@@ -503,11 +494,19 @@
 
 .search-category-small {
   margin-left: 2rem;
-
+  @include respond(tab-sm) {
+    margin-left: 1rem;
+  }
   &__text {
     color:green;
     font-size: 1.8rem;
     margin-left: 0.5rem;
+    @include respond(tab-sm) {
+      font-size: 1.3rem;
+    }
+    @include respond(phone-sm) {
+      font-size: 1.1rem;
+    }
   }
 }
 

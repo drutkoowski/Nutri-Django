@@ -86,6 +86,18 @@
         animation-name: fade-left;
         animation-duration: 1s;
         animation-timing-function: ease-out;
+        @include respond(phone-md-lg){
+          font-size: 2.5rem;
+          margin-bottom: 2.5rem;
+        }
+         @include respond(phone-md){
+          font-size: 2.25rem;
+        }
+         @include respond(phone-sm){
+          font-size: 1.75rem;
+           margin-top: 2rem;
+           margin-bottom: 0.5rem;
+        }
       }
   }
 
@@ -178,6 +190,27 @@
   &__content {
      height: 55rem;
      width: 80rem;
+    @include respond(tab-md) {
+      width: auto;
+      margin: 0 auto;
+      height: auto;
+      max-height: 60rem;
+    }
+    @include respond(phone-lg) {
+       width: 50rem;
+       padding: 2rem!important;
+    }
+    @include respond(phone-md-lg){
+      width: 40rem;
+    }
+    @include respond(phone-md-sm){
+      width: 35rem;
+      min-height: 45rem;
+      max-height: unset;
+    }
+    @include respond(phone-sm) {
+      padding: 0.5rem!important;
+    }
   }
 }
 

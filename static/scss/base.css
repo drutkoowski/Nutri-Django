@@ -1276,6 +1276,18 @@ ORDER: Base + typography > general layout + grid > page layout > components
       animation-name: fade-left;
       animation-duration: 1s;
       animation-timing-function: ease-out; }
+      @media only screen and (max-width: 31.25em) {
+        .modal-queued__content h1 {
+          font-size: 2.5rem;
+          margin-bottom: 2.5rem; } }
+      @media only screen and (max-width: 28.5em) {
+        .modal-queued__content h1 {
+          font-size: 2.25rem; } }
+      @media only screen and (max-width: 21.875em) {
+        .modal-queued__content h1 {
+          font-size: 1.75rem;
+          margin-top: 2rem;
+          margin-bottom: 0.5rem; } }
   .modal-queued__close-button {
     position: absolute;
     top: 1rem;
@@ -1347,7 +1359,27 @@ ORDER: Base + typography > general layout + grid > page layout > components
 .modal-queued__today-meals-list__content {
   height: 55rem;
   width: 80rem; }
-
+  @media only screen and (max-width: 62.5em) {
+    .modal-queued__today-meals-list__content {
+      width: auto;
+      margin: 0 auto;
+      height: auto;
+      max-height: 60rem; } }
+  @media only screen and (max-width: 37.5em) {
+    .modal-queued__today-meals-list__content {
+      width: 50rem;
+      padding: 2rem !important; } }
+  @media only screen and (max-width: 31.25em) {
+    .modal-queued__today-meals-list__content {
+      width: 40rem; } }
+  @media only screen and (max-width: 25em) {
+    .modal-queued__today-meals-list__content {
+      width: 35rem;
+      min-height: 45rem;
+      max-height: unset; } }
+  @media only screen and (max-width: 21.875em) {
+    .modal-queued__today-meals-list__content {
+      padding: 0.5rem !important; } }
 .modal-signup {
   position: absolute;
   top: 0;
@@ -3951,11 +3983,10 @@ label.year {
     .add-meals-layout-container {
       grid-template-columns: 0.05fr 1fr 0.05fr;
       grid-template-rows: 0.30fr 2fr 0.15fr;
-      height: auto;
-      background-image: linear-gradient(to bottom, rgba(246, 244, 244, 0.5), rgba(148, 147, 147, 0.84)), url("https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80");
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover; } }
+      height: auto; } }
+  @media only screen and (max-width: 25em) {
+    .add-meals-layout-container {
+      grid-template-columns: 1fr; } }
 .add-meals {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -3973,6 +4004,15 @@ label.year {
       grid-template-rows: 1fr 1fr;
       grid-column-gap: 0;
       grid-row-gap: 5rem; } }
+  @media only screen and (max-width: 37.5em) {
+    .add-meals {
+      grid-template-rows: 0.7fr 1fr; } }
+  @media only screen and (max-width: 31.25em) {
+    .add-meals {
+      grid-row-gap: 2.5rem; } }
+  @media only screen and (max-width: 25em) {
+    .add-meals {
+      grid-column: 1/2; } }
   .add-meals__already__added::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
@@ -4007,6 +4047,9 @@ label.year {
       animation-name: fade-bottom;
       animation-duration: 1s;
       animation-timing-function: ease-out; }
+      @media only screen and (max-width: 31.25em) {
+        .add-meals__already__added--item div.today-meals-added-remove-btn {
+          transform: scale(0.75); } }
       .add-meals__already__added--item:hover {
         transform: scale(1.02); }
       .add-meals__already__added--item__category {
@@ -4025,6 +4068,11 @@ label.year {
         margin-left: 1.5rem;
         font-size: 1.5rem;
         margin-right: 2.5rem; }
+        @media only screen and (max-width: 31.25em) {
+          .add-meals__already__added--item p {
+            font-size: 1.25rem;
+            margin-right: 1.5rem;
+            margin-left: 1rem; } }
       .add-meals__already__added--item .today-meals-added-remove-btn {
         grid-column: 2/3;
         justify-self: center;
@@ -4048,6 +4096,10 @@ label.year {
         grid-row: 1/2;
         grid-column: 1/2;
         height: auto; } }
+    @media only screen and (max-width: 37.5em) {
+      .add-meals__search {
+        height: auto;
+        max-height: 55rem; } }
     .add-meals__search__bar {
       margin: 2rem auto;
       position: relative; }
@@ -4064,6 +4116,9 @@ label.year {
         @media only screen and (max-width: 46.875em) {
           .add-meals__search__bar input {
             width: 100%; } }
+        @media only screen and (max-width: 25em) {
+          .add-meals__search__bar input {
+            font-size: 1.25rem; } }
       .add-meals__search__bar__icon {
         position: absolute;
         top: 20%;
@@ -4082,7 +4137,7 @@ label.year {
           margin: 5rem 5rem 5rem 5rem; } }
       @media only screen and (max-width: 37.5em) {
         .add-meals__search__results {
-          margin: 5rem 1.5rem 5rem 1.5rem; } }
+          margin: 2rem 1.5rem 5rem 1.5rem; } }
       .add-meals__search__results__container::-webkit-scrollbar-track {
         -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
         border-radius: 10px;
@@ -4111,9 +4166,20 @@ label.year {
         .add-meals__search__results__container p {
           margin: 3rem 2rem;
           font-size: 2rem; }
+          @media only screen and (max-width: 84.375em) {
+            .add-meals__search__results__container p {
+              font-size: 1.75rem;
+              margin: 2rem 2rem; } }
+          @media only screen and (max-width: 46.875em) {
+            .add-meals__search__results__container p {
+              font-size: 1.45rem;
+              margin: 2rem 1rem; } }
           @media only screen and (max-width: 31.25em) {
             .add-meals__search__results__container p {
-              font-size: 1.6rem; } }
+              font-size: 1.3rem; } }
+          @media only screen and (max-width: 21.875em) {
+            .add-meals__search__results__container p {
+              font-size: 1.15rem; } }
         .add-meals__search__results__container__item {
           display: grid;
           grid-template-columns: 0.8fr 0.2fr;
@@ -4129,6 +4195,10 @@ label.year {
           .add-meals__search__results__container__item div.new-meal-item-add {
             justify-self: end;
             margin-right: 3rem; }
+            @media only screen and (max-width: 46.875em) {
+              .add-meals__search__results__container__item div.new-meal-item-add {
+                transform: scale(0.75);
+                margin-right: 1rem; } }
           .add-meals__search__results__container__item:not(:last-of-type) {
             border-bottom: 2px solid #f2f2f2; }
           .add-meals__search__results__container__item:hover {
@@ -4139,6 +4209,9 @@ label.year {
         margin: 4rem 2rem;
         font-size: 2rem;
         font-weight: bold; }
+        @media only screen and (max-width: 37.5em) {
+          .add-meals__search__results h3 {
+            margin: 2rem 2rem; } }
   .add-meals__added {
     height: 55rem;
     background-color: #bde7c5;
@@ -4161,8 +4234,12 @@ label.year {
         grid-column: 1/2; } }
     @media only screen and (max-width: 37.5em) {
       .add-meals__added {
-        grid-template-rows: 0.3fr 1fr 0.3fr 1fr;
+        height: 75rem;
+        grid-template-rows: 0.05fr 1fr 0.05fr 1fr 0.05fr;
         grid-template-columns: 1fr; } }
+    @media only screen and (max-width: 31.25em) {
+      .add-meals__added {
+        margin-top: 3rem; } }
     .add-meals__added--added {
       grid-row: 1/2;
       grid-column: 1/2; }
@@ -4177,13 +4254,22 @@ label.year {
         @media only screen and (max-width: 75em) {
           .add-meals__added--added__heading {
             font-size: 2rem; } }
+        @media only screen and (max-width: 56.25em) {
+          .add-meals__added--added__heading {
+            font-size: 1.5rem; } }
+        @media only screen and (max-width: 46.875em) {
+          .add-meals__added--added__heading {
+            font-size: 1.25rem; } }
         @media only screen and (max-width: 37.5em) {
           .add-meals__added--added__heading {
-            font-size: 2.5rem;
-            margin: 2.5rem 2rem; } }
+            font-size: 1.75rem;
+            margin: 1.5rem 2rem; } }
         @media only screen and (max-width: 25em) {
           .add-meals__added--added__heading {
             font-size: 2rem; } }
+        @media only screen and (max-width: 21.875em) {
+          .add-meals__added--added__heading {
+            font-size: 1.5rem; } }
       .add-meals__added--added__content {
         grid-row: 2/3;
         grid-column: 1/2;
@@ -4196,14 +4282,15 @@ label.year {
         -webkit-box-shadow: 0px 0px 18px -7px #42445a;
         -moz-box-shadow: 0px 0px 18px -7px #42445a;
         box-shadow: 0px 0px 18px -7px #42445a; }
+        @media only screen and (max-width: 37.5em) {
+          .add-meals__added--added__content {
+            grid-row: 2/3;
+            grid-column: 1/2;
+            margin: 1rem 1rem 2rem 1rem; } }
         .add-meals__added--added__content h3 {
           margin-top: 1rem;
           margin-left: 1.5rem;
           font-size: 1.5rem; }
-        @media only screen and (max-width: 37.5em) {
-          .add-meals__added--added__content {
-            grid-row: 2/3;
-            grid-column: 1/2; } }
         .add-meals__added--added__content__item {
           margin-top: 0.5rem;
           display: grid;
@@ -4227,9 +4314,6 @@ label.year {
             grid-column: 1/2;
             font-size: 1.5rem;
             margin-right: 2.5rem; }
-            @media only screen and (max-width: 93.75em) {
-              .add-meals__added--added__content__item p {
-                font-size: 2rem; } }
       .add-meals__added--added__content::-webkit-scrollbar-track {
         -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
         border-radius: 10px;
@@ -4258,13 +4342,22 @@ label.year {
         @media only screen and (max-width: 75em) {
           .add-meals__added--saved__heading {
             font-size: 2rem; } }
+        @media only screen and (max-width: 56.25em) {
+          .add-meals__added--saved__heading {
+            font-size: 1.5rem; } }
+        @media only screen and (max-width: 46.875em) {
+          .add-meals__added--saved__heading {
+            font-size: 1.25rem; } }
         @media only screen and (max-width: 37.5em) {
           .add-meals__added--saved__heading {
-            font-size: 2.5rem;
-            margin: 2.5rem 2rem; } }
+            font-size: 1.75rem;
+            margin: 1.5rem 2rem; } }
         @media only screen and (max-width: 25em) {
           .add-meals__added--saved__heading {
             font-size: 2rem; } }
+        @media only screen and (max-width: 21.875em) {
+          .add-meals__added--saved__heading {
+            font-size: 1.5rem; } }
       .add-meals__added--saved__content {
         color: black;
         grid-row: 2/3;
@@ -4280,7 +4373,8 @@ label.year {
         @media only screen and (max-width: 37.5em) {
           .add-meals__added--saved__content {
             grid-row: 4/5;
-            grid-column: 1/2; } }
+            grid-column: 1/2;
+            margin: 1rem 1rem 2rem 1rem; } }
         .add-meals__added--saved__content__item {
           margin-top: 0.5rem;
           display: grid;
@@ -4297,11 +4391,21 @@ label.year {
           .add-meals__added--saved__content__item p {
             margin-left: 1.5rem;
             grid-column: 1/2;
+            grid-row: 1/3;
             font-size: 1.5rem;
             margin-right: 2.5rem; }
             @media only screen and (max-width: 93.75em) {
               .add-meals__added--saved__content__item p {
-                font-size: 2rem; } }
+                font-size: 1.25rem; } }
+            @media only screen and (max-width: 56.25em) {
+              .add-meals__added--saved__content__item p {
+                margin-right: 1rem; } }
+          @media only screen and (max-width: 56.25em) {
+            .add-meals__added--saved__content__item div.add-icon {
+              margin-right: 1rem;
+              height: 2rem;
+              width: 2rem;
+              transform: scale(0.75); } }
       .add-meals__added--saved__content::-webkit-scrollbar-track {
         -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
         border-radius: 10px;
@@ -4349,7 +4453,18 @@ label.year {
   transition: all .2s ease-in; }
   .save-add-today-meals:hover {
     transform: scale(1.05); }
-
+  @media only screen and (max-width: 37.5em) {
+    .save-add-today-meals {
+      grid-row: 5/6;
+      margin-bottom: 1rem; } }
+  @media only screen and (max-width: 31.25em) {
+    .save-add-today-meals {
+      font-size: 1.6rem;
+      width: 10rem; } }
+  @media only screen and (max-width: 28.5em) {
+    .save-add-today-meals {
+      font-size: 1.2rem;
+      width: 8rem; } }
 .search-results-info {
   display: flex;
   align-content: center;
@@ -4358,7 +4473,13 @@ label.year {
   animation-duration: 1.5s;
   animation-timing-function: ease-out;
   transition: all .2s ease-in; }
-
+  @media only screen and (max-width: 46.875em) {
+    .search-results-info {
+      margin-top: 10rem !important;
+      font-size: 1.5rem !important; } }
+  @media only screen and (max-width: 28.5em) {
+    .search-results-info {
+      font-size: 1.15rem !important; } }
 .saved-results-info {
   font-size: 2rem;
   margin: 15rem auto;
@@ -4368,7 +4489,15 @@ label.year {
   animation-name: fade-bottom;
   animation-duration: 1.5s;
   animation-timing-function: ease-out; }
-
+  @media only screen and (max-width: 46.875em) {
+    .saved-results-info {
+      font-size: 1.5rem !important; } }
+  @media only screen and (max-width: 37.5em) {
+    .saved-results-info {
+      margin: 7.5rem auto !important; } }
+  @media only screen and (max-width: 21.875em) {
+    .saved-results-info {
+      margin: 10rem 2rem !important; } }
 .search-category-small {
   margin-left: 2rem; }
   .search-category-small__text {
@@ -4431,7 +4560,7 @@ label.year {
   margin: 7.5rem auto auto auto;
   border-radius: 5px;
   height: 3rem;
-  padding: 1rem 4em;
+  padding: 1rem 4rem;
   font-size: 2rem;
   border: none;
   background-color: var(--green);
@@ -4442,6 +4571,14 @@ label.year {
   @media only screen and (max-width: 84.375em) {
     .check-today-meals {
       margin: 1.5rem auto 1.5rem auto; } }
+  @media only screen and (max-width: 31.25em) {
+    .check-today-meals {
+      font-size: 1.6rem;
+      padding: 1rem 2rem; } }
+  @media only screen and (max-width: 28.5em) {
+    .check-today-meals {
+      font-size: 1.2rem;
+      margin: 0.25rem auto 0.25rem auto; } }
   .check-today-meals span {
     align-self: center;
     justify-self: center; }
@@ -4451,10 +4588,17 @@ label.year {
 .saved-meals__search__results__heading-box h3 {
   font-size: 3rem;
   font-weight: bold; }
-
+  @media only screen and (max-width: 37.5em) {
+    .saved-meals__search__results__heading-box h3 {
+      font-size: 2.5rem !important; } }
+  @media only screen and (max-width: 21.875em) {
+    .saved-meals__search__results__heading-box h3 {
+      font-size: 2rem !important; } }
 .meals-on-date {
   font-size: 2rem; }
-
+  @media only screen and (max-width: 21.875em) {
+    .meals-on-date {
+      font-size: 1.5rem; } }
 .no-saved-templates-info {
   margin: 15rem 0 auto 0;
   text-align: center;
@@ -4468,10 +4612,20 @@ label.year {
 .modal-queued__daily-summary {
   margin: 0.5rem 0 1rem 0;
   font-size: 1.5rem; }
+  @media only screen and (max-width: 28.5em) {
+    .modal-queued__daily-summary {
+      font-size: 1.25rem; } }
+  @media only screen and (max-width: 21.875em) {
+    .modal-queued__daily-summary {
+      font-size: 1.05rem; } }
   .modal-queued__daily-summary div {
     display: inline-block; }
     .modal-queued__daily-summary div:not(:first-of-type) {
       margin-left: 1rem; }
+
+.today-meals-added-remove-btn {
+  justify-self: end;
+  margin-right: 1.5rem; }
 
 .meals-propositions-layout-container {
   width: 100vw;
@@ -5691,12 +5845,10 @@ label.year {
         -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
         background-color: #afe0a5; }
 
-#add-meals-video {
+#add-workouts-video {
   opacity: 0.8;
   filter: blur(5px); }
-  @media only screen and (max-width: 75em) {
-    #add-meals-video {
-      display: none; } }
+
 .today-workouts-added-inputBox {
   grid-row: 2/3;
   grid-column: 1 / -1;
@@ -5741,11 +5893,19 @@ label.year {
 
 .search-category-small {
   margin-left: 2rem; }
+  @media only screen and (max-width: 46.875em) {
+    .search-category-small {
+      margin-left: 1rem; } }
   .search-category-small__text {
     color: green;
     font-size: 1.8rem;
     margin-left: 0.5rem; }
-
+    @media only screen and (max-width: 46.875em) {
+      .search-category-small__text {
+        font-size: 1.3rem; } }
+    @media only screen and (max-width: 21.875em) {
+      .search-category-small__text {
+        font-size: 1.1rem; } }
 .accept-delete-today-workout {
   border-radius: 5px;
   width: 6rem;
