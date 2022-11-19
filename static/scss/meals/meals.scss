@@ -1,10 +1,10 @@
-.meals-layout-container{
+.meals-layout-container {
   width: 100vw;
   height: auto;
   min-height: 100vh;
   display: grid;
   grid-template-columns: 0.1fr 1fr 0.1fr;
-  grid-template-rows: 0.35fr 0.8fr 0.15fr;
+  grid-template-rows: 0.25fr 0.8fr 0.15fr;
   align-items: center;
   justify-items: center;
   position: relative;
@@ -18,10 +18,6 @@
      height: auto;
      grid-template-columns: 0.25fr 2fr 0.25fr;
      grid-template-rows: 0.25fr 0.8fr 0.15fr;
-     background-image: linear-gradient(to bottom, rgba(246, 244, 244, 0.5), rgba(148, 147, 147, 0.84)), url("https://images.unsplash.com/photo-1556910146-6121b9613959?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80");
-     background-position: center;
-     background-repeat: no-repeat;
-     background-size: cover;
   }
   @include respond(tab-md) {
      grid-template-columns: 0.15fr 2fr 0.15fr;
@@ -44,12 +40,20 @@
   height: 100%;
   grid-column-gap: 5rem;
   margin-top: 15rem;
-  @include respond(tab-desktop) {
-    grid-template-columns: 1fr;
+
+   @include respond(md-desktop) {
+    grid-template-columns: 0.2fr 1fr 0.2fr;
     grid-template-rows: 1fr 1fr 1fr;
     grid-column-gap: 0;
-    grid-row-gap: 15rem;
-    margin-top: 10rem;
+    grid-row-gap: 5rem;
+    margin-top: 5rem;
+  }
+  @include respond(phone-lg) {
+    grid-template-columns: 0.05fr 1fr 0.05fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-column-gap: 0;
+    grid-row-gap: 5rem;
+    margin-top: 5rem;
   }
   &__card {
     display: flex;
@@ -73,7 +77,6 @@
     animation-name: fade-bottom;
     animation-duration: 2s;
     animation-timing-function: ease-out;
-
     &:hover {
       transform: scale(1.1);
     }
@@ -88,20 +91,33 @@
          font-size: 4.3rem;
       }
       @include respond(tab-desktop) {
-         font-size: 6rem;
+         font-size: 5rem;
       }
 
       @include respond(tab-md) {
-       font-size: 5rem;
+       font-size: 5.5rem;
       }
+
+      @include respond(tab-sm) {
+        font-size: 4.75rem;
+      }
+
+      @include respond(phone-lg) {
+         font-size: 4rem;
+      }
+
       @include respond(phone-md-lg) {
-       font-size: 4.3rem;
+       font-size: 3.6rem;
       }
       @include respond(phone-md) {
-         font-size: 3.7rem;
+         font-size: 3rem;
       }
        @include respond(phone-sm) {
-         font-size: 3.4rem;
+         font-size: 2.8rem;
+      }
+       @include respond(phone-ultra-sm){
+         margin-top: 5rem;
+         font-size: 2.3rem;
       }
     }
     p {
@@ -113,35 +129,53 @@
       }
        @include respond(md-desktop) {
          font-size: 2.2rem;
-         margin-top: 25rem;
+         margin-top: 15rem;
+         margin-bottom: 10rem;
       }
        @include respond(tab-desktop) {
-        font-size: 3.5rem;
-        margin-top: 15rem;
-        margin-bottom: 15rem;
+        font-size: 2rem;
+        margin-top: 25rem;
+        margin-bottom: 10rem;
       }
 
       @include respond(tab-md) {
-       font-size: 2.5rem;
+       font-size: 1.75rem;
       }
+
+      @include respond(tab-sm){
+        margin-top: 25rem;
+        margin-bottom: 5rem;
+      }
+
+      @include respond(phone-lg) {
+        font-size: 1.45rem;
+      }
+
       @include respond(phone-md-lg) {
-       font-size: 2.1rem;
+       font-size: 1.35rem;
       }
       @include respond(phone-md) {
-         font-size: 1.8rem;
+         font-size: 1.4rem;
+         margin-top: 15rem;
+         margin-bottom: 5rem;
       }
       @include respond(phone-sm) {
-         font-size: 1.7rem;
+         font-size: 1.2rem;
+      }
+      @include respond(phone-ultra-sm){
+         margin-top: 10rem;
+         margin-bottom: 5rem;
+         font-size: 1.1rem;
       }
     }
 
     &--add {
       background-image: linear-gradient(to right bottom, rgba(241, 241, 241, 0.3), rgba(82, 82, 82, 0.5)),
       url('/static/images/add_meals_card.png');
-      @include respond(tab-desktop) {
-        grid-column: 1/2;
-        grid-row: 1/2;
+      @include respond(md-desktop) {
         background-size: cover;
+        grid-column: 2/3;
+        grid-row: 1/2;
       }
 
     }
@@ -150,8 +184,8 @@
       background-image: linear-gradient(to right bottom, rgba(241, 241, 241, 0.3), rgba(82, 82, 82, 0.5)),
       url('/static/images/meal_proposition_card.jpg');
       background-size: cover;
-      @include respond(tab-desktop) {
-        grid-column: 1/2;
+      @include respond(md-desktop) {
+        grid-column: 2/3;
         grid-row: 2/3;
       }
     }
@@ -159,8 +193,8 @@
     &--saved {
       background-image: linear-gradient(to right bottom, rgba(241, 241, 241, 0.3), rgba(82, 82, 82, 0.5)),
       url('/static/images/saved_meals_card.jpg');
-      @include respond(tab-desktop) {
-        grid-column: 1/2;
+       @include respond(md-desktop) {
+        grid-column: 2/3;
         grid-row: 3/4;
       }
     }
@@ -170,13 +204,5 @@
 #meals-video {
   opacity: 0.7;
   filter: blur(5px);
-  @include respond(tab-desktop) {
-    display: none;
-  }
 }
 
-.meals-video-container{
-  @include respond(tab-desktop) {
-     display: none;
-  }
-}

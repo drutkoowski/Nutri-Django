@@ -447,9 +447,6 @@
 
 #add-meals-video {
   opacity: 1;
-  @include respond(tab-land) {
-    display: none;
-  }
 }
 
 .today-meals-added-inputBox{
