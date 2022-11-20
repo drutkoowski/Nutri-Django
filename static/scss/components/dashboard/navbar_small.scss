@@ -32,11 +32,21 @@
          @include respond(tab-port) {
             right: 6rem;
         }
+
+        @include respond(tab-sm) {
+            right: 4rem;
+            top: 2rem;
+        }
+
         @include respond(phone-lg) {
             right: 3rem;
             top: 5rem;
             height: 5.5rem;
             width: 5.5rem;
+        }
+        @include respond(phone-md-sm){
+            right: 2rem;
+            top: 2rem;
         }
     }
 
@@ -64,11 +74,22 @@
             display: inline;
             right: 6.5rem;
         }
+
+        @include respond(tab-sm) {
+            right: 4.5rem;
+            top: 2.5rem;
+        }
+
+
         @include respond(phone-lg) {
             right: 3.5rem;
             top: 5.5rem;
             height: 3.5rem;
             width: 4rem;
+        }
+        @include respond(phone-md-sm){
+            right: 2.5rem;
+            top: 2.5rem;
         }
 
     }

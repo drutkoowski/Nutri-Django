@@ -45,8 +45,32 @@ function hideModal(modalClass) {
     });
 }
 
-searchContainer.style.width = '50%'
-searchContainer.style.justifySelf = 'center'
+let watch_media_query = '(max-width:  84.375em)';
+let watch_small_media_query = '(max-width: 56.25em)';
+let watch_small_phone_media_query = '(max-width: 37.5em';
+let matches_small = window.matchMedia(watch_small_media_query).matches
+let matches_small_phone = window.matchMedia(watch_small_phone_media_query).matches
+let matched = window.matchMedia(watch_media_query).matches;
+
+window.onresize = () => window.location.reload()
+
+if (matched && !isCardVisible && !matches_small && !matches_small_phone) {
+    searchContainer.style.width = '65%'
+    searchContainer.style.margin = '0 auto'
+}
+else if (matches_small && !isCardVisible && !matches_small_phone) {
+    searchContainer.style.width = '85%'
+    searchContainer.style.margin = '0 auto'
+}
+else if(matches_small_phone && !isCardVisible) {
+    searchContainer.style.width = '95%'
+    searchContainer.style.margin = '0 auto'
+}
+ else {
+    searchContainer.style.width = '50%'
+    searchContainer.style.justifySelf = 'center'
+}
+
 
 
 // search
@@ -569,17 +593,17 @@ $(searchContainer).addClass('animate-left').on("animationend", function(){
 });
 
 // modal close listeners
-modalCloseEdit.addEventListener('click', e => {
+modalCloseEdit.addEventListener('click', () => {
     animateDeletingElementByClass('.modal-edit-search', 1200)
 })
 
-modalCloseAdd.addEventListener('click', e=> {
+modalCloseAdd.addEventListener('click', () => {
     animateDeletingElementByClass('.modal-add-search', 1200)
 })
 
 
 // save
-saveNewMealButton.addEventListener('click', e => {
+saveNewMealButton.addEventListener('click', () => {
      if (!isCardVisible) {
         searchContainer.style.gridColumn = '1/2'
         searchContainer.style.removeProperty('width')
@@ -690,8 +714,10 @@ saveNewMealButton.addEventListener('click', e => {
 })
 
 // manage
-editButtons.forEach(button => button.addEventListener('click', e => {
+editButtons.forEach(button => button.addEventListener('click', () => {
     if (!isCardVisible) {
+        document.querySelector('.saved-meals-layout-container').classList.remove('not-expanded')
+        document.querySelector('.saved-meals-layout-container').classList.add('expanded')
         searchContainer.style.gridColumn = '1/2'
         searchContainer.style.removeProperty('width')
         searchContainer.style.removeProperty('justify-self')
@@ -749,5 +775,3 @@ const shakeAnimation = (contentBox) => {
        contentBox.classList.toggle('shake-animation')
     }, 1000);
 }
-
-

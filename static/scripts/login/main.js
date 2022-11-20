@@ -42,7 +42,7 @@ emailAddressInput.addEventListener('input', e => {
 })
 
 const passwordInput = document.querySelector('#password')
-passwordInput.addEventListener('input', e => {
+passwordInput.addEventListener('input', () => {
     if(!alertMsg.classList.contains('not-visible')) {
         alertMsg.classList.add('not-visible')
     }

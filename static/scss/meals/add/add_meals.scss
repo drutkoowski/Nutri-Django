@@ -385,6 +385,11 @@
           @include respond(tab-desktop) {
             grid-template-columns: 1fr 0.1fr;
           }
+          @include respond(phone-lg) {
+            div.today-meals-added-remove-btn {
+              transform: scale(0.75);
+            }
+          }
           &:hover {
             transform: scale(1.02);
           }
