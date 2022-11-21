@@ -4450,6 +4450,9 @@ label.year {
               .add-meals__added--saved__content__item p {
                 margin-right: 1rem;
                 font-size: 2rem; } }
+            @media only screen and (max-width: 31.25em) {
+              .add-meals__added--saved__content__item p {
+                font-size: 1.5rem; } }
           @media only screen and (max-width: 56.25em) {
             .add-meals__added--saved__content__item div.add-icon {
               margin-right: 1rem;
@@ -5423,6 +5426,10 @@ label.year {
   .expanded div.saved-meals div.saved-meals__added div.saved-meals__added--saved__heading {
     font-size: 1.6rem; } }
 
+@media only screen and (max-width: 21.875em) {
+  .expanded div.saved-meals div.saved-meals__added div.saved-meals__added--saved__heading {
+    font-size: 1.2rem !important; } }
+
 @media only screen and (max-width: 28.5em) {
   .expanded div.saved-meals div.saved-meals__added div.saved-meals__added--saved__content {
     width: 90% !important; } }
@@ -5525,6 +5532,10 @@ label.year {
 .expanded div.saved-meals div.saved-meals__search div.saved-meals__search__results div.saved-meals__search__results__heading-box h3 {
   font-size: 2.5rem !important; }
 
+@media only screen and (max-width: 84.375em) {
+  .expanded div.saved-meals div.saved-meals__search div.saved-meals__search__save-new {
+    margin-top: auto; } }
+
 @media only screen and (max-width: 28.5em) {
   .expanded div.saved-meals div.saved-meals__search div.saved-meals__search__save-new p {
     font-size: 1.5rem; } }
@@ -5623,9 +5634,6 @@ label.year {
   justify-content: unset;
   margin-left: auto;
   margin-right: 1rem; }
-  @media only screen and (max-width: 93.75em) {
-    .not-expanded div.saved-meals div.saved-meals__search div.saved-meals__search__results__container div.saved-meals__search__results__container__item div.saved-meals__search__results__container__item__buttons {
-      margin-right: 0; } }
   @media only screen and (max-width: 56.25em) {
     .not-expanded div.saved-meals div.saved-meals__search div.saved-meals__search__results__container div.saved-meals__search__results__container__item div.saved-meals__search__results__container__item__buttons {
       display: flex;
@@ -6294,6 +6302,9 @@ label.year {
               .add-workouts__added--saved__content__item p {
                 margin-right: 1rem;
                 font-size: 2rem; } }
+            @media only screen and (max-width: 31.25em) {
+              .add-workouts__added--saved__content__item p {
+                font-size: 1.5rem; } }
           @media only screen and (max-width: 56.25em) {
             .add-workouts__added--saved__content__item div.add-icon {
               margin-right: 1rem;
@@ -6542,11 +6553,7 @@ label.year {
     .saved-workouts-layout-container {
       grid-template-columns: 0.05fr 1fr 0.05fr;
       grid-template-rows: 0.30fr 2.5fr 0.15fr;
-      height: auto;
-      background-image: linear-gradient(to bottom, rgba(246, 244, 244, 0.5), rgba(148, 147, 147, 0.84)), url("https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80");
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover; } }
+      height: auto; } }
 .saved-workouts {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
@@ -6622,6 +6629,17 @@ label.year {
             .saved-workouts__search__results__container__item__recipe p {
               font-size: 2rem;
               margin-left: 2rem; }
+              @media only screen and (max-width: 75em) {
+                .saved-workouts__search__results__container__item__recipe p {
+                  font-size: 1.65rem; } }
+              @media only screen and (max-width: 62.5em) {
+                .saved-workouts__search__results__container__item__recipe p {
+                  font-size: 2rem;
+                  margin-left: 1rem;
+                  margin-right: 0.25rem; } }
+              @media only screen and (max-width: 31.25em) {
+                .saved-workouts__search__results__container__item__recipe p {
+                  font-size: 1.75rem; } }
           .saved-workouts__search__results__container__item__buttons {
             grid-column: 2/3;
             display: flex;
@@ -6800,9 +6818,6 @@ label.year {
         .saved-workouts__added--saved__content__search-bar {
           margin: 2rem auto;
           position: relative; }
-          @media only screen and (max-width: 46.875em) {
-            .saved-workouts__added--saved__content__search-bar {
-              width: 85%; } }
           .saved-workouts__added--saved__content__search-bar input {
             border-radius: 5px;
             border: 1px solid black;
@@ -6900,6 +6915,9 @@ label.year {
   animation-name: fade-bottom;
   animation-duration: 1s;
   animation-timing-function: ease-out; }
+  @media only screen and (max-width: 37.5em) {
+    .today-workouts-saved-inputBox {
+      grid-template-columns: 1fr 0.2fr 0.15fr 0.05fr; } }
   .today-workouts-saved-inputBox:hover {
     transform: scale(1.03); }
   .today-workouts-saved-inputBox input {
@@ -6909,8 +6927,28 @@ label.year {
     border-radius: 10px;
     border: none;
     background-color: rgba(200, 243, 195, 0.69); }
+    @media only screen and (max-width: 37.5em) {
+      .today-workouts-saved-inputBox input {
+        width: 6rem;
+        height: 2rem;
+        font-size: 1rem; } }
   .today-workouts-saved-inputBox label {
     margin-left: 1rem; }
+  .today-workouts-saved-inputBox div.edit-remove-item {
+    grid-column: 4/5;
+    grid-row: 1/2;
+    margin-left: auto;
+    margin-right: 1rem;
+    transition: all .2s ease-in; }
+    @media only screen and (max-width: 62.5em) {
+      .today-workouts-saved-inputBox div.edit-remove-item {
+        margin-right: 2rem;
+        transform: translateY(-3px); } }
+    @media only screen and (max-width: 25em) {
+      .today-workouts-saved-inputBox div.edit-remove-item {
+        margin-right: 1rem; } }
+    .today-workouts-saved-inputBox div.edit-remove-item:hover {
+      transform: scale(1.03); }
 
 .saved-template-edit__heading {
   margin: 1rem 2rem 0 2rem; }
@@ -6984,6 +7022,309 @@ label.year {
 .delete-saved-workouts {
   background-color: var(--red-light) !important; }
 
+@media only screen and (max-width: 93.75em) {
+  .expanded {
+    grid-template-columns: 0.02fr 1fr 0.02fr !important; } }
+
+@media only screen and (max-width: 28.5em) {
+  .expanded {
+    grid-template-columns: 1fr !important; } }
+
+@media only screen and (max-width: 93.75em) {
+  .expanded div.saved-workouts {
+    grid-template-columns: 1fr 1.15fr; } }
+
+@media only screen and (max-width: 62.5em) {
+  .expanded div.saved-workouts {
+    grid-column-gap: 2.5rem; } }
+
+@media only screen and (max-width: 62.5em) {
+  .expanded div.saved-workouts {
+    grid-template-rows: 1fr 1fr;
+    grid-row-gap: 4.5rem;
+    grid-template-columns: 1fr; } }
+
+@media only screen and (max-width: 28.5em) {
+  .expanded div.saved-workouts {
+    grid-column: 1 / 2 !important; } }
+
+@media only screen and (max-width: 25em) {
+  .expanded div.saved-workouts {
+    padding: 0 !important; } }
+
+@media only screen and (max-width: 62.5em) {
+  .expanded div.saved-workouts div.saved-workouts__added {
+    grid-row: 2/3;
+    grid-column: 1/2; } }
+
+@media only screen and (max-width: 28.5em) {
+  .expanded div.saved-workouts div.saved-workouts__added {
+    margin: 0 auto;
+    width: 95% !important; } }
+
+@media only screen and (max-width: 25em) {
+  .expanded div.saved-workouts div.saved-workouts__added {
+    margin: 0 auto;
+    width: 100% !important; } }
+
+@media only screen and (max-width: 31.25em) {
+  .expanded div.saved-workouts div.saved-workouts__added div.saved-workouts__added--saved__heading {
+    font-size: 1.6rem; } }
+
+@media only screen and (max-width: 28.5em) {
+  .expanded div.saved-workouts div.saved-workouts__added div.saved-workouts__added--saved__content {
+    width: 90% !important;
+    overflow-y: hidden; } }
+
+@media only screen and (max-width: 18.75em) {
+  .expanded div.saved-workouts div.saved-workouts__added div.saved-workouts__added--saved__content {
+    margin: 0 auto;
+    width: 85% !important; } }
+
+@media only screen and (max-width: 31.25em) {
+  .expanded div.saved-workouts div.saved-workouts__added div.saved-workouts__added--saved__content div.saved-workouts__added--saved__content__meal__items div.saved-workouts__added--saved__content__meal__item {
+    font-size: 1.25rem; } }
+
+@media only screen and (max-width: 31.25em) {
+  .expanded div.saved-workouts div.saved-workouts__added div.saved-workouts__added--saved__content div.saved-workouts__added--saved__content__meal__items div.saved-workouts__added--saved__content__meal__item div.today-workouts-saved-inputBox input {
+    width: 6rem;
+    height: 1.5rem;
+    font-size: 1rem;
+    margin-top: 0.4rem; } }
+
+@media only screen and (max-width: 31.25em) {
+  .expanded div.saved-workouts div.saved-workouts__added div.saved-workouts__added--saved__content div.saved-workouts__added--saved__content__meal__items div.saved-workouts__added--saved__content__meal__item div.today-workouts-saved-inputBox label {
+    font-size: 1.25rem; } }
+
+@media only screen and (max-width: 28.5em) {
+  .expanded div.saved-workouts div.saved-workouts__added div.saved-workouts__added--saved__content div.saved-workouts__added--saved__content__item {
+    margin: 1rem 1rem 0 1rem; } }
+
+.expanded div.saved-workouts div.saved-workouts__added div.saved-workouts__added--saved__content div.edit-workout-added-items div.today-workouts-saved-edit-inputBox {
+  font-size: 1.5rem;
+  margin-left: 1rem;
+  display: grid;
+  grid-template-rows: 1fr 0.5fr;
+  grid-template-columns: 0.25fr 1fr 0.5fr; }
+  .expanded div.saved-workouts div.saved-workouts__added div.saved-workouts__added--saved__content div.edit-workout-added-items div.today-workouts-saved-edit-inputBox p {
+    grid-row: 1/2;
+    grid-column: 1/3; }
+  .expanded div.saved-workouts div.saved-workouts__added div.saved-workouts__added--saved__content div.edit-workout-added-items div.today-workouts-saved-edit-inputBox div.remove-icon {
+    grid-row: 1/2;
+    grid-column: 3/4; }
+    @media only screen and (max-width: 75em) {
+      .expanded div.saved-workouts div.saved-workouts__added div.saved-workouts__added--saved__content div.edit-workout-added-items div.today-workouts-saved-edit-inputBox div.remove-icon {
+        margin-right: 2rem; } }
+  .expanded div.saved-workouts div.saved-workouts__added div.saved-workouts__added--saved__content div.edit-workout-added-items div.today-workouts-saved-edit-inputBox input {
+    grid-row: 2/3;
+    grid-column: 1/2; }
+  .expanded div.saved-workouts div.saved-workouts__added div.saved-workouts__added--saved__content div.edit-workout-added-items div.today-workouts-saved-edit-inputBox label {
+    grid-row: 2/3;
+    grid-column: 2/3; }
+  @media only screen and (max-width: 31.25em) {
+    .expanded div.saved-workouts div.saved-workouts__added div.saved-workouts__added--saved__content div.edit-workout-added-items div.today-workouts-saved-edit-inputBox {
+      font-size: 1.2rem; }
+      .expanded div.saved-workouts div.saved-workouts__added div.saved-workouts__added--saved__content div.edit-workout-added-items div.today-workouts-saved-edit-inputBox p {
+        grid-row: 1/2;
+        grid-column: 1/3; }
+      .expanded div.saved-workouts div.saved-workouts__added div.saved-workouts__added--saved__content div.edit-workout-added-items div.today-workouts-saved-edit-inputBox div.remove-icon {
+        grid-row: 1/2;
+        grid-column: 3/4; }
+      .expanded div.saved-workouts div.saved-workouts__added div.saved-workouts__added--saved__content div.edit-workout-added-items div.today-workouts-saved-edit-inputBox input {
+        height: 1.5rem;
+        width: 4rem;
+        margin-top: 3px; } }
+@media only screen and (max-width: 28.5em) {
+  .expanded div.saved-workouts div.saved-workouts__added div.saved-workouts__added--saved__content div.edit-workout-added-items {
+    height: 25rem; } }
+
+@media only screen and (max-width: 56.25em) {
+  .expanded div.saved-workouts div.saved-workouts__added div.saved-workouts__added--saved__content div.add-new-element-box {
+    margin: 0 1rem !important; } }
+
+@media only screen and (max-width: 28.5em) {
+  .expanded div.saved-workouts div.saved-workouts__added div.saved-workouts__added--saved__content div.add-new-element-box {
+    margin: 0 0.5rem !important; }
+    .expanded div.saved-workouts div.saved-workouts__added div.saved-workouts__added--saved__content div.add-new-element-box div.add-icon {
+      margin-top: 3px;
+      transform: scale(0.85); }
+    .expanded div.saved-workouts div.saved-workouts__added div.saved-workouts__added--saved__content div.add-new-element-box a {
+      font-size: 1.25rem;
+      margin: 1rem 1rem 1rem 0.5rem; } }
+
+@media only screen and (max-width: 37.5em) {
+  .expanded div.saved-workouts div.saved-workouts__added div.saved-workouts__added--saved__content div.saved-workouts__added--saved__content__item p {
+    font-size: 2rem; } }
+
+@media only screen and (max-width: 37.5em) {
+  .expanded div.saved-workouts div.saved-workouts__added div.saved-workouts__added--saved__content div.saved-workouts__added--saved__content__item p b {
+    font-size: 2rem; } }
+
+@media only screen and (max-width: 28.5em) {
+  .expanded div.saved-workouts div.saved-workouts__added div.saved-new-workouts-buttons-container input {
+    width: 15rem;
+    font-size: 1.2rem; } }
+
+@media only screen and (max-width: 84.375em) {
+  .expanded div.saved-workouts div.saved-workouts__search {
+    width: 100%; } }
+
+@media only screen and (max-width: 62.5em) {
+  .expanded div.saved-workouts div.saved-workouts__search {
+    grid-row: 1/2;
+    grid-column: 1/2; } }
+
+@media only screen and (max-width: 28.5em) {
+  .expanded div.saved-workouts div.saved-workouts__search {
+    width: 95% !important; } }
+
+@media only screen and (max-width: 25em) {
+  .expanded div.saved-workouts div.saved-workouts__search {
+    margin: 0 auto;
+    width: 100% !important; } }
+
+.expanded div.saved-workouts div.saved-workouts__search div.saved-workouts__search__results div.saved-workouts__search__results__heading-box h3 {
+  font-size: 2.5rem !important; }
+
+@media only screen and (max-width: 84.375em) {
+  .expanded div.saved-workouts div.saved-workouts__search div.saved-workouts__search__save-new {
+    margin-top: auto; } }
+
+@media only screen and (max-width: 28.5em) {
+  .expanded div.saved-workouts div.saved-workouts__search div.saved-workouts__search__save-new p {
+    font-size: 1.5rem; } }
+
+.expanded div.saved-workouts div.saved-workouts__search div.saved-workouts__search__results__container div.saved-workouts__search__results__container__item {
+  grid-template-columns: 1fr 0.5fr; }
+  @media only screen and (max-width: 62.5em) {
+    .expanded div.saved-workouts div.saved-workouts__search div.saved-workouts__search__results__container div.saved-workouts__search__results__container__item div.saved-workouts__search__results__container__item__recipe p {
+      margin-left: 2rem !important; } }
+  .expanded div.saved-workouts div.saved-workouts__search div.saved-workouts__search__results__container div.saved-workouts__search__results__container__item div.saved-workouts__search__results__container__item__buttons {
+    justify-content: unset;
+    margin-left: auto;
+    margin-right: 1rem; }
+    @media only screen and (max-width: 84.375em) {
+      .expanded div.saved-workouts div.saved-workouts__search div.saved-workouts__search__results__container div.saved-workouts__search__results__container__item div.saved-workouts__search__results__container__item__buttons {
+        display: flex;
+        flex-direction: column; } }
+    @media only screen and (max-width: 62.5em) {
+      .expanded div.saved-workouts div.saved-workouts__search div.saved-workouts__search__results__container div.saved-workouts__search__results__container__item div.saved-workouts__search__results__container__item__buttons {
+        margin-right: 3rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .expanded div.saved-workouts div.saved-workouts__search div.saved-workouts__search__results__container div.saved-workouts__search__results__container__item div.saved-workouts__search__results__container__item__buttons {
+        margin-right: 2rem; } }
+    @media only screen and (max-width: 31.25em) {
+      .expanded div.saved-workouts div.saved-workouts__search div.saved-workouts__search__results__container div.saved-workouts__search__results__container__item div.saved-workouts__search__results__container__item__buttons {
+        margin-right: 1.25rem; } }
+    .expanded div.saved-workouts div.saved-workouts__search div.saved-workouts__search__results__container div.saved-workouts__search__results__container__item div.saved-workouts__search__results__container__item__buttons .edit-saved-workouts {
+      margin-right: 1rem; }
+      @media only screen and (min-width: 112.5em) {
+        .expanded div.saved-workouts div.saved-workouts__search div.saved-workouts__search__results__container div.saved-workouts__search__results__container__item div.saved-workouts__search__results__container__item__buttons .edit-saved-workouts {
+          padding: 1rem 0.75rem;
+          font-size: 1.1rem; } }
+      @media only screen and (max-width: 84.375em) {
+        .expanded div.saved-workouts div.saved-workouts__search div.saved-workouts__search__results__container div.saved-workouts__search__results__container__item div.saved-workouts__search__results__container__item__buttons .edit-saved-workouts {
+          padding: 0.75rem 0.25rem;
+          font-size: 1rem;
+          width: 7rem;
+          margin-right: 0; } }
+      @media only screen and (max-width: 37.5em) {
+        .expanded div.saved-workouts div.saved-workouts__search div.saved-workouts__search__results__container div.saved-workouts__search__results__container__item div.saved-workouts__search__results__container__item__buttons .edit-saved-workouts {
+          width: 6rem; } }
+      @media only screen and (max-width: 31.25em) {
+        .expanded div.saved-workouts div.saved-workouts__search div.saved-workouts__search__results__container div.saved-workouts__search__results__container__item div.saved-workouts__search__results__container__item__buttons .edit-saved-workouts {
+          padding: 0.5rem 1rem;
+          font-size: 1.2rem; } }
+      @media only screen and (max-width: 25em) {
+        .expanded div.saved-workouts div.saved-workouts__search div.saved-workouts__search__results__container div.saved-workouts__search__results__container__item div.saved-workouts__search__results__container__item__buttons .edit-saved-workouts {
+          padding: 0.5rem 0.6rem;
+          font-size: 0.85rem; } }
+    @media only screen and (min-width: 112.5em) {
+      .expanded div.saved-workouts div.saved-workouts__search div.saved-workouts__search__results__container div.saved-workouts__search__results__container__item div.saved-workouts__search__results__container__item__buttons .delete-saved-workouts {
+        padding: 1rem 1rem;
+        font-size: 1.1rem; } }
+    @media only screen and (max-width: 84.375em) {
+      .expanded div.saved-workouts div.saved-workouts__search div.saved-workouts__search__results__container div.saved-workouts__search__results__container__item div.saved-workouts__search__results__container__item__buttons .delete-saved-workouts {
+        padding: 0.75rem 0.45rem;
+        font-size: 1.2rem; } }
+    @media only screen and (max-width: 84.375em) {
+      .expanded div.saved-workouts div.saved-workouts__search div.saved-workouts__search__results__container div.saved-workouts__search__results__container__item div.saved-workouts__search__results__container__item__buttons .delete-saved-workouts {
+        padding: 0.75rem 0.45rem;
+        font-size: 1rem;
+        margin-top: 0.5rem;
+        width: 7rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .expanded div.saved-workouts div.saved-workouts__search div.saved-workouts__search__results__container div.saved-workouts__search__results__container__item div.saved-workouts__search__results__container__item__buttons .delete-saved-workouts {
+        width: 6rem; } }
+    @media only screen and (max-width: 31.25em) {
+      .expanded div.saved-workouts div.saved-workouts__search div.saved-workouts__search__results__container div.saved-workouts__search__results__container__item div.saved-workouts__search__results__container__item__buttons .delete-saved-workouts {
+        padding: 0.5rem 1rem;
+        font-size: 1.2rem; } }
+    @media only screen and (max-width: 25em) {
+      .expanded div.saved-workouts div.saved-workouts__search div.saved-workouts__search__results__container div.saved-workouts__search__results__container__item div.saved-workouts__search__results__container__item__buttons .delete-saved-workouts {
+        padding: 0.5rem 0.6rem;
+        font-size: 0.85rem; } }
+@media only screen and (max-width: 28.5em) {
+  .not-expanded div.saved-workouts {
+    padding: 5rem 0; } }
+
+@media only screen and (max-width: 28.5em) {
+  .not-expanded div.saved-workouts div.saved-workouts__search div.saved-workouts__search__results {
+    margin: 5rem 1rem 0 1rem; } }
+
+@media only screen and (max-width: 84.375em) {
+  .not-expanded div.saved-workouts div.saved-workouts__search div.saved-workouts__search__save-new {
+    margin-top: auto; } }
+
+@media only screen and (max-width: 28.5em) {
+  .not-expanded div.saved-workouts div.saved-workouts__search div.saved-workouts__search__save-new p {
+    font-size: 1.5rem; } }
+
+@media only screen and (max-width: 37.5em) {
+  .not-expanded div.saved-workouts div.saved-workouts__search div.saved-workouts__search__results__container div.saved-workouts__search__results__container__item div.saved-workouts__search__results__container__item__recipe p {
+    font-size: 1.5rem; } }
+
+.not-expanded div.saved-workouts div.saved-workouts__search div.saved-workouts__search__results__container div.saved-workouts__search__results__container__item div.saved-workouts__search__results__container__item__buttons {
+  justify-content: unset;
+  margin-left: auto;
+  margin-right: 1rem; }
+  @media only screen and (max-width: 56.25em) {
+    .not-expanded div.saved-workouts div.saved-workouts__search div.saved-workouts__search__results__container div.saved-workouts__search__results__container__item div.saved-workouts__search__results__container__item__buttons {
+      display: flex;
+      flex-direction: column;
+      margin-right: 0.5rem; } }
+  .not-expanded div.saved-workouts div.saved-workouts__search div.saved-workouts__search__results__container div.saved-workouts__search__results__container__item div.saved-workouts__search__results__container__item__buttons .edit-saved-workouts {
+    margin-right: 1rem; }
+    @media only screen and (max-width: 84.375em) {
+      .not-expanded div.saved-workouts div.saved-workouts__search div.saved-workouts__search__results__container div.saved-workouts__search__results__container__item div.saved-workouts__search__results__container__item__buttons .edit-saved-workouts {
+        padding: 1rem 1rem;
+        font-size: 1.1rem; } }
+    @media only screen and (max-width: 56.25em) {
+      .not-expanded div.saved-workouts div.saved-workouts__search div.saved-workouts__search__results__container div.saved-workouts__search__results__container__item div.saved-workouts__search__results__container__item__buttons .edit-saved-workouts {
+        padding: 0.8rem 0.8rem;
+        font-size: 1.4rem;
+        margin-right: 0;
+        width: 9rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .not-expanded div.saved-workouts div.saved-workouts__search div.saved-workouts__search__results__container div.saved-workouts__search__results__container__item div.saved-workouts__search__results__container__item__buttons .edit-saved-workouts {
+        font-size: 1rem;
+        width: 6.5rem; } }
+  @media only screen and (max-width: 84.375em) {
+    .not-expanded div.saved-workouts div.saved-workouts__search div.saved-workouts__search__results__container div.saved-workouts__search__results__container__item div.saved-workouts__search__results__container__item__buttons .delete-saved-workouts {
+      padding: 1rem 1rem;
+      font-size: 1.1rem; } }
+  @media only screen and (max-width: 56.25em) {
+    .not-expanded div.saved-workouts div.saved-workouts__search div.saved-workouts__search__results__container div.saved-workouts__search__results__container__item div.saved-workouts__search__results__container__item__buttons .delete-saved-workouts {
+      margin-top: 1rem;
+      padding: 0.8rem 0.8rem;
+      font-size: 1.4rem;
+      margin-right: 0;
+      width: 9rem; } }
+  @media only screen and (max-width: 37.5em) {
+    .not-expanded div.saved-workouts div.saved-workouts__search div.saved-workouts__search__results__container div.saved-workouts__search__results__container__item div.saved-workouts__search__results__container__item__buttons .delete-saved-workouts {
+      padding: 0.8rem 0.6rem;
+      font-size: 1rem;
+      width: 6.5rem; } }
 *,
 *::after,
 *::before {

@@ -10,7 +10,7 @@
 {% block content %}
     {% csrf_token %}
     <div class="loader"></div>
-      <div class="bg-video" id="save-workouts-video-container">
+      <div class="bg-video-fixed" id="save-workouts-video-container">
       <div class="overlay-large"></div>
          <video id="save-workouts-video" class="bg-video__content" autoplay muted loop>
              <source src="{% sass_src 'video/bg_video_login.mp4' %}" type="video/mp4">
@@ -19,7 +19,7 @@
          </video>
      </div>
 
-        <div class="saved-workouts-layout-container">
+        <div class="saved-workouts-layout-container not-expanded">
             {% include 'accounts/navbar.html' %}
              {% include 'accounts/navbar_small.html' %}
             <div class="saved-workouts grid-full-span">

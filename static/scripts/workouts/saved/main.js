@@ -49,12 +49,37 @@ function hideModal(modalClass) {
     });
 }
 
-searchContainer.style.width = '50%'
-searchContainer.style.justifySelf = 'center'
+
+
+let watch_media_query = '(max-width:  84.375em)';
+let watch_small_media_query = '(max-width: 56.25em)';
+let watch_small_phone_media_query = '(max-width: 37.5em';
+let matches_small = window.matchMedia(watch_small_media_query).matches
+let matches_small_phone = window.matchMedia(watch_small_phone_media_query).matches
+let matched = window.matchMedia(watch_media_query).matches;
 
 const workoutsVideo = document.getElementById('save-workouts-video')
 if (workoutsVideo) {
     workoutsVideo.playbackRate = 0.5;
+}
+
+window.onresize = () => window.location.reload()
+
+if (matched && !isCardVisible && !matches_small && !matches_small_phone) {
+    searchContainer.style.width = '65%'
+    searchContainer.style.margin = '0 auto'
+}
+else if (matches_small && !isCardVisible && !matches_small_phone) {
+    searchContainer.style.width = '85%'
+    searchContainer.style.margin = '0 auto'
+}
+else if(matches_small_phone && !isCardVisible) {
+    searchContainer.style.width = '95%'
+    searchContainer.style.margin = '0 auto'
+}
+ else {
+    searchContainer.style.width = '50%'
+    searchContainer.style.justifySelf = 'center'
 }
 
 // search
@@ -98,7 +123,11 @@ const ajaxCall = (query, searchResponseBox) => {
                })
                 const addButtons = document.querySelectorAll('.new-workout-add-item')
                 addButtons.forEach(button => {
-                    button.addEventListener('click', e => {
+                    button.addEventListener('click', () => {
+                        const infoBox = document.querySelector('.info-search-saved')
+                        if(!infoBox.classList.contains('not-visible')) {
+                            infoBox.classList.add('not-visible')
+                        }
                         button.parentElement.classList.add('blink-background-green')
                         setTimeout(() => {
                             button.parentElement.classList.remove('blink-background-green')
@@ -301,10 +330,10 @@ const getExerciseById = (id) => {
                         const parentChildrenCount = parent.children.length
                         const workoutNameSaveContainer = document.querySelector('.saved-new-workouts-buttons-container')
                         if (parentChildrenCount === 0) {
-
-
                             const infoBox = document.querySelector('.info-search-saved')
-                            infoBox.classList.remove('not-visible')
+                            if(infoBox.classList.contains('not-visible')) {
+                                infoBox.classList.remove('not-visible')
+                            }
                             workoutContent.classList.add('not-visible')
                             workoutNameSaveContainer.classList.add('not-visible')
                         }
@@ -344,7 +373,7 @@ const createNewWorkoutTemplate = (exercisesArr,workoutName) => {
                          const modal = document.querySelector('.modal-queued')
                          modal.classList.toggle('not-visible')
                          const closeModalBtn = document.querySelector('.modal-queued__close-button')
-                         closeModalBtn.addEventListener('click', e => {
+                         closeModalBtn.addEventListener('click', () => {
                              window.location = window.location.href;
                          })
                          setInterval(function () {
@@ -618,7 +647,7 @@ modalCloseEdit.addEventListener('click', () => {
     animateDeletingElementByClass('.modal-edit-search', 1200)
 })
 
-modalCloseAdd.addEventListener('click', ()=> {
+modalCloseAdd.addEventListener('click', () => {
     animateDeletingElementByClass('.modal-add-search', 1200)
 })
 
@@ -626,6 +655,8 @@ modalCloseAdd.addEventListener('click', ()=> {
 // save
 saveNewWorkoutButton.addEventListener('click', () => {
      if (!isCardVisible) {
+        document.querySelector('.saved-workouts-layout-container').classList.remove('not-expanded')
+        document.querySelector('.saved-workouts-layout-container').classList.add('expanded')
         searchContainer.style.gridColumn = '1/2'
         searchContainer.style.removeProperty('width')
         searchContainer.style.removeProperty('justify-self')
@@ -687,10 +718,7 @@ saveNewWorkoutButton.addEventListener('click', () => {
     searchInput.addEventListener('input', e => {
         const searchValue = e.target.value
         const addedContent = document.querySelector('.saved-workouts__added--saved__content__workout')
-        if(searchValue.length > 0 && addedContent.classList.contains('not-visible')) {
-            document.querySelector('.info-search-saved').classList.add('not-visible')
-        }
-        else if (searchValue.length === 0 && addedContent.classList.contains('not-visible')) {
+        if (searchValue.length === 0 && addedContent.classList.contains('not-visible')) {
             $('.info-search-saved').fadeOut('350', e => {
                 document.querySelector('.info-search-saved').classList.remove('not-visible')
             })
@@ -737,6 +765,8 @@ saveNewWorkoutButton.addEventListener('click', () => {
 // manage
 editButtons.forEach(button => button.addEventListener('click', e => {
     if (!isCardVisible) {
+        document.querySelector('.saved-workouts-layout-container').classList.remove('not-expanded')
+        document.querySelector('.saved-workouts-layout-container').classList.add('expanded')
         searchContainer.style.gridColumn = '1/2'
         searchContainer.style.removeProperty('width')
         searchContainer.style.removeProperty('justify-self')

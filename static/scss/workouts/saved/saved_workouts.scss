@@ -14,10 +14,6 @@
     grid-template-columns: 0.05fr 1fr 0.05fr;
     grid-template-rows: 0.30fr 2.5fr 0.15fr;
     height: auto;
-    background-image: linear-gradient(to bottom, rgba(246, 244, 244, 0.5), rgba(148, 147, 147, 0.84)), url("https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
   }
 }
 
@@ -105,6 +101,17 @@
             p {
               font-size: 2rem;
               margin-left: 2rem;
+               @include respond(tab-land) {
+                font-size: 1.65rem;
+              }
+              @include respond(tab-md) {
+                font-size: 2rem;
+                margin-left: 1rem;
+                margin-right: 0.25rem;
+              }
+              @include respond(phone-md-lg){
+                font-size: 1.75rem;
+              }
             }
             grid-column: 1/2;
           }
@@ -332,9 +339,6 @@
         &__search-bar{
           margin: 2rem auto;
           position: relative;
-          @include respond(tab-sm){
-            width: 85%;
-          }
           input {
            border-radius: 5px;
            border: 1px solid black;
@@ -465,7 +469,9 @@
   animation-name: fade-bottom;
   animation-duration: 1s;
   animation-timing-function: ease-out;
-
+  @include respond(phone-lg) {
+    grid-template-columns: 1fr 0.2fr 0.15fr 0.05fr;
+  }
   &:hover {
     transform: scale(1.03);
   }
@@ -476,9 +482,31 @@
     border-radius: 10px;
     border: none;
     background-color: rgba(200, 243, 195, 0.69);
+    @include respond(phone-lg) {
+      width: 6rem;
+      height: 2rem;
+      font-size: 1rem;
+    }
   }
   label {
     margin-left: 1rem;
+  }
+   div.edit-remove-item {
+    grid-column: 4/5;
+    grid-row: 1/2;
+    margin-left: auto;
+    margin-right: 1rem;
+    transition: all .2s ease-in;
+    @include respond(tab-md) {
+      margin-right: 2rem;
+      transform: translateY(-3px);
+    }
+    @include respond(phone-md-sm){
+      margin-right: 1rem;
+    }
+    &:hover{
+      transform: scale(1.03);
+    }
   }
 }
 
@@ -577,3 +605,369 @@
   background-color: var(--red-light)!important;
 }
 
+.expanded {
+  @include respond(md-desktop){
+    grid-template-columns: 0.02fr 1fr 0.02fr!important;
+  }
+  @include respond(phone-md){
+    grid-template-columns: 1fr!important;
+  }
+  div.saved-workouts {
+    @include respond(md-desktop) {
+      grid-template-columns: 1fr 1.15fr;
+    }
+    @include respond(tab-md) {
+      grid-column-gap: 2.5rem;
+    }
+    @include respond(tab-md){
+      grid-template-rows: 1fr 1fr;
+      grid-row-gap: 4.5rem;
+      grid-template-columns: 1fr;
+    }
+    @include respond(phone-md){
+      grid-column: 1/2!important;
+    }
+    @include respond(phone-md-sm) {
+      padding: 0!important;
+    }
+    div.saved-workouts__added {
+      @include respond(tab-md) {
+        grid-row: 2/3;
+        grid-column: 1/2;
+      }
+      @include respond(phone-md) {
+        margin: 0 auto;
+        width: 95% !important;
+      }
+      @include respond(phone-md-sm) {
+        margin: 0 auto;
+        width: 100% !important;
+      }
+      div.saved-workouts__added--saved__heading{
+        @include respond(phone-md-lg){
+          font-size: 1.6rem;
+        }
+      }
+      div.saved-workouts__added--saved__content{
+        @include respond(phone-md) {
+          width: 90%!important;
+          overflow-y: hidden;
+        }
+        @include respond(phone-ultra-sm) {
+          margin: 0 auto;
+          width: 85%!important;
+        }
+        div.saved-workouts__added--saved__content__meal__items{
+          div.saved-workouts__added--saved__content__meal__item{
+            @include respond(phone-md-lg){
+              font-size: 1.25rem;
+            }
+            div.today-workouts-saved-inputBox{
+              input {
+                @include respond(phone-md-lg){
+                  width: 6rem;
+                  height: 1.5rem;
+                  font-size: 1rem;
+                  margin-top: 0.4rem;
+                }
+              }
+              @include respond(phone-md-lg){
+                label {
+                  font-size: 1.25rem;
+                }
+              }
+            }
+          }
+        }
+        div.saved-workouts__added--saved__content__item{
+          @include respond(phone-md) {
+            margin: 1rem 1rem 0 1rem;
+          }
+        }
+        div.edit-workout-added-items {
+          div.today-workouts-saved-edit-inputBox {
+            font-size: 1.5rem;
+            margin-left: 1rem;
+            display: grid;
+            grid-template-rows: 1fr 0.5fr;
+            grid-template-columns: 0.25fr 1fr 0.5fr;
+            p {
+                grid-row: 1/2;
+                grid-column: 1/3;
+            }
+            div.remove-icon {
+                grid-row: 1/2;
+                grid-column: 3/4;
+               @include respond(tab-land){
+                 margin-right: 2rem;
+               }
+              }
+             input {
+                grid-row: 2/3;
+                grid-column: 1/2;
+              }
+            label {
+                grid-row: 2/3;
+                grid-column: 2/3;
+              }
+            @include respond(phone-md-lg) {
+              font-size: 1.2rem;
+              p {
+                grid-row: 1/2;
+                grid-column: 1/3;
+              }
+              div.remove-icon {
+                grid-row: 1/2;
+                grid-column: 3/4;
+              }
+              input {
+                height: 1.5rem;
+                width: 4rem;
+                margin-top: 3px;
+              }
+            }
+          }
+          @include respond(phone-md) {
+            height: 25rem;
+          }
+        }
+        div.add-new-element-box {
+           @include respond(tab-port){
+              margin: 0 1rem!important;
+           }
+          @include respond(phone-md) {
+            margin: 0 0.5rem !important;
+            div.add-icon {
+              margin-top: 3px;
+              transform: scale(0.85);
+            }
+            a {
+              font-size: 1.25rem;
+              margin: 1rem 1rem 1rem 0.5rem;
+            }
+          }
+        }
+        div.saved-workouts__added--saved__content__item{
+          p{
+            @include respond(phone-lg) {
+                font-size: 2rem;
+              }
+            b {
+              @include respond(phone-lg) {
+                font-size: 2rem;
+              }
+            }
+          }
+        }
+      }
+      div.saved-new-workouts-buttons-container{
+        input {
+          @include respond(phone-md) {
+            width: 15rem;
+            font-size: 1.2rem;
+          }
+        }
+      }
+    }
+
+    div.saved-workouts__search {
+      @include respond(tab-desktop){
+        width: 100%;
+      }
+      @include respond(tab-md) {
+        grid-row: 1/2;
+        grid-column: 1/2;
+      }
+      @include respond(phone-md) {
+        width: 95% !important;
+      }
+       @include respond(phone-md-sm) {
+        margin: 0 auto;
+        width: 100% !important;
+      }
+      div.saved-workouts__search__results{
+        div.saved-workouts__search__results__heading-box{
+          h3{
+            font-size: 2.5rem!important;
+          }
+        }
+      }
+      div.saved-workouts__search__save-new {
+         @include respond(tab-desktop){
+          margin-top: auto;
+        }
+        @include respond(phone-md) {
+          p {
+            font-size: 1.5rem;
+          }
+        }
+      }
+      div.saved-workouts__search__results__container {
+        div.saved-workouts__search__results__container__item {
+          grid-template-columns: 1fr 0.5fr;
+          div.saved-workouts__search__results__container__item__recipe p{
+            @include respond(tab-md){
+              margin-left: 2rem!important;
+            }
+          }
+          div.saved-workouts__search__results__container__item__buttons {
+            justify-content: unset;
+            margin-left: auto;
+            margin-right: 1rem;
+            @include respond(tab-desktop) {
+              display: flex;
+              flex-direction: column;
+            }
+            @include respond(tab-md){
+              margin-right: 3rem;
+            }
+            @include respond(phone-lg){
+              margin-right: 2rem;
+            }
+            @include respond(phone-md-lg){
+                margin-right: 1.25rem;
+            }
+            .edit-saved-workouts {
+              margin-right: 1rem;
+              @include respond(big-desktop) {
+                padding: 1rem 0.75rem;
+                font-size: 1.1rem;
+              }
+              @include respond(tab-desktop){
+                padding: 0.75rem 0.25rem;
+                font-size: 1rem;
+                width: 7rem;
+                margin-right: 0;
+              }
+              @include respond(phone-lg){
+                width: 6rem;
+              }
+              @include respond(phone-md-lg){
+                padding: 0.5rem 1rem;
+                font-size: 1.2rem;
+              }
+                @include respond(phone-md-sm){
+                padding: 0.5rem 0.6rem;
+                font-size: 0.85rem;
+              }
+            }
+
+            .delete-saved-workouts {
+              @include respond(big-desktop) {
+                padding: 1rem 1rem;
+                font-size: 1.1rem;
+              }
+              @include respond(tab-desktop){
+                padding: 0.75rem 0.45rem;
+                font-size: 1.2rem;
+              }
+              @include respond(tab-desktop){
+                padding: 0.75rem 0.45rem;
+                font-size: 1rem;
+                margin-top: 0.5rem;
+                width: 7rem;
+              }
+             @include respond(phone-lg){
+                width: 6rem;
+              }
+              @include respond(phone-md-lg){
+                padding: 0.5rem 1rem;
+                font-size: 1.2rem;
+              }
+              @include respond(phone-md-sm){
+                padding: 0.5rem 0.6rem;
+                font-size: 0.85rem;
+              }
+            }
+          }
+
+        }
+      }
+    }
+  }
+}
+
+
+.not-expanded {
+  div.saved-workouts {
+    @include respond(phone-md){
+      padding: 5rem 0;
+    }
+    div.saved-workouts__search {
+      div.saved-workouts__search__results{
+        @include respond(phone-md){
+          margin: 5rem 1rem 0 1rem;
+        }
+      }
+      div.saved-workouts__search__save-new{
+
+        @include respond(tab-desktop){
+          margin-top: auto;
+        }
+        p {
+          @include respond(phone-md){
+            font-size: 1.5rem;
+          }
+        }
+      }
+      div.saved-workouts__search__results__container {
+        div.saved-workouts__search__results__container__item {
+          div.saved-workouts__search__results__container__item__recipe{
+            p{
+              @include respond(phone-lg){
+                font-size: 1.5rem;
+              }
+            }
+          }
+          div.saved-workouts__search__results__container__item__buttons {
+            justify-content: unset;
+            margin-left: auto;
+            margin-right: 1rem;
+            @include respond(tab-port){
+               display: flex;
+               flex-direction: column;
+               margin-right: 0.5rem;
+            }
+            .edit-saved-workouts {
+              margin-right: 1rem;
+              @include respond(tab-desktop) {
+                padding: 1rem 1rem;
+                font-size: 1.1rem;
+              }
+              @include respond(tab-port) {
+                padding: 0.8rem 0.8rem;
+                font-size: 1.4rem;
+                margin-right: 0;
+                width: 9rem;
+              }
+              @include respond(phone-lg){
+                font-size: 1rem;
+                width: 6.5rem;
+              }
+            }
+
+            .delete-saved-workouts {
+              @include respond(tab-desktop) {
+                padding: 1rem 1rem;
+                font-size: 1.1rem;
+              }
+               @include respond(tab-port) {
+                margin-top: 1rem;
+                padding: 0.8rem 0.8rem;
+                font-size: 1.4rem;
+                margin-right: 0;
+                width: 9rem;
+              }
+               @include respond(phone-lg){
+                padding: 0.8rem 0.6rem;
+                font-size: 1rem;
+                width: 6.5rem;
+              }
+            }
+          }
+
+        }
+      }
+    }
+  }
+}

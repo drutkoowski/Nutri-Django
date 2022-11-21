@@ -672,6 +672,9 @@
         @include respond(phone-md-lg){
           font-size: 1.6rem;
         }
+        @include respond(phone-sm){
+          font-size: 1.2rem!important;
+        }
       }
       div.saved-meals__added--saved__content{
         @include respond(phone-md) {
@@ -802,6 +805,9 @@
         }
       }
       div.saved-meals__search__save-new {
+        @include respond(tab-desktop){
+          margin-top: auto;
+        }
         @include respond(phone-md) {
           p {
             font-size: 1.5rem;
@@ -931,9 +937,6 @@
             justify-content: unset;
             margin-left: auto;
             margin-right: 1rem;
-            @include respond(md-desktop) {
-              margin-right: 0;
-            }
             @include respond(tab-port){
                display: flex;
                flex-direction: column;
