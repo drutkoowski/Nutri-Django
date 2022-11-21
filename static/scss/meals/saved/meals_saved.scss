@@ -792,19 +792,18 @@
             justify-content: unset;
             margin-left: auto;
             margin-right: 1rem;
+            @include respond(tab-desktop) {
+              display: flex;
+              flex-direction: column;
+            }
             @include respond(tab-md){
               margin-right: 3rem;
             }
             @include respond(phone-lg){
               margin-right: 2rem;
             }
-
             @include respond(phone-md-lg){
                 margin-right: 1.25rem;
-            }
-            @include respond(phone-lg) {
-              display: flex;
-              flex-direction: column;
             }
             .edit-saved-meals {
               margin-right: 1rem;
@@ -813,22 +812,21 @@
                 font-size: 1.1rem;
               }
               @include respond(tab-desktop){
-                padding: 0.75rem 0.45rem;
-                font-size: 1.2rem;
-              }
-              @include respond(tab-md){
-                 padding: 1rem 1rem;
-                 font-size: 1.7rem;
+                padding: 0.75rem 0.25rem;
+                font-size: 1rem;
+                width: 7rem;
+                margin-right: 0;
               }
               @include respond(phone-lg){
-                padding: 0.8rem 0.8rem;
-                font-size: 1.4rem;
-                margin-right: 0;
-                width: 7rem;
+                width: 6rem;
               }
               @include respond(phone-md-lg){
                 padding: 0.5rem 0.8rem;
                 font-size: 1.2rem;
+              }
+                @include respond(phone-md-sm){
+                padding: 0.5rem 0.6rem;
+                font-size: 0.85rem;
               }
             }
 
@@ -841,19 +839,22 @@
                 padding: 0.75rem 0.45rem;
                 font-size: 1.2rem;
               }
-               @include respond(tab-md){
-                padding: 1rem 1rem;
-                 font-size: 1.7rem;
-              }
-              @include respond(phone-lg){
-                padding: 0.8rem 0.8rem;
-                font-size: 1.4rem;
+              @include respond(tab-desktop){
+                padding: 0.75rem 0.45rem;
+                font-size: 1rem;
                 margin-top: 0.5rem;
                 width: 7rem;
+              }
+             @include respond(phone-lg){
+                width: 6rem;
               }
               @include respond(phone-md-lg){
                 padding: 0.5rem 0.8rem;
                 font-size: 1.2rem;
+              }
+              @include respond(phone-md-sm){
+                padding: 0.5rem 0.6rem;
+                font-size: 0.85rem;
               }
             }
           }
@@ -906,9 +907,13 @@
             justify-content: unset;
             margin-left: auto;
             margin-right: 1rem;
+            @include respond(md-desktop) {
+              margin-right: 0;
+            }
             @include respond(tab-port){
                display: flex;
                flex-direction: column;
+               margin-right: 0.5rem;
             }
             .edit-saved-meals {
               margin-right: 1rem;
@@ -920,12 +925,12 @@
                 padding: 0.8rem 0.8rem;
                 font-size: 1.4rem;
                 margin-right: 0;
-                width: 7rem;
+                width: 9rem;
               }
-              @include respond(phone-md){
+              @include respond(phone-lg){
                 padding: 0.8rem 0.6rem;
                 font-size: 1rem;
-                width: 5rem;
+                width: 6.5rem;
               }
             }
 
@@ -939,12 +944,12 @@
                 padding: 0.8rem 0.8rem;
                 font-size: 1.4rem;
                 margin-right: 0;
-                width: 7rem;
+                width: 9rem;
               }
-               @include respond(phone-md){
+               @include respond(phone-lg){
                 padding: 0.8rem 0.6rem;
                 font-size: 1rem;
-                width: 5rem;
+                width: 6.5rem;
               }
             }
           }
