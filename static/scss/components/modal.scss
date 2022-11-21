@@ -306,7 +306,16 @@
        -webkit-box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
        -moz-box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
        box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
-
+       @include respond(tab-md){
+         max-height: 85%;
+         width: 85%;
+       }
+      @include respond(phone-lg){
+        padding: 2rem 2rem;
+      }
+      @include respond(phone-sm){
+        padding: 0.5rem 0.5rem;
+      }
        &__elements {
          margin-top: 2rem;
          background-color: white;
@@ -321,12 +330,18 @@
          overflow-y: auto;
          overflow-x: hidden;
          font-size: 2rem;
+         @include respond(phone-lg){
+           padding: 0.5rem 0.5rem;
+         }
          &__item {
            margin-top: 2rem;
            display: grid;
            grid-template-columns: 1fr 0.2fr;
            grid-template-rows: 0.3fr 1fr;
            height: auto;
+           @include respond(tab-sm){
+             grid-template-columns: 1fr 0.05fr!important;
+           }
            &:not(&:last-of-type){
              border-bottom: 2px solid #f2f2f2;
            }
@@ -343,6 +358,10 @@
              justify-self: end;
              margin-right: 3rem;
              transition: all .3s ease-in;
+             @include respond(tab-sm){
+               margin-top: 3px;
+               margin-right: 1rem;
+             }
              &:hover {
                transform: scale(1.1)
              }
@@ -369,12 +388,23 @@
 	    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
 	    background-color: #afe0a5;
       }
-    h1{
+    h1 {
       margin-bottom: 5rem;
       font-size: 3rem;
       animation-name: fade-left;
       animation-duration: 1s;
       animation-timing-function: ease-out;
+      @include respond(phone-lg){
+        font-size: 2.5rem;
+      }
+      @include respond(phone-md-lg){
+        font-size: 2rem;
+      }
+      @include respond(phone-sm){
+        font-size: 1.5rem;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+      }
     }
   }
 
@@ -396,24 +426,47 @@
   .workout-counter {
     margin-bottom: 0;
     font-size: 3rem;
+    @include respond(phone-lg){
+      font-size: 2.5rem;
+    }
+    @include respond(phone-md-sm){
+      font-size: 2rem;
+    }
+    @include respond(phone-sm){
+      font-size: 1.75rem;
+    }
+  }
+  div {
+     @include respond(phone-lg){
+      font-size: 1.75rem;
+    }
+     @include respond(phone-md-sm){
+      font-size: 1.5rem;
+    }
+    @include respond(phone-sm){
+      font-size: 1.25rem;
+    }
   }
 }
 
-.today-workouts-list__content__workout-elements__element{
-  height: auto;
-  &__title {
-    p {
-      display: inline-block;
+.today-workouts-list__content__workout-elements{
+  &__element{
+    height: auto;
+    &__title {
+      p {
+        display: inline-block;
+      }
+      div.remove-icon {
+        display: inline-block;
+        margin-left: 1rem;
+      }
     }
-    div.remove-icon {
-      display: inline-block;
-      margin-left: 1rem;
+    &:first-of-type{
+      margin-top: 2rem;
     }
+    margin-top: 1rem;
   }
-  &:first-of-type{
-    margin-top: 2rem;
-  }
-  margin-top: 1rem;
+
 }
 
 

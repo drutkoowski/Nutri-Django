@@ -762,12 +762,46 @@
   color: var(--black-muted);
 }
 
+.today-workouts-list__content__workout-elements{
+  &__element{
+    p{
+      @include respond(tab-desktop){
+         font-size: 1.5rem;
+      }
+      @include respond(phone-md-lg){
+        font-size: 1.1rem;
+      }
+    }
+  }
+
+}
 .today-workouts-list__content__workout-elements__element__title{
   display: grid;
   grid-template-columns: 1fr 0.25fr;
   grid-template-rows: 1fr;
+  @include respond(tab-land){
+    grid-template-columns: 2fr 0.15fr;
+  }
+  div.remove-icon {
+    @include respond(tab-land){
+      margin-right: 0;
+      margin-bottom: 2px;
+    }
+    @include respond(tab-port){
+      margin-top: -3px;
+    }
+    @include respond(phone-lg){
+      transform: scale(0.75);
+    }
+  }
   p{
     grid-column: 1/2;
+    @include respond(tab-desktop){
+      font-size: 1.5rem;
+    }
+    @include respond(phone-md-lg){
+      font-size: 1.1rem;
+    }
   }
   div{
     grid-column: 2/3;
@@ -793,4 +827,7 @@
 
 .workouts-on-date {
   font-size: 2rem;
+  @include respond(phone-sm){
+    font-size: 1.2rem;
+  }
 }
