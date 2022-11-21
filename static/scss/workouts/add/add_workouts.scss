@@ -550,6 +550,9 @@
   animation-name: fade-bottom;
   animation-duration: 1s;
   animation-timing-function: ease-out;
+  @include respond(phone-md-lg) {
+    font-size: 1.875rem;
+  }
 }
 
 

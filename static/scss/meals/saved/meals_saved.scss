@@ -340,9 +340,6 @@
         &__search-bar{
           margin: 2rem auto;
           position: relative;
-          @include respond(tab-sm){
-            width: 85%;
-          }
           input {
            border-radius: 5px;
            border: 1px solid black;
@@ -350,7 +347,7 @@
            width: 25rem;
            height: 4rem;
            font-size: 1.5rem;
-           @include respond(tab-sm){
+          @include respond(tab-sm){
               width: 100%;
            }
           }
@@ -671,6 +668,11 @@
         margin: 0 auto;
         width: 100% !important;
       }
+      div.saved-meals__added--saved__heading{
+        @include respond(phone-md-lg){
+          font-size: 1.6rem;
+        }
+      }
       div.saved-meals__added--saved__content{
         @include respond(phone-md) {
           width: 90%!important;
@@ -678,6 +680,28 @@
         @include respond(phone-ultra-sm) {
           margin: 0 auto;
           width: 85%!important;
+        }
+        div.saved-meals__added--saved__content__meal__items{
+          div.saved-meals__added--saved__content__meal__item{
+            @include respond(phone-md-lg){
+              font-size: 1.25rem;
+            }
+            div.today-meals-saved-inputBox{
+              input {
+                @include respond(phone-md-lg){
+                  width: 6rem;
+                  height: 1.5rem;
+                  font-size: 1rem;
+                  margin-top: 0.4rem;
+                }
+              }
+              @include respond(phone-md-lg){
+                label {
+                  font-size: 1.25rem;
+                }
+              }
+            }
+          }
         }
         div.saved-meals__added--saved__content__item{
           @include respond(phone-md) {
@@ -821,7 +845,7 @@
                 width: 6rem;
               }
               @include respond(phone-md-lg){
-                padding: 0.5rem 0.8rem;
+                padding: 0.5rem 1rem;
                 font-size: 1.2rem;
               }
                 @include respond(phone-md-sm){
@@ -849,7 +873,7 @@
                 width: 6rem;
               }
               @include respond(phone-md-lg){
-                padding: 0.5rem 0.8rem;
+                padding: 0.5rem 1rem;
                 font-size: 1.2rem;
               }
               @include respond(phone-md-sm){

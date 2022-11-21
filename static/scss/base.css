@@ -1270,24 +1270,38 @@ ORDER: Base + typography > general layout + grid > page layout > components
     background-color: var(--green-modal);
     color: white;
     position: relative; }
+    @media only screen and (max-width: 56.25em) {
+      .modal-queued__content {
+        padding: 5rem 1rem; } }
+    @media only screen and (max-width: 28.5em) {
+      .modal-queued__content h1.modal-edit-search__heading {
+        margin: 2rem auto !important;
+        font-size: 2rem !important; } }
     .modal-queued__content h1 {
       margin-bottom: 5rem;
       font-size: 3rem;
       animation-name: fade-left;
       animation-duration: 1s;
       animation-timing-function: ease-out; }
+      @media only screen and (max-width: 56.25em) {
+        .modal-queued__content h1 {
+          font-size: 2.5rem; } }
+      @media only screen and (max-width: 37.5em) {
+        .modal-queued__content h1 {
+          font-size: 2rem; } }
       @media only screen and (max-width: 31.25em) {
         .modal-queued__content h1 {
-          font-size: 2.5rem;
           margin-bottom: 2.5rem; } }
       @media only screen and (max-width: 28.5em) {
         .modal-queued__content h1 {
-          font-size: 2.25rem; } }
+          font-size: 1.875rem;
+          text-align: center;
+          margin: 0 auto; } }
       @media only screen and (max-width: 21.875em) {
         .modal-queued__content h1 {
-          font-size: 1.75rem;
+          font-size: 1.775rem;
           margin-top: 2rem;
-          margin-bottom: 0.5rem; } }
+          margin-bottom: 2rem; } }
   .modal-queued__close-button {
     position: absolute;
     top: 1rem;
@@ -2273,7 +2287,10 @@ body {
   justify-self: center;
   align-self: center;
   animation: spin 2s linear infinite; }
-
+  @media only screen and (max-width: 28.5em) {
+    .loader--signup {
+      width: 2rem;
+      height: 2rem; } }
 @keyframes spin {
   0% {
     transform: rotate(0deg); }
@@ -5116,9 +5133,6 @@ label.year {
         .saved-meals__added--saved__content__search-bar {
           margin: 2rem auto;
           position: relative; }
-          @media only screen and (max-width: 46.875em) {
-            .saved-meals__added--saved__content__search-bar {
-              width: 85%; } }
           .saved-meals__added--saved__content__search-bar input {
             border-radius: 5px;
             border: 1px solid black;
@@ -5388,6 +5402,10 @@ label.year {
     margin: 0 auto;
     width: 100% !important; } }
 
+@media only screen and (max-width: 31.25em) {
+  .expanded div.saved-meals div.saved-meals__added div.saved-meals__added--saved__heading {
+    font-size: 1.6rem; } }
+
 @media only screen and (max-width: 28.5em) {
   .expanded div.saved-meals div.saved-meals__added div.saved-meals__added--saved__content {
     width: 90% !important; } }
@@ -5396,6 +5414,21 @@ label.year {
   .expanded div.saved-meals div.saved-meals__added div.saved-meals__added--saved__content {
     margin: 0 auto;
     width: 85% !important; } }
+
+@media only screen and (max-width: 31.25em) {
+  .expanded div.saved-meals div.saved-meals__added div.saved-meals__added--saved__content div.saved-meals__added--saved__content__meal__items div.saved-meals__added--saved__content__meal__item {
+    font-size: 1.25rem; } }
+
+@media only screen and (max-width: 31.25em) {
+  .expanded div.saved-meals div.saved-meals__added div.saved-meals__added--saved__content div.saved-meals__added--saved__content__meal__items div.saved-meals__added--saved__content__meal__item div.today-meals-saved-inputBox input {
+    width: 6rem;
+    height: 1.5rem;
+    font-size: 1rem;
+    margin-top: 0.4rem; } }
+
+@media only screen and (max-width: 31.25em) {
+  .expanded div.saved-meals div.saved-meals__added div.saved-meals__added--saved__content div.saved-meals__added--saved__content__meal__items div.saved-meals__added--saved__content__meal__item div.today-meals-saved-inputBox label {
+    font-size: 1.25rem; } }
 
 @media only screen and (max-width: 28.5em) {
   .expanded div.saved-meals div.saved-meals__added div.saved-meals__added--saved__content div.saved-meals__added--saved__content__item {
@@ -5515,7 +5548,7 @@ label.year {
           width: 6rem; } }
       @media only screen and (max-width: 31.25em) {
         .expanded div.saved-meals div.saved-meals__search div.saved-meals__search__results__container div.saved-meals__search__results__container__item div.saved-meals__search__results__container__item__buttons .edit-saved-meals {
-          padding: 0.5rem 0.8rem;
+          padding: 0.5rem 1rem;
           font-size: 1.2rem; } }
       @media only screen and (max-width: 25em) {
         .expanded div.saved-meals div.saved-meals__search div.saved-meals__search__results__container div.saved-meals__search__results__container__item div.saved-meals__search__results__container__item__buttons .edit-saved-meals {
@@ -5540,7 +5573,7 @@ label.year {
         width: 6rem; } }
     @media only screen and (max-width: 31.25em) {
       .expanded div.saved-meals div.saved-meals__search div.saved-meals__search__results__container div.saved-meals__search__results__container__item div.saved-meals__search__results__container__item__buttons .delete-saved-meals {
-        padding: 0.5rem 0.8rem;
+        padding: 0.5rem 1rem;
         font-size: 1.2rem; } }
     @media only screen and (max-width: 25em) {
       .expanded div.saved-meals div.saved-meals__search div.saved-meals__search__results__container div.saved-meals__search__results__container__item div.saved-meals__search__results__container__item__buttons .delete-saved-meals {
@@ -6264,7 +6297,9 @@ label.year {
   animation-name: fade-bottom;
   animation-duration: 1s;
   animation-timing-function: ease-out; }
-
+  @media only screen and (max-width: 31.25em) {
+    .info-search-saved {
+      font-size: 1.875rem; } }
 .search-input {
   -webkit-box-shadow: 0px 0px 18px -7px #42445a;
   -moz-box-shadow: 0px 0px 18px -7px #42445a;

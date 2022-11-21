@@ -120,7 +120,11 @@ const ajaxCall = (query, searchResponseBox) => {
                })
                 const addButtons = document.querySelectorAll('.new-meal-add-item')
                 addButtons.forEach(button => {
-                    button.addEventListener('click', e => {
+                    button.addEventListener('click', () => {
+                        const infoBox = document.querySelector('.info-search-saved')
+                        if(!infoBox.classList.contains('not-visible')) {
+                            infoBox.classList.add('not-visible')
+                        }
                         button.parentElement.classList.add('blink-background-green')
                         setTimeout(() => {
                             button.parentElement.classList.remove('blink-background-green')
@@ -164,6 +168,9 @@ const ajaxCall = (query, searchResponseBox) => {
                                 const parentChildrenCount = parent.children.length
                                 const mealNameSaveContainer = document.querySelector('.saved-new-meals-buttons-container')
                                 if (parentChildrenCount === 0) {
+                                    if(infoBox.classList.contains('not-visible')) {
+                                        infoBox.classList.remove('not-visible')
+                                    }
                                      mealContent.classList.add('not-visible')
                                      mealNameSaveContainer.classList.add('not-visible')
                                 }
@@ -605,6 +612,8 @@ modalCloseAdd.addEventListener('click', () => {
 // save
 saveNewMealButton.addEventListener('click', () => {
      if (!isCardVisible) {
+        document.querySelector('.saved-meals-layout-container').classList.remove('not-expanded')
+        document.querySelector('.saved-meals-layout-container').classList.add('expanded')
         searchContainer.style.gridColumn = '1/2'
         searchContainer.style.removeProperty('width')
         searchContainer.style.removeProperty('justify-self')
@@ -666,11 +675,8 @@ saveNewMealButton.addEventListener('click', () => {
     searchInput.addEventListener('input', e => {
         const searchValue = e.target.value
         const addedContent = document.querySelector('.saved-meals__added--saved__content__meal')
-        if(searchValue.length > 0 && addedContent.classList.contains('not-visible')) {
-            document.querySelector('.info-search-saved').classList.add('not-visible')
-        }
-        else if (searchValue.length === 0 && addedContent.classList.contains('not-visible')) {
-            $('.info-search-saved').fadeOut('350', e => {
+        if (searchValue.length === 0 && addedContent.classList.contains('not-visible')) {
+            $('.info-search-saved').fadeOut('350', () => {
                 document.querySelector('.info-search-saved').classList.remove('not-visible')
             })
         }
@@ -682,7 +688,7 @@ saveNewMealButton.addEventListener('click', () => {
         ajaxCall(searchValue, searchResponseBox)
     })
     const mealSaveButton = document.querySelector('.saved-meals__added--saved__content__save')
-    mealSaveButton.addEventListener('click', e => {
+    mealSaveButton.addEventListener('click', () => {
         const mealItems = document.querySelector('.saved-meals__added--saved__content__meal__items').children
         const inputNameEl = document.querySelector('.meal_name_input')
         const inputsQuantity = document.querySelectorAll('.new-today-meal-input-quantity')

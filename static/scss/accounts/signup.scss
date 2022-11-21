@@ -357,6 +357,10 @@ body {
   justify-self: center;
   align-self: center;
   animation: spin 2s linear infinite;
+  @include respond(phone-md){
+    width: 2rem;
+    height: 2rem;
+  }
 }
 
 @keyframes spin {

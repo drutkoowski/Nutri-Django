@@ -79,24 +79,40 @@
        background-color: var(--green-modal);
        color: white;
        position: relative;
-
+       @include respond(tab-port){
+         padding: 5rem 1rem;
+       }
+       h1.modal-edit-search__heading{
+          @include respond(phone-md) {
+            margin: 2rem auto!important;
+            font-size: 2rem!important;
+          }
+     }
       h1{
         margin-bottom: 5rem;
         font-size: 3rem;
         animation-name: fade-left;
         animation-duration: 1s;
         animation-timing-function: ease-out;
+         @include respond(tab-port){
+         font-size: 2.5rem;
+       }
+        @include respond(phone-lg) {
+           font-size: 2rem;
+        }
         @include respond(phone-md-lg){
-          font-size: 2.5rem;
           margin-bottom: 2.5rem;
         }
          @include respond(phone-md){
-          font-size: 2.25rem;
+          font-size: 1.875rem;
+          text-align: center;
+          margin: 0 auto;
+
         }
          @include respond(phone-sm){
-          font-size: 1.75rem;
+           font-size: 1.775rem;
            margin-top: 2rem;
-           margin-bottom: 0.5rem;
+           margin-bottom: 2rem;
         }
       }
   }
@@ -423,3 +439,4 @@
      transform: scale(1.05);
    }
 }
+
