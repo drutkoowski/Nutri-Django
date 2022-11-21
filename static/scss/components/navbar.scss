@@ -132,6 +132,7 @@
             width: 3.5rem;
             height: 3.5rem;
             vertical-align: middle;
+            padding-top: 10px;
             @include respond(phone-md){
                 width: 2.5rem;
                 height: 2.5rem;

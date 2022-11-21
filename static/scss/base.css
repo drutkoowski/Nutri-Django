@@ -317,7 +317,8 @@ ORDER: Base + typography > general layout + grid > page layout > components
   .navigation__link__icon {
     width: 3.5rem;
     height: 3.5rem;
-    vertical-align: middle; }
+    vertical-align: middle;
+    padding-top: 10px; }
     @media only screen and (max-width: 28.5em) {
       .navigation__link__icon {
         width: 2.5rem;
@@ -1693,7 +1694,8 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 .navigation--dashboard__link__icon {
   width: 3.5rem;
-  height: 3.5rem; }
+  height: 3.5rem;
+  padding-top: 10px; }
 
 .navigation--dashboard__link:link, .navigation--dashboard__link:visited {
   display: inline-block;
@@ -1878,7 +1880,8 @@ ORDER: Base + typography > general layout + grid > page layout > components
         display: inline-block; } }
     .navigation--dashboard--small__link__icon {
       width: 2.5rem;
-      height: 2.5rem; }
+      height: 2.5rem;
+      padding-top: 10px; }
     .navigation--dashboard--small__link:link, .navigation--dashboard--small__link:visited {
       display: inline-block;
       font-size: 4rem;

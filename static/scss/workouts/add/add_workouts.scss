@@ -794,7 +794,7 @@
       transform: scale(0.75);
     }
   }
-  p{
+  p {
     grid-column: 1/2;
     @include respond(tab-desktop){
       font-size: 1.5rem;
