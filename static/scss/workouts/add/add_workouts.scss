@@ -14,10 +14,9 @@
     grid-template-columns: 0.05fr 1fr 0.05fr;
     grid-template-rows: 0.30fr 2fr 0.15fr;
     height: auto;
-    background-image: linear-gradient(to bottom, rgba(246, 244, 244, 0.5), rgba(148, 147, 147, 0.84)), url("https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  }
+  @include respond(phone-md-sm){
+     grid-template-columns: 1fr;
   }
 }
 .add-workouts {
@@ -36,6 +35,16 @@
     grid-template-rows: 1fr 1fr;
     grid-column-gap: 0;
     grid-row-gap: 5rem;
+  }
+  @include respond(tab-port) {
+    grid-template-rows: 0.7fr 1fr;
+  }
+
+  @include respond(phone-md-lg){
+    grid-row-gap: 2.5rem;
+  }
+  @include respond(phone-md-sm){
+      grid-column: 1/2;
   }
   &__already__added::-webkit-scrollbar-track {
     -webkit-box-shadow:  inset 0 0 6px rgba(0,0,0,0.3);
@@ -57,8 +66,6 @@
     overflow-x: hidden;
     background-color: white;
     border-radius: 10px;
-    // border-bottom-left-radius: 10px;
-    //border-bottom-right-radius: 10px;
     margin-bottom: 1rem;
     -webkit-box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
     -moz-box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
@@ -75,6 +82,11 @@
       animation-name: fade-bottom;
       animation-duration: 1s;
       animation-timing-function: ease-out;
+       @include respond(phone-md-lg) {
+        div.today-workouts-added-remove-btn{
+          transform: scale(0.75);
+        }
+      }
       &:hover {
         transform: scale(1.02);
       }
@@ -100,6 +112,11 @@
         margin-left: 1.5rem;
         font-size: 1.5rem;
         margin-right: 2.5rem;
+        @include respond(phone-md-lg) {
+          font-size: 1.25rem;
+          margin-right: 1.5rem;
+          margin-left: 1rem;
+        }
       }
       .today-workouts-added-remove-btn {
         grid-column: 2/3;
@@ -129,6 +146,10 @@
       grid-column: 1/2;
       height: auto;
     }
+     @include respond(tab-port) {
+      height: auto;
+      max-height: 55rem;
+    }
     &__bar {
       margin: 2rem auto;
       position: relative;
@@ -145,6 +166,9 @@
          @include respond(tab-sm){
             width: 100%;
          }
+        @include respond(phone-md-sm) {
+           font-size: 1.25rem;
+        }
       }
       &__icon {
         position: absolute;
@@ -166,9 +190,8 @@
         height: 35rem;
         margin: 5rem 5rem 5rem 5rem;
       }
-
-      @include respond(phone-lg) {
-         margin: 5rem 1.5rem 5rem 1.5rem;
+      @include respond(tab-port) {
+         margin: 2rem 1.5rem 5rem 1.5rem;
       }
       &__container::-webkit-scrollbar-track {
         -webkit-box-shadow:  inset 0 0 6px rgba(0,0,0,0.3);
@@ -203,8 +226,19 @@
         p {
           margin: 3rem 2rem;
           font-size: 2rem;
+          @include respond(tab-desktop) {
+            font-size: 1.75rem;
+            margin: 2rem 2rem;
+          }
+          @include respond(tab-sm) {
+            font-size: 1.45rem;
+            margin: 2rem 1rem;
+          }
           @include respond(phone-md-lg) {
-            font-size: 1.6rem;
+            font-size: 1.3rem;
+          }
+          @include respond(phone-sm) {
+            font-size: 1.15rem;
           }
         }
         &__item {
@@ -216,8 +250,16 @@
           animation-name: fade-bottom;
           animation-duration: 1s;
           animation-timing-function: ease-out;
-          @include respond(tab-desktop) {
+         @include respond(tab-desktop) {
             grid-template-columns: 1fr 0.1fr;
+          }
+          div.new-workout-item-add {
+            justify-self: end;
+            margin-right: 3rem;
+            @include respond(tab-sm){
+              transform: scale(0.75);
+              margin-right: 1rem;
+            }
           }
           &:not(:last-of-type) {
             border-bottom: 2px solid #f2f2f2;
@@ -235,6 +277,9 @@
         margin: 4rem 2rem;
         font-size: 2rem;
         font-weight: bold;
+        @include respond(tab-port){
+          margin: 2rem 2rem
+        }
       }
     }
   }
@@ -259,31 +304,50 @@
       grid-row: 2/3;
       grid-column: 1/2;
     }
-    @include respond(phone-lg) {
-      grid-template-rows: 0.3fr 1fr 0.3fr 1fr;
+    @include respond(tab-port) {
+      height: 75rem;
+      grid-template-rows: 0.05fr 1fr 0.05fr 1fr 0.05fr;
       grid-template-columns: 1fr;
+    }
+    @include respond(phone-md-lg){
+      margin-top: 3rem;
     }
     &--added {
       grid-row: 1/2;
       grid-column: 1/2;
-      @include respond(phone-lg) {
+       @include respond(tab-port) {
         grid-row: 1/2;
         grid-column: 1/2;
       }
       &__heading {
         margin: 1.5rem 2rem;
-        font-size: 1.5rem;
+        font-size: 1.35rem;
         text-align: center;
-
+        @include respond(md-desktop) {
+          font-size: 1.5rem;
+        }
+        @include respond(tab-desktop) {
+          font-size: 2.5rem;
+        }
+         @include respond(tab-port) {
+          font-size: 2.35rem;
+        }
         @include respond(tab-land) {
+          font-size: 2.1rem;
+        }
+        @include respond(tab-md) {
           font-size: 2rem;
         }
+
         @include respond(phone-lg) {
-          font-size: 2.5rem;
-          margin: 2.5rem 2rem;
+          font-size: 1.75rem;
+          margin: 1.5rem 2rem;
         }
         @include respond(phone-md-sm){
-           font-size: 2rem;
+           font-size: 1.6rem;
+        }
+        @include respond(phone-sm){
+          font-size: 1.5rem;
         }
       }
       &__content {
@@ -298,15 +362,16 @@
        -webkit-box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
        -moz-box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
        box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
+       @include respond(phone-lg) {
+          grid-row: 2/3;
+          grid-column: 1/2;
+          margin: 1rem 1rem 2rem 1rem;
+       }
         h3 {
           margin-top: 1rem;
           margin-left: 1.5rem;
           font-size: 1.5rem;
         }
-       @include respond(phone-lg) {
-        grid-row: 2/3;
-        grid-column: 1/2;
-       }
          &__item {
           margin-top: 0.5rem;
           display: grid;
@@ -324,6 +389,11 @@
            @include respond(tab-desktop) {
             grid-template-columns: 1fr 0.1fr;
           }
+          @include respond(phone-lg) {
+            div.today-meals-added-remove-btn {
+              transform: scale(0.75);
+            }
+          }
           &:hover {
             transform: scale(1.02);
           }
@@ -333,9 +403,6 @@
           grid-column: 1/2;
           font-size: 1.5rem;
           margin-right: 2.5rem;
-           @include respond(md-desktop){
-            font-size: 2rem;
-          }
         }
       }
       }
@@ -357,26 +424,39 @@
     &--saved {
       grid-row: 1/2;
       grid-column: 2/3;
-      @include respond(phone-lg) {
+      @include respond(tab-port) {
         grid-row: 3/4;
         grid-column: 1/2;
        }
-      &__heading {
+       &__heading {
         margin: 1.5rem 2rem;
-        font-size: 1.5rem;
+        font-size: 1.35rem;
         text-align: center;
         @include respond(md-desktop) {
           font-size: 1.5rem;
         }
+        @include respond(tab-desktop) {
+          font-size: 2.5rem;
+        }
+         @include respond(tab-port) {
+          font-size: 2.35rem;
+        }
         @include respond(tab-land) {
+          font-size: 2.1rem;
+        }
+        @include respond(tab-md) {
           font-size: 2rem;
         }
+
         @include respond(phone-lg) {
-          font-size: 2.5rem;
-          margin: 2.5rem 2rem;
+          font-size: 1.75rem;
+          margin: 1.5rem 2rem;
         }
         @include respond(phone-md-sm){
-           font-size: 2rem;
+           font-size: 1.6rem;
+        }
+        @include respond(phone-sm){
+          font-size: 1.5rem;
         }
       }
       &__content {
@@ -391,9 +471,10 @@
         -webkit-box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
         -moz-box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
         box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
-        @include respond(phone-lg) {
+        @include respond(tab-port) {
           grid-row: 4/5;
           grid-column: 1/2;
+          margin: 1rem 1rem 2rem 1rem;
         }
         &__item {
           margin-top: 0.5rem;
@@ -409,15 +490,34 @@
           &:hover {
             transform: scale(1.02);
           }
-          p{
+           p {
             margin-left: 1.5rem;
             grid-column: 1/2;
+            grid-row: 1/3;
             font-size: 1.5rem;
             margin-right: 2.5rem;
             @include respond(md-desktop){
+              font-size: 1.25rem;
+            }
+            @include respond(tab-desktop){
               font-size: 2rem;
             }
-        }
+            @include respond(tab-port){
+              margin-right: 1rem;
+              font-size: 2rem;
+            }
+            @include respond(phone-md-lg){
+              font-size: 1.5rem;
+            }
+          }
+          @include respond(tab-port){
+            div.add-icon {
+              margin-right: 1rem;
+              height: 2rem;
+              width: 2rem;
+              transform: scale(1.15);
+            }
+          }
       }
       }
        &__content::-webkit-scrollbar-track {
@@ -468,6 +568,22 @@
   width: 15rem;
   height: 3rem;
   font-size: 2rem;
+  transition: all .2s ease-in;
+   &:hover {
+     transform: scale(1.05);
+   }
+  @include respond(tab-port){
+    grid-row: 5/6;
+    margin-bottom: 1rem;
+  }
+  @include respond(phone-md-lg) {
+    font-size: 1.6rem;
+    width: 10rem;
+  }
+   @include respond(phone-md) {
+    font-size: 1.2rem;
+    width: 8rem;
+  }
 }
 
 .search-results-info{
@@ -478,6 +594,13 @@
   animation-duration: 1.5s;
   animation-timing-function: ease-out;
   transition: all .2s ease-in;
+  @include respond(tab-sm) {
+    margin-top: 10rem!important;
+    font-size: 1.5rem!important;
+  }
+  @include respond(phone-md) {
+    font-size: 1.15rem!important;
+  }
 }
 
 .saved-results-info{
@@ -490,6 +613,15 @@
   animation-duration: 1.5s;
   animation-timing-function: ease-out;
   color: var(--color-white);
+   @include respond(tab-sm) {
+    font-size: 1.5rem!important;
+  }
+  @include respond(phone-lg){
+     margin: 7.5rem auto!important;
+  }
+  @include respond(phone-sm) {
+    margin: 10rem 2rem!important;
+  }
 }
 
 .search-category-small {
@@ -581,6 +713,15 @@
   @include respond(tab-desktop) {
     margin: 1.5rem auto 1.5rem auto;
   }
+  @include respond(phone-md-lg) {
+    font-size: 1.6rem;
+    padding: 1rem 2rem;
+  }
+  @include respond(phone-md) {
+    font-size: 1.2rem;
+    margin: 0.25rem auto 0.25rem auto;
+  }
+
   span {
     align-self: center;
     justify-self: center;
@@ -594,11 +735,20 @@
   h3{
     font-size: 3rem;
     font-weight: bold;
+     @include respond(phone-lg){
+      font-size: 2.5rem!important;
+    }
+    @include respond(phone-sm){
+      font-size: 2rem!important;
+    }
   }
 }
 
 .workouts-on-date {
   font-size: 2rem;
+   @include respond(phone-sm) {
+    font-size: 1.5rem;
+  }
 }
 
 .no-saved-templates-info{
@@ -627,6 +777,12 @@
 .modal__today-workouts-list__daily-summary{
   margin: 0.5rem 0 1rem 0;
   font-size: 1.5rem;
+  @include respond(phone-md){
+    font-size: 1.25rem;
+  }
+  @include respond(phone-sm){
+    font-size: 1.05rem;
+  }
   div {
     display: inline-block;
     &:not(:first-of-type) {
