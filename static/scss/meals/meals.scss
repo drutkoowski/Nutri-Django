@@ -84,6 +84,7 @@
       margin-top: 15rem;
       font-size: 4rem;
       align-self: center;
+      text-align: center;
       @include respond(big-desktop) {
         font-size: 5rem;
       }
