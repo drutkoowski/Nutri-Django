@@ -30,15 +30,15 @@
                  <div class="dashboard__content__summary__item dashboard__content__summary__item--graph">
                     <div class="dashboard__content__summary__item--graph__content">
                         <h4 class="graph-date">{% trans 'Summary' %}</h4>
-                        <p>{% trans 'Goal' %}: <b>1827</b> kcal</p>
-                        <p>{% trans 'Eaten' %}: <b>1084</b> kcal</p>
-                        <p>{% trans 'Burnt' %}: <b>274</b> kcal</p>
-                        <p>{% trans 'Remaining' %}: <b>534</b> kcal</p>
+                        <p>{% trans 'Goal' %}: <b class="kcal-daily-count"></b> kcal</p>
+                        <p>{% trans 'Eaten' %}: <b class="eaten-daily-count"></b> kcal</p>
+                        <p>{% trans 'Burnt' %}: <b class="burnt-daily-count"></b> kcal</p>
+                        <p>{% trans 'Remaining' %}: <b class="remaining-daily-count"></b> kcal</p>
                     </div>
                       <div class="dashboard__content__summary__item--graph__graph">
                           <div class="dashboard__content__summary__item--graph__graph__container">
                                <canvas id="summaryChart" class="summaryChart"></canvas>
-                               <p class="summaryChart__description"><span class="summaryChart__description--percent"><b>60%</b></span></p>
+                               <p class="summaryChart__description"><span class="summaryChart__description--percent"><b class="goal-percent-chart"></b></span></p>
                                <p class="summaryChart__description--goal">{% trans 'of the goal' %}</p>
                           </div>
 
@@ -49,21 +49,21 @@
             <div class="dashboard__content__daily-summary">
                 <div class="dashboard__content__daily-summary__item dashboard__content__daily-summary__item--calories">
                     <h4>{% trans 'Calories' %}</h4>
-                    <p><span>1084</span> / 1827 kcal</p>
+                    <p><span class="kcal-daily-card-consumed"></span> / <span class="kcal-daily-card-needs"></span> kcal</p>
                 </div>
                 <div class="dashboard__content__daily-summary__item dashboard__content__daily-summary__item--carbs">
                      <h4>{% trans 'Carbs' %}</h4>
-                    <p><span>13</span> / 73 g</p>
+                    <p><span class="carbs-daily-card-consumed"></span> / <span class="carbs-daily-card-needs"></span> g</p>
                 </div>
 
                 <div class="dashboard__content__daily-summary__item dashboard__content__daily-summary__item--protein">
                     <h4>{% trans 'Protein' %}</h4>
-                    <p><span>84</span> / 121 g</p>
+                    <p><span class="protein-daily-card-consumed"></span> / <span class="protein-daily-card-needs"></span> g</p>
                 </div>
 
                  <div class="dashboard__content__daily-summary__item dashboard__content__daily-summary__item--fat">
                     <h4>{% trans 'Fat' %}</h4>
-                    <p><span>41</span> / 63 g</p>
+                    <p><span class="fat-daily-card-consumed"></span> / <span class="fat-daily-card-needs"></span> g</p>
                 </div>
             </div>
 

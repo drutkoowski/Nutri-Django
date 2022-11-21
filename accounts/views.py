@@ -1,3 +1,5 @@
+import json
+
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
@@ -5,7 +7,11 @@ from django.http import JsonResponse
 from django.db.models import Q
 
 from accounts.models import Account, UserProfile
+
+
 # Create your views here.
+from meals.models import Meal
+from workouts.models import Workout
 
 
 def home_page(request):
@@ -101,6 +107,80 @@ def check_if_taken(request):
         if check_if_user_exists is not None:
             return JsonResponse({'status': 200, 'text': 'User already exists.'})
         else:
-            return JsonResponse({'status': 404, 'text': 'User not exists.'})
+           return JsonResponse({'status': 404, 'text': 'User not exists.'})
+    else:
+        return redirect('home-page')
+
+
+def get_profile_nutrition_details(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
+        user_profile = UserProfile.objects.get(user=request.user)
+        goal_multiplier = 1.25
+        if user_profile.activity_level == 'not-active':
+            goal_multiplier = 1.25
+        elif user_profile.activity_level == 'lightly-active':
+            goal_multiplier = 1.38
+        elif user_profile.activity_level == 'active':
+            goal_multiplier = 1.52
+        elif user_profile.activity_level == 'very-active':
+            goal_multiplier = 1.65
+        # Mifflin-St Jeor Equation
+        if user_profile.gender == 'Male':
+            basal_metabolic_rate = round(float((10 * float(user_profile.weight)) + (6.25 * float(user_profile.height)) - \
+                                               (5 * float(user_profile.years_old)) + 5), 2)
+        else:
+            basal_metabolic_rate = round(float((10 * float(user_profile.weight)) + (6.25 * float(user_profile.height)) - \
+                                               (5 * float(user_profile.years_old)) - 161), 2)
+        weight_goal_metabolic_rate = basal_metabolic_rate * goal_multiplier
+        gain_loss_per_week = 0.5
+        weight_diff_kg = float(user_profile.weight) - float(user_profile.goal_kg)
+        energy_diff = weight_diff_kg * 750 / (weight_diff_kg / gain_loss_per_week)
+        final_kcal_goal = round(weight_goal_metabolic_rate + energy_diff, 2)
+        print(final_kcal_goal)
+        all_today_meals = Meal.objects.all()
+        all_today_exercises = Workout.objects.all()
+        sum_kcal_eaten = 0
+        sum_protein_eaten = 0
+        sum_carbs_eaten = 0
+        sum_fats_eaten = 0
+        sum_kcal_burnt = 0
+        if user_profile.activity_level == 'not-active':
+            activity_level = 0
+        elif user_profile.activity_level == 'lightly-active':
+            activity_level = 1
+        elif user_profile.activity_level == 'active':
+            activity_level = 2
+        elif user_profile.activity_level == 'very-active':
+            activity_level = 3
+        else:
+            activity_level = 0
+
+
+        for meal in all_today_meals:
+            if meal.kcal:
+                sum_kcal_eaten = sum_kcal_eaten + float(meal.kcal)
+            if meal.carbs:
+                sum_carbs_eaten = sum_carbs_eaten + float(meal.carbs)
+            if meal.fat:
+                sum_fats_eaten = sum_fats_eaten + float(meal.fat)
+            if meal.protein:
+                sum_protein_eaten = sum_protein_eaten + float(meal.protein)
+        for workout in all_today_exercises:
+            sum_kcal_burnt = sum_kcal_burnt + float(workout.kcal_burnt_sum)
+        print(sum_kcal_burnt, sum_kcal_eaten)
+        print(basal_metabolic_rate)
+        context = {
+            'kcalGoal': final_kcal_goal,
+            'bmr': basal_metabolic_rate,
+            'eatenKcal': round(sum_kcal_eaten, 2),
+            'eatenCarbs': round(sum_carbs_eaten, 2),
+            'eatenFats': round(sum_fats_eaten, 2),
+            'eatenProtein': round(sum_protein_eaten, 2),
+            'activityLevel': activity_level,
+            'weightKg': user_profile.weight,
+            'weightGoalKg': user_profile.goal_kg,
+            'burntKcal': sum_kcal_burnt,
+        }
+        return JsonResponse({'status': 200, 'text': 'Operation successful.', 'data': json.dumps(context)})
     else:
         return redirect('home-page')

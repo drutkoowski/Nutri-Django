@@ -68,7 +68,7 @@ class Account(AbstractBaseUser):
 
 class UserProfile(models.Model):
     activity_level = models.CharField(max_length=15)
-    goal_weight = models.CharField(max_length=5)
+    goal_weight = models.CharField(max_length=15)
     height = models.CharField(max_length=5)
     weight = models.CharField(max_length=5)
     years_old = models.CharField(max_length=3)

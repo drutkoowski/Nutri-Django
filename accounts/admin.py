@@ -16,7 +16,8 @@ class AccountAdmin(UserAdmin):
 
 
 class UserProfileAdmin(admin.ModelAdmin):
-    list_display = ("user", "activity_level", "goal_weight", 'goal_kg', "height", "weight", "years_old", "gender")
+    list_display = ("user", "activity_level", "goal_weight", 'goal_kg', "height", "weight", "years_old",
+                    "gender")
 
     def user(self, obj):
         return "\n".join(f'{obj.user}')

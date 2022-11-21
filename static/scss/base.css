@@ -177,6 +177,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   --green: rgba(8, 245, 53, 0.5);
   --green-secondary: rgba(82, 224, 64, 0.77);
   --green-third: rgb(23, 248, 0);
+  --green-darker: rgba(0,128,0, 1);
   --green-modal: #afe0a5;
   --red: rgba(241, 2, 2, 0.69);
   --red-light: rgba(241, 2, 2, 0.49);
@@ -2838,6 +2839,10 @@ label.year {
         align-self: center;
         margin-left: auto;
         margin-right: auto; }
+        @media only screen and (max-width: 84.375em) {
+          .dashboard__content__summary__item__header {
+            font-size: 2.3rem;
+            text-align: center; } }
       .dashboard__content__summary__item--meal {
         background-image: linear-gradient(to right bottom, rgba(241, 241, 241, 0.3), rgba(82, 82, 82, 0.3)), url("/static/images/add_meal.png");
         background-position: center;
@@ -2904,6 +2909,10 @@ label.year {
           @media only screen and (max-width: 93.75em) {
             .dashboard__content__summary__item--graph__content h4 {
               font-size: 1.6rem; } }
+          @media only screen and (max-width: 84.375em) {
+            .dashboard__content__summary__item--graph__content h4 {
+              text-align: center;
+              font-size: 1.4rem; } }
           @media only screen and (max-width: 75em) {
             .dashboard__content__summary__item--graph__content h4 {
               font-size: 2.3rem; } }
@@ -3013,11 +3022,14 @@ label.year {
           @media only screen and (max-width: 28.5em) {
             .dashboard__content__daily-summary__item--calories h4 {
               margin-bottom: 1rem; } }
+        .dashboard__content__daily-summary__item--calories p span:first-of-type {
+          color: var(--green-darker);
+          font-weight: bolder;
+          font-size: 4rem; }
         .dashboard__content__daily-summary__item--calories p span {
           margin-top: 1rem;
-          font-size: 4rem;
-          color: green;
-          font-weight: bolder; }
+          font-size: 3rem;
+          color: var(--black-muted); }
           @media only screen and (max-width: 93.75em) {
             .dashboard__content__daily-summary__item--calories p span {
               font-size: 3rem;
@@ -3041,19 +3053,21 @@ label.year {
           @media only screen and (max-width: 28.5em) {
             .dashboard__content__daily-summary__item--carbs h4 {
               margin-bottom: 1rem; } }
+        .dashboard__content__daily-summary__item--carbs p span:first-of-type {
+          color: var(--green-darker);
+          font-weight: bolder;
+          font-size: 4rem; }
         .dashboard__content__daily-summary__item--carbs p span {
           margin-top: 1rem;
-          font-size: 4rem;
-          color: green;
-          font-weight: bolder; }
+          font-size: 3rem;
+          color: var(--black-muted); }
           @media only screen and (max-width: 93.75em) {
             .dashboard__content__daily-summary__item--carbs p span {
               font-size: 3rem;
               margin-top: 1.5rem; } }
           @media only screen and (max-width: 28.5em) {
             .dashboard__content__daily-summary__item--carbs p span {
-              font-size: 2.4rem;
-              margin-top: 3rem; } }
+              font-size: 2.4rem; } }
       .dashboard__content__daily-summary__item--protein {
         grid-column: 3/4; }
         @media only screen and (max-width: 56.25em) {
@@ -3070,19 +3084,21 @@ label.year {
           @media only screen and (max-width: 28.5em) {
             .dashboard__content__daily-summary__item--protein h4 {
               margin-bottom: 1rem; } }
+        .dashboard__content__daily-summary__item--protein p span:first-of-type {
+          color: var(--green-darker);
+          font-weight: bolder;
+          font-size: 4rem; }
         .dashboard__content__daily-summary__item--protein p span {
           margin-top: 1rem;
-          font-size: 4rem;
-          color: green;
-          font-weight: bolder; }
+          font-size: 3rem;
+          color: var(--black-muted); }
           @media only screen and (max-width: 93.75em) {
             .dashboard__content__daily-summary__item--protein p span {
               font-size: 3rem;
               margin-top: 1.5rem; } }
           @media only screen and (max-width: 28.5em) {
             .dashboard__content__daily-summary__item--protein p span {
-              font-size: 2.4rem;
-              margin-top: 3rem; } }
+              font-size: 2.4rem; } }
       .dashboard__content__daily-summary__item--fat {
         grid-column: 4/5; }
         @media only screen and (max-width: 56.25em) {
@@ -3099,19 +3115,21 @@ label.year {
           @media only screen and (max-width: 28.5em) {
             .dashboard__content__daily-summary__item--fat h4 {
               margin-bottom: 1rem; } }
+        .dashboard__content__daily-summary__item--fat p span:first-of-type {
+          color: var(--green-darker);
+          font-weight: bolder;
+          font-size: 4rem; }
         .dashboard__content__daily-summary__item--fat p span {
           margin-top: 1rem;
-          font-size: 4rem;
-          color: green;
-          font-weight: bolder; }
+          font-size: 3rem;
+          color: var(--black-muted); }
           @media only screen and (max-width: 93.75em) {
             .dashboard__content__daily-summary__item--fat p span {
               font-size: 3rem;
               margin-top: 1.5rem; } }
           @media only screen and (max-width: 28.5em) {
             .dashboard__content__daily-summary__item--fat p span {
-              font-size: 2.4rem;
-              margin-top: 3rem; } }
+              font-size: 2.4rem; } }
   .dashboard__content__graphs {
     display: grid;
     grid-template-rows: 1fr;
