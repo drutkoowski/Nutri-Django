@@ -14,6 +14,7 @@ function handleTabletChange(e) {
   }
 }
 
+
 // summary circle chart
 const getDataSummaryChart = () => {
     const langPrefix = window.location.href.split('/')[3];
@@ -128,6 +129,7 @@ const getDataWeeklyChart = () => {
              data.forEach(day => {
                  weeklyKcalArr.push(day.dayKcal)
              })
+             const averageKcal = weeklyKcalArr.reduce((a, b) => a + b, 0) / weeklyKcalArr.length;
              let xValuesWeekGraph
              if (langPrefix === 'pl'){
                  xValuesWeekGraph = ["Pon","Wt","Śr","Czw","Pt","Sob","Nie"];
@@ -135,23 +137,44 @@ const getDataWeeklyChart = () => {
              else {
                  xValuesWeekGraph = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
              }
+             // average line
+             // average line
              let dataWeekGraph = {
-                labels: xValuesWeekGraph,
-                datasets: [{
-                  data: weeklyKcalArr,
-                  borderColor: "green",
-                }]
-            };
+                 labels: xValuesWeekGraph,
+                 datasets: [{
+                     data: weeklyKcalArr,
+                     borderColor: "green",
+                     tension: 0.1,
+                     fill: false,
+                 },]
+             };
+             const annotation = {
+                  type: 'line',
+                  borderColor: 'black',
+                  borderWidth: 1.5,
+                  label: {
+                    enabled: true,
+                    content: (ctx) => 'Average: ' + averageKcal,
+                    position: 'end'
+                  },
+                  scaleID: 'y',
+                  value: (ctx) => averageKcal
+                };
              let weekChartBox = new Chart(weekChart, {
-                type: 'line',
-                data: dataWeekGraph,
-                options: {
+                 type: 'line',
+                 data: dataWeekGraph,
+                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: {
                         legend: {
                             display: false
                         },
+                        annotation: {
+                            annotations: {
+                                annotation
+                            }
+                        }
                     }
                 }
             });
