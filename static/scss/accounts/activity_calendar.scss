@@ -36,6 +36,7 @@
      grid-column: 1 / -1;
      margin-left: 5rem;
      margin-top: 5rem;
+     transition: all .3s ease-in;
      animation-name: moveInLeft;
      animation-duration: 1s;
      animation-timing-function: ease-out;
@@ -73,8 +74,14 @@
     display: grid;
     background: #fff;
     border-radius: 10px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
     color: black;
+    -webkit-box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
+    box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
+    transition: all .3s ease-in;
+    animation-name: fade-bottom;
+    animation-duration: 1s;
+    animation-timing-function: ease-in;
     @include respond(tab-land) {
        margin: 0 3rem 5rem 3rem;
        align-self: center;
@@ -105,10 +112,10 @@
     header {
       display: flex;
       align-items: center;
-      padding: 25px 30px 10px;
+      padding: 2.5rem 3rem 1rem;
       justify-content: space-between;
       .current-date {
-        margin-left: 2.5rem;
+        margin-left: 5.5rem;
         font-size: 3.5rem;
         font-weight: bold;
         @include respond(tab-md){
@@ -141,6 +148,10 @@
           font-size: 1.9rem;
           user-select: none;
           border-radius: 50%;
+          &:hover {
+            transition: all .3s ease-in;
+            transform: scale(1.1);
+          }
           &:last-child {
             margin-right: -10px;
           }
@@ -156,7 +167,8 @@
 ///
 
 .calendar {
-  padding: 20px;
+  padding: 2rem;
+  height: 45rem;
    @include respond(phone-sm) {
      padding: 10px;
    }
@@ -167,7 +179,7 @@
     text-align: center;
   }
   .days {
-    margin-bottom: 20px;
+    margin-bottom: 2rem;
   }
   li {
     font-family: 'Poppins', sans-serif;
@@ -178,7 +190,7 @@
   .weeks {
     li {
        font-size: 1.7rem; // day names
-       font-weight: 500;
+       font-weight: bolder;
        cursor: default;
        @include respond(phone-sm) {
          font-size: 1.2rem;
@@ -217,6 +229,8 @@
     }
     li.active {
       color: #52ff00;
+      transform: scale(1.20);
+      font-weight: bold;
       &::before {
          //background: #f1e452;
       }
@@ -229,44 +243,154 @@
 }
 
 
-.modal--calendar {
-   position: absolute;
-   top:0;
-   left: 0;
-   width: 100vw;
-   height: 100vh;
-   z-index: 1000;
-   background-color: rgba(112, 111, 111, 0.7);
-   display: flex;
 
-}
 
 .modal--calendar {
-  h3 {
-    font-size: 5rem;
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  background-color: rgba(112, 111, 111, 0.7);
+  display: flex;
+  animation-name: fade-bottom;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+    &__close-button{
+      position: absolute;
+      top: 2.5rem;
+      right: 2.5rem;
+      font-size: 2rem;
+    }
   &__content {
     display: flex;
-      flex-direction: column;
-       width: 100vh;
-       height: 50vh;
-       border-radius: 20px;
-       -webkit-box-shadow: 0px 0px 7px 4px rgba(66, 68, 90, 1);
-       -moz-box-shadow: 0px 0px 7px 4px rgba(66, 68, 90, 1);
-       box-shadow: 0px 0px 7px 4px rgba(66, 68, 90, 1);
-       padding: 2rem 2rem;
-       transition: all .2s ease-in;
-       justify-self: center;
-       align-self: center;
-       margin-right: auto;
-       margin-left: auto;
-       background-color: rgb(222, 219, 219);
-  }
-  &__close-button {
-    display: flex;
-    justify-items: end;
-    align-self: end;
-    font-size: 3.5rem;
-    cursor: pointer;
+    flex-direction: column;
+    border-radius: 20px;
+    width: 70%;
+    max-height: 65%;
+    padding: 5rem 5rem;
+    transition: all .2s ease-in;
+    justify-self: center;
+    align-self: center;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: var(--green-modal);
+    color: white;
+    position: relative;
+    -webkit-box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
+    box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
+    @include respond(tab-md) {
+      max-height: 85%;
+      width: 85%;
+    }
+    @include respond(phone-lg) {
+      padding: 2rem 2rem;
+    }
+    @include respond(phone-sm) {
+      padding: 0.5rem 0.5rem;
+    }
+    &__elements {
+      margin-top: 2rem;
+      background-color: white;
+      color: var(--black-muted);
+      border-radius: 5px;
+      -webkit-box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
+      -moz-box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
+      box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
+      padding: 2rem 2rem;
+      height: auto;
+      max-height: 65rem;
+      overflow-y: auto;
+      overflow-x: hidden;
+      font-size: 2rem;
+      @include respond(phone-lg) {
+        padding: 0.5rem 0.5rem;
+      }
+
+      &__item {
+        margin-top: 2rem;
+        display: grid;
+        grid-template-columns: 1fr 0.2fr;
+        grid-template-rows: 0.3fr 1fr;
+        height: auto;
+        @include respond(tab-sm) {
+          grid-template-columns: 1fr 0.05fr !important;
+        }
+
+        &:not(&:last-of-type) {
+          border-bottom: 2px solid #f2f2f2;
+        }
+
+        &:first-of-type {
+          margin-top: 0;
+        }
+
+        div.today-workouts-list__content-summary {
+          grid-column: 1/2;
+          grid-row: 1/2;
+        }
+
+        div.remove-icon {
+          grid-column: 2/3;
+          grid-row: 1/2;
+          justify-self: end;
+          margin-right: 3rem;
+          transition: all .3s ease-in;
+          @include respond(tab-sm) {
+            margin-top: 3px;
+            margin-right: 1rem;
+          }
+
+          &:hover {
+            transform: scale(1.1)
+          }
+        }
+
+        div.today-workouts-list__workout-elements {
+          grid-column: 1/-1;
+          grid-row: 2/3;
+          border-bottom: 1px solid #f2f2f2;
+        }
+      }
+
+    }
+
+    &__elements::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      background-color: #F5F5F5;
+    }
+
+    &__elements::-webkit-scrollbar {
+      width: 7px;
+      background-color: #F5F5F5;
+    }
+
+    &__elements::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+      background-color: #afe0a5;
+    }
+
+    h1 {
+      margin-bottom: 5rem;
+      font-size: 3rem;
+      animation-name: fade-left;
+      animation-duration: 1s;
+      animation-timing-function: ease-out;
+      @include respond(phone-lg) {
+        font-size: 2.5rem;
+      }
+      @include respond(phone-md-lg) {
+        font-size: 2rem;
+      }
+      @include respond(phone-sm) {
+        font-size: 1.5rem;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+      }
+    }
   }
 }

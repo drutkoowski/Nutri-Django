@@ -112,7 +112,9 @@ const getDataSummaryChart = () => {
                 }
               }
             });
-        }
+             getDataMacroChart(kcalGoal,Math.trunc(proteinMultiplier * data.weightGoalKg),
+                 Math.trunc(carbsMultiplier * data.kcalGoal / 4),Math.trunc((kcalGoal * 0.275) / 9))
+        },
     })
 }
 
@@ -183,10 +185,99 @@ const getDataWeeklyChart = () => {
                     }
                 },
             });
-         }
+         },
      })
 }
 
+// summary weekly details chart ( 4 macro)
+const getDataMacroChart = (kcalDemand, proteinDemand, carbsDemand, fatDemand) => {
+    const langPrefix = window.location.href.split('/')[3];
+    const url = window.location.origin + `/${langPrefix}/data/get/week-daily-macros-eaten`
+    $.ajax({
+        type: 'get',
+        url: url,
+        success: function (response) {
+            const data = JSON.parse(response.data)
+            let detailsColors = []
+            let sumKcal = 0
+            let sumCarbs = 0
+            let sumProtein = 0
+            let sumFat = 0
+            let days = 0
+            data.forEach(day => {
+                days = days + 1
+                sumKcal = sumKcal + day.dayKcal
+                sumCarbs = sumCarbs + day.dayCarbs
+                sumProtein = sumProtein + day.dayProtein
+                sumFat = sumFat + day.dayFat
+            })
+            const avgKcalPercent = (((sumKcal / days) / kcalDemand) * 100).toFixed(2)
+            const avgCarbsPercent = (((sumCarbs / days) / carbsDemand) * 100).toFixed(2)
+            const avgProteinPercent = (((sumProtein / days) / proteinDemand) * 100).toFixed(2)
+            const avgFatPercent = (((sumFat / days) / fatDemand) * 100).toFixed(2)
+            let nutritionDetailsDataset = [avgKcalPercent, avgCarbsPercent, avgProteinPercent, avgFatPercent]
+            $.each(nutritionDetailsDataset, function (index, value) {
+                if (value <= 20) {
+                    detailsColors[index] = "rgba(199,239,201,0.6)"
+                }
+                if(value > 20 && value < 40) {
+                    detailsColors[index] = "rgba(199,239,201,1)"
+                }
+                else if(value >= 40 && value < 60) {
+                    detailsColors[index] = "rgba(123,241,129, 0.6)"
+                }
+                else if(value >= 60 && value < 80) {
+                    detailsColors[index] = "rgba(123,241,129, 0.8)"
+                }
+                else if(value >= 80 && value <=100) {
+                    detailsColors[index] = "rgba(123,241,129, 1)"
+                }
+                else if(value >= 101) {
+                    detailsColors[index] = "rgb(241,81,81)"
+                }
+            })
+            let nutritionDetailsData = {
+                labels: [
+                    "Kcal Goal", "Carbs", "Protein", "Fats",
+                ],
+                datasets: [
+                {
+                  data: nutritionDetailsDataset,
+                  backgroundColor: detailsColors,
+                }]
+            }
+              let nutritionDetailsChartBox = new Chart(nutritionDetails, {
+                type: 'bar',
+                data: nutritionDetailsData,
+                options: {
+                    scales: {
+                        x: {
+                            suggestedMin: 0,
+                            suggestedMax: 100,
+                            title: {
+                                text: "Percent (%)",
+                                display: true,
+                            }
+                        }
+                    },
+                    indexAxis: indexAxis,
+                    elements: {
+                      bar: {
+                        borderWidth: 2,
+                        borderRadius: 10,
+                      }
+                    },
+                    responsive: true,
+                    plugins: {
+                      legend: {
+                        display: false
+                      },
+                    },
+              }
+            })
+        },
+    })
+}
 // Initial
     // media query check
     handleTabletChange(mediaQuery)
@@ -197,71 +288,7 @@ const getDataWeeklyChart = () => {
 
 
 let detailsColors = []
-let nutritionDetailsDataset = [60, 40, 30, 20, 90, 83, 63, 33, 3]
 
-
-
-
-$.each(nutritionDetailsDataset, function (index, value) {
-    if (value <= 20) {
-        detailsColors[index] = "rgba(199,239,201,0.6)"
-    }
-    if(value > 20 && value < 40) {
-        detailsColors[index] = "rgba(199,239,201,1)"
-    }
-    else if(value >= 40 && value < 60) {
-        detailsColors[index] = "rgba(123,241,129, 0.6)"
-    }
-    else if(value >= 60 && value < 80) {
-        detailsColors[index] = "rgba(123,241,129, 0.8)"
-    }
-    else if(value >= 80 && value <=100) {
-        detailsColors[index] = "rgba(123,241,129, 1)"
-    }
-})
-
-
-let nutritionDetailsData = {
-    labels: [
-        "Fiber", "Saturated Fat", "Cholesterol", "Sodium", "Sugar", "Potassium", "Iron", "Calcium", "Magnesium"
-    ],
-    datasets: [
-    {
-      data: nutritionDetailsDataset,
-      backgroundColor: detailsColors,
-    }]
-}
-
-
-let nutritionDetailsChartBox = new Chart(nutritionDetails, {
-    type: 'bar',
-    data: nutritionDetailsData,
-    options: {
-        scales: {
-            x: {
-                suggestedMin: 0,
-                suggestedMax: 100,
-                title: {
-                    text: "Percent (%)",
-                    display: true,
-                }
-            }
-        },
-        indexAxis: indexAxis,
-        elements: {
-          bar: {
-            borderWidth: 2,
-            borderRadius: 10,
-          }
-        },
-        responsive: true,
-        plugins: {
-          legend: {
-            display: false
-          },
-        },
-  }
-})
 
 
 window.onresize = function(){ location.reload(); }
@@ -271,7 +298,7 @@ const graphDate = document.querySelector('.graph-date')
 graphDate.textContent = `${gettext('Summary')} ${todayDate}`
 
 const meals = document.querySelector('.dashboard__content__summary__item--meal')
-meals.addEventListener('click', e => {
+meals.addEventListener('click', () => {
     const langPrefix = window.location.href.split('/')[3];
     location.href = location.origin + `/${langPrefix}/meals`
 })

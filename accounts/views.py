@@ -166,9 +166,9 @@ def get_profile_nutrition_details(request):
         for workout in all_today_exercises:
             sum_kcal_burnt = sum_kcal_burnt + float(workout.kcal_burnt_sum)
         context = {
-            'kcalGoal': final_kcal_goal,
             'bmr': basal_metabolic_rate,
             'eatenKcal': round(sum_kcal_eaten, 2),
+            'kcalGoal': final_kcal_goal,
             'eatenCarbs': round(sum_carbs_eaten, 2),
             'eatenFats': round(sum_fats_eaten, 2),
             'eatenProtein': round(sum_protein_eaten, 2),
@@ -202,3 +202,59 @@ def get_weekly_calories_info(request):
             weekly_kcal_info.append(daily_dict)
         data = json.dumps(weekly_kcal_info)
         return JsonResponse({'status': 200, 'text': 'Operation successful.', 'data': data})
+
+
+@login_required(login_url='login')
+def week_daily_macros_eaten(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
+        user_profile = UserProfile.objects.get(user=request.user)
+        from datetime import datetime
+        dt = datetime.now()
+        week_day_today = dt.weekday()
+        weekly_kcal_info = []
+        for i in range(0, week_day_today + 1):
+            date_of_week = date_for_weekday(i)
+            meals_on_week = Meal.objects.filter(created_by=user_profile, created_at__contains=date_of_week).all()
+            kcal_eaten_sum = 0
+            carbs_eaten_sum = 0
+            protein_eaten_sum = 0
+            fat_eaten_sum = 0
+            for meal in meals_on_week:
+                kcal_eaten_sum = kcal_eaten_sum + float(meal.kcal)
+                carbs_eaten_sum = carbs_eaten_sum + float(meal.carbs)
+                protein_eaten_sum = protein_eaten_sum + float(meal.protein)
+                fat_eaten_sum = fat_eaten_sum + float(meal.fat)
+            daily_dict = {
+                'dayKcal': round(kcal_eaten_sum, 2),
+                'dayCarbs': round(carbs_eaten_sum, 2),
+                'dayProtein': round(protein_eaten_sum, 2),
+                'dayFat': round(fat_eaten_sum, 2),
+            }
+            weekly_kcal_info.append(daily_dict)
+        data = json.dumps(weekly_kcal_info)
+        return JsonResponse({'status': 200, 'text': 'Operation successful.', 'data': data})
+
+
+@login_required(login_url='login')
+def get_profile_activities_date(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
+        user_profile = UserProfile.objects.get(user=request.user)
+        all_activity_dates = []
+        meals = Meal.objects.filter(created_by=user_profile).all()
+        exercises = Workout.objects.filter(created_by=user_profile).all()
+        for meal in meals:
+            day = meal.created_at.day
+            month = meal.created_at.month
+            year = meal.created_at.year
+            date = f"{year}-{month}-{day}"
+            if date not in all_activity_dates:
+                all_activity_dates.append(date)
+        for exercise in exercises:
+            day = exercise.created_at.day
+            month = exercise.created_at.month
+            year = exercise.created_at.year
+            date = f"{year}-{month}-{day}"
+            if date not in all_activity_dates:
+                all_activity_dates.append(date)
+        data = json.dumps(all_activity_dates)
+        return JsonResponse({'status': 200, 'text': 'Operation successful.', "data": data})

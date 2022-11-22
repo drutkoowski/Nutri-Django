@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-22 13:24+0100\n"
+"POT-Creation-Date: 2022-11-22 20:23+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,6 +27,57 @@ msgstr "Polski"
 #: .\Nutri\settings.py:156
 msgid "English"
 msgstr "Angielski"
+
+#: .\templates\accounts\activity_calendar.html:17
+msgid "Activity Calendar"
+msgstr "Kalendarz Aktywności"
+
+#: .\templates\accounts\activity_calendar.html:18
+msgid "There you can watch your nutrition and activity history, day by day"
+msgstr "Tutaj możesz sprawdzić swoją historię odżywiania oraz aktywności, dzień po dniu"
+
+#: .\templates\accounts\activity_calendar.html:31
+#: .\venv\Lib\site-packages\django\utils\dates.py:22
+msgid "Sun"
+msgstr "Nie"
+
+#: .\templates\accounts\activity_calendar.html:32
+#: .\venv\Lib\site-packages\django\utils\dates.py:16
+msgid "Mon"
+msgstr "Pon"
+
+#: .\templates\accounts\activity_calendar.html:33
+#: .\venv\Lib\site-packages\django\utils\dates.py:17
+msgid "Tue"
+msgstr "Wt"
+
+#: .\templates\accounts\activity_calendar.html:34
+#: .\venv\Lib\site-packages\django\utils\dates.py:18
+msgid "Wed"
+msgstr "Śr"
+
+#: .\templates\accounts\activity_calendar.html:35
+#: .\venv\Lib\site-packages\django\utils\dates.py:19
+msgid "Thu"
+msgstr "Czw"
+
+#: .\templates\accounts\activity_calendar.html:36
+#: .\venv\Lib\site-packages\django\utils\dates.py:20
+msgid "Fri"
+msgstr "Pt"
+
+#: .\templates\accounts\activity_calendar.html:37
+#: .\venv\Lib\site-packages\django\utils\dates.py:21
+msgid "Sat"
+msgstr "Sob"
+
+#: .\templates\accounts\activity_calendar.html:41
+msgid "NOTE: Saved Activities/Meals are highlighted by green dots"
+msgstr "UWAGA: Zapisane Aktywności/Posiłki są zaznaczone zielonymi kropkami"
+
+#: .\templates\accounts\activity_calendar.html:41
+msgid "Click at them to get more information"
+msgstr "Kliknij na nie, aby uzyskać więcej informacji"
 
 #: .\templates\accounts\dashboard.html:15
 msgid "Welcome back"
@@ -98,7 +149,9 @@ msgid "Fat"
 msgstr "Tłuszcze"
 
 #: .\templates\accounts\dashboard.html:72
-msgid "Nutrition Daily Details"
+#, fuzzy
+#| msgid "Nutrition Daily Details"
+msgid "Nutrition Weekly Details"
 msgstr "Szczegóły dzienniego odżywiania"
 
 #: .\templates\accounts\dashboard.html:78
@@ -106,8 +159,12 @@ msgid "Weekly Calorie Graph"
 msgstr "Tygodniowy wykres kaloryczny"
 
 #: .\templates\accounts\dashboard.html:82
-msgid "Weekly average kcal income is shown in grey on the chart"
-msgstr "Tygodniowa średnia spożytych kalorii jest zaznaczona kolorem szarym na wykresie"
+#, fuzzy
+#| msgid "Weekly average kcal income is shown in grey on the chart"
+msgid "Weekly average kcal income is shown by golden line on the chart"
+msgstr ""
+"Tygodniowa średnia spożytych kalorii jest zaznaczona kolorem szarym na "
+"wykresie"
 
 #: .\templates\accounts\dashboard_stats.html:15
 msgid "YOUR NUTRI PROFILE STATS"
@@ -1372,107 +1429,79 @@ msgstr ""
 
 #: .\venv\Lib\site-packages\django\utils\dates.py:7
 msgid "Monday"
-msgstr ""
+msgstr "Poniedziałek"
 
 #: .\venv\Lib\site-packages\django\utils\dates.py:8
 msgid "Tuesday"
-msgstr ""
+msgstr "Wtorek"
 
 #: .\venv\Lib\site-packages\django\utils\dates.py:9
 msgid "Wednesday"
-msgstr ""
+msgstr "Środa"
 
 #: .\venv\Lib\site-packages\django\utils\dates.py:10
 msgid "Thursday"
-msgstr ""
+msgstr "Czwartek"
 
 #: .\venv\Lib\site-packages\django\utils\dates.py:11
 msgid "Friday"
-msgstr ""
+msgstr "Piątek"
 
 #: .\venv\Lib\site-packages\django\utils\dates.py:12
 msgid "Saturday"
-msgstr ""
+msgstr "Sobota"
 
 #: .\venv\Lib\site-packages\django\utils\dates.py:13
 msgid "Sunday"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:16
-msgid "Mon"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:17
-msgid "Tue"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:18
-msgid "Wed"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:19
-msgid "Thu"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:20
-msgid "Fri"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:21
-msgid "Sat"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:22
-msgid "Sun"
-msgstr ""
+msgstr "Niedziela"
 
 #: .\venv\Lib\site-packages\django\utils\dates.py:25
 msgid "January"
-msgstr ""
+msgstr "Styczeń"
 
 #: .\venv\Lib\site-packages\django\utils\dates.py:26
 msgid "February"
-msgstr ""
+msgstr "Luty"
 
 #: .\venv\Lib\site-packages\django\utils\dates.py:27
 msgid "March"
-msgstr ""
+msgstr "Marzec"
 
 #: .\venv\Lib\site-packages\django\utils\dates.py:28
 msgid "April"
-msgstr ""
+msgstr "Kwiecień"
 
 #: .\venv\Lib\site-packages\django\utils\dates.py:29
 msgid "May"
-msgstr ""
+msgstr "Maj"
 
 #: .\venv\Lib\site-packages\django\utils\dates.py:30
 msgid "June"
-msgstr ""
+msgstr "Czerwiec"
 
 #: .\venv\Lib\site-packages\django\utils\dates.py:31
 msgid "July"
-msgstr ""
+msgstr "Lipiec"
 
 #: .\venv\Lib\site-packages\django\utils\dates.py:32
 msgid "August"
-msgstr ""
+msgstr "Sierpień"
 
 #: .\venv\Lib\site-packages\django\utils\dates.py:33
 msgid "September"
-msgstr ""
+msgstr "Wrzesień"
 
 #: .\venv\Lib\site-packages\django\utils\dates.py:34
 msgid "October"
-msgstr ""
+msgstr "Październik"
 
 #: .\venv\Lib\site-packages\django\utils\dates.py:35
 msgid "November"
-msgstr ""
+msgstr "Listopad"
 
 #: .\venv\Lib\site-packages\django\utils\dates.py:36
 msgid "December"
-msgstr ""
+msgstr "Grudzień"
 
 #: .\venv\Lib\site-packages\django\utils\dates.py:39
 msgid "jan"

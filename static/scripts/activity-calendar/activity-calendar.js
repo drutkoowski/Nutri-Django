@@ -1,49 +1,61 @@
 const daysTag = document.querySelector(".days")
-
-const eventList = [new Date('2022-10-22'), new Date('2022-10-24'), new Date('2022-09-01')]
 currentDate = document.querySelector(".current-date")
 prevNextIcon = document.querySelectorAll(".icons span");
 
+function hideModal(modalClass) {
+    $("." + modalClass).fadeOut(900, e => {
+         const modal = document.querySelector(`.${modalClass}`)
+         modal.classList.add('not-visible')
+         modal.style.removeProperty('display')
+    });
+}
 
+let openModal = function (modalClass) {
+        let div = document.querySelector(modalClass);
+        if (modalClass === '.modal-queued__today-meals-list'){
+            updateSummary()
+        }
+        div.classList.remove('not-visible')
+        div.classList.add('modal-active')
+        // let Mwidth = div.offsetWidth;
+        // let Mheight = div.offsetHeight;
+        // let Wwidth = window.innerWidth;
+        // let Wheight = window.innerHeight;
+        // document.querySelector(modalClass).classList.add('modal-active')
+        // div.style.position = "absolute";
+        // div.style.top = ((Wheight - Mheight ) / 2 +window.pageYOffset ) + "px";
+        // div.style.left = ((Wwidth - Mwidth) / 2 +window.pageXOffset ) + "px";
+        // $(modalClass).on('scroll touchmove mousewheel', function(e){
+        //   e.preventDefault();
+        //   e.stopPropagation();
+        //   return false;
+        // })
+};
 
 // getting new date, current year and month
 let date = new Date(),
-currYear = date.getFullYear(),
+currYear = date.getFullYear()
 currMonth = date.getMonth();
 // storing full name of all months in array
-const months = ["January", "February", "March", "April", "May", "June", "July",
+const langPrefix = window.location.href.split('/')[3];
+let months
+if (langPrefix === 'pl') {
+    months = ["Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec", "Lipiec",
+              "Sierpień", "Wrzesień", "Październik", "Listopad", "Grudzień"];
+}
+else {
+    months = ["January", "February", "March", "April", "May", "June", "July",
               "August", "September", "October", "November", "December"];
+}
 
 
 // modals and listeners
-const modal = document.querySelector('.modal--calendar')
-const modalContent = document.querySelector('.modal__calendar__activities-container')
-const modalClose = document.querySelector('.modal--calendar__close-button')
-
-const modalHeading = document.querySelector('.modal--calendar__heading')
-
-modalClose.addEventListener('click', e => {
-   modal.classList.add('not-visible')
-
-})
-
-const addContentToModal = (date, items) => {
-  modalHeading.innerHTML = `Your Nutri activities on ${date}.`
-  modalContent.innerHTML = ``
-  modalContent.insertAdjacentHTML('beforeend', items)
-}
 
 const addEventListeners = () => {
 
   [...document.querySelectorAll('.isEvent')].forEach(function(item) {
     item.addEventListener('click', function() {
-      let itemsToAdd = `<ul>
-        <li>Workout 30 mins</li>
-        <li>Dumplings x7<li>
-      </ul>`
-      let dateClass = item.classList[0] === 'active' ? item.classList[1] : item.classList[0]
-      addContentToModal(dateClass, itemsToAdd)
-      modal.classList.remove('not-visible')
+
     });
 
    });
@@ -59,31 +71,45 @@ const renderCalendar = () => {
     lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate(), // getting last date of month
     lastDayofMonth = new Date(currYear, currMonth, lastDateofMonth).getDay(), // getting last day of month
     lastDateofLastMonth = new Date(currYear, currMonth, 0).getDate(); // getting last date of previous month
-    let liTag = "";
+    const langPrefix = window.location.href.split('/')[3];
+     const url = window.location.origin + `/${langPrefix}/data/get/profile-activities-date`
+    $.ajax({
+        type: 'get',
+        url: url,
+        success: function (response){
+            const data = JSON.parse(response.data)
+            const dates = data
+            const eventList = []
+            dates.forEach(ev => {
+                const date = new Date(ev)
+                eventList.push(date)
+            })
+            let liTag = "";
+            for (let i = firstDayofMonth; i > 0; i--) { // creating li of previous month last days
+                liTag += `<li class="inactive">${lastDateofLastMonth - i + 1}</li>`;
+            }
+            for (let i = 1; i <= lastDateofMonth; i++) { // creating li of all days of current month
+                // adding active class to li if the current day, month, and year matched
+                let isToday = i === date.getDate() && currMonth === new Date().getMonth() && currYear === new Date().getFullYear() ? "active" : "";
+                let dayClass = `${i}-${currMonth+1}-${currYear}`
+                let dayDate = new Date(`${currYear}-${currMonth+1}-${i}`)
+                const isEvent = eventList.find(date => date.toDateString() === dayDate.toDateString()) ? 'isEvent' : ''
+                if (isEvent === 'isEvent'){
+                  liTag += `<li class="${isToday} ${dayClass} ${isEvent}">${i}<span></span></li>`;
+                }
+                else {
+                    liTag += `<li class="${isToday} ${dayClass}">${i}</li>`;
+                }
 
-    for (let i = firstDayofMonth; i > 0; i--) { // creating li of previous month last days
-        liTag += `<li class="inactive">${lastDateofLastMonth - i + 1}</li>`;
-    }
-    for (let i = 1; i <= lastDateofMonth; i++) { // creating li of all days of current month
-        // adding active class to li if the current day, month, and year matched
-        let isToday = i === date.getDate() && currMonth === new Date().getMonth() && currYear === new Date().getFullYear() ? "active" : "";
-        let dayClass = `${i}-${currMonth+1}-${currYear}`
-        let dayDate = new Date(`${currYear}-${currMonth+1}-${i}`)
-        const isEvent = eventList.find(date => date.toDateString() === dayDate.toDateString()) ? 'isEvent' : ''
-        if (isEvent === 'isEvent'){
-          liTag += `<li class="${isToday} ${dayClass} ${isEvent}">${i}<span></span></li>`;
+            }
+            for (let i = lastDayofMonth; i < 6; i++) { // creating li of next month first days
+                liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`
+            }
+            currentDate.innerText = `${months[currMonth]} ${currYear}`; // passing current mon and yr as currentDate text
+            daysTag.innerHTML = liTag;
+            addEventListeners()
         }
-        else {
-            liTag += `<li class="${isToday} ${dayClass}">${i}</li>`;
-        }
-
-    }
-    for (let i = lastDayofMonth; i < 6; i++) { // creating li of next month first days
-        liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`
-    }
-    currentDate.innerText = `${months[currMonth]} ${currYear}`; // passing current mon and yr as currentDate text
-    daysTag.innerHTML = liTag;
-    addEventListeners()
+    })
 }
 
 

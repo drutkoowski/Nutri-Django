@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load sass_tags %}
+{% load i18n %}
 {% block styles %}
      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
 {% endblock %}
@@ -13,8 +14,8 @@
         <div class="activity-calendar">
             {% include 'components/sidebar/sidebar_small.html' %}
             <div class="activity-calendar__welcome-text">
-                <h1>Activity Calendar</h1>
-                <p>There you can watch your nutrition and workout history, day by day.</p>
+                <h1>{% trans 'Activity Calendar' %}</h1>
+                <p>{% trans 'There you can watch your nutrition and activity history, day by day' %}.</p>
                 {% include 'accounts/navbar.html' %}
             </div>
             <div class="activity-calendar__container fade-bottom">
@@ -27,25 +28,44 @@
               </header>
               <div class="calendar">
                 <ul class="weeks">
-                  <li>Sun</li>
-                  <li>Mon</li>
-                  <li>Tue</li>
-                  <li>Wed</li>
-                  <li>Thu</li>
-                  <li>Fri</li>
-                  <li>Sat</li>
+                  <li>{% trans 'Sun' %}</li>
+                  <li>{% trans 'Mon' %}</li>
+                  <li>{% trans 'Tue' %}</li>
+                  <li>{% trans 'Wed' %}</li>
+                  <li>{% trans 'Thu' %}</li>
+                  <li>{% trans 'Fri' %}</li>
+                  <li>{% trans 'Sat' %}</li>
                 </ul>
                 <ul class="days"></ul>
               </div>
-                 <small>NOTE: Saved Workouts/Meals are highlighted by green dots. <br>Click at them to get more information.</small>
+                 <small>{% trans 'NOTE: Saved Activities/Meals are highlighted by green dots' %}. <br>{% trans 'Click at them to get more information' %}.</small>
             </div>
         </div>
     </div>
         <div class="modal--calendar not-visible">
-            <div class="modal--calendar__content">
-                <div class="modal--calendar__close-button">&times;</div>
-                <h3 class="modal--calendar__heading"></h3>
-                <div class="modal__calendar__activities-container"></div>
-            </div>
-        </div>
+    <div class="modal--calendar__content">
+        <div class="modal--calendar__close-button">&times;</div>
+        <h1 class="modal--calendar--heading">{% trans 'Your added activities for' %}</h1>
+               <div class="modal--calendar__daily-summary">
+                  <div>Kcal: <span class="kcal"></span></div>
+                  <div>{% trans 'Duration' %}: <span class="duration"></span></div>
+              </div>
+
+              <div class="modal--calendar__content__elements">
+
+                      <div class="modal--calendar__content__elements__item">
+                          <div class="remove-icon filter-red remove-workout"></div>
+                          <div class="modal--calendar__content-summary">
+                              <h2 class="workout-counter">{% trans 'Activity #' %}{{ forloop.counter }}</h2>
+                              <div>{% trans 'Summary Kcal' %}: <span></span> kcal</div>
+                              <div>{% trans 'Summary Duration' %}: <span></span> min</div>
+                              <div>{% trans 'Created at' %}: <span></span></div>
+                          </div>
+                          <div class="modal--calendar__content__workout-elements">
+
+                          </div>
+                      </div>
+              </div>
+    </div>
+</div>
 {% endblock %}
