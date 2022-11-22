@@ -1,7 +1,7 @@
 let myChart = document.getElementById('summaryChart').getContext('2d')
 let weekChart = document.getElementById('summaryWeekly').getContext('2d')
 let nutritionDetails = document.getElementById('summaryNutritionDetails').getContext('2d')
-const xValuesWeekGraph = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+
 
 // watch if media query is true
 const mediaQuery = window.matchMedia('(max-width: 62.5em)')
@@ -46,7 +46,13 @@ const getDataSummaryChart = () => {
             }
             // calculating output
             const goalPercent = ((eatenKcal / kcalGoal) * 100).toFixed(2)
-            const percentDiff = 100 - goalPercent
+            let percentDiff
+            if (goalPercent < 100){
+                percentDiff = 100 - goalPercent
+            }
+            else if (goalPercent >= 100) {
+                percentDiff = 0
+            }
             // inserting data to chart and info box
             const percentInfo = document.querySelector('.goal-percent-chart')
             const goalText = document.querySelector('.kcal-daily-count')
@@ -70,7 +76,7 @@ const getDataSummaryChart = () => {
             goalText.innerHTML = `${kcalGoal}`
             eatenText.innerHTML = `${eatenKcal}`
             burntText.innerHTML = `${burntKcal}`
-            remainingText.innerHTML = `${kcalGoal - eatenKcal}`
+            remainingText.innerHTML = `${Math.round(kcalGoal - eatenKcal)}`
             percentInfo.innerHTML = `${goalPercent}%`
             // demand card part
             kcalNeedsCard.innerHTML = `${Math.trunc(kcalGoal)}`
@@ -109,27 +115,62 @@ const getDataSummaryChart = () => {
     })
 }
 
+// summary weekly chart
+const getDataWeeklyChart = () => {
+     const langPrefix = window.location.href.split('/')[3];
+     const url = window.location.origin + `/${langPrefix}/data/get/weekly-calories-info`
+     $.ajax({
+         type: 'get',
+         url: url,
+         success: function (response) {
+             const data = JSON.parse(response.data)
+             const weeklyKcalArr = []
+             data.forEach(day => {
+                 weeklyKcalArr.push(day.dayKcal)
+             })
+             let xValuesWeekGraph
+             if (langPrefix === 'pl'){
+                 xValuesWeekGraph = ["Pon","Wt","Śr","Czw","Pt","Sob","Nie"];
+             }
+             else {
+                 xValuesWeekGraph = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+             }
+             let dataWeekGraph = {
+                labels: xValuesWeekGraph,
+                datasets: [{
+                  data: weeklyKcalArr,
+                  borderColor: "green",
+                }]
+            };
+             let weekChartBox = new Chart(weekChart, {
+                type: 'line',
+                data: dataWeekGraph,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                    }
+                }
+            });
+         }
+     })
+}
 
 // Initial
     // media query check
     handleTabletChange(mediaQuery)
     // graphs data init
     getDataSummaryChart()
+    getDataWeeklyChart()
 // End Initial
 
 
 let detailsColors = []
 let nutritionDetailsDataset = [60, 40, 30, 20, 90, 83, 63, 33, 3]
 
-
-
-let dataWeekGraph = {
-    labels: xValuesWeekGraph,
-    datasets: [{
-      data: [2860, 2140, 3060, 2777, 1895, 2345, 2753],
-      borderColor: "green",
-    }]
-};
 
 
 
@@ -163,21 +204,6 @@ let nutritionDetailsData = {
     }]
 }
 
-
-
-let weekChartBox = new Chart(weekChart, {
-  type: 'line',
-  data: dataWeekGraph,
-  options: {
-  	responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-            legend: {
-                display: false
-            },
-        }
-  }
-});
 
 let nutritionDetailsChartBox = new Chart(nutritionDetails, {
     type: 'bar',

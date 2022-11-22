@@ -13,5 +13,6 @@ urlpatterns = [
     # ajax views
     path('data/login-user', views.login_user, name='login-user'),
     path('data/check-if-taken', views.check_if_taken, name='check-if-taken'),
-    path('data/get/profile-nutrition-details', views.get_profile_nutrition_details, name='get-nutrition-details')
+    path('data/get/profile-nutrition-details', views.get_profile_nutrition_details, name='get-nutrition-details'),
+    path('data/get/weekly-calories-info', views.get_weekly_calories_info, name='get-weekly-calories-info')
 ]

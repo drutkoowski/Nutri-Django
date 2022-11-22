@@ -5,13 +5,12 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.db.models import Q
-
+from .utils import date_for_weekday
 from accounts.models import Account, UserProfile
-
-
-# Create your views here.
 from meals.models import Meal
 from workouts.models import Workout
+
+# Create your views here.
 
 
 def home_page(request):
@@ -112,6 +111,7 @@ def check_if_taken(request):
         return redirect('home-page')
 
 
+@login_required(login_url='login')
 def get_profile_nutrition_details(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
         user_profile = UserProfile.objects.get(user=request.user)
@@ -136,9 +136,9 @@ def get_profile_nutrition_details(request):
         weight_diff_kg = float(user_profile.weight) - float(user_profile.goal_kg)
         energy_diff = weight_diff_kg * 750 / (weight_diff_kg / gain_loss_per_week)
         final_kcal_goal = round(weight_goal_metabolic_rate + energy_diff, 2)
-        print(final_kcal_goal)
-        all_today_meals = Meal.objects.all()
-        all_today_exercises = Workout.objects.all()
+        from datetime import datetime
+        all_today_meals = Meal.objects.filter(created_by=user_profile, created_at__contains=datetime.today().date()).all()
+        all_today_exercises = Workout.objects.filter(created_by=user_profile, created_at__contains=datetime.today().date()).all()
         sum_kcal_eaten = 0
         sum_protein_eaten = 0
         sum_carbs_eaten = 0
@@ -154,8 +154,6 @@ def get_profile_nutrition_details(request):
             activity_level = 3
         else:
             activity_level = 0
-
-
         for meal in all_today_meals:
             if meal.kcal:
                 sum_kcal_eaten = sum_kcal_eaten + float(meal.kcal)
@@ -167,8 +165,6 @@ def get_profile_nutrition_details(request):
                 sum_protein_eaten = sum_protein_eaten + float(meal.protein)
         for workout in all_today_exercises:
             sum_kcal_burnt = sum_kcal_burnt + float(workout.kcal_burnt_sum)
-        print(sum_kcal_burnt, sum_kcal_eaten)
-        print(basal_metabolic_rate)
         context = {
             'kcalGoal': final_kcal_goal,
             'bmr': basal_metabolic_rate,
@@ -184,3 +180,25 @@ def get_profile_nutrition_details(request):
         return JsonResponse({'status': 200, 'text': 'Operation successful.', 'data': json.dumps(context)})
     else:
         return redirect('home-page')
+
+
+@login_required(login_url='login')
+def get_weekly_calories_info(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
+        user_profile = UserProfile.objects.get(user=request.user)
+        from datetime import datetime
+        dt = datetime.now()
+        week_day_today = dt.weekday()
+        weekly_kcal_info = []
+        for i in range(0, week_day_today + 1):
+            date_of_week = date_for_weekday(i)
+            meals_on_week = Meal.objects.filter(created_by=user_profile, created_at__contains=date_of_week).all()
+            kcal_eaten_sum = 0
+            for meal in meals_on_week:
+                kcal_eaten_sum = kcal_eaten_sum + float(meal.kcal)
+            daily_dict = {
+                'dayKcal': kcal_eaten_sum
+            }
+            weekly_kcal_info.append(daily_dict)
+        data = json.dumps(weekly_kcal_info)
+        return JsonResponse({'status': 200, 'text': 'Operation successful.', 'data': data})
