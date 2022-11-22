@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-19 18:40+0100\n"
+"POT-Creation-Date: 2022-11-22 13:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -104,6 +104,10 @@ msgstr "Szczegóły dzienniego odżywiania"
 #: .\templates\accounts\dashboard.html:78
 msgid "Weekly Calorie Graph"
 msgstr "Tygodniowy wykres kaloryczny"
+
+#: .\templates\accounts\dashboard.html:82
+msgid "Weekly average kcal income is shown in grey on the chart"
+msgstr "Tygodniowa średnia spożytych kalorii jest zaznaczona kolorem szarym na wykresie"
 
 #: .\templates\accounts\dashboard_stats.html:15
 msgid "YOUR NUTRI PROFILE STATS"
@@ -286,8 +290,9 @@ msgstr "Statystyki"
 
 #: .\templates\accounts\navbar.html:21
 #: .\templates\accounts\navbar_small.html:21
-msgid "Workouts"
-msgstr "Treningi"
+#: .\templates\components\sidebar\sidebar.html:29
+msgid "Activity"
+msgstr "Aktywności"
 
 #: .\templates\accounts\navbar.html:22
 #: .\templates\accounts\navbar_small.html:22
@@ -296,9 +301,8 @@ msgstr "Plany"
 
 #: .\templates\accounts\navbar.html:23
 #: .\templates\accounts\navbar_small.html:23
-#: .\templates\components\sidebar\sidebar.html:29
-msgid "Activity"
-msgstr "Aktywności"
+msgid "Calendar"
+msgstr ""
 
 #: .\templates\accounts\navbar.html:24
 #: .\templates\accounts\navbar_small.html:24
@@ -505,11 +509,6 @@ msgid "Add Meal"
 msgstr "Dodaj posiłek"
 
 #: .\templates\meals\meals.html:23
-#, fuzzy
-#| msgid ""
-#| "Fill your day with the foods you eat today and find out more about their "
-#| "calorie content and the ingredients they contain such as protein, "
-#| "carbohydrates and many more."
 msgid ""
 "Fill your day with the foods you eat today and find out more about their "
 "calorie content and the ingredients they contain such as protein,"
@@ -1891,6 +1890,9 @@ msgid ""
 "Set the precision for numeric computations in the SASS processor. Default: "
 "settings.SASS_PRECISION."
 msgstr ""
+
+#~ msgid "Workouts"
+#~ msgstr "Treningi"
 
 #~ msgid "Exercises"
 #~ msgstr "Ćwiczenia"

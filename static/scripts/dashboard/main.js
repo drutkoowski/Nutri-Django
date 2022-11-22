@@ -144,14 +144,19 @@ const getDataWeeklyChart = () => {
                  datasets: [{
                      data: weeklyKcalArr,
                      borderColor: "green",
-                     tension: 0.1,
-                     fill: false,
+                     lineTension: 1,
+                     tension: 0.8,
+                     pointRadius: 0,
+                     borderWidth: 4,
+                     pointHoverRadius: 0,
+                     backgroundColor: 'rgb(126,238,146)',
+                     fill: true,
                  },]
              };
              const annotation = {
                   type: 'line',
-                  borderColor: 'black',
-                  borderWidth: 1.5,
+                  borderColor: 'rgb(252,218,0)',
+                  borderWidth: 2,
                   label: {
                     enabled: true,
                     content: (ctx) => 'Average: ' + averageKcal,
@@ -176,7 +181,7 @@ const getDataWeeklyChart = () => {
                             }
                         }
                     }
-                }
+                },
             });
          }
      })

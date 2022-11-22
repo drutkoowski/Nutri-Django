@@ -674,10 +674,12 @@
 }
 
 .summaryWeekly {
-  margin-bottom: 5rem;
-
+  &__legend{
+    margin-left: 3rem;
+    font-size: 1.5rem;
+  }
   &__container {
-    margin: 2rem auto 0 auto;
+    margin: 1rem auto 1rem auto;
     height: 30rem;
     width: 100%;
   }
