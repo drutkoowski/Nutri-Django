@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-22 20:23+0100\n"
+"POT-Creation-Date: 2022-11-23 21:22+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,56 +28,88 @@ msgstr "Polski"
 msgid "English"
 msgstr "Angielski"
 
-#: .\templates\accounts\activity_calendar.html:17
+#: .\templates\accounts\activity_calendar.html:18
 msgid "Activity Calendar"
 msgstr "Kalendarz Aktywności"
 
-#: .\templates\accounts\activity_calendar.html:18
+#: .\templates\accounts\activity_calendar.html:19
 msgid "There you can watch your nutrition and activity history, day by day"
-msgstr "Tutaj możesz sprawdzić swoją historię odżywiania oraz aktywności, dzień po dniu"
+msgstr ""
+"Tutaj możesz sprawdzić swoją historię odżywiania oraz aktywności, dzień po "
+"dniu"
 
-#: .\templates\accounts\activity_calendar.html:31
+#: .\templates\accounts\activity_calendar.html:32
 #: .\venv\Lib\site-packages\django\utils\dates.py:22
 msgid "Sun"
 msgstr "Nie"
 
-#: .\templates\accounts\activity_calendar.html:32
+#: .\templates\accounts\activity_calendar.html:33
 #: .\venv\Lib\site-packages\django\utils\dates.py:16
 msgid "Mon"
 msgstr "Pon"
 
-#: .\templates\accounts\activity_calendar.html:33
+#: .\templates\accounts\activity_calendar.html:34
 #: .\venv\Lib\site-packages\django\utils\dates.py:17
 msgid "Tue"
 msgstr "Wt"
 
-#: .\templates\accounts\activity_calendar.html:34
+#: .\templates\accounts\activity_calendar.html:35
 #: .\venv\Lib\site-packages\django\utils\dates.py:18
 msgid "Wed"
 msgstr "Śr"
 
-#: .\templates\accounts\activity_calendar.html:35
+#: .\templates\accounts\activity_calendar.html:36
 #: .\venv\Lib\site-packages\django\utils\dates.py:19
 msgid "Thu"
 msgstr "Czw"
 
-#: .\templates\accounts\activity_calendar.html:36
+#: .\templates\accounts\activity_calendar.html:37
 #: .\venv\Lib\site-packages\django\utils\dates.py:20
 msgid "Fri"
 msgstr "Pt"
 
-#: .\templates\accounts\activity_calendar.html:37
+#: .\templates\accounts\activity_calendar.html:38
 #: .\venv\Lib\site-packages\django\utils\dates.py:21
 msgid "Sat"
 msgstr "Sob"
 
-#: .\templates\accounts\activity_calendar.html:41
+#: .\templates\accounts\activity_calendar.html:42
 msgid "NOTE: Saved Activities/Meals are highlighted by green dots"
 msgstr "UWAGA: Zapisane Aktywności/Posiłki są zaznaczone zielonymi kropkami"
 
-#: .\templates\accounts\activity_calendar.html:41
+#: .\templates\accounts\activity_calendar.html:42
 msgid "Click at them to get more information"
 msgstr "Kliknij na nie, aby uzyskać więcej informacji"
+
+#: .\templates\accounts\activity_calendar.html:49
+msgid "Your added activities for"
+msgstr "Twoje dodane aktywności dla"
+
+#: .\templates\accounts\activity_calendar.html:52
+msgid "Daily Summary Info"
+msgstr "Podsumowanie tego dnia"
+
+#: .\templates\accounts\activity_calendar.html:54
+#: .\templates\accounts\dashboard_stats.html:117
+msgid "Kcal Eaten"
+msgstr "Spożyte Kcal"
+
+#: .\templates\accounts\activity_calendar.html:55
+#: .\templates\accounts\dashboard_stats.html:116
+msgid "Kcal Burnt"
+msgstr "Spalone Kcal"
+
+#: .\templates\accounts\activity_calendar.html:56
+msgid "Carbs Eaten"
+msgstr "Spożyte Węglowodany"
+
+#: .\templates\accounts\activity_calendar.html:57
+msgid "Protein Eaten"
+msgstr "Spożyte Białko"
+
+#: .\templates\accounts\activity_calendar.html:58
+msgid "Fats Eaten"
+msgstr "Spożyte Tłuszcze"
 
 #: .\templates\accounts\dashboard.html:15
 msgid "Welcome back"
@@ -149,21 +181,17 @@ msgid "Fat"
 msgstr "Tłuszcze"
 
 #: .\templates\accounts\dashboard.html:72
-#, fuzzy
-#| msgid "Nutrition Daily Details"
 msgid "Nutrition Weekly Details"
-msgstr "Szczegóły dzienniego odżywiania"
+msgstr "Szczegóły tygodniowego odżywiania"
 
 #: .\templates\accounts\dashboard.html:78
 msgid "Weekly Calorie Graph"
 msgstr "Tygodniowy wykres kaloryczny"
 
 #: .\templates\accounts\dashboard.html:82
-#, fuzzy
-#| msgid "Weekly average kcal income is shown in grey on the chart"
 msgid "Weekly average kcal income is shown by golden line on the chart"
 msgstr ""
-"Tygodniowa średnia spożytych kalorii jest zaznaczona kolorem szarym na "
+"Tygodniowa średnia spożytych kalorii jest zaznaczona kolorem złotym na "
 "wykresie"
 
 #: .\templates\accounts\dashboard_stats.html:15
@@ -289,14 +317,6 @@ msgstr "Tygodniowo"
 msgid "Monthly"
 msgstr "Miesięcznie"
 
-#: .\templates\accounts\dashboard_stats.html:116
-msgid "Kcal Burnt"
-msgstr "Spalone Kcal"
-
-#: .\templates\accounts\dashboard_stats.html:117
-msgid "Kcal Eaten"
-msgstr "Zjedzone Kcal"
-
 #: .\templates\accounts\login.html:15 .\templates\accounts\signup.html:15
 #: .\templates\home\index.html:80 .\templates\meals\add\add_meals.html:14
 #: .\templates\meals\meals.html:14
@@ -359,7 +379,7 @@ msgstr "Plany"
 #: .\templates\accounts\navbar.html:23
 #: .\templates\accounts\navbar_small.html:23
 msgid "Calendar"
-msgstr ""
+msgstr "Kalendarz"
 
 #: .\templates\accounts\navbar.html:24
 #: .\templates\accounts\navbar_small.html:24
@@ -661,8 +681,8 @@ msgid "Are you sure you want to delete this activity?"
 msgstr "Czy jesteś pewien, że chcesz usunąć tą aktywność?"
 
 #: .\templates\workouts\add\add_workouts.html:89
-msgid "Your added activities for today."
-msgstr "Twoje dzisiejsze dodane aktywności."
+msgid "Your added activities for today"
+msgstr "Twoje dzisiejsze dodane aktywności"
 
 #: .\templates\workouts\add\add_workouts.html:91
 msgid "Activities on"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-22 13:25+0100\n"
+"POT-Creation-Date: 2022-11-23 21:22+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -321,7 +321,35 @@ msgstr "Pokaż"
 msgid "Hide"
 msgstr "Ukryj"
 
-#: .\static\scripts\dashboard\main.js:266
+#: .\static\scripts\activity-calendar\activity-calendar.js:97
+msgid "Meals"
+msgstr "Posiłki"
+
+#: .\static\scripts\activity-calendar\activity-calendar.js:115
+msgid "Protein"
+msgstr "Białko"
+
+#: .\static\scripts\activity-calendar\activity-calendar.js:115
+msgid "Fat"
+msgstr "Tłuszcze"
+
+#: .\static\scripts\activity-calendar\activity-calendar.js:115
+msgid "Carbs"
+msgstr "Węglowodany"
+
+#: .\static\scripts\activity-calendar\activity-calendar.js:131
+msgid "Activities"
+msgstr "Aktywności"
+
+#: .\static\scripts\activity-calendar\activity-calendar.js:159
+msgid "Kcal Burnt"
+msgstr "Spalone Kcal"
+
+#: .\static\scripts\activity-calendar\activity-calendar.js:159
+msgid "Duration"
+msgstr "Czas trwania"
+
+#: .\static\scripts\dashboard\main.js:298
 msgid "Summary"
 msgstr "Podsumowanie"
 
@@ -363,7 +391,7 @@ msgstr "Brak rezultatów wyszukiwania."
 
 #: .\static\scripts\meals\add\main.js:412
 msgid "No saved templates yet"
-msgstr ""
+msgstr "Brak zapisanych szablonów"
 
 #: .\static\scripts\meals\add\main.js:431
 msgid "Try to search meal or ingredients that have you eaten today."
@@ -411,8 +439,6 @@ msgid "Meal Name"
 msgstr "Nazwa posiłku"
 
 #: .\static\scripts\meals\saved\main.js:654
-#, fuzzy
-#| msgid "Add new element for your meal"
 msgid "Add new element to your meal"
 msgstr "Dodaj nowy element dla swojego posiłku"
 

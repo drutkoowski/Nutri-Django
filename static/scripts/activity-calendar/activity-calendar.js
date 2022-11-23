@@ -14,9 +14,6 @@ function hideModal(modalClass) {
 
 let openModal = function (modalClass) {
         let div = document.querySelector(modalClass);
-        if (modalClass === '.modal-queued__today-meals-list'){
-            updateSummary()
-        }
         div.classList.remove('not-visible')
         div.classList.add('modal-active')
         // let Mwidth = div.offsetWidth;
@@ -38,9 +35,9 @@ let openModal = function (modalClass) {
 let date = new Date(),
 currYear = date.getFullYear()
 currMonth = date.getMonth();
-// storing full name of all months in array
 const langPrefix = window.location.href.split('/')[3];
 let months
+// months translations
 if (langPrefix === 'pl') {
     months = ["Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec", "Lipiec",
               "Sierpień", "Wrzesień", "Październik", "Listopad", "Grudzień"];
@@ -59,6 +56,14 @@ const addEventListeners = () => {
         const date = item.dataset.date
         const langPrefix = window.location.href.split('/')[3];
         const url = window.location.origin + `/${langPrefix}/data/get/activity-list-by-day`
+        let options = {
+            weekday: "short",
+            year: "numeric",
+            month: "long",
+            day: "numeric"
+        };
+        let localeDate = new Date().toLocaleDateString(langPrefix, options);
+
         $.ajax({
             type: 'POST',
             data: {
@@ -79,7 +84,7 @@ const addEventListeners = () => {
                     kcalBurntSum = kcalBurntSum + exercise.kcalBurntSum
                 })
                 const dateHeading = document.querySelector('.modal--calendar--heading__span')
-                dateHeading.innerHTML = `${date}`
+                dateHeading.innerHTML = `${localeDate}`
                 const contentItemBox = document.querySelector('.modal--calendar__content__elements__item')
                 const kcalSummarySpan = document.querySelector('.summary-kcal-daily-calendar')
                 const kcalBurntSpan = document.querySelector('.summary-kcal-burnt-daily-calendar')
@@ -125,7 +130,6 @@ const addEventListeners = () => {
                     elementsWorkoutsBox.style.gridColumn = '1/2'
                 }
                 if (exercises.length > 0){
-                    console.log(exercises)
                     const activitiesItemContainer = `
                         <div class="modal--calendar__content__elements__workouts">
                             <h1>${gettext('Activities')}</h1>
@@ -167,7 +171,6 @@ const addEventListeners = () => {
             }
         })
     });
-
    });
 }
 addEventListeners()
@@ -220,12 +223,6 @@ const renderCalendar = () => {
         }
     })
 }
-
-
-
-
-
-
 renderCalendar();
 
 prevNextIcon.forEach(icon => { // getting prev and next icons
@@ -243,7 +240,10 @@ prevNextIcon.forEach(icon => { // getting prev and next icons
         renderCalendar(); // calling renderCalendar function
     });
 });
-
-
 window.onresize = function(){ location.reload(); }
 
+// modal close listeners
+const modalCloseBtn = document.querySelector('.modal--calendar__close-button')
+modalCloseBtn.addEventListener('click', () => {
+    hideModal('.modal--calendar')
+})
