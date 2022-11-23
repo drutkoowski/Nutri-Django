@@ -8,6 +8,7 @@
      <script src="{% sass_src 'scripts/activity-calendar/activity-calendar.js' %}" defer></script>
 {% endblock scripts %}
 {% block content %}
+    {% csrf_token %}
     <div class="loader"></div>
     <div class="grid-layout-container">
      {% include 'components/sidebar/sidebar.html' %}
@@ -42,29 +43,24 @@
             </div>
         </div>
     </div>
-        <div class="modal--calendar not-visible">
+   <div class="modal--calendar not-visible">
     <div class="modal--calendar__content">
         <div class="modal--calendar__close-button">&times;</div>
-        <h1 class="modal--calendar--heading">{% trans 'Your added activities for' %}</h1>
-               <div class="modal--calendar__daily-summary">
-                  <div>Kcal: <span class="kcal"></span></div>
-                  <div>{% trans 'Duration' %}: <span class="duration"></span></div>
-              </div>
-
+        <h1 class="modal--calendar--heading">{% trans 'Your added activities for' %} <span class="modal--calendar--heading__span"></span></h1>
+         <div class="modal--calendar__content-summary">
+             <div class="modal--calendar__content-summary__header">
+                 <h2>{% trans 'Daily Summary Info' %}</h2>
+                 <div>
+                     <p>{% trans 'Kcal Eaten' %}: <span class="summary-kcal-daily-calendar"></span> kcal</p>
+                     <p>{% trans 'Kcal Burnt' %}: <span class="summary-kcal-burnt-daily-calendar"></span> kcal</p>
+                     <p>{% trans 'Carbs Eaten' %}: <span class="summary-carbs-daily-calendar"></span> g</p>
+                     <p>{% trans 'Protein Eaten' %}: <span class="summary-protein-daily-calendar"></span> g</p>
+                     <p>{% trans 'Fats Eaten' %}: <span class="summary-fats-daily-calendar"></span> g</p>
+                 </div>
+             </div>
+         </div>
               <div class="modal--calendar__content__elements">
-
-                      <div class="modal--calendar__content__elements__item">
-                          <div class="remove-icon filter-red remove-workout"></div>
-                          <div class="modal--calendar__content-summary">
-                              <h2 class="workout-counter">{% trans 'Activity #' %}{{ forloop.counter }}</h2>
-                              <div>{% trans 'Summary Kcal' %}: <span></span> kcal</div>
-                              <div>{% trans 'Summary Duration' %}: <span></span> min</div>
-                              <div>{% trans 'Created at' %}: <span></span></div>
-                          </div>
-                          <div class="modal--calendar__content__workout-elements">
-
-                          </div>
-                      </div>
+                      <div class="modal--calendar__content__elements__item"></div>
               </div>
     </div>
 </div>

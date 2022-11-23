@@ -3897,7 +3897,7 @@ label.year {
     flex-direction: column;
     border-radius: 20px;
     width: 70%;
-    max-height: 65%;
+    max-height: 85%;
     padding: 5rem 5rem;
     transition: all .2s ease-in;
     justify-self: center;
@@ -3921,27 +3921,37 @@ label.year {
       .modal--calendar__content {
         padding: 0.5rem 0.5rem; } }
     .modal--calendar__content__elements {
-      margin-top: 2rem;
+      margin-top: 2.5rem;
       background-color: white;
       color: var(--black-muted);
       border-radius: 5px;
-      -webkit-box-shadow: 0px 0px 18px -7px #42445a;
-      -moz-box-shadow: 0px 0px 18px -7px #42445a;
-      box-shadow: 0px 0px 18px -7px #42445a;
       padding: 2rem 2rem;
+      font-size: 2rem;
       height: auto;
       max-height: 65rem;
       overflow-y: auto;
       overflow-x: hidden;
-      font-size: 2rem; }
+      -webkit-box-shadow: 0px 0px 18px -7px #42445a;
+      -moz-box-shadow: 0px 0px 18px -7px #42445a;
+      box-shadow: 0px 0px 18px -7px #42445a; }
       @media only screen and (max-width: 37.5em) {
         .modal--calendar__content__elements {
           padding: 0.5rem 0.5rem; } }
+      .modal--calendar__content__elements__meals {
+        grid-column: 1/2;
+        grid-row: 1/2; }
+        .modal--calendar__content__elements__meals div {
+          padding: 0.5rem 2rem; }
+      .modal--calendar__content__elements__workouts {
+        grid-column: 2/3;
+        grid-row: 1/2; }
+        .modal--calendar__content__elements__workouts div {
+          padding: 0.5rem 1rem; }
       .modal--calendar__content__elements__item {
         margin-top: 2rem;
         display: grid;
-        grid-template-columns: 1fr 0.2fr;
-        grid-template-rows: 0.3fr 1fr;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
         height: auto; }
         @media only screen and (max-width: 46.875em) {
           .modal--calendar__content__elements__item {
@@ -3950,25 +3960,6 @@ label.year {
           border-bottom: 2px solid #f2f2f2; }
         .modal--calendar__content__elements__item:first-of-type {
           margin-top: 0; }
-        .modal--calendar__content__elements__item div.today-workouts-list__content-summary {
-          grid-column: 1/2;
-          grid-row: 1/2; }
-        .modal--calendar__content__elements__item div.remove-icon {
-          grid-column: 2/3;
-          grid-row: 1/2;
-          justify-self: end;
-          margin-right: 3rem;
-          transition: all .3s ease-in; }
-          @media only screen and (max-width: 46.875em) {
-            .modal--calendar__content__elements__item div.remove-icon {
-              margin-top: 3px;
-              margin-right: 1rem; } }
-          .modal--calendar__content__elements__item div.remove-icon:hover {
-            transform: scale(1.1); }
-        .modal--calendar__content__elements__item div.today-workouts-list__workout-elements {
-          grid-column: 1/-1;
-          grid-row: 2/3;
-          border-bottom: 1px solid #f2f2f2; }
     .modal--calendar__content__elements::-webkit-scrollbar-track {
       -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
       border-radius: 10px;
@@ -3980,9 +3971,10 @@ label.year {
       border-radius: 10px;
       -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
       background-color: #afe0a5; }
+    .modal--calendar__content h2 {
+      font-size: 2rem; }
     .modal--calendar__content h1 {
-      margin-bottom: 5rem;
-      font-size: 3rem;
+      font-size: 4rem;
       animation-name: fade-left;
       animation-duration: 1s;
       animation-timing-function: ease-out; }
@@ -3997,6 +3989,17 @@ label.year {
           font-size: 1.5rem;
           margin-top: 2rem;
           margin-bottom: 2rem; } }
+div.modal--calendar__content-summary {
+  display: flex;
+  flex-direction: column; }
+  div.modal--calendar__content-summary__header div {
+    display: flex;
+    flex-direction: row; }
+    div.modal--calendar__content-summary__header div p {
+      font-size: 2rem; }
+      div.modal--calendar__content-summary__header div p:not(:first-of-type) {
+        margin-left: 1.5rem; }
+
 .meals-layout-container {
   width: 100vw;
   height: auto;

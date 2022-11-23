@@ -258,3 +258,60 @@ def get_profile_activities_date(request):
                 all_activity_dates.append(date)
         data = json.dumps(all_activity_dates)
         return JsonResponse({'status': 200, 'text': 'Operation successful.', "data": data})
+
+
+@login_required(login_url='login')
+def get_activity_list_by_day(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
+        user_profile = UserProfile.objects.get(user=request.user)
+        date = request.POST.get('date')
+        meals = Meal.objects.filter(created_by=user_profile, created_at__contains=date).all()
+        meals_arr = []
+        kcal_eaten_sum = 0
+        carbs_eaten_sum = 0
+        protein_eaten_sum = 0
+        fat_eaten_sum = 0
+        for meal in meals:
+            kcal_eaten_sum = kcal_eaten_sum + meal.kcal
+            carbs_eaten_sum = carbs_eaten_sum + meal.carbs
+            protein_eaten_sum = protein_eaten_sum + meal.protein
+            fat_eaten_sum = fat_eaten_sum + meal.fat
+            meal_obj = {
+                'ingredientNameEn': meal.ingredient.en_name,
+                'ingredientNamePl': meal.ingredient.pl_name,
+                'quantity': meal.quantity,
+                'unitNamePl': meal.ingredient.unit.pl_name,
+                'unitNameEn': meal.ingredient.unit.en_name,
+                'kcal': round(meal.kcal, 2),
+                'carbs': round(meal.carbs, 2),
+                'protein': round(meal.protein, 2),
+                'fat': round(meal.fat, 2),
+            }
+            meals_arr.append(meal_obj)
+        exercises = Workout.objects.filter(created_by=user_profile, created_at__contains=date).all()
+        exercises_arr = []
+        for exercise in exercises:
+            elements_arr = []
+            for element in exercise.workout_elements.all():
+                element_obj = {
+                    'exerciseNamePl': element.exercise.pl_name,
+                    'exerciseNameEn': element.exercise.en_name,
+                    'kcalBurnt': round(element.kcal_burnt, 2),
+                    'duration': round(element.min_spent, 2),
+                }
+                elements_arr.append(element_obj)
+            exercise_obj = {
+                'exerciseElements': elements_arr,
+                'kcalBurntSum': round(exercise.kcal_burnt_sum, 2),
+                'durationSum': round(exercise.min_spent_sum, 2),
+             }
+            exercises_arr.append(exercise_obj)
+        data = {
+            'exercises': json.dumps(exercises_arr),
+            'meals': json.dumps(meals_arr),
+            'eatenKcalSum': round(kcal_eaten_sum, 2),
+            'eatenCarbsSum': round(carbs_eaten_sum, 2),
+            'eatenProteinSum': round(protein_eaten_sum, 2),
+            'eatenFatSum': round(fat_eaten_sum, 2)
+        }
+        return JsonResponse({'status': 200, 'text': 'Operation successful.', 'data': data})

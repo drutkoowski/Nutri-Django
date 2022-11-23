@@ -17,4 +17,5 @@ urlpatterns = [
     path('data/get/weekly-calories-info', views.get_weekly_calories_info, name='get-weekly-calories-info'),
     path('data/get/week-daily-macros-eaten', views.week_daily_macros_eaten, name='week-daily-macros-eaten'),
     path('data/get/profile-activities-date', views.get_profile_activities_date, name='get-profile-activities-date'),
+    path('data/get/activity-list-by-day', views.get_activity_list_by_day, name='get-activity-list-by-day'),
 ]
