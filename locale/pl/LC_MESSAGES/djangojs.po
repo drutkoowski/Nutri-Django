@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-23 21:22+0100\n"
+"POT-Creation-Date: 2022-11-24 00:23+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -321,33 +321,63 @@ msgstr "Pokaż"
 msgid "Hide"
 msgstr "Ukryj"
 
-#: .\static\scripts\activity-calendar\activity-calendar.js:97
-msgid "Meals"
-msgstr "Posiłki"
+#: .\static\scripts\activity-calendar\activity-calendar.js:48
+msgid "Your added activities or meals for "
+msgstr "Twoje dodane aktywności lub posiłki dla"
 
-#: .\static\scripts\activity-calendar\activity-calendar.js:115
-msgid "Protein"
-msgstr "Białko"
+#: .\static\scripts\activity-calendar\activity-calendar.js:51
+msgid "Daily Summary Info"
+msgstr "Dzienne Podsumowanie Dnia"
 
-#: .\static\scripts\activity-calendar\activity-calendar.js:115
-msgid "Fat"
-msgstr "Tłuszcze"
+#: .\static\scripts\activity-calendar\activity-calendar.js:53
+msgid "Kcal"
+msgstr "Kcal"
 
-#: .\static\scripts\activity-calendar\activity-calendar.js:115
+#: .\static\scripts\activity-calendar\activity-calendar.js:54
+msgid "Burnt"
+msgstr "Spalone"
+
+#: .\static\scripts\activity-calendar\activity-calendar.js:55
+#: .\static\scripts\activity-calendar\activity-calendar.js:160
 msgid "Carbs"
 msgstr "Węglowodany"
 
-#: .\static\scripts\activity-calendar\activity-calendar.js:131
+#: .\static\scripts\activity-calendar\activity-calendar.js:56
+#: .\static\scripts\activity-calendar\activity-calendar.js:160
+msgid "Protein"
+msgstr "Białko"
+
+#: .\static\scripts\activity-calendar\activity-calendar.js:57
+msgid "Fats"
+msgstr "Tłuszcze"
+
+#: .\static\scripts\activity-calendar\activity-calendar.js:134
+msgid "Meals"
+msgstr "Posiłki"
+
+#: .\static\scripts\activity-calendar\activity-calendar.js:139
 msgid "Activities"
 msgstr "Aktywności"
 
-#: .\static\scripts\activity-calendar\activity-calendar.js:159
+#: .\static\scripts\activity-calendar\activity-calendar.js:160
+msgid "Fat"
+msgstr "Tłuszcze"
+
+#: .\static\scripts\activity-calendar\activity-calendar.js:169
+msgid "You have not added any meals on this day"
+msgstr "Nie dodałeś żadnych posiłków dla tego dnia"
+
+#: .\static\scripts\activity-calendar\activity-calendar.js:200
 msgid "Kcal Burnt"
 msgstr "Spalone Kcal"
 
-#: .\static\scripts\activity-calendar\activity-calendar.js:159
+#: .\static\scripts\activity-calendar\activity-calendar.js:200
 msgid "Duration"
 msgstr "Czas trwania"
+
+#: .\static\scripts\activity-calendar\activity-calendar.js:211
+msgid "You have not added any activities on this day"
+msgstr "Nie dodałeś żadnych aktywności dla tego dnia"
 
 #: .\static\scripts\dashboard\main.js:298
 msgid "Summary"
@@ -566,7 +596,7 @@ msgstr "Coś poszło nie tak, spróbuj ponownie."
 #: .\static\scripts\workouts\add\main.js:391
 #: .\static\scripts\workouts\add\main.js:510
 msgid "No activities added for today..."
-msgstr ""
+msgstr "Brak dodanych dzisiejszych aktywności..."
 
 #: .\static\scripts\workouts\add\main.js:410
 msgid "Try to search exercise or exercises that have you eaten today."

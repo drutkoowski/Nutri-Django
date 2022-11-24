@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-23 21:22+0100\n"
+"POT-Creation-Date: 2022-11-23 23:42+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -80,36 +80,6 @@ msgstr "UWAGA: Zapisane Aktywności/Posiłki są zaznaczone zielonymi kropkami"
 #: .\templates\accounts\activity_calendar.html:42
 msgid "Click at them to get more information"
 msgstr "Kliknij na nie, aby uzyskać więcej informacji"
-
-#: .\templates\accounts\activity_calendar.html:49
-msgid "Your added activities for"
-msgstr "Twoje dodane aktywności dla"
-
-#: .\templates\accounts\activity_calendar.html:52
-msgid "Daily Summary Info"
-msgstr "Podsumowanie tego dnia"
-
-#: .\templates\accounts\activity_calendar.html:54
-#: .\templates\accounts\dashboard_stats.html:117
-msgid "Kcal Eaten"
-msgstr "Spożyte Kcal"
-
-#: .\templates\accounts\activity_calendar.html:55
-#: .\templates\accounts\dashboard_stats.html:116
-msgid "Kcal Burnt"
-msgstr "Spalone Kcal"
-
-#: .\templates\accounts\activity_calendar.html:56
-msgid "Carbs Eaten"
-msgstr "Spożyte Węglowodany"
-
-#: .\templates\accounts\activity_calendar.html:57
-msgid "Protein Eaten"
-msgstr "Spożyte Białko"
-
-#: .\templates\accounts\activity_calendar.html:58
-msgid "Fats Eaten"
-msgstr "Spożyte Tłuszcze"
 
 #: .\templates\accounts\dashboard.html:15
 msgid "Welcome back"
@@ -316,6 +286,14 @@ msgstr "Tygodniowo"
 #: .\templates\accounts\dashboard_stats.html:111
 msgid "Monthly"
 msgstr "Miesięcznie"
+
+#: .\templates\accounts\dashboard_stats.html:116
+msgid "Kcal Burnt"
+msgstr "Spalone Kcal"
+
+#: .\templates\accounts\dashboard_stats.html:117
+msgid "Kcal Eaten"
+msgstr "Spożyte Kcal"
 
 #: .\templates\accounts\login.html:15 .\templates\accounts\signup.html:15
 #: .\templates\home\index.html:80 .\templates\meals\add\add_meals.html:14
@@ -681,8 +659,8 @@ msgid "Are you sure you want to delete this activity?"
 msgstr "Czy jesteś pewien, że chcesz usunąć tą aktywność?"
 
 #: .\templates\workouts\add\add_workouts.html:89
-msgid "Your added activities for today"
-msgstr "Twoje dzisiejsze dodane aktywności"
+msgid "Your added activities for today."
+msgstr "Twoje dodane aktywności dla"
 
 #: .\templates\workouts\add\add_workouts.html:91
 msgid "Activities on"
@@ -1939,6 +1917,21 @@ msgid ""
 "Set the precision for numeric computations in the SASS processor. Default: "
 "settings.SASS_PRECISION."
 msgstr ""
+
+#~ msgid "Your added activities for"
+#~ msgstr "Twoje dodane aktywności dla"
+
+#~ msgid "Daily Summary Info"
+#~ msgstr "Podsumowanie tego dnia"
+
+#~ msgid "Carbs Eaten"
+#~ msgstr "Spożyte Węglowodany"
+
+#~ msgid "Protein Eaten"
+#~ msgstr "Spożyte Białko"
+
+#~ msgid "Fats Eaten"
+#~ msgstr "Spożyte Tłuszcze"
 
 #~ msgid "Workouts"
 #~ msgstr "Treningi"

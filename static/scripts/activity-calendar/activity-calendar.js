@@ -9,11 +9,19 @@ function hideModal(modalClass) {
          const modal = document.querySelector(`.${modalClass}`)
          modal.classList.add('not-visible')
          modal.style.removeProperty('display')
+         modal.style.zIndex = '1'
     });
 }
 
 let openModal = function (modalClass) {
+    // modal close listeners
+        const modalCloseBtn = document.querySelector('.modal--calendar__close-button')
+        modalCloseBtn.addEventListener('click', () => {
+            hideModal('.modal--calendar')
+            document.querySelector('.modal--calendar').remove()
+        })
         let div = document.querySelector(modalClass);
+        div.style.zIndex = '213132121'
         div.classList.remove('not-visible')
         div.classList.add('modal-active')
         // let Mwidth = div.offsetWidth;
@@ -31,6 +39,31 @@ let openModal = function (modalClass) {
         // })
 };
 
+
+
+const modalElement = `
+  <div class="modal--calendar not-visible">
+    <div class="modal--calendar__content">
+        <div class="modal--calendar__close-button">&times;</div>
+        <h1 class="modal--calendar--heading">${gettext('Your added activities or meals for ')} <span class="modal--calendar--heading__span"></span></h1>
+         <div class="modal--calendar__content-summary">
+             <div class="modal--calendar__content-summary__header">
+                 <h2>${gettext('Daily Summary Info')}:</h2>
+                 <div>
+                     <p>${gettext('Kcal')}: <span class="summary-kcal-daily-calendar"></span> kcal</p>
+                     <p>${gettext('Burnt')}: <span class="summary-kcal-burnt-daily-calendar"></span> kcal</p>
+                     <p>${gettext('Carbs')}: <span class="summary-carbs-daily-calendar"></span> g</p>
+                     <p>${gettext('Protein')}: <span class="summary-protein-daily-calendar"></span> g</p>
+                     <p>${gettext('Fats')}: <span class="summary-fats-daily-calendar"></span> g</p>
+                 </div>
+             </div>
+         </div>
+              <div class="modal--calendar__content__elements">
+                      <div class="modal--calendar__content__elements__item"></div>
+              </div>
+    </div>
+</div>
+`
 // getting new date, current year and month
 let date = new Date(),
 currYear = date.getFullYear()
@@ -58,12 +91,10 @@ const addEventListeners = () => {
         const url = window.location.origin + `/${langPrefix}/data/get/activity-list-by-day`
         let options = {
             weekday: "short",
-            year: "numeric",
             month: "long",
             day: "numeric"
         };
-        let localeDate = new Date().toLocaleDateString(langPrefix, options);
-
+        let localeDate = new Date(date).toLocaleDateString(langPrefix, options);
         $.ajax({
             type: 'POST',
             data: {
@@ -72,6 +103,8 @@ const addEventListeners = () => {
             },
             url: url,
             success: function (response){
+                const body = document.body
+                body.insertAdjacentHTML('beforeend', modalElement)
                 openModal('.modal--calendar')
                 const exercises = JSON.parse(response.data.exercises)
                 const meals = JSON.parse(response.data.meals)
@@ -96,13 +129,20 @@ const addEventListeners = () => {
                 carbsSummarySpan.innerHTML = `<b>${carbsSumEaten}</b>`
                 proteinSummarySpan.innerHTML = `<b>${proteinSumEaten}</b>`
                 fatsSummarySpan.innerHTML = `<b>${fatsSumEaten}</b>`
+                const mealsItemContainer = `
+                   <div class="modal--calendar__content__elements__meals">
+                       <h1>${gettext('Meals')}</h1>
+                   </div>
+                `
+                 const activitiesItemContainer = `
+                   <div class="modal--calendar__content__elements__workouts">
+                       <h1>${gettext('Activities')}</h1>
+                   </div>
+                 `
+                contentItemBox.insertAdjacentHTML('beforeend', activitiesItemContainer)
+                contentItemBox.insertAdjacentHTML('beforeend', mealsItemContainer)
                 if (meals.length > 0){
-                    const mealsItemContainer = `
-                        <div class="modal--calendar__content__elements__meals">
-                            <h1>${gettext('Meals')}</h1>
-                        </div>
-                    `
-                    contentItemBox.insertAdjacentHTML('beforeend', mealsItemContainer)
+
                     const elementsMealsBox = document.querySelector('.modal--calendar__content__elements__meals')
                     meals.forEach(meal => {
                         let mealName, unitName
@@ -114,28 +154,41 @@ const addEventListeners = () => {
                             mealName = meal.ingredientNameEn
                             unitName = meal.unitNameEn
                         }
-                        const contentToAppend = `
+                        let watch_media_query = '(max-width: 28.5em)';
+                        let matched = window.matchMedia(watch_media_query).matches;
+                        let contentToAppend
+                        if (!matched) {
+                            contentToAppend = `
                             <div>
                                 <p><b>${mealName}</b> x ${meal.quantity} ${unitName}</p>
                                 <small>Kcal: <b>${meal.kcal}</b>, ${gettext('Protein')}: <b>${meal.protein}</b> g, ${gettext('Fat')}: <b>${meal.fat}</b> g, ${gettext('Carbs')}: <b>${meal.carbs}</b> g</small>
                             </div>
                         `
+                        }
+                        else {
+                            contentToAppend = `
+                            <div>
+                                <small><b>${mealName}</b> x ${meal.quantity} ${unitName}</small>
+                                <small>Kcal: <b>${meal.kcal}</b></small> 
+                                <small>${gettext('Protein')}: <b>${meal.protein}</b> g</small>
+                                <small>${gettext('Fat')}: <b>${meal.fat}</b> g</small>
+                                <small>${gettext('Carbs')}: <b>${meal.carbs}</b> g</small>
+                            </div>
+                        `
+                        }
                         elementsMealsBox.insertAdjacentHTML('beforeend', contentToAppend)
                     })
                 }
                 else {
                     const elementsMealsBox = document.querySelector('.modal--calendar__content__elements__meals')
-                    elementsMealsBox.remove()
-                    const elementsWorkoutsBox = document.querySelector('.modal--calendar__content__elements__workouts')
-                    elementsWorkoutsBox.style.gridColumn = '1/2'
+                    const infoMessage = `
+                        <p class="modal--calendar__info-message">${gettext('You have not added any meals on this day')}.</p>
+                    `
+                    elementsMealsBox.insertAdjacentHTML('beforeend', infoMessage)
+
                 }
                 if (exercises.length > 0){
-                    const activitiesItemContainer = `
-                        <div class="modal--calendar__content__elements__workouts">
-                            <h1>${gettext('Activities')}</h1>
-                        </div>
-                    `
-                    contentItemBox.insertAdjacentHTML('beforeend', activitiesItemContainer)
+
                     const elementsWorkoutsBox = document.querySelector('.modal--calendar__content__elements__workouts')
                     const ids_arr = []
                     exercises.forEach((exercise, index) => {
@@ -160,13 +213,20 @@ const addEventListeners = () => {
                              const elementToAppend = `
                                 <div>
                                     <p><b>${exerciseName}</b></p>
-                                    <p>${gettext('Kcal Burnt')}: <b>${element.kcalBurnt}</b>, ${gettext('Duration')}: 
-                                        <b>${element.duration}</b> min</p>
+                                    <small>${gettext('Kcal Burnt')}: <b>${element.kcalBurnt}</b>, ${gettext('Duration')}: 
+                                        <b>${element.duration}</b> min</small>
                                 </div>
                             `
                             exerciseElements.insertAdjacentHTML('beforeend', elementToAppend)
                         })
                     })
+                }
+                else {
+                    const elementsWorkoutsBox = document.querySelector('.modal--calendar__content__elements__workouts')
+                    const infoMessage = `
+                        <p class="modal--calendar__info-message">${gettext('You have not added any activities on this day')}.</p>
+                    `
+                    elementsWorkoutsBox.insertAdjacentHTML('beforeend', infoMessage)
                 }
             }
         })
@@ -241,9 +301,3 @@ prevNextIcon.forEach(icon => { // getting prev and next icons
     });
 });
 window.onresize = function(){ location.reload(); }
-
-// modal close listeners
-const modalCloseBtn = document.querySelector('.modal--calendar__close-button')
-modalCloseBtn.addEventListener('click', () => {
-    hideModal('.modal--calendar')
-})
