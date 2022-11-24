@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'accounts',
     'meals',
     'workouts',
+    'recipes',
     'sass_processor',
 ]
 
