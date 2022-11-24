@@ -284,6 +284,11 @@
     padding-left: 2.5rem;
     font-size: 2rem;
     color: var(--black-muted);
+    transition: .3s ease-in;
+    animation-name: fade-bottom;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+
     @include respond(md-desktop){
       padding-left: 0;
     }
@@ -388,10 +393,14 @@
           grid-template-columns: 1fr;
         }
         div {
-           @include respond(phone-md){
-            display: flex;
-            flex-direction: column;
-          }
+            transition: .3s ease-in;
+            animation-name: fade-bottom;
+            animation-duration: 1s;
+            animation-timing-function: ease-out;
+            @include respond(phone-md){
+              display: flex;
+              flex-direction: column;
+            }
           p {
             @include respond(tab-desktop){
               font-size: 1.5rem;
@@ -444,6 +453,10 @@
           margin-top: 1.5rem;
         }
         div {
+            transition: .3s ease-in;
+            animation-name: fade-bottom;
+            animation-duration: 1s;
+            animation-timing-function: ease-out;
            p {
             @include respond(tab-desktop){
               font-size: 1.5rem;

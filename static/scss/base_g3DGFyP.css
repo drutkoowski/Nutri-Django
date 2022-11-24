@@ -3911,11 +3911,7 @@ label.year {
     margin-top: 2rem;
     padding-left: 2.5rem;
     font-size: 2rem;
-    color: var(--black-muted);
-    transition: .3s ease-in;
-    animation-name: fade-bottom;
-    animation-duration: 1s;
-    animation-timing-function: ease-out; }
+    color: var(--black-muted); }
     @media only screen and (max-width: 93.75em) {
       .modal--calendar__info-message {
         padding-left: 0; } }
@@ -4015,51 +4011,46 @@ label.year {
         @media only screen and (max-width: 56.25em) {
           .modal--calendar__content__elements__meals {
             grid-template-columns: 1fr; } }
-        .modal--calendar__content__elements__meals div {
-          transition: .3s ease-in;
-          animation-name: fade-bottom;
-          animation-duration: 1s;
-          animation-timing-function: ease-out; }
-          @media only screen and (max-width: 28.5em) {
-            .modal--calendar__content__elements__meals div {
-              display: flex;
-              flex-direction: column; } }
+        @media only screen and (max-width: 28.5em) {
+          .modal--calendar__content__elements__meals div {
+            display: flex;
+            flex-direction: column; } }
+        @media only screen and (max-width: 84.375em) {
+          .modal--calendar__content__elements__meals div p {
+            font-size: 1.5rem; } }
+        @media only screen and (max-width: 56.25em) {
+          .modal--calendar__content__elements__meals div p {
+            font-size: 1.7rem; } }
+        @media only screen and (max-width: 46.875em) {
+          .modal--calendar__content__elements__meals div p {
+            font-size: 1.5rem; } }
+        @media only screen and (max-width: 28.5em) {
+          .modal--calendar__content__elements__meals div p {
+            font-size: 1.6rem; } }
+        .modal--calendar__content__elements__meals div small {
+          font-size: 1.5rem; }
+          @media only screen and (max-width: 93.75em) {
+            .modal--calendar__content__elements__meals div small {
+              font-size: 1.35rem; } }
           @media only screen and (max-width: 84.375em) {
-            .modal--calendar__content__elements__meals div p {
-              font-size: 1.5rem; } }
+            .modal--calendar__content__elements__meals div small {
+              font-size: 1.2rem; } }
+          @media only screen and (max-width: 62.5em) {
+            .modal--calendar__content__elements__meals div small {
+              font-size: 1.1rem; } }
           @media only screen and (max-width: 56.25em) {
-            .modal--calendar__content__elements__meals div p {
+            .modal--calendar__content__elements__meals div small {
               font-size: 1.7rem; } }
           @media only screen and (max-width: 46.875em) {
-            .modal--calendar__content__elements__meals div p {
-              font-size: 1.5rem; } }
-          @media only screen and (max-width: 28.5em) {
-            .modal--calendar__content__elements__meals div p {
+            .modal--calendar__content__elements__meals div small {
               font-size: 1.6rem; } }
-          .modal--calendar__content__elements__meals div small {
-            font-size: 1.5rem; }
-            @media only screen and (max-width: 93.75em) {
-              .modal--calendar__content__elements__meals div small {
-                font-size: 1.35rem; } }
-            @media only screen and (max-width: 84.375em) {
-              .modal--calendar__content__elements__meals div small {
-                font-size: 1.2rem; } }
-            @media only screen and (max-width: 62.5em) {
-              .modal--calendar__content__elements__meals div small {
-                font-size: 1.1rem; } }
-            @media only screen and (max-width: 56.25em) {
-              .modal--calendar__content__elements__meals div small {
-                font-size: 1.7rem; } }
-            @media only screen and (max-width: 46.875em) {
-              .modal--calendar__content__elements__meals div small {
-                font-size: 1.6rem; } }
-            @media only screen and (max-width: 37.5em) {
-              .modal--calendar__content__elements__meals div small {
-                font-size: 1.4rem; } }
-            @media only screen and (max-width: 28.5em) {
-              .modal--calendar__content__elements__meals div small {
-                font-size: 1.6rem;
-                display: block; } }
+          @media only screen and (max-width: 37.5em) {
+            .modal--calendar__content__elements__meals div small {
+              font-size: 1.4rem; } }
+          @media only screen and (max-width: 28.5em) {
+            .modal--calendar__content__elements__meals div small {
+              font-size: 1.6rem;
+              display: block; } }
       .modal--calendar__content__elements__workouts {
         grid-column: 2/3;
         grid-row: 1/2; }
@@ -4070,49 +4061,44 @@ label.year {
         @media only screen and (max-width: 56.25em) {
           .modal--calendar__content__elements__workouts {
             margin-top: 1.5rem; } }
-        .modal--calendar__content__elements__workouts div {
-          transition: .3s ease-in;
-          animation-name: fade-bottom;
-          animation-duration: 1s;
-          animation-timing-function: ease-out; }
+        @media only screen and (max-width: 84.375em) {
+          .modal--calendar__content__elements__workouts div p {
+            font-size: 1.5rem; } }
+        @media only screen and (max-width: 56.25em) {
+          .modal--calendar__content__elements__workouts div p {
+            font-size: 1.7rem; } }
+        @media only screen and (max-width: 46.875em) {
+          .modal--calendar__content__elements__workouts div p {
+            font-size: 1.5rem; } }
+        @media only screen and (max-width: 28.5em) {
+          .modal--calendar__content__elements__workouts div p {
+            font-size: 1.3rem; } }
+        @media only screen and (max-width: 28.5em) {
+          .modal--calendar__content__elements__workouts div p {
+            font-size: 1.6rem; } }
+        .modal--calendar__content__elements__workouts div small {
+          font-size: 1.5rem; }
+          @media only screen and (max-width: 93.75em) {
+            .modal--calendar__content__elements__workouts div small {
+              font-size: 1.35rem; } }
           @media only screen and (max-width: 84.375em) {
-            .modal--calendar__content__elements__workouts div p {
-              font-size: 1.5rem; } }
+            .modal--calendar__content__elements__workouts div small {
+              font-size: 1.2rem; } }
+          @media only screen and (max-width: 62.5em) {
+            .modal--calendar__content__elements__workouts div small {
+              font-size: 1.1rem; } }
           @media only screen and (max-width: 56.25em) {
-            .modal--calendar__content__elements__workouts div p {
+            .modal--calendar__content__elements__workouts div small {
               font-size: 1.7rem; } }
           @media only screen and (max-width: 46.875em) {
-            .modal--calendar__content__elements__workouts div p {
-              font-size: 1.5rem; } }
-          @media only screen and (max-width: 28.5em) {
-            .modal--calendar__content__elements__workouts div p {
-              font-size: 1.3rem; } }
-          @media only screen and (max-width: 28.5em) {
-            .modal--calendar__content__elements__workouts div p {
+            .modal--calendar__content__elements__workouts div small {
               font-size: 1.6rem; } }
-          .modal--calendar__content__elements__workouts div small {
-            font-size: 1.5rem; }
-            @media only screen and (max-width: 93.75em) {
-              .modal--calendar__content__elements__workouts div small {
-                font-size: 1.35rem; } }
-            @media only screen and (max-width: 84.375em) {
-              .modal--calendar__content__elements__workouts div small {
-                font-size: 1.2rem; } }
-            @media only screen and (max-width: 62.5em) {
-              .modal--calendar__content__elements__workouts div small {
-                font-size: 1.1rem; } }
-            @media only screen and (max-width: 56.25em) {
-              .modal--calendar__content__elements__workouts div small {
-                font-size: 1.7rem; } }
-            @media only screen and (max-width: 46.875em) {
-              .modal--calendar__content__elements__workouts div small {
-                font-size: 1.6rem; } }
-            @media only screen and (max-width: 37.5em) {
-              .modal--calendar__content__elements__workouts div small {
-                font-size: 1.4rem; } }
-            @media only screen and (max-width: 28.5em) {
-              .modal--calendar__content__elements__workouts div small {
-                font-size: 1.6rem; } }
+          @media only screen and (max-width: 37.5em) {
+            .modal--calendar__content__elements__workouts div small {
+              font-size: 1.4rem; } }
+          @media only screen and (max-width: 28.5em) {
+            .modal--calendar__content__elements__workouts div small {
+              font-size: 1.6rem; } }
       .modal--calendar__content__elements__item {
         margin-top: 2rem;
         display: grid;
