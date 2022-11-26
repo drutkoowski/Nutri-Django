@@ -1,7 +1,10 @@
+import json
 import re
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
+
 from recipes.models import Recipe
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 
 # Create your views here.
@@ -68,3 +71,67 @@ def recipes_view(request):
 @login_required(login_url='login')
 def search_recipe_view(request):
     return render(request, 'recipes/search/search_recipes.html')
+
+# ajax views
+
+
+@login_required(login_url='login')
+def live_search_recipes(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
+        query = request.GET.get('query')
+        lang_code = request.path.split('/')[1]
+        if query != '':
+            if (lang_code == 'pl'):
+                check_if_recipe_exists = Recipe.objects.filter(
+                    name_pl__iregex=r"\b{0}\b".format(query)).all().union(
+                    Recipe.objects.filter(
+                        name_pl__istartswith=query
+                    )).all().union(
+                    Recipe.objects.filter(
+                        name_pl__icontains=query
+                    )).all()
+            else:
+                check_if_recipe_exists = Recipe.objects.filter(
+                    name_en__iregex=r"\b{0}\b".format(query)).all().union(
+                    Recipe.objects.filter(
+                        name_en__istartswith=query
+                    )).all().union(
+                    Recipe.objects.filter(
+                        name_en__icontains=query
+                    )).all()
+
+            # "\y" or "\b" depends on postgres or not (\y - postgres)
+            if check_if_recipe_exists is not None:
+                recipes = list(check_if_recipe_exists.values())
+                recipes_arr = []
+                for recipe in recipes:
+                    print(recipe)
+                    if lang_code == 'pl':
+                        recipes_dict = {
+                            'name': recipe['name_pl'],
+                            'person_count': recipe['person_count'],
+                            'difficulty': recipe['difficulty_pl'],
+                            'author': recipe['author'],
+                            'duration': recipe['duration'],
+                            'ingredients': recipe['ingredients_pl'],
+                            'steps': recipe['steps_pl']
+                        }
+                    else:
+                        recipes_dict = {
+                            'name': recipe['name_en'],
+                            'person_count': recipe['person_count'],
+                            'difficulty': recipe['difficulty_en'],
+                            'author': recipe['author'],
+                            'duration': recipe['duration'],
+                            'ingredients': recipe['ingredients_en'],
+                            'steps': recipe['steps_en']
+                        }
+                    recipes_arr.append(recipes_dict)
+
+                return JsonResponse({'status': 200, 'text': 'There are recipes found.', 'recipes': json.dumps(recipes_arr)})
+            else:
+                return JsonResponse({'status': 404, 'text': 'There are not recipes found.', 'recipes': []})
+        else:
+            return JsonResponse({'status': 404, 'text': 'There are not recipes found.', 'recipes': []})
+    else:
+        return redirect('home')

@@ -7924,7 +7924,7 @@ div.modal--calendar__content-summary {
   position: relative;
   overflow-y: hidden;
   overflow-x: hidden; }
-  @media screen and (max-height: 600px) {
+  @media screen and (max-height: 600px), (orientation: landscape) {
     .recipe-search-layout-container {
       overflow-y: auto; } }
   @media only screen and (max-width: 84.375em) {
@@ -8020,6 +8020,10 @@ div.modal--calendar__content-summary {
         -webkit-box-shadow: 0px 0px 18px -7px #42445a;
         -moz-box-shadow: 0px 0px 18px -7px #42445a;
         box-shadow: 0px 0px 18px -7px #42445a; }
+        .recipe-search__search__results__container h3.recipe-info-message {
+          margin: 15rem 0;
+          text-align: center;
+          font-size: 2rem; }
         .recipe-search__search__results__container__item {
           max-height: 10rem;
           display: grid;
