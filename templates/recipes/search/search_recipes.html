@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load sass_tags %}
+{% load i18n %}
+{% block scripts %}
+     <script src="{% sass_src 'scripts/recipes/search/main.js' %}" defer></script>
+    <script>
+        let searchIconPath = "{% sass_src 'images/svg/search.svg' %}"
+    </script>
+{% endblock scripts %}
+{% block content %}
+    {% csrf_token %}
+    <div class="loader"></div>
+      <div class="bg-video-fixed" id="add-meals-video-container">
+        <div class="overlay-large"></div>
+         <video id="add-meals-video" class="bg-video__content" autoplay muted loop>
+             <source src="{% sass_src 'video/meals_bg_video.mp4' %}" type="video/mp4">
+             <source src="{% sass_src 'video/meals_bg_video.webm' %}" type="video/webm">
+             Your browser is not supported!
+         </video>
+     </div>
+
+        <div class="recipe-search-layout-container">
+            {% include 'accounts/navbar.html' %}
+             {% include 'accounts/navbar_small.html' %}
+            <div class="recipe-search grid-full-span">
+                <div class="recipe-search__search">
+                    <div class="recipe-search__search__results">
+                    <div class="recipe-search__search__results__heading-box">
+                        <h3>{% trans 'Search for recipe' %}</h3>
+                        <div class="recipe-search__search__bar">
+                            <input class="recipe-search-add search-input" type="text" placeholder="{% trans 'Search' %}"/>
+                            <span>
+                                <img class="recipe-search__search__bar__icon" src="{% sass_src 'images/svg/search.svg' %}" alt="Search Icon" />
+                            </span>
+                        </div>
+                    </div>
+                        <div class="recipe-search__search__results__container">
+                            <h3>{% trans '' %}</h3>
+                        </div>
+                    </div>
+                    <div class="recipe-search__search__save-new">
+                        <p>{% trans "Don't you know what do you want to eat?" %}</p>
+                        <button class="recipe-search__search__save-new__button btn">{% trans 'Random Recipe' %}</button>
+                    </div>
+                </div>
+                <div class="recipe-search__added not-visible">
+                    <div class="recipe-search__added--saved">
+                        <div class="recipe-search__added--saved__heading">
+                            <h2 class="recipe-search__added--saved__heading--item">&nbsp;</h2>
+                        </div>
+                        <div class="recipe-search__added--saved__content"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+{% endblock %}

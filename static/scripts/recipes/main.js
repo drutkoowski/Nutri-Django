@@ -8,3 +8,9 @@ if (mealsVideo) {
 }
 
 window.onresize = function(){ location.reload(); }
+
+const searchRecipeCard = document.querySelector('.recipes__card--search')
+searchRecipeCard.addEventListener('click', () => {
+    const langPrefix = window.location.href.split('/')[3];
+    location.href = location.origin + `/${langPrefix}/recipes/search`
+})
