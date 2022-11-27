@@ -168,3 +168,37 @@ def get_recipe_info_by_id(request):
             return JsonResponse({'status': 200, 'text': 'There are recipe found.', 'recipe': recipe_json})
         except:
             return JsonResponse({'status': 400, 'text': 'There are not recipe found.', 'recipe': ''})
+
+
+@login_required(login_url='login')
+def get_random_recipe(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
+        lang_code = request.path.split('/')[1]
+        import random
+        try:
+            recipes = list(Recipe.objects.all())
+            random_recipe = random.choice(recipes)
+            if lang_code == 'pl':
+                recipe_dict = {
+                    'name': random_recipe.name_pl,
+                    'person_count': random_recipe.person_count,
+                    'difficulty': random_recipe.difficulty_pl,
+                    'author': random_recipe.author,
+                    'duration': random_recipe.duration,
+                    'ingredients': random_recipe.ingredients_pl,
+                    'steps': random_recipe.steps_pl
+                }
+            else:
+                recipe_dict = {
+                    'name': random_recipe.name_en,
+                    'person_count': random_recipe.person_count,
+                    'difficulty': random_recipe.difficulty_en,
+                    'author': random_recipe.author,
+                    'duration': random_recipe.duration,
+                    'ingredients': random_recipe.ingredients_en,
+                    'steps': random_recipe.steps_en
+                }
+            recipe_json = json.dumps(recipe_dict)
+            return JsonResponse({'status': 200, 'text': 'Operation successful.', 'recipe': recipe_json})
+        except:
+            return JsonResponse({'status': 400, 'text': 'Operation not successful.', 'recipe': ''})

@@ -8,6 +8,60 @@ if (mealsVideo) {
     mealsVideo.playbackRate = 0.55;
 }
 
+
+const fillModalRecipe = (response) => {
+    const recipe = JSON.parse(response['recipe'])
+    const headingModal = document.querySelector('.modal-queued__recipe__heading')
+    headingModal.innerHTML = recipe.name
+    const difficultyBox = document.querySelector('.modal-queued__recipe__difficulty')
+    difficultyBox.innerHTML = recipe.difficulty
+    const durationBox = document.querySelector('.modal-queued__recipe__duration')
+    durationBox.innerHTML = `${recipe.duration}`
+    const personCount = document.querySelector('.modal-queued__recipe__person-count')
+    personCount.innerHTML = `${gettext('for')} ${recipe.person_count}`
+    const authorBox = document.querySelector('.modal-queued__recipe__author')
+    authorBox.innerHTML = recipe.author
+    openModal('.modal-queued__recipe')
+    const closeModalBtn = document.querySelector('.modal-queued__recipe__close-button')
+    closeModalBtn.addEventListener('click', () => {
+        $("." + "modal-queued__recipe").fadeOut(900, () => {
+            const modal = document.querySelector(`.modal-queued__recipe`)
+            modal.classList.add('not-visible')
+            modal.style.removeProperty('display')
+            modal.style.zIndex = '0'
+        });
+    })
+    const ingredientsBox = document.querySelector('.modal-queued__recipe__container__main-content__ingredients__elements')
+    const stepsBox = document.querySelector('.modal-queued__recipe__container__main-content__steps')
+    const ingredientsBoxItems = document.querySelectorAll('.recipe-ingredient-element')
+    const stepsBoxItems = document.querySelectorAll('.recipe-step-element')
+
+    ingredientsBoxItems.forEach(item => {
+        item.remove()
+    })
+
+    stepsBoxItems.forEach(item => {
+        item.remove()
+    })
+    const ingredients = recipe.ingredients
+    const steps = recipe.steps
+    let stepsIterator = 0
+    ingredients.forEach(ingredient => {
+        const ingredientHTML = `
+            <p class="recipe-ingredient-element">${capitalize(ingredient.ingredient)} - ${ingredient.quantity}</p>
+        `
+        ingredientsBox.insertAdjacentHTML('beforeend', ingredientHTML)
+    })
+    steps.forEach(step => {
+        const stepHTML = `
+            <p class="recipe-step-element"><b>${stepsIterator+1}.</b> ${step}</p>
+        `
+        stepsBox.insertAdjacentHTML('beforeend', stepHTML)
+        stepsIterator = stepsIterator + 1
+    })
+}
+
+
 const capitalize = (word) => {
     return word.toLowerCase()
         .split(' ')
@@ -99,56 +153,7 @@ const searchRecipes = (query) => {
                                     'csrfmiddlewaretoken': csrfToken,
                                 },
                                 success: function (response){
-                                    const recipe = JSON.parse(response['recipe'])
-                                    const headingModal = document.querySelector('.modal-queued__recipe__heading')
-                                    headingModal.innerHTML = recipe.name
-                                    const difficultyBox = document.querySelector('.modal-queued__recipe__difficulty')
-                                    difficultyBox.innerHTML = recipe.difficulty
-                                    const durationBox = document.querySelector('.modal-queued__recipe__duration')
-                                    durationBox.innerHTML = `${recipe.duration}`
-                                    const personCount = document.querySelector('.modal-queued__recipe__person-count')
-                                    personCount.innerHTML = `${gettext('for')} ${recipe.person_count}`
-                                    const authorBox = document.querySelector('.modal-queued__recipe__author')
-                                    authorBox.innerHTML = recipe.author
-                                    openModal('.modal-queued__recipe')
-                                    const closeModalBtn = document.querySelector('.modal-queued__recipe__close-button')
-                                    closeModalBtn.addEventListener('click', () => {
-                                        $("." + "modal-queued__recipe").fadeOut(900, () => {
-                                             const modal = document.querySelector(`.modal-queued__recipe`)
-                                             modal.classList.add('not-visible')
-                                             modal.style.removeProperty('display')
-                                             modal.style.zIndex = '0'
-                                        });
-                                    })
-                                    const ingredientsBox = document.querySelector('.modal-queued__recipe__container__main-content__ingredients__elements')
-                                    const stepsBox = document.querySelector('.modal-queued__recipe__container__main-content__steps')
-                                    const ingredientsBoxItems = document.querySelectorAll('.recipe-ingredient-element')
-                                    const stepsBoxItems = document.querySelectorAll('.recipe-step-element')
-
-                                    ingredientsBoxItems.forEach(item => {
-                                        console.log(item)
-                                        item.remove()
-                                    })
-
-                                    stepsBoxItems.forEach(item => {
-                                        item.remove()
-                                    })
-                                    const ingredients = recipe.ingredients
-                                    const steps = recipe.steps
-                                    let stepsIterator = 0
-                                    ingredients.forEach(ingredient => {
-                                        const ingredientHTML = `
-                                            <p class="recipe-ingredient-element">${capitalize(ingredient.ingredient)} - ${ingredient.quantity}</p>
-                                        `
-                                        ingredientsBox.insertAdjacentHTML('beforeend', ingredientHTML)
-                                    })
-                                    steps.forEach(step => {
-                                        const stepHTML = `
-                                            <p class="recipe-step-element"><b>${stepsIterator+1}.</b> ${step}</p>
-                                        `
-                                        stepsBox.insertAdjacentHTML('beforeend', stepHTML)
-                                        stepsIterator = stepsIterator + 1
-                                    })
+                                    fillModalRecipe(response)
                                 }
                             })
 
@@ -178,7 +183,21 @@ recipeSearchInput.addEventListener('input', (e) => {
     else {
         removeSearchResults()
     }
+})
 
+const randomRecipeBtn = document.querySelector('.recipe-search__search__save-new__button')
+randomRecipeBtn.addEventListener('click', () => {
+    const langPrefix = window.location.href.split('/')[3];
+    const url = location.origin + `/${langPrefix}/recipes/get-random-recipe`
+    $.ajax({
+        type: 'get',
+        url: url,
+        success: function (response) {
+            if (response.status === 200) {
+                fillModalRecipe(response)
+            }
+        }
+    })
 })
 
 
