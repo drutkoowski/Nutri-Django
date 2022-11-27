@@ -201,7 +201,7 @@
 .modal-queued__recipe{
   &__heading {
     font-size: 4rem!important;
-    margin-bottom: 1.5rem!important;
+    margin-bottom: 0!important;
   }
   &__container {
     padding: 1.5rem 1.5rem;
@@ -346,3 +346,7 @@
    vertical-align: text-top;
 }
 
+.author-paragraph{
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}

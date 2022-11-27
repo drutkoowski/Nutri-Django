@@ -8083,7 +8083,7 @@ div.modal--calendar__content-summary {
 
 .modal-queued__recipe__heading {
   font-size: 4rem !important;
-  margin-bottom: 1.5rem !important; }
+  margin-bottom: 0 !important; }
 
 .modal-queued__recipe__container {
   padding: 1.5rem 1.5rem;
@@ -8200,6 +8200,10 @@ div.modal--calendar__content-summary {
   width: 3rem;
   padding-top: 0.45rem;
   vertical-align: text-top; }
+
+.author-paragraph {
+  font-size: 1.5rem;
+  margin-bottom: 1rem; }
 
 *,
 *::after,
