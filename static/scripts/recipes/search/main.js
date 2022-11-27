@@ -8,6 +8,13 @@ if (mealsVideo) {
     mealsVideo.playbackRate = 0.55;
 }
 
+const capitalize = (word) => {
+    return word.toLowerCase()
+        .split(' ')
+        .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+        .join(' ')
+}
+
 function hideModal(modalClass) {
     $("." + modalClass).fadeOut(900, () => {
          const modal = document.querySelector(`.${modalClass}`)
@@ -93,13 +100,31 @@ const searchRecipes = (query) => {
                                     const recipe = JSON.parse(response['recipe'])
                                     const headingModal = document.querySelector('.modal-queued__recipe__heading')
                                     headingModal.innerHTML = recipe.name
+                                    const difficultyBox = document.querySelector('.modal-queued__recipe__difficulty')
+                                    difficultyBox.innerHTML = recipe.difficulty
+                                    const durationBox = document.querySelector('.modal-queued__recipe__duration')
+                                    durationBox.innerHTML = `${recipe.duration}`
+                                    const personCount = document.querySelector('.modal-queued__recipe__person-count')
+                                    personCount.innerHTML = `${gettext('for')} ${recipe.person_count}`
                                     openModal('.modal-queued__recipe')
                                     const ingredientsBox = document.querySelector('.modal-queued__recipe__container__main-content__ingredients__elements')
                                     const stepsBox = document.querySelector('.modal-queued__recipe__container__main-content__steps')
                                     const ingredients = recipe.ingredients
-                                    console.log(ingredients)
                                     const steps = recipe.steps
-                                    console.log(steps)
+                                    let stepsIterator = 0
+                                    ingredients.forEach(ingredient => {
+                                        const ingredientHTML = `
+                                            <p>${capitalize(ingredient.ingredient)} - ${ingredient.quantity}</p>
+                                        `
+                                        ingredientsBox.insertAdjacentHTML('beforeend', ingredientHTML)
+                                    })
+                                    steps.forEach(step => {
+                                        const stepHTML = `
+                                            <p><b>${stepsIterator+1}.</b> ${step}</p>
+                                        `
+                                        stepsBox.insertAdjacentHTML('beforeend', stepHTML)
+                                        stepsIterator = stepsIterator + 1
+                                    })
                                 }
                             })
 

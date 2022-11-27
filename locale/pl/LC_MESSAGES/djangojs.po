@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-27 00:37+0100\n"
+"POT-Creation-Date: 2022-11-27 17:48+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -406,7 +406,7 @@ msgstr "Wystąpił błąd.. spróbuj jeszcze raz."
 msgid "Email or password field is not valid."
 msgstr "Pole email lub hasła jest nieprawidłowe."
 
-#: .\static\scripts\meals\add\main.js:182
+#: .\static\scripts\meals\add\main.js:169
 #: .\static\scripts\meals\saved\main.js:116
 #: .\static\scripts\meals\saved\main.js:242
 #: .\static\scripts\workouts\add\main.js:182
@@ -415,22 +415,22 @@ msgstr "Pole email lub hasła jest nieprawidłowe."
 msgid "Category"
 msgstr "Kategoria"
 
-#: .\static\scripts\meals\add\main.js:251
-#: .\static\scripts\meals\add\main.js:256
+#: .\static\scripts\meals\add\main.js:238
+#: .\static\scripts\meals\add\main.js:243
 #: .\static\scripts\workouts\add\main.js:247
 #: .\static\scripts\workouts\add\main.js:252
 msgid "No search results."
 msgstr "Brak rezultatów wyszukiwania."
 
-#: .\static\scripts\meals\add\main.js:412
+#: .\static\scripts\meals\add\main.js:399
 msgid "No saved templates yet"
 msgstr "Brak zapisanych szablonów"
 
-#: .\static\scripts\meals\add\main.js:431
+#: .\static\scripts\meals\add\main.js:418
 msgid "Try to search meal or ingredients that have you eaten today."
 msgstr "Spróbuj wyszukać posiłek lub składniki, które zjadłeś/aś dzisiaj."
 
-#: .\static\scripts\meals\add\main.js:432
+#: .\static\scripts\meals\add\main.js:419
 #: .\static\scripts\workouts\add\main.js:411
 msgid "Results will appear here."
 msgstr "Wyniki pojawią się tutaj."
@@ -479,15 +479,16 @@ msgstr "Dodaj nowy element dla swojego posiłku"
 msgid "Edit Meal"
 msgstr "Edytuj Posiłek"
 
-#: .\static\scripts\recipes\search\main.js:41
+#: .\static\scripts\recipes\search\main.js:76
+#: .\static\scripts\recipes\search\main.js:108
 msgid "for"
 msgstr "dla"
 
-#: .\static\scripts\recipes\search\main.js:44
+#: .\static\scripts\recipes\search\main.js:79
 msgid "Difficulty level: "
 msgstr "Poziom trudności: "
 
-#: .\static\scripts\recipes\search\main.js:46
+#: .\static\scripts\recipes\search\main.js:81
 msgid "See"
 msgstr "Zobacz"
 
