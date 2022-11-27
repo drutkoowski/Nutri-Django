@@ -19,19 +19,6 @@ let openModal = function (modalClass) {
         }
         div.classList.remove('not-visible')
         div.classList.add('modal-active')
-        // let Mwidth = div.offsetWidth;
-        // let Mheight = div.offsetHeight;
-        // let Wwidth = window.innerWidth;
-        // let Wheight = window.innerHeight;
-        // document.querySelector(modalClass).classList.add('modal-active')
-        // div.style.position = "absolute";
-        // div.style.top = ((Wheight - Mheight ) / 2 +window.pageYOffset ) + "px";
-        // div.style.left = ((Wwidth - Mwidth) / 2 +window.pageXOffset ) + "px";
-        // $(modalClass).on('scroll touchmove mousewheel', function(e){
-        //   e.preventDefault();
-        //   e.stopPropagation();
-        //   return false;
-        // })
 };
 
 

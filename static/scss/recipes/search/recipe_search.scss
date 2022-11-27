@@ -30,7 +30,10 @@
   height: 100%;
   border-radius: 10px;
   padding: 5rem 2rem;
-
+  transition: all .3s ease-in;
+  animation-name: fade-left;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
   &__search {
     display: grid;
     grid-template-rows: auto;
@@ -83,7 +86,6 @@
       button {
         padding: 1rem 3rem;
         cursor: pointer;
-        margin-top: 2rem;
         margin-bottom: 2rem;
       }
     }
@@ -122,7 +124,11 @@
           margin: 15rem 0;
           text-align: center;
           font-size: 2rem;
-
+          transition: all .3s ease-in;
+          animation-name: fade-bottom;
+          animation-duration: 2s;
+          animation-timing-function: ease-out;
+          color: var(--black-muted);
         }
         &__item {
           max-height: 25rem;
@@ -192,4 +198,118 @@
 }
 
 
+.modal-queued__recipe{
+  &__heading {
+    font-size: 4rem!important;
+    margin-bottom: 1.5rem!important;
+  }
+  &__container {
+    padding: 1.5rem 1.5rem;
+    color: var(--black-muted);
+    height: 55rem;
+    overflow-y: auto;
+    background-color: var(--color-white);
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
+    box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
+    font-size: 2rem;
+    &__main-content {
+      margin-top: 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+      grid-column-gap: 5rem;
+      margin-left: 1rem;
+
+      &__ingredients {
+        p:first-of-type {
+          font-size: 2.5rem;
+          text-transform: uppercase;
+          font-weight: bold;
+        }
+        &__elements {
+          p {
+             font-size: 2rem!important;
+             text-transform: unset!important;
+             font-weight: unset!important;
+          }
+        }
+      }
+      &__steps {
+        p:first-of-type {
+           font-size: 2.5rem;
+           text-transform: uppercase;
+           font-weight: bold;
+        }
+        &__elements {
+          p {
+             font-size: 2rem!important;
+             text-transform: unset!important;
+             font-weight: unset!important;
+          }
+        }
+      }
+    }
+    &__requirements {
+      margin-top: 0.5rem;
+      p span{
+        vertical-align: text-bottom;
+        font-size: 1.85rem;
+        margin-left: 1rem;
+        margin-top: 5px!important;
+        padding-top: 3px;
+      }
+    }
+    h3{
+      color: var(--black-muted);
+      font-size: 3rem;
+    }
+  }
+  &__content {
+     height: 75rem;
+     width: 120rem;
+    @include respond(tab-md) {
+      width: auto;
+      margin: 0 auto;
+      height: auto;
+      max-height: 60rem;
+    }
+    @include respond(phone-lg) {
+       width: 50rem;
+       padding: 2rem!important;
+    }
+    @include respond(phone-md-lg){
+      width: 40rem;
+    }
+    @include respond(phone-md-sm){
+      width: 35rem;
+      min-height: 45rem;
+      max-height: unset;
+    }
+    @include respond(phone-sm) {
+      padding: 0.5rem!important;
+    }
+  }
+}
+
+.recipe-difficulty-icon{
+  height: 3rem;
+  width: 3rem;
+  vertical-align: text-top;
+}
+
+.recipe-duration-icon{
+   height: 3rem;
+   width: 3rem;
+   padding-top: -0.35rem;
+   vertical-align: text-bottom;
+}
+
+.recipe-people-icon{
+   height: 3rem;
+   width: 3rem;
+   padding-top: 0.45rem;
+   vertical-align: text-top;
+}
 

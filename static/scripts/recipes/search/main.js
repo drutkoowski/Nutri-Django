@@ -1,11 +1,27 @@
 const mealsVideo = document.getElementById('meals-video')
 const navbar = document.querySelector('.navbar--dashboard')
+const csrfToken = document.getElementsByName('csrfmiddlewaretoken')[0].value
+
 navbar.classList.toggle('fix-navbar')
 
 if (mealsVideo) {
     mealsVideo.playbackRate = 0.55;
 }
 
+function hideModal(modalClass) {
+    $("." + modalClass).fadeOut(900, () => {
+         const modal = document.querySelector(`.${modalClass}`)
+         modal.classList.add('not-visible')
+         modal.style.removeProperty('display')
+    });
+}
+
+let openModal = function (modalClass) {
+        let div = document.querySelector(modalClass);
+        div.classList.remove('not-visible')
+        div.classList.remove('not-visible')
+        div.style.zIndex = '45000'
+};
 window.onresize = function(){ location.reload(); }
 
 const removeSearchResults = () => {
@@ -64,6 +80,29 @@ const searchRecipes = (query) => {
                     detailsBtns.forEach(btn => {
                         btn.addEventListener('click', () => {
                             const recipePk = btn.dataset.pk
+                            const langPrefix = window.location.href.split('/')[3];
+                            const url = location.origin + `/${langPrefix}/recipes/get-recipe-info-by-id`
+                            $.ajax({
+                                type: 'POST',
+                                url: url,
+                                data: {
+                                    'recipeId': recipePk,
+                                    'csrfmiddlewaretoken': csrfToken,
+                                },
+                                success: function (response){
+                                    const recipe = JSON.parse(response['recipe'])
+                                    const headingModal = document.querySelector('.modal-queued__recipe__heading')
+                                    headingModal.innerHTML = recipe.name
+                                    openModal('.modal-queued__recipe')
+                                    const ingredientsBox = document.querySelector('.modal-queued__recipe__container__main-content__ingredients__elements')
+                                    const stepsBox = document.querySelector('.modal-queued__recipe__container__main-content__steps')
+                                    const ingredients = recipe.ingredients
+                                    console.log(ingredients)
+                                    const steps = recipe.steps
+                                    console.log(steps)
+                                }
+                            })
+
                         })
                     })
                 }
@@ -84,11 +123,8 @@ const searchRecipes = (query) => {
 const recipeSearchInput = document.querySelector('.recipe-search-add')
 recipeSearchInput.addEventListener('input', (e) => {
     const query = e.target.value
-    if (query !== ''){
-        const handler = () => {
+    if (query.trim() !== ''){
         searchRecipes(query)
-        }
-        setTimeout(handler, 50);
     }
     else {
         removeSearchResults()

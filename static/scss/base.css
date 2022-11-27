@@ -7941,7 +7941,11 @@ div.modal--calendar__content-summary {
   width: 100%;
   height: 100%;
   border-radius: 10px;
-  padding: 5rem 2rem; }
+  padding: 5rem 2rem;
+  transition: all .3s ease-in;
+  animation-name: fade-left;
+  animation-duration: 1s;
+  animation-timing-function: ease-out; }
   .recipe-search__search {
     display: grid;
     grid-template-rows: auto;
@@ -7990,7 +7994,6 @@ div.modal--calendar__content-summary {
       .recipe-search__search__save-new button {
         padding: 1rem 3rem;
         cursor: pointer;
-        margin-top: 2rem;
         margin-bottom: 2rem; }
     .recipe-search__search__results {
       margin: 1rem 2.5rem 0 2.5rem;
@@ -8023,7 +8026,12 @@ div.modal--calendar__content-summary {
         .recipe-search__search__results__container h3.recipe-info-message {
           margin: 15rem 0;
           text-align: center;
-          font-size: 2rem; }
+          font-size: 2rem;
+          transition: all .3s ease-in;
+          animation-name: fade-bottom;
+          animation-duration: 2s;
+          animation-timing-function: ease-out;
+          color: var(--black-muted); }
         .recipe-search__search__results__container__item {
           max-height: 25rem;
           display: grid;
@@ -8072,6 +8080,97 @@ div.modal--calendar__content-summary {
   height: 3.5rem;
   vertical-align: middle;
   padding-top: 5px; }
+
+.modal-queued__recipe__heading {
+  font-size: 4rem !important;
+  margin-bottom: 1.5rem !important; }
+
+.modal-queued__recipe__container {
+  padding: 1.5rem 1.5rem;
+  color: var(--black-muted);
+  height: 55rem;
+  overflow-y: auto;
+  background-color: var(--color-white);
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 18px -7px #42445a;
+  -moz-box-shadow: 0px 0px 18px -7px #42445a;
+  box-shadow: 0px 0px 18px -7px #42445a;
+  font-size: 2rem; }
+  .modal-queued__recipe__container__main-content {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 5rem;
+    margin-left: 1rem; }
+    .modal-queued__recipe__container__main-content__ingredients p:first-of-type {
+      font-size: 2.5rem;
+      text-transform: uppercase;
+      font-weight: bold; }
+    .modal-queued__recipe__container__main-content__ingredients__elements p {
+      font-size: 2rem !important;
+      text-transform: unset !important;
+      font-weight: unset !important; }
+    .modal-queued__recipe__container__main-content__steps p:first-of-type {
+      font-size: 2.5rem;
+      text-transform: uppercase;
+      font-weight: bold; }
+    .modal-queued__recipe__container__main-content__steps__elements p {
+      font-size: 2rem !important;
+      text-transform: unset !important;
+      font-weight: unset !important; }
+  .modal-queued__recipe__container__requirements {
+    margin-top: 0.5rem; }
+    .modal-queued__recipe__container__requirements p span {
+      vertical-align: text-bottom;
+      font-size: 1.85rem;
+      margin-left: 1rem;
+      margin-top: 5px !important;
+      padding-top: 3px; }
+  .modal-queued__recipe__container h3 {
+    color: var(--black-muted);
+    font-size: 3rem; }
+
+.modal-queued__recipe__content {
+  height: 75rem;
+  width: 120rem; }
+  @media only screen and (max-width: 62.5em) {
+    .modal-queued__recipe__content {
+      width: auto;
+      margin: 0 auto;
+      height: auto;
+      max-height: 60rem; } }
+  @media only screen and (max-width: 37.5em) {
+    .modal-queued__recipe__content {
+      width: 50rem;
+      padding: 2rem !important; } }
+  @media only screen and (max-width: 31.25em) {
+    .modal-queued__recipe__content {
+      width: 40rem; } }
+  @media only screen and (max-width: 25em) {
+    .modal-queued__recipe__content {
+      width: 35rem;
+      min-height: 45rem;
+      max-height: unset; } }
+  @media only screen and (max-width: 21.875em) {
+    .modal-queued__recipe__content {
+      padding: 0.5rem !important; } }
+.recipe-difficulty-icon {
+  height: 3rem;
+  width: 3rem;
+  vertical-align: text-top; }
+
+.recipe-duration-icon {
+  height: 3rem;
+  width: 3rem;
+  padding-top: -0.35rem;
+  vertical-align: text-bottom; }
+
+.recipe-people-icon {
+  height: 3rem;
+  width: 3rem;
+  padding-top: 0.45rem;
+  vertical-align: text-top; }
 
 *,
 *::after,

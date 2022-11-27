@@ -73,8 +73,8 @@ def recipes_view(request):
 def search_recipe_view(request):
     return render(request, 'recipes/search/search_recipes.html')
 
-# ajax views
 
+# ajax views
 
 @login_required(login_url='login')
 def live_search_recipes(request):
@@ -83,7 +83,8 @@ def live_search_recipes(request):
         lang_code = request.path.split('/')[1]
         if query != '':
             if (lang_code == 'pl'):
-                check_if_recipe_exists = Recipe.objects.filter(Q(name_pl__istartswith=query) | Q(name_pl__icontains=query))
+                check_if_recipe_exists = Recipe.objects.filter(
+                    Q(name_pl__istartswith=query) | Q(name_pl__icontains=query))
                 # check_if_recipe_exists = Recipe.objects.filter(
                 #     name_pl__iregex=r"\b{0}\b".format(query)).all().union(
                 #     Recipe.objects.filter(
@@ -126,10 +127,44 @@ def live_search_recipes(request):
                         }
                     recipes_arr.append(recipes_dict)
 
-                return JsonResponse({'status': 200, 'text': 'There are recipes found.', 'recipes': json.dumps(recipes_arr)})
+                return JsonResponse(
+                    {'status': 200, 'text': 'There are recipes found.', 'recipes': json.dumps(recipes_arr)})
             else:
                 return JsonResponse({'status': 404, 'text': 'There are not recipes found.', 'recipes': []})
         else:
             return JsonResponse({'status': 404, 'text': 'There are not recipes found.', 'recipes': []})
     else:
         return redirect('home')
+
+
+@login_required(login_url='login')
+def get_recipe_info_by_id(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
+        recipe_id = request.POST.get('recipeId')
+        lang_code = request.path.split('/')[1]
+        try:
+            recipe = Recipe.objects.get(pk=recipe_id)
+            if lang_code == 'pl':
+                recipe_dict = {
+                    'name': recipe.name_pl,
+                    'person_count': recipe.person_count,
+                    'difficulty': recipe.difficulty_pl,
+                    'author': recipe.author,
+                    'duration': recipe.duration,
+                    'ingredients': recipe.ingredients_pl,
+                    'steps': recipe.steps_pl
+                }
+            else:
+                recipe_dict = {
+                    'name': recipe.name_en,
+                    'person_count': recipe.person_count,
+                    'difficulty': recipe.difficulty_en,
+                    'author': recipe.author,
+                    'duration': recipe.duration,
+                    'ingredients': recipe.ingredients_en,
+                    'steps': recipe.steps_en
+                }
+            recipe_json = json.dumps(recipe_dict)
+            return JsonResponse({'status': 200, 'text': 'There are recipe found.', 'recipe': recipe_json})
+        except:
+            return JsonResponse({'status': 400, 'text': 'There are not recipe found.', 'recipe': ''})

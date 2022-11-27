@@ -43,18 +43,48 @@
                         <button class="recipe-search__search__save-new__button btn">{% trans 'Random Recipe' %}</button>
                     </div>
                 </div>
-
-                <div class="recipe-search__added not-visible">
-                    <div class="recipe-search__added--saved">
-                        <div class="recipe-search__added--saved__heading">
-                            <h2 class="recipe-search__added--saved__heading--item">&nbsp;</h2>
-                        </div>
-                        <div class="recipe-search__added--saved__content"></div>
-                    </div>
-                </div>
-
             </div>
         </div>
-
+<div class="modal-queued modal-queued__recipe not-visible">
+    <div class="modal-queued__content modal-queued__recipe__content">
+        <div class="modal-queued__close-button modal-queued__recipe__close-button">&times;</div>
+        <h1 class="modal-queued__recipe__heading"></h1>
+        <div class="modal-queued__recipe__container">
+            <h3>{% trans 'What do you need to make it by yourself?' %}</h3>
+            <div class="modal-queued__recipe__container__requirements">
+                <p>
+                    <img src="{% sass_src 'images/svg/difficulty.svg' %}" class="recipe-difficulty-icon filter-green" alt="Difficulty Icon">
+                    <span>Łatwe</span>
+                </p>
+            </div>
+            <div class="modal-queued__recipe__container__requirements">
+                <p>
+                    <img src="{% sass_src 'images/svg/clock.svg' %}" class="recipe-duration-icon filter-green" alt="Clock Icon">
+                    <span>32 min</span>
+                </p>
+            </div>
+            <div class="modal-queued__recipe__container__requirements">
+                <p>
+                    <img src="{% sass_src 'images/svg/people.svg' %}" class="recipe-people-icon filter-green" alt="People Icon">
+                    <span>for 3</span> {% trans 'people' %}
+                </p>
+            </div>
+            <div class="modal-queued__recipe__container__main-content">
+                <div class="modal-queued__recipe__container__main-content__ingredients">
+                    <p>{% trans 'Ingredients' %}</p>
+                    <div class="modal-queued__recipe__container__main-content__ingredients__elements">
+                        <p>ŁAŁAŁAŁA</p>
+                    </div>
+                </div>
+                <div class="modal-queued__recipe__container__main-content__steps">
+                    <p>{% trans 'Step by step' %}</p>
+                    <div class="modal-queued__recipe__container__main-content__steps__elements">
+                        <p>EWEAWAWEAW</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
