@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-24 00:23+0100\n"
+"POT-Creation-Date: 2022-11-27 00:37+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -338,12 +338,14 @@ msgid "Burnt"
 msgstr "Spalone"
 
 #: .\static\scripts\activity-calendar\activity-calendar.js:55
-#: .\static\scripts\activity-calendar\activity-calendar.js:160
+#: .\static\scripts\activity-calendar\activity-calendar.js:164
+#: .\static\scripts\activity-calendar\activity-calendar.js:175
 msgid "Carbs"
 msgstr "Węglowodany"
 
 #: .\static\scripts\activity-calendar\activity-calendar.js:56
-#: .\static\scripts\activity-calendar\activity-calendar.js:160
+#: .\static\scripts\activity-calendar\activity-calendar.js:164
+#: .\static\scripts\activity-calendar\activity-calendar.js:173
 msgid "Protein"
 msgstr "Białko"
 
@@ -359,23 +361,24 @@ msgstr "Posiłki"
 msgid "Activities"
 msgstr "Aktywności"
 
-#: .\static\scripts\activity-calendar\activity-calendar.js:160
+#: .\static\scripts\activity-calendar\activity-calendar.js:164
+#: .\static\scripts\activity-calendar\activity-calendar.js:174
 msgid "Fat"
 msgstr "Tłuszcze"
 
-#: .\static\scripts\activity-calendar\activity-calendar.js:169
+#: .\static\scripts\activity-calendar\activity-calendar.js:185
 msgid "You have not added any meals on this day"
 msgstr "Nie dodałeś żadnych posiłków dla tego dnia"
 
-#: .\static\scripts\activity-calendar\activity-calendar.js:200
+#: .\static\scripts\activity-calendar\activity-calendar.js:216
 msgid "Kcal Burnt"
 msgstr "Spalone Kcal"
 
-#: .\static\scripts\activity-calendar\activity-calendar.js:200
+#: .\static\scripts\activity-calendar\activity-calendar.js:216
 msgid "Duration"
 msgstr "Czas trwania"
 
-#: .\static\scripts\activity-calendar\activity-calendar.js:211
+#: .\static\scripts\activity-calendar\activity-calendar.js:227
 msgid "You have not added any activities on this day"
 msgstr "Nie dodałeś żadnych aktywności dla tego dnia"
 
@@ -475,6 +478,18 @@ msgstr "Dodaj nowy element dla swojego posiłku"
 #: .\static\scripts\meals\saved\main.js:740
 msgid "Edit Meal"
 msgstr "Edytuj Posiłek"
+
+#: .\static\scripts\recipes\search\main.js:41
+msgid "for"
+msgstr "dla"
+
+#: .\static\scripts\recipes\search\main.js:44
+msgid "Difficulty level: "
+msgstr "Poziom trudności: "
+
+#: .\static\scripts\recipes\search\main.js:46
+msgid "See"
+msgstr "Zobacz"
 
 #: .\static\scripts\signup\main.js:155
 msgid "\"What's your weight goal?\""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-23 23:42+0100\n"
+"POT-Creation-Date: 2022-11-27 00:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,11 +20,11 @@ msgstr ""
 "%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
 "%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: .\Nutri\settings.py:155
+#: .\Nutri\settings.py:156
 msgid "Polish"
 msgstr "Polski"
 
-#: .\Nutri\settings.py:156
+#: .\Nutri\settings.py:157
 msgid "English"
 msgstr "Angielski"
 
@@ -99,8 +99,8 @@ msgid "Activities"
 msgstr "Aktywności"
 
 #: .\templates\accounts\dashboard.html:28
-msgid "Manage Plans"
-msgstr "Zarządzaj Planami"
+msgid "Recipes"
+msgstr "Przepisy"
 
 #: .\templates\accounts\dashboard.html:32
 msgid "Summary"
@@ -297,7 +297,7 @@ msgstr "Spożyte Kcal"
 
 #: .\templates\accounts\login.html:15 .\templates\accounts\signup.html:15
 #: .\templates\home\index.html:80 .\templates\meals\add\add_meals.html:14
-#: .\templates\meals\meals.html:14
+#: .\templates\meals\meals.html:14 .\templates\recipes\recipes.html:14
 #: .\templates\workouts\add\add_workouts.html:14
 #: .\templates\workouts\workouts.html:14
 msgid "Your browser is not supported!"
@@ -472,6 +472,7 @@ msgstr "Stworzone z &hearts; przez"
 #: .\templates\meals\add\add_meals.html:23
 #: .\templates\meals\saved\saved_meals.html:74
 #: .\templates\meals\saved\saved_meals.html:85
+#: .\templates\recipes\search\search_recipes.html:31
 #: .\templates\workouts\add\add_workouts.html:23
 #: .\templates\workouts\saved\saved_workouts.html:76
 #: .\templates\workouts\saved\saved_workouts.html:87
@@ -488,6 +489,7 @@ msgid "Try to search meal or ingredients that have you eaten today."
 msgstr "Spróbuj wyszukać posiłek lub składnik, który zjadłeś/aś."
 
 #: .\templates\meals\add\add_meals.html:30
+#: .\templates\recipes\search\search_recipes.html:38
 #: .\templates\workouts\add\add_workouts.html:30
 msgid "Results will appear here."
 msgstr "Twoje rezultaty wyszukiwania pojawią się tutaj."
@@ -563,7 +565,7 @@ msgstr "Brak posiłków dodanych dzisiaj..."
 msgid "Add Meal"
 msgstr "Dodaj posiłek"
 
-#: .\templates\meals\meals.html:23
+#: .\templates\meals\meals.html:23 .\templates\recipes\recipes.html:23
 msgid ""
 "Fill your day with the foods you eat today and find out more about their "
 "calorie content and the ingredients they contain such as protein,"
@@ -577,7 +579,7 @@ msgstr ""
 msgid "Meals Propositions"
 msgstr "Propozycje Posiłków"
 
-#: .\templates\meals\meals.html:27
+#: .\templates\meals\meals.html:27 .\templates\recipes\recipes.html:27
 msgid ""
 "Browse the dish suggestions with their recipes and other information "
 "constructed by us just for you."
@@ -624,6 +626,26 @@ msgstr "Dodawanie Twojego szablonu posiłku do bazy..."
 #: .\templates\meals\saved\saved_meals.html:84
 msgid "Search for your meal components"
 msgstr "Szukaj składowych posiłku"
+
+#: .\templates\recipes\recipes.html:22"
+msgid "Search Recipe"
+msgstr "Szukaj Przepisu"
+
+#: .\templates\recipes\recipes.html:26
+msgid "Recipe Ideas"
+msgstr "Pomysł na przepis"
+
+#: .\templates\recipes\search\search_recipes.html:29
+msgid "Search for recipe"
+msgstr "Szukaj przepisu"
+
+#: .\templates\recipes\search\search_recipes.html:42
+msgid "Don't you know what do you want to eat?"
+msgstr "Nie wiesz co chcesz zjeść?"
+
+#: .\templates\recipes\search\search_recipes.html:43
+msgid "Random Recipe"
+msgstr "Wylosuj Przepis"
 
 #: .\templates\workouts\add\add_workouts.html:29
 msgid "Try to search activities that have you done today."
@@ -1917,6 +1939,9 @@ msgid ""
 "Set the precision for numeric computations in the SASS processor. Default: "
 "settings.SASS_PRECISION."
 msgstr ""
+
+#~ msgid "Manage Plans"
+#~ msgstr "Zarządzaj Planami"
 
 #~ msgid "Your added activities for"
 #~ msgstr "Twoje dodane aktywności dla"

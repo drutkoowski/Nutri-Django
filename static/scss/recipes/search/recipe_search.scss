@@ -22,7 +22,7 @@
 
 .recipe-search {
   display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-columns: 0.75fr 3fr 0.75fr;
   grid-template-rows: 1fr;
   grid-column: 2/3;
   grid-row: 2/3;
@@ -109,9 +109,9 @@
       &__container {
         overflow-y: auto;
         overflow-x: hidden;
-        grid-column: 1/-1;
+        grid-column: 1 / -1;
         margin-top: 2rem;
-        min-height: 35rem;
+        height: 35rem;
         font-size: 1.3rem;
         background-color: white;
         border-radius: 10px;
@@ -125,58 +125,48 @@
 
         }
         &__item {
-          max-height: 10rem;
+          max-height: 25rem;
           display: grid;
-          grid-template-columns: 0.8fr 0.4fr;
-          grid-auto-rows: minmax(10rem, auto);
+          grid-template-columns: 1fr 0.3fr;
+          grid-template-rows: 1fr 1fr;
+          padding: 1rem 2rem;
           align-items: center;
           transition: all .3s ease-in;
+          animation-name: fade-bottom;
+          animation-duration: 1s;
+          animation-timing-function: ease-out;
+
+          &--heading {
+            grid-row: 1/2;
+            grid-column: 1/2;
+            font-size: 2rem;
+          }
+          &--lower {
+            grid-row: 2/3;
+            grid-column: 1/2;
+            p{
+              font-size: 1.75rem;
+              span {
+                margin-left: 0.5rem;
+              }
+              span.pushed {
+                margin-left: 1.5rem;
+              }
+            }
+          }
+          button {
+            grid-row: 1/3;
+            grid-column: 2/3;
+            padding: 1rem 3rem;
+            text-transform: uppercase;
+            justify-self: end;
+          }
           &:not(:last-of-type) {
             border-bottom: 2px solid #f2f2f2;
           }
           &:hover {
             transform: scale(1.02);
           }
-          &__recipe {
-            p {
-              font-size: 2rem;
-              margin-left: 2rem;
-              @include respond(tab-land) {
-                font-size: 1.65rem;
-              }
-              @include respond(tab-md) {
-                font-size: 2rem;
-                margin-left: 1rem;
-                margin-right: 0.25rem;
-              }
-              @include respond(phone-md-lg){
-                font-size: 1.75rem;
-              }
-            }
-            grid-column: 1/2;
-          }
-          &__buttons {
-            grid-column: 2/3;
-            display: flex;
-            justify-content: space-evenly;
-            button {
-              border-radius: 5px;
-              padding: 1rem 1.5rem;
-              border: none;
-              justify-self: stretch;
-              grid-column: 2/3;
-              font-size: 1.5rem;
-              font-weight: bold;
-              cursor: pointer;
-              transition: all .3s ease-in;
-              background-color: rgb(189, 231, 197);
-              color: white;
-              &:hover {
-                transform: scale(1.05);
-              }
-            }
-          }
-
        }
       }
       h3 {
@@ -193,6 +183,13 @@
   }
 }
 
+
+.clock-icon-recipe-duration {
+  width: 3.5rem;
+  height: 3.5rem;
+  vertical-align: middle;
+  padding-top: 5px;
+}
 
 
 
