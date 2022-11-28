@@ -18,7 +18,7 @@ const fillModalRecipe = (response) => {
     const durationBox = document.querySelector('.modal-queued__recipe__duration')
     durationBox.innerHTML = `${recipe.duration}`
     const personCount = document.querySelector('.modal-queued__recipe__person-count')
-    personCount.innerHTML = `${gettext('for')} ${recipe.person_count}`
+    personCount.innerHTML = `${gettext('for')} ${recipe.person_count} ${gettext('persons')}`
     const authorBox = document.querySelector('.modal-queued__recipe__author')
     authorBox.innerHTML = recipe.author
     openModal('.modal-queued__recipe')
@@ -32,7 +32,7 @@ const fillModalRecipe = (response) => {
         });
     })
     const ingredientsBox = document.querySelector('.modal-queued__recipe__container__main-content__ingredients__elements')
-    const stepsBox = document.querySelector('.modal-queued__recipe__container__main-content__steps')
+    const stepsBox = document.querySelector('.modal-queued__recipe__container__main-content__steps__elements')
     const ingredientsBoxItems = document.querySelectorAll('.recipe-ingredient-element')
     const stepsBoxItems = document.querySelectorAll('.recipe-step-element')
 
@@ -47,8 +47,9 @@ const fillModalRecipe = (response) => {
     const steps = recipe.steps
     let stepsIterator = 0
     ingredients.forEach(ingredient => {
+        const isQuantity = ingredient.quantity ? '-' : ''
         const ingredientHTML = `
-            <p class="recipe-ingredient-element">${capitalize(ingredient.ingredient)} - ${ingredient.quantity}</p>
+            <p class="recipe-ingredient-element">${capitalize(ingredient.ingredient)} ${isQuantity} ${ingredient.quantity}</p>
         `
         ingredientsBox.insertAdjacentHTML('beforeend', ingredientHTML)
     })

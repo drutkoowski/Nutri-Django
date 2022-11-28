@@ -2,10 +2,7 @@
 {% load sass_tags %}
 {% load i18n %}
 {% block scripts %}
-     <script src="{% sass_src 'scripts/recipes/search/main.js' %}" defer></script>
-    <script>
-        let searchIconPath = "{% sass_src 'images/svg/search.svg' %}"
-    </script>
+     <script src="{% sass_src 'scripts/recipes/ideas/main.js' %}" defer></script>
 {% endblock scripts %}
 {% block content %}
     {% csrf_token %}
@@ -25,26 +22,33 @@
             <div class="recipe-search grid-full-span">
                 <div class="recipe-search__search">
                     <div class="recipe-search__search__results">
-                    <div class="recipe-search__search__results__heading-box">
-                        <h3>{% trans 'Search for recipe' %}</h3>
-                        <div class="recipe-search__search__bar">
-                            <input class="recipe-search-add search-input" type="text" placeholder="{% trans 'Search' %}"/>
-                            <span>
-                                <img class="recipe-search__search__bar__icon" src="{% sass_src 'images/svg/search.svg' %}" alt="Search Icon" />
-                            </span>
+                        <div class="recipe-search__search__results__heading-box">
+                            <h3>{% trans 'Suggested recipes' %}</h3>
                         </div>
-                    </div>
                         <div class="recipe-search__search__results__container">
-                            <h3 class="recipe-info-message">{% trans 'Results will appear here.' %}</h3>
+{#                            <h3 class="recipe-info-message">{% trans 'We could not find any recipe matching your criterias.' %}</h3>#}
                         </div>
                     </div>
                     <div class="recipe-search__search__save-new">
-                        <p>{% trans "Don't you know what do you want to eat?" %}</p>
-                        <button class="recipe-search__search__save-new__button btn">{% trans 'Random Recipe' %}</button>
+                        <p>{% trans "Not satisfied with results?" %}</p>
+                        <button class="recipe-search__search__save-new__button btn">{% trans 'Try again' %}</button>
                     </div>
                 </div>
             </div>
         </div>
+
+ <div class="modal-queued modal-add-search modal-recipe-ideas" style="z-index: 2400">
+     <div class="modal-queued__content modal-add-search__content modal-recipe-ideas__content">
+         <h1 class="modal-queued--heading modal-add-search__heading">{% trans 'Type ingredients that you have below separating by a comma' %}</h1>
+         <div class="saved-meals__added--saved__content__search-bar modal-add-search__content__search"><input class="new-saved-meal-search input-scale modal-add-search__content__search-bar" type="text" placeholder="{% trans 'Type all ingredients here' %}"/><span><img class="add-meals__search__bar__icon" src="{% sass_src 'images/svg/search.svg' %}" alt="Search Icon" /></span></div>
+         <div class="saved-meals__added--saved__content__search-response modal-add-search__content__search-response not-visible">
+             <div class="saved-meals__added--saved__content__search-response__item"></div>
+         </div>
+     </div>
+ </div>
+
+
+
 <div class="modal-queued modal-queued__recipe not-visible">
     <div class="modal-queued__content modal-queued__recipe__content">
         <div class="modal-queued__close-button modal-queued__recipe__close-button">&times;</div>
@@ -75,6 +79,7 @@
                     <p>{% trans 'Ingredients' %}</p>
                     <div class="modal-queued__recipe__container__main-content__ingredients__elements"></div>
                 </div>
+
                 <div class="modal-queued__recipe__container__main-content__steps">
                     <p>{% trans 'Step by step' %}</p>
                     <div class="modal-queued__recipe__container__main-content__steps__elements"></div>

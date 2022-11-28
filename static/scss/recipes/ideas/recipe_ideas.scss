@@ -1,0 +1,22 @@
+.modal-recipe-ideas{
+  &__content {
+    height: 25rem;
+    width: 60rem;
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+.isVerified__label{
+  margin-left: 0.5rem;
+  display: inline-block;
+}
+
+.verified-icon{
+  display: inline-block;
+  height: 2rem;
+  width: 2rem;
+  margin-bottom: -4px;
+}

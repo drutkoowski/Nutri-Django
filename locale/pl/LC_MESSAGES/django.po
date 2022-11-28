@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-27 17:47+0100\n"
+"POT-Creation-Date: 2022-11-27 21:00+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -647,19 +647,19 @@ msgstr "Nie wiesz co chcesz zjeść?"
 msgid "Random Recipe"
 msgstr "Wylosuj Przepis"
 
-#: .\templates\recipes\search\search_recipes.html:53
+#: .\templates\recipes\search\search_recipes.html:52
+msgid "Author"
+msgstr "Autor"
+
+#: .\templates\recipes\search\search_recipes.html:54
 msgid "What do you need to make it by yourself?"
 msgstr "Co potrzebujesz by wykonać to samemu?"
 
-#: .\templates\recipes\search\search_recipes.html:69
-msgid "people"
-msgstr "osób"
-
-#: .\templates\recipes\search\search_recipes.html:74
+#: .\templates\recipes\search\search_recipes.html:75
 msgid "Ingredients"
 msgstr "Składniki"
 
-#: .\templates\recipes\search\search_recipes.html:78
+#: .\templates\recipes\search\search_recipes.html:79
 msgid "Step by step"
 msgstr "Krok po kroku"
 
@@ -1955,6 +1955,9 @@ msgid ""
 "Set the precision for numeric computations in the SASS processor. Default: "
 "settings.SASS_PRECISION."
 msgstr ""
+
+#~ msgid "people"
+#~ msgstr "osób"
 
 #~ msgid "Manage Plans"
 #~ msgstr "Zarządzaj Planami"

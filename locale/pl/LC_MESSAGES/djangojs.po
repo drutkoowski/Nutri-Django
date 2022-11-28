@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-27 17:48+0100\n"
+"POT-Creation-Date: 2022-11-27 20:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -479,16 +479,20 @@ msgstr "Dodaj nowy element dla swojego posiłku"
 msgid "Edit Meal"
 msgstr "Edytuj Posiłek"
 
-#: .\static\scripts\recipes\search\main.js:76
-#: .\static\scripts\recipes\search\main.js:108
+#: .\static\scripts\recipes\search\main.js:21
+#: .\static\scripts\recipes\search\main.js:132
 msgid "for"
 msgstr "dla"
 
-#: .\static\scripts\recipes\search\main.js:79
+#: .\static\scripts\recipes\search\main.js:21
+msgid "persons"
+msgstr "osób"
+
+#: .\static\scripts\recipes\search\main.js:135
 msgid "Difficulty level: "
 msgstr "Poziom trudności: "
 
-#: .\static\scripts\recipes\search\main.js:81
+#: .\static\scripts\recipes\search\main.js:137
 msgid "See"
 msgstr "Zobacz"
 

@@ -1,5 +1,7 @@
 import json
 import re
+
+from decouple import config
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.http import JsonResponse
@@ -9,6 +11,8 @@ from django.shortcuts import render, redirect
 
 
 # Create your views here.
+from recipes.utils import get_spoonacular_recipe_by_ingredient, get_spoonacular_recipe_by_id
+
 
 @login_required(login_url='login')
 def recipes_view(request):
@@ -72,6 +76,11 @@ def recipes_view(request):
 @login_required(login_url='login')
 def search_recipe_view(request):
     return render(request, 'recipes/search/search_recipes.html')
+
+
+@login_required(login_url='login')
+def recipe_ideas_view(request):
+    return render(request, 'recipes/ideas/recipes_ideas.html')
 
 
 # ajax views
@@ -202,3 +211,42 @@ def get_random_recipe(request):
             return JsonResponse({'status': 200, 'text': 'Operation successful.', 'recipe': recipe_json})
         except:
             return JsonResponse({'status': 400, 'text': 'Operation not successful.', 'recipe': ''})
+
+
+@login_required(login_url='login')
+def get_recipes_by_ingredients(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
+        lang_code = request.path.split('/')[1]
+        ingredients_arr = request.POST.get('ingredients')
+        ingredients_string = request.POST.get('ingredientsString')
+        data = get_spoonacular_recipe_by_ingredient(ingredients_string)
+        recipes_arr = []
+        for recipe_ids in data:
+            recipe_id = int(recipe_ids['id'])
+            data_recipe = get_spoonacular_recipe_by_id(recipe_id)
+            recipe_ingredients = []
+            for ingredient in data_recipe['extendedIngredients']:
+                ingredient_dict = {
+                    "name": ingredient['originalName'],
+                    "quantity": ingredient['amount'],
+                    "unit": ingredient['unit'],
+                    "unitLong": ingredient['measures']['metric']['unitLong']
+                }
+                recipe_ingredients.append(ingredient_dict)
+            recipe_steps = []
+            for step in data_recipe['analyzedInstructions'][0]['steps']:
+                recipe_steps.append(step['step'])
+            recipe_dict = {
+                "name": data_recipe['title'],
+                "duration": data_recipe['readyInMinutes'],
+                "ingredients": recipe_ingredients,
+                "steps": recipe_steps,
+                "servings": data_recipe['servings'],
+                'author': 'spoonacular',
+                'isVerified': False
+            }
+            recipe = Recipe.objects.create(name_en=recipe_dict['name'], person_count=recipe_dict['servings'],
+                                           author=recipe_dict['author'], duration=recipe_dict['duration'],
+                                           steps_en=recipe_dict['steps'], ingredients_en=recipe_dict['ingredients'])
+            recipes_arr.append(recipe_dict)
+        return JsonResponse({'status': 200, 'text': 'There are recipes found.', 'recipes': json.dumps(recipes_arr)})
