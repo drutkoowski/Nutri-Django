@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-27 20:54+0100\n"
+"POT-Creation-Date: 2022-11-28 19:58+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -479,8 +479,25 @@ msgstr "Dodaj nowy element dla swojego posiłku"
 msgid "Edit Meal"
 msgstr "Edytuj Posiłek"
 
+#: .\static\scripts\recipes\ideas\main.js:42
+msgid "Nutri Verified"
+msgstr "Zweryfikowane przez Nutri"
+
+#: .\static\scripts\recipes\ideas\main.js:45
+msgid "Not verified"
+msgstr "Niezweryfikowane"
+
+#: .\static\scripts\recipes\ideas\main.js:52
+msgid "servings"
+msgstr "porcje"
+
+#: .\static\scripts\recipes\ideas\main.js:57
+#: .\static\scripts\recipes\search\main.js:138
+msgid "See"
+msgstr "Zobacz"
+
 #: .\static\scripts\recipes\search\main.js:21
-#: .\static\scripts\recipes\search\main.js:132
+#: .\static\scripts\recipes\search\main.js:133
 msgid "for"
 msgstr "dla"
 
@@ -488,13 +505,9 @@ msgstr "dla"
 msgid "persons"
 msgstr "osób"
 
-#: .\static\scripts\recipes\search\main.js:135
+#: .\static\scripts\recipes\search\main.js:136
 msgid "Difficulty level: "
 msgstr "Poziom trudności: "
-
-#: .\static\scripts\recipes\search\main.js:137
-msgid "See"
-msgstr "Zobacz"
 
 #: .\static\scripts\signup\main.js:155
 msgid "\"What's your weight goal?\""

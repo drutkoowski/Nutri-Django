@@ -1,7 +1,4 @@
 import json
-import re
-
-from decouple import config
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.http import JsonResponse
@@ -11,7 +8,8 @@ from django.shortcuts import render, redirect
 
 
 # Create your views here.
-from recipes.utils import get_spoonacular_recipe_by_ingredient, get_spoonacular_recipe_by_id
+from recipes.utils import get_spoonacular_recipe_by_ingredient, get_spoonacular_recipe_by_id, \
+    check_or_create_spoonacular_recipe, convert_en_spoonacular_unit
 
 
 @login_required(login_url='login')
@@ -219,24 +217,27 @@ def get_recipes_by_ingredients(request):
         lang_code = request.path.split('/')[1]
         ingredients_arr = request.POST.get('ingredients')
         ingredients_string = request.POST.get('ingredientsString')
-        data = get_spoonacular_recipe_by_ingredient(ingredients_string)
+        # getting recipes from API
+        data = get_spoonacular_recipe_by_ingredient(ingredients_string, 1)  # gets recipe by ingredient
         recipes_arr = []
         for recipe_ids in data:
             recipe_id = int(recipe_ids['id'])
-            data_recipe = get_spoonacular_recipe_by_id(recipe_id)
+            data_recipe = get_spoonacular_recipe_by_id(recipe_id)  # gets recipe info by id
             recipe_ingredients = []
             for ingredient in data_recipe['extendedIngredients']:
+                unit = ingredient['unit']
+                quantity = convert_en_spoonacular_unit(unit, float(ingredient['amount']))
                 ingredient_dict = {
                     "name": ingredient['originalName'],
-                    "quantity": ingredient['amount'],
-                    "unit": ingredient['unit'],
-                    "unitLong": ingredient['measures']['metric']['unitLong']
+                    "quantity": quantity,
                 }
                 recipe_ingredients.append(ingredient_dict)
             recipe_steps = []
             for step in data_recipe['analyzedInstructions'][0]['steps']:
                 recipe_steps.append(step['step'])
             recipe_dict = {
+                "recipeId": recipe_id,
+                "from": 'api',
                 "name": data_recipe['title'],
                 "duration": data_recipe['readyInMinutes'],
                 "ingredients": recipe_ingredients,
@@ -245,8 +246,7 @@ def get_recipes_by_ingredients(request):
                 'author': 'spoonacular',
                 'isVerified': False
             }
-            recipe = Recipe.objects.create(name_en=recipe_dict['name'], person_count=recipe_dict['servings'],
-                                           author=recipe_dict['author'], duration=recipe_dict['duration'],
-                                           steps_en=recipe_dict['steps'], ingredients_en=recipe_dict['ingredients'])
+            recipe_dict = check_or_create_spoonacular_recipe(recipe_dict, lang_code)
             recipes_arr.append(recipe_dict)
+            # END API fetch
         return JsonResponse({'status': 200, 'text': 'There are recipes found.', 'recipes': json.dumps(recipes_arr)})

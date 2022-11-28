@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-27 21:00+0100\n"
+"POT-Creation-Date: 2022-11-28 19:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -98,7 +98,8 @@ msgstr "Posiłki"
 msgid "Activities"
 msgstr "Aktywności"
 
-#: .\templates\accounts\dashboard.html:28
+#: .\templates\accounts\dashboard.html:28 .\templates\accounts\navbar.html:22
+#: .\templates\accounts\navbar_small.html:22
 msgid "Recipes"
 msgstr "Przepisy"
 
@@ -348,11 +349,6 @@ msgstr "Statystyki"
 #: .\templates\components\sidebar\sidebar.html:29
 msgid "Activity"
 msgstr "Aktywności"
-
-#: .\templates\accounts\navbar.html:22
-#: .\templates\accounts\navbar_small.html:22
-msgid "Plans"
-msgstr "Plany"
 
 #: .\templates\accounts\navbar.html:23
 #: .\templates\accounts\navbar_small.html:23
@@ -627,6 +623,46 @@ msgstr "Dodawanie Twojego szablonu posiłku do bazy..."
 msgid "Search for your meal components"
 msgstr "Szukaj składowych posiłku"
 
+#: .\templates\recipes\ideas\recipes_ideas.html:26
+msgid "Suggested recipes"
+msgstr "Sugerowane przepisy"
+
+#: .\templates\recipes\ideas\recipes_ideas.html:33
+msgid "Not satisfied with results?"
+msgstr "Nie zadowoliły Cię rezultaty?"
+
+#: .\templates\recipes\ideas\recipes_ideas.html:34
+msgid "Try again"
+msgstr "Spróbuj ponownie"
+
+#: .\templates\recipes\ideas\recipes_ideas.html:42
+msgid "Type ingredients that you have below separating by a comma"
+msgstr "Wpisz składniki, które masz poniżej, oddzielając je przecinkiem"
+
+#: .\templates\recipes\ideas\recipes_ideas.html:43
+msgid "Type all ingredients here"
+msgstr "Wpisz wszystkie składniki tutaj"
+
+#: .\templates\recipes\ideas\recipes_ideas.html:56
+#: .\templates\recipes\search\search_recipes.html:52
+msgid "Author"
+msgstr "Autor"
+
+#: .\templates\recipes\ideas\recipes_ideas.html:58
+#: .\templates\recipes\search\search_recipes.html:54
+msgid "What do you need to make it by yourself?"
+msgstr "Co potrzebujesz by wykonać to samemu?"
+
+#: .\templates\recipes\ideas\recipes_ideas.html:79
+#: .\templates\recipes\search\search_recipes.html:75
+msgid "Ingredients"
+msgstr "Składniki"
+
+#: .\templates\recipes\ideas\recipes_ideas.html:84
+#: .\templates\recipes\search\search_recipes.html:79
+msgid "Step by step"
+msgstr "Krok po kroku"
+
 #: .\templates\recipes\recipes.html:22
 msgid "Search Recipe"
 msgstr "Szukaj Przepisu"
@@ -646,22 +682,6 @@ msgstr "Nie wiesz co chcesz zjeść?"
 #: .\templates\recipes\search\search_recipes.html:43
 msgid "Random Recipe"
 msgstr "Wylosuj Przepis"
-
-#: .\templates\recipes\search\search_recipes.html:52
-msgid "Author"
-msgstr "Autor"
-
-#: .\templates\recipes\search\search_recipes.html:54
-msgid "What do you need to make it by yourself?"
-msgstr "Co potrzebujesz by wykonać to samemu?"
-
-#: .\templates\recipes\search\search_recipes.html:75
-msgid "Ingredients"
-msgstr "Składniki"
-
-#: .\templates\recipes\search\search_recipes.html:79
-msgid "Step by step"
-msgstr "Krok po kroku"
 
 #: .\templates\workouts\add\add_workouts.html:29
 msgid "Try to search activities that have you done today."
@@ -1955,6 +1975,9 @@ msgid ""
 "Set the precision for numeric computations in the SASS processor. Default: "
 "settings.SASS_PRECISION."
 msgstr ""
+
+#~ msgid "Plans"
+#~ msgstr "Plany"
 
 #~ msgid "people"
 #~ msgstr "osób"
