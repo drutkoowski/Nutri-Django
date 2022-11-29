@@ -62,15 +62,26 @@ def check_or_create_spoonacular_recipe(recipe: dict, lang_code: str) -> dict:
             recipe_difficulty = None
             difficulty_pl = recipe_difficulty
             recipe_ingredients_pl = []
-            recipe_ingredients_en = recipe['ingredients']
+            recipe_ingredients_en = []
             for ingredient in recipe['ingredients']:
-                quantity_pl = translator.translate(ingredient['quantity'], dest='pl')
-                ingredient_pl = translator.translate(ingredient['name'], dest='pl')
-                obj = {
+                quantity_pl = convert_en_spoonacular_unit(ingredient['unit'], float(ingredient['quantity']))
+                ingredient_pl = translator.translate(ingredient['ingredient'], dest='pl')
+                obj_pl = {
                     'ingredient': ingredient_pl.text,
-                    'quantity': quantity_pl.text,
+                    'quantity': quantity_pl,
                 }
-                recipe_ingredients_pl.append(obj)
+                if float(ingredient['quantity'])% 1 == 0.0:
+                    amount_en = int(ingredient['quantity'])
+                else:
+                    amount_en = ingredient['quantity']
+                quantity_en = f"{amount_en} {ingredient['unit']}"
+                ingredient_en = ingredient['ingredient']
+                obj_en = {
+                    'ingredient': ingredient_en,
+                    'quantity': quantity_en,
+                }
+                recipe_ingredients_pl.append(obj_pl)
+                recipe_ingredients_en.append(obj_en)
             step_pl_arr = []
             for step in recipe_steps_en:
                 step_pl = translator.translate(step, dest='pl').text
@@ -114,7 +125,7 @@ def check_or_create_spoonacular_recipe(recipe: dict, lang_code: str) -> dict:
 
 def convert_en_spoonacular_unit(unit: str, amount: float) -> str:
     unit = unit.lower()
-    if (amount % 1 == 0.0):
+    if amount % 1 == 0.0:
         amount = int(amount)
     if unit != '':
         unit_dict = {
@@ -127,27 +138,32 @@ def convert_en_spoonacular_unit(unit: str, amount: float) -> str:
             'quart': 'litr',
             'pint': 'ml',
             'pieces': 'sztuk',
-            'slices': 'plastrów',
             'oz': 'g',
-            'cups': 'szklanek'
-
+            'cups': 'szklanek',
+            'g': 'g',
+            'dekagrams': 'dekagramów',
+            'servings': 'porcji',
+            'tbs': 'łyżka stołowa',
+            'bunch': 'garść',
+            'sheets': 'opakowań/arkuszy'
         }
         new_amount = amount
         if unit == 'pound':
-            new_amount = amount * 0.45
+            new_amount = round(amount * 0.45, 2)
         elif unit == 'ounce':
-            new_amount = amount * 28.34
+            new_amount = round(amount * 28.34, 2)
         elif unit == 'gallon':
-            new_amount = amount * 3.78
+            new_amount = round(amount * 3.78, 2)
         elif unit == 'quart':
-            new_amount = amount * 0.94
+            new_amount = round(amount * 0.94, 2)
         elif unit == 'pint':
-            new_amount = amount * 473
+            new_amount = round(amount * 473, 2)
         elif unit == 'oz':
-            new_amount = amount * 31.1
-        try:
+            new_amount = round(amount * 31.1, 2)
+
+        if unit in unit_dict:
             new_unit = unit_dict[unit]
-        except:
+        else:
             from googletrans import Translator
             translator = Translator()
             new_unit = translator.translate(unit, dest='pl').text
@@ -157,5 +173,5 @@ def convert_en_spoonacular_unit(unit: str, amount: float) -> str:
             new_quantity_str = f'{amount} {unit}'
         return new_quantity_str
     else:
-        return f'{amount}x'
+        return f'{amount}'
 

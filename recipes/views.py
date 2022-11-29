@@ -1,4 +1,6 @@
 import json
+import re
+
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.http import JsonResponse
@@ -91,7 +93,7 @@ def live_search_recipes(request):
         if query != '':
             if (lang_code == 'pl'):
                 check_if_recipe_exists = Recipe.objects.filter(
-                    Q(name_pl__istartswith=query) | Q(name_pl__icontains=query))
+                    Q(name_pl__istartswith=query) | Q(name_pl__icontains=query) & Q(verified=True))
                 # check_if_recipe_exists = Recipe.objects.filter(
                 #     name_pl__iregex=r"\b{0}\b".format(query)).all().union(
                 #     Recipe.objects.filter(
@@ -102,7 +104,7 @@ def live_search_recipes(request):
                 #     )).all()
             else:
                 check_if_recipe_exists = Recipe.objects.filter(
-                    Q(name_en__istartswith=query) | Q(name_en__icontains=query))
+                    Q(name_en__istartswith=query) | Q(name_en__icontains=query) & Q(verified=True))
                 # check_if_recipe_exists = Recipe.objects.filter(
                 #     name_en__iregex=r"\b{0}\b".format(query)).all().union(
                 #     Recipe.objects.filter(
@@ -183,7 +185,7 @@ def get_random_recipe(request):
         lang_code = request.path.split('/')[1]
         import random
         try:
-            recipes = list(Recipe.objects.all())
+            recipes = list(Recipe.objects.filter(verified=True).all())
             random_recipe = random.choice(recipes)
             if lang_code == 'pl':
                 recipe_dict = {
@@ -215,8 +217,13 @@ def get_random_recipe(request):
 def get_recipes_by_ingredients(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
         lang_code = request.path.split('/')[1]
-        ingredients_arr = request.POST.get('ingredients')
+        ingredients_arr = json.loads(request.POST.get('ingredients'))
         ingredients_string = request.POST.get('ingredientsString')
+        if lang_code == 'pl':
+            from googletrans import Translator
+            translator = Translator()
+            ingredients_string = translator.translate(ingredients_string, dest='en').text
+        print(ingredients_arr)
         # getting recipes from API
         data = get_spoonacular_recipe_by_ingredient(ingredients_string, 1)  # gets recipe by ingredient
         recipes_arr = []
@@ -226,20 +233,22 @@ def get_recipes_by_ingredients(request):
             recipe_ingredients = []
             for ingredient in data_recipe['extendedIngredients']:
                 unit = ingredient['unit']
-                quantity = convert_en_spoonacular_unit(unit, float(ingredient['amount']))
+                # quantity = convert_en_spoonacular_unit(unit, float(ingredient['amount']))
                 ingredient_dict = {
-                    "name": ingredient['originalName'],
-                    "quantity": quantity,
+                    "ingredient": ingredient['originalName'],
+                    "quantity": ingredient['amount'],
+                    'unit': unit
                 }
                 recipe_ingredients.append(ingredient_dict)
             recipe_steps = []
             for step in data_recipe['analyzedInstructions'][0]['steps']:
                 recipe_steps.append(step['step'])
+            print('recipe name: ', data_recipe['title'])
             recipe_dict = {
                 "recipeId": recipe_id,
                 "from": 'api',
                 "name": data_recipe['title'],
-                "duration": data_recipe['readyInMinutes'],
+                "duration": f"{data_recipe['readyInMinutes']} min.",
                 "ingredients": recipe_ingredients,
                 "steps": recipe_steps,
                 "servings": data_recipe['servings'],
@@ -249,4 +258,70 @@ def get_recipes_by_ingredients(request):
             recipe_dict = check_or_create_spoonacular_recipe(recipe_dict, lang_code)
             recipes_arr.append(recipe_dict)
             # END API fetch
+
+            # check if any similarities in db recipes
+            db_recipes = Recipe.objects.all()
+            max_similarity_percentage = 0
+            second_max_similarity_percentage = 0
+            suggested_db_recipe = None
+            additional_db_recipe = None
+            suggested = []
+            for db_recipe in db_recipes:
+                similarities = 0
+                similarities_arr = []
+                if lang_code == 'pl':
+                    for ingredient in db_recipe.ingredients_pl:
+                        ingredient_name = ingredient['ingredient']
+                        for i in ingredients_arr:
+                            if re.search(rf'\b{i.strip()}\b', ingredient_name.lower()) and i.strip() not in similarities_arr:
+                                similarities = similarities + 1
+                                similarities_arr.append(i.strip())
+                else:
+                    for ingredient in db_recipe.ingredients_en:
+                        ingredient_name = ingredient['ingredient']
+                        for i in ingredients_arr:
+                            if re.search(rf'\b{i.strip()}\b', ingredient_name.lower()) and i.strip() not in similarities_arr:
+                                similarities = similarities + 1
+                                similarities_arr.append(i.strip())
+                similarity_percentage = (similarities / len(ingredients_arr)) * 100
+                if similarity_percentage > max_similarity_percentage:
+                    max_similarity_percentage = similarity_percentage
+                    suggested_db_recipe = db_recipe
+                elif similarity_percentage > second_max_similarity_percentage and similarity_percentage < max_similarity_percentage:
+                    second_max_similarity_percentage = similarity_percentage
+                    additional_db_recipe = db_recipe
+                    print(additional_db_recipe)
+                if additional_db_recipe is not None and len(suggested) < 2 and additional_db_recipe not in suggested:
+                    suggested.append(additional_db_recipe)
+                if suggested_db_recipe is not None and len(suggested) < 2 and suggested_db_recipe not in suggested:
+                    suggested.append(suggested_db_recipe)
+            if len(suggested) > 0:
+                for recipe in suggested:
+                    if lang_code == 'pl':
+                        recipe_obj = {
+                            "recipeId": recipe.pk,
+                            "from": 'db',
+                            'name': recipe.name_pl,
+                            'person_count': recipe.person_count,
+                            'difficulty': recipe.difficulty_pl,
+                            'author': recipe.author,
+                            'duration': recipe.duration,
+                            'ingredients': recipe.ingredients_pl,
+                            'steps': recipe.steps_pl,
+                            'isVerified': recipe.verified
+                        }
+                    else:
+                        recipe_obj = {
+                            "recipeId": recipe.pk,
+                            "from": 'db',
+                            'name': recipe.name_en,
+                            'person_count': recipe.person_count,
+                            'difficulty': recipe.difficulty_en,
+                            'author': recipe.author,
+                            'duration': recipe.duration,
+                            'ingredients': recipe.ingredients_en,
+                            'steps': recipe.steps_en,
+                            'isVerified': recipe.verified
+                        }
+                    recipes_arr.append(recipe_obj)
         return JsonResponse({'status': 200, 'text': 'There are recipes found.', 'recipes': json.dumps(recipes_arr)})

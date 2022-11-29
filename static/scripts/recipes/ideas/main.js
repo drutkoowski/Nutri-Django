@@ -16,6 +16,7 @@ let alreadySeenApiRecipes = []
 const inputIngredientsBtn = document.querySelector('.add-meals__search__bar__icon')
 inputIngredientsBtn.addEventListener('click', () => {
     const modal = document.querySelector('.modal-add-search')
+    const containerBox = document.querySelector('.recipe-search__search__results__container')
     const loader = document.querySelector('.loader')
     loader.classList.remove('loader--hidden')
     loader.style.transition = 'unset'
@@ -24,7 +25,6 @@ inputIngredientsBtn.addEventListener('click', () => {
     const langPrefix = window.location.href.split('/')[3];
     const url = location.origin + `/${langPrefix}/recipes/get-recipes-by-ingredients`
     const array = inputValue.split(',');
-    const containerBox = document.querySelector('.recipe-search__search__results__container')
     $.ajax({
         type: 'POST',
         url: url,
@@ -36,11 +36,13 @@ inputIngredientsBtn.addEventListener('click', () => {
         success: function (response){
             const recipes = JSON.parse(response.recipes)
             recipes.forEach(recipe => {
+                console.log(recipe)
                 const recipeName = recipe.name
                 const servings = recipe.person_count
                 const duration = recipe.duration
                 const msgSwitch = langPrefix === 'pl' ? 'na' : 'for'
                 const isVerified = recipe.isVerified ? 'checked' : 'unchecked'
+                let isDifficultLevel = recipe.difficulty ? `<span class="pushed">${gettext("Difficulty:")} ${recipe.difficulty}</span>` : `<span class="pushed">${gettext("Difficulty:")} ${gettext('Unknown')}</span>`
                 let labelMsg
                 if (isVerified === 'checked'){
                     labelMsg = gettext('Nutri Verified')
@@ -56,7 +58,7 @@ inputIngredientsBtn.addEventListener('click', () => {
                     <p>${recipeName} ${msgSwitch} ${servings} ${gettext('servings')} <img src="/static/images/svg/people.svg" class="clock-icon-recipe-duration filter-green" alt="People Icon"></p>
                 </div>
                 <div class="recipe-search__search__results__container__item--lower">
-                     <p><img src="/static/images/svg/clock.svg" class="clock-icon-recipe-duration filter-green" alt="Clock Icon"> <span>${duration} min.</span> <span class="pushed">SKLADNIKI</span></p>
+                     <p><img src="/static/images/svg/clock.svg" class="clock-icon-recipe-duration filter-green" alt="Clock Icon"> <span>${duration}</span> ${isDifficultLevel}</p>
                 </div>
                 <button data-pk="32" class="btn-light recipe-details-btn">${gettext('See')}</button>
                 </div>

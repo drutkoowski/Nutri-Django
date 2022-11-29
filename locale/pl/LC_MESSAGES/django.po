@@ -637,7 +637,7 @@ msgstr "Spróbuj ponownie"
 
 #: .\templates\recipes\ideas\recipes_ideas.html:42
 msgid "Type ingredients that you have below separating by a comma"
-msgstr "Wpisz składniki, które masz poniżej, oddzielając je przecinkiem"
+msgstr "Wpisz poniżej składniki, które masz oddzielając je przecinkiem"
 
 #: .\templates\recipes\ideas\recipes_ideas.html:43
 msgid "Type all ingredients here"
