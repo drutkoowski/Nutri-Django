@@ -1,3 +1,6 @@
+import json
+import random
+
 from decouple import config
 import requests
 
@@ -10,14 +13,36 @@ HEADERS = {
 }
 
 
-def get_spoonacular_recipe_by_ingredient(string: str, number: int, ranking: int):
-    URL = "https://api.spoonacular.com/recipes/findByIngredients"
-    # ranking - 1 is maximize used ingredients
-    # ranking - 2 is minimalize missing ingredients
-    querystring = {"ingredients": string, "number": number, 'includeNutrition': 'false', 'ignorePantry': True, 'ranking': ranking}
-    response = requests.request("GET", URL, headers=HEADERS, params=querystring)
-    data = response.json()
-    return data
+def get_spoonacular_recipe_by_ingredient(string: str, number: int, ranking: int, blocked_ids: list):
+    if len(blocked_ids) == 0:
+        URL = "https://api.spoonacular.com/recipes/findByIngredients"
+        # ranking - 1 is maximize used ingredients
+        # ranking - 2 is minimalize missing ingredients
+        querystring = {"ingredients": string, "number": number, 'includeNutrition': 'false', 'ignorePantry': True,
+                       'ranking': ranking}
+        response = requests.request("GET", URL, headers=HEADERS, params=querystring)
+        data = response.json()
+        print('first try json:', data)
+        recipe_id = data[0]['id']
+        print('first try id:', recipe_id)
+    else:
+        URL = "https://api.spoonacular.com/recipes/findByIngredients"
+        # ranking - 1 is maximize used ingredients
+        # ranking - 2 is minimalize missing ingredients
+        querystring = {"ingredients": string, "number": 25, 'includeNutrition': 'false', 'ignorePantry': True,
+                       'ranking': ranking}
+        response = requests.request("GET", URL, headers=HEADERS, params=querystring)
+        response_json = response.json()
+        not_blocked_recipes = []
+        for element in response_json:
+            if element['id'] not in blocked_ids:
+                not_blocked_recipes.append(element)
+        random_recipe = [random.choice(not_blocked_recipes)]
+        data = random_recipe
+        print('second try json:', data)
+        recipe_id = random_recipe[0]['id']
+        print('second try id:', recipe_id)
+    return data, recipe_id
 
 
 def get_spoonacular_recipe_by_id(recipe_id: int):
@@ -41,7 +66,9 @@ def check_or_create_spoonacular_recipe(recipe: dict, lang_code: str) -> dict:
                     'duration': is_existing.duration,
                     'ingredients': is_existing.ingredients_pl,
                     'steps': is_existing.steps_pl,
-                    'verified': is_existing.verified
+                    'verified': is_existing.verified,
+                    'from': 'api',
+                    'recipeId': recipe['recipeId'],
                 }
             else:
                 return {
@@ -52,7 +79,9 @@ def check_or_create_spoonacular_recipe(recipe: dict, lang_code: str) -> dict:
                     'duration': is_existing.duration,
                     'ingredients': is_existing.ingredients_en,
                     'steps': is_existing.steps_en,
-                    'verified': is_existing.verified
+                    'verified': is_existing.verified,
+                    'from': 'api',
+                    'recipeId': recipe['recipeId'],
                 }
         else:
             # spoonacular dict which this function is getting, has properties always written in ENG lang, so translate it
@@ -72,7 +101,7 @@ def check_or_create_spoonacular_recipe(recipe: dict, lang_code: str) -> dict:
                     'ingredient': ingredient_pl.text,
                     'quantity': quantity_pl,
                 }
-                if float(ingredient['quantity'])% 1 == 0.0:
+                if float(ingredient['quantity']) % 1 == 0.0:
                     amount_en = int(ingredient['quantity'])
                 else:
                     amount_en = ingredient['quantity']
@@ -89,36 +118,40 @@ def check_or_create_spoonacular_recipe(recipe: dict, lang_code: str) -> dict:
                 step_pl = translator.translate(step, dest='pl').text
                 step_pl_arr.append(step_pl)
 
-            recipe = Recipe.objects.create(name_pl=recipe_name_pl, name_en=recipe['name'],
-                                           person_count=recipe['servings'],
-                                           difficulty_pl=difficulty_pl, difficulty_en=recipe_difficulty,
-                                           author=recipe['author'],
-                                           duration=recipe['duration'], ingredients_pl=recipe_ingredients_pl,
-                                           ingredients_en=recipe_ingredients_en, steps_en=recipe_steps_en,
-                                           steps_pl=step_pl_arr,
-                                           verified=is_verified)
-            recipe.save()
+            recipeObject = Recipe.objects.create(name_pl=recipe_name_pl, name_en=recipe['name'],
+                                                 person_count=recipe['servings'],
+                                                 difficulty_pl=difficulty_pl, difficulty_en=recipe_difficulty,
+                                                 author=recipe['author'],
+                                                 duration=recipe['duration'], ingredients_pl=recipe_ingredients_pl,
+                                                 ingredients_en=recipe_ingredients_en, steps_en=recipe_steps_en,
+                                                 steps_pl=step_pl_arr,
+                                                 verified=is_verified)
+            recipeObject.save()
             if lang_code == 'pl':
                 return {
-                    'name': recipe.name_pl,
-                    'person_count': recipe.person_count,
-                    'difficulty': recipe.difficulty_pl,
-                    'author': recipe.author,
-                    'duration': recipe.duration,
-                    'ingredients': recipe.ingredients_pl,
-                    'steps': recipe.steps_pl,
-                    'verified': recipe.verified
+                    'name': recipeObject.name_pl,
+                    'person_count': recipeObject.person_count,
+                    'difficulty': recipeObject.difficulty_pl,
+                    'author': recipeObject.author,
+                    'duration': recipeObject.duration,
+                    'ingredients': recipeObject.ingredients_pl,
+                    'steps': recipeObject.steps_pl,
+                    'verified': recipeObject.verified,
+                    "recipeId": recipe['recipeId'],
+                    "from": 'api',
                 }
             else:
                 return {
-                    'name': recipe.name_en,
-                    'person_count': recipe.person_count,
-                    'difficulty': recipe.difficulty_en,
-                    'author': recipe.author,
-                    'duration': recipe.duration,
-                    'ingredients': recipe.ingredients_en,
-                    'steps': recipe.steps_en,
-                    'verified': recipe.verified
+                    'name': recipeObject.name_en,
+                    'person_count': recipeObject.person_count,
+                    'difficulty': recipeObject.difficulty_en,
+                    'author': recipeObject.author,
+                    'duration': recipeObject.duration,
+                    'ingredients': recipeObject.ingredients_en,
+                    'steps': recipeObject.steps_en,
+                    'verified': recipeObject.verified,
+                    "recipeId": recipe['recipeId'],
+                    "from": 'api',
                 }
 
     except:
@@ -149,7 +182,11 @@ def convert_en_spoonacular_unit(unit: str, amount: float) -> str:
             'bunch': 'garść',
             'sheets': 'opakowań/arkuszy',
             'tsps': 'łyżeczek',
-            'tsp': 'łyżeczka'
+            'tsp': 'łyżeczka',
+            'gm': 'g',
+            'stick': 'laska/kostka',
+            'can': 'puszka',
+            'package': 'paczka'
         }
         new_amount = amount
         if unit == 'pound':
@@ -178,4 +215,3 @@ def convert_en_spoonacular_unit(unit: str, amount: float) -> str:
         return new_quantity_str
     else:
         return f'{amount}'
-

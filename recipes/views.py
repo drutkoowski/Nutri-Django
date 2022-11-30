@@ -8,10 +8,9 @@ from django.http import JsonResponse
 from recipes.models import Recipe
 from django.shortcuts import render, redirect
 
-
 # Create your views here.
 from recipes.utils import get_spoonacular_recipe_by_ingredient, get_spoonacular_recipe_by_id, \
-    check_or_create_spoonacular_recipe, convert_en_spoonacular_unit
+    check_or_create_spoonacular_recipe
 
 
 @login_required(login_url='login')
@@ -219,6 +218,8 @@ def get_recipes_by_ingredients(request):
         lang_code = request.path.split('/')[1]
         ingredients_arr = json.loads(request.POST.get('ingredients'))
         ingredients_string = request.POST.get('ingredientsString')
+        blocked_suggestions_ids = json.loads(request.POST.get('blockedSuggestionsArray'))
+        blocked_db_suggestions_ids = json.loads(request.POST.get('blockedDbSuggestionsArray'))
         focus_on = request.POST.get('focusOn')
         print(focus_on)
         if lang_code == 'pl':
@@ -226,15 +227,16 @@ def get_recipes_by_ingredients(request):
             translator = Translator()
             ingredients_string = translator.translate(ingredients_string, dest='en').text
         # getting recipes from API
-        data = get_spoonacular_recipe_by_ingredient(ingredients_string, 1, focus_on)  # gets recipe by ingredient
+        data, suggestion_recipe_id = get_spoonacular_recipe_by_ingredient(ingredients_string, 1, focus_on,
+                                                                          blocked_suggestions_ids)  # gets recipe by ingredient
         recipes_arr = []
         for recipe_ids in data:
+            print(recipe_ids)
             recipe_id = int(recipe_ids['id'])
             data_recipe = get_spoonacular_recipe_by_id(recipe_id)  # gets recipe info by id
             recipe_ingredients = []
             for ingredient in data_recipe['extendedIngredients']:
                 unit = ingredient['unit']
-                # quantity = convert_en_spoonacular_unit(unit, float(ingredient['amount']))
                 ingredient_dict = {
                     "ingredient": ingredient['originalName'],
                     "quantity": ingredient['amount'],
@@ -246,7 +248,7 @@ def get_recipes_by_ingredients(request):
                 recipe_steps.append(step['step'])
             print('recipe name: ', data_recipe['title'])
             recipe_dict = {
-                "recipeId": recipe_id,
+                "recipeId": suggestion_recipe_id,
                 "from": 'api',
                 "name": data_recipe['title'],
                 "duration": f"{data_recipe['readyInMinutes']} min.",
@@ -254,7 +256,7 @@ def get_recipes_by_ingredients(request):
                 "steps": recipe_steps,
                 "servings": data_recipe['servings'],
                 'author': 'spoonacular',
-                'isVerified': False
+                'isVerified': False,
             }
             recipe_dict = check_or_create_spoonacular_recipe(recipe_dict, lang_code)
             recipes_arr.append(recipe_dict)
@@ -274,28 +276,35 @@ def get_recipes_by_ingredients(request):
                     for ingredient in db_recipe.ingredients_pl:
                         ingredient_name = ingredient['ingredient']
                         for i in ingredients_arr:
-                            if re.search(rf'\b{i.strip()}\b', ingredient_name.lower()) and i.strip() not in similarities_arr:
+                            if re.search(rf'\b{i.strip()}\b',
+                                         ingredient_name.lower()) and i.strip() not in similarities_arr:
                                 similarities = similarities + 1
                                 similarities_arr.append(i.strip())
                 else:
                     for ingredient in db_recipe.ingredients_en:
                         ingredient_name = ingredient['ingredient']
                         for i in ingredients_arr:
-                            if re.search(rf'\b{i.strip()}\b', ingredient_name.lower()) and i.strip() not in similarities_arr:
+                            if re.search(rf'\b{i.strip()}\b',
+                                         ingredient_name.lower()) and i.strip() not in similarities_arr:
                                 similarities = similarities + 1
                                 similarities_arr.append(i.strip())
                 similarity_percentage = (similarities / len(ingredients_arr)) * 100
-                if similarity_percentage > max_similarity_percentage:
+
+                if similarity_percentage > max_similarity_percentage and db_recipe.pk not in blocked_db_suggestions_ids:
                     print(similarity_percentage, db_recipe.name_pl)
                     max_similarity_percentage = similarity_percentage
                     suggested_db_recipe = db_recipe
-                elif similarity_percentage > second_max_similarity_percentage and similarity_percentage < max_similarity_percentage:
+
+                elif second_max_similarity_percentage < similarity_percentage < max_similarity_percentage \
+                        and db_recipe.pk not in blocked_db_suggestions_ids:
+
                     second_max_similarity_percentage = similarity_percentage
                     additional_db_recipe = db_recipe
+
             if additional_db_recipe is not None and len(suggested) < 2 and additional_db_recipe not in suggested:
-                    suggested.append(additional_db_recipe)
+                suggested.append(additional_db_recipe)
             if suggested_db_recipe is not None and len(suggested) < 2 and suggested_db_recipe not in suggested:
-                    suggested.append(suggested_db_recipe)
+                suggested.append(suggested_db_recipe)
             if len(suggested) > 0:
                 for recipe in suggested:
                     if lang_code == 'pl':
@@ -325,4 +334,9 @@ def get_recipes_by_ingredients(request):
                             'isVerified': recipe.verified
                         }
                     recipes_arr.append(recipe_obj)
-        return JsonResponse({'status': 200, 'text': 'There are recipes found.', 'recipes': json.dumps(recipes_arr)})
+        if len(recipes_arr) > 0:
+            return JsonResponse({'status': 200, 'text': 'There are recipes found.', 'recipes': json.dumps(recipes_arr)})
+        else:
+            return JsonResponse({'status': 404, 'text': 'There are no recipes found.', 'recipes': ''})
+    else:
+        return JsonResponse({'status': 405, 'text': 'Method not allowed', 'recipes': ''})

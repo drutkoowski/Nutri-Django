@@ -217,6 +217,46 @@ ORDER: Base + typography > general layout + grid > page layout > components
   100% {
     transform: rotate(1turn); } }
 
+.loader-message {
+  position: fixed;
+  padding-top: 20%;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  background: #333333;
+  z-index: 23993;
+  transition: opacity 0.75s, visibility .75s; }
+  .loader-message--hidden {
+    opacity: 0;
+    visibility: hidden; }
+  .loader-message::after {
+    content: '';
+    width: 75px;
+    height: 75px;
+    border: 15px solid #dddddd;
+    border-top-color: #52e040;
+    border-radius: 50%;
+    animation: loading 0.75s ease infinite; }
+
+@keyframes loading {
+  0% {
+    transform: rotate(0turn); }
+  100% {
+    transform: rotate(1turn); } }
+  .loader-message div {
+    position: relative; }
+    .loader-message div p {
+      position: absolute;
+      top: 30%;
+      left: -2rem;
+      text-align: center;
+      color: var(--color-white);
+      font-size: 1.5rem; }
+
 .navbar {
   display: flex;
   justify-content: end;
@@ -1444,10 +1484,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   height: 100vh;
   z-index: 1000;
   background-color: rgba(112, 111, 111, 0.7);
-  display: flex;
-  animation-name: fade-bottom;
-  animation-duration: 1s;
-  animation-timing-function: ease-out; }
+  display: flex; }
   .modal__today-workouts-list__content {
     display: flex;
     flex-direction: column;
@@ -1465,7 +1502,10 @@ ORDER: Base + typography > general layout + grid > page layout > components
     position: relative;
     -webkit-box-shadow: 0px 0px 18px -7px #42445a;
     -moz-box-shadow: 0px 0px 18px -7px #42445a;
-    box-shadow: 0px 0px 18px -7px #42445a; }
+    box-shadow: 0px 0px 18px -7px #42445a;
+    animation-name: fade-bottom;
+    animation-duration: 1s;
+    animation-timing-function: ease-out; }
     @media only screen and (max-width: 62.5em) {
       .modal__today-workouts-list__content {
         max-height: 85%;
@@ -4546,7 +4586,10 @@ div.modal--calendar__content-summary {
         position: absolute;
         top: 20%;
         right: 2%;
-        cursor: pointer; }
+        cursor: pointer;
+        animation-name: fade-bottom;
+        animation-duration: 1s;
+        animation-timing-function: ease-out; }
     .add-meals__search hr {
       color: white;
       height: 1px; }

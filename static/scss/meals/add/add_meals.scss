@@ -177,6 +177,9 @@
         top: 20%;
         right: 2%;
         cursor: pointer;
+        animation-name: fade-bottom;
+        animation-duration: 1s;
+        animation-timing-function: ease-out;
       }
     }
     hr {

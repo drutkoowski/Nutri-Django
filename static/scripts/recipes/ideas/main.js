@@ -27,59 +27,85 @@ inputIngredientsBtn.addEventListener('click', () => {
     const inputValue = document.querySelector('.modal-add-search__content__search-bar').value
     if (inputValue !== '') {
         const array = inputValue.split(',');
-        const loader = document.querySelector('.loader')
+        const loader = document.querySelector('.loader-message')
         const focusValItem = document.querySelector('.active-icon-focus')
         const focusValue = focusValItem.parentElement.classList[0] === 'maximize' ? 1 : 2
-        loader.classList.remove('loader--hidden')
+        loader.classList.remove('not-visible')
         loader.style.transition = 'unset'
-        loader.style.opacity = '0.85'
+        loader.style.opacity = '0.95'
         const langPrefix = window.location.href.split('/')[3];
         const url = location.origin + `/${langPrefix}/recipes/get-recipes-by-ingredients`
         $.ajax({
         type: 'POST',
         url: url,
         data: {
-            'ingredients': JSON.stringify(array),
-            'ingredientsString': JSON.stringify(inputValue),
+             'ingredients': JSON.stringify(array),
+             'ingredientsString': JSON.stringify(inputValue),
              'focusOn': focusValue,
-            'csrfmiddlewaretoken': csrfToken
+             'blockedSuggestionsArray': JSON.stringify(alreadySeenApiRecipes),
+             'blockedDbSuggestionsArray': JSON.stringify(alreadySeenDbRecipes),
+             'csrfmiddlewaretoken': csrfToken
         },
         success: function (response){
-            const recipes = JSON.parse(response.recipes)
-            recipes.forEach(recipe => {
-                console.log(recipe)
-                const recipeName = recipe.name
-                const servings = recipe.person_count
-                const duration = recipe.duration
-                const msgSwitch = langPrefix === 'pl' ? 'na' : 'for'
-                const isVerified = recipe.isVerified ? 'checked' : 'unchecked'
-                let isDifficultLevel = recipe.difficulty ? `<span class="pushed">${gettext("Difficulty:")} ${recipe.difficulty}</span>` : `<span class="pushed">${gettext("Difficulty:")} ${gettext('Unknown')}</span>`
-                let labelMsg
-                if (isVerified === 'checked'){
-                    labelMsg = gettext('Nutri Verified')
-                }
-                else {
-                    labelMsg = gettext('Not verified')
-                }
-                let contentToAppend = `
-                <div class="recipe-search__search__results__container__item">
-                  <div class="recipe-search__search__results__container__item--heading">
-                    <img src="/static/images/svg/${isVerified}.svg" class="filter-green verified-icon" alt="${isVerified.toUpperCase()} Icon">
-                    <p class="isVerified__label">${labelMsg}</p>
-                    <p>${recipeName} ${msgSwitch} ${servings} ${gettext('servings')} <img src="/static/images/svg/people.svg" class="clock-icon-recipe-duration filter-green" alt="People Icon"></p>
-                </div>
-                <div class="recipe-search__search__results__container__item--lower">
-                     <p><img src="/static/images/svg/clock.svg" class="clock-icon-recipe-duration filter-green" alt="Clock Icon"> <span>${duration}</span> ${isDifficultLevel}</p>
-                </div>
-                <button data-pk="32" class="btn-light recipe-details-btn">${gettext('See')}</button>
-                </div>
-                `
-                containerBox.insertAdjacentHTML('beforeend', contentToAppend)
-            })
+            if (response.status === 200){
+                 const recipes = JSON.parse(response.recipes)
+                 const recipeInfoMsg = document.querySelector('.recipe-info-message')
+                 const alreadySuggestedItems = document.querySelectorAll('.recipe-search__search__results__container__item')
+                 alreadySuggestedItems.forEach(item => {
+                     item.remove()
+                 })
+                 recipeInfoMsg.classList.add('not-visible')
+                 recipes.forEach(recipe => {
+                     console.log(recipe)
+                     const recipeName = recipe.name
+                     const servings = recipe.person_count
+                     const duration = recipe.duration
+                     const msgSwitch = langPrefix === 'pl' ? 'na' : 'for'
+                     const isVerified = recipe.isVerified ? 'checked' : 'unchecked'
+                     let isDifficultLevel = recipe.difficulty ? `<span class="pushed">${gettext("Difficulty:")} ${recipe.difficulty}</span>` : `<span class="pushed">${gettext("Difficulty:")} ${gettext('Unknown')}</span>`
+                     let isFromApi = recipe.from === 'api'
+                     if (isFromApi) {
+                         alreadySeenApiRecipes.push(recipe.recipeId)
+                     }
+                     else {
+                         alreadySeenDbRecipes.push((recipe.recipeId))
+                     }
+                     let labelMsg
+                     if (isVerified === 'checked'){
+                         labelMsg = gettext('Nutri Verified')
+                     }
+                     else {
+                         labelMsg = gettext('Not verified')
+                     }
+                     let contentToAppend = `
+                     <div class="recipe-search__search__results__container__item">
+                       <div class="recipe-search__search__results__container__item--heading">
+                         <img src="/static/images/svg/${isVerified}.svg" class="filter-green verified-icon" alt="${isVerified.toUpperCase()} Icon">
+                         <p class="isVerified__label">${labelMsg}</p>
+                         <p>${recipeName} ${msgSwitch} ${servings} ${gettext('servings')} <img src="/static/images/svg/people.svg" class="clock-icon-recipe-duration filter-green" alt="People Icon"></p>
+                     </div>
+                     <div class="recipe-search__search__results__container__item--lower">
+                          <p><img src="/static/images/svg/clock.svg" class="clock-icon-recipe-duration filter-green" alt="Clock Icon"> <span>${duration}</span> ${isDifficultLevel}</p>
+                     </div>
+                     <button data-pk="32" class="btn-light recipe-details-btn">${gettext('See')}</button>
+                     </div>
+                     `
+                     containerBox.insertAdjacentHTML('beforeend', contentToAppend)
+                 })
+            }
+            else {
+                console.log(response)
+                const recipeInfoMsg = document.querySelector('.recipe-info-message')
+                recipeInfoMsg.classList.remove('not-visible')
+                const alreadySuggestedItems = document.querySelectorAll('.recipe-search__search__results__container__item')
+                alreadySuggestedItems.forEach(item => {
+                     item.remove()
+                })
+            }
             },
             complete: function (res){
                  setTimeout(function (){
-                    loader.classList.add('loader--hidden')
+                    loader.classList.add('not-visible')
                     loader.style.removeProperty('transition')
                     loader.style.removeProperty('opacity')
                     modal.classList.add('not-visible')
