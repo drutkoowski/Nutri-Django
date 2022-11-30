@@ -219,13 +219,14 @@ def get_recipes_by_ingredients(request):
         lang_code = request.path.split('/')[1]
         ingredients_arr = json.loads(request.POST.get('ingredients'))
         ingredients_string = request.POST.get('ingredientsString')
+        focus_on = request.POST.get('focusOn')
+        print(focus_on)
         if lang_code == 'pl':
             from googletrans import Translator
             translator = Translator()
             ingredients_string = translator.translate(ingredients_string, dest='en').text
-        print(ingredients_arr)
         # getting recipes from API
-        data = get_spoonacular_recipe_by_ingredient(ingredients_string, 1)  # gets recipe by ingredient
+        data = get_spoonacular_recipe_by_ingredient(ingredients_string, 1, focus_on)  # gets recipe by ingredient
         recipes_arr = []
         for recipe_ids in data:
             recipe_id = int(recipe_ids['id'])
@@ -285,15 +286,15 @@ def get_recipes_by_ingredients(request):
                                 similarities_arr.append(i.strip())
                 similarity_percentage = (similarities / len(ingredients_arr)) * 100
                 if similarity_percentage > max_similarity_percentage:
+                    print(similarity_percentage, db_recipe.name_pl)
                     max_similarity_percentage = similarity_percentage
                     suggested_db_recipe = db_recipe
                 elif similarity_percentage > second_max_similarity_percentage and similarity_percentage < max_similarity_percentage:
                     second_max_similarity_percentage = similarity_percentage
                     additional_db_recipe = db_recipe
-                    print(additional_db_recipe)
-                if additional_db_recipe is not None and len(suggested) < 2 and additional_db_recipe not in suggested:
+            if additional_db_recipe is not None and len(suggested) < 2 and additional_db_recipe not in suggested:
                     suggested.append(additional_db_recipe)
-                if suggested_db_recipe is not None and len(suggested) < 2 and suggested_db_recipe not in suggested:
+            if suggested_db_recipe is not None and len(suggested) < 2 and suggested_db_recipe not in suggested:
                     suggested.append(suggested_db_recipe)
             if len(suggested) > 0:
                 for recipe in suggested:

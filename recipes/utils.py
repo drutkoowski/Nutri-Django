@@ -10,9 +10,11 @@ HEADERS = {
 }
 
 
-def get_spoonacular_recipe_by_ingredient(string: str, number: int):
+def get_spoonacular_recipe_by_ingredient(string: str, number: int, ranking: int):
     URL = "https://api.spoonacular.com/recipes/findByIngredients"
-    querystring = {"ingredients": string, "number": number, 'includeNutrition': 'false'}
+    # ranking - 1 is maximize used ingredients
+    # ranking - 2 is minimalize missing ingredients
+    querystring = {"ingredients": string, "number": number, 'includeNutrition': 'false', 'ignorePantry': True, 'ranking': ranking}
     response = requests.request("GET", URL, headers=HEADERS, params=querystring)
     data = response.json()
     return data
@@ -145,7 +147,8 @@ def convert_en_spoonacular_unit(unit: str, amount: float) -> str:
             'servings': 'porcji',
             'tbs': 'łyżka stołowa',
             'bunch': 'garść',
-            'sheets': 'opakowań/arkuszy'
+            'sheets': 'opakowań/arkuszy',
+            'tsps': 'łyżeczka'
         }
         new_amount = amount
         if unit == 'pound':

@@ -8238,7 +8238,7 @@ div.modal--calendar__content-summary {
   animation-timing-function: ease-out; }
 
 .modal-recipe-ideas__content {
-  height: 25rem;
+  height: 30rem;
   width: 60rem; }
   .modal-recipe-ideas__content h1 {
     font-size: 2rem;
@@ -8253,6 +8253,20 @@ div.modal--calendar__content-summary {
   height: 2rem;
   width: 2rem;
   margin-bottom: -4px; }
+
+.recipe-search-options {
+  margin-left: 1rem;
+  margin-top: 2rem;
+  font-size: 1.5rem; }
+  .recipe-search-options p {
+    font-size: 1.75rem; }
+  .recipe-search-options div {
+    cursor: pointer; }
+    .recipe-search-options div img {
+      width: 2rem;
+      height: 2rem;
+      vertical-align: text-top;
+      margin-right: 1rem; }
 
 *,
 *::after,

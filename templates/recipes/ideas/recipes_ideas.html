@@ -44,6 +44,11 @@
          <div class="saved-meals__added--saved__content__search-response modal-add-search__content__search-response not-visible">
              <div class="saved-meals__added--saved__content__search-response__item"></div>
          </div>
+         <div class="recipe-search-options">
+             <p><b>{% trans 'Focus on' %}:</b></p>
+             <div class="maximize"><img src="{% sass_src 'images/svg/checked.svg' %}" alt="Checked Icon" class="filter-white maximize-icon active-icon-focus">{% trans 'Maximizing used ingredients' %}</div>
+             <div class="minimizing"><img src="{% sass_src 'images/svg/unchecked.svg' %}" alt="Unchecked Icon" class="filter-white minimizing-icon">{% trans 'Minimizing missing ingredients' %}</div>
+         </div>
      </div>
  </div>
 

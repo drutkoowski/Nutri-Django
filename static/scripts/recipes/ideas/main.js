@@ -12,25 +12,35 @@ if (mealsVideo) {
 let alreadySeenDbRecipes = []
 let alreadySeenApiRecipes = []
 
+const shakeAnimation = (contentBox) => {
+    setTimeout(() => {
+       contentBox.classList.toggle('shake-animation')
+    }, 1000);
+}
+
 
 const inputIngredientsBtn = document.querySelector('.add-meals__search__bar__icon')
 inputIngredientsBtn.addEventListener('click', () => {
     const modal = document.querySelector('.modal-add-search')
     const containerBox = document.querySelector('.recipe-search__search__results__container')
-    const loader = document.querySelector('.loader')
-    loader.classList.remove('loader--hidden')
-    loader.style.transition = 'unset'
-    loader.style.opacity = '0.85'
     const inputValue = document.querySelector('.modal-add-search__content__search-bar').value
-    const langPrefix = window.location.href.split('/')[3];
-    const url = location.origin + `/${langPrefix}/recipes/get-recipes-by-ingredients`
-    const array = inputValue.split(',');
-    $.ajax({
+    if (inputValue !== '') {
+        const array = inputValue.split(',');
+        const loader = document.querySelector('.loader')
+        const focusValItem = document.querySelector('.active-icon-focus')
+        const focusValue = focusValItem.parentElement.classList[0] === 'maximize' ? 1 : 2
+        loader.classList.remove('loader--hidden')
+        loader.style.transition = 'unset'
+        loader.style.opacity = '0.85'
+        const langPrefix = window.location.href.split('/')[3];
+        const url = location.origin + `/${langPrefix}/recipes/get-recipes-by-ingredients`
+        $.ajax({
         type: 'POST',
         url: url,
         data: {
             'ingredients': JSON.stringify(array),
             'ingredientsString': JSON.stringify(inputValue),
+             'focusOn': focusValue,
             'csrfmiddlewaretoken': csrfToken
         },
         success: function (response){
@@ -65,14 +75,53 @@ inputIngredientsBtn.addEventListener('click', () => {
                 `
                 containerBox.insertAdjacentHTML('beforeend', contentToAppend)
             })
-        },
-        complete: function (res){
-             setTimeout(function (){
-                loader.classList.add('loader--hidden')
-                loader.style.removeProperty('transition')
-                loader.style.removeProperty('opacity')
-                modal.classList.add('not-visible')
-            }, 1500)
-        }
-    })
+            },
+            complete: function (res){
+                 setTimeout(function (){
+                    loader.classList.add('loader--hidden')
+                    loader.style.removeProperty('transition')
+                    loader.style.removeProperty('opacity')
+                    modal.classList.add('not-visible')
+                }, 1500)
+            }
+        })
+    }
+    else {
+            const input = document.querySelector('.modal-add-search__content__search-bar')
+            input.classList.add('color-error')
+            input.classList.toggle('shake-animation')
+            shakeAnimation(input)
+            setTimeout(function () {
+                input.classList.remove('color-error')
+            }, 1500);
+    }
+
+})
+
+
+const maximize = document.querySelector('.maximize')
+const minimizing = document.querySelector('.minimizing')
+
+maximize.addEventListener('click', () => {
+    const icon = document.querySelector('.maximize-icon')
+    const secondIcon = document.querySelector('.minimizing-icon')
+    if (!icon.classList.contains('active-icon-focus')){
+        secondIcon.classList.remove('active-icon-focus')
+        const getPathChecked = secondIcon.src
+        secondIcon.src = icon.src
+        icon.classList.add('active-icon-focus')
+        icon.src = getPathChecked
+    }
+})
+
+minimizing.addEventListener('click', () => {
+    const icon = document.querySelector('.minimizing-icon')
+    const secondIcon = document.querySelector('.maximize-icon')
+    if (!icon.classList.contains('active-icon-focus')){
+        secondIcon.classList.remove('active-icon-focus')
+        const getPathChecked = secondIcon.src
+        secondIcon.src = icon.src
+        icon.classList.add('active-icon-focus')
+        icon.src = getPathChecked
+    }
 })
