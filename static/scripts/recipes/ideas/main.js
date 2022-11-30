@@ -92,6 +92,7 @@ inputIngredientsBtn.addEventListener('click', () => {
         loader.style.opacity = '0.95'
         const langPrefix = window.location.href.split('/')[3];
         const url = location.origin + `/${langPrefix}/recipes/get-recipes-by-ingredients`
+        let functionTimeExecutionCounter
         $.ajax({
         type: 'POST',
         url: url,
@@ -102,6 +103,48 @@ inputIngredientsBtn.addEventListener('click', () => {
              'blockedSuggestionsArray': JSON.stringify(alreadySeenApiRecipes),
              'blockedDbSuggestionsArray': JSON.stringify(alreadySeenDbRecipes),
              'csrfmiddlewaretoken': csrfToken
+        },
+        beforeSend: function (){
+          const loaderMsg = document.querySelector('.loader-message__message')
+          let start = new Date().getTime();
+          functionTimeExecutionCounter = setInterval(function (){
+            let end = new Date().getTime();
+            let time = (end - start) / 1000;
+            if (time >= 1 && time < 4){
+                loaderMsg.innerHTML = gettext('Searching for recipes in our database')
+                if (langPrefix === 'pl'){
+                    loaderMsg.style.left = '-6.5rem'
+                }
+            }
+            else if (time >= 4 && time < 10){
+                loaderMsg.innerHTML = gettext('Searching for recipes into the web')
+                if (langPrefix === 'pl') {
+                    loaderMsg.style.left = '-6.5rem'
+                }
+                else {
+                    loaderMsg.style.left = '-4.5rem'
+                }
+            }
+            else if (time >= 10 && time < 14){
+                loaderMsg.innerHTML = gettext('Translating and formatting recipes')
+                 if (langPrefix === 'pl') {
+                    loaderMsg.style.left = '-7.5rem'
+                }
+
+            }
+            else if (time >= 14 && time < 40){
+                loaderMsg.innerHTML = gettext('It takes longer than usual, be patient')
+                 if (langPrefix === 'pl') {
+                    loaderMsg.style.left = '-7.5rem'
+                }
+                else {
+                    loaderMsg.style.left = '-4rem'
+                }
+            }
+            else if (time >= 40){
+                loaderMsg.innerHTML = gettext('Something went wrong...')
+            }
+          }, 1000)
         },
         success: function (response){
             if (response.status === 200){
@@ -168,6 +211,14 @@ inputIngredientsBtn.addEventListener('click', () => {
                                     modalRecipeInfo.classList.remove('not-visible')
                                     fillModalRecipe(response)
                                 }
+                                else {
+                                    const modalError = document.querySelector('.modal-accept-delete')
+                                    const modalErrorClose = document.querySelector('.modal-accept-delete-close')
+                                    modalError.classList.remove('not-visible')
+                                    modalErrorClose.addEventListener('click', () => {
+                                        modalError.classList.add('not-visible')
+                                    })
+                                }
                             }
                         })
                     })
@@ -183,6 +234,7 @@ inputIngredientsBtn.addEventListener('click', () => {
             }
             },
             complete: function (res){
+                 clearInterval(functionTimeExecutionCounter)
                  setTimeout(function (){
                     loader.classList.add('not-visible')
                     loader.style.removeProperty('transition')

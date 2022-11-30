@@ -9,7 +9,7 @@
     <div class="loader"></div>
     <div class="loader-message not-visible">
         <div>
-            <p class="loader-message__message">WAWAWAWAAW</p>
+            <p class="loader-message__message" style="white-space: nowrap;"></p>
         </div>
     </div>
       <div class="bg-video-fixed" id="add-meals-video-container">
@@ -58,6 +58,12 @@
      </div>
  </div>
 
+ <div class="modal-queued modal-accept-delete not-visible">
+     <div class="modal-queued__content">
+         <div class="modal-queued__close-button modal-accept-delete-close">&times;</div>
+         <h2 style="font-size: 2rem; text-align: center">{% trans 'Something went wrong, we could not fetch information about this recipe.' %}</h2>
+     </div>
+ </div>
 
 
 <div class="modal-queued modal-queued__recipe not-visible" style="z-index: 34500">
