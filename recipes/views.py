@@ -223,7 +223,6 @@ def get_recipes_by_ingredients(request):
         blocked_suggestions_ids = json.loads(request.POST.get('blockedSuggestionsArray'))
         blocked_db_suggestions_ids = json.loads(request.POST.get('blockedDbSuggestionsArray'))
         focus_on = request.POST.get('focusOn')
-        print(focus_on)
         if lang_code == 'pl':
             from googletrans import Translator
             translator = Translator()
@@ -233,7 +232,6 @@ def get_recipes_by_ingredients(request):
                                                                           blocked_suggestions_ids)  # gets recipe by ingredient
         recipes_arr = []
         for recipe_ids in data:
-            print(recipe_ids)
             recipe_id = int(recipe_ids['id'])
             data_recipe = get_spoonacular_recipe_by_id(recipe_id)  # gets recipe info by id
             recipe_ingredients = []
@@ -248,7 +246,6 @@ def get_recipes_by_ingredients(request):
             recipe_steps = []
             for step in data_recipe['analyzedInstructions'][0]['steps']:
                 recipe_steps.append(step['step'])
-            print('recipe name: ', data_recipe['title'])
             recipe_dict = {
                 "recipeId": suggestion_recipe_id,
                 "from": 'api',
@@ -290,10 +287,14 @@ def get_recipes_by_ingredients(request):
                                          ingredient_name.lower()) and i.strip() not in similarities_arr:
                                 similarities = similarities + 1
                                 similarities_arr.append(i.strip())
-                similarity_percentage = (similarities / len(ingredients_arr)) * 100
-
+                if focus_on == 1:
+                    similarity_percentage = (similarities / len(ingredients_arr)) * 100
+                elif focus_on == 2:
+                    similarity_percentage = (similarities / len(db_recipe.ingredients_pl)) * 100
+                else:
+                    similarity_percentage = (similarities / len(ingredients_arr)) * 100
+                print(similarities, len(ingredients_arr),similarity_percentage)
                 if similarity_percentage > max_similarity_percentage and db_recipe.pk not in blocked_db_suggestions_ids:
-                    print(similarity_percentage, db_recipe.name_pl)
                     max_similarity_percentage = similarity_percentage
                     suggested_db_recipe = db_recipe
 
@@ -304,8 +305,10 @@ def get_recipes_by_ingredients(request):
                     additional_db_recipe = db_recipe
 
             if additional_db_recipe is not None and len(suggested) < 2 and additional_db_recipe not in suggested:
+                print(additional_db_recipe.name_pl)
                 suggested.append(additional_db_recipe)
             if suggested_db_recipe is not None and len(suggested) < 2 and suggested_db_recipe not in suggested:
+                print(suggested_db_recipe.name_pl)
                 suggested.append(suggested_db_recipe)
             if len(suggested) > 0:
                 for recipe in suggested:

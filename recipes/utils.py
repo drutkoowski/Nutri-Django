@@ -22,9 +22,7 @@ def get_spoonacular_recipe_by_ingredient(string: str, number: int, ranking: int,
                        'ranking': ranking}
         response = requests.request("GET", URL, headers=HEADERS, params=querystring)
         data = response.json()
-        print('first try json:', data)
         recipe_id = data[0]['id']
-        print('first try id:', recipe_id)
     else:
         URL = "https://api.spoonacular.com/recipes/findByIngredients"
         # ranking - 1 is maximize used ingredients
@@ -39,9 +37,7 @@ def get_spoonacular_recipe_by_ingredient(string: str, number: int, ranking: int,
                 not_blocked_recipes.append(element)
         random_recipe = [random.choice(not_blocked_recipes)]
         data = random_recipe
-        print('second try json:', data)
         recipe_id = random_recipe[0]['id']
-        print('second try id:', recipe_id)
     return data, recipe_id
 
 
