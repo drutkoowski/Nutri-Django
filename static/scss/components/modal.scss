@@ -8,9 +8,6 @@
    background-color: rgba(112, 111, 111, 0.7);
    display: flex;
    transition: all .3s ease-in;
-   animation-name: fade-bottom;
-   animation-duration: 1s;
-   animation-timing-function: ease-out;
 
   &__content {
        display: flex;
@@ -26,6 +23,9 @@
        margin-right: auto;
        margin-left: auto;
        background-color: var(--green-modal);
+       animation-name: fade-bottom;
+       animation-duration: 1s;
+       animation-timing-function: ease-out;
      h1{
       margin-bottom: 1rem;
       animation-name: fade-left;
@@ -59,9 +59,6 @@
    z-index: 1000;
    background-color: rgba(112, 111, 111, 0.7);
    display: flex;
-   animation-name: fade-bottom;
-   animation-duration: 1s;
-   animation-timing-function: ease-out;
 
   &__content {
        display: flex;
@@ -79,6 +76,9 @@
        background-color: var(--green-modal);
        color: white;
        position: relative;
+       animation-name: fade-bottom;
+       animation-duration: 1s;
+       animation-timing-function: ease-out;
        @include respond(tab-port){
          padding: 5rem 1rem;
        }
@@ -130,9 +130,6 @@
 
 .modal-edit-search{
    transition: all .2s ease-in;
-   animation-name: fade-bottom;
-   animation-duration: 1s;
-   animation-timing-function: ease-out;
   -webkit-box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
   -moz-box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
   box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
@@ -142,6 +139,9 @@
   &__content {
     height: 55rem;
     width: 80rem;
+    animation-name: fade-bottom;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
     &__search{
       margin: 0 1rem!important;
       &-bar{
@@ -170,9 +170,6 @@
 
 .modal-add-search{
    transition: all .2s ease-in;
-   animation-name: fade-bottom;
-   animation-duration: 1s;
-   animation-timing-function: ease-out;
    -webkit-box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
    -moz-box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
    box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
@@ -182,6 +179,9 @@
   &__content {
     height: 55rem;
     width: 80rem;
+    animation-name: fade-bottom;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
     &__search{
       margin: 0 1rem!important;
       &-bar{
@@ -239,9 +239,6 @@
    z-index: 1000;
    background-color: rgba(112, 111, 111, 0.7);
    display: flex;
-   animation-name: fade-bottom;
-   animation-duration: 1s;
-   animation-timing-function: ease-out;
   &__content {
        display: flex;
        flex-direction: column;
@@ -258,6 +255,9 @@
        background-color: var(--green-modal);
        position: relative;
        color: white;
+       animation-name: fade-bottom;
+       animation-duration: 1s;
+       animation-timing-function: ease-out;
      h1{
       margin-bottom: 3rem;
       animation-name: fade-left;
@@ -284,10 +284,6 @@
    z-index: 1000;
    background-color: rgba(112, 111, 111, 0.7);
    display: flex;
-   animation-name: fade-bottom;
-   animation-duration: 1s;
-   animation-timing-function: ease-out;
-
   &__content {
        display: flex;
        flex-direction: column;
@@ -306,6 +302,10 @@
        -webkit-box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
        -moz-box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
        box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
+       animation-name: fade-bottom;
+       animation-duration: 1s;
+       animation-timing-function: ease-out;
+
        @include respond(tab-md){
          max-height: 85%;
          width: 85%;

@@ -7,7 +7,6 @@
 {% block content %}
     {% csrf_token %}
     <div class="loader">
-        <p>asdasd</p>
     </div>
       <div class="bg-video-fixed" id="add-meals-video-container">
         <div class="overlay-large"></div>
@@ -28,7 +27,7 @@
                             <h3>{% trans 'Suggested recipes' %}</h3>
                         </div>
                         <div class="recipe-search__search__results__container">
-{#                            <h3 class="recipe-info-message">{% trans 'We could not find any recipe matching your criterias.' %}</h3>#}
+                            <h3 class="recipe-info-message">{% trans 'We could not find any recipe matching your criterias.' %}</h3>
                         </div>
                     </div>
                     <div class="recipe-search__search__save-new">
@@ -49,7 +48,7 @@
          </div>
          <div class="recipe-search-options">
              <p><b>{% trans 'Focus on' %}:</b></p>
-             <div class="maximize"><img src="{% sass_src 'images/svg/checked.svg' %}" alt="Checked Icon" class="filter-white maximize-icon active-icon-focus">{% trans 'Maximizing used ingredients' %}</div>
+             <div class="maximize"><img src="{% sass_src 'images/svg/checked.svg' %}" alt="Checked Icon" class="filter-white maximize-icon active-icon-focus">{% trans 'Maximizing ingredients you have' %}</div>
              <div class="minimizing"><img src="{% sass_src 'images/svg/unchecked.svg' %}" alt="Unchecked Icon" class="filter-white minimizing-icon">{% trans 'Minimizing missing ingredients' %}</div>
          </div>
      </div>

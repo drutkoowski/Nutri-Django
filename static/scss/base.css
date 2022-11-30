@@ -1209,10 +1209,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   z-index: 1000;
   background-color: rgba(112, 111, 111, 0.7);
   display: flex;
-  transition: all .3s ease-in;
-  animation-name: fade-bottom;
-  animation-duration: 1s;
-  animation-timing-function: ease-out; }
+  transition: all .3s ease-in; }
   .modal__content {
     display: flex;
     flex-direction: column;
@@ -1226,7 +1223,10 @@ ORDER: Base + typography > general layout + grid > page layout > components
     align-self: center;
     margin-right: auto;
     margin-left: auto;
-    background-color: var(--green-modal); }
+    background-color: var(--green-modal);
+    animation-name: fade-bottom;
+    animation-duration: 1s;
+    animation-timing-function: ease-out; }
     .modal__content h1 {
       margin-bottom: 1rem;
       animation-name: fade-left;
@@ -1252,10 +1252,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   height: 100vh;
   z-index: 1000;
   background-color: rgba(112, 111, 111, 0.7);
-  display: flex;
-  animation-name: fade-bottom;
-  animation-duration: 1s;
-  animation-timing-function: ease-out; }
+  display: flex; }
   .modal-queued__content {
     display: flex;
     flex-direction: column;
@@ -1271,7 +1268,10 @@ ORDER: Base + typography > general layout + grid > page layout > components
     margin-left: auto;
     background-color: var(--green-modal);
     color: white;
-    position: relative; }
+    position: relative;
+    animation-name: fade-bottom;
+    animation-duration: 1s;
+    animation-timing-function: ease-out; }
     @media only screen and (max-width: 56.25em) {
       .modal-queued__content {
         padding: 5rem 1rem; } }
@@ -1313,9 +1313,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 .modal-edit-search {
   transition: all .2s ease-in;
-  animation-name: fade-bottom;
-  animation-duration: 1s;
-  animation-timing-function: ease-out;
   -webkit-box-shadow: 0px 0px 18px -7px #42445a;
   -moz-box-shadow: 0px 0px 18px -7px #42445a;
   box-shadow: 0px 0px 18px -7px #42445a; }
@@ -1323,7 +1320,10 @@ ORDER: Base + typography > general layout + grid > page layout > components
     text-align: center; }
   .modal-edit-search__content {
     height: 55rem;
-    width: 80rem; }
+    width: 80rem;
+    animation-name: fade-bottom;
+    animation-duration: 1s;
+    animation-timing-function: ease-out; }
     .modal-edit-search__content__search {
       margin: 0 1rem !important; }
       .modal-edit-search__content__search-bar {
@@ -1346,9 +1346,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 .modal-add-search {
   transition: all .2s ease-in;
-  animation-name: fade-bottom;
-  animation-duration: 1s;
-  animation-timing-function: ease-out;
   -webkit-box-shadow: 0px 0px 18px -7px #42445a;
   -moz-box-shadow: 0px 0px 18px -7px #42445a;
   box-shadow: 0px 0px 18px -7px #42445a; }
@@ -1356,7 +1353,10 @@ ORDER: Base + typography > general layout + grid > page layout > components
     text-align: center; }
   .modal-add-search__content {
     height: 55rem;
-    width: 80rem; }
+    width: 80rem;
+    animation-name: fade-bottom;
+    animation-duration: 1s;
+    animation-timing-function: ease-out; }
     .modal-add-search__content__search {
       margin: 0 1rem !important; }
       .modal-add-search__content__search-bar {
@@ -1404,10 +1404,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   height: 100vh;
   z-index: 1000;
   background-color: rgba(112, 111, 111, 0.7);
-  display: flex;
-  animation-name: fade-bottom;
-  animation-duration: 1s;
-  animation-timing-function: ease-out; }
+  display: flex; }
   .modal-signup__content {
     display: flex;
     flex-direction: column;
@@ -1423,7 +1420,10 @@ ORDER: Base + typography > general layout + grid > page layout > components
     margin-left: auto;
     background-color: var(--green-modal);
     position: relative;
-    color: white; }
+    color: white;
+    animation-name: fade-bottom;
+    animation-duration: 1s;
+    animation-timing-function: ease-out; }
     .modal-signup__content h1 {
       margin-bottom: 3rem;
       animation-name: fade-left;

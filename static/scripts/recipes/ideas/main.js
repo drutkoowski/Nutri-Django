@@ -132,3 +132,10 @@ closeModalSearchBtn.addEventListener('click', () => {
     const modal = document.querySelector('.modal-add-search')
     modal.classList.add('not-visible')
 })
+
+
+const tryAgainBtn = document.querySelector('.recipe-search__search__save-new__button')
+tryAgainBtn.addEventListener('click', () => {
+    const modalSearch = document.querySelector('.modal-recipe-ideas')
+    modalSearch.classList.remove('not-visible')
+})

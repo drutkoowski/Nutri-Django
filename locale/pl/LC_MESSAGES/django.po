@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-30 03:22+0100\n"
+"POT-Creation-Date: 2022-11-30 13:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -623,54 +623,58 @@ msgstr "Dodawanie Twojego szablonu posiłku do bazy..."
 msgid "Search for your meal components"
 msgstr "Szukaj składowych posiłku"
 
-#: .\templates\recipes\ideas\recipes_ideas.html:26
+#: .\templates\recipes\ideas\recipes_ideas.html:27
 msgid "Suggested recipes"
 msgstr "Sugerowane przepisy"
 
-#: .\templates\recipes\ideas\recipes_ideas.html:33
+#: .\templates\recipes\ideas\recipes_ideas.html:30
+msgid "We could not find any recipe matching your criterias."
+msgstr ""
+
+#: .\templates\recipes\ideas\recipes_ideas.html:34
 msgid "Not satisfied with results?"
 msgstr "Nie zadowoliły Cię rezultaty?"
 
-#: .\templates\recipes\ideas\recipes_ideas.html:34
+#: .\templates\recipes\ideas\recipes_ideas.html:35
 msgid "Try again"
 msgstr "Spróbuj ponownie"
 
-#: .\templates\recipes\ideas\recipes_ideas.html:42
+#: .\templates\recipes\ideas\recipes_ideas.html:44
 msgid "Type ingredients that you have below separating by a comma"
 msgstr "Wpisz poniżej składniki, które masz oddzielając je przecinkiem"
 
-#: .\templates\recipes\ideas\recipes_ideas.html:43
+#: .\templates\recipes\ideas\recipes_ideas.html:45
 msgid "Type all ingredients here"
 msgstr "Wpisz wszystkie składniki tutaj"
 
-#: .\templates\recipes\ideas\recipes_ideas.html:48
+#: .\templates\recipes\ideas\recipes_ideas.html:50
 msgid "Focus on"
 msgstr "Skup się na"
 
-#: .\templates\recipes\ideas\recipes_ideas.html:49
-msgid "Maximizing used ingredients"
-msgstr "Maksymalizowaniu używanych składników"
+#: .\templates\recipes\ideas\recipes_ideas.html:51
+msgid "Maximizing ingredients you have"
+msgstr "Maksymalizowaniu posiadanych składników"
 
-#: .\templates\recipes\ideas\recipes_ideas.html:50
+#: .\templates\recipes\ideas\recipes_ideas.html:52
 msgid "Minimizing missing ingredients"
 msgstr "Minimalizowaniu brakujących składników"
 
-#: .\templates\recipes\ideas\recipes_ideas.html:61
+#: .\templates\recipes\ideas\recipes_ideas.html:63
 #: .\templates\recipes\search\search_recipes.html:52
 msgid "Author"
 msgstr "Autor"
 
-#: .\templates\recipes\ideas\recipes_ideas.html:63
+#: .\templates\recipes\ideas\recipes_ideas.html:65
 #: .\templates\recipes\search\search_recipes.html:54
 msgid "What do you need to make it by yourself?"
 msgstr "Co potrzebujesz by wykonać to samemu?"
 
-#: .\templates\recipes\ideas\recipes_ideas.html:84
+#: .\templates\recipes\ideas\recipes_ideas.html:86
 #: .\templates\recipes\search\search_recipes.html:75
 msgid "Ingredients"
 msgstr "Składniki"
 
-#: .\templates\recipes\ideas\recipes_ideas.html:89
+#: .\templates\recipes\ideas\recipes_ideas.html:91
 #: .\templates\recipes\search\search_recipes.html:79
 msgid "Step by step"
 msgstr "Krok po kroku"
