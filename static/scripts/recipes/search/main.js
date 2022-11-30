@@ -147,11 +147,10 @@ const searchRecipes = (query) => {
                             const langPrefix = window.location.href.split('/')[3];
                             const url = location.origin + `/${langPrefix}/recipes/get-recipe-info-by-id`
                             $.ajax({
-                                type: 'POST',
+                                type: 'GET',
                                 url: url,
                                 data: {
                                     'recipeId': recipePk,
-                                    'csrfmiddlewaretoken': csrfToken,
                                 },
                                 success: function (response){
                                     fillModalRecipe(response)

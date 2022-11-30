@@ -69,6 +69,7 @@ def check_or_create_spoonacular_recipe(recipe: dict, lang_code: str) -> dict:
                     'verified': is_existing.verified,
                     'from': 'api',
                     'recipeId': recipe['recipeId'],
+                    'dbId': is_existing.pk,
                 }
             else:
                 return {
@@ -82,6 +83,7 @@ def check_or_create_spoonacular_recipe(recipe: dict, lang_code: str) -> dict:
                     'verified': is_existing.verified,
                     'from': 'api',
                     'recipeId': recipe['recipeId'],
+                    'dbId': is_existing.pk,
                 }
         else:
             # spoonacular dict which this function is getting, has properties always written in ENG lang, so translate it
@@ -139,6 +141,7 @@ def check_or_create_spoonacular_recipe(recipe: dict, lang_code: str) -> dict:
                     'verified': recipeObject.verified,
                     "recipeId": recipe['recipeId'],
                     "from": 'api',
+                    'dbId': recipeObject.pk,
                 }
             else:
                 return {
@@ -152,6 +155,7 @@ def check_or_create_spoonacular_recipe(recipe: dict, lang_code: str) -> dict:
                     'verified': recipeObject.verified,
                     "recipeId": recipe['recipeId'],
                     "from": 'api',
+                    'dbId': recipeObject.pk,
                 }
 
     except:

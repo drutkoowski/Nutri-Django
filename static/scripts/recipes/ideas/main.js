@@ -7,7 +7,64 @@ navbar.classList.toggle('fix-navbar')
 if (mealsVideo) {
     mealsVideo.playbackRate = 0.55;
 }
+// utils
+const capitalize = (word) => {
+    return word.toLowerCase()
+        .split(' ')
+        .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+        .join(' ')
+}
+const fillModalRecipe = (response) => {
+    const recipe = JSON.parse(response['recipe'])
+    const headingModal = document.querySelector('.modal-queued__recipe__heading')
+    headingModal.innerHTML = recipe.name
+    const difficultyBox = document.querySelector('.modal-queued__recipe__difficulty')
+    difficultyBox.innerHTML = recipe.difficulty === '' || recipe.difficulty === null ? gettext('Unknown') : recipe.difficulty
+    const durationBox = document.querySelector('.modal-queued__recipe__duration')
+    durationBox.innerHTML = `${recipe.duration}`
+    const personCount = document.querySelector('.modal-queued__recipe__person-count')
+    personCount.innerHTML = `${gettext('for')} ${recipe.person_count} ${gettext('persons')}`
+    const authorBox = document.querySelector('.modal-queued__recipe__author')
+    authorBox.innerHTML = recipe.author
+    const closeModalBtn = document.querySelector('.closeRecipeInfoBtn')
+    closeModalBtn.addEventListener('click', () => {
+        $("." + "modal-queued__recipe").fadeOut(900, () => {
+            const modal = document.querySelector(`.modal-queued__recipe`)
+            modal.classList.add('not-visible')
+            modal.style.removeProperty('display')
+            modal.style.zIndex = '0'
+        });
+    })
+    const ingredientsBox = document.querySelector('.modal-queued__recipe__container__main-content__ingredients__elements')
+    const stepsBox = document.querySelector('.modal-queued__recipe__container__main-content__steps__elements')
+    const ingredientsBoxItems = document.querySelectorAll('.recipe-ingredient-element')
+    const stepsBoxItems = document.querySelectorAll('.recipe-step-element')
 
+    ingredientsBoxItems.forEach(item => {
+        item.remove()
+    })
+
+    stepsBoxItems.forEach(item => {
+        item.remove()
+    })
+    const ingredients = recipe.ingredients
+    const steps = recipe.steps
+    let stepsIterator = 0
+    ingredients.forEach(ingredient => {
+        const isQuantity = ingredient.quantity ? '-' : ''
+        const ingredientHTML = `
+            <p class="recipe-ingredient-element">${capitalize(ingredient.ingredient)} ${isQuantity} ${ingredient.quantity}</p>
+        `
+        ingredientsBox.insertAdjacentHTML('beforeend', ingredientHTML)
+    })
+    steps.forEach(step => {
+        const stepHTML = `
+            <p class="recipe-step-element"><b>${stepsIterator+1}.</b> ${step}</p>
+        `
+        stepsBox.insertAdjacentHTML('beforeend', stepHTML)
+        stepsIterator = stepsIterator + 1
+    })
+}
 // Initials
 let alreadySeenDbRecipes = []
 let alreadySeenApiRecipes = []
@@ -62,6 +119,7 @@ inputIngredientsBtn.addEventListener('click', () => {
                      const duration = recipe.duration
                      const msgSwitch = langPrefix === 'pl' ? 'na' : 'for'
                      const isVerified = recipe.isVerified ? 'checked' : 'unchecked'
+                     const dbId = recipe.dbId
                      let isDifficultLevel = recipe.difficulty ? `<span class="pushed">${gettext("Difficulty:")} ${recipe.difficulty}</span>` : `<span class="pushed">${gettext("Difficulty:")} ${gettext('Unknown')}</span>`
                      let isFromApi = recipe.from === 'api'
                      if (isFromApi) {
@@ -80,21 +138,42 @@ inputIngredientsBtn.addEventListener('click', () => {
                      let contentToAppend = `
                      <div class="recipe-search__search__results__container__item">
                        <div class="recipe-search__search__results__container__item--heading">
-                         <img src="/static/images/svg/${isVerified}.svg" class="filter-green verified-icon" alt="${isVerified.toUpperCase()} Icon">
+                         <img src="/static/images/svg/${isVerified}.svg" class="filter-green verified-icon" alt="${capitalize(isVerified)} Icon">
                          <p class="isVerified__label">${labelMsg}</p>
                          <p>${recipeName} ${msgSwitch} ${servings} ${gettext('servings')} <img src="/static/images/svg/people.svg" class="clock-icon-recipe-duration filter-green" alt="People Icon"></p>
                      </div>
                      <div class="recipe-search__search__results__container__item--lower">
                           <p><img src="/static/images/svg/clock.svg" class="clock-icon-recipe-duration filter-green" alt="Clock Icon"> <span>${duration}</span> ${isDifficultLevel}</p>
                      </div>
-                     <button data-pk="32" class="btn-light recipe-details-btn">${gettext('See')}</button>
+                     <button data-pk="${dbId}" class="btn-light recipe-details-btn">${gettext('See')}</button>
                      </div>
                      `
                      containerBox.insertAdjacentHTML('beforeend', contentToAppend)
                  })
+                 const recipesDetailButtons = document.querySelectorAll('.recipe-details-btn')
+                 recipesDetailButtons.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const dataPk = btn.dataset.pk
+                        const url = location.origin + `/${langPrefix}/recipes/get-recipe-info-by-id`
+                        $.ajax({
+                            type: 'get',
+                            url: url,
+                            data: {
+                                'recipeId': dataPk,
+                            },
+                            success: function (response){
+                                if (response.status === 200){
+                                    const modalRecipeInfo = document.querySelector('.modal-queued__recipe')
+                                    modalRecipeInfo.style.zIndex = '34500'
+                                    modalRecipeInfo.classList.remove('not-visible')
+                                    fillModalRecipe(response)
+                                }
+                            }
+                        })
+                    })
+                })
             }
             else {
-                console.log(response)
                 const recipeInfoMsg = document.querySelector('.recipe-info-message')
                 recipeInfoMsg.classList.remove('not-visible')
                 const alreadySuggestedItems = document.querySelectorAll('.recipe-search__search__results__container__item')

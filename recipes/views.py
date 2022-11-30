@@ -147,8 +147,8 @@ def live_search_recipes(request):
 
 @login_required(login_url='login')
 def get_recipe_info_by_id(request):
-    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
-        recipe_id = request.POST.get('recipeId')
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
+        recipe_id = request.GET.get('recipeId')
         lang_code = request.path.split('/')[1]
         try:
             recipe = Recipe.objects.get(pk=recipe_id)
@@ -160,7 +160,8 @@ def get_recipe_info_by_id(request):
                     'author': recipe.author,
                     'duration': recipe.duration,
                     'ingredients': recipe.ingredients_pl,
-                    'steps': recipe.steps_pl
+                    'steps': recipe.steps_pl,
+                    'verified': recipe.verified
                 }
             else:
                 recipe_dict = {
@@ -170,7 +171,8 @@ def get_recipe_info_by_id(request):
                     'author': recipe.author,
                     'duration': recipe.duration,
                     'ingredients': recipe.ingredients_en,
-                    'steps': recipe.steps_en
+                    'steps': recipe.steps_en,
+                    'verified': recipe.verified
                 }
             recipe_json = json.dumps(recipe_dict)
             return JsonResponse({'status': 200, 'text': 'There are recipe found.', 'recipe': recipe_json})
@@ -318,7 +320,8 @@ def get_recipes_by_ingredients(request):
                             'duration': recipe.duration,
                             'ingredients': recipe.ingredients_pl,
                             'steps': recipe.steps_pl,
-                            'isVerified': recipe.verified
+                            'isVerified': recipe.verified,
+                            'dbId': recipe.pk
                         }
                     else:
                         recipe_obj = {
@@ -331,7 +334,8 @@ def get_recipes_by_ingredients(request):
                             'duration': recipe.duration,
                             'ingredients': recipe.ingredients_en,
                             'steps': recipe.steps_en,
-                            'isVerified': recipe.verified
+                            'isVerified': recipe.verified,
+                            'dbId': recipe.pk
                         }
                     recipes_arr.append(recipe_obj)
         if len(recipes_arr) > 0:

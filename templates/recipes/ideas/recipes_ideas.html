@@ -52,7 +52,7 @@
          </div>
          <div class="recipe-search-options">
              <p><b>{% trans 'Focus on' %}:</b></p>
-             <div class="maximize"><img src="{% sass_src 'images/svg/checked.svg' %}" alt="Checked Icon" class="filter-white maximize-icon active-icon-focus">{% trans 'Maximizing ingredients you have' %}</div>
+             <div class="maximize"><img src="{% sass_src 'images/svg/checked.svg' %}" alt="Checked Icon" class="filter-white maximize-icon active-icon-focus">{% trans 'Ingredients you have' %}</div>
              <div class="minimizing"><img src="{% sass_src 'images/svg/unchecked.svg' %}" alt="Unchecked Icon" class="filter-white minimizing-icon">{% trans 'Minimizing missing ingredients' %}</div>
          </div>
      </div>
@@ -60,9 +60,9 @@
 
 
 
-<div class="modal-queued modal-queued__recipe not-visible">
+<div class="modal-queued modal-queued__recipe not-visible" style="z-index: 34500">
     <div class="modal-queued__content modal-queued__recipe__content">
-        <div class="modal-queued__close-button modal-queued__recipe__close-button">&times;</div>
+        <div class="modal-queued__close-button modal-queued__recipe__close-button closeRecipeInfoBtn">&times;</div>
         <h1 class="modal-queued__recipe__heading"></h1>
         <p class="author-paragraph">{% trans 'Author' %}: <span class="modal-queued__recipe__author"></span></p>
         <div class="modal-queued__recipe__container">
