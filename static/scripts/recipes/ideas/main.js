@@ -17,7 +17,8 @@ const shakeAnimation = (contentBox) => {
        contentBox.classList.toggle('shake-animation')
     }, 1000);
 }
-
+const loader = document.querySelector('.loader')
+loader.classList.add('loader--hidden')
 
 const inputIngredientsBtn = document.querySelector('.add-meals__search__bar__icon')
 inputIngredientsBtn.addEventListener('click', () => {
@@ -124,4 +125,10 @@ minimizing.addEventListener('click', () => {
         icon.classList.add('active-icon-focus')
         icon.src = getPathChecked
     }
+})
+
+const closeModalSearchBtn = document.querySelector('.modal-queued__recipe__close-button')
+closeModalSearchBtn.addEventListener('click', () => {
+    const modal = document.querySelector('.modal-add-search')
+    modal.classList.add('not-visible')
 })

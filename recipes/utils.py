@@ -148,7 +148,8 @@ def convert_en_spoonacular_unit(unit: str, amount: float) -> str:
             'tbs': 'łyżka stołowa',
             'bunch': 'garść',
             'sheets': 'opakowań/arkuszy',
-            'tsps': 'łyżeczka'
+            'tsps': 'łyżeczek',
+            'tsp': 'łyżeczka'
         }
         new_amount = amount
         if unit == 'pound':
