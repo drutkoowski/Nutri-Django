@@ -148,6 +148,8 @@ inputIngredientsBtn.addEventListener('click', () => {
         },
         success: function (response){
             if (response.status === 200){
+                 const loaderMsg = document.querySelector('.loader-message__message')
+                 loaderMsg.innerHTML = ''
                  const recipes = JSON.parse(response.recipes)
                  const recipeInfoMsg = document.querySelector('.recipe-info-message')
                  const alreadySuggestedItems = document.querySelectorAll('.recipe-search__search__results__container__item')

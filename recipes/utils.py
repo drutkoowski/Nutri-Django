@@ -190,7 +190,8 @@ def convert_en_spoonacular_unit(unit: str, amount: float) -> str:
             'gm': 'g',
             'stick': 'laska/kostka',
             'can': 'puszka',
-            'package': 'paczka'
+            'package': 'paczka',
+            'qt': 'litr'
         }
         new_amount = amount
         if unit == 'pound':
