@@ -79,7 +79,7 @@
   &__stats {
     margin-left: 5rem;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1.5fr;
     grid-template-rows: 1fr;
     grid-column-gap: 5rem;
     font-size: 2rem;
@@ -140,12 +140,6 @@
    @include respond(phone-md-sm) {
      margin-top: 2rem;
    }
-
-
-
-    &:hover {
-       transform: scale(1.05);
-    }
     &__item {
       margin-left: 3rem;
       color: black;
@@ -155,6 +149,9 @@
       grid-row: 1/2;
       height: auto;
       margin-bottom: 5rem;
+      &:hover {
+       transform: scale(1.05);
+     }
       @include respond(md-desktop) {
         grid-column: 1/2;
         grid-row: 2/3;
@@ -209,14 +206,13 @@
 }
 
 .summaryGraph {
-  margin-bottom: 5rem;
   &__container {
     margin-left: 2rem;
     margin-top: 2rem;
-    height: 30rem;
+    height: 40rem;
     width: auto;
     @include respond(tab-desktop) {
-      height: 25rem;
+      height: 35rem;
     }
     @include respond(tab-port) {
       height: 30rem;

@@ -216,7 +216,7 @@ def get_weekly_calories_info(request):
 
 
 @login_required(login_url='login')
-def week_daily_macros_eaten(request):
+def week_daily_macros(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
         user_profile = UserProfile.objects.get(user=request.user)
         from datetime import datetime
@@ -361,3 +361,5 @@ def get_dashboard_stats_info(request):
             'sumFatEaten': round(sum(sum_eaten_fat), 2)
         }
         return JsonResponse({'status': 200, 'text': 'Operation successful.', 'data': json.dumps(data_dict)})
+
+

@@ -192,7 +192,7 @@ const getDataWeeklyChart = () => {
 // summary weekly details chart ( 4 macro)
 const getDataMacroChart = (kcalDemand, proteinDemand, carbsDemand, fatDemand) => {
     const langPrefix = window.location.href.split('/')[3];
-    const url = window.location.origin + `/${langPrefix}/data/get/week-daily-macros-eaten`
+    const url = window.location.origin + `/${langPrefix}/data/get/week-daily-macros`
     $.ajax({
         type: 'get',
         url: url,

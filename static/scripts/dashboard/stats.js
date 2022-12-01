@@ -22,33 +22,185 @@ hamburgerNavSmall.addEventListener('click', () => {
     }
 })
 
-let weekChart = document.getElementById('summaryGraph').getContext('2d')
-const xValuesWeekGraph = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
-let dataWeekGraph = {
-    labels: xValuesWeekGraph,
-    datasets: [{
-      data: [2860, 2140, 3060, 2777, 1895, 2345, 2753],
-      borderColor: "green",
-      label: 'Eaten KCAL'
-    }]
-};
-
-let weekChartBox = new Chart(weekChart, {
-  type: 'line',
-  data: dataWeekGraph,
-  options: {
-  	responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-            legend: {
-                display: true
-            },
-        }
-  }
-});
-
 window.onresize = function(){ location.reload(); }
+// option values
+let durationValue
+let typeValue
+let isDrawn = false
+let weekChartBox
+// listening chart options
+const durationInput= document.querySelector('#duration')
+const typeInput = document.querySelector('#type')
+durationInput.addEventListener('change', (e) => {
+    durationValue = e.target.value
+})
+typeInput.addEventListener('change', (e) => {
+    typeValue = e.target.value
+    getDataChartWeekly(typeValue)
+})
 
+// drawing utils
+const getDataChartWeekly = (type) => {
+    const langPrefix = window.location.href.split('/')[3];
+    const url = window.location.origin + `/${langPrefix}/data/get/weekly-calories-info`
+    if (isDrawn){
+        if (type === 'kcal'){
+              let dataset = [{
+                data: [0,0,123,111,321,324,6,291],
+                borderColor: "green",
+                lineTension: 1,
+                tension: 0.8,
+                pointRadius: 0,
+                borderWidth: 4,
+                pointHoverRadius: 0,
+                backgroundColor: 'rgb(126,238,146)',
+            },{
+                data: [0,0,153,1451,0,724,145,91],
+                borderColor: "red",
+                lineTension: 1,
+                tension: 0.8,
+                pointRadius: 0,
+                borderWidth: 4,
+                pointHoverRadius: 0,
+                backgroundColor: 'rgb(222,198,43)',
+            },]
+            chartDraw(  ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"], dataset, 621,'update')
+        }
+        else if (type === 'macros'){
+             let dataset = [{
+                data: [0,0,123,111,321,324,6,291],
+                borderColor: "rgb(126,238,146)",
+                lineTension: 1,
+                tension: 0.8,
+                pointRadius: 0,
+                borderWidth: 4,
+                pointHoverRadius: 0,
+            },{
+                data: [25,4,3,66,6,0,45,91],
+                borderColor: "rgb(222,198,43)",
+                lineTension: 1,
+                tension: 0.8,
+                pointRadius: 0,
+                borderWidth: 4,
+                pointHoverRadius: 0,
+            },
+             {
+                data: [25,21,33,7,6,7,1,31],
+                borderColor: "rgb(37,175,138)",
+                lineTension: 1,
+                tension: 0.8,
+                pointRadius: 0,
+                borderWidth: 4,
+                pointHoverRadius: 0,
+
+            },
+             {
+                data: [15,0,31,0,0,74,45,61],
+                borderColor: "rgb(178,117,101)",
+                lineTension: 1,
+                tension: 0.8,
+                pointRadius: 0,
+                borderWidth: 4,
+                pointHoverRadius: 0,
+            },]
+            chartDraw(  ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"], dataset, 321,'update')
+        }
+    }
+    else {
+         $.ajax({
+         type: 'get',
+         url: url,
+         success: function (response) {
+             const data = JSON.parse(response.data)
+             const weeklyKcalArr = []
+             data.forEach(day => {
+                 weeklyKcalArr.push(day.dayKcal)
+             })
+             const averageKcal = weeklyKcalArr.reduce((a, b) => a + b, 0) / weeklyKcalArr.length;
+             let xValuesWeekGraph
+             if (langPrefix === 'pl'){
+                 xValuesWeekGraph = ["Pon","Wt","Śr","Czw","Pt","Sob","Nie"];
+             }
+             else {
+                 xValuesWeekGraph = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+             }
+             // average line
+             // average line
+             let dataset = [{
+                data: weeklyKcalArr,
+                borderColor: "rgb(126,238,146)",
+                lineTension: 1,
+                tension: 0.8,
+                pointRadius: 0,
+                borderWidth: 4,
+                pointHoverRadius: 0,
+            },]
+             chartDraw(xValuesWeekGraph, dataset, averageKcal, 'draw')
+         },
+     })
+    }
+
+}
+const chartDraw = (labels, datasets, average, type) => {
+    let weekChart = document.getElementById('summaryGraph').getContext('2d')
+    if (type === 'draw'){
+          let dataWeekGraph = {
+            labels: labels,
+            datasets: datasets
+        };
+        const annotation = {
+            type: 'line',
+            borderColor: 'rgb(252,218,0)',
+            borderWidth: 2,
+            label: {
+                enabled: true,
+                content: (ctx) => 'Average: ' + average,
+                position: 'end'
+            },
+            scaleID: 'y',
+            value: (ctx) => average
+        };
+        weekChartBox = new Chart(weekChart, {
+        type: 'line',
+        data: dataWeekGraph,
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: true
+                },
+                annotation: {
+                    annotations: {
+                        annotation
+                    }
+                }
+            }
+            },
+    });
+    }
+    else if (type === 'update'){
+        let dataWeekGraph = {
+            labels: labels,
+            datasets: datasets
+            // datasets: [{
+            //     data: dataArray,
+            //     borderColor: "green",
+            //     lineTension: 1,
+            //     tension: 0.8,
+            //     pointRadius: 0,
+            //     borderWidth: 4,
+            //     pointHoverRadius: 0,
+            //     backgroundColor: 'rgb(126,238,146)',
+            //     fill: true,
+            // },]
+        };
+        weekChartBox.data = dataWeekGraph;
+        weekChartBox.update();
+    }
+}
+
+// filling average and aggregate values
 const fillStatsInfo = () => {
      const langPrefix = window.location.href.split('/')[3];
      const url = window.location.origin + `/${langPrefix}/data/get/get-dashboard-stats-info`
@@ -84,6 +236,7 @@ const fillStatsInfo = () => {
         },
     })
 }
-
-
+// initials
 fillStatsInfo()
+getDataChartWeekly('kcalBurnt')
+isDrawn = true
