@@ -86,6 +86,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 "accounts.context_processors.get_current_user_profile",
+                'accounts.context_processors.get_translated_profile_info'
             ],
         },
     },

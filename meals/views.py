@@ -123,8 +123,8 @@ def add_today_meal_ajax(request):
                     multiplier = quantity / 100.0
                 else:
                     multiplier = quantity
-                meal_kcal = float(ingredient.kcal) * float(multiplier)
-                meal_carbs = float(ingredient.carbs) * float(multiplier)
+                meal_kcal = round(float(ingredient.kcal) * float(multiplier),2)
+                meal_carbs = round(float(ingredient.carbs) * float(multiplier),2)
 
                 meal_protein = None if ingredient.protein is None else round(
                     float(ingredient.protein) * float(multiplier), 5)

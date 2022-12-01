@@ -11,7 +11,7 @@
          {{get_current_user_profile.user.username}}
     </div>
     <div class="dashboard__sidebar__gender">
-        {{ get_current_user_profile.gender}}
+        {{ get_translated_profile_info.gender }}
     </div>
     <div class="dashboard__sidebar__years">
         {{ get_current_user_profile.years_old }} {% trans 'years old' %}
@@ -23,15 +23,15 @@
          {{ get_current_user_profile.weight }} kg
     </div>
     <div class="dashboard__sidebar__goal">
-        {% trans 'Goal' %}:  {{ get_current_user_profile.goal_weight|title }}
+        {% trans 'Your Goal' %}: {{ get_translated_profile_info.goal }}
     </div>
     <div class="dashboard__sidebar__activity-level">
-        {% trans 'Activity' %}: {{ get_current_user_profile.activity_level |title}}
+        {% trans 'Activity Level' %}: {{ get_translated_profile_info.activityLevel }}
     </div>
     <div class="dashboard__sidebar__settings">
         {% trans 'Settings' %}
     </div>
     <div class="dashboard__sidebar__log-out">
-        <a class="" href="{% url 'logout' %}"> {% trans 'Logout' %}</a>
+        <a href="{% url 'logout' %}"> {% trans 'Logout' %}</a>
     </div>
 </div>

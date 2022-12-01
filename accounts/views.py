@@ -1,4 +1,5 @@
 import json
+from datetime import date
 
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
@@ -9,6 +10,7 @@ from .utils import date_for_weekday
 from accounts.models import Account, UserProfile
 from meals.models import Meal
 from workouts.models import Workout
+
 
 # Create your views here.
 
@@ -106,7 +108,7 @@ def check_if_taken(request):
         if check_if_user_exists is not None:
             return JsonResponse({'status': 200, 'text': 'User already exists.'})
         else:
-           return JsonResponse({'status': 404, 'text': 'User not exists.'})
+            return JsonResponse({'status': 404, 'text': 'User not exists.'})
     else:
         return redirect('home-page')
 
@@ -144,8 +146,10 @@ def get_profile_nutrition_details(request):
         else:
             final_kcal_goal = weight_goal_metabolic_rate
         from datetime import datetime
-        all_today_meals = Meal.objects.filter(created_by=user_profile, created_at__contains=datetime.today().date()).all()
-        all_today_exercises = Workout.objects.filter(created_by=user_profile, created_at__contains=datetime.today().date()).all()
+        all_today_meals = Meal.objects.filter(created_by=user_profile,
+                                              created_at__contains=datetime.today().date()).all()
+        all_today_exercises = Workout.objects.filter(created_by=user_profile,
+                                                     created_at__contains=datetime.today().date()).all()
         sum_kcal_eaten = 0
         sum_protein_eaten = 0
         sum_carbs_eaten = 0
@@ -311,7 +315,7 @@ def get_activity_list_by_day(request):
                 'exerciseElements': elements_arr,
                 'kcalBurntSum': round(exercise.kcal_burnt_sum, 2),
                 'durationSum': round(exercise.min_spent_sum, 2),
-             }
+            }
             exercises_arr.append(exercise_obj)
         data = {
             'exercises': json.dumps(exercises_arr),
@@ -322,3 +326,38 @@ def get_activity_list_by_day(request):
             'eatenFatSum': round(fat_eaten_sum, 2)
         }
         return JsonResponse({'status': 200, 'text': 'Operation successful.', 'data': data})
+
+
+@login_required(login_url='login')
+def get_dashboard_stats_info(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
+        user_profile = UserProfile.objects.get(user=request.user)
+        date_joined = user_profile.user.date_joined.date()
+        date_today = date.today()
+        days_on_nutri = ((date_today - date_joined).days + 1)
+        sum_kcal_eaten = []
+        sum_kcal_burnt = []
+        sum_eaten_carbs = []
+        sum_eaten_fat = []
+        sum_eaten_protein = []
+        meals = Meal.objects.filter(created_by=user_profile).all()
+        workouts = Workout.objects.filter(created_by=user_profile).all()
+        for meal in meals:
+            sum_kcal_eaten.append(meal.kcal)
+            if meal.protein:
+                sum_eaten_protein.append(meal.protein)
+            if meal.carbs:
+                sum_eaten_carbs.append(meal.carbs)
+            if meal.fat:
+                sum_eaten_fat.append(meal.fat)
+        for workout in workouts:
+            sum_kcal_burnt.append(workout.kcal_burnt_sum)
+        data_dict = {
+            'days': days_on_nutri,
+            'sumKcalEaten': round(sum(sum_kcal_eaten), 2),
+            'sumKcalBurnt': round(sum(sum_kcal_burnt), 2),
+            'sumCarbsEaten': round(sum(sum_eaten_carbs), 2),
+            'sumProteinEaten': round(sum(sum_eaten_protein), 2),
+            'sumFatEaten': round(sum(sum_eaten_fat), 2)
+        }
+        return JsonResponse({'status': 200, 'text': 'Operation successful.', 'data': json.dumps(data_dict)})

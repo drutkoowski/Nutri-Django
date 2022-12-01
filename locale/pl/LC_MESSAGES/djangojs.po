@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-30 19:16+0100\n"
+"POT-Creation-Date: 2022-12-01 17:10+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -386,6 +386,14 @@ msgstr "Nie dodałeś żadnych aktywności dla tego dnia"
 msgid "Summary"
 msgstr "Podsumowanie"
 
+#: .\static\scripts\dashboard\stats.js:67
+msgid "day on Nutri"
+msgstr "dnia na Nutri"
+
+#: .\static\scripts\dashboard\stats.js:67
+msgid "days on Nutri"
+msgstr "dni na Nutri"
+
 #: .\static\scripts\login\main.js:33
 msgid "Email input is not valid email."
 msgstr "Pole email lub hasła jest nieprawidłowe."
@@ -480,7 +488,7 @@ msgid "Edit Meal"
 msgstr "Edytuj Posiłek"
 
 #: .\static\scripts\recipes\ideas\main.js:22
-#: .\static\scripts\recipes\ideas\main.js:158
+#: .\static\scripts\recipes\ideas\main.js:167
 msgid "Unknown"
 msgstr "Nieznane"
 
@@ -495,11 +503,11 @@ msgstr "dla"
 msgid "persons"
 msgstr "osób"
 
-#: .\static\scripts\recipes\ideas\main.js:122
+#: .\static\scripts\recipes\ideas\main.js:114
 msgid "Searching for recipes in our database"
 msgstr "Szukanie Twojego przepisu w naszej bazie"
 
-#: .\static\scripts\recipes\ideas\main.js:125
+#: .\static\scripts\recipes\ideas\main.js:120
 msgid "Searching for recipes into the web"
 msgstr "Szukanie przepisów dostępnych w sieci"
 
@@ -507,31 +515,31 @@ msgstr "Szukanie przepisów dostępnych w sieci"
 msgid "Translating and formatting recipes"
 msgstr "Tłumaczenie oraz formatowanie przepisów"
 
-#: .\static\scripts\recipes\ideas\main.js:132
+#: .\static\scripts\recipes\ideas\main.js:136
 msgid "It takes longer than usual, be patient"
 msgstr "Trwa to dłużej niż zazwyczaj, bądź cierpliwy"
 
-#: .\static\scripts\recipes\ideas\main.js:136
+#: .\static\scripts\recipes\ideas\main.js:145
 msgid "Something went wrong..."
 msgstr "Coś poszło nie tak, spróbuj ponownie."
 
-#: .\static\scripts\recipes\ideas\main.js:158
+#: .\static\scripts\recipes\ideas\main.js:167
 msgid "Difficulty:"
 msgstr "Poziom trudności:"
 
-#: .\static\scripts\recipes\ideas\main.js:168
+#: .\static\scripts\recipes\ideas\main.js:177
 msgid "Nutri Verified"
 msgstr "Zweryfikowane przez Nutri"
 
-#: .\static\scripts\recipes\ideas\main.js:171
+#: .\static\scripts\recipes\ideas\main.js:180
 msgid "Not verified"
 msgstr "Niezweryfikowane"
 
-#: .\static\scripts\recipes\ideas\main.js:178
+#: .\static\scripts\recipes\ideas\main.js:187
 msgid "servings"
 msgstr "porcje"
 
-#: .\static\scripts\recipes\ideas\main.js:183
+#: .\static\scripts\recipes\ideas\main.js:192
 #: .\static\scripts\recipes\search\main.js:138
 msgid "See"
 msgstr "Zobacz"
@@ -628,32 +636,32 @@ msgstr "Hasło"
 msgid "You have to choose one option."
 msgstr "Musisz wybrać jedną opcję."
 
-#: .\static\scripts\signup\main.js:345 .\static\scripts\signup\main.js:383
-#: .\static\scripts\signup\main.js:445
+#: .\static\scripts\signup\main.js:350 .\static\scripts\signup\main.js:388
+#: .\static\scripts\signup\main.js:450
 msgid "You have filled inputs incorrectly."
 msgstr "Wypełniłeś formularz niepoprawnie."
 
-#: .\static\scripts\signup\main.js:351
+#: .\static\scripts\signup\main.js:356
 msgid "You have to fill the inputs."
 msgstr "Musisz wypełnić formularz."
 
-#: .\static\scripts\signup\main.js:364
+#: .\static\scripts\signup\main.js:369
 msgid "You have filled incorrect name or last name field."
 msgstr "Wypełniłeś pole imienia lub nazwiska nieprawidłowo."
 
-#: .\static\scripts\signup\main.js:395 .\static\scripts\signup\main.js:435
+#: .\static\scripts\signup\main.js:400 .\static\scripts\signup\main.js:440
 msgid "Your password is too short!"
 msgstr "Twoje hasło jest zbyt krótkie!"
 
-#: .\static\scripts\signup\main.js:399 .\static\scripts\signup\main.js:439
+#: .\static\scripts\signup\main.js:404 .\static\scripts\signup\main.js:444
 msgid "Your password is too long!"
 msgstr "Twoje hasło jest za długie!"
 
-#: .\static\scripts\signup\main.js:420
+#: .\static\scripts\signup\main.js:425
 msgid "User with these credentials already exists."
 msgstr "Użytkownik z tymi danymi uwierzytelniającymi już istnieje."
 
-#: .\static\scripts\signup\main.js:429
+#: .\static\scripts\signup\main.js:434
 msgid "Something went wrong, try again."
 msgstr "Coś poszło nie tak, spróbuj ponownie."
 
@@ -690,6 +698,12 @@ msgstr "Nazwa Aktywności"
 #: .\static\scripts\workouts\saved\main.js:783
 msgid "Edit Activity"
 msgstr "Edytuj Aktywność"
+
+#~ msgid "day"
+#~ msgstr "dzień"
+
+#~ msgid "days"
+#~ msgstr "dni"
 
 #~ msgid "Password is too short!"
 #~ msgstr "Twoje hasło jest zbyt krótkie!"
