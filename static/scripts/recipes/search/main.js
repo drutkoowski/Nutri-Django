@@ -130,7 +130,7 @@ const searchRecipes = (query) => {
                     let contentToAppend = `
                         <div class="recipe-search__search__results__container__item">
                             <div class="recipe-search__search__results__container__item--heading">
-                                <p>${recipeName} ${gettext('for')} ${recipePersonCount} x <img src="/static/images/svg/people.svg" class="clock-icon-recipe-duration filter-green" alt="People Icon"></p>
+                                <p>${recipeName} ${gettext('for')}&nbsp;${recipePersonCount}&nbsp;x <img src="/static/images/svg/people.svg" class="clock-icon-recipe-duration filter-green" alt="People Icon"></p>
                             </div>
                             <div class="recipe-search__search__results__container__item--lower">
                                 <p><img src="/static/images/svg/clock.svg" class="clock-icon-recipe-duration filter-green" alt="Clock Icon"> <span>${recipeDuration}</span> <span class="pushed">${gettext('Difficulty level: ')} ${recipeDifficulty}</span></p>

@@ -172,7 +172,7 @@
 
     &--search {
       background-image: linear-gradient(to right bottom, rgba(241, 241, 241, 0.3), rgba(82, 82, 82, 0.5)),
-      url('/static/images/add_meals_card.png');
+      url('/static/images/search_recipe_bg_photo.jpg');
       background-size: cover;
       @include respond(md-desktop) {
         grid-column: 2/3;
@@ -183,7 +183,7 @@
 
     &--ideas {
       background-image: linear-gradient(to right bottom, rgba(241, 241, 241, 0.3), rgba(82, 82, 82, 0.5)),
-      url('/static/images/meal_proposition_card.jpg');
+      url('/static/images/recipe_ideas_bg_photo.jpg');
       background-size: cover;
       @include respond(md-desktop) {
         grid-column: 2/3;

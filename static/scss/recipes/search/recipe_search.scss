@@ -18,6 +18,9 @@
     grid-template-rows: 0.30fr 2.5fr 0.15fr;
     height: auto;
   }
+  @include respond(phone-lg){
+    grid-template-columns: 1fr;
+  }
 }
 
 .recipe-search {
@@ -34,6 +37,19 @@
   animation-name: fade-left;
   animation-duration: 1s;
   animation-timing-function: ease-out;
+  @include respond(md-desktop){
+    grid-template-columns: 0.35fr 3fr 0.35fr;
+  }
+  @include respond(tab-desktop){
+    grid-template-columns: 0.15fr 3fr 0.15fr;
+  }
+  @include respond(tab-sm){
+    grid-template-columns: 1fr;
+    padding: 2.5rem 0;
+  }
+  @include respond(phone-lg){
+    grid-column: 1/2;
+  }
   &__search {
     display: grid;
     grid-template-rows: auto;
@@ -45,12 +61,13 @@
     -webkit-box-shadow: 0px 0px 8px 2px rgba(66, 68, 90, 1);
     -moz-box-shadow: 0px 0px 8px 2px rgba(66, 68, 90, 1);
     box-shadow: 0px 0px 8px 2px rgba(66, 68, 90, 1);
+    @include respond(tab-sm){
+       grid-row: 1/2;
+       grid-column: 1/2;
+    }
     &__bar {
       margin: 1rem auto;
       position: relative;
-      @include respond(tab-sm){
-        width: 85%;
-      }
       input {
          border-radius: 5px;
          border: none;
@@ -94,6 +111,9 @@
       height: auto;
       min-height: 65%;
       border-radius: 5px;
+      @include respond(phone-lg){
+        margin: 1rem 0.5rem 0 0.5rem;
+      }
       &__container::-webkit-scrollbar-track {
         -webkit-box-shadow:  inset 0 0 6px rgba(0,0,0,0.3);
 	    border-radius: 10px;
@@ -129,6 +149,9 @@
           animation-duration: 2s;
           animation-timing-function: ease-out;
           color: var(--black-muted);
+          @include respond(phone-md){
+            font-size: 1.5rem;
+          }
         }
         &__item {
           max-height: 25rem;
@@ -141,22 +164,46 @@
           animation-name: fade-bottom;
           animation-duration: 1s;
           animation-timing-function: ease-out;
-
+          @include respond(tab-sm){
+            padding: 0 1rem;
+          }
+          @include respond(phone-md){
+             grid-template-columns: 1fr 0.15fr;
+             padding: 0 0.25rem;
+          }
           &--heading {
             grid-row: 1/2;
             grid-column: 1/2;
             font-size: 2rem;
+            @include respond(tab-land){
+              font-size: 1.5rem;
+            }
+            @include respond(phone-md-lg){
+              font-size: 1.25rem;
+            }
           }
           &--lower {
             grid-row: 2/3;
             grid-column: 1/2;
             p{
               font-size: 1.75rem;
+              @include respond(tab-land){
+                font-size: 1.25rem;
+              }
+              @include respond(phone-md-lg){
+                font-size: 1rem;
+              }
               span {
                 margin-left: 0.5rem;
+                @include respond(phone-md-lg){
+                  margin-left: 0.15rem;
+                }
               }
               span.pushed {
                 margin-left: 1.5rem;
+                @include respond(phone-md-lg){
+                  margin-left: 0.5rem;
+                }
               }
             }
           }
@@ -166,6 +213,18 @@
             padding: 1rem 3rem;
             text-transform: uppercase;
             justify-self: end;
+            @include respond(tab-land){
+              padding: 1rem 1rem;
+              font-size: 1rem;
+            }
+            @include respond(phone-md-lg){
+              font-size: 0.75rem;
+              padding: 0.75rem 0.75rem;
+            }
+            @include respond(phone-sm){
+              padding: 0.45rem 0.45rem;
+              font-size: 0.65rem;
+            }
           }
           &:not(:last-of-type) {
             border-bottom: 2px solid #f2f2f2;
@@ -195,6 +254,11 @@
   height: 3.5rem;
   vertical-align: middle;
   padding-top: 5px;
+  @include respond(tab-land){
+    width: 2.5rem;
+    height: 2.5rem;
+    padding-bottom: 5px;
+  }
 }
 
 

@@ -158,7 +158,6 @@ inputIngredientsBtn.addEventListener('click', () => {
                  })
                  recipeInfoMsg.classList.add('not-visible')
                  recipes.forEach(recipe => {
-                     console.log(recipe)
                      const recipeName = recipe.name
                      const servings = recipe.person_count
                      const duration = recipe.duration

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-30 18:37+0100\n"
+"POT-Creation-Date: 2022-12-01 00:22+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -561,7 +561,7 @@ msgstr "Brak posiłków dodanych dzisiaj..."
 msgid "Add Meal"
 msgstr "Dodaj posiłek"
 
-#: .\templates\meals\meals.html:23 .\templates\recipes\recipes.html:23
+#: .\templates\meals\meals.html:23
 msgid ""
 "Fill your day with the foods you eat today and find out more about their "
 "calorie content and the ingredients they contain such as protein,"
@@ -575,7 +575,7 @@ msgstr ""
 msgid "Meals Propositions"
 msgstr "Propozycje Posiłków"
 
-#: .\templates\meals\meals.html:27 .\templates\recipes\recipes.html:27
+#: .\templates\meals\meals.html:27
 msgid ""
 "Browse the dish suggestions with their recipes and other information "
 "constructed by us just for you."
@@ -661,7 +661,8 @@ msgstr "Minimalizowaniu brakujących składników"
 
 #: .\templates\recipes\ideas\recipes_ideas.html:64
 msgid "Something went wrong, we could not fetch information about this recipe."
-msgstr "Coś poszło nie tak, nie byliśmy w stanie pobrać informacji o tym przepisie."
+msgstr ""
+"Coś poszło nie tak, nie byliśmy w stanie pobrać informacji o tym przepisie."
 
 #: .\templates\recipes\ideas\recipes_ideas.html:73
 #: .\templates\recipes\search\search_recipes.html:52
@@ -687,9 +688,25 @@ msgstr "Krok po kroku"
 msgid "Search Recipe"
 msgstr "Szukaj Przepisu"
 
+#: .\templates\recipes\recipes.html:23
+msgid ""
+"Search for recipes by keywords. There are thousands of recipes in our "
+"database, with values such as the ingredients it contains, the steps to make "
+"it, and the length or difficulty of making it."
+msgstr "Wyszukaj przepisy według słów kluczowych. W naszej bazie znajdują się tysiące przepisów "
+"zawierających, takie wartości jak składniki, kroki do jego wykonania "
+"czy długość lub trudność jego wykonania."
+
 #: .\templates\recipes\recipes.html:26
 msgid "Recipe Ideas"
 msgstr "Pomysł na przepis"
+
+#: .\templates\recipes\recipes.html:27
+msgid ""
+"Search for a recipe by entering the ingredients you have, or those you would "
+"like it to consist of."
+msgstr "Wyszukaj przepis wpisując składniki, które masz lub te z których chciałbyś żeby "
+"się składał."
 
 #: .\templates\recipes\search\search_recipes.html:29
 msgid "Search for recipe"
