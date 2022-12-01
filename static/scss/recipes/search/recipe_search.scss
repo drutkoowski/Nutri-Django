@@ -301,6 +301,10 @@
     -moz-box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
     box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
     font-size: 2rem;
+    @include respond(phone-lg){
+      height: auto;
+      min-height: 55rem;
+    }
     @include respond(phone-md-sm){
       padding: 0.5rem 0.5rem
     }
@@ -470,10 +474,11 @@
       width: auto;
       margin: 0 auto;
       height: auto;
-      max-height: 70rem;
+      max-height: 110rem;
     }
     @include respond(phone-md-sm){
-      min-height: 45rem;
+      min-height: 65rem;
+      padding-bottom: 3rem;
       max-height: unset;
     }
     @include respond(phone-sm) {

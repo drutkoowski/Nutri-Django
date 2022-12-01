@@ -24,13 +24,13 @@
         <div class="recipe-search-layout-container">
             {% include 'accounts/navbar.html' %}
              {% include 'accounts/navbar_small.html' %}
-            <div class="recipe-search grid-full-span">
+            <div class="recipe-search grid-full-span recipe-ideas">
                 <div class="recipe-search__search">
                     <div class="recipe-search__search__results">
                         <div class="recipe-search__search__results__heading-box">
-                            <h3>{% trans 'Suggested recipes' %}</h3>
+                            <h3 class="recipe-ideas__heading">{% trans 'Suggested recipes' %}</h3>
                         </div>
-                        <div class="recipe-search__search__results__container">
+                        <div class="recipe-search__search__results__container recipe-ideas__container">
                             <h3 class="recipe-info-message">{% trans 'We could not find any recipe matching your criterias.' %}</h3>
                         </div>
                     </div>

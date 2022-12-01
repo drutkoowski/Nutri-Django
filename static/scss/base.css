@@ -8224,6 +8224,10 @@ div.modal--calendar__content-summary {
   -moz-box-shadow: 0px 0px 18px -7px #42445a;
   box-shadow: 0px 0px 18px -7px #42445a;
   font-size: 2rem; }
+  @media only screen and (max-width: 37.5em) {
+    .modal-queued__recipe__container {
+      height: auto;
+      min-height: 55rem; } }
   @media only screen and (max-width: 25em) {
     .modal-queued__recipe__container {
       padding: 0.5rem 0.5rem; } }
@@ -8375,10 +8379,11 @@ div.modal--calendar__content-summary {
       width: auto;
       margin: 0 auto;
       height: auto;
-      max-height: 70rem; } }
+      max-height: 110rem; } }
   @media only screen and (max-width: 25em) {
     .modal-queued__recipe__content {
-      min-height: 45rem;
+      min-height: 65rem;
+      padding-bottom: 3rem;
       max-height: unset; } }
   @media only screen and (max-width: 21.875em) {
     .modal-queued__recipe__content {
@@ -8436,10 +8441,16 @@ div.modal--calendar__content-summary {
 .modal-recipe-ideas__content {
   height: 30rem;
   width: 60rem; }
+  @media only screen and (max-width: 28.5em) {
+    .modal-recipe-ideas__content {
+      height: auto;
+      max-height: 45rem; } }
   .modal-recipe-ideas__content h1 {
     font-size: 2rem;
     margin-bottom: 2rem; }
-
+    @media only screen and (max-width: 28.5em) {
+      .modal-recipe-ideas__content h1 {
+        font-size: 1.75rem; } }
 .isVerified__label {
   margin-left: 0.5rem;
   display: inline-block; }
@@ -8463,6 +8474,40 @@ div.modal--calendar__content-summary {
       height: 2rem;
       vertical-align: text-top;
       margin-right: 1rem; }
+
+@media only screen and (max-width: 62.5em) {
+  .recipe-ideas__item {
+    display: grid;
+    grid-template-columns: 1fr 0.25fr;
+    grid-template-rows: 1fr 1fr; }
+    .recipe-ideas__item__heading {
+      grid-column: 1/3;
+      grid-row: 1/2; } }
+    @media only screen and (max-width: 62.5em) and (max-width: 25em) {
+      .recipe-ideas__item__heading img.verified-icon {
+        height: 1.5rem;
+        width: 1.5rem; } }
+@media only screen and (max-width: 62.5em) {
+    .recipe-ideas__item__lower {
+      grid-column: 1/2;
+      grid-row: 2/3; }
+    .recipe-ideas__item .recipe-details-btn {
+      grid-column: 2/3;
+      grid-row: 2/3; } }
+
+@media only screen and (max-width: 62.5em) {
+  .recipe-ideas__container {
+    min-height: 45rem; }
+  .recipe-ideas__heading {
+    font-size: 2.5rem !important; } }
+
+@media only screen and (max-width: 25em) {
+  .recipe-ideas__heading {
+    font-size: 2rem !important; } }
+
+@media only screen and (max-width: 28.5em) {
+  .modal-add-search__content__search-bar::placeholder {
+    font-size: 1rem; } }
 
 *,
 *::after,

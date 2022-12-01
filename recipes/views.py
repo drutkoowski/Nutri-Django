@@ -233,32 +233,35 @@ def get_recipes_by_ingredients(request):
         recipes_arr = []
         for recipe_ids in data:
             recipe_id = int(recipe_ids['id'])
-            data_recipe = get_spoonacular_recipe_by_id(recipe_id)  # gets recipe info by id
-            recipe_ingredients = []
-            for ingredient in data_recipe['extendedIngredients']:
-                unit = ingredient['unit']
-                ingredient_dict = {
-                    "ingredient": ingredient['originalName'],
-                    "quantity": ingredient['amount'],
-                    'unit': unit
+            try:
+                data_recipe = get_spoonacular_recipe_by_id(recipe_id)  # gets recipe info by id
+                recipe_ingredients = []
+                for ingredient in data_recipe['extendedIngredients']:
+                    unit = ingredient['unit']
+                    ingredient_dict = {
+                        "ingredient": ingredient['originalName'],
+                        "quantity": ingredient['amount'],
+                        'unit': unit
+                    }
+                    recipe_ingredients.append(ingredient_dict)
+                recipe_steps = []
+                for step in data_recipe['analyzedInstructions'][0]['steps']:
+                    recipe_steps.append(step['step'])
+                recipe_dict = {
+                    "recipeId": suggestion_recipe_id,
+                    "from": 'api',
+                    "name": data_recipe['title'],
+                    "duration": f"{data_recipe['readyInMinutes']} min.",
+                    "ingredients": recipe_ingredients,
+                    "steps": recipe_steps,
+                    "servings": data_recipe['servings'],
+                    'author': 'spoonacular',
+                    'isVerified': False,
                 }
-                recipe_ingredients.append(ingredient_dict)
-            recipe_steps = []
-            for step in data_recipe['analyzedInstructions'][0]['steps']:
-                recipe_steps.append(step['step'])
-            recipe_dict = {
-                "recipeId": suggestion_recipe_id,
-                "from": 'api',
-                "name": data_recipe['title'],
-                "duration": f"{data_recipe['readyInMinutes']} min.",
-                "ingredients": recipe_ingredients,
-                "steps": recipe_steps,
-                "servings": data_recipe['servings'],
-                'author': 'spoonacular',
-                'isVerified': False,
-            }
-            recipe_dict = check_or_create_spoonacular_recipe(recipe_dict, lang_code)
-            recipes_arr.append(recipe_dict)
+                recipe_dict = check_or_create_spoonacular_recipe(recipe_dict, lang_code)
+                recipes_arr.append(recipe_dict)
+            except:
+                pass
             # END API fetch
 
             # check if any similarities in db recipes
