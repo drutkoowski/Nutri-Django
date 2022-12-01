@@ -1,4 +1,4 @@
-const flagsIcons = document.querySelectorAll('.navigation__link__icon--flag')
+
 
 function hideModal() {
     const activeModals = document.querySelectorAll('.modal-active')
@@ -9,7 +9,9 @@ function hideModal() {
         })
     }
 }
-flagsIcons.forEach(flag => {
+const flagsIcons = document.querySelectorAll('.navigation__link__icon--flag')
+if (flagsIcons){
+    flagsIcons.forEach(flag => {
     flag.addEventListener('click', e => {
 
         const langPrefix = flag.dataset.langprefix
@@ -17,6 +19,8 @@ flagsIcons.forEach(flag => {
         window.location = window.origin + '/' + langPrefix + '/' + currentLoc.split('/').slice(2).join('/')
     })
 })
+}
+
 
 
 if ((location.href !== location.origin + '/pl' || location.href !== location.origin + '/en' || location.href !== location.origin + '/pl/' || location.href !== location.origin + '/en/') && location.href !== location.origin + '/pl/login/' && location.href !== location.origin + '/pl/login' && location.href !== location.origin + '/en/login/' && location.href !== location.origin + '/en/login' && location.href !== location.origin + '/pl/signup/' && location.href !== location.origin + '/pl/signup' && location.href !== location.origin + '/en/signup/' && location.href !== location.origin + '/en/signup') {

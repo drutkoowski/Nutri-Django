@@ -123,7 +123,7 @@ def get_profile_nutrition_details(request):
         elif user_profile.activity_level == 'active':
             goal_multiplier = 1.52
         elif user_profile.activity_level == 'very-active':
-            goal_multiplier = 1.65
+            goal_multiplier = 1.85
         # Mifflin-St Jeor Equation
         if user_profile.gender == 'Male':
             basal_metabolic_rate = round(float((10 * float(user_profile.weight)) + (6.25 * float(user_profile.height)) - \
@@ -133,9 +133,16 @@ def get_profile_nutrition_details(request):
                                                (5 * float(user_profile.years_old)) - 161), 2)
         weight_goal_metabolic_rate = basal_metabolic_rate * goal_multiplier
         gain_loss_per_week = 0.5
-        weight_diff_kg = float(user_profile.weight) - float(user_profile.goal_kg)
-        energy_diff = weight_diff_kg * 750 / (weight_diff_kg / gain_loss_per_week)
-        final_kcal_goal = round(weight_goal_metabolic_rate + energy_diff, 2)
+        if user_profile.goal_weight == 'gain-weight':
+            weight_diff_kg = float(user_profile.weight) - float(user_profile.goal_kg)
+            energy_diff = weight_diff_kg * 750 / (weight_diff_kg / gain_loss_per_week)
+            final_kcal_goal = round(weight_goal_metabolic_rate + energy_diff, 2)
+        elif user_profile.goal_weight == 'lose-weight':
+            weight_diff_kg = float(user_profile.weight) - float(user_profile.goal_kg)
+            energy_diff = weight_diff_kg * 750 / (weight_diff_kg / gain_loss_per_week)
+            final_kcal_goal = round(weight_goal_metabolic_rate - energy_diff, 2)
+        else:
+            final_kcal_goal = weight_goal_metabolic_rate
         from datetime import datetime
         all_today_meals = Meal.objects.filter(created_by=user_profile, created_at__contains=datetime.today().date()).all()
         all_today_exercises = Workout.objects.filter(created_by=user_profile, created_at__contains=datetime.today().date()).all()

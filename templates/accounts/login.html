@@ -31,7 +31,7 @@
                         <p class="input-validity-info"><span class="info-input1"></span> <span class="info-input2"></span></p>
                         <button class="login__card__button" id="login-button">{% trans 'Log in' %}</button>
                     </div>
-                    <a href="" class="signup__card__links login__card__links">{% trans "Don't you have an account?" %}</a>
+                    <a href="{% url 'signup' %}" class="signup__card__links login__card__links">{% trans "Don't you have an account?" %}</a>
                     <a href="" class="signup__card__links login__card__links">{% trans 'Forgot password?' %}</a>
                     <small>{% trans 'By logging in you are accepting our terms of use and privacy policy.' %}</small>
                 </div>

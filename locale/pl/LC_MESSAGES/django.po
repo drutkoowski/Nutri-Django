@@ -323,7 +323,7 @@ msgstr "Zaloguj się"
 
 #: .\templates\accounts\login.html:34
 msgid "Don't you have an account?"
-msgstr "Masz już konto?"
+msgstr "Nie masz konta?"
 
 #: .\templates\accounts\login.html:35 .\templates\accounts\signup.html:38
 msgid "Forgot password?"

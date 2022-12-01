@@ -92,7 +92,7 @@ const fixInputMax = function (input) {
    })
 }
 const fixInputMin = function (input) {
-     input.addEventListener('focusout', e => {
+     input.addEventListener('focusout', () => {
          if (input.value < 30 && input !== document.activeElement) {
                 input.value = 30
                 setAttributesRangeBar()
@@ -329,7 +329,12 @@ buttonNext.addEventListener('click', e => {
                      choices.push(tall)
                      choices.push(weight)
                      if (weightBarInput) {
-                        choices.push(weightBarInput.value)
+                         if (choices[0] === 'maintain-weight'){
+                             choices.push(weight)
+                         }
+                         else{
+                             choices.push(weightBarInput.value)
+                         }
                     }
                     else {
                         choices.push(weight)
@@ -448,7 +453,7 @@ buttonNext.addEventListener('click', e => {
         }
 })
 
-buttonBack.addEventListener('click', (e) => {
+buttonBack.addEventListener('click', () => {
     let parent = document.querySelector('.signup__card__content')
     const children = Array.from(parent.children)
     progressBar.classList.remove(`progress--${iteration}`)
@@ -473,7 +478,7 @@ buttonBack.addEventListener('click', (e) => {
 
     if(iteration === 4) {
         let choicesHandler = []
-        choicesHandler.push(choices[0], choices[1], choices[2], choices[3])
+        choicesHandler.push(choices[0], choices[1], choices[2], choices[3], choices[4])
         choices = choicesHandler
     }
 

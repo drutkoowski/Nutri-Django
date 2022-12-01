@@ -12,89 +12,30 @@
         <div class="dashboard-stats">
             {% include 'components/sidebar/sidebar_small.html' %}
             <div class="dashboard-stats__welcome-text">
-                <h1>{% trans 'YOUR NUTRI PROFILE STATS' %}</h1>
+                <h1>{% trans 'Your Nutri Profile Stats' %}</h1>
                 <p>{% trans "Let's check quality of your nutrition while using Nutri!" %}</p>
                  {% include 'accounts/navbar.html' %}
             </div>
              <div class="dashboard-stats__stats">
-                 <div class="dashboard-stats__stats__body">
-
-                    <div class="dashboard-stats__stats__body--height dashboard-stats__stats__body__item">
-                        <p>{% trans 'Your Height' %} (cm): <input type="number" placeholder="176"></p>
-                        <button>Edit</button>
-                    </div>
-
-                    <div class="dashboard-stats__stats__body--weight dashboard-stats__stats__body__item">
-                        <p>{% trans 'Your Weight' %} (kg): <input type="number" placeholder="75"></p>
-                        <button>Edit</button>
-                    </div>
-
-                    <div class="dashboard-stats__stats__body--activity dashboard-stats__stats__body__item">
-                        <p>{% trans 'Activity Level' %}:
-                            <select name="" id="">
-                            <option value="">{% trans 'Not Active' %}</option>
-                            <option selected='selected' value="">{% trans 'Lightly Active' %}</option>
-                            <option value="">{% trans 'Active' %}</option>
-                            <option value="">{% trans 'Very Active' %}</option>
-                        </select>
-                        </p>
-                        <button>Edit</button>
-                    </div>
-
-                    <div class="dashboard-stats__stats__body--goal dashboard-stats__stats__body__item">
-                        <p>{% trans 'Goal' %}: <select name="" id="">
-                            <option value="">{% trans 'Gain Weight' %}</option>
-                             <option value="">{% trans 'Maintain Weight' %}</option>
-                             <option value="">{% trans 'Lose Weight' %}</option>
-                        </select></p>
-                        <button>{% trans 'Edit' %}</button>
-                    </div>
-
+                 <div class="dashboard-stats__stats__info">
+                     <h3>{% trans 'Days on Nutri' %}: 231</h3>
+                     <div>
+                         <p>{% trans 'Eaten Kcal' %}: 32451</p>
+                         <p>{% trans 'Burnt Kcal' %}: 32215</p>
+                         <p>{% trans 'Eaten Protein' %}: 3554</p>
+                         <p>{% trans 'Eaten Fat' %}: 3232</p>
+                         <p>{% trans 'Eaten Carbs' %}: 3121</p>
+                     </div>
                  </div>
-                 <div class="dashboard-stats__stats__body__nutrition">
-                     <div class="dashboard-stats__stats__body__nutrition--col-1">
-                         <div class="dashboard-stats__stats__body__nutrition--days">
-                             <p>{% trans 'Days' %}: 231</p>
-                         </div>
-                         <div class="dashboard-stats__stats__nutrition--eaten">
-                            <p>{% trans 'Eaten Kcal' %}: 256443 kcal</p>
-                            <p>{% trans 'Eaten Kcal (avg)' %}: 2543 kcal</p>
-                         </div>
-
-                         <div class="dashboard-stats__stats__nutrition--burnt">
-                            <p>{% trans 'Burnt Kcal' %}: 25343 kcal</p>
-                            <p>{% trans 'Burnt Kcal (avg)' %}: 243 kcal</p>
-                         </div>
-
-                         <div class="dashboard-stats__stats__nutrition--income">
-                            <p>{% trans 'Kcal Income (avg)' %}: -243 kcal</p>
-                         </div>
+                 <div class="dashboard-stats__stats__averages">
+                    <h3>{% trans 'Average' %}</h3>
+                     <div>
+                         <p>{% trans 'Kcal Burnt' %}: 2344</p>
+                         <p>{% trans 'Eaten Carbs' %}: 356</p>
+                         <p>{% trans 'Eaten Protein' %}: 654</p>
+                         <p>{% trans 'Kcal Eaten' %}: 3212</p>
+                         <p>{% trans 'Eaten Fats' %}: 345</p>
                      </div>
-                     <div class="dashboard-stats__stats__body__nutrition--col-2">
-                          <div class="dashboard-stats__stats__body__nutrition--bmi">
-                            <p>{% trans 'Your BMI' %}: 23.44</p>
-                        </div>
-                         <div class="dashboard-stats__stats__nutrition--cholesterol">
-                            <p>{% trans 'Daily KCAL to goal' %}: 2837 kcal</p>
-                        </div>
-                         <div class="dashboard-stats__stats__nutrition--fat">
-                            <p>{% trans 'Fat (avg)' %}: 12.5 g</p>
-                        </div>
-
-                          <div class="dashboard-stats__stats__nutrition--protein">
-                            <p>{% trans 'Protein (avg)' %}: 22.5 g</p>
-                         </div>
-
-                        <div class="dashboard-stats__stats__nutrition--carbs">
-                            <p>{% trans 'Carbs (avg)' %}: 42 g</p>
-                        </div>
-
-                        <div class="dashboard-stats__stats__nutrition--fiber">
-                            <p>{% trans 'Fiber (avg)' %}: 41 g</p>
-                        </div>
-                     </div>
-
-
                  </div>
              </div>
              <div class="dashboard-stats__graph">
