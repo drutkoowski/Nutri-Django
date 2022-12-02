@@ -3321,7 +3321,7 @@ label.year {
   grid-row: 2/3;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: .25fr 0.5fr 1fr;
+  grid-template-rows: .15fr 0.5fr 1fr;
   grid-auto-flow: dense;
   background-color: #bde7c5;
   border-radius: 20px;
@@ -3332,7 +3332,7 @@ label.year {
       height: auto;
       display: grid;
       grid-template-columns: 1fr;
-      grid-template-rows: 0.15fr 0.15fr 1fr 0.5fr;
+      grid-template-rows: 0.15fr 0.15fr 0.3fr 0.5fr;
       margin-top: 2rem;
       grid-column: 2/3;
       grid-row: 1/2;
@@ -3341,14 +3341,14 @@ label.year {
     .dashboard-stats {
       grid-column: 1/2;
       grid-row: 1/2; } }
-  @media only screen and (max-width: 56.25em) {
+  @media only screen and (max-width: 31.25em) {
+    .dashboard-stats .dashboard__sidebar--small__upper {
+      margin-left: 2.5rem; }
+      .dashboard-stats .dashboard__sidebar--small__upper p {
+        margin-left: 2rem; } }
+  @media only screen and (max-width: 21.875em) {
     .dashboard-stats {
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-template-rows: 0.25fr 0.25fr 1.5fr 0.5fr; } }
-  @media only screen and (max-width: 37.5em) {
-    .dashboard-stats {
-      grid-template-rows: 0.25fr 0.25fr 1.6fr 0.8fr; } }
+      grid-template-rows: 0.15fr 0.15fr 0.2fr 0.6fr; } }
   .dashboard-stats__welcome-text {
     grid-row: 1/2;
     grid-column: 1 / -1;
@@ -3396,26 +3396,92 @@ label.year {
     font-size: 2rem;
     grid-column: 1/2;
     grid-row: 2/3; }
+    @media only screen and (max-width: 84.375em) {
+      .dashboard-stats__stats {
+        grid-column-gap: 2rem; } }
+    @media only screen and (max-width: 75em) {
+      .dashboard-stats__stats {
+        grid-row: 3/4; } }
+    @media only screen and (max-width: 62.5em) {
+      .dashboard-stats__stats {
+        grid-column-gap: 0;
+        grid-template-columns: 1fr 0.75fr; } }
+    @media only screen and (max-width: 37.5em) {
+      .dashboard-stats__stats {
+        margin-left: 3rem;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr; } }
+    @media only screen and (max-width: 28.5em) {
+      .dashboard-stats__stats {
+        margin-left: 2rem; } }
     .dashboard-stats__stats__info {
       grid-column: 1/2;
       margin-top: 3rem; }
+      @media only screen and (max-width: 21.875em) {
+        .dashboard-stats__stats__info {
+          margin-top: 0; } }
       .dashboard-stats__stats__info h3 {
         text-align: center; }
+        @media only screen and (max-width: 75em) {
+          .dashboard-stats__stats__info h3 {
+            text-align: unset; } }
+        @media only screen and (max-width: 62.5em) {
+          .dashboard-stats__stats__info h3 {
+            margin-top: 2rem; } }
+        @media only screen and (max-width: 46.875em) {
+          .dashboard-stats__stats__info h3 {
+            font-size: 1.75rem; } }
       .dashboard-stats__stats__info div {
         margin-top: 1rem;
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: auto; }
+        @media only screen and (max-width: 84.375em) {
+          .dashboard-stats__stats__info div {
+            font-size: 1.5rem;
+            display: flex;
+            flex-direction: column; } }
+        @media only screen and (max-width: 37.5em) {
+          .dashboard-stats__stats__info div {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto; } }
     .dashboard-stats__stats__averages {
       grid-column: 2/3;
       margin-top: 3rem; }
+      @media only screen and (max-width: 37.5em) {
+        .dashboard-stats__stats__averages {
+          grid-row: 2/3;
+          grid-column: 1/2; } }
+      @media only screen and (max-width: 21.875em) {
+        .dashboard-stats__stats__averages {
+          margin-top: 0; } }
       .dashboard-stats__stats__averages h3 {
         text-align: center; }
+        @media only screen and (max-width: 75em) {
+          .dashboard-stats__stats__averages h3 {
+            text-align: unset; } }
+        @media only screen and (max-width: 62.5em) {
+          .dashboard-stats__stats__averages h3 {
+            margin-top: 2rem; } }
+        @media only screen and (max-width: 46.875em) {
+          .dashboard-stats__stats__averages h3 {
+            font-size: 1.75rem; } }
       .dashboard-stats__stats__averages div {
         margin-top: 1rem;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: auto; }
+        @media only screen and (max-width: 84.375em) {
+          .dashboard-stats__stats__averages div {
+            font-size: 1.5rem;
+            display: flex;
+            flex-direction: column; } }
+        @media only screen and (max-width: 37.5em) {
+          .dashboard-stats__stats__averages div {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto; } }
   .dashboard-stats__graph {
     display: grid;
     grid-template-columns: 1fr 0.55fr;
@@ -3471,6 +3537,7 @@ label.year {
       margin-right: auto; }
       @media only screen and (max-width: 93.75em) {
         .dashboard-stats__graph__customization {
+          margin-top: 0.5rem;
           grid-column: 1/2;
           grid-row: 1/2;
           margin-left: 5rem; } }
@@ -3483,6 +3550,9 @@ label.year {
       .dashboard-stats__graph__customization__item-container {
         display: grid;
         grid-template-columns: 0.35fr 1fr; }
+        @media only screen and (max-width: 75em) {
+          .dashboard-stats__graph__customization__item-container:nth-of-type(n+2) {
+            margin-top: 2rem; } }
       .dashboard-stats__graph__customization h1 {
         text-wrap: none;
         white-space: nowrap;
@@ -3490,6 +3560,9 @@ label.year {
         @media only screen and (min-width: 112.5em) {
           .dashboard-stats__graph__customization h1 {
             font-size: 5rem; } }
+        @media only screen and (max-width: 31.25em) {
+          .dashboard-stats__graph__customization h1 {
+            font-size: 2rem; } }
       .dashboard-stats__graph__customization label {
         font-size: 3rem;
         vertical-align: text-top; }
