@@ -81,7 +81,7 @@ const getDataSummaryChart = () => {
             percentInfo.innerHTML = `${goalPercent}%`
             // demand card part
             kcalNeedsCard.innerHTML = `${Math.trunc(kcalGoal)}`
-            proteinNeedsCard.innerHTML = `${Math.trunc(proteinMultiplier * data.weightGoalKg)}`
+            proteinNeedsCard.innerHTML = `${Math.trunc(proteinMultiplier * data.weightKg)}`
             carbsNeedsCard.innerHTML = `${Math.trunc(carbsMultiplier * data.kcalGoal / 4)}`
             fatNeedsCard.innerHTML = `${Math.trunc((kcalGoal * 0.275) / 9)}`
             let dataSummary = {

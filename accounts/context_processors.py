@@ -73,5 +73,4 @@ def get_translated_profile_info(request):
             'activityLevel': translated_level,
             'gender': user_profile.gender
         }
-    print(translated_dict)
     return dict(get_translated_profile_info=translated_dict)

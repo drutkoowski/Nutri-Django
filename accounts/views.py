@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.db.models import Q
-from .utils import date_for_weekday
+from .utils import date_for_weekday, calculate_user_nutrition_demand
 from accounts.models import Account, UserProfile
 from meals.models import Meal
 from workouts.models import Workout
@@ -117,34 +117,7 @@ def check_if_taken(request):
 def get_profile_nutrition_details(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
         user_profile = UserProfile.objects.get(user=request.user)
-        goal_multiplier = 1.25
-        if user_profile.activity_level == 'not-active':
-            goal_multiplier = 1.25
-        elif user_profile.activity_level == 'lightly-active':
-            goal_multiplier = 1.38
-        elif user_profile.activity_level == 'active':
-            goal_multiplier = 1.52
-        elif user_profile.activity_level == 'very-active':
-            goal_multiplier = 1.85
-        # Mifflin-St Jeor Equation
-        if user_profile.gender == 'Male':
-            basal_metabolic_rate = round(float((10 * float(user_profile.weight)) + (6.25 * float(user_profile.height)) - \
-                                               (5 * float(user_profile.years_old)) + 5), 2)
-        else:
-            basal_metabolic_rate = round(float((10 * float(user_profile.weight)) + (6.25 * float(user_profile.height)) - \
-                                               (5 * float(user_profile.years_old)) - 161), 2)
-        weight_goal_metabolic_rate = basal_metabolic_rate * goal_multiplier
-        gain_loss_per_week = 0.5
-        if user_profile.goal_weight == 'gain-weight':
-            weight_diff_kg = float(user_profile.weight) - float(user_profile.goal_kg)
-            energy_diff = weight_diff_kg * 750 / (weight_diff_kg / gain_loss_per_week)
-            final_kcal_goal = round(weight_goal_metabolic_rate + energy_diff, 2)
-        elif user_profile.goal_weight == 'lose-weight':
-            weight_diff_kg = float(user_profile.weight) - float(user_profile.goal_kg)
-            energy_diff = weight_diff_kg * 750 / (weight_diff_kg / gain_loss_per_week)
-            final_kcal_goal = round(weight_goal_metabolic_rate - energy_diff, 2)
-        else:
-            final_kcal_goal = weight_goal_metabolic_rate
+        final_kcal_goal = calculate_user_nutrition_demand(user_profile)
         from datetime import datetime
         all_today_meals = Meal.objects.filter(created_by=user_profile,
                                               created_at__contains=datetime.today().date()).all()
@@ -177,7 +150,6 @@ def get_profile_nutrition_details(request):
         for workout in all_today_exercises:
             sum_kcal_burnt = sum_kcal_burnt + float(workout.kcal_burnt_sum)
         context = {
-            'bmr': basal_metabolic_rate,
             'eatenKcal': round(sum_kcal_eaten, 2),
             'kcalGoal': final_kcal_goal,
             'eatenCarbs': round(sum_carbs_eaten, 2),
@@ -363,3 +335,143 @@ def get_dashboard_stats_info(request):
         return JsonResponse({'status': 200, 'text': 'Operation successful.', 'data': json.dumps(data_dict)})
 
 
+@login_required(login_url='login')
+def get_graph_stats_info_weekly(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
+        user_profile = UserProfile.objects.get(user=request.user)
+        from datetime import datetime
+        dt = datetime.now()
+        week_day_today = dt.weekday()
+        kcal_demand = calculate_user_nutrition_demand(user_profile)
+        weekly_kcal_percentages = []
+        weekly_protein_percentages = []
+        weekly_carbs_percentages = []
+        weekly_fats_percentages = []
+        weekly_kcal = []
+        weekly_kcal_burnt = []
+        if user_profile.activity_level == 'not-active':
+            protein_multiplier = 0.9
+        elif user_profile.activity_level == 'lighly-active':
+            protein_multiplier = 1.2
+        elif user_profile.activity_level == 'active':
+            protein_multiplier = 1.6
+        elif user_profile.activity_level == 'very-active':
+            protein_multiplier = 2
+        else:
+            protein_multiplier = 1.3
+        for i in range(0, week_day_today + 1):
+            daily_kcal = 0
+            daily_kcal_burnt = 0
+            daily_carbs = 0
+            daily_fats = 0
+            daily_protein = 0
+            date_of_week = date_for_weekday(i)
+            meals_on_day = Meal.objects.filter(created_by=user_profile, created_at__contains=date_of_week).all()
+            workouts_on_day = Workout.objects.filter(created_by=user_profile, created_at__contains=date_of_week).all()
+            for workout in workouts_on_day:
+                daily_kcal_burnt = daily_kcal_burnt + workout.kcal_burnt_sum
+            if workouts_on_day.exists():
+                weekly_kcal_burnt.append(daily_kcal_burnt)
+            else:
+                weekly_kcal_burnt.append(0)
+            # carbs = 0.5 * kcal_goal / 4
+            # protein = (0.9/1.2/1.6/2) * goal_kg
+            # fats = (kcal_goal * 0.275) / 9
+            for meal in meals_on_day:
+                daily_kcal = daily_kcal + meal.kcal
+                daily_carbs = daily_carbs + meal.carbs
+                daily_fats = daily_fats + meal.fat
+                daily_protein = daily_protein + meal.protein
+            if meals_on_day.exists():
+                weekly_kcal_percentages.append(round(daily_kcal / kcal_demand, 2) * 100)
+                weekly_carbs_percentages.append(round(daily_carbs / ((0.5 * kcal_demand) / 4), 2) * 100)
+                weekly_protein_percentages.append(round(daily_protein / (protein_multiplier * float(user_profile.weight)), 2) * 100)
+                weekly_fats_percentages.append(round((daily_fats / ((kcal_demand * 0.275) / 9)), 2) * 100)
+                weekly_kcal.append(round(daily_kcal, 2))
+            else:
+                weekly_kcal_percentages.append(0)
+                weekly_carbs_percentages.append(0)
+                weekly_protein_percentages.append(0)
+                weekly_fats_percentages.append(0)
+                weekly_kcal.append(0)
+
+        stats_info_dict_weekly = {
+            'eatenKcal': weekly_kcal,
+            'burntKcal': weekly_kcal_burnt,
+            'eatenKcalPercent': weekly_kcal_percentages,
+            'eatenProteinPercent': weekly_protein_percentages,
+            'eatenCarbsPercent': weekly_carbs_percentages,
+            'eatenFatsPercent': weekly_fats_percentages,
+        }
+        return JsonResponse({'status': 200, 'text': 'Operation successful.', 'data': json.dumps(stats_info_dict_weekly)})
+
+
+@login_required(login_url='login')
+def get_graph_stats_info_monthly(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
+        user_profile = UserProfile.objects.get(user=request.user)
+        from datetime import datetime
+        dt = datetime.now()
+        week_day_today = dt.weekday()
+        kcal_demand = calculate_user_nutrition_demand(user_profile)
+        weekly_kcal_percentages = []
+        weekly_protein_percentages = []
+        weekly_carbs_percentages = []
+        weekly_fats_percentages = []
+        weekly_kcal = []
+        weekly_kcal_burnt = []
+        if user_profile.activity_level == 'not-active':
+            protein_multiplier = 0.9
+        elif user_profile.activity_level == 'lighly-active':
+            protein_multiplier = 1.2
+        elif user_profile.activity_level == 'active':
+            protein_multiplier = 1.6
+        elif user_profile.activity_level == 'very-active':
+            protein_multiplier = 2
+        else:
+            protein_multiplier = 1.3
+        for i in range(0, week_day_today + 1):
+            daily_kcal = 0
+            daily_kcal_burnt = 0
+            daily_carbs = 0
+            daily_fats = 0
+            daily_protein = 0
+            date_of_week = date_for_weekday(i)
+            meals_on_day = Meal.objects.filter(created_by=user_profile, created_at__contains=date_of_week).all()
+            workouts_on_day = Workout.objects.filter(created_by=user_profile, created_at__contains=date_of_week).all()
+            for workout in workouts_on_day:
+                daily_kcal_burnt = daily_kcal_burnt + workout.kcal_burnt_sum
+            if workouts_on_day.exists():
+                weekly_kcal_burnt.append(daily_kcal_burnt)
+            else:
+                weekly_kcal_burnt.append(0)
+            # carbs = 0.5 * kcal_goal / 4
+            # protein = (0.9/1.2/1.6/2) * goal_kg
+            # fats = (kcal_goal * 0.275) / 9
+            for meal in meals_on_day:
+                daily_kcal = daily_kcal + meal.kcal
+                daily_carbs = daily_carbs + meal.carbs
+                daily_fats = daily_fats + meal.fat
+                daily_protein = daily_protein + meal.protein
+            if meals_on_day.exists():
+                weekly_kcal_percentages.append(round(daily_kcal / kcal_demand, 2) * 100)
+                weekly_carbs_percentages.append(round(daily_carbs / ((0.5 * kcal_demand) / 4), 2) * 100)
+                weekly_protein_percentages.append(round(daily_protein / (protein_multiplier * float(user_profile.weight)), 2) * 100)
+                weekly_fats_percentages.append(round((daily_fats / ((kcal_demand * 0.275) / 9)), 2) * 100)
+                weekly_kcal.append(round(daily_kcal, 2))
+            else:
+                weekly_kcal_percentages.append(0)
+                weekly_carbs_percentages.append(0)
+                weekly_protein_percentages.append(0)
+                weekly_fats_percentages.append(0)
+                weekly_kcal.append(0)
+
+        stats_info_dict_weekly = {
+            'eatenKcal': weekly_kcal,
+            'burntKcal': weekly_kcal_burnt,
+            'eatenKcalPercent': weekly_kcal_percentages,
+            'eatenProteinPercent': weekly_protein_percentages,
+            'eatenCarbsPercent': weekly_carbs_percentages,
+            'eatenFatsPercent': weekly_fats_percentages,
+        }
+        return JsonResponse({'status': 200, 'text': 'Operation successful.', 'data': json.dumps(stats_info_dict_weekly)})
