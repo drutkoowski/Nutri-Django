@@ -46,18 +46,23 @@
                 </div>
                 <div class="dashboard-stats__graph__customization">
                     <h1>{% trans 'Graph Customization' %}</h1>
+                    <div class="dashboard-stats__graph__customization__item-container">
                         <label for="duration">{% trans 'Duration' %}</label>
                         <select name="duration" class="dashboard-stats__graph__customization__duration dashboard-stats__graph__customization__item" id="duration">
                             <option value="weekly">{% trans 'Weekly' %}</option>
                             <option value="monthly">{% trans 'Monthly' %}</option>
                         </select>
-                        <br>
+                    </div>
+                    <br>
+                    <div class="dashboard-stats__graph__customization__item-container">
                         <label for="type">{% trans 'Type' %}</label>
                         <select name="type" class="dashboard-stats__graph__customization__type dashboard-stats__graph__customization__item" id="type">
                             <option value="kcal">{% trans 'Kcals' %}</option>
                             <option value="macros">{% trans 'Macros' %}</option>
                             <option value="duration">{% trans 'Activity Durations' %}</option>
                         </select>
+                    </div>
+
                 </div>
              </div>
         </div>

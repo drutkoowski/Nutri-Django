@@ -203,18 +203,17 @@ const getDataMacroChart = (kcalDemand, proteinDemand, carbsDemand, fatDemand) =>
             let sumCarbs = 0
             let sumProtein = 0
             let sumFat = 0
-            let days = 0
+            let dayOfWeek = new Date().getDay();
             data.forEach(day => {
-                days = days + 1
                 sumKcal = sumKcal + day.dayKcal
                 sumCarbs = sumCarbs + day.dayCarbs
                 sumProtein = sumProtein + day.dayProtein
                 sumFat = sumFat + day.dayFat
             })
-            const avgKcalPercent = (((sumKcal / days) / kcalDemand) * 100).toFixed(2)
-            const avgCarbsPercent = (((sumCarbs / days) / carbsDemand) * 100).toFixed(2)
-            const avgProteinPercent = (((sumProtein / days) / proteinDemand) * 100).toFixed(2)
-            const avgFatPercent = (((sumFat / days) / fatDemand) * 100).toFixed(2)
+            const avgKcalPercent = (((sumKcal / dayOfWeek) / kcalDemand) * 100).toFixed(2)
+            const avgCarbsPercent = (((sumCarbs / dayOfWeek) / carbsDemand) * 100).toFixed(2)
+            const avgProteinPercent = (((sumProtein / dayOfWeek) / proteinDemand) * 100).toFixed(2)
+            const avgFatPercent = (((sumFat / dayOfWeek) / fatDemand) * 100).toFixed(2)
             let nutritionDetailsDataset = [avgKcalPercent, avgCarbsPercent, avgProteinPercent, avgFatPercent]
             $.each(nutritionDetailsDataset, function (index, value) {
                 if (value <= 20) {
@@ -238,7 +237,7 @@ const getDataMacroChart = (kcalDemand, proteinDemand, carbsDemand, fatDemand) =>
             })
             let nutritionDetailsData = {
                 labels: [
-                    "Kcal Goal", "Carbs", "Protein", "Fats",
+                    gettext("Kcal Goal"), gettext("Carbs"), gettext("Protein"), gettext("Fats"),
                 ],
                 datasets: [
                 {

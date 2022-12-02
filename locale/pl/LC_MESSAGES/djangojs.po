@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-02 13:46+0100\n"
+"POT-Creation-Date: 2022-12-02 15:02+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -330,34 +330,43 @@ msgid "Daily Summary Info"
 msgstr "Dzienne Podsumowanie Dnia"
 
 #: .\static\scripts\activity-calendar\activity-calendar.js:53
-#: .\static\scripts\dashboard\stats.js:94
-#: .\static\scripts\dashboard\stats.js:109
-#: .\static\scripts\dashboard\stats.js:184
+#: .\static\scripts\dashboard\stats.js:99
+#: .\static\scripts\dashboard\stats.js:114
+#: .\static\scripts\dashboard\stats.js:189
+#: .\static\scripts\dashboard\stats.js:238
+#: .\static\scripts\dashboard\stats.js:253
 msgid "Kcal"
 msgstr "Kcal"
 
 #: .\static\scripts\activity-calendar\activity-calendar.js:54
-#: .\static\scripts\dashboard\stats.js:85
-#: .\static\scripts\dashboard\stats.js:175
+#: .\static\scripts\dashboard\stats.js:90
+#: .\static\scripts\dashboard\stats.js:180
+#: .\static\scripts\dashboard\stats.js:229
 msgid "Burnt"
 msgstr "Spalone"
 
 #: .\static\scripts\activity-calendar\activity-calendar.js:55
 #: .\static\scripts\activity-calendar\activity-calendar.js:164
 #: .\static\scripts\activity-calendar\activity-calendar.js:175
-#: .\static\scripts\dashboard\stats.js:132
+#: .\static\scripts\dashboard\main.js:241
+#: .\static\scripts\dashboard\stats.js:137
+#: .\static\scripts\dashboard\stats.js:276
 msgid "Carbs"
 msgstr "Węglowodany"
 
 #: .\static\scripts\activity-calendar\activity-calendar.js:56
 #: .\static\scripts\activity-calendar\activity-calendar.js:164
 #: .\static\scripts\activity-calendar\activity-calendar.js:173
-#: .\static\scripts\dashboard\stats.js:99
+#: .\static\scripts\dashboard\main.js:241
+#: .\static\scripts\dashboard\stats.js:104
+#: .\static\scripts\dashboard\stats.js:243
 msgid "Protein"
 msgstr "Białko"
 
 #: .\static\scripts\activity-calendar\activity-calendar.js:57
-#: .\static\scripts\dashboard\stats.js:120
+#: .\static\scripts\dashboard\main.js:241
+#: .\static\scripts\dashboard\stats.js:125
+#: .\static\scripts\dashboard\stats.js:264
 msgid "Fats"
 msgstr "Tłuszcze"
 
@@ -390,45 +399,60 @@ msgstr "Czas trwania"
 msgid "You have not added any activities on this day"
 msgstr "Nie dodałeś żadnych aktywności dla tego dnia"
 
+#: .\static\scripts\dashboard\main.js:241
+msgid "Kcal Goal"
+msgstr "Cel kaloryczny"
+
+#: .\static\scripts\dashboard\main.js:258
+msgid "Percent (%)"
+msgstr "Procent (%)"
+
 #: .\static\scripts\dashboard\main.js:298
 msgid "Summary"
 msgstr "Podsumowanie"
 
-#: .\static\scripts\dashboard\stats.js:75
-#: .\static\scripts\dashboard\stats.js:165
+#: .\static\scripts\dashboard\stats.js:80
+#: .\static\scripts\dashboard\stats.js:170
+#: .\static\scripts\dashboard\stats.js:219
 msgid "Eaten"
 msgstr "Zjedzone"
 
-#: .\static\scripts\dashboard\stats.js:94
-#: .\static\scripts\dashboard\stats.js:184
+#: .\static\scripts\dashboard\stats.js:99
+#: .\static\scripts\dashboard\stats.js:189
+#: .\static\scripts\dashboard\stats.js:238
 msgid "Chart of kcal consumed and burned"
 msgstr "Wykres spożytych i spalonych kcal"
 
-#: .\static\scripts\dashboard\stats.js:141
+#: .\static\scripts\dashboard\stats.js:146
+#: .\static\scripts\dashboard\stats.js:285
 msgid "Percent"
 msgstr "Procent"
 
-#: .\static\scripts\dashboard\stats.js:141
+#: .\static\scripts\dashboard\stats.js:146
+#: .\static\scripts\dashboard\stats.js:285
 msgid "Macro Value Chart according to your daily goals (%)"
 msgstr "Wykres wartości makro zgodnie z Twoimi dziennymi celami (%)"
 
-#: .\static\scripts\dashboard\stats.js:146
+#: .\static\scripts\dashboard\stats.js:151
+#: .\static\scripts\dashboard\stats.js:290
 msgid "Activity Minutes"
 msgstr "Aktywności w minutach"
 
-#: .\static\scripts\dashboard\stats.js:155
+#: .\static\scripts\dashboard\stats.js:160
+#: .\static\scripts\dashboard\stats.js:299
 msgid "Minutes"
 msgstr "Minuty"
 
-#: .\static\scripts\dashboard\stats.js:155
+#: .\static\scripts\dashboard\stats.js:160
+#: .\static\scripts\dashboard\stats.js:299
 msgid "Time chart of your activities in minutes"
 msgstr "Wykres czasowy Twoich aktywności w minutach"
 
-#: .\static\scripts\dashboard\stats.js:269
+#: .\static\scripts\dashboard\stats.js:384
 msgid "day on Nutri"
 msgstr "dnia na Nutri"
 
-#: .\static\scripts\dashboard\stats.js:269
+#: .\static\scripts\dashboard\stats.js:384
 msgid "days on Nutri"
 msgstr "dni na Nutri"
 
