@@ -1,26 +1,26 @@
-const hamburgerNav = document.getElementById('navi-toggle')
-const navigationList = document.getElementsByClassName('navigation--dashboard__list')[0]
-const hamburgerNavSmall = document.getElementById('navi-toggle-small')
-const navigationListSmall = document.getElementsByClassName('navigation--dashboard--small__list')[0]
-
-hamburgerNav.addEventListener('click', () => {
-
-    if (!navigationList.classList.contains('not-visible') && !hamburgerNav.checked) {
-        navigationList.classList.add('not-visible')
-    }
-    else if (navigationList.classList.contains('not-visible') && hamburgerNav.checked) {
-         navigationList.classList.remove('not-visible')
-    }
-})
-hamburgerNavSmall.addEventListener('click', () => {
-
-    if (!navigationListSmall.classList.contains('not-visible') && !hamburgerNavSmall.checked) {
-        navigationListSmall.classList.add('not-visible')
-    }
-    else if (navigationListSmall.classList.contains('not-visible') && hamburgerNavSmall.checked) {
-         navigationListSmall.classList.remove('not-visible')
-    }
-})
+// const hamburgerNav = document.getElementById('navi-toggle')
+// const navigationList = document.getElementsByClassName('navigation--dashboard__list')[0]
+// const hamburgerNavSmall = document.getElementById('navi-toggle-small')
+// const navigationListSmall = document.getElementsByClassName('navigation--dashboard--small__list')[0]
+//
+// hamburgerNav.addEventListener('click', () => {
+//
+//     if (!navigationList.classList.contains('not-visible') && !hamburgerNav.checked) {
+//         navigationList.classList.add('not-visible')
+//     }
+//     else if (navigationList.classList.contains('not-visible') && hamburgerNav.checked) {
+//          navigationList.classList.remove('not-visible')
+//     }
+// })
+// hamburgerNavSmall.addEventListener('click', () => {
+//
+//     if (!navigationListSmall.classList.contains('not-visible') && !hamburgerNavSmall.checked) {
+//         navigationListSmall.classList.add('not-visible')
+//     }
+//     else if (navigationListSmall.classList.contains('not-visible') && hamburgerNavSmall.checked) {
+//          navigationListSmall.classList.remove('not-visible')
+//     }
+// })
 
 window.onresize = function(){ location.reload(); }
 // option values
@@ -36,12 +36,17 @@ durationInput.addEventListener('change', (e) => {
     if (durationValue === 'weekly'){
         getChartFullDataWeekly(typeValue)
     }
+    else if (durationValue === 'monthly'){
+        getChartFullDataMonthly(typeValue)
+    }
 })
 typeInput.addEventListener('change', (e) => {
     typeValue = e.target.value
     if (durationValue === 'weekly'){
-
         getChartFullDataWeekly(typeValue)
+    }
+    else if (durationValue === 'monthly'){
+        getChartFullDataMonthly(typeValue)
     }
 })
 
@@ -186,6 +191,116 @@ const getChartFullDataWeekly = (type) => {
         }
     })
 }
+const getChartFullDataMonthly = (type) => {
+    const langPrefix = window.location.href.split('/')[3];
+    const url = window.location.origin + `/${langPrefix}/data/get/get-graph-stats-info-monthly`
+    $.ajax({
+        type: 'get',
+        url: url,
+        success: function (response){
+            const data = JSON.parse(response.data)
+            const eatenKcal = [...data.eatenKcal]
+            const burntKcal = [...data.burntKcal]
+            const eatenProteinPercent = [...data.eatenProteinPercent]
+            const eatenKcalPercent = [...data.eatenKcalPercent]
+            const eatenFatsPercent = [...data.eatenFatsPercent]
+            const eatenCarbsPercent = [...data.eatenCarbsPercent]
+            const workoutDurations = [...data.workoutDurations]
+            let xValuesWeekGraph
+            if (langPrefix === 'pl'){
+                xValuesWeekGraph = ["Sty","Lut","Mar","Kwi","Maj","Cze","Lip", "Sie", "Wrz", "Paź", "Lis", "Gru"];
+            }
+            else {
+                xValuesWeekGraph = ["Jan","Feb","Mar","Apr","May","Jun","Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
+            }
+            if (type === 'kcal'){
+                let dataset = [{
+                    data: [...eatenKcal],
+                    label: `${gettext('Eaten')}`,
+                    borderColor: 'rgb(126,238,146)',
+                    lineTension: 1,
+                    tension: 0.8,
+                    pointRadius: 0,
+                    borderWidth: 4,
+                    pointHoverRadius: 0,
+                    backgroundColor: 'rgb(126,238,146)',
+                },{
+                    data: [...burntKcal],
+                    label: `${gettext('Burnt')}`,
+                    borderColor: "rgb(234,68,100)",
+                    lineTension: 1,
+                    tension: 0.8,
+                    pointRadius: 0,
+                    borderWidth: 4,
+                    pointHoverRadius: 0,
+                    backgroundColor: "rgb(234,68,100)",
+                },]
+                chartDraw(xValuesWeekGraph, dataset, 621,'update', gettext('Kcal'), gettext('Chart of kcal consumed and burned'))
+                }
+            else if (type === 'macros'){
+                     let dataset = [{
+                        data: [...eatenProteinPercent],
+                        label: `${gettext('Protein')} (%)`,
+                        borderColor: "rgb(231,210,87)",
+                        backgroundColor: "rgb(231,210,87)",
+                        lineTension: 1,
+                        tension: 0.8,
+                        pointRadius: 0,
+                        borderWidth: 4,
+                        pointHoverRadius: 0,
+                    },{
+                        data: [...eatenKcalPercent],
+                        label: `${gettext('Kcal')} (%)`,
+                        borderColor: "rgb(126,238,146)",
+                        backgroundColor: "rgb(126,238,146)",
+                        lineTension: 1,
+                        tension: 0.8,
+                        pointRadius: 0,
+                        borderWidth: 4,
+                        pointHoverRadius: 0,
+                    },
+                     {
+                        data: [...eatenFatsPercent],
+                        label: `${gettext('Fats')} (%)`,
+                        borderColor: "rgb(29,153,234)",
+                        backgroundColor: "rgb(29,153,234)",
+                        lineTension: 1,
+                        tension: 0.8,
+                        pointRadius: 0,
+                        borderWidth: 4,
+                        pointHoverRadius: 0,
+
+                    },
+                     {
+                        data: [...eatenCarbsPercent],
+                        label: `${gettext('Carbs')} (%)`,
+                        borderColor: "rgb(144,2,245)",
+                        backgroundColor: "rgb(144,2,245)",
+                        lineTension: 1,
+                        tension: 0.8,
+                        pointRadius: 0,
+                        borderWidth: 4,
+                        pointHoverRadius: 0,
+                    },]
+                    chartDraw(  xValuesWeekGraph, dataset, 321,'update', gettext('Percent'), gettext('Macro Value Chart according to your daily goals (%)'))
+                }
+             else if (type === 'duration'){
+                     let dataset = [{
+                        data: [...workoutDurations],
+                        label: gettext('Activity Minutes'),
+                        borderColor: "rgb(126,238,146)",
+                        backgroundColor: "rgb(126,238,146)",
+                        lineTension: 1,
+                        tension: 0.8,
+                        pointRadius: 0,
+                        borderWidth: 4,
+                        pointHoverRadius: 0,
+                    }]
+                    chartDraw(xValuesWeekGraph, dataset, 321,'update', gettext('Minutes'), gettext('Time chart of your activities in minutes'))
+                }
+        }
+    })
+}
 const chartDraw = (labels, datasets, average, type, yLabelText, textAbove) => {
     let weekChart = document.getElementById('summaryGraph').getContext('2d')
     if (type === 'draw'){
@@ -253,8 +368,8 @@ const chartDraw = (labels, datasets, average, type, yLabelText, textAbove) => {
 
 // filling average and aggregate values
 const fillStatsInfo = () => {
-     const langPrefix = window.location.href.split('/')[3];
-     const url = window.location.origin + `/${langPrefix}/data/get/get-dashboard-stats-info`
+    const langPrefix = window.location.href.split('/')[3];
+    const url = window.location.origin + `/${langPrefix}/data/get/get-dashboard-stats-info`
     $.ajax({
         type: 'get',
         url: url,
@@ -289,3 +404,4 @@ const fillStatsInfo = () => {
 // initials
 fillStatsInfo()
 getChartFullDataWeekly('kcal')
+

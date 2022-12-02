@@ -19,5 +19,6 @@ urlpatterns = [
     path('data/get/profile-activities-date', views.get_profile_activities_date, name='get-profile-activities-date'),
     path('data/get/activity-list-by-day', views.get_activity_list_by_day, name='get-activity-list-by-day'),
     path('data/get/get-dashboard-stats-info', views.get_dashboard_stats_info, name='get-dashboard-stats-info'),
-    path('data/get/get-graph-stats-info-weekly', views.get_graph_stats_info_weekly, name='get-graph-stats-info-weekly')
+    path('data/get/get-graph-stats-info-weekly', views.get_graph_stats_info_weekly, name='get-graph-stats-info-weekly'),
+    path('data/get/get-graph-stats-info-monthly', views.get_graph_stats_info_monthly, name='get-graph-stats-info-monthly'),
 ]

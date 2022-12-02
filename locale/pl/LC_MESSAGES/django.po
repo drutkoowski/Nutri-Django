@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-02 01:08+0100\n"
+"POT-Creation-Date: 2022-12-02 13:44+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -235,6 +235,10 @@ msgstr "Kalorie"
 #: .\templates\accounts\dashboard_stats.html:58
 msgid "Macros"
 msgstr "Makro"
+
+#: .\templates\accounts\dashboard_stats.html:59
+msgid "Activity Durations"
+msgstr "Długości Aktywności"
 
 #: .\templates\accounts\login.html:15 .\templates\accounts\signup.html:15
 #: .\templates\home\index.html:80 .\templates\meals\add\add_meals.html:14

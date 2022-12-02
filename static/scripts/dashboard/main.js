@@ -255,7 +255,7 @@ const getDataMacroChart = (kcalDemand, proteinDemand, carbsDemand, fatDemand) =>
                             suggestedMin: 0,
                             suggestedMax: 100,
                             title: {
-                                text: "Percent (%)",
+                                text: gettext("Percent (%)"),
                                 display: true,
                             }
                         }

@@ -417,15 +417,15 @@ def get_graph_stats_info_monthly(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
         user_profile = UserProfile.objects.get(user=request.user)
         from datetime import datetime
-        dt = datetime.now()
-        week_day_today = dt.weekday()
+        from calendar import monthrange
         kcal_demand = calculate_user_nutrition_demand(user_profile)
-        weekly_kcal_percentages = []
-        weekly_protein_percentages = []
-        weekly_carbs_percentages = []
-        weekly_fats_percentages = []
-        weekly_kcal = []
-        weekly_kcal_burnt = []
+        monthly_kcal_percentages = []
+        monthly_protein_percentages = []
+        monthly_carbs_percentages = []
+        monthly_fats_percentages = []
+        monthly_duration_minutes = []
+        monthly_kcal = []
+        monthly_kcal_burnt = []
         if user_profile.activity_level == 'not-active':
             protein_multiplier = 0.9
         elif user_profile.activity_level == 'lighly-active':
@@ -436,48 +436,56 @@ def get_graph_stats_info_monthly(request):
             protein_multiplier = 2
         else:
             protein_multiplier = 1.3
-        for i in range(0, week_day_today + 1):
-            daily_kcal = 0
-            daily_kcal_burnt = 0
-            daily_carbs = 0
-            daily_fats = 0
-            daily_protein = 0
-            date_of_week = date_for_weekday(i)
-            meals_on_day = Meal.objects.filter(created_by=user_profile, created_at__contains=date_of_week).all()
-            workouts_on_day = Workout.objects.filter(created_by=user_profile, created_at__contains=date_of_week).all()
-            for workout in workouts_on_day:
-                daily_kcal_burnt = daily_kcal_burnt + workout.kcal_burnt_sum
-            if workouts_on_day.exists():
-                weekly_kcal_burnt.append(daily_kcal_burnt)
+        for i in range(1, 13):
+            meals = Meal.objects.filter(created_by=user_profile, created_at__month=i).all()
+            workouts = Workout.objects.filter(created_by=user_profile, created_at__month=i).all()
+            monthly_kcal_eaten = 0
+            monthly_kcal_burnt_sum = 0
+            monthly_carbs = 0
+            monthly_fats = 0
+            monthly_protein = 0
+            monthly_duration_sum = 0
+            for meal in meals:
+                month_days = monthrange(meal.created_at.year, meal.created_at.month)[1]
+                monthly_kcal_eaten = monthly_kcal_eaten + meal.kcal
+                monthly_carbs = monthly_carbs + meal.carbs
+                monthly_fats = monthly_fats + meal.fat
+                monthly_protein = monthly_protein + meal.protein
+            if meals.exists():
+                today = date.today()
+                if i == today.month.numerator:
+                    days_past_current_month = date.today().day
+                    month_days = days_past_current_month
+                monthly_kcal_percentages.append(round((monthly_kcal_eaten / kcal_demand) / month_days, 2) * 100)
+                monthly_carbs_percentages.append(round((monthly_carbs / (0.5 * kcal_demand) / 4) / month_days, 2) * 100)
+                monthly_protein_percentages.append(round((monthly_protein / (protein_multiplier * float(user_profile.weight))) / month_days, 2) * 100)
+                monthly_fats_percentages.append(round((monthly_fats / ((kcal_demand * 0.275) / 9)) / month_days, 2) * 100)
+                monthly_kcal.append(round(monthly_kcal_eaten, 2))
             else:
-                weekly_kcal_burnt.append(0)
-            # carbs = 0.5 * kcal_goal / 4
-            # protein = (0.9/1.2/1.6/2) * goal_kg
-            # fats = (kcal_goal * 0.275) / 9
-            for meal in meals_on_day:
-                daily_kcal = daily_kcal + meal.kcal
-                daily_carbs = daily_carbs + meal.carbs
-                daily_fats = daily_fats + meal.fat
-                daily_protein = daily_protein + meal.protein
-            if meals_on_day.exists():
-                weekly_kcal_percentages.append(round(daily_kcal / kcal_demand, 2) * 100)
-                weekly_carbs_percentages.append(round(daily_carbs / ((0.5 * kcal_demand) / 4), 2) * 100)
-                weekly_protein_percentages.append(round(daily_protein / (protein_multiplier * float(user_profile.weight)), 2) * 100)
-                weekly_fats_percentages.append(round((daily_fats / ((kcal_demand * 0.275) / 9)), 2) * 100)
-                weekly_kcal.append(round(daily_kcal, 2))
-            else:
-                weekly_kcal_percentages.append(0)
-                weekly_carbs_percentages.append(0)
-                weekly_protein_percentages.append(0)
-                weekly_fats_percentages.append(0)
-                weekly_kcal.append(0)
+                monthly_kcal_percentages.append(0)
+                monthly_carbs_percentages.append(0)
+                monthly_protein_percentages.append(0)
+                monthly_fats_percentages.append(0)
+                monthly_kcal.append(0)
 
-        stats_info_dict_weekly = {
-            'eatenKcal': weekly_kcal,
-            'burntKcal': weekly_kcal_burnt,
-            'eatenKcalPercent': weekly_kcal_percentages,
-            'eatenProteinPercent': weekly_protein_percentages,
-            'eatenCarbsPercent': weekly_carbs_percentages,
-            'eatenFatsPercent': weekly_fats_percentages,
+            for workout in workouts:
+                monthly_kcal_burnt_sum = monthly_kcal_burnt_sum + workout.kcal_burnt_sum
+                monthly_duration_sum = monthly_duration_sum + workout.min_spent_sum
+            if workouts.exists():
+                monthly_kcal_burnt.append(monthly_kcal_burnt_sum)
+                monthly_duration_minutes.append(monthly_duration_sum)
+            else:
+                monthly_kcal_burnt.append(0)
+                monthly_duration_minutes.append(0)
+
+        stats_info_dict_monthly = {
+            'eatenKcal': monthly_kcal,
+            'burntKcal': monthly_kcal_burnt,
+            'eatenKcalPercent': monthly_kcal_percentages,
+            'eatenProteinPercent': monthly_protein_percentages,
+            'eatenCarbsPercent': monthly_carbs_percentages,
+            'eatenFatsPercent': monthly_fats_percentages,
+            'workoutDurations': monthly_duration_minutes
+
         }
-        return JsonResponse({'status': 200, 'text': 'Operation successful.', 'data': json.dumps(stats_info_dict_weekly)})
+        return JsonResponse({'status': 200, 'text': 'Operation successful.', 'data': json.dumps(stats_info_dict_monthly)})
