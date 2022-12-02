@@ -3421,10 +3421,10 @@ label.year {
     grid-template-columns: 1fr 0.55fr;
     grid-template-rows: 1fr;
     grid-column-gap: 5rem;
+    transition: all .3s ease-in;
     animation-name: fade-bottom;
     animation-duration: 2s;
-    animation-timing-function: ease-out;
-    transition: all .2s ease-out; }
+    animation-timing-function: ease-out; }
     @media only screen and (max-width: 93.75em) {
       .dashboard-stats__graph {
         grid-template-columns: 1fr;
@@ -3450,7 +3450,8 @@ label.year {
       grid-column: 1/2;
       grid-row: 1/2;
       height: auto;
-      margin-bottom: 5rem; }
+      margin-bottom: 5rem;
+      transition: all .3s ease-in; }
       .dashboard-stats__graph__item:hover {
         transform: scale(1.05); }
       @media only screen and (max-width: 93.75em) {

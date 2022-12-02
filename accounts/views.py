@@ -347,6 +347,7 @@ def get_graph_stats_info_weekly(request):
         weekly_protein_percentages = []
         weekly_carbs_percentages = []
         weekly_fats_percentages = []
+        weekly_workout_duration = []
         weekly_kcal = []
         weekly_kcal_burnt = []
         if user_profile.activity_level == 'not-active':
@@ -362,6 +363,7 @@ def get_graph_stats_info_weekly(request):
         for i in range(0, week_day_today + 1):
             daily_kcal = 0
             daily_kcal_burnt = 0
+            daily_workout_duration = 0
             daily_carbs = 0
             daily_fats = 0
             daily_protein = 0
@@ -370,10 +372,13 @@ def get_graph_stats_info_weekly(request):
             workouts_on_day = Workout.objects.filter(created_by=user_profile, created_at__contains=date_of_week).all()
             for workout in workouts_on_day:
                 daily_kcal_burnt = daily_kcal_burnt + workout.kcal_burnt_sum
+                daily_workout_duration = daily_workout_duration + workout.min_spent_sum
             if workouts_on_day.exists():
                 weekly_kcal_burnt.append(daily_kcal_burnt)
+                weekly_workout_duration.append(daily_workout_duration)
             else:
                 weekly_kcal_burnt.append(0)
+                weekly_workout_duration.append(0)
             # carbs = 0.5 * kcal_goal / 4
             # protein = (0.9/1.2/1.6/2) * goal_kg
             # fats = (kcal_goal * 0.275) / 9
@@ -402,6 +407,7 @@ def get_graph_stats_info_weekly(request):
             'eatenProteinPercent': weekly_protein_percentages,
             'eatenCarbsPercent': weekly_carbs_percentages,
             'eatenFatsPercent': weekly_fats_percentages,
+            'workoutDurations': weekly_workout_duration
         }
         return JsonResponse({'status': 200, 'text': 'Operation successful.', 'data': json.dumps(stats_info_dict_weekly)})
 

@@ -24,8 +24,8 @@ hamburgerNavSmall.addEventListener('click', () => {
 
 window.onresize = function(){ location.reload(); }
 // option values
-let durationValue
-let typeValue
+let durationValue = 'weekly'
+let typeValue = 'kcal'
 let isDrawn = false
 let weekChartBox
 // listening chart options
@@ -60,6 +60,7 @@ const getChartFullDataWeekly = (type) => {
             const eatenKcalPercent = [...data.eatenKcalPercent]
             const eatenFatsPercent = [...data.eatenFatsPercent]
             const eatenCarbsPercent = [...data.eatenCarbsPercent]
+            const workoutDurations = [...data.workoutDurations]
             let xValuesWeekGraph
             if (langPrefix === 'pl'){
                 xValuesWeekGraph = ["Pon","Wt","Śr","Czw","Pt","Sob","Nie"];
@@ -71,7 +72,8 @@ const getChartFullDataWeekly = (type) => {
                 if (type === 'kcal'){
                       let dataset = [{
                         data: [...eatenKcal],
-                        borderColor: "green",
+                        label: `${gettext('Eaten')}`,
+                        borderColor: 'rgb(126,238,146)',
                         lineTension: 1,
                         tension: 0.8,
                         pointRadius: 0,
@@ -80,20 +82,23 @@ const getChartFullDataWeekly = (type) => {
                         backgroundColor: 'rgb(126,238,146)',
                     },{
                         data: [...burntKcal],
-                        borderColor: "red",
+                        label: `${gettext('Burnt')}`,
+                        borderColor: "rgb(234,68,100)",
                         lineTension: 1,
                         tension: 0.8,
                         pointRadius: 0,
                         borderWidth: 4,
                         pointHoverRadius: 0,
-                        backgroundColor: 'rgb(222,198,43)',
+                        backgroundColor: "rgb(234,68,100)",
                     },]
-                    chartDraw(xValuesWeekGraph, dataset, 621,'update')
+                    chartDraw(xValuesWeekGraph, dataset, 621,'update', gettext('Kcal'), gettext('Chart of kcal consumed and burned'))
                 }
                 else if (type === 'macros'){
                      let dataset = [{
                         data: [...eatenProteinPercent],
-                        borderColor: "rgb(126,238,146)",
+                        label: `${gettext('Protein')} (%)`,
+                        borderColor: "rgb(231,210,87)",
+                        backgroundColor: "rgb(231,210,87)",
                         lineTension: 1,
                         tension: 0.8,
                         pointRadius: 0,
@@ -101,7 +106,9 @@ const getChartFullDataWeekly = (type) => {
                         pointHoverRadius: 0,
                     },{
                         data: [...eatenKcalPercent],
-                        borderColor: "rgb(222,198,43)",
+                        label: `${gettext('Kcal')} (%)`,
+                        borderColor: "rgb(126,238,146)",
+                        backgroundColor: "rgb(126,238,146)",
                         lineTension: 1,
                         tension: 0.8,
                         pointRadius: 0,
@@ -110,7 +117,9 @@ const getChartFullDataWeekly = (type) => {
                     },
                      {
                         data: [...eatenFatsPercent],
-                        borderColor: "rgb(37,175,138)",
+                        label: `${gettext('Fats')} (%)`,
+                        borderColor: "rgb(29,153,234)",
+                        backgroundColor: "rgb(29,153,234)",
                         lineTension: 1,
                         tension: 0.8,
                         pointRadius: 0,
@@ -120,14 +129,30 @@ const getChartFullDataWeekly = (type) => {
                     },
                      {
                         data: [...eatenCarbsPercent],
-                        borderColor: "rgb(178,117,101)",
+                        label: `${gettext('Carbs')} (%)`,
+                        borderColor: "rgb(144,2,245)",
+                        backgroundColor: "rgb(144,2,245)",
                         lineTension: 1,
                         tension: 0.8,
                         pointRadius: 0,
                         borderWidth: 4,
                         pointHoverRadius: 0,
                     },]
-                    chartDraw(  xValuesWeekGraph, dataset, 321,'update')
+                    chartDraw(  xValuesWeekGraph, dataset, 321,'update', gettext('Percent'), gettext('Macro Value Chart according to your daily goals (%)'))
+                }
+                else if (type === 'duration'){
+                     let dataset = [{
+                        data: [...workoutDurations],
+                        label: gettext('Activity Minutes'),
+                        borderColor: "rgb(126,238,146)",
+                        backgroundColor: "rgb(126,238,146)",
+                        lineTension: 1,
+                        tension: 0.8,
+                        pointRadius: 0,
+                        borderWidth: 4,
+                        pointHoverRadius: 0,
+                    }]
+                    chartDraw(xValuesWeekGraph, dataset, 321,'update', gettext('Minutes'), gettext('Time chart of your activities in minutes'))
                 }
             }
             else {
@@ -137,7 +162,9 @@ const getChartFullDataWeekly = (type) => {
                 // average line
                 let dataset = [{
                     data: [...eatenKcal],
+                    label: gettext('Eaten'),
                     borderColor: "rgb(126,238,146)",
+                    backgroundColor: "rgb(126,238,146)",
                     lineTension: 1,
                     tension: 0.8,
                     pointRadius: 0,
@@ -145,21 +172,22 @@ const getChartFullDataWeekly = (type) => {
                     pointHoverRadius: 0,
                 },{
                     data: [...burntKcal],
-                    borderColor: "rgb(238,6,163)",
+                    label: gettext('Burnt'),
+                    borderColor: "rgb(234,68,100)",
+                    backgroundColor: "rgb(234,68,100)",
                     lineTension: 1,
                     tension: 0.8,
                     pointRadius: 0,
                     borderWidth: 4,
                     pointHoverRadius: 0,
                 },]
-                chartDraw(xValuesWeekGraph, dataset, 231, 'draw')
+                chartDraw(xValuesWeekGraph, dataset, 231, 'draw', gettext('Kcal'), gettext('Chart of kcal consumed and burned'))
             }
         }
     })
 }
-const chartDraw = (labels, datasets, average, type) => {
+const chartDraw = (labels, datasets, average, type, yLabelText, textAbove) => {
     let weekChart = document.getElementById('summaryGraph').getContext('2d')
-    console.log(type)
     if (type === 'draw'){
           let dataWeekGraph = {
             labels: labels,
@@ -183,9 +211,25 @@ const chartDraw = (labels, datasets, average, type) => {
         options: {
             responsive: true,
             maintainAspectRatio: false,
+            scales: {
+                y: {
+                    title: {
+                        display: true,
+                        text: yLabelText
+                    },
+                    beginAtZero: true,
+                },
+            },
             plugins: {
                 legend: {
-                    display: true
+                    display: true,
+                    labels: {
+                        color: 'rgb(116,187,130)'
+                    },
+                    title: {
+                      display: true,
+                      text: textAbove,
+                    }
                 },
                 annotation: {
                     annotations: {
@@ -201,6 +245,8 @@ const chartDraw = (labels, datasets, average, type) => {
             labels: labels,
             datasets: datasets
         };
+        weekChartBox.options.scales.y.title.text = yLabelText
+        weekChartBox.options.plugins.legend.title.text = textAbove
         weekChartBox.update();
     }
 }

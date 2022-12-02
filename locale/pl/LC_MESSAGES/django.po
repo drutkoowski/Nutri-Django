@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-01 19:14+0100\n"
+"POT-Creation-Date: 2022-12-02 01:08+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -194,7 +194,6 @@ msgid "Daily average on Nutri"
 msgstr "Średnie dzienne na Nutri"
 
 #: .\templates\accounts\dashboard_stats.html:33
-#: .\templates\accounts\dashboard_stats.html:57
 msgid "Kcal Burnt"
 msgstr "Spalone Kcal"
 
@@ -228,6 +227,10 @@ msgstr "Miesięcznie"
 #: .\templates\accounts\dashboard_stats.html:55
 msgid "Type"
 msgstr "Rodzaj"
+
+#: .\templates\accounts\dashboard_stats.html:57
+msgid "Kcals"
+msgstr "Kalorie"
 
 #: .\templates\accounts\dashboard_stats.html:58
 msgid "Macros"
