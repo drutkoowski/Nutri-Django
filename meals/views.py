@@ -76,7 +76,10 @@ def live_search_ingredients(request):
                     i['category_name_en'] = category.get_category_name_en()
                     i['category_name_pl'] = category.get_category_name_pl()
                     i['unit_multiplier'] = unit_name.multiplier
-                return JsonResponse({'status': 200, 'text': 'There are ingredients found.', 'ingredients': ingredients})
+                if len(ingredients) > 0:
+                    return JsonResponse({'status': 200, 'text': 'There are ingredients found.', 'ingredients': ingredients})
+                else:
+                    return JsonResponse({'status': 404, 'text': 'There are not ingredients found.', 'ingredients': []})
             else:
                 return JsonResponse({'status': 404, 'text': 'There are not ingredients found.', 'ingredients': []})
         else:

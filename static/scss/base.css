@@ -2732,7 +2732,7 @@ label.year {
   height: auto;
   min-height: 100vh;
   grid-template-columns: 0.05fr 0.5fr 2fr 0.05fr;
-  grid-template-rows: 0.05fr 1fr;
+  grid-template-rows: 1fr;
   background-image: url("https://images.unsplash.com/photo-1576678927484-cc907957088c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80");
   background-repeat: no-repeat;
   background-position: center;
@@ -2753,12 +2753,13 @@ label.year {
     .grid-layout-container {
       grid-template-columns: 1fr; } }
 .dashboard__content {
+  max-height: 100vh;
   font-size: 2rem;
   grid-column: 3/4;
   grid-row: 2/3;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 0.5fr 1fr 0.5fr 1.5fr;
+  grid-template-rows: 0.35fr 0.75fr 0.5fr 1.5fr;
   grid-auto-flow: dense;
   background-color: #bde7c5;
   border-radius: 20px;
@@ -2772,7 +2773,8 @@ label.year {
       margin-top: 2rem;
       grid-column: 2/3;
       grid-row: 1/2;
-      margin-left: -0px; } }
+      margin-left: -0px;
+      max-height: unset; } }
   @media only screen and (max-width: 62.5em) {
     .dashboard__content {
       grid-template-rows: 0.25fr 0.25fr 0.8fr 0.5fr 1.2fr;
@@ -2780,7 +2782,11 @@ label.year {
       grid-row: 1/2; } }
   @media only screen and (max-width: 37.5em) {
     .dashboard__content {
-      grid-template-rows: 0.25fr 0.15fr 0.5fr 0.5fr 0.7fr; } }
+      grid-template-rows: 0.25fr 0.25fr 0.8fr 0.5fr 1.2fr; } }
+  @media only screen and (max-width: 25em) {
+    .dashboard__content {
+      width: 100%;
+      grid-template-rows: 0.25fr 0.05fr 1.2fr 0.5fr 1.2fr; } }
   .dashboard__content__welcome-text {
     margin-left: 5rem;
     margin-top: 5rem;
@@ -3184,7 +3190,7 @@ label.year {
     animation-timing-function: ease-out; }
     @media only screen and (max-width: 93.75em) {
       .dashboard__content__graphs {
-        margin-top: 10rem; } }
+        margin-top: 2rem; } }
     @media only screen and (max-width: 75em) {
       .dashboard__content__graphs {
         grid-row: 5/6;
@@ -3230,10 +3236,17 @@ label.year {
           .dashboard__content__graphs__item--details {
             grid-column: 1 / 2;
             grid-row: 1 / 2; } }
+        @media only screen and (max-width: 37.5em) {
+          .dashboard__content__graphs__item--details {
+            height: auto; } }
         .dashboard__content__graphs__item--details h3 {
           align-self: center;
           margin-top: 1rem;
           justify-self: center; }
+          @media only screen and (max-width: 21.875em) {
+            .dashboard__content__graphs__item--details h3 {
+              font-size: 1.75rem;
+              margin-top: 2rem; } }
       .dashboard__content__graphs__item--weekly {
         display: flex;
         flex-direction: column;
@@ -3243,11 +3256,17 @@ label.year {
           .dashboard__content__graphs__item--weekly {
             grid-column: 1 / 2;
             grid-row: 2 / 3; } }
+        @media only screen and (max-width: 37.5em) {
+          .dashboard__content__graphs__item--weekly {
+            height: auto; } }
         .dashboard__content__graphs__item--weekly h3 {
           align-self: center;
           margin-top: 1rem;
           justify-self: center; }
-
+          @media only screen and (max-width: 21.875em) {
+            .dashboard__content__graphs__item--weekly h3 {
+              font-size: 1.75rem;
+              margin-top: 2rem; } }
 .absolute-center {
   position: absolute;
   top: 50%;
@@ -3294,7 +3313,13 @@ label.year {
   margin: 1rem auto 1rem auto;
   height: 30rem;
   width: 100%; }
-
+  @media only screen and (max-width: 25em) {
+    .summaryWeekly__container {
+      width: 35rem; } }
+  @media only screen and (max-width: 21.875em) {
+    .summaryWeekly__container {
+      width: 30rem;
+      height: auto; } }
 .summaryNutritionDetails__container {
   height: 25rem;
   width: 50rem; }
@@ -3310,11 +3335,14 @@ label.year {
     .summaryNutritionDetails__container {
       margin-top: 3rem;
       width: 40rem; } }
-  @media only screen and (max-width: 28.5em) {
+  @media only screen and (max-width: 25em) {
     .summaryNutritionDetails__container {
-      margin-top: 3rem;
-      width: 35rem;
-      height: 35rem; } }
+      width: 35rem; } }
+  @media only screen and (max-width: 21.875em) {
+    .summaryNutritionDetails__container {
+      width: 30rem;
+      height: auto;
+      margin-left: -2rem; } }
 .dashboard-stats {
   font-size: 2rem;
   grid-column: 3/4;

@@ -189,7 +189,6 @@ const ajaxCall = (query, searchResponseBox) => {
                 })
                 searchResponseBox.classList.add('not-visible')
             }
-
             },
         error: function (error) {
             const searchElements = Array.from(searchResponseBox.children)
@@ -278,10 +277,10 @@ const ajaxCallEditMeal = (query) => {
                             const randomId = "Id" + ingredientObj.ingredientId * Math.floor(Math.random() * (100 - 1 + 1)) + 1;
                             const mealItemAppend = `
                                 <div class="today-meals-saved-edit-inputBox" data-object="${encodeURIComponent(JSON.stringify(ingredientObj))}" data-pk="${ingredientObj.id}">
-                                  <p><b>${mealName}</b> (${Math.trunc(ingredientObj.kcal)} kcal / ${ingredientObj.unit_multiplier} ${unitName} ${isGram})</p>
-                                 <input name="${mealName}" min="0" max="1000" class='updated-meal-element-input' type="number" placeholder="${unitName}">
-                                 <label for="${mealName}">x ${unitName}</label>
-                                 <div id="${randomId}" class="edit-remove-item remove-icon filter-red"></div>
+                                   <p><b>${mealName}</b> (${Math.trunc(ingredientObj.kcal)} kcal / ${ingredientObj.unit_multiplier} ${unitName} ${isGram})</p>
+                                   <input name="${mealName}" min="0" max="1000" class='updated-meal-element-input' type="number" placeholder="${unitName}">
+                                   <label for="${mealName}">x ${unitName}</label>
+                                   <div id="${randomId}" class="edit-remove-item remove-icon filter-red"></div>
                             </div>
                           `
                             const itemsContainer = document.querySelector('.edit-meal-added-items')
@@ -336,16 +335,18 @@ const createNewMealTemplate = (ingredientsArr,mealName, text) => {
              if (status === 201) {
                  const modal = document.querySelector('.modal-queued')
                  modal.classList.toggle('not-visible')
+                 modal.style.zIndex = '213123'
                  const closeModalBtn = document.querySelector('.modal-queued__close-button')
-                 closeModalBtn.addEventListener('click', e => {
+                 closeModalBtn.addEventListener('click', () => {
                      window.location = window.location.href;
+                     modal.style.removeProperty('zIndex')
                  })
                  setInterval(function () {
                      window.location = window.location.href;
-                     }, 2500);
+                 }, 2500);
 
              }
-             },
+         },
      })
 }
 const saveNewMeal = () => {
@@ -376,9 +377,11 @@ const saveNewMeal = () => {
             const status = response.status
             if (status === 201) {
                 const modal = document.querySelector('.modal-queued')
+                modal.style.zIndex = '213123'
                 modal.classList.toggle('not-visible')
                 const closeModalBtn = document.querySelector('.modal-queued__close-button')
-                closeModalBtn.addEventListener('click', e => {
+                closeModalBtn.addEventListener('click', () => {
+                    modal.style.removeProperty('zIndex')
                     window.location = window.location.href;
                 })
                 setInterval(function () {
@@ -421,11 +424,13 @@ const deleteMealTemplate = (id) => {
             const status = response.status
             if (status === 200) {
                 const modal = document.querySelector('.modal-queued')
+                modal.style.zIndex = '323123'
                 modal.classList.toggle('not-visible')
                 const closeModalBtn = document.querySelector('.modal-queued__close-button')
                 const modalHeading = modal.querySelector('.modal-queued--heading')
                 modalHeading.innerHTML = gettext(`Removing selected activity template from database..`)
-                closeModalBtn.addEventListener('click', e => {
+                closeModalBtn.addEventListener('click', () => {
+                    modal.style.removeProperty('zIndex')
                     window.location = window.location.href;
                 })
                 setInterval(function () {
@@ -481,12 +486,13 @@ const getMealTemplateElement = (mealObj, mealName, kcal, ids_array) => {
     contentContainer.insertAdjacentHTML('beforeend', contentToAppend)
     contentContainer.insertAdjacentHTML('afterend', saveButtonAppend)
     const addNewElementBtn = document.querySelector('.add-new-element-box')
-    addNewElementBtn.addEventListener('click', e => {
+    addNewElementBtn.addEventListener('click', () => {
         const modalAddSearch = document.querySelector('.modal-edit-search')
+        modalAddSearch.style.zIndex = '44321'
         modalAddSearch.classList.toggle('not-visible')
     })
     const mealSaveButton = document.querySelector('.save-updated-template-meal')
-    mealSaveButton.addEventListener('click', e => {
+    mealSaveButton.addEventListener('click', () => {
         const mealItems = document.querySelector('.today-meals-saved-edit-inputBox').children
         const inputNameEl = document.querySelector('.meal_name_input')
         const inputsQuantity = document.querySelectorAll('.updated-meal-element-input')
@@ -553,7 +559,7 @@ const getMealTemplateElement = (mealObj, mealName, kcal, ids_array) => {
                 let appendItemElement = `
                 <div class="today-meals-saved-edit-inputBox" data-object="${encodeURIComponent(JSON.stringify(objDataSet))}" data-pk="${objDataSet.id}">
                     <p><b>${templateElementName}</b> (${Math.trunc(obj.kcal)} kcal / ${obj.unit_multiplier} ${unitName} ${isGram})</p>
-                    <input name="${obj.mealTemplateElementId}" min="0" max="1000" value="${obj.quantity * obj.unit_multiplier}" class='updated-meal-element-input' type="number" placeholder="${obj.quantity}">
+                    <input name="${obj.mealTemplateElementId}" min="0" max="1000" value="${Number(obj.quantity * obj.unit_multiplier)}" class='updated-meal-element-input' type="number" placeholder="${obj.quantity}">
                     <label for="${obj.mealTemplateElementId}">x ${unitName}</label>
                     <div id='${randomId}' class="edit-remove-item remove-icon filter-red"></div>
                 </div>
@@ -601,10 +607,12 @@ $(searchContainer).addClass('animate-left').on("animationend", function(){
 
 // modal close listeners
 modalCloseEdit.addEventListener('click', () => {
+    document.querySelector('.modal-edit-search').style.removeProperty('zIndex')
     animateDeletingElementByClass('.modal-edit-search', 1200)
 })
 
 modalCloseAdd.addEventListener('click', () => {
+    document.querySelector('.modal-add-search').style.removeProperty('zIndex')
     animateDeletingElementByClass('.modal-add-search', 1200)
 })
 
@@ -617,7 +625,7 @@ saveNewMealButton.addEventListener('click', () => {
         searchContainer.style.gridColumn = '1/2'
         searchContainer.style.removeProperty('width')
         searchContainer.style.removeProperty('justify-self')
-         $(searchContainer).addClass('animate-left').on("animationend", function(){
+        $(searchContainer).addClass('animate-left').on("animationend", function(){
             $(this).removeClass('animate-left');
          });
         adjustableCard.classList.toggle('not-visible')
@@ -630,6 +638,7 @@ saveNewMealButton.addEventListener('click', () => {
      saveNewMealButton.disabled = true
      headingAdjustableCard.innerHTML = gettext("Create New Meal Template")
      const modalAddMeal = document.querySelector('.modal-add-search')
+     modalAddMeal.style.zIndex = '83281'
      modalAddMeal.classList.remove('not-visible')
      const cardContentParent = document.querySelector('.saved-meals__added--saved__content')
      let contentToAppend = `
@@ -660,6 +669,7 @@ saveNewMealButton.addEventListener('click', () => {
     cardContentParent.insertAdjacentHTML('afterend', saveButtonAppend)
     const addNewElBtn = document.querySelector('.add-meal-template__trigger-search')
     addNewElBtn.addEventListener('click', () => {
+        modalAddMeal.style.zIndex = '83371'
         modalAddMeal.classList.remove('not-visible')
     })
     const inputNameElement = document.querySelector('.meal_name_input')
@@ -674,11 +684,14 @@ saveNewMealButton.addEventListener('click', () => {
     const searchInput = document.querySelector('.modal-add-search__content__search-bar')
     searchInput.addEventListener('input', e => {
         const searchValue = e.target.value
-        const addedContent = document.querySelector('.saved-meals__added--saved__content__meal')
-        if (searchValue.length === 0 && addedContent.classList.contains('not-visible')) {
-            $('.info-search-saved').fadeOut('350', () => {
-                document.querySelector('.info-search-saved').classList.remove('not-visible')
-            })
+        // const addedContent = document.querySelector('.saved-meals__added--saved__content__meal')
+        // if (searchValue.length === 0 && addedContent.classList.contains('not-visible')) {
+        //     $('.info-search-saved').fadeOut('350', () => {
+        //         document.querySelector('.info-search-saved').classList.remove('not-visible')
+        //     })
+        // }
+        if (searchValue.length === 0 && document.querySelectorAll('.saved-meals__added--saved__content__meal__item').length === 0){
+            document.querySelector('.info-search-saved').classList.remove('not-visible')
         }
         const searchResponseBox = document.querySelector('.modal-add-search__content__search-response')
         const searchElements = Array.from(searchResponseBox.children)

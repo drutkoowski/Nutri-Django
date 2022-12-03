@@ -10,6 +10,7 @@ function hideModal(modalClass) {
          modal.classList.add('not-visible')
          modal.style.removeProperty('display')
     });
+    modal.style.removeProperty('zIndex')
 }
 
 let openModal = function (modalClass) {
@@ -17,6 +18,7 @@ let openModal = function (modalClass) {
         if (modalClass === '.modal-queued__today-meals-list'){
             updateSummary()
         }
+        div.style.zIndex = '213123'
         div.classList.remove('not-visible')
         div.classList.add('modal-active')
 };
@@ -93,13 +95,16 @@ const ajaxCallSave = (mealItems) => {
             const status = response.status
             if (status === 201) {
                 const modal = document.querySelector('.modal-queued')
+                modal.style.zIndex = '213123'
                 modal.classList.toggle('not-visible')
                 const closeModalBtn = document.querySelector('.modal-queued__close-button')
                 closeModalBtn.addEventListener('click', e => {
+                    modal.style.removeProperty('zIndex')
                     window.location = window.location.href;
                 })
                 setInterval(function () {
                     window.location = window.location.href;
+                    modal.style.removeProperty('zIndex')
                 }, 2500);
 
             }
@@ -357,7 +362,7 @@ alreadySavedButtons?.forEach(button => {
         const mealId = button.dataset.mealobjid
         openModal('.modal-accept-delete')
         const modal = document.querySelector('.modal-accept-delete')
-        modal.style.zIndex = '5678'
+        modal.style.zIndex = '555555'
         const acceptBtn = document.querySelector('.accept-delete-today-meal')
         const denyBtn = document.querySelector('.deny-delete-today-meal')
         const modalCloseBtn = document.querySelector('.modal-accept-delete-close')
