@@ -2,15 +2,14 @@
 
 .activity-calendar {
   height: auto;
-  min-height: 100vh;
+  max-height: 100vh;
   font-size: 2rem;
   grid-column: 3/4;
-  grid-row: 2/3;
+  grid-row: 1/2;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: .25fr 2fr;
   grid-auto-flow: dense;
-  grid-row-gap: 5rem;
   background-color: rgb(189, 231, 197);
   border-radius: 20px;
   color: white;
@@ -105,7 +104,6 @@
     }
     small {
       font-size: 2rem;
-      margin-bottom: 2rem;
       margin-left: 7rem;
       @include respond(md-desktop) {
         font-size: 1.5rem;

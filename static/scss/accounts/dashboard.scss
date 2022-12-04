@@ -13,6 +13,7 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  padding-top: 5rem;
    @include respond(md-desktop) {
       height: auto;
       grid-template-rows: 0.15fr 1fr;
@@ -21,6 +22,7 @@
       grid-template-columns: 0.05fr 1fr 0.05fr;
       grid-template-rows: 1fr;
       height: auto;
+    padding-top: 0;
      //padding: 0 50px;
   }
   @include respond(tab-md) {
@@ -34,7 +36,7 @@
     max-height: 100vh;
     font-size: 2rem;
     grid-column: 3/4;
-    grid-row: 2/3;
+    grid-row: 1/2;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 0.35fr 0.75fr 0.5fr 1.5fr;
@@ -150,7 +152,7 @@
          grid-template-columns: 1fr;
          grid-column-gap: 0;
          grid-row-gap: 3rem;
-         margin: 3rem 0 0 0;
+         //margin: 3rem 0 0 0;
          //width: 45rem;
          //margin: 2rem auto 0 auto;
          //margin: 2rem 5rem 0 5rem;
