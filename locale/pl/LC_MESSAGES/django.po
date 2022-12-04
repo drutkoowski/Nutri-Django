@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-02 15:18+0100\n"
+"POT-Creation-Date: 2022-12-04 19:48+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -210,34 +210,34 @@ msgstr "Tłuszcze"
 msgid "Graph Customization"
 msgstr "Ustawienia wykresu"
 
-#: .\templates\accounts\dashboard_stats.html:49
+#: .\templates\accounts\dashboard_stats.html:50
 #: .\templates\workouts\add\add_workouts.html:94
 #: .\templates\workouts\add\add_workouts.html:114
 #: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1758
 msgid "Duration"
 msgstr "Czas"
 
-#: .\templates\accounts\dashboard_stats.html:51
+#: .\templates\accounts\dashboard_stats.html:52
 msgid "Weekly"
 msgstr "Tygodniowo"
 
-#: .\templates\accounts\dashboard_stats.html:52
+#: .\templates\accounts\dashboard_stats.html:53
 msgid "Monthly"
 msgstr "Miesięcznie"
 
-#: .\templates\accounts\dashboard_stats.html:55
+#: .\templates\accounts\dashboard_stats.html:57
 msgid "Type"
 msgstr "Rodzaj"
 
-#: .\templates\accounts\dashboard_stats.html:57
+#: .\templates\accounts\dashboard_stats.html:59
 msgid "Kcals"
 msgstr "Kalorie"
 
-#: .\templates\accounts\dashboard_stats.html:58
+#: .\templates\accounts\dashboard_stats.html:60
 msgid "Macros"
 msgstr "Makro"
 
-#: .\templates\accounts\dashboard_stats.html:59
+#: .\templates\accounts\dashboard_stats.html:61
 msgid "Activity Durations"
 msgstr "Długości Aktywności"
 
@@ -279,6 +279,152 @@ msgid "By logging in you are accepting our terms of use and privacy policy."
 msgstr ""
 "Logując się do serwisu, akceptujesz jego regulamin i politykę prywatności."
 
+#: .\templates\accounts\measurements.html:14
+msgid "Your Nutri Profile Information"
+msgstr "Twoje Statystyki Profilowe Nutri"
+
+#: .\templates\accounts\measurements.html:18
+msgid "Your Body Information"
+msgstr "Informacje o Twoim ciele"
+
+#: .\templates\accounts\measurements.html:20
+msgid "BMI"
+msgstr "BMI"
+
+#: .\templates\accounts\measurements.html:25
+#: .\templates\accounts\measurements.html:34
+#: .\templates\accounts\measurements.html:43
+#: .\templates\accounts\measurements.html:55
+#: .\templates\accounts\measurements.html:64
+#: .\templates\accounts\measurements.html:74
+#: .\templates\accounts\measurements.html:87
+#: .\templates\accounts\measurements.html:96
+#: .\templates\accounts\measurements.html:110
+#: .\templates\accounts\measurements.html:123
+#: .\templates\accounts\measurements.html:132
+#: .\templates\accounts\measurements.html:141
+#: .\templates\accounts\measurements.html:150
+#: .\templates\accounts\measurements.html:159
+#: .\templates\accounts\measurements.html:168
+#: .\templates\accounts\measurements.html:177
+#: .\templates\accounts\measurements.html:186
+#: .\templates\accounts\measurements.html:195
+msgid "Edit"
+msgstr "Edycja"
+
+#: .\templates\accounts\measurements.html:29
+msgid "Height"
+msgstr "Wzrost"
+
+#: .\templates\accounts\measurements.html:38
+msgid "Weight"
+msgstr "Waga"
+
+#: .\templates\accounts\measurements.html:48
+msgid "Your Personal Information"
+msgstr "Twoje dane personalne"
+
+#: .\templates\accounts\measurements.html:50
+msgid "First Name"
+msgstr "Imię"
+
+#: .\templates\accounts\measurements.html:59
+msgid "Last Name"
+msgstr "Nazwisko"
+
+#: .\templates\accounts\measurements.html:69
+msgid "Age"
+msgstr "Wiek"
+
+#: .\templates\accounts\measurements.html:78
+msgid "Weight Goal"
+msgstr "Cel wagowy"
+
+#: .\templates\accounts\measurements.html:81
+#: .\templates\accounts\measurements.html:103
+#: .\templates\accounts\signup.html:29
+msgid "Gain Weight"
+msgstr "Przybrać na wadze"
+
+#: .\templates\accounts\measurements.html:82
+#: .\templates\accounts\measurements.html:104
+#: .\templates\accounts\signup.html:30
+msgid "Maintain Weight"
+msgstr "Utrzymać wagę"
+
+#: .\templates\accounts\measurements.html:83
+#: .\templates\accounts\measurements.html:105
+#: .\templates\accounts\measurements.html:106
+#: .\templates\accounts\signup.html:31
+msgid "Lose Weight"
+msgstr "Schudnąć"
+
+#: .\templates\accounts\measurements.html:91
+msgid "Goal (kg)"
+msgstr "Cel (kg)"
+
+#: .\templates\accounts\measurements.html:100
+#: .\templates\accounts\navbar.html:21
+#: .\templates\accounts\navbar_small.html:21
+msgid "Activity"
+msgstr "Aktywności"
+
+#: .\templates\accounts\measurements.html:103
+msgid "Not active"
+msgstr "Nieaktywny"
+
+#: .\templates\accounts\measurements.html:104
+msgid "Lightly active"
+msgstr "Lekko aktywny"
+
+#: .\templates\accounts\measurements.html:105
+msgid "Active"
+msgstr "Aktywny"
+
+#: .\templates\accounts\measurements.html:106
+msgid "Very active"
+msgstr "Bardzo aktywny"
+
+#: .\templates\accounts\measurements.html:116
+msgid "Measurements"
+msgstr "Pomiary"
+
+#: .\templates\accounts\measurements.html:118
+msgid "Chest"
+msgstr "Klatka piersiowa"
+
+#: .\templates\accounts\measurements.html:127
+msgid "Biceps"
+msgstr "Biceps"
+
+#: .\templates\accounts\measurements.html:136
+msgid "Waist"
+msgstr "Talia"
+
+#: .\templates\accounts\measurements.html:145
+msgid "Hips"
+msgstr "Biodra"
+
+#: .\templates\accounts\measurements.html:154
+msgid "Lyds"
+msgstr "Łydki"
+
+#: .\templates\accounts\measurements.html:163
+msgid "Thighs"
+msgstr "Uda"
+
+#: .\templates\accounts\measurements.html:172
+msgid "Neck"
+msgstr "Szyja"
+
+#: .\templates\accounts\measurements.html:181
+msgid "Wrists"
+msgstr "Nadgarstki"
+
+#: .\templates\accounts\measurements.html:190
+msgid "Shoulders"
+msgstr "Ramiona"
+
 #: .\templates\accounts\navbar.html:18
 #: .\templates\accounts\navbar_small.html:18
 msgid "Dashboard"
@@ -288,11 +434,6 @@ msgstr "Panel główny"
 #: .\templates\accounts\navbar_small.html:19
 msgid "Stats"
 msgstr "Statystyki"
-
-#: .\templates\accounts\navbar.html:21
-#: .\templates\accounts\navbar_small.html:21
-msgid "Activity"
-msgstr "Aktywności"
 
 #: .\templates\accounts\navbar.html:23
 #: .\templates\accounts\navbar_small.html:23
@@ -308,18 +449,6 @@ msgstr "Wyloguj"
 #: .\templates\accounts\signup.html:25
 msgid "What's your weight goal?"
 msgstr "Jaki jest Twój cel wagowy?"
-
-#: .\templates\accounts\signup.html:29
-msgid "Gain Weight"
-msgstr "Przybrać na wadze"
-
-#: .\templates\accounts\signup.html:30
-msgid "Maintain Weight"
-msgstr "Utrzymać wagę"
-
-#: .\templates\accounts\signup.html:31
-msgid "Lose Weight"
-msgstr "Schudnąć"
 
 #: .\templates\accounts\signup.html:34
 msgid "Back"

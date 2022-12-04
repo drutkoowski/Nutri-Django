@@ -78,9 +78,11 @@ def dashboard_stats(request):
 def activity_view(request):
     return render(request, 'accounts/activity_calendar.html')
 
+
 @login_required(login_url='login')
 def measurements_view(request):
     return render(request, 'accounts/measurements.html')
+
 
 # # # # # AJAX VIEWS # # # # #
 
@@ -114,6 +116,75 @@ def check_if_taken(request):
             return JsonResponse({'status': 404, 'text': 'User not exists.'})
     else:
         return redirect('home-page')
+
+
+@login_required(login_url='login')
+def get_user_body_params(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
+        user_profile = UserProfile.objects.get(user=request.user)
+        bmi = round(float(user_profile.weight) / ((float(user_profile.height) / 100) ** 2), 2)
+        body_params_dict = {
+            'height': user_profile.height,
+            'weight': user_profile.weight,
+            'bmi': bmi
+        }
+        return JsonResponse({'status': 200, 'text': 'User already exists.', 'data': json.dumps(body_params_dict)})
+
+
+@login_required(login_url='login')
+def get_user_personal_info(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
+        user_profile = UserProfile.objects.get(user=request.user)
+        lang_code = request.path.split('/')[1]
+        goal = user_profile.goal_weight
+        level = user_profile.activity_level
+        if lang_code == 'pl':
+            if goal == 'gain-weight':
+                translated_goal = 'Przytyć'
+            elif goal == 'lose-weight':
+                translated_goal = 'Schudnąć'
+            elif goal == 'maintain-weight':
+                translated_goal = 'Utrzymać wagę'
+            else:
+                translated_goal = user_profile.goal_weight
+            if level == 'not-active':
+                translated_level = 'Nieaktywny'
+            elif level == 'lightly-active':
+                translated_level = 'Lekko aktywny'
+            elif level == 'active':
+                translated_level = 'Aktywny'
+            elif level == 'very-active':
+                translated_level = 'Bardzo aktywny'
+            else:
+                translated_level = user_profile.activity_level
+        else:
+            if goal == 'gain-weight':
+                translated_goal = 'Gain weight'
+            elif goal == 'lose-weight':
+                translated_goal = 'Lose weight'
+            elif goal == 'maintain-weight':
+                translated_goal = 'Maintain weight'
+            else:
+                translated_goal = user_profile.goal_weight
+            if level == 'not-active':
+                translated_level = 'Not active'
+            elif level == 'lightly-active':
+                translated_level = 'Lightly active'
+            elif level == 'active':
+                translated_level = 'Active'
+            elif level == 'very-active':
+                translated_level = 'Very active'
+            else:
+                translated_level = user_profile.activity_level
+        personal_info_dict = {
+            'firstName': user_profile.height,
+            'lastName': user_profile.weight,
+            'age': user_profile.years_old,
+            'weightGoal': translated_goal,
+            'activityLevel': translated_level,
+            'goalKg': user_profile.goal_kg,
+        }
+        return JsonResponse({'status': 200, 'text': 'Operation success.', 'data': json.dumps(personal_info_dict)})
 
 
 @login_required(login_url='login')
