@@ -78,6 +78,9 @@ def dashboard_stats(request):
 def activity_view(request):
     return render(request, 'accounts/activity_calendar.html')
 
+@login_required(login_url='login')
+def measurements_view(request):
+    return render(request, 'accounts/measurements.html')
 
 # # # # # AJAX VIEWS # # # # #
 
@@ -390,7 +393,8 @@ def get_graph_stats_info_weekly(request):
             if meals_on_day.exists():
                 weekly_kcal_percentages.append(round(daily_kcal / kcal_demand, 2) * 100)
                 weekly_carbs_percentages.append(round(daily_carbs / ((0.5 * kcal_demand) / 4), 2) * 100)
-                weekly_protein_percentages.append(round(daily_protein / (protein_multiplier * float(user_profile.weight)), 2) * 100)
+                weekly_protein_percentages.append(
+                    round(daily_protein / (protein_multiplier * float(user_profile.weight)), 2) * 100)
                 weekly_fats_percentages.append(round((daily_fats / ((kcal_demand * 0.275) / 9)), 2) * 100)
                 weekly_kcal.append(round(daily_kcal, 2))
             else:
@@ -409,7 +413,8 @@ def get_graph_stats_info_weekly(request):
             'eatenFatsPercent': weekly_fats_percentages,
             'workoutDurations': weekly_workout_duration
         }
-        return JsonResponse({'status': 200, 'text': 'Operation successful.', 'data': json.dumps(stats_info_dict_weekly)})
+        return JsonResponse(
+            {'status': 200, 'text': 'Operation successful.', 'data': json.dumps(stats_info_dict_weekly)})
 
 
 @login_required(login_url='login')
@@ -458,8 +463,10 @@ def get_graph_stats_info_monthly(request):
                     month_days = days_past_current_month
                 monthly_kcal_percentages.append(round((monthly_kcal_eaten / kcal_demand) / month_days, 2) * 100)
                 monthly_carbs_percentages.append(round((monthly_carbs / (0.5 * kcal_demand) / 4) / month_days, 2) * 100)
-                monthly_protein_percentages.append(round((monthly_protein / (protein_multiplier * float(user_profile.weight))) / month_days, 2) * 100)
-                monthly_fats_percentages.append(round((monthly_fats / ((kcal_demand * 0.275) / 9)) / month_days, 2) * 100)
+                monthly_protein_percentages.append(
+                    round((monthly_protein / (protein_multiplier * float(user_profile.weight))) / month_days, 2) * 100)
+                monthly_fats_percentages.append(
+                    round((monthly_fats / ((kcal_demand * 0.275) / 9)) / month_days, 2) * 100)
                 monthly_kcal.append(round(monthly_kcal_eaten, 2))
             else:
                 monthly_kcal_percentages.append(0)
@@ -488,4 +495,5 @@ def get_graph_stats_info_monthly(request):
             'workoutDurations': monthly_duration_minutes
 
         }
-        return JsonResponse({'status': 200, 'text': 'Operation successful.', 'data': json.dumps(stats_info_dict_monthly)})
+        return JsonResponse(
+            {'status': 200, 'text': 'Operation successful.', 'data': json.dumps(stats_info_dict_monthly)})

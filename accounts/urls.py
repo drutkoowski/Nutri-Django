@@ -10,6 +10,7 @@ urlpatterns = [
     path('logout', views.logout_view, name='logout'),
     path('activity', views.activity_view, name='activity-calendar'),
     path('dashboard/stats', views.dashboard_stats, name='stats'),
+    path('measurements', views.measurements_view, name='measurements'),
     # ajax views
     path('data/login-user', views.login_user, name='login-user'),
     path('data/check-if-taken', views.check_if_taken, name='check-if-taken'),

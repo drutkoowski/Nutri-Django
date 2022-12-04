@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+{% load sass_tags %}
+{% load i18n %}
+{% block content %}
+    <div class="loader"></div>
+    <div class="grid-layout-container">
+     {% include 'components/sidebar/sidebar.html' %}
+        <div class="measurements">
+            {% include 'components/sidebar/sidebar_small.html' %}
+            <div class="measurements__welcome-text">
+                <h1>{% trans 'Your Nutri Profile Information' %}</h1>
+                 {% include 'accounts/navbar.html' %}
+            </div>
+            <div class="measurements__body-info">
+                <h3>{% trans 'Your Body Information' %}</h3>
+                <div class="measurements__body-info__item">
+                    <p>{% trans 'BMI' %}</p>
+                    <div>
+                        <input type="text" class="measurements__input-element">
+                        <p>-32%</p>
+                        <button class="btn-light">{% trans 'Edit' %}</button>
+                    </div>
+                </div>
+                <div class="measurements__body-info__item">
+                    <p>{% trans 'Height' %}</p>
+                    <div>
+                        <input type="text" class="measurements__input-element">
+                        <p>-32%</p>
+                        <button class="btn-light">{% trans 'Edit' %}</button>
+                    </div>
+                </div>
+                <div class="measurements__body-info__item">
+                    <p>{% trans 'Weight' %}: </p>
+                    <div>
+                        <input type="text" class="measurements__input-element">
+                        <p>-32%</p>
+                        <button class="btn-light">{% trans 'Edit' %}</button>
+                    </div>
+                </div>
+            </div>
+              <div class="measurements__personal-info">
+                  <h3>{% trans 'Your Personal Information' %}</h3>
+                  <div class="measurements__personal-info__item">
+                      <p>{% trans 'First Name' %}: </p>
+                      <div>
+                        <input type="text" class="measurements__input-element">
+                        <p>-32%</p>
+                        <button class="btn-light">{% trans 'Edit' %}</button>
+                      </div>
+                  </div>
+                  <div class="measurements__personal-info__item">
+                      <p>{% trans 'Last Name' %}: </p>
+                      <div>
+                          <input type="text" class="measurements__input-element">
+                          <p>-32%</p>
+                          <button class="btn-light">{% trans 'Edit' %}</button>
+                      </div>
+
+                  </div>
+                  <div class="measurements__personal-info__item">
+                      <p>{% trans 'Age' %}: </p>
+                      <div>
+                          <input type="text" class="measurements__input-element">
+                          <p>-32%</p>
+                          <button class="btn-light">{% trans 'Edit' %}</button>
+                      </div>
+                  </div>
+                  <div class="measurements__personal-info__item">
+                      <p>{% trans 'Weight Goal' %}: </p>
+                      <div>
+                          <input type="text" class="measurements__input-element">
+                          <p>-32%</p>
+                          <button class="btn-light">{% trans 'Edit' %}</button>
+                      </div>
+                  </div>
+                  <div class="measurements__personal-info__item">
+                      <p>{% trans 'Weight Goal (kg)' %}: </p>
+                      <div>
+                          <input type="text" class="measurements__input-element">
+                          <p>-32%</p>
+                          <button class="btn-light">{% trans 'Edit' %}</button>
+                      </div>
+                  </div>
+                  <div class="measurements__personal-info__item">
+                      <p>{% trans 'Activity Level' %}: </p>
+                      <div>
+                          <input type="text" class="measurements__input-element">
+                          <p>-32%</p>
+                          <button class="btn-light">{% trans 'Edit' %}</button>
+                      </div>
+                  </div>
+
+              </div>
+             <div class="measurements__measurements">
+                 <h3>{% trans 'Measurements' %}</h3>
+                 <div class="measurements__measurements__item">
+                     <p>{% trans 'Chest' %}:</p>
+                     <div>
+                         <input type="text" class="measurements__input-element">
+                         <p>-32%</p>
+                         <button class="btn-light">{% trans 'Edit' %}</button>
+                     </div>
+                 </div>
+                 <div class="measurements__measurements__item">
+                     <p>{% trans 'Biceps' %}:</p>
+                     <div>
+                         <input type="text" class="measurements__input-element">
+                         <p>-32%</p>
+                         <button class="btn-light">{% trans 'Edit' %}</button>
+                     </div>
+                 </div>
+                 <div class="measurements__measurements__item">
+                     <p>{% trans 'Waist' %}:</p>
+                     <div>
+                         <input type="text" class="measurements__input-element">
+                         <p>-32%</p>
+                         <button class="btn-light">{% trans 'Edit' %}</button>
+                     </div>
+                 </div>
+                 <div class="measurements__measurements__item">
+                     <p>{% trans 'Hips' %}:</p>
+                     <div>
+                         <input type="text" class="measurements__input-element">
+                         <p>-32%</p>
+                        <button class="btn-light">{% trans 'Edit' %}</button>
+                     </div>
+                 </div>
+                 <div class="measurements__measurements__item">
+                     <p>{% trans 'Lyds' %}:</p>
+                     <div>
+                         <input type="text" class="measurements__input-element">
+                         <p>-32%</p>
+                         <button class="btn-light">{% trans 'Edit' %}</button>
+                     </div>
+                 </div>
+                 <div class="measurements__measurements__item">
+                     <p>{% trans 'Thighs' %}:</p>
+                     <div>
+                         <input type="text" class="measurements__input-element">
+                         <p>-32%</p>
+                         <button class="btn-light">{% trans 'Edit' %}</button>
+                     </div>
+                 </div>
+                 <div class="measurements__measurements__item">
+                     <p>{% trans 'Neck' %}:</p>
+                     <div>
+                         <input type="text" class="measurements__input-element">
+                         <p>-32%</p>
+                         <button class="btn-light">{% trans 'Edit' %}</button>
+                     </div>
+                 </div>
+                 <div class="measurements__measurements__item">
+                     <p>{% trans 'Wrists' %}:</p>
+                     <div>
+                         <input type="text" class="measurements__input-element">
+                         <p>-32%</p>
+                         <button class="btn-light">{% trans 'Edit' %}</button>
+                     </div>
+                 </div>
+                 <div class="measurements__measurements__item">
+                     <p>{% trans 'Shoulders' %}:</p>
+                     <div>
+                         <input type="text" class="measurements__input-element">
+                         <p>-32%</p>
+                         <button class="btn-light">{% trans 'Edit' %}</button>
+                     </div>
+                 </div>
+             </div>
+        </div>
+    </div>
+{% endblock %}

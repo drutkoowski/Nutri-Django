@@ -392,11 +392,11 @@ const fillStatsInfo = () => {
             const avgProteinSpan = document.querySelector('.dashboard-stats__stats__averages__protein')
             const avgKcalEaten = document.querySelector('.dashboard-stats__stats__averages__kcal-eaten')
             const avgFatSpan = document.querySelector('.dashboard-stats__stats__averages__fat')
-            avgKcalBurntSpan.innerHTML = `${data.sumKcalBurnt / data.days}`
-            avgCarbsSpan.innerHTML= `${data.sumCarbsEaten / data.days}`
-            avgProteinSpan.innerHTML = `${data.sumProteinEaten / data.days}`
-            avgKcalEaten.innerHTML = `${data.sumKcalEaten / data.days}`
-            avgFatSpan.innerHTML = `${data.sumFatEaten / data.days}`
+            avgKcalBurntSpan.innerHTML = `${(data.sumKcalBurnt / data.days).toFixed(2)}`
+            avgCarbsSpan.innerHTML= `${(data.sumCarbsEaten / data.days).toFixed(2)}`
+            avgProteinSpan.innerHTML = `${(data.sumProteinEaten / data.days).toFixed(2)}`
+            avgKcalEaten.innerHTML = `${(data.sumKcalEaten / data.days).toFixed(2)}`
+            avgFatSpan.innerHTML = `${(data.sumFatEaten / data.days).toFixed(2)}`
 
         },
     })
