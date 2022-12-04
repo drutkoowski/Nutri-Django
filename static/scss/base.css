@@ -4282,14 +4282,15 @@ div.modal--calendar__content-summary {
         grid-column: 2/3;
         display: flex; }
         .measurements__body-info__item div p {
+          width: 3rem;
           vertical-align: center;
           margin-left: 1rem; }
         .measurements__body-info__item div img {
           height: 3rem;
           width: 3rem;
           vertical-align: text-bottom;
-          margin-top: 3px;
-          margin-left: 1rem; }
+          margin-top: 2px;
+          margin-left: 0.5rem; }
         .measurements__body-info__item div button {
           padding: 0.75rem 1.5rem;
           margin-left: 2rem;
@@ -4320,14 +4321,15 @@ div.modal--calendar__content-summary {
         grid-column: 2/3;
         display: flex; }
         .measurements__personal-info__item div p {
+          width: 3rem;
           vertical-align: center;
           margin-left: 1rem; }
         .measurements__personal-info__item div img {
           height: 3rem;
           width: 3rem;
           vertical-align: text-bottom;
-          margin-top: 3px;
-          margin-left: 1rem; }
+          margin-top: 2px;
+          margin-left: 0.5rem; }
         .measurements__personal-info__item div button {
           padding: 0.75rem 1.5rem;
           margin-left: 2rem;
@@ -4358,14 +4360,15 @@ div.modal--calendar__content-summary {
         grid-column: 2/3;
         display: flex; }
         .measurements__measurements__item div p {
+          width: 3rem;
           vertical-align: center;
           margin-left: 1rem; }
         .measurements__measurements__item div img {
           height: 3rem;
           width: 3rem;
           vertical-align: text-bottom;
-          margin-top: 3px;
-          margin-left: 1rem; }
+          margin-top: 2px;
+          margin-left: 0.5rem; }
         .measurements__measurements__item div button {
           padding: 0.75rem 1.5rem;
           margin-left: 2rem;
@@ -4381,7 +4384,8 @@ div.modal--calendar__content-summary {
   text-align: center;
   color: var(--green-darker);
   font-weight: bold;
-  margin: auto 0; }
+  margin: auto 0;
+  font-size: 1rem; }
 
 .meals-layout-container {
   width: 100vw;

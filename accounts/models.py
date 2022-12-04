@@ -75,6 +75,16 @@ class UserProfile(models.Model):
     gender = models.CharField(max_length=6)
     goal_kg = models.CharField(max_length=3, default='0')
     user = models.OneToOneField(Account, on_delete=models.CASCADE)
+    chest_json = models.JSONField(blank=True, default=dict, null=True)
+    weight_json = models.JSONField(blank=True, default=dict, null=True)
+    biceps_json = models.JSONField(blank=True, default=dict, null=True)
+    waist_json = models.JSONField(blank=True, default=dict, null=True)
+    hips_json = models.JSONField(blank=True, default=dict, null=True)
+    calves_json = models.JSONField(blank=True, default=dict, null=True)
+    thighs_json = models.JSONField(blank=True, default=dict, null=True)
+    neck_json = models.JSONField(blank=True, default=dict, null=True)
+    wrists_json = models.JSONField(blank=True, default=dict, null=True)
+    shoulders_json = models.JSONField(blank=True, default=dict, null=True)
 
     def __str__(self):
         return f"{self.user.username}"

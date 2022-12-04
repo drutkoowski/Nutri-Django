@@ -281,7 +281,7 @@ msgstr ""
 
 #: .\templates\accounts\measurements.html:14
 msgid "Your Nutri Profile Information"
-msgstr "Twoje Statystyki Profilowe Nutri"
+msgstr "Twoje Informacje Profilowe Nutri"
 
 #: .\templates\accounts\measurements.html:18
 msgid "Your Body Information"
@@ -391,7 +391,7 @@ msgstr "Pomiary"
 
 #: .\templates\accounts\measurements.html:118
 msgid "Chest"
-msgstr "Klatka piersiowa"
+msgstr "Klatka piers."
 
 #: .\templates\accounts\measurements.html:127
 msgid "Biceps"

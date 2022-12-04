@@ -1,4 +1,5 @@
-from datetime import date, timedelta
+import json
+from datetime import date, timedelta, datetime
 
 
 def date_for_weekday(day: int):
@@ -42,3 +43,68 @@ def calculate_user_nutrition_demand(user_profile):
         final_kcal_goal = weight_goal_metabolic_rate
 
     return final_kcal_goal
+
+
+def edit_info_parameter_by_type(user_profile, parameter, value):
+    type_json = {}
+    if parameter == 'height':
+        user_profile.height = value
+        user_profile.save()
+        return
+    elif parameter == 'weight':
+        user_profile.weight = value
+        user_profile.save()
+        return
+    elif parameter == 'fname':
+        user_profile.first_name = value
+        user_profile.save()
+        return
+    elif parameter == 'lname':
+        user_profile.last_name = value
+        user_profile.save()
+        return
+    elif parameter == 'age':
+        user_profile.years_old = value
+        user_profile.save()
+        return
+    elif parameter == 'weight-goal':
+        user_profile.weight_goal = value
+        user_profile.save()
+        return
+    elif parameter == 'goal-kg':
+        user_profile.goal_kg = value
+        user_profile.save()
+        return
+    elif parameter == 'activity':
+        user_profile.activity_level = value
+        user_profile.save()
+        return
+    elif parameter == 'chest':
+        type_json = user_profile.chest_json
+    elif parameter == 'biceps':
+        type_json = user_profile.biceps_json
+    elif parameter == 'waist':
+        type_json = user_profile.waist_json
+    elif parameter == 'hips':
+        type_json = user_profile.hips_json
+    elif parameter == 'calves':
+        type_json = user_profile.calves_json
+    elif parameter == 'thighs':
+        type_json = user_profile.thighs_json
+    elif parameter == 'neck':
+        type_json = user_profile.neck_json
+    elif parameter == 'wrists':
+        type_json = user_profile.wrists_json
+    elif parameter == 'shoulders':
+        type_json = user_profile.shoulders_json
+    now = datetime.now()
+    today_date = f"{now.day}-{now.month}-{now.year}"
+    new_entry = {
+        f'{today_date}': value
+    }
+    print(type_json)
+    print(new_entry)
+    type_json.append(new_entry)
+    print('x', type_json)
+
+

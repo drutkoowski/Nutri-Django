@@ -5,6 +5,7 @@
     <script src="{% sass_src 'scripts/measurements/main.js' %}" defer></script>
 {% endblock %}
 {% block content %}
+    {% csrf_token %}
     <div class="loader"></div>
     <div class="grid-layout-container">
      {% include 'components/sidebar/sidebar.html' %}
@@ -19,17 +20,14 @@
                 <div class="measurements__body-info__item">
                     <p>{% trans 'BMI' %}</p>
                     <div>
-                        <input type="number" class="measurements__input-element measurements__input-element__bmi">
-                        <p style="visibility: hidden">-32%</p>
-                        <img style="visibility: hidden" src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="filter-green-dark ">
-                        <button class="btn-light">{% trans 'Edit' %}</button>
+                        <input type="number" class="measurements__input-element measurements__input-element__bmi" disabled>
                     </div>
                 </div>
                 <div class="measurements__body-info__item">
                     <p>{% trans 'Height' %}</p>
                     <div>
-                        <input type="number" class="measurements__input-element measurements__input-element__height">
-                        <p style="visibility: hidden">-32%</p>
+                        <input type="number" class="measurements__input-element measurements__input-element__height" data-type="height">
+                        <p style="visibility: hidden"></p>
                         <img style="visibility: hidden" src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="filter-green-dark">
                         <button class="btn-light">{% trans 'Edit' %}</button>
                     </div>
@@ -37,8 +35,8 @@
                 <div class="measurements__body-info__item">
                     <p>{% trans 'Weight' %}: </p>
                     <div>
-                        <input type="number" class="measurements__input-element measurements__input-element__weight">
-                        <p style="visibility: hidden">-32%</p>
+                        <input type="number" class="measurements__input-element measurements__input-element__weight" data-type="weight">
+                        <p style="visibility: hidden"></p>
                         <img style="visibility: hidden" src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="filter-green-dark">
                         <button class="btn-light">{% trans 'Edit' %}</button>
                     </div>
@@ -49,8 +47,8 @@
                   <div class="measurements__personal-info__item">
                       <p>{% trans 'First Name' %}: </p>
                       <div>
-                        <input type="number" class="measurements__input-element measurements__input-element__fname">
-                        <p style="visibility: hidden">-32%</p>
+                        <input type="text" class="measurements__input-element measurements__input-element__fname" data-type="fname">
+                        <p style="visibility: hidden"></p>
                         <img style="visibility: hidden" src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="filter-green-dark">
                         <button class="btn-light">{% trans 'Edit' %}</button>
                       </div>
@@ -58,8 +56,8 @@
                   <div class="measurements__personal-info__item">
                       <p>{% trans 'Last Name' %}: </p>
                       <div>
-                          <input type="number" class="measurements__input-element measurements__input-element__lname">
-                          <p style="visibility: hidden">-32%</p>
+                          <input type="text" class="measurements__input-element measurements__input-element__lname" data-type="lname">
+                          <p style="visibility: hidden"></p>
                           <img style="visibility: hidden" src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="filter-green-dark">
                           <button class="btn-light">{% trans 'Edit' %}</button>
                       </div>
@@ -68,8 +66,8 @@
                   <div class="measurements__personal-info__item">
                       <p>{% trans 'Age' %}: </p>
                       <div>
-                          <input type="number" class="measurements__input-element measurements__input-element__age">
-                          <p style="visibility: hidden">-32%</p>
+                          <input type="number" class="measurements__input-element measurements__input-element__age" data-type="age">
+                          <p style="visibility: hidden"></p>
                           <img style="visibility: hidden" src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="filter-green-dark">
                           <button class="btn-light">{% trans 'Edit' %}</button>
                       </div>
@@ -77,12 +75,12 @@
                   <div class="measurements__personal-info__item">
                       <p>{% trans 'Weight Goal' %}: </p>
                       <div>
-                          <select class="measurements__input-element measurements__input-element__weight-goal">
+                          <select class="measurements__input-element measurements__input-element__weight-goal" data-type="weight-goal">
                               <option value="{% trans 'Gain Weight' %}">{% trans 'Gain Weight' %}</option>
                               <option value="{% trans 'Maintain Weight' %}">{% trans 'Maintain Weight' %}</option>
                               <option value="{% trans 'Lose Weight' %}">{% trans 'Lose Weight' %}</option>
                           </select>
-                          <p style="visibility: hidden">-32%</p>
+                          <p style="visibility: hidden"></p>
                           <img style="visibility: hidden" src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="filter-green-dark">
                           <button class="btn-light">{% trans 'Edit' %}</button>
                       </div>
@@ -90,8 +88,8 @@
                   <div class="measurements__personal-info__item">
                       <p>{% trans 'Goal (kg)' %}: </p>
                       <div>
-                          <input type="number" class="measurements__input-element measurements__input-element__goal-kg">
-                          <p style="visibility: hidden">-32%</p>
+                          <input type="number" class="measurements__input-element measurements__input-element__goal-kg" data-type="goal-kg">
+                          <p style="visibility: hidden"></p>
                           <img style="visibility: hidden" src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="filter-green-dark">
                           <button class="btn-light">{% trans 'Edit' %}</button>
                       </div>
@@ -99,13 +97,13 @@
                   <div class="measurements__personal-info__item">
                       <p>{% trans 'Activity' %}: </p>
                       <div>
-                          <select class="measurements__input-element measurements__input-element__activity">
+                          <select class="measurements__input-element measurements__input-element__activity" data-type="activity">
                               <option value="{% trans 'Not active' %}">{% trans 'Not active' %}</option>
                               <option value="{% trans 'Lightly active' %}">{% trans 'Lightly active' %}</option>
                               <option value="{% trans 'Active' %}">{% trans 'Active' %}</option>
                               <option value="{% trans 'Very active' %}">{% trans 'Very active' %}</option>
                           </select>
-                          <p style="visibility: hidden">-32%</p>
+                          <p style="visibility: hidden"></p>
                           <img style="visibility: hidden" src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="filter-green-dark">
                           <button class="btn-light">{% trans 'Edit' %}</button>
                       </div>
@@ -113,85 +111,85 @@
 
               </div>
              <div class="measurements__measurements">
-                 <h3>{% trans 'Measurements' %}</h3>
+                 <h3>{% trans 'Measurements' %} (cm)</h3>
                  <div class="measurements__measurements__item">
                      <p>{% trans 'Chest' %}:</p>
                      <div>
-                         <input type="number" class="measurements__input-element measurements__input-element__chest">
-                         <p>-32%</p>
-                         <img src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="filter-green-dark">
+                         <input type="number" class="measurements__input-element measurements__input-element__chest" min="1" max="300" data-type="chest">
+                         <p class="measurements__input-element__chest__change"></p>
+                         <img src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="measurements__input-element__chest__icon">
                          <button class="btn-light">{% trans 'Edit' %}</button>
                      </div>
                  </div>
                  <div class="measurements__measurements__item">
                      <p>{% trans 'Biceps' %}:</p>
                      <div>
-                         <input type="number" class="measurements__input-element measurements__input-element__biceps">
-                         <p>-32%</p>
-                         <img src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="filter-green-dark">
+                         <input type="number" class="measurements__input-element measurements__input-element__biceps" min="1" max="100" data-type="biceps">
+                         <p class="measurements__input-element__biceps__change"></p>
+                         <img src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="measurements__input-element__biceps__icon">
                          <button class="btn-light">{% trans 'Edit' %}</button>
                      </div>
                  </div>
                  <div class="measurements__measurements__item">
                      <p>{% trans 'Waist' %}:</p>
                      <div>
-                         <input type="number" class="measurements__input-element measurements__input-element__waist">
-                         <p>-32%</p>
-                         <img src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="filter-green-dark">
+                         <input type="number" class="measurements__input-element measurements__input-element__waist" min="1" max="300" data-type="waist">
+                         <p class="measurements__input-element__waist__change"></p>
+                         <img src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="measurements__input-element__waist__icon">
                          <button class="btn-light">{% trans 'Edit' %}</button>
                      </div>
                  </div>
                  <div class="measurements__measurements__item">
                      <p>{% trans 'Hips' %}:</p>
                      <div>
-                         <input type="number" class="measurements__input-element measurements__input-element__hips">
-                         <p>-32%</p>
-                         <img src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="filter-green-dark">
+                         <input type="number" class="measurements__input-element measurements__input-element__hips" min="1" max="300" data-type="hips">
+                         <p class="measurements__input-element__hips__change"></p>
+                         <img src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="measurements__input-element__hips__icon">
                         <button class="btn-light">{% trans 'Edit' %}</button>
                      </div>
                  </div>
                  <div class="measurements__measurements__item">
-                     <p>{% trans 'Lyds' %}:</p>
+                     <p>{% trans 'Calves' %}:</p>
                      <div>
-                         <input type="number" class="measurements__input-element measurements__input-element__lyds">
-                         <p>-32%</p>
-                         <img src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="filter-green-dark">
+                         <input type="number" class="measurements__input-element measurements__input-element__calves" min="1" max="100" data-type="calves">
+                         <p class="measurements__input-element__calves__change"></p>
+                         <img src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="measurements__input-element__calves__icon">
                          <button class="btn-light">{% trans 'Edit' %}</button>
                      </div>
                  </div>
                  <div class="measurements__measurements__item">
                      <p>{% trans 'Thighs' %}:</p>
                      <div>
-                         <input type="number" class="measurements__input-element measurements__input-element__thighs">
-                         <p>-32%</p>
-                         <img src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="filter-green-dark">
+                         <input type="number" class="measurements__input-element measurements__input-element__thighs" min="1" max="100" data-type="thighs">
+                         <p class="measurements__input-element__thighs__change"></p>
+                         <img src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="measurements__input-element__thighs__icon">
                          <button class="btn-light">{% trans 'Edit' %}</button>
                      </div>
                  </div>
                  <div class="measurements__measurements__item">
                      <p>{% trans 'Neck' %}:</p>
                      <div>
-                         <input type="number" class="measurements__input-element measurements__input-element__neck">
-                         <p>-32%</p>
-                         <img src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="filter-green-dark">
+                         <input type="number" class="measurements__input-element measurements__input-element__neck" min="1" max="100" data-type="neck">
+                         <p class="measurements__input-element__neck__change"></p>
+                         <img src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="measurements__input-element__neck__icon">
                          <button class="btn-light">{% trans 'Edit' %}</button>
                      </div>
                  </div>
                  <div class="measurements__measurements__item">
                      <p>{% trans 'Wrists' %}:</p>
                      <div>
-                         <input type="number" class="measurements__input-element measurements__input-element__wrists">
-                         <p>-32%</p>
-                         <img src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="filter-green-dark">
+                         <input type="number" class="measurements__input-element measurements__input-element__wrists" min="1" max="50" data-type="wrists">
+                         <p class="measurements__input-element__wrists__change"></p>
+                         <img src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="measurements__input-element__wrists__icon">
                          <button class="btn-light">{% trans 'Edit' %}</button>
                      </div>
                  </div>
                  <div class="measurements__measurements__item">
                      <p>{% trans 'Shoulders' %}:</p>
                      <div>
-                         <input type="number" class="measurements__input-element measurements__input-element__shoulders">
-                         <p>-32%</p>
-                         <img src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="filter-green-dark">
+                         <input type="number" class="measurements__input-element measurements__input-element__shoulders" min="1" max="100" data-type="shoulders">
+                         <p class="measurements__input-element__shoulders__change"></p>
+                         <img src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="measurements__input-element__shoulders__icon">
                          <button class="btn-light">{% trans 'Edit' %}</button>
                      </div>
                  </div>

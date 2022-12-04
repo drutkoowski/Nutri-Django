@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.db.models import Q
-from .utils import date_for_weekday, calculate_user_nutrition_demand
+from .utils import date_for_weekday, calculate_user_nutrition_demand, edit_info_parameter_by_type
 from accounts.models import Account, UserProfile
 from meals.models import Meal
 from workouts.models import Workout
@@ -177,14 +177,127 @@ def get_user_personal_info(request):
             else:
                 translated_level = user_profile.activity_level
         personal_info_dict = {
-            'firstName': user_profile.height,
-            'lastName': user_profile.weight,
+            'firstName': user_profile.user.first_name,
+            'lastName': user_profile.user.last_name,
             'age': user_profile.years_old,
             'weightGoal': translated_goal,
             'activityLevel': translated_level,
             'goalKg': user_profile.goal_kg,
         }
         return JsonResponse({'status': 200, 'text': 'Operation success.', 'data': json.dumps(personal_info_dict)})
+
+
+@login_required(login_url='login')
+def get_user_body_measures(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
+        user_profile = UserProfile.objects.get(user=request.user)
+        chest_json = user_profile.chest_json
+        biceps_json = user_profile.biceps_json
+        waist_json = user_profile.waist_json
+        hips_json = user_profile.hips_json
+        calves_json = user_profile.calves_json
+        thighs_json = user_profile.thighs_json
+        neck_json = user_profile.neck_json
+        wrists_json = user_profile.wrists_json
+        shoulders_json = user_profile.shoulders_json
+        chest_cm = 0
+        change_chest = 0
+        biceps_cm = 0
+        change_biceps = 0
+        waist_cm = 0
+        change_waist = 0
+        hips_cm = 0
+        change_hips = 0
+        calves_cm = 0
+        change_calves = 0
+        thighs_cm = 0
+        change_thighs = 0
+        neck_cm = 0
+        change_neck = 0
+        wrists_cm = 0
+        change_wrists = 0
+        shoulders_cm = 0
+        change_shoulders = 0
+        if chest_json:
+            chest_cm = list(chest_json[0].values())[0]
+            if len(chest_json) > 1:
+                prev_cm = list(chest_json[1].values())[0]
+                change_chest = float(chest_cm) - float(prev_cm)
+        if biceps_json:
+            biceps_cm = list(biceps_json[0].values())[0]
+            if len(biceps_json) > 1:
+                prev_cm = list(biceps_json[1].values())[0]
+                change_biceps = float(chest_cm) - float(prev_cm)
+        if waist_json:
+            waist_cm = list(waist_json[0].values())[0]
+            if len(waist_json) > 1:
+                prev_cm = list(waist_json[1].values())[0]
+                change_waist = float(chest_cm) - float(prev_cm)
+        if hips_json:
+            hips_cm = list(hips_json[0].values())[0]
+            if len(hips_json) > 1:
+                prev_cm = list(hips_json[1].values())[0]
+                change_hips = float(chest_cm) - float(prev_cm)
+        if calves_json:
+            calves_cm = list(calves_json[0].values())[0]
+            if len(calves_json) > 1:
+                prev_cm = list(calves_json[1].values())[0]
+                change_calves = float(chest_cm) - float(prev_cm)
+        if thighs_json:
+            thighs_cm = list(thighs_json[0].values())[0]
+            if len(thighs_json) > 1:
+                prev_cm = list(thighs_json[1].values())[0]
+                change_thighs = float(chest_cm) - float(prev_cm)
+        if neck_json:
+            neck_cm = list(neck_json[0].values())[0]
+            if len(neck_json) > 1:
+                prev_cm = list(neck_json[1].values())[0]
+                change_neck = float(chest_cm) - float(prev_cm)
+        if wrists_json:
+            wrists_cm = list(wrists_json[0].values())[0]
+            if len(wrists_json) > 1:
+                prev_cm = list(wrists_json[1].values())[0]
+                change_wrists = float(chest_cm) - float(prev_cm)
+        if shoulders_json:
+            shoulders_cm = list(shoulders_json[0].values())[0]
+            if len(shoulders_json) > 1:
+                prev_cm = list(shoulders_json[1].values())[0]
+                change_shoulders = float(chest_cm) - float(prev_cm)
+
+        data = {
+            'chest': chest_cm,
+            'chestChange': change_chest,
+            'biceps': biceps_cm,
+            'bicepsChange': change_biceps,
+            'waist': waist_cm,
+            'waistChange': change_waist,
+            'hips': hips_cm,
+            'hipsChange': change_hips,
+            'calves': calves_cm,
+            'calvesChange': change_calves,
+            'thighs': thighs_cm,
+            'thighsChange': change_thighs,
+            'neck': neck_cm,
+            'neckChange': change_neck,
+            'wrists': wrists_cm,
+            'wristsChange': change_wrists,
+            'shoulders': shoulders_cm,
+            'shouldersChange': change_shoulders
+        }
+
+        return JsonResponse({'status': 200, 'text': 'Operation success.', 'data': json.dumps(data)})
+    else:
+        return JsonResponse({'status': 405, 'text': 'Method not allowed.', 'data': ''})
+
+
+@login_required(login_url='login')
+def update_user_parameter(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
+        user_profile = UserProfile.objects.get(user=request.user)
+        value = request.POST.get('value')
+        edit_type = request.POST.get('type')
+        edit_info_parameter_by_type(user_profile, edit_type, value)
+        return JsonResponse({'status': 405, 'text': 'Method not allowed.', 'data': ''})
 
 
 @login_required(login_url='login')
