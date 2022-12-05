@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-04 19:49+0100\n"
+"POT-Creation-Date: 2022-12-05 14:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -548,6 +548,18 @@ msgstr "Dodaj nowy element dla swojego posiłku"
 #: .\static\scripts\meals\saved\main.js:753
 msgid "Edit Meal"
 msgstr "Edytuj Posiłek"
+
+#: .\static\scripts\measurements\main.js:162
+msgid "years old"
+msgstr "lat"
+
+#: .\static\scripts\measurements\main.js:165
+msgid "Your Goal"
+msgstr "Twój Cel"
+
+#: .\static\scripts\measurements\main.js:166
+msgid "Activity"
+msgstr "Aktywności"
 
 #: .\static\scripts\recipes\ideas\main.js:22
 #: .\static\scripts\recipes\ideas\main.js:167

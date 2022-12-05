@@ -3,6 +3,16 @@ const editBtn = document.querySelector('.edit-measurements')
 const csrf = document.getElementsByName('csrfmiddlewaretoken')
 const csrfToken = csrf[0].value
 let isChanged = false
+let allowedGoal
+// sidebar
+const fullNameSidebar = document.querySelector('.dashboard__sidebar__name')
+const usernameSidebar = document.querySelector('.dashboard__sidebar__username')
+const genderSidebar = document.querySelector('.dashboard__sidebar__gender')
+const yearsSidebar = document.querySelector('.dashboard__sidebar__years')
+const heightSidebar = document.querySelector('.dashboard__sidebar__height')
+const weightSidebar = document.querySelector('.dashboard__sidebar__weight')
+const goalSidebar = document.querySelector('.dashboard__sidebar__goal')
+const activitySidebar = document.querySelector('.dashboard__sidebar__activity-level')
 // body info
 const bmiInput = document.querySelector('.measurements__input-element__bmi')
 const weightInput = document.querySelector('.measurements__input-element__weight')
@@ -47,6 +57,7 @@ const allInputs = document.querySelectorAll('.measurements__input-element')
 allInputs.forEach(input => {
     input.addEventListener('input', () => {
         isChanged = true
+        checkSelectedGoal()
     })
 })
 // utils
@@ -67,7 +78,7 @@ const setStatusChangeIcon = (element, change) => {
 }
 const fillChanges = (element, change, elementIcon) => {
     if (change !== 0){
-        element.innerHTML = change
+        element.innerHTML = `${change} cm`
     }
     else {
         element.style.visibility = 'hidden'
@@ -75,7 +86,7 @@ const fillChanges = (element, change, elementIcon) => {
     setStatusChangeIcon(elementIcon, change)
 }
 const buttonEditListener = () => {
-    editBtn.addEventListener('click', e => {
+    editBtn.addEventListener('click', () => {
         const editArr = []
         const url = window.location.origin + `/${langPrefix}/data/update/user-parameters`
         const inputElementsAll = document.querySelectorAll('.measurements__input-element')
@@ -88,7 +99,6 @@ const buttonEditListener = () => {
             }
             editArr.push(editObject)
         })
-        console.log(editArr)
         $.ajax({
             type: 'post',
             url: url,
@@ -106,6 +116,7 @@ const buttonEditListener = () => {
         })
     })
 }
+
 // ajax
 const getBodyInfo = () => {
     const url = window.location.origin + `/${langPrefix}/data/get-user-body-params`
@@ -127,13 +138,31 @@ const getPersonalInfo = () => {
         url: url,
         success: function (response){
             const data = JSON.parse(response.data)
-
             firstNameInput.value = data.firstName
             lastNameInput.value = data.lastName
             ageInput.value = data.age
             weightKgInput.value = data.goalKg
             weightGoalInput.value = String(data.weightGoal)
             activityInput.value = String(data.activityLevel)
+            // sidebar
+            fullNameSidebar.innerHTML = `${data.firstName} ${data.lastName}`
+            usernameSidebar.innerHTML = data.username
+            if (langPrefix === 'pl'){
+                if (data.gender === 'Male'){
+                    genderSidebar.innerHTML = 'Mężczyzna'
+                }
+                else {
+                    genderSidebar.innerHTML = 'Kobieta'
+                }
+            }
+            else {
+                genderSidebar.innerHTML = data.gender
+            }
+            yearsSidebar.innerHTML = `${data.age} ${gettext('years old')}`
+            heightSidebar.innerHTML = `${data.height} cm`
+            weightSidebar.innerHTML = `${data.weight} kg`
+            goalSidebar.innerHTML = `${gettext('Your Goal')}: ${data.weightGoal}`
+            activitySidebar.innerHTML = `${gettext('Activity')}: ${data.activityLevel}`
         },
     })
 }
@@ -175,4 +204,45 @@ buttonEditListener()
 function lettersOnly(input) {
     var regex = /[^a-z ]/gi;
     input.value = input.value.replace(regex, "");
+}
+
+const checkSelectedGoal = () => {
+    const weight = weightInput.value
+    const weightGoalKG = weightKgInput.value
+    if (weight > weightGoalKG) {
+        allowedGoal = gettext('Lose Weight')
+    }
+    else if (weight < weightGoalKG){
+        allowedGoal = gettext('Gain Weight')
+    }
+    else if (weight === weightGoalKG){
+        allowedGoal = gettext('Maintain Weight')
+    }
+    weightGoalInput.value = String(allowedGoal)
+}
+
+function maxLengthCheck(object, min, max) {
+    fixInputMax(object, max)
+    fixInputMin(object, min)
+    fixInputMax(object, max)
+    fixInputMin(object, min)
+}
+
+const fixInputMax = function (input, max) {
+   input.addEventListener('focusout', () => {
+       let inputLength = input.value.length
+       if (inputLength > 3) {
+           input.value = input.value.slice(0, 3)
+       }
+       if (input.value > max) {
+           input.value = max
+       }
+   })
+}
+const fixInputMin = function (input, min) {
+    input.addEventListener('focusout', () => {
+        if (input.value < min && input !== document.activeElement) {
+            input.value = min
+        }
+    })
 }

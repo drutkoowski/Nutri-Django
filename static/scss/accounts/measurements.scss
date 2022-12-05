@@ -112,13 +112,6 @@
             vertical-align: center;
             margin-left: 1rem;
           }
-          img {
-            height: 3rem;
-            width: 3rem;
-            vertical-align: text-bottom;
-            margin-top: 2px;
-            margin-left: 0.5rem;
-          }
         }
       }
 
@@ -155,13 +148,6 @@
             vertical-align: center;
             margin-left: 1rem;
           }
-          img {
-            height: 3rem;
-            width: 3rem;
-            vertical-align: text-bottom;
-            margin-top: 2px;
-            margin-left: 0.5rem;
-          }
         }
       }
     }
@@ -187,14 +173,16 @@
         height: 3rem;
         p {
           grid-column: 1/2;
+          margin-top: 1px;
           vertical-align: text-bottom;
         }
         div {
           grid-column: 2/3;
           display: flex;
           p {
-            width: 3rem;
+            width: 10rem;
             vertical-align: center;
+            text-align: center;
             margin-left: 1rem;
           }
           img {
@@ -203,6 +191,10 @@
             vertical-align: text-bottom;
             margin-top: 2px;;
             margin-left: 0.5rem;
+            transition: all .3s ease-in;
+            &:hover {
+              transform: scale(1.15);
+            }
           }
 
         }
@@ -211,7 +203,7 @@
 }
 
 .measurements__input-element{
-   width: 7rem;
+   width: 10rem;
    height: 2rem;
    border-radius: 10px;
    outline: none;
@@ -221,10 +213,18 @@
    font-weight: bold;
    margin: auto 0;
    font-size: 1rem;
+   transition: all .3s ease-in;
+  &:hover {
+    transform: translateY(-1px);
+  }
+  &:focus[type='number']{
+    transform: scale(1.05);
+    font-size: 1.2rem;
+  }
 }
 
 .measurements__input-element__disabled {
-   width: 7rem;
+   width: 10rem;
    height: 2rem;
    border-radius: 10px;
    outline: none;
@@ -242,12 +242,12 @@
   animation-duration: 2s;
   animation-timing-function: ease-out;
   transition: all .2s ease-in;
-    button {
+  button {
       padding: 1rem 2rem;
       font-size: 1.5rem;
       text-transform: uppercase;
       display: block;
       margin-left: auto;
       margin-right: 2rem;
-    }
+  }
 }

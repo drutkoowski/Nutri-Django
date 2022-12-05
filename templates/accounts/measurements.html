@@ -26,17 +26,13 @@
                 <div class="measurements__body-info__item">
                     <p>{% trans 'Height' %}</p>
                     <div>
-                        <input type="number" class="measurements__input-element measurements__input-element__height" data-type="height">
-                        <p style="visibility: hidden"></p>
-                        <img style="visibility: hidden" src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="filter-green-dark">
+                        <input type="number" class="measurements__input-element measurements__input-element__height" data-type="height" maxlength="3" oninput="maxLengthCheck(this, 30, 300)">
                     </div>
                 </div>
                 <div class="measurements__body-info__item">
                     <p>{% trans 'Weight' %}: </p>
                     <div>
-                        <input type="number" class="measurements__input-element measurements__input-element__weight" data-type="weight">
-                        <p style="visibility: hidden"></p>
-                        <img style="visibility: hidden" src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="filter-green-dark">
+                        <input type="number" class="measurements__input-element measurements__input-element__weight" data-type="weight" maxlength="3" oninput="maxLengthCheck(this, 30, 300)">
                     </div>
                 </div>
             </div>
@@ -46,45 +42,35 @@
                       <p>{% trans 'First Name' %}: </p>
                       <div>
                         <input type="text" class="measurements__input-element measurements__input-element__fname" data-type="fname" onkeyup="lettersOnly(this)">
-                        <p style="visibility: hidden"></p>
-                        <img style="visibility: hidden" src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="filter-green-dark">
                       </div>
                   </div>
                   <div class="measurements__personal-info__item">
                       <p>{% trans 'Last Name' %}: </p>
                       <div>
                           <input type="text" class="measurements__input-element measurements__input-element__lname" data-type="lname" onkeyup="lettersOnly(this)">
-                          <p style="visibility: hidden"></p>
-                          <img style="visibility: hidden" src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="filter-green-dark">
                       </div>
 
                   </div>
                   <div class="measurements__personal-info__item">
                       <p>{% trans 'Age' %}: </p>
                       <div>
-                          <input type="number" class="measurements__input-element measurements__input-element__age" data-type="age">
-                          <p style="visibility: hidden"></p>
-                          <img style="visibility: hidden" src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="filter-green-dark">
+                          <input type="number" class="measurements__input-element measurements__input-element__age" data-type="age" maxlength="3" oninput="maxLengthCheck(this, 10, 90)">
                       </div>
                   </div>
                   <div class="measurements__personal-info__item">
                       <p>{% trans 'Weight Goal' %}: </p>
                       <div>
-                          <select class="measurements__input-element measurements__input-element__weight-goal" data-type="weight-goal">
+                          <select class="measurements__input-element measurements__input-element__weight-goal" data-type="weight-goal" disabled>
                               <option value="{% trans 'Gain Weight' %}">{% trans 'Gain Weight' %}</option>
                               <option value="{% trans 'Maintain Weight' %}">{% trans 'Maintain Weight' %}</option>
                               <option value="{% trans 'Lose Weight' %}">{% trans 'Lose Weight' %}</option>
                           </select>
-                          <p style="visibility: hidden"></p>
-                          <img style="visibility: hidden" src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="filter-green-dark">
                       </div>
                   </div>
                   <div class="measurements__personal-info__item">
                       <p>{% trans 'Goal (kg)' %}: </p>
                       <div>
-                          <input type="number" class="measurements__input-element measurements__input-element__goal-kg" data-type="goal-kg">
-                          <p style="visibility: hidden"></p>
-                          <img style="visibility: hidden" src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="filter-green-dark">
+                          <input type="number" class="measurements__input-element measurements__input-element__goal-kg" data-type="goal-kg" maxlength="3" oninput="maxLengthCheck(this, 30, 300)">
                       </div>
                   </div>
                   <div class="measurements__personal-info__item">
@@ -96,8 +82,6 @@
                               <option value="{% trans 'Active' %}">{% trans 'Active' %}</option>
                               <option value="{% trans 'Very active' %}">{% trans 'Very active' %}</option>
                           </select>
-                          <p style="visibility: hidden"></p>
-                          <img style="visibility: hidden" src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="filter-green-dark">
                       </div>
                   </div>
 
@@ -107,7 +91,7 @@
                  <div class="measurements__measurements__item">
                      <p>{% trans 'Chest' %}:</p>
                      <div>
-                         <input type="number" class="measurements__input-element measurements__input-element__chest" min="1" max="300" data-type="chest">
+                         <input type="number" class="measurements__input-element measurements__input-element__chest" maxlength="3" oninput="maxLengthCheck(this, 1, 200)" data-type="chest">
                          <p class="measurements__input-element__chest__change"></p>
                          <img src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="measurements__input-element__chest__icon">
                      </div>
@@ -115,7 +99,7 @@
                  <div class="measurements__measurements__item">
                      <p>{% trans 'Biceps' %}:</p>
                      <div>
-                         <input type="number" class="measurements__input-element measurements__input-element__biceps" min="1" max="100" data-type="biceps">
+                         <input type="number" class="measurements__input-element measurements__input-element__biceps" maxlength="3" oninput="maxLengthCheck(this, 1, 100)" data-type="biceps">
                          <p class="measurements__input-element__biceps__change"></p>
                          <img src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="measurements__input-element__biceps__icon">
                      </div>
@@ -123,7 +107,7 @@
                  <div class="measurements__measurements__item">
                      <p>{% trans 'Waist' %}:</p>
                      <div>
-                         <input type="number" class="measurements__input-element measurements__input-element__waist" min="1" max="300" data-type="waist">
+                         <input type="number" class="measurements__input-element measurements__input-element__waist" maxlength="3" oninput="maxLengthCheck(this, 1, 200)" data-type="waist">
                          <p class="measurements__input-element__waist__change"></p>
                          <img src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="measurements__input-element__waist__icon">
                      </div>
@@ -131,7 +115,7 @@
                  <div class="measurements__measurements__item">
                      <p>{% trans 'Hips' %}:</p>
                      <div>
-                         <input type="number" class="measurements__input-element measurements__input-element__hips" min="1" max="300" data-type="hips">
+                         <input type="number" class="measurements__input-element measurements__input-element__hips" maxlength="3" oninput="maxLengthCheck(this, 1, 200)" data-type="hips">
                          <p class="measurements__input-element__hips__change"></p>
                          <img src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="measurements__input-element__hips__icon">
                      </div>
@@ -139,7 +123,7 @@
                  <div class="measurements__measurements__item">
                      <p>{% trans 'Calves' %}:</p>
                      <div>
-                         <input type="number" class="measurements__input-element measurements__input-element__calves" min="1" max="100" data-type="calves">
+                         <input type="number" class="measurements__input-element measurements__input-element__calves" maxlength="3" oninput="maxLengthCheck(this, 1, 100)" data-type="calves">
                          <p class="measurements__input-element__calves__change"></p>
                          <img src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="measurements__input-element__calves__icon">
                      </div>
@@ -147,7 +131,7 @@
                  <div class="measurements__measurements__item">
                      <p>{% trans 'Thighs' %}:</p>
                      <div>
-                         <input type="number" class="measurements__input-element measurements__input-element__thighs" min="1" max="100" data-type="thighs">
+                         <input type="number" class="measurements__input-element measurements__input-element__thighs" maxlength="3" oninput="maxLengthCheck(this, 1, 100)" data-type="thighs">
                          <p class="measurements__input-element__thighs__change"></p>
                          <img src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="measurements__input-element__thighs__icon">
                      </div>
@@ -155,7 +139,7 @@
                  <div class="measurements__measurements__item">
                      <p>{% trans 'Neck' %}:</p>
                      <div>
-                         <input type="number" class="measurements__input-element measurements__input-element__neck" min="1" max="100" data-type="neck">
+                         <input type="number" class="measurements__input-element measurements__input-element__neck" maxlength="3" oninput="maxLengthCheck(this, 1, 100)" data-type="neck">
                          <p class="measurements__input-element__neck__change"></p>
                          <img src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="measurements__input-element__neck__icon">
                      </div>
@@ -163,7 +147,7 @@
                  <div class="measurements__measurements__item">
                      <p>{% trans 'Wrists' %}:</p>
                      <div>
-                         <input type="number" class="measurements__input-element measurements__input-element__wrists" min="1" max="50" data-type="wrists">
+                         <input type="number" class="measurements__input-element measurements__input-element__wrists" maxlength="3" oninput="maxLengthCheck(this, 1, 100)" data-type="wrists">
                          <p class="measurements__input-element__wrists__change"></p>
                          <img src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="measurements__input-element__wrists__icon">
                      </div>
@@ -171,7 +155,7 @@
                  <div class="measurements__measurements__item">
                      <p>{% trans 'Shoulders' %}:</p>
                      <div>
-                         <input type="number" class="measurements__input-element measurements__input-element__shoulders" min="1" max="100" data-type="shoulders">
+                         <input type="number" class="measurements__input-element measurements__input-element__shoulders" maxlength="3" oninput="maxLengthCheck(this, 1, 100)" data-type="shoulders">
                          <p class="measurements__input-element__shoulders__change"></p>
                          <img src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="measurements__input-element__shoulders__icon">
                      </div>

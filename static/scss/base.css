@@ -4287,12 +4287,6 @@ div.modal--calendar__content-summary {
           width: 3rem;
           vertical-align: center;
           margin-left: 1rem; }
-        .measurements__body-info__item div img {
-          height: 3rem;
-          width: 3rem;
-          vertical-align: text-bottom;
-          margin-top: 2px;
-          margin-left: 0.5rem; }
   .measurements__personal-info {
     grid-row: 3 / 4;
     grid-column: 1/-1;
@@ -4322,12 +4316,6 @@ div.modal--calendar__content-summary {
           width: 3rem;
           vertical-align: center;
           margin-left: 1rem; }
-        .measurements__personal-info__item div img {
-          height: 3rem;
-          width: 3rem;
-          vertical-align: text-bottom;
-          margin-top: 2px;
-          margin-left: 0.5rem; }
   .measurements__measurements {
     grid-row: 4 / 5;
     grid-column: 1/-1;
@@ -4349,23 +4337,28 @@ div.modal--calendar__content-summary {
       height: 3rem; }
       .measurements__measurements__item p {
         grid-column: 1/2;
+        margin-top: 1px;
         vertical-align: text-bottom; }
       .measurements__measurements__item div {
         grid-column: 2/3;
         display: flex; }
         .measurements__measurements__item div p {
-          width: 3rem;
+          width: 10rem;
           vertical-align: center;
+          text-align: center;
           margin-left: 1rem; }
         .measurements__measurements__item div img {
           height: 3rem;
           width: 3rem;
           vertical-align: text-bottom;
           margin-top: 2px;
-          margin-left: 0.5rem; }
+          margin-left: 0.5rem;
+          transition: all .3s ease-in; }
+          .measurements__measurements__item div img:hover {
+            transform: scale(1.15); }
 
 .measurements__input-element {
-  width: 7rem;
+  width: 10rem;
   height: 2rem;
   border-radius: 10px;
   outline: none;
@@ -4374,10 +4367,16 @@ div.modal--calendar__content-summary {
   color: var(--green-darker);
   font-weight: bold;
   margin: auto 0;
-  font-size: 1rem; }
+  font-size: 1rem;
+  transition: all .3s ease-in; }
+  .measurements__input-element:hover {
+    transform: translateY(-1px); }
+  .measurements__input-element:focus[type='number'] {
+    transform: scale(1.05);
+    font-size: 1.2rem; }
 
 .measurements__input-element__disabled {
-  width: 7rem;
+  width: 10rem;
   height: 2rem;
   border-radius: 10px;
   outline: none;

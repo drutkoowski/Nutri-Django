@@ -159,11 +159,11 @@ def get_user_personal_info(request):
                 translated_level = user_profile.activity_level
         else:
             if goal == 'gain-weight':
-                translated_goal = 'Gain weight'
+                translated_goal = 'Gain Weight'
             elif goal == 'lose-weight':
-                translated_goal = 'Lose weight'
+                translated_goal = 'Lose Weight'
             elif goal == 'maintain-weight':
-                translated_goal = 'Maintain weight'
+                translated_goal = 'Maintain Weight'
             else:
                 translated_goal = user_profile.goal_weight
             if level == 'not-active':
@@ -183,6 +183,10 @@ def get_user_personal_info(request):
             'weightGoal': translated_goal,
             'activityLevel': translated_level,
             'goalKg': user_profile.goal_kg,
+            'height': user_profile.height,
+            'weight': user_profile.weight,
+            'gender': user_profile.gender,
+            'username': user_profile.user.username
         }
         return JsonResponse({'status': 200, 'text': 'Operation success.', 'data': json.dumps(personal_info_dict)})
 

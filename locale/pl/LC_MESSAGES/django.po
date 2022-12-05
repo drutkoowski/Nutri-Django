@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-05 01:12+0100\n"
+"POT-Creation-Date: 2022-12-05 14:48+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -283,129 +283,127 @@ msgstr ""
 msgid "Your Nutri Profile Information"
 msgstr "Twoje Informacje Profilowe Nutri"
 
-#: .\templates\accounts\measurements.html:20
+#: .\templates\accounts\measurements.html:19
 msgid "Your Body Information"
 msgstr "Informacje o Twoim ciele"
 
 #: .\templates\accounts\measurements.html:21
-#: .\templates\accounts\measurements.html:49
-#: .\templates\accounts\measurements.html:115
-msgid "Edit"
-msgstr "Edytuj"
-
-#: .\templates\accounts\measurements.html:24
 msgid "BMI"
 msgstr "BMI"
 
-#: .\templates\accounts\measurements.html:30
+#: .\templates\accounts\measurements.html:27
 msgid "Height"
 msgstr "Wzrost"
 
-#: .\templates\accounts\measurements.html:38
+#: .\templates\accounts\measurements.html:33
 msgid "Weight"
 msgstr "Waga"
 
-#: .\templates\accounts\measurements.html:48
-msgid "About you"
-msgstr "O Tobie"
+#: .\templates\accounts\measurements.html:40
+msgid "Your Personal Information"
+msgstr "Twoje dane personalne"
 
-#: .\templates\accounts\measurements.html:53
+#: .\templates\accounts\measurements.html:42
 msgid "First Name"
 msgstr "Imię"
 
-#: .\templates\accounts\measurements.html:61
+#: .\templates\accounts\measurements.html:48
 msgid "Last Name"
 msgstr "Nazwisko"
 
-#: .\templates\accounts\measurements.html:70
+#: .\templates\accounts\measurements.html:55
 msgid "Age"
 msgstr "Wiek"
 
-#: .\templates\accounts\measurements.html:78
+#: .\templates\accounts\measurements.html:61
 msgid "Weight Goal"
 msgstr "Cel wagowy"
 
-#: .\templates\accounts\measurements.html:81
+#: .\templates\accounts\measurements.html:64
 #: .\templates\accounts\signup.html:29
 msgid "Gain Weight"
 msgstr "Przybrać na wadze"
 
-#: .\templates\accounts\measurements.html:82
+#: .\templates\accounts\measurements.html:65
 #: .\templates\accounts\signup.html:30
 msgid "Maintain Weight"
 msgstr "Utrzymać wagę"
 
-#: .\templates\accounts\measurements.html:83
+#: .\templates\accounts\measurements.html:66
 #: .\templates\accounts\signup.html:31
 msgid "Lose Weight"
 msgstr "Schudnąć"
 
-#: .\templates\accounts\measurements.html:90
+#: .\templates\accounts\measurements.html:71
 msgid "Goal (kg)"
 msgstr "Cel (kg)"
 
-#: .\templates\accounts\measurements.html:98
+#: .\templates\accounts\measurements.html:77
 #: .\templates\accounts\navbar.html:21
 #: .\templates\accounts\navbar_small.html:21
 #: .\templates\components\sidebar\sidebar.html:29
 msgid "Activity"
 msgstr "Aktywności"
 
-#: .\templates\accounts\measurements.html:101
+#: .\templates\accounts\measurements.html:80
 msgid "Not active"
 msgstr "Nieaktywny"
 
-#: .\templates\accounts\measurements.html:102
+#: .\templates\accounts\measurements.html:81
 msgid "Lightly active"
 msgstr "Lekko aktywny"
 
-#: .\templates\accounts\measurements.html:103
+#: .\templates\accounts\measurements.html:82
 msgid "Active"
 msgstr "Aktywny"
 
-#: .\templates\accounts\measurements.html:104
+#: .\templates\accounts\measurements.html:83
 msgid "Very active"
 msgstr "Bardzo aktywny"
 
-#: .\templates\accounts\measurements.html:114
+#: .\templates\accounts\measurements.html:90
 msgid "Measurements"
 msgstr "Pomiary"
 
-#: .\templates\accounts\measurements.html:118
+#: .\templates\accounts\measurements.html:92
 msgid "Chest"
 msgstr "Klatka piers."
 
-#: .\templates\accounts\measurements.html:126
+#: .\templates\accounts\measurements.html:100
 msgid "Biceps"
 msgstr "Biceps"
 
-#: .\templates\accounts\measurements.html:134
+#: .\templates\accounts\measurements.html:108
 msgid "Waist"
 msgstr "Talia"
 
-#: .\templates\accounts\measurements.html:142
+#: .\templates\accounts\measurements.html:116
 msgid "Hips"
 msgstr "Biodra"
 
-#: .\templates\accounts\measurements.html:150
+#: .\templates\accounts\measurements.html:124
 msgid "Calves"
 msgstr ""
 
-#: .\templates\accounts\measurements.html:158
+#: .\templates\accounts\measurements.html:132
 msgid "Thighs"
 msgstr "Uda"
 
-#: .\templates\accounts\measurements.html:166
+#: .\templates\accounts\measurements.html:140
 msgid "Neck"
 msgstr "Szyja"
 
-#: .\templates\accounts\measurements.html:174
+#: .\templates\accounts\measurements.html:148
 msgid "Wrists"
 msgstr "Nadgarstki"
 
-#: .\templates\accounts\measurements.html:182
+#: .\templates\accounts\measurements.html:156
 msgid "Shoulders"
 msgstr "Ramiona"
+
+#: .\templates\accounts\measurements.html:165
+msgid "Edit"
+msgstr "Edytuj"
 
 #: .\templates\accounts\navbar.html:18
 #: .\templates\accounts\navbar_small.html:18
@@ -2086,8 +2084,8 @@ msgid ""
 "settings.SASS_PRECISION."
 msgstr ""
 
-#~ msgid "Your Personal Information"
-#~ msgstr "Twoje dane personalne"
+#~ msgid "About you"
+#~ msgstr "O Tobie"
 
 #~ msgid "Lyds"
 #~ msgstr "Łydki"
