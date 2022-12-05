@@ -1,27 +1,3 @@
-// const hamburgerNav = document.getElementById('navi-toggle')
-// const navigationList = document.getElementsByClassName('navigation--dashboard__list')[0]
-// const hamburgerNavSmall = document.getElementById('navi-toggle-small')
-// const navigationListSmall = document.getElementsByClassName('navigation--dashboard--small__list')[0]
-//
-// hamburgerNav.addEventListener('click', () => {
-//
-//     if (!navigationList.classList.contains('not-visible') && !hamburgerNav.checked) {
-//         navigationList.classList.add('not-visible')
-//     }
-//     else if (navigationList.classList.contains('not-visible') && hamburgerNav.checked) {
-//          navigationList.classList.remove('not-visible')
-//     }
-// })
-// hamburgerNavSmall.addEventListener('click', () => {
-//
-//     if (!navigationListSmall.classList.contains('not-visible') && !hamburgerNavSmall.checked) {
-//         navigationListSmall.classList.add('not-visible')
-//     }
-//     else if (navigationListSmall.classList.contains('not-visible') && hamburgerNavSmall.checked) {
-//          navigationListSmall.classList.remove('not-visible')
-//     }
-// })
-
 window.onresize = function(){ location.reload(); }
 // option values
 let durationValue = 'weekly'
@@ -59,6 +35,7 @@ const getChartFullDataWeekly = (type) => {
         url: url,
         success: function (response){
             const data = JSON.parse(response.data)
+            console.log(data)
             const eatenKcal = [...data.eatenKcal]
             const burntKcal = [...data.burntKcal]
             const eatenProteinPercent = [...data.eatenProteinPercent]
@@ -143,7 +120,7 @@ const getChartFullDataWeekly = (type) => {
                         borderWidth: 4,
                         pointHoverRadius: 0,
                     },]
-                    chartDraw(  xValuesWeekGraph, dataset, 321,'update', gettext('Percent'), gettext('Macro Value Chart according to your daily goals (%)'))
+                    chartDraw(xValuesWeekGraph, dataset, 321,'update', gettext('Percent'), gettext('Macro Value Chart according to your daily goals (%)'))
                 }
                 else if (type === 'duration'){
                      let dataset = [{
@@ -162,9 +139,6 @@ const getChartFullDataWeekly = (type) => {
             }
             else {
                 isDrawn = true
-                // const averageKcal = weeklyKcalArr.reduce((a, b) => a + b, 0) / weeklyKcalArr.length;
-                // average line
-                // average line
                 let dataset = [{
                     data: [...eatenKcal],
                     label: gettext('Eaten'),
@@ -321,37 +295,37 @@ const chartDraw = (labels, datasets, average, type, yLabelText, textAbove) => {
             value: (ctx) => average
         };
         weekChartBox = new Chart(weekChart, {
-        type: 'line',
-        data: dataWeekGraph,
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                y: {
-                    title: {
+            type: 'line',
+            data: dataWeekGraph,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        title: {
+                            display: true,
+                            text: yLabelText
+                        },
+                        beginAtZero: true,
+                    },
+                },
+                plugins: {
+                    legend: {
                         display: true,
-                        text: yLabelText
+                        labels: {
+                            color: 'rgb(116,187,130)'
+                        },
+                        title: {
+                          display: true,
+                          text: textAbove,
+                        }
                     },
-                    beginAtZero: true,
-                },
-            },
-            plugins: {
-                legend: {
-                    display: true,
-                    labels: {
-                        color: 'rgb(116,187,130)'
-                    },
-                    title: {
-                      display: true,
-                      text: textAbove,
-                    }
-                },
-                annotation: {
-                    annotations: {
-                        annotation
+                    annotation: {
+                        annotations: {
+                            annotation
+                        }
                     }
                 }
-            }
             },
     });
     }
@@ -364,6 +338,7 @@ const chartDraw = (labels, datasets, average, type, yLabelText, textAbove) => {
         weekChartBox.options.plugins.legend.title.text = textAbove
         weekChartBox.update();
     }
+    console.log(weekChartBox.data.datasets)
 }
 
 // filling average and aggregate values

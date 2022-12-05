@@ -438,8 +438,8 @@ def get_profile_activities_date(request):
 def get_activity_list_by_day(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
         user_profile = UserProfile.objects.get(user=request.user)
-        date = request.POST.get('date')
-        meals = Meal.objects.filter(created_by=user_profile, created_at__contains=date).all()
+        desiredDate = request.POST.get('date')
+        meals = Meal.objects.filter(created_by=user_profile, created_at__contains=desiredDate).all()
         meals_arr = []
         kcal_eaten_sum = 0
         carbs_eaten_sum = 0
@@ -462,7 +462,7 @@ def get_activity_list_by_day(request):
                 'fat': round(meal.fat, 2),
             }
             meals_arr.append(meal_obj)
-        exercises = Workout.objects.filter(created_by=user_profile, created_at__contains=date).all()
+        exercises = Workout.objects.filter(created_by=user_profile, created_at__contains=desiredDate).all()
         exercises_arr = []
         for exercise in exercises:
             elements_arr = []
@@ -530,9 +530,6 @@ def get_dashboard_stats_info(request):
 def get_graph_stats_info_weekly(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
         user_profile = UserProfile.objects.get(user=request.user)
-        from datetime import datetime
-        dt = datetime.now()
-        week_day_today = dt.weekday()
         kcal_demand = calculate_user_nutrition_demand(user_profile)
         weekly_kcal_percentages = []
         weekly_protein_percentages = []
@@ -551,7 +548,7 @@ def get_graph_stats_info_weekly(request):
             protein_multiplier = 2
         else:
             protein_multiplier = 1.3
-        for i in range(0, week_day_today + 1):
+        for i in range(0, 7):
             daily_kcal = 0
             daily_kcal_burnt = 0
             daily_workout_duration = 0

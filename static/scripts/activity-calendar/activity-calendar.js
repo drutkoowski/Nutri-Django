@@ -263,8 +263,12 @@ const renderCalendar = () => {
             for (let i = 1; i <= lastDateofMonth; i++) { // creating li of all days of current month
                 // adding active class to li if the current day, month, and year matched
                 let isToday = i === date.getDate() && currMonth === new Date().getMonth() && currYear === new Date().getFullYear() ? "active" : "";
-                let dayClass = `${currYear}-${currMonth+1}-${i}`
-                let dayDate = new Date(`${currYear}-${currMonth+1}-${i}`)
+                let day_num = String(i)
+                if (i < 10) {
+                    day_num = `0${i}`
+                }
+                let dayClass = `${currYear}-${currMonth+1}-${day_num}`
+                let dayDate = new Date(`${currYear}-${currMonth+1}-${day_num}`)
                 const isEvent = eventList.find(date => date.toDateString() === dayDate.toDateString()) ? 'isEvent' : ''
                 if (isEvent === 'isEvent'){
                   liTag += `<li data-date='${dayClass}' class="${isToday} ${dayClass} ${isEvent}">${i}<span></span></li>`;
