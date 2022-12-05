@@ -1,4 +1,3 @@
-import json
 from datetime import date, timedelta, datetime
 
 
@@ -46,8 +45,11 @@ def calculate_user_nutrition_demand(user_profile):
 
 
 def edit_info_parameter_by_type(user_profile, parameter, value):
-    print(parameter, value)
-    type_json = {}
+    now = datetime.now()
+    today_date = now.strftime('%d-%m-%Y')
+    new_entry = {
+        f'{today_date}': value
+    }
     if parameter == 'height':
         user_profile.height = value
         user_profile.save()
@@ -57,20 +59,26 @@ def edit_info_parameter_by_type(user_profile, parameter, value):
         user_profile.save()
         return
     elif parameter == 'fname':
-        print(user_profile.user.first_name)
         user_profile.user.first_name = str(value)
-        user_profile.save()
+        user_profile.user.save()
         return
     elif parameter == 'lname':
         user_profile.user.last_name = str(value)
-        user_profile.save()
+        user_profile.user.save()
         return
     elif parameter == 'age':
         user_profile.years_old = value
         user_profile.save()
         return
     elif parameter == 'weight-goal':
-        user_profile.weight_goal = value
+        translated_goal = value
+        if value == 'Utrzymać wagę' or value == 'Maintain Weight':
+            translated_goal = 'maintain-weight'
+        elif value == 'Przybrać na wadze' or value == 'Gain Weight':
+            translated_goal = 'gain-weight'
+        elif value == 'Schudnąć' or value == 'Lose Weight':
+            translated_goal = 'lose-weight'
+        user_profile.goal_weight = translated_goal
         user_profile.save()
         return
     elif parameter == 'goal-kg':
@@ -78,33 +86,134 @@ def edit_info_parameter_by_type(user_profile, parameter, value):
         user_profile.save()
         return
     elif parameter == 'activity':
-        user_profile.activity_level = value
+        translated_goal = value
+        if value == 'Nieaktywny' or value == 'Not active':
+            translated_goal = 'not-active'
+        elif value == 'Lekko aktywny' or value == 'Lightly active':
+            translated_goal = 'lightly-active'
+        elif value == 'Aktywny' or value == 'Active':
+            translated_goal = 'active'
+        elif value == 'Very active' or value == 'Bardzo aktywny':
+            translated_goal = 'very-active'
+        user_profile.activity_level = translated_goal
         user_profile.save()
         return
     elif parameter == 'chest':
         type_json = user_profile.chest_json
+        if len(type_json) == 0:
+            type_json['changes'] = []
+            type_json['changes'].append(new_entry)
+            user_profile.chest_json = type_json
+        else:
+            changes = user_profile.chest_json['changes']
+            for change in changes:
+                if today_date in change:
+                    changes.pop()
+            changes.append(new_entry)
+            user_profile.chest_json = type_json
     elif parameter == 'biceps':
         type_json = user_profile.biceps_json
+        if len(type_json) == 0:
+            type_json['changes'] = []
+            type_json['changes'].append(new_entry)
+            user_profile.biceps_json = type_json
+        else:
+            changes = user_profile.biceps_json['changes']
+            for change in changes:
+                if today_date in change:
+                    changes.pop()
+            changes.append(new_entry)
+            user_profile.biceps_json = type_json
     elif parameter == 'waist':
         type_json = user_profile.waist_json
+        if len(type_json) == 0:
+            type_json['changes'] = []
+            type_json['changes'].append(new_entry)
+            user_profile.waist_json = type_json
+        else:
+            changes = user_profile.waist_json['changes']
+            for change in changes:
+                if today_date in change:
+                    changes.pop()
+            changes.append(new_entry)
+            user_profile.waist_json = type_json
     elif parameter == 'hips':
         type_json = user_profile.hips_json
+        if len(type_json) == 0:
+            type_json['changes'] = []
+            type_json['changes'].append(new_entry)
+            user_profile.hips_json = type_json
+        else:
+            changes = user_profile.hips_json['changes']
+            for change in changes:
+                if today_date in change:
+                    changes.pop()
+            changes.append(new_entry)
+            user_profile.hips_json = type_json
     elif parameter == 'calves':
         type_json = user_profile.calves_json
+        if len(type_json) == 0:
+            type_json['changes'] = []
+            type_json['changes'].append(new_entry)
+            user_profile.calves_json = type_json
+        else:
+            changes = user_profile.calves_json['changes']
+            for change in changes:
+                if today_date in change:
+                    changes.pop()
+            changes.append(new_entry)
+            user_profile.calves_json = type_json
     elif parameter == 'thighs':
         type_json = user_profile.thighs_json
+        if len(type_json) == 0:
+            type_json['changes'] = []
+            type_json['changes'].append(new_entry)
+            user_profile.thighs_json = type_json
+        else:
+            changes = user_profile.thighs_json['changes']
+            for change in changes:
+                if today_date in change:
+                    changes.pop()
+            changes.append(new_entry)
+            user_profile.thighs_json = type_json
     elif parameter == 'neck':
         type_json = user_profile.neck_json
+        if len(type_json) == 0:
+            type_json['changes'] = []
+            type_json['changes'].append(new_entry)
+            user_profile.neck_json = type_json
+        else:
+            changes = user_profile.neck_json['changes']
+            for change in changes:
+                if today_date in change:
+                    changes.pop()
+            changes.append(new_entry)
+            user_profile.neck_json = type_json
     elif parameter == 'wrists':
         type_json = user_profile.wrists_json
+        if len(type_json) == 0:
+            type_json['changes'] = []
+            type_json['changes'].append(new_entry)
+            user_profile.wrists_json = type_json
+        else:
+            changes = user_profile.wrists_json['changes']
+            for change in changes:
+                if today_date in change:
+                    changes.pop()
+            changes.append(new_entry)
+            user_profile.wrists_json = type_json
     elif parameter == 'shoulders':
         type_json = user_profile.shoulders_json
-    now = datetime.now()
-    today_date = f"{now.day}-{now.month}-{now.year}"
-    new_entry = {
-        f'{today_date}': value
-    }
-    type_json.append(new_entry)
+        if len(type_json) == 0:
+            type_json['changes'] = []
+            type_json['changes'].append(new_entry)
+            user_profile.shoulders_json = type_json
+        else:
+            changes = user_profile.shoulders_json['changes']
+            for change in changes:
+                if today_date in change:
+                    changes.pop()
+            changes.append(new_entry)
+            user_profile.shoulders_json = type_json
 
-
-
+    user_profile.save()

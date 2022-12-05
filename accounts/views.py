@@ -140,7 +140,7 @@ def get_user_personal_info(request):
         level = user_profile.activity_level
         if lang_code == 'pl':
             if goal == 'gain-weight':
-                translated_goal = 'Przytyć'
+                translated_goal = 'Przybrać na wadze'
             elif goal == 'lose-weight':
                 translated_goal = 'Schudnąć'
             elif goal == 'maintain-weight':
@@ -219,50 +219,50 @@ def get_user_body_measures(request):
         shoulders_cm = 0
         change_shoulders = 0
         if chest_json:
-            chest_cm = list(chest_json[0].values())[0]
-            if len(chest_json) > 1:
-                prev_cm = list(chest_json[1].values())[0]
+            chest_cm = list(chest_json['changes'][-1].values())[0]
+            if len(chest_json['changes']) > 1:
+                prev_cm = list(chest_json['changes'][-2].values())[0]
                 change_chest = float(chest_cm) - float(prev_cm)
         if biceps_json:
-            biceps_cm = list(biceps_json[0].values())[0]
-            if len(biceps_json) > 1:
-                prev_cm = list(biceps_json[1].values())[0]
-                change_biceps = float(chest_cm) - float(prev_cm)
+            biceps_cm = list(biceps_json['changes'][-1].values())[0]
+            if len(biceps_json['changes']) > 1:
+                prev_cm = list(biceps_json['changes'][-2].values())[0]
+                change_biceps = float(biceps_cm) - float(prev_cm)
         if waist_json:
-            waist_cm = list(waist_json[0].values())[0]
-            if len(waist_json) > 1:
-                prev_cm = list(waist_json[1].values())[0]
-                change_waist = float(chest_cm) - float(prev_cm)
+            waist_cm = list(waist_json['changes'][-1].values())[0]
+            if len(waist_json['changes']) > 1:
+                prev_cm = list(waist_json['changes'][-2].values())[0]
+                change_waist = float(waist_cm) - float(prev_cm)
         if hips_json:
-            hips_cm = list(hips_json[0].values())[0]
-            if len(hips_json) > 1:
-                prev_cm = list(hips_json[1].values())[0]
-                change_hips = float(chest_cm) - float(prev_cm)
+            hips_cm = list(hips_json['changes'][-1].values())[0]
+            if len(hips_json['changes']) > 1:
+                prev_cm = list(hips_json['changes'][-2].values())[0]
+                change_hips = float(hips_cm) - float(prev_cm)
         if calves_json:
-            calves_cm = list(calves_json[0].values())[0]
-            if len(calves_json) > 1:
-                prev_cm = list(calves_json[1].values())[0]
-                change_calves = float(chest_cm) - float(prev_cm)
+            calves_cm = list(calves_json['changes'][-1].values())[0]
+            if len(calves_json['changes']) > 1:
+                prev_cm = list(calves_json['changes'][-2].values())[0]
+                change_calves = float(hips_cm) - float(prev_cm)
         if thighs_json:
-            thighs_cm = list(thighs_json[0].values())[0]
-            if len(thighs_json) > 1:
-                prev_cm = list(thighs_json[1].values())[0]
-                change_thighs = float(chest_cm) - float(prev_cm)
+            thighs_cm = list(thighs_json['changes'][-1].values())[0]
+            if len(thighs_json['changes']) > 1:
+                prev_cm = list(thighs_json['changes'][-2].values())[0]
+                change_thighs = float(thighs_cm) - float(prev_cm)
         if neck_json:
-            neck_cm = list(neck_json[0].values())[0]
-            if len(neck_json) > 1:
-                prev_cm = list(neck_json[1].values())[0]
-                change_neck = float(chest_cm) - float(prev_cm)
+            neck_cm = list(neck_json['changes'][-1].values())[0]
+            if len(neck_json['changes']) > 1:
+                prev_cm = list(neck_json['changes'][-2].values())[0]
+                change_neck = float(neck_cm) - float(prev_cm)
         if wrists_json:
-            wrists_cm = list(wrists_json[0].values())[0]
-            if len(wrists_json) > 1:
-                prev_cm = list(wrists_json[1].values())[0]
-                change_wrists = float(chest_cm) - float(prev_cm)
+            wrists_cm = list(wrists_json['changes'][-1].values())[0]
+            if len(wrists_json['changes']) > 1:
+                prev_cm = list(wrists_json['changes'][-2].values())[0]
+                change_wrists = float(wrists_cm) - float(prev_cm)
         if shoulders_json:
-            shoulders_cm = list(shoulders_json[0].values())[0]
-            if len(shoulders_json) > 1:
-                prev_cm = list(shoulders_json[1].values())[0]
-                change_shoulders = float(chest_cm) - float(prev_cm)
+            shoulders_cm = list(shoulders_json['changes'][-1].values())[0]
+            if len(shoulders_json['changes']) > 1:
+                prev_cm = list(shoulders_json['changes'][-2].values())[0]
+                change_shoulders = float(shoulders_cm) - float(prev_cm)
 
         data = {
             'chest': chest_cm,
