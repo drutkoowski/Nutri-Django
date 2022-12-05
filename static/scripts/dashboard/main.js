@@ -129,7 +129,7 @@ const getDataWeeklyChart = () => {
              const data = JSON.parse(response.data)
              const weeklyKcalArr = []
              data.forEach(day => {
-                 weeklyKcalArr.push(day.dayKcal)
+                 weeklyKcalArr.push(Math.round(day.dayKcal))
              })
              const averageKcal = weeklyKcalArr.reduce((a, b) => a + b, 0) / weeklyKcalArr.length;
              let xValuesWeekGraph
@@ -139,15 +139,15 @@ const getDataWeeklyChart = () => {
              else {
                  xValuesWeekGraph = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
              }
-             // average line
-             // average line
+
              let dataWeekGraph = {
-                 labels: xValuesWeekGraph,
-                 datasets: [{
-                     data: weeklyKcalArr,
+                 labels: [...xValuesWeekGraph],
+                 datasets: [
+                     {
+                     data: [...weeklyKcalArr],
                      borderColor: "green",
                      lineTension: 1,
-                     tension: 0.8,
+                     tension: 1,
                      pointRadius: 0,
                      borderWidth: 4,
                      pointHoverRadius: 0,
@@ -171,6 +171,11 @@ const getDataWeeklyChart = () => {
                  type: 'line',
                  data: dataWeekGraph,
                  options: {
+                      scales: {
+                        y: {
+                            beginAtZero: true,
+                        }
+                    },
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: {
@@ -185,6 +190,11 @@ const getDataWeeklyChart = () => {
                     }
                 },
             });
+
+             weeklyKcalArr.forEach(kcal => {
+                 weekChartBox.data.datasets[0].data.push(kcal)
+             })
+             weekChartBox.update()
          },
      })
 }
@@ -291,8 +301,8 @@ let detailsColors = []
 
 
 window.onresize = function(){ location.reload(); }
-
-const todayDate = new Date().toLocaleDateString()
+const localeDateFormat = window.location.href.split('/')[3] === 'pl' ? 'pl-PL' : 'en-US'
+const todayDate = new Date().toLocaleDateString(`${localeDateFormat}`)
 const graphDate = document.querySelector('.graph-date')
 graphDate.textContent = `${gettext('Summary')} ${todayDate}`
 

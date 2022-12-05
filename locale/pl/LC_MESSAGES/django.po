@@ -322,7 +322,7 @@ msgstr "Cel wagowy"
 #: .\templates\accounts\measurements.html:64
 #: .\templates\accounts\signup.html:29
 msgid "Gain Weight"
-msgstr "Przybrać na wadze"
+msgstr "Przytyć"
 
 #: .\templates\accounts\measurements.html:65
 #: .\templates\accounts\signup.html:30

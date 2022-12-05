@@ -140,7 +140,7 @@ def get_user_personal_info(request):
         level = user_profile.activity_level
         if lang_code == 'pl':
             if goal == 'gain-weight':
-                translated_goal = 'Przybrać na wadze'
+                translated_goal = 'Przytyć'
             elif goal == 'lose-weight':
                 translated_goal = 'Schudnąć'
             elif goal == 'maintain-weight':
@@ -601,6 +601,7 @@ def get_graph_stats_info_weekly(request):
             'eatenFatsPercent': weekly_fats_percentages,
             'workoutDurations': weekly_workout_duration
         }
+        print(json.dumps(stats_info_dict_weekly))
         return JsonResponse(
             {'status': 200, 'text': 'Operation successful.', 'data': json.dumps(stats_info_dict_weekly)})
 

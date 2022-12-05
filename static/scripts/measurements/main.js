@@ -4,6 +4,7 @@ const csrf = document.getElementsByName('csrfmiddlewaretoken')
 const csrfToken = csrf[0].value
 let isChanged = false
 let allowedGoal
+let goalWeightConst
 // sidebar
 const fullNameSidebar = document.querySelector('.dashboard__sidebar__name')
 const usernameSidebar = document.querySelector('.dashboard__sidebar__username')
@@ -90,6 +91,7 @@ const buttonEditListener = () => {
         const editArr = []
         const url = window.location.origin + `/${langPrefix}/data/update/user-parameters`
         const inputElementsAll = document.querySelectorAll('.measurements__input-element')
+        const loader = document.querySelector('.loader-message')
         inputElementsAll.forEach(input => {
             const value = input.value
             const type = input.dataset.type
@@ -106,12 +108,31 @@ const buttonEditListener = () => {
                 'data': JSON.stringify(editArr),
                 'csrfmiddlewaretoken': csrfToken
             },
+            beforeSend: function (){
+                loader.classList.remove('not-visible')
+                loader.style.transition = 'unset'
+                loader.style.opacity = '0.95'
+                const loaderMsg = document.querySelector('.loader-message__message')
+                const divParent = loaderMsg.parentElement.getBoundingClientRect()
+                loaderMsg.innerHTML = gettext('Updating Profile')
+                const loaderY = (loaderMsg.getBoundingClientRect().left) - divParent.left + 37.5 - loaderMsg.clientWidth / 2;
+                loaderMsg.style.left = `${loaderY}px`
+            },
             success: function (response){
                 if (response.status === 200){
                     getBodyInfo()
                     getPersonalInfo()
                     getMeasurementInfo()
                 }
+            },
+             complete: function (res){
+                 setTimeout(function (){
+                    const loaderMsg = document.querySelector('.loader-message__message')
+                    loaderMsg.innerHTML = ''
+                    loader.classList.add('not-visible')
+                    loader.style.removeProperty('transition')
+                    loader.style.removeProperty('opacity')
+                }, 1512100)
             }
         })
     })
@@ -144,6 +165,7 @@ const getPersonalInfo = () => {
             weightKgInput.value = data.goalKg
             weightGoalInput.value = String(data.weightGoal)
             activityInput.value = String(data.activityLevel)
+            goalWeightConst = String(data.weightGoal)
             // sidebar
             fullNameSidebar.innerHTML = `${data.firstName} ${data.lastName}`
             usernameSidebar.innerHTML = data.username
@@ -161,7 +183,7 @@ const getPersonalInfo = () => {
             yearsSidebar.innerHTML = `${data.age} ${gettext('years old')}`
             heightSidebar.innerHTML = `${data.height} cm`
             weightSidebar.innerHTML = `${data.weight} kg`
-            goalSidebar.innerHTML = `${gettext('Your Goal')}: ${data.weightGoal}`
+            goalSidebar.innerHTML = `${gettext('Your Goal')}: ${data.weightGoal} (${data.goalKg} kg)`
             activitySidebar.innerHTML = `${gettext('Activity')}: ${data.activityLevel}`
         },
     })
@@ -218,6 +240,19 @@ const checkSelectedGoal = () => {
     else if (weight === weightGoalKG){
         allowedGoal = gettext('Maintain Weight')
     }
+    else {
+        allowedGoal = goalWeightConst
+    }
+
+    // if (weightGoalKG < 30){
+    //     goalSidebar.innerHTML = `${gettext("Your goal")}: ${allowedGoal} (30 kg)`
+    // }
+    // else if (weightGoalKG > 300){
+    //     goalSidebar.innerHTML = `${gettext("Your goal")}: ${allowedGoal} (300 kg)`
+    // }
+    // else {
+    //     goalSidebar.innerHTML = `${gettext("Your goal")}: ${allowedGoal} (${weightGoalKG} kg)`
+    // }
     weightGoalInput.value = String(allowedGoal)
 }
 

@@ -67,13 +67,13 @@ if ((location.href !== location.origin + '/pl' || location.href !== location.ori
 
 }
 if (location.href !== location.origin + '/pl' || location.href !== location.origin + '/en' || location.href !== location.origin + '/pl/' || location.href !== location.origin + '/en/'){
-
     const gainsVideo = document.getElementById('gains-video')
     const goalsVideo = document.getElementById('goals-video')
     if (gainsVideo && goalsVideo) {
         gainsVideo.playbackRate = 0.75;
         goalsVideo.playbackRate = 0.75;
     }
+
     const hamburgerNav = document.querySelector('#navi-toggle')
     const navigationList = document.getElementsByClassName('navigation__list')[0]
      hamburgerNav.addEventListener('click', () => {
@@ -96,6 +96,7 @@ if (location.href !== location.origin + '/pl' || location.href !== location.orig
     })
 }
 else {
+    console.log('eaea')
     const gainsVideo = document.getElementById('gains-video')
     const goalsVideo = document.getElementById('goals-video')
     if (gainsVideo && goalsVideo) {
@@ -121,3 +122,11 @@ else {
     })
 }
 
+if (location.href === location.origin + '/pl/' || location.href === location.origin + '/en/'){
+    const dateFooter = document.querySelector('.footer__copyright')
+    const todayYear = new Date().getFullYear()
+    const appendFooterContent = `
+     Copyright &copy; ${todayYear}<span class="header__nutri-dot">.</span> All rights reserved<span class="header__nutri-dot">.</span>
+    `
+    dateFooter.insertAdjacentHTML('beforeend', appendFooterContent)
+}

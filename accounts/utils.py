@@ -74,7 +74,7 @@ def edit_info_parameter_by_type(user_profile, parameter, value):
         translated_goal = value
         if value == 'Utrzymać wagę' or value == 'Maintain Weight':
             translated_goal = 'maintain-weight'
-        elif value == 'Przybrać na wadze' or value == 'Gain Weight':
+        elif value == 'Przytyć' or value == 'Gain Weight':
             translated_goal = 'gain-weight'
         elif value == 'Schudnąć' or value == 'Lose Weight':
             translated_goal = 'lose-weight'

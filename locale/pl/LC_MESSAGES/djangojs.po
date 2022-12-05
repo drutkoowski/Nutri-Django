@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-05 14:53+0100\n"
+"POT-Creation-Date: 2022-12-05 19:47+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -348,7 +348,7 @@ msgstr "Spalone"
 #: .\static\scripts\activity-calendar\activity-calendar.js:55
 #: .\static\scripts\activity-calendar\activity-calendar.js:164
 #: .\static\scripts\activity-calendar\activity-calendar.js:175
-#: .\static\scripts\dashboard\main.js:240
+#: .\static\scripts\dashboard\main.js:250
 #: .\static\scripts\dashboard\stats.js:137
 #: .\static\scripts\dashboard\stats.js:276
 msgid "Carbs"
@@ -357,14 +357,14 @@ msgstr "Węglowodany"
 #: .\static\scripts\activity-calendar\activity-calendar.js:56
 #: .\static\scripts\activity-calendar\activity-calendar.js:164
 #: .\static\scripts\activity-calendar\activity-calendar.js:173
-#: .\static\scripts\dashboard\main.js:240
+#: .\static\scripts\dashboard\main.js:250
 #: .\static\scripts\dashboard\stats.js:104
 #: .\static\scripts\dashboard\stats.js:243
 msgid "Protein"
 msgstr "Białko"
 
 #: .\static\scripts\activity-calendar\activity-calendar.js:57
-#: .\static\scripts\dashboard\main.js:240
+#: .\static\scripts\dashboard\main.js:250
 #: .\static\scripts\dashboard\stats.js:125
 #: .\static\scripts\dashboard\stats.js:264
 msgid "Fats"
@@ -399,15 +399,15 @@ msgstr "Czas trwania"
 msgid "You have not added any activities on this day"
 msgstr "Nie dodałeś żadnych aktywności dla tego dnia"
 
-#: .\static\scripts\dashboard\main.js:240
+#: .\static\scripts\dashboard\main.js:250
 msgid "Kcal Goal"
 msgstr "Cel kaloryczny"
 
-#: .\static\scripts\dashboard\main.js:257
+#: .\static\scripts\dashboard\main.js:267
 msgid "Percent (%)"
 msgstr "Procent (%)"
 
-#: .\static\scripts\dashboard\main.js:297
+#: .\static\scripts\dashboard\main.js:307
 msgid "Summary"
 msgstr "Podsumowanie"
 
@@ -549,17 +549,36 @@ msgstr "Dodaj nowy element dla swojego posiłku"
 msgid "Edit Meal"
 msgstr "Edytuj Posiłek"
 
-#: .\static\scripts\measurements\main.js:162
+#: .\static\scripts\measurements\main.js:163
 msgid "years old"
 msgstr "lat"
 
-#: .\static\scripts\measurements\main.js:165
+#: .\static\scripts\measurements\main.js:167
 msgid "Your Goal"
 msgstr "Twój Cel"
 
-#: .\static\scripts\measurements\main.js:166
+#: .\static\scripts\measurements\main.js:168
 msgid "Activity"
 msgstr "Aktywności"
+
+#: .\static\scripts\measurements\main.js:216
+#: .\static\scripts\signup\main.js:159
+msgid "Lose Weight"
+msgstr "Schudnąć"
+
+#: .\static\scripts\measurements\main.js:219
+#: .\static\scripts\signup\main.js:157
+msgid "Gain Weight"
+msgstr "Przytyć"
+
+#: .\static\scripts\measurements\main.js:222
+#: .\static\scripts\signup\main.js:158
+msgid "Maintain Weight"
+msgstr "Utrzymać wagę"
+
+#: .\static\scripts\measurements\main.js:229
+msgid "Your goal"
+msgstr "Twój Cel"
 
 #: .\static\scripts\recipes\ideas\main.js:22
 #: .\static\scripts\recipes\ideas\main.js:167
@@ -625,18 +644,6 @@ msgstr "Poziom trudności: "
 #: .\static\scripts\signup\main.js:155
 msgid "\"What's your weight goal?\""
 msgstr "Jaki jest Twój cel wagowy?"
-
-#: .\static\scripts\signup\main.js:157
-msgid "Gain Weight"
-msgstr "Przybrać na wadze"
-
-#: .\static\scripts\signup\main.js:158
-msgid "Maintain Weight"
-msgstr "Utrzymać wagę"
-
-#: .\static\scripts\signup\main.js:159
-msgid "Lose Weight"
-msgstr "Schudnąć"
 
 #: .\static\scripts\signup\main.js:163
 msgid "What's your activity level?"

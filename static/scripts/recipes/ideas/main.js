@@ -93,56 +93,60 @@ inputIngredientsBtn.addEventListener('click', () => {
         const langPrefix = window.location.href.split('/')[3];
         const url = location.origin + `/${langPrefix}/recipes/get-recipes-by-ingredients`
         let functionTimeExecutionCounter
+        let isCenteredOne = false
+        let isCenteredTwo = false
+        let isCenteredThree = false
+        let isCenteredFour = false
+        let isCenteredFive = false
         $.ajax({
-        type: 'POST',
-        url: url,
-        data: {
-             'ingredients': JSON.stringify(array),
-             'ingredientsString': JSON.stringify(inputValue),
-             'focusOn': focusValue,
-             'blockedSuggestionsArray': JSON.stringify(alreadySeenApiRecipes),
-             'blockedDbSuggestionsArray': JSON.stringify(alreadySeenDbRecipes),
-             'csrfmiddlewaretoken': csrfToken
+            type: 'POST',
+            url: url,
+            data: {
+                 'ingredients': JSON.stringify(array),
+                 'ingredientsString': JSON.stringify(inputValue),
+                 'focusOn': focusValue,
+                 'blockedSuggestionsArray': JSON.stringify(alreadySeenApiRecipes),
+                 'blockedDbSuggestionsArray': JSON.stringify(alreadySeenDbRecipes),
+                 'csrfmiddlewaretoken': csrfToken
         },
         beforeSend: function (){
-          const loaderMsg = document.querySelector('.loader-message__message')
           let start = new Date().getTime();
           functionTimeExecutionCounter = setInterval(function (){
+            const loaderMsg = document.querySelector('.loader-message__message')
+            const divParent = loaderMsg.parentElement.getBoundingClientRect()
             let end = new Date().getTime();
             let time = (end - start) / 1000;
             if (time >= 1 && time < 4){
                 loaderMsg.innerHTML = gettext('Searching for recipes in our database')
-                if (langPrefix === 'pl'){
-                    loaderMsg.style.left = '-6.5rem'
-                }
+                loaderMsg.style.removeProperty('left')
+                const loaderY = (loaderMsg.getBoundingClientRect().left) - divParent.left + 37.5 - loaderMsg.clientWidth / 2;
+                loaderMsg.style.left = `${loaderY}px`
             }
             else if (time >= 4 && time < 10){
                 loaderMsg.innerHTML = gettext('Searching for recipes into the web')
-                if (langPrefix === 'pl') {
-                    loaderMsg.style.left = '-6.5rem'
-                }
-                else {
-                    loaderMsg.style.left = '-4.5rem'
-                }
+                loaderMsg.style.removeProperty('left')
+                const loaderY = (loaderMsg.getBoundingClientRect().left) - divParent.left + 37.5 - loaderMsg.clientWidth / 2;
+                loaderMsg.style.left = `${loaderY}px`
             }
             else if (time >= 10 && time < 14){
                 loaderMsg.innerHTML = gettext('Translating and formatting recipes')
-                 if (langPrefix === 'pl') {
-                    loaderMsg.style.left = '-7.5rem'
-                }
+                loaderMsg.style.removeProperty('left')
+                const loaderY = (loaderMsg.getBoundingClientRect().left) - divParent.left + 37.5 - loaderMsg.clientWidth / 2;
+                loaderMsg.style.left = `${loaderY}px`
 
             }
             else if (time >= 14 && time < 40){
                 loaderMsg.innerHTML = gettext('It takes longer than usual, be patient')
-                 if (langPrefix === 'pl') {
-                    loaderMsg.style.left = '-7.5rem'
-                }
-                else {
-                    loaderMsg.style.left = '-4rem'
-                }
+                loaderMsg.style.removeProperty('left')
+                const loaderY = (loaderMsg.getBoundingClientRect().left) - divParent.left + 37.5 - loaderMsg.clientWidth / 2;
+                loaderMsg.style.left = `${loaderY}px`
+
             }
             else if (time >= 40){
                 loaderMsg.innerHTML = gettext('Something went wrong...')
+                loaderMsg.style.removeProperty('left')
+                const loaderY = (loaderMsg.getBoundingClientRect().left) - divParent.left + 37.5 - loaderMsg.clientWidth / 2;
+                loaderMsg.style.left = `${loaderY}px`
             }
           }, 1000)
         },
