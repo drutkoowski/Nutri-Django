@@ -46,6 +46,7 @@ def calculate_user_nutrition_demand(user_profile):
 
 
 def edit_info_parameter_by_type(user_profile, parameter, value):
+    print(parameter, value)
     type_json = {}
     if parameter == 'height':
         user_profile.height = value
@@ -56,11 +57,12 @@ def edit_info_parameter_by_type(user_profile, parameter, value):
         user_profile.save()
         return
     elif parameter == 'fname':
-        user_profile.first_name = value
+        print(user_profile.user.first_name)
+        user_profile.user.first_name = str(value)
         user_profile.save()
         return
     elif parameter == 'lname':
-        user_profile.last_name = value
+        user_profile.user.last_name = str(value)
         user_profile.save()
         return
     elif parameter == 'age':
@@ -102,9 +104,7 @@ def edit_info_parameter_by_type(user_profile, parameter, value):
     new_entry = {
         f'{today_date}': value
     }
-    print(type_json)
-    print(new_entry)
     type_json.append(new_entry)
-    print('x', type_json)
+
 
 

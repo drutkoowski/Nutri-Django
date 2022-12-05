@@ -4228,6 +4228,8 @@ div.modal--calendar__content-summary {
     animation-duration: 2s;
     animation-timing-function: ease-out;
     position: relative; }
+    .measurements__welcome-text h1 {
+      margin-top: 1rem; }
     @media only screen and (max-width: 75em) {
       .measurements__welcome-text {
         grid-column: 1/2;
@@ -4291,10 +4293,6 @@ div.modal--calendar__content-summary {
           vertical-align: text-bottom;
           margin-top: 2px;
           margin-left: 0.5rem; }
-        .measurements__body-info__item div button {
-          padding: 0.75rem 1.5rem;
-          margin-left: 2rem;
-          vertical-align: text-top; }
   .measurements__personal-info {
     grid-row: 3 / 4;
     grid-column: 1/-1;
@@ -4330,10 +4328,6 @@ div.modal--calendar__content-summary {
           vertical-align: text-bottom;
           margin-top: 2px;
           margin-left: 0.5rem; }
-        .measurements__personal-info__item div button {
-          padding: 0.75rem 1.5rem;
-          margin-left: 2rem;
-          vertical-align: text-top; }
   .measurements__measurements {
     grid-row: 4 / 5;
     grid-column: 1/-1;
@@ -4369,15 +4363,10 @@ div.modal--calendar__content-summary {
           vertical-align: text-bottom;
           margin-top: 2px;
           margin-left: 0.5rem; }
-        .measurements__measurements__item div button {
-          padding: 0.75rem 1.5rem;
-          margin-left: 2rem;
-          vertical-align: text-top; }
 
 .measurements__input-element {
   width: 7rem;
   height: 2rem;
-  display: inline-block;
   border-radius: 10px;
   outline: none;
   border: 1px solid white;
@@ -4386,6 +4375,31 @@ div.modal--calendar__content-summary {
   font-weight: bold;
   margin: auto 0;
   font-size: 1rem; }
+
+.measurements__input-element__disabled {
+  width: 7rem;
+  height: 2rem;
+  border-radius: 10px;
+  outline: none;
+  border: 1px solid white;
+  text-align: center;
+  color: var(--green-darker);
+  font-weight: bold;
+  margin: auto 0;
+  font-size: 1rem; }
+
+.btn-light__container {
+  animation-name: fade-bottom;
+  animation-duration: 2s;
+  animation-timing-function: ease-out;
+  transition: all .2s ease-in; }
+  .btn-light__container button {
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    display: block;
+    margin-left: auto;
+    margin-right: 2rem; }
 
 .meals-layout-container {
   width: 100vw;

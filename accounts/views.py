@@ -294,10 +294,10 @@ def get_user_body_measures(request):
 def update_user_parameter(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
         user_profile = UserProfile.objects.get(user=request.user)
-        value = request.POST.get('value')
-        edit_type = request.POST.get('type')
-        edit_info_parameter_by_type(user_profile, edit_type, value)
-        return JsonResponse({'status': 405, 'text': 'Method not allowed.', 'data': ''})
+        data = json.loads(request.POST.get('data'))
+        for element in data:
+            edit_info_parameter_by_type(user_profile, element['type'], element['value'])
+        return JsonResponse({'status': 200, 'text': 'Edit Information Deleted'})
 
 
 @login_required(login_url='login')

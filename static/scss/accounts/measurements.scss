@@ -46,6 +46,9 @@
       animation-duration: 2s;
       animation-timing-function: ease-out;
       position: relative;
+      h1{
+        margin-top: 1rem;
+      }
       @include respond(tab-land) {
         grid-column: 1/2;
         grid-row: 2/3;
@@ -116,11 +119,6 @@
             margin-top: 2px;
             margin-left: 0.5rem;
           }
-          button {
-            padding: 0.75rem 1.5rem;
-            margin-left: 2rem;
-            vertical-align: text-top;
-          }
         }
       }
 
@@ -164,11 +162,6 @@
             margin-top: 2px;
             margin-left: 0.5rem;
           }
-          button {
-            padding: 0.75rem 1.5rem;
-            margin-left: 2rem;
-            vertical-align: text-top;
-          }
         }
       }
     }
@@ -211,11 +204,7 @@
             margin-top: 2px;;
             margin-left: 0.5rem;
           }
-          button {
-            padding: 0.75rem 1.5rem;
-            margin-left: 2rem;
-            vertical-align: text-top;
-          }
+
         }
       }
     }
@@ -224,7 +213,6 @@
 .measurements__input-element{
    width: 7rem;
    height: 2rem;
-   display: inline-block;
    border-radius: 10px;
    outline: none;
    border: 1px solid white;
@@ -233,4 +221,33 @@
    font-weight: bold;
    margin: auto 0;
    font-size: 1rem;
+}
+
+.measurements__input-element__disabled {
+   width: 7rem;
+   height: 2rem;
+   border-radius: 10px;
+   outline: none;
+   border: 1px solid white;
+   text-align: center;
+   color: var(--green-darker);
+   font-weight: bold;
+   margin: auto 0;
+   font-size: 1rem;
+}
+
+
+.btn-light__container{
+  animation-name: fade-bottom;
+  animation-duration: 2s;
+  animation-timing-function: ease-out;
+  transition: all .2s ease-in;
+    button {
+      padding: 1rem 2rem;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      display: block;
+      margin-left: auto;
+      margin-right: 2rem;
+    }
 }
