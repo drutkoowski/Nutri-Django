@@ -296,7 +296,7 @@ def get_recipes_by_ingredients(request):
                     similarity_percentage = (similarities / len(db_recipe.ingredients_pl)) * 100
                 else:
                     similarity_percentage = (similarities / len(ingredients_arr)) * 100
-                print(similarities, len(ingredients_arr),similarity_percentage)
+                # print(similarities, len(ingredients_arr),similarity_percentage)
                 if similarity_percentage > max_similarity_percentage and db_recipe.pk not in blocked_db_suggestions_ids:
                     max_similarity_percentage = similarity_percentage
                     suggested_db_recipe = db_recipe
@@ -308,10 +308,10 @@ def get_recipes_by_ingredients(request):
                     additional_db_recipe = db_recipe
 
             if additional_db_recipe is not None and len(suggested) < 2 and additional_db_recipe not in suggested:
-                print(additional_db_recipe.name_pl)
+                # print(additional_db_recipe.name_pl)
                 suggested.append(additional_db_recipe)
             if suggested_db_recipe is not None and len(suggested) < 2 and suggested_db_recipe not in suggested:
-                print(suggested_db_recipe.name_pl)
+                # print(suggested_db_recipe.name_pl)
                 suggested.append(suggested_db_recipe)
             if len(suggested) > 0:
                 for recipe in suggested:

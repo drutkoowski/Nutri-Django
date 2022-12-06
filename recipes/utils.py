@@ -1,14 +1,11 @@
-import json
 import random
-
 from decouple import config
 import requests
-
 from recipes.models import Recipe
 
-API_KEY = config('API_KEY')
+API_KEYS = [config('API_KEY'), config('API_KEY2')]
 HEADERS = {
-    "x-api-key": API_KEY,
+    "x-api-key": random.choice(API_KEYS),
     'includeNutrition': 'false'
 }
 
@@ -21,7 +18,10 @@ def get_spoonacular_recipe_by_ingredient(string: str, number: int, ranking: int,
         querystring = {"ingredients": string, "number": number, 'includeNutrition': 'false', 'ignorePantry': True,
                        'ranking': ranking}
         response = requests.request("GET", URL, headers=HEADERS, params=querystring)
+        if response.status_code == 401:
+            get_spoonacular_recipe_by_ingredient(string, number, ranking, blocked_ids)
         data = response.json()
+        print(API_KEYS, HEADERS)
         recipe_id = data[0]['id']
     else:
         URL = "https://api.spoonacular.com/recipes/findByIngredients"
