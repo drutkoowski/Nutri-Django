@@ -1,7 +1,7 @@
 from datetime import date, timedelta, datetime
 
 
-def date_for_weekday(day: int):
+def date_for_weekday(day: int) -> str:
     today = date.today()
     # weekday returns the offsets 0-6
     # If you need 1-7, use isoweekday
@@ -11,7 +11,7 @@ def date_for_weekday(day: int):
     return date_of_weekday
 
 
-def calculate_user_nutrition_demand(user_profile):
+def calculate_user_nutrition_demand(user_profile) -> float:
     goal_multiplier = 1.25
     if user_profile.activity_level == 'not-active':
         goal_multiplier = 1.25
@@ -44,7 +44,7 @@ def calculate_user_nutrition_demand(user_profile):
     return final_kcal_goal
 
 
-def edit_info_parameter_by_type(user_profile, parameter, value):
+def edit_info_parameter_by_type(user_profile, parameter: str, value: int) -> None:
     now = datetime.now()
     today_date = now.strftime('%d-%m-%Y')
     new_entry = {
@@ -56,6 +56,18 @@ def edit_info_parameter_by_type(user_profile, parameter, value):
         return
     elif parameter == 'weight':
         user_profile.weight = value
+        type_json = user_profile.weight_json
+        if len(type_json) == 0:
+            type_json['changes'] = []
+            type_json['changes'].append(new_entry)
+            user_profile.weight_json = type_json
+        else:
+            changes = user_profile.weight_json['changes']
+            for change in changes:
+                if today_date in change:
+                    changes.pop()
+            changes.append(new_entry)
+            user_profile.weight_json = type_json
         user_profile.save()
         return
     elif parameter == 'fname':
@@ -217,3 +229,124 @@ def edit_info_parameter_by_type(user_profile, parameter, value):
             user_profile.shoulders_json = type_json
 
     user_profile.save()
+
+
+def get_measure_changes_yearly(user_profile) -> dict:
+    chest_json = user_profile.chest_json
+    changes_chest = []
+    weight_json = user_profile.weight_json
+    changes_weight = []
+    biceps_json = user_profile.biceps_json
+    changes_biceps = []
+    waist_json = user_profile.waist_json
+    changes_waist = []
+    hips_json = user_profile.hips_json
+    changes_hips = []
+    calves_json = user_profile.calves_json
+    changes_calves = []
+    thighs_json = user_profile.thighs_json
+    changes_thighs = []
+    neck_json = user_profile.neck_json
+    changes_neck = []
+    wrists_json = user_profile.wrists_json
+    changes_wrist = []
+    shoulders_json = user_profile.shoulders_json
+    changes_shoulders = []
+
+    def get_monthly_changes_avg(json_object, result_array, month_change) -> dict:
+        month_changes = []
+
+        if "changes" in json_object:
+            for item in json_object['changes']:
+                change_date = (list(item.keys())[0]).replace('-', ' ').split()
+                day = change_date[0]
+                month = change_date[1]
+                year = change_date[2]
+                if int(month) == month_change:
+                    month_changes.append(float(item[f'{day}-{month}-{year}']))
+            if len(month_changes) > 0:
+                month_avg = sum(month_changes) / len(month_changes)
+            else:
+                month_avg = 0
+                if month_avg == 0:
+                    try:
+                        x = result_array[month_change - 2]
+                        month_avg = x
+                    except:
+                        month_avg = 0
+            result_array.append(month_avg)
+        else:
+            result_array.append(0)
+
+    for i in range(1, 13):
+        get_monthly_changes_avg(chest_json, changes_chest, i)
+        get_monthly_changes_avg(weight_json, changes_weight, i)
+        get_monthly_changes_avg(biceps_json, changes_biceps, i)
+        get_monthly_changes_avg(waist_json, changes_waist, i)
+        get_monthly_changes_avg(hips_json, changes_hips, i)
+        get_monthly_changes_avg(calves_json, changes_calves, i)
+        get_monthly_changes_avg(thighs_json, changes_thighs, i)
+        get_monthly_changes_avg(neck_json, changes_neck, i)
+        get_monthly_changes_avg(wrists_json, changes_wrist, i)
+        get_monthly_changes_avg(shoulders_json, changes_shoulders, i)
+    return {
+        'changesChest': changes_chest,
+        'changesWeight': changes_weight,
+        'changesBiceps': changes_biceps,
+        'changesWaist': changes_waist,
+        'changesHips': changes_hips,
+        'changesCalves': changes_calves,
+        'changesThighs': changes_thighs,
+        'changesNeck': changes_neck,
+        'changesWrists': changes_wrist,
+        'changesShoulders': changes_shoulders
+    }
+
+
+def check_latest_change_value(change_json, month_num, year) -> float:
+    latest_value = 0
+    if 'changes' in change_json:
+        for y in change_json['changes']:
+            for key, value in y.items():
+                value_handler = value
+            date_str = (list(y.keys())[0]).replace('-', ' ').split()
+            if int(date_str[1]) < month_num and int(date_str[2]) <= year:
+                latest_value = value_handler
+    return float(latest_value)
+
+
+def get_changes_on_month(change_json) -> dict:
+    import datetime
+    import calendar
+    current_month_num = datetime.datetime.now().month
+    current_year = datetime.datetime.now().year
+    last_day_of_month = calendar.monthrange(current_year, current_month_num)[1]
+    current_day_of_month = f'0{datetime.datetime.now().day}' if datetime.datetime.now().day < 10 else datetime.datetime.now().day
+    weight_json = change_json
+    change_dict = {}
+    if 'changes' in weight_json:
+        changes_dates = []
+        changes_values = []
+        for i in weight_json['changes']:
+            for key, value in i.items():
+                value = value
+            date_str = (list(i.keys())[0]).replace('-', ' ').split()
+            if int(date_str[1]) == current_month_num:
+                changes_dates.append(f'{date_str[0]}-{date_str[1]}-{date_str[2]}')
+                changes_values.append(float(value))
+        # first day of month
+        if f"01-{current_month_num}-{current_year}" not in changes_dates:
+            latest_value = check_latest_change_value(change_json, current_month_num, current_year)
+            changes_values.insert(0, latest_value)
+            changes_dates.insert(0, f"01-{current_month_num}-{current_year}")
+        # last day of month
+        if f"{current_day_of_month}-{current_month_num}-{current_year}" not in changes_dates:
+            changes_values.append(changes_values[-1])
+            changes_dates.append(f"{current_day_of_month}-{current_month_num}-{current_year}")
+
+        change_dict = {
+            'datesArr': changes_dates,
+            'valuesArr': changes_values
+        }
+    print(change_dict)
+    return change_dict

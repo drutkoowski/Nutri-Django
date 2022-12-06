@@ -6,7 +6,8 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.db.models import Q
-from .utils import date_for_weekday, calculate_user_nutrition_demand, edit_info_parameter_by_type
+from .utils import date_for_weekday, calculate_user_nutrition_demand, edit_info_parameter_by_type, \
+    get_measure_changes_yearly, check_latest_change_value, get_changes_on_month
 from accounts.models import Account, UserProfile
 from meals.models import Meal
 from workouts.models import Workout
@@ -598,13 +599,42 @@ def get_graph_stats_info_weekly(request):
             'eatenFatsPercent': weekly_fats_percentages,
             'workoutDurations': weekly_workout_duration
         }
-        print(json.dumps(stats_info_dict_weekly))
         return JsonResponse(
             {'status': 200, 'text': 'Operation successful.', 'data': json.dumps(stats_info_dict_weekly)})
 
 
 @login_required(login_url='login')
 def get_graph_stats_info_monthly(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
+        user_profile = UserProfile.objects.get(user=request.user)
+
+        changes_weight = get_changes_on_month(user_profile.weight_json)
+        changes_chest = get_changes_on_month(user_profile.chest_json)
+        changes_biceps = get_changes_on_month(user_profile.biceps_json)
+        changes_waist = get_changes_on_month(user_profile.waist_json)
+        changes_hips = get_changes_on_month(user_profile.hips_json)
+        changes_calves = get_changes_on_month(user_profile.calves_json)
+        changes_thighs = get_changes_on_month(user_profile.thighs_json)
+        changes_neck = get_changes_on_month(user_profile.neck_json)
+        changes_wrists = get_changes_on_month(user_profile.wrists_json)
+        changes_shoulders = get_changes_on_month(user_profile.shoulders_json)
+        month_changes_dict = {
+            'changesWeight': changes_weight,
+            'changesChest': changes_chest,
+            'changesBiceps': changes_biceps,
+            'changesWaist': changes_waist,
+            'changesHips': changes_hips,
+            'changesCalves': changes_calves,
+            'changesThighs': changes_thighs,
+            'changesNeck': changes_neck,
+            'changesWrists': changes_wrists,
+            'changesShoulders': changes_shoulders
+        }
+        return JsonResponse({'status': 200, 'text': 'Operation successful.', 'data': json.dumps(month_changes_dict)})
+
+
+@login_required(login_url='login')
+def get_graph_stats_info_yearly(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
         user_profile = UserProfile.objects.get(user=request.user)
         from datetime import datetime
@@ -670,16 +700,16 @@ def get_graph_stats_info_monthly(request):
             else:
                 monthly_kcal_burnt.append(0)
                 monthly_duration_minutes.append(0)
-
-        stats_info_dict_monthly = {
+        changes_yearly = get_measure_changes_yearly(user_profile)
+        stats_info_dict_yearly = {
             'eatenKcal': monthly_kcal,
             'burntKcal': monthly_kcal_burnt,
             'eatenKcalPercent': monthly_kcal_percentages,
             'eatenProteinPercent': monthly_protein_percentages,
             'eatenCarbsPercent': monthly_carbs_percentages,
             'eatenFatsPercent': monthly_fats_percentages,
-            'workoutDurations': monthly_duration_minutes
-
+            'workoutDurations': monthly_duration_minutes,
+            'changes': changes_yearly
         }
         return JsonResponse(
-            {'status': 200, 'text': 'Operation successful.', 'data': json.dumps(stats_info_dict_monthly)})
+            {'status': 200, 'text': 'Operation successful.', 'data': json.dumps(stats_info_dict_yearly)})

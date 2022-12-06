@@ -26,4 +26,5 @@ urlpatterns = [
     path('data/get/get-dashboard-stats-info', views.get_dashboard_stats_info, name='get-dashboard-stats-info'),
     path('data/get/get-graph-stats-info-weekly', views.get_graph_stats_info_weekly, name='get-graph-stats-info-weekly'),
     path('data/get/get-graph-stats-info-monthly', views.get_graph_stats_info_monthly, name='get-graph-stats-info-monthly'),
+    path('data/get/get-graph-stats-info-yearly', views.get_graph_stats_info_yearly, name='get-graph-stats-info-yearly'),
 ]

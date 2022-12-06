@@ -132,7 +132,7 @@ const buttonEditListener = () => {
                     loader.classList.add('not-visible')
                     loader.style.removeProperty('transition')
                     loader.style.removeProperty('opacity')
-                }, 1512100)
+                }, 1500)
             }
         })
     })
