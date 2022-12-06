@@ -52,12 +52,13 @@
       }
     }
 
-
-    &__settings {
-      align-self: center;
-      margin-top: auto;
-    }
     &__log-out {
       align-self: center;
+      margin-top: auto;
+      font-weight: bold;
+      transition: all .3s ease-in;
+      &:hover {
+        transform: scale(1.05);
+      }
     }
   }

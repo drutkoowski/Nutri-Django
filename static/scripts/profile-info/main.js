@@ -1,5 +1,5 @@
 const langPrefix = window.location.href.split('/')[3];
-const editBtn = document.querySelector('.edit-measurements')
+const editBtn = document.querySelector('.edit-profile-info')
 const csrf = document.getElementsByName('csrfmiddlewaretoken')
 const csrfToken = csrf[0].value
 let isChanged = false
@@ -25,7 +25,7 @@ const ageInput = document.querySelector('.measurements__input-element__age')
 const weightGoalInput = document.querySelector('.measurements__input-element__weight-goal')
 const weightKgInput = document.querySelector('.measurements__input-element__goal-kg')
 const activityInput = document.querySelector('.measurements__input-element__activity')
-// measurements
+// profile-info
 const chestInput = document.querySelector('.measurements__input-element__chest')
 const bicepsInput = document.querySelector('.measurements__input-element__biceps')
 const waistInput = document.querySelector('.measurements__input-element__waist')

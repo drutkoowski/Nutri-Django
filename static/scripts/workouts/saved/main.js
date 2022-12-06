@@ -46,6 +46,7 @@ function hideModal(modalClass) {
          const modal = document.querySelector(`.${modalClass}`)
          modal.classList.add('not-visible')
          modal.style.removeProperty('display')
+         modal.style.removeProperty('zIndex')
     });
 }
 
@@ -372,6 +373,7 @@ const createNewWorkoutTemplate = (exercisesArr,workoutName) => {
                      if (status === 201) {
                          const modal = document.querySelector('.modal-queued')
                          modal.classList.toggle('not-visible')
+                         modal.style.zIndex = '22000'
                          const closeModalBtn = document.querySelector('.modal-queued__close-button')
                          closeModalBtn.addEventListener('click', () => {
                              window.location = window.location.href;
@@ -425,6 +427,7 @@ const saveNewWorkout = () => {
                 if (status === 201) {
                     const modal = document.querySelector('.modal-queued')
                     modal.classList.toggle('not-visible')
+                    modal.style.zIndex = '22000'
                     const closeModalBtn = document.querySelector('.modal-queued__close-button')
                     closeModalBtn.addEventListener('click', e => {
                         window.location = window.location.href;
@@ -470,6 +473,7 @@ const deleteWorkoutTemplate = (id) => {
             const status = response.status
             if (status === 200) {
                 const modal = document.querySelector('.modal-queued')
+                modal.style.zIndex = '22000'
                 modal.classList.toggle('not-visible')
                 const closeModalBtn = document.querySelector('.modal-queued__close-button')
                 const modalHeading = modal.querySelector('.modal-queued--heading')
@@ -529,6 +533,7 @@ const getWorkoutTemplateElement = (workoutObj, workoutName, kcal, ids_array) => 
     const addNewElementBtn = document.querySelector('.add-new-element-box')
     addNewElementBtn.addEventListener('click', () => {
         const modalAddSearch = document.querySelector('.modal-edit-search')
+        modal.style.zIndex = '22000'
         modalAddSearch.classList.toggle('not-visible')
     })
     const workoutSaveButton = document.querySelector('.save-updated-template-workout')
@@ -674,6 +679,7 @@ saveNewWorkoutButton.addEventListener('click', () => {
      headingAdjustableCard.innerHTML = gettext("Create New Activity Template")
      const modalAddWorkout = document.querySelector('.modal-add-search')
      modalAddWorkout.classList.remove('not-visible')
+     modalAddWorkout.style.zIndex = '22000'
      const cardContentParent = document.querySelector('.saved-workouts__added--saved__content')
      let contentToAppend = `
      
@@ -703,6 +709,7 @@ saveNewWorkoutButton.addEventListener('click', () => {
     cardContentParent.insertAdjacentHTML('afterend', saveButtonAppend)
     const addNewElBtn = document.querySelector('.add-workout-template__trigger-search')
     addNewElBtn.addEventListener('click', () => {
+        modalAddWorkout.style.zIndex = '22000'
         modalAddWorkout.classList.remove('not-visible')
     })
     const inputNameElement = document.querySelector('.workout_name_input')

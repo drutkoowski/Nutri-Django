@@ -30,7 +30,9 @@ function hideModal(modalClass) {
          const modal = document.querySelector(`.${modalClass}`)
          modal.classList.add('not-visible')
          modal.style.removeProperty('display')
+         modal.style.removeProperty('zIndex')
     });
+
 }
 
 let openModal = function (modalClass) {
@@ -38,6 +40,7 @@ let openModal = function (modalClass) {
         if (modalClass === '.modal__today-workouts-list'){
             updateSummary()
         }
+        el.style.zIndex = '22000'
         el.classList.remove('not-visible')
         el.classList.add('modal-active')
         // let Mwidth = div.offsetWidth;

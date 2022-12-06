@@ -294,6 +294,7 @@ def get_measure_changes_yearly(user_profile, current_year: int) -> dict:
         'changesShoulders': changes_shoulders
     }
 
+
 def check_latest_change_value(change_json, month_num, year) -> float:
     latest_value = 0
     if 'changes' in change_json:
@@ -302,7 +303,6 @@ def check_latest_change_value(change_json, month_num, year) -> float:
                 value_handler = value
             date_str = (list(y.keys())[0]).replace('-', ' ').split()
             if int(date_str[1]) < month_num and int(date_str[2]) <= year:
-                print(int(date_str[1]), date_str[2])
                 latest_value = value_handler
     return float(latest_value)
 
@@ -334,17 +334,17 @@ def get_changes_on_month(change_json) -> dict:
                 value = value
             date_str = (list(i.keys())[0]).replace('-', ' ').split()
             if int(date_str[1]) == current_month_num and int(date_str[2]) == current_year:
-                changes_dates.append(f'{date_str[0]}-{date_str[1]}-{date_str[2]}')
+                changes_dates.append(f'{date_str[0]}.{date_str[1]}')
                 changes_values.append(float(value))
         # first day of month
-        if f"01-{current_month_num}-{current_year}" not in changes_dates:
+        if f"01-{current_month_num}" not in changes_dates:
             latest_value = check_latest_change_value(change_json, current_month_num, current_year)
             changes_values.insert(0, latest_value)
-            changes_dates.insert(0, f"01-{current_month_num}-{current_year}")
+            changes_dates.insert(0, f"01.{current_month_num}")
         # last day of month
-        if f"{current_day_of_month}-{current_month_num}-{current_year}" not in changes_dates:
+        if f"{current_day_of_month}.{current_month_num}" not in changes_dates:
             changes_values.append(changes_values[-1])
-            changes_dates.append(f"{current_day_of_month}-{current_month_num}-{current_year}")
+            changes_dates.append(f"{current_day_of_month}.{current_month_num}")
 
         change_dict = {
             'datesArr': changes_dates,

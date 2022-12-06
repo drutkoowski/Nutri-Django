@@ -127,6 +127,7 @@ const getDataWeeklyChart = () => {
          url: url,
          success: function (response) {
              const data = JSON.parse(response.data)
+             console.log(data)
              const weeklyKcalArr = []
              data.forEach(day => {
                  weeklyKcalArr.push(Math.round(day.dayKcal))
@@ -139,7 +140,7 @@ const getDataWeeklyChart = () => {
              else {
                  xValuesWeekGraph = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
              }
-
+             console.log(weeklyKcalArr)
              let dataWeekGraph = {
                  labels: [...xValuesWeekGraph],
                  datasets: [
@@ -190,10 +191,6 @@ const getDataWeeklyChart = () => {
                     }
                 },
             });
-
-             weeklyKcalArr.forEach(kcal => {
-                 weekChartBox.data.datasets[0].data.push(kcal)
-             })
              weekChartBox.update()
          },
      })

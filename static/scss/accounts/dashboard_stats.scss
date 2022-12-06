@@ -129,8 +129,9 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: auto;
+        font-size: 1.5rem;
         @include respond(tab-desktop){
-          font-size: 1.5rem;
+          font-size: 1.35rem;
           display: flex;
           flex-direction: column;
         }
@@ -168,8 +169,9 @@
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: auto;
+        font-size: 1.5rem;
         @include respond(tab-desktop){
-          font-size: 1.5rem;
+          font-size: 1.35rem;
           display: flex;
           flex-direction: column;
         }
@@ -251,11 +253,9 @@
      }
       &__item-container{
           display: grid;
-          grid-template-columns: 0.35fr 1fr;
+          grid-template-columns: 0.5fr 1fr;
           &:nth-of-type(n+2){
-            @include respond(tab-land){
-              margin-top: 2rem;
-            }
+            margin-top: 2rem;
           }
       }
       h1 {
@@ -277,14 +277,14 @@
         }
       }
       &__item {
-        margin-top: 0;
+        margin-top: 0.55rem;
         vertical-align: center;
         margin-left: 2rem;
         width: 15rem;
         height: 3.5rem;
         padding: 0.75rem 2rem;
-        background-color: var(--green);
-        color: var(--color-white);
+        background-color: var(--color-white);
+        color: var(--black-muted);
         border-color: white;
         border-width: 2px;
         border-radius: 10px;
@@ -296,11 +296,15 @@
         background-repeat: no-repeat, repeat;
         background-position: right .7em top 50%, 0 0;
         background-size: .65em auto, 100%;
+        font-weight: bold;
         &:active, &:focus{
           outline: none;
         }
         option {
           font-size: 1.3rem;
+        }
+        option:disabled {
+          color: rgba(0,0,0,0.2);
         }
       }
     }
@@ -313,6 +317,7 @@
   &__container {
     margin-left: 2rem;
     margin-top: 2rem;
+    margin-right: 2rem;
     height: 40rem;
     width: auto;
     @include respond(tab-desktop) {

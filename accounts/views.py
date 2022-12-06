@@ -71,7 +71,7 @@ def dashboard_view(request):
 
 
 @login_required(login_url='login')
-def dashboard_stats(request):
+def dashboard_stats_view(request):
     return render(request, 'accounts/dashboard_stats.html')
 
 
@@ -81,8 +81,8 @@ def activity_view(request):
 
 
 @login_required(login_url='login')
-def measurements_view(request):
-    return render(request, 'accounts/measurements.html')
+def profile_info_view(request):
+    return render(request, 'accounts/profile_info.html')
 
 
 # # # # # AJAX VIEWS # # # # #
@@ -666,7 +666,7 @@ def get_graph_stats_info_monthly(request):
                     sum_duration_min = sum_duration_min + workout.min_spent_sum
             day = format_to_iso_date(i)
             month = format_to_iso_date(current_month_num)
-            date_created = f'{day}-{month}-{current_year}'
+            date_created = f'{day}.{month}'
             sum_kcal_burnt_arr.append(round(sum_kcal_burnt, 2))
             sum_duration_arr.append(round(sum_duration_min, 2))
             dates_arr.append(date_created)
@@ -776,10 +776,11 @@ def get_graph_stats_info_yearly(request):
                 if i == today.month.numerator:
                     days_past_current_month = date.today().day
                     month_days = days_past_current_month
-                monthly_kcal_percentages.append(round((monthly_kcal_eaten / kcal_demand) / month_days, 2) * 100)
-                monthly_carbs_percentages.append(round((monthly_carbs / (0.5 * kcal_demand) / 4) / month_days, 2) * 100)
+                carbsDemand = 0.5 * kcal_demand / 4
+                monthly_kcal_percentages.append(round(((monthly_kcal_eaten / month_days) / kcal_demand) * 100, 2))
+                monthly_carbs_percentages.append(round(((monthly_carbs / month_days) / carbsDemand) * 100, 2))
                 monthly_protein_percentages.append(
-                    round((monthly_protein / (protein_multiplier * float(user_profile.weight))) / month_days, 2) * 100)
+                    round(((monthly_protein / (protein_multiplier * float(protein_multiplier * float(user_profile.goal_kg)))) / month_days) * 100, 2))
                 monthly_fats_percentages.append(
                     round((monthly_fats / ((kcal_demand * 0.275) / 9)) / month_days, 2) * 100)
                 monthly_kcal.append(round(monthly_kcal_eaten, 2))

@@ -501,7 +501,7 @@ msgid "cm"
 msgstr "cm"
 
 #: .\static\scripts\dashboard\stats.js:403
-msgid "Graph of changes in your measurements (cm)"
+msgid "Graph of changes in your profile-info (cm)"
 msgstr "Wykres zmian Twoich pomiarów (cm)"
 
 #: .\static\scripts\dashboard\stats.js:489

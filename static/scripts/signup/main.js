@@ -63,6 +63,7 @@ const sendData = () => {
             progressBar.classList.add(`progress--${iteration}`)
             modal.classList.remove('not-visible')
             const langPrefix = window.location.href.split('/')[3];
+            modal.style.zIndex = '22300'
             setInterval(function () {
                 window.location = window.location.origin + `/${langPrefix}/login`;
             }, 4000);
@@ -236,7 +237,7 @@ function appendContent(parent, iteration) {
         fixInputMax(weightInput)
         fixInputMin(weightInput)
 
-        weightInput.addEventListener('input', e => {
+        weightInput.addEventListener('input', () => {
             if (weightGoal === 'gain-weight' || weightGoal === 'lose-weight') {
                 if(!isEmpty(weightInput.value) && !isEmpty(heightInput.value)) {
                      setAttributesRangeBar()
@@ -248,7 +249,7 @@ function appendContent(parent, iteration) {
     if (iteration === 3 ){
         const male = document.querySelector('.gender-box__male')
         const female = document.querySelector('.gender-box__female')
-        male.addEventListener('click', e => {
+        male.addEventListener('click', () => {
             if (!male.classList.contains('gender-box__item-active')){
                 female.getElementsByTagName('h2')[0].classList.remove('gender-animation-label')
                 male.classList.add('gender-box__item-active')
@@ -256,7 +257,7 @@ function appendContent(parent, iteration) {
                 male.getElementsByTagName('h2')[0].classList.add('gender-animation-label')
             }
         })
-        female.addEventListener('click', e => {
+        female.addEventListener('click', () => {
             if (!female.classList.contains('gender-box__item-active')){
                 male.getElementsByTagName('h2')[0].classList.remove('gender-animation-label')
                 female.classList.add('gender-box__item-active')
@@ -391,7 +392,7 @@ buttonNext.addEventListener('click', e => {
         }
 
          else if (iteration === 4) {
-             clearAlerts()
+            clearAlerts()
             const emailAddress = document.querySelector('#email').value
             const password = document.querySelector('#password').value
             const username = document.querySelector('#username').value

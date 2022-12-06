@@ -473,7 +473,7 @@ msgstr "Kontakt"
 
 #: .\templates\components\sidebar\sidebar.html:17
 msgid "years old"
-msgstr "lat"
+msgstr "lata"
 
 #: .\templates\components\sidebar\sidebar.html:26
 msgid "Your Goal"
