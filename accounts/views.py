@@ -7,7 +7,7 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.db.models import Q
 from .utils import date_for_weekday, calculate_user_nutrition_demand, edit_info_parameter_by_type, \
-    get_measure_changes_yearly, check_latest_change_value, get_changes_on_month, format_to_iso_date
+    get_measure_changes_yearly,get_changes_on_month, format_to_iso_date
 from accounts.models import Account, UserProfile
 from meals.models import Meal
 from workouts.models import Workout
@@ -611,6 +611,7 @@ def get_graph_stats_info_monthly(request):
         current_month_num = datetime.datetime.now().month
         current_year = datetime.datetime.now().year
         current_day_of_month = f'0{datetime.datetime.now().day}' if datetime.datetime.now().day < 10 else datetime.datetime.now().day
+        sum_kcal_eaten_percentage_arr = []
         sum_kcal_eaten_arr = []
         sum_kcal_burnt_arr = []
         sum_protein_eaten_arr = []
@@ -618,6 +619,17 @@ def get_graph_stats_info_monthly(request):
         sum_fats_eaten_arr = []
         sum_duration_arr = []
         dates_arr = []
+        kcal_demand = calculate_user_nutrition_demand(user_profile)
+        if user_profile.activity_level == 'not-active':
+            protein_multiplier = 0.9
+        elif user_profile.activity_level == 'lighly-active':
+            protein_multiplier = 1.2
+        elif user_profile.activity_level == 'active':
+            protein_multiplier = 1.6
+        elif user_profile.activity_level == 'very-active':
+            protein_multiplier = 2
+        else:
+            protein_multiplier = 1.3
         for i in range(1, int(current_day_of_month) + 1):
             meals = Meal.objects.filter(created_by=user_profile, created_at__month=current_month_num, created_at__day=i,
                                         created_at__year=current_year).all()
@@ -635,6 +647,19 @@ def get_graph_stats_info_monthly(request):
                     sum_protein_eaten = sum_protein_eaten + meal.protein
                     sum_carbs_eaten = sum_carbs_eaten + meal.carbs
                     sum_fats_eaten = sum_fats_eaten + meal.fat
+            if meals.exists():
+                sum_kcal_eaten_percentage_arr.append(round(sum_kcal_eaten / kcal_demand, 2) * 100)
+                sum_carbs_eaten_arr.append(round(sum_carbs_eaten / ((0.5 * kcal_demand) / 4), 2) * 100)
+                sum_protein_eaten_arr.append(
+                    round(sum_protein_eaten / (protein_multiplier * float(user_profile.weight)), 2) * 100)
+                sum_fats_eaten_arr.append(round((sum_fats_eaten / ((kcal_demand * 0.275) / 9)), 2) * 100)
+                sum_kcal_eaten_arr.append(sum_kcal_eaten)
+            else:
+                sum_kcal_eaten_percentage_arr.append(0)
+                sum_protein_eaten_arr.append(0)
+                sum_carbs_eaten_arr.append(0)
+                sum_fats_eaten_arr.append(0)
+                sum_kcal_eaten_arr.append(0)
             if workouts:
                 for workout in workouts:
                     sum_kcal_burnt = sum_kcal_burnt + workout.kcal_burnt_sum
@@ -642,16 +667,16 @@ def get_graph_stats_info_monthly(request):
             day = format_to_iso_date(i)
             month = format_to_iso_date(current_month_num)
             date_created = f'{day}-{month}-{current_year}'
-            sum_kcal_eaten_arr.append(round(sum_kcal_eaten, 2))
             sum_kcal_burnt_arr.append(round(sum_kcal_burnt, 2))
-            sum_protein_eaten_arr.append(round(sum_protein_eaten, 2))
-            sum_carbs_eaten_arr.append(round(sum_carbs_eaten, 2))
-            sum_fats_eaten_arr.append(round(sum_fats_eaten, 2))
             sum_duration_arr.append(round(sum_duration_min, 2))
             dates_arr.append(date_created)
         calories_eaten_change_dict = {
             'datesArr': dates_arr,
             'valuesArr': sum_kcal_eaten_arr
+        }
+        calories_eaten_percentage_change_dict = {
+            'datesArr': dates_arr,
+            'valuesArr': sum_kcal_eaten_percentage_arr
         }
         calories_burnt_change_dict = {
             'datesArr': dates_arr,
@@ -694,12 +719,14 @@ def get_graph_stats_info_monthly(request):
             'changesNeck': changes_neck,
             'changesWrists': changes_wrists,
             'changesShoulders': changes_shoulders,
+            'changesDuration': duration_change_dict,
             'caloriesEaten': calories_eaten_change_dict,
+            'caloriesEatenPercent': calories_eaten_percentage_change_dict,
             'caloriesBurnt': calories_burnt_change_dict,
-            'proteinEaten': calories_protein_change_dict,
-            'carbsEaten': calories_carbs_change_dict,
-            'fatsEaten': calories_fats_change_dict,
-            'changesDuration': duration_change_dict
+            'proteinEatenPercent': calories_protein_change_dict,
+            'carbsEatenPercent': calories_carbs_change_dict,
+            'fatsEatenPercent': calories_fats_change_dict
+
         }
         return JsonResponse({'status': 200, 'text': 'Operation successful.', 'data': json.dumps(month_changes_dict)})
 
@@ -710,6 +737,7 @@ def get_graph_stats_info_yearly(request):
         user_profile = UserProfile.objects.get(user=request.user)
         from datetime import datetime
         from calendar import monthrange
+        current_year = datetime.now().year
         kcal_demand = calculate_user_nutrition_demand(user_profile)
         monthly_kcal_percentages = []
         monthly_protein_percentages = []
@@ -729,8 +757,8 @@ def get_graph_stats_info_yearly(request):
         else:
             protein_multiplier = 1.3
         for i in range(1, 13):
-            meals = Meal.objects.filter(created_by=user_profile, created_at__month=i).all()
-            workouts = Workout.objects.filter(created_by=user_profile, created_at__month=i).all()
+            meals = Meal.objects.filter(created_by=user_profile, created_at__month=i, created_at__year=current_year).all()
+            workouts = Workout.objects.filter(created_by=user_profile, created_at__month=i, created_at__year=current_year).all()
             monthly_kcal_eaten = 0
             monthly_kcal_burnt_sum = 0
             monthly_carbs = 0
@@ -771,7 +799,7 @@ def get_graph_stats_info_yearly(request):
             else:
                 monthly_kcal_burnt.append(0)
                 monthly_duration_minutes.append(0)
-        changes_yearly = get_measure_changes_yearly(user_profile)
+        changes_yearly = get_measure_changes_yearly(user_profile, current_year)
         stats_info_dict_yearly = {
             'eatenKcal': monthly_kcal,
             'burntKcal': monthly_kcal_burnt,

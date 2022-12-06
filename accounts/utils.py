@@ -231,7 +231,7 @@ def edit_info_parameter_by_type(user_profile, parameter: str, value: int) -> Non
     user_profile.save()
 
 
-def get_measure_changes_yearly(user_profile) -> dict:
+def get_measure_changes_yearly(user_profile, current_year: int) -> dict:
     chest_json = user_profile.chest_json
     changes_chest = []
     weight_json = user_profile.weight_json
@@ -253,27 +253,19 @@ def get_measure_changes_yearly(user_profile) -> dict:
     shoulders_json = user_profile.shoulders_json
     changes_shoulders = []
 
-    def get_monthly_changes_avg(json_object, result_array, month_change) -> dict:
+    def get_monthly_changes_avg(json_object, result_array, month_change) -> None:
         month_changes = []
-
         if "changes" in json_object:
             for item in json_object['changes']:
                 change_date = (list(item.keys())[0]).replace('-', ' ').split()
                 day = change_date[0]
                 month = change_date[1]
                 year = change_date[2]
-                if int(month) == month_change:
+                month_avg = check_latest_change_value_yearly(weight_json, current_year)
+                if int(month) == month_change and int(year) == current_year:
                     month_changes.append(float(item[f'{day}-{month}-{year}']))
             if len(month_changes) > 0:
                 month_avg = sum(month_changes) / len(month_changes)
-            else:
-                month_avg = 0
-                if month_avg == 0:
-                    try:
-                        x = result_array[month_change - 2]
-                        month_avg = x
-                    except:
-                        month_avg = 0
             result_array.append(month_avg)
         else:
             result_array.append(0)
@@ -302,7 +294,6 @@ def get_measure_changes_yearly(user_profile) -> dict:
         'changesShoulders': changes_shoulders
     }
 
-
 def check_latest_change_value(change_json, month_num, year) -> float:
     latest_value = 0
     if 'changes' in change_json:
@@ -311,6 +302,19 @@ def check_latest_change_value(change_json, month_num, year) -> float:
                 value_handler = value
             date_str = (list(y.keys())[0]).replace('-', ' ').split()
             if int(date_str[1]) < month_num and int(date_str[2]) <= year:
+                print(int(date_str[1]), date_str[2])
+                latest_value = value_handler
+    return float(latest_value)
+
+
+def check_latest_change_value_yearly(change_json, year) -> float:
+    latest_value = 0
+    if 'changes' in change_json:
+        for y in change_json['changes']:
+            for key, value in y.items():
+                value_handler = value
+            date_str = (list(y.keys())[0]).replace('-', ' ').split()
+            if int(date_str[2]) < year:
                 latest_value = value_handler
     return float(latest_value)
 

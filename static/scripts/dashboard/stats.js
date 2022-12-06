@@ -32,15 +32,17 @@ durationInput.addEventListener('change', (e) => {
 })
 typeInput.addEventListener('change', (e) => {
     typeValue = e.target.value
-    const weeklyItem = document.querySelector('.weekly')
-    weeklyItem.disabled = typeValue !== 'kcal' || typeValue !== 'macros' || typeValue !== 'duration';
     if (durationValue === 'weekly'){
         getChartFullDataWeekly(typeValue)
     }
     if (durationValue === 'monthly'){
+        const weeklyItem = document.querySelector('.weekly')
+        weeklyItem.disabled = typeValue !== 'kcal' && typeValue !== 'macros' && typeValue !== 'duration';
         getChartFullDataMonthly(typeValue)
     }
     else if (durationValue === 'yearly'){
+        const weeklyItem = document.querySelector('.weekly')
+        weeklyItem.disabled = typeValue !== 'kcal' && typeValue !== 'macros' && typeValue !== 'duration';
         getChartFullDataYearly(typeValue)
     }
 })
@@ -191,6 +193,7 @@ const getChartFullDataMonthly = (type) => {
         url: url,
         success: function (response){
             const data = JSON.parse(response.data)
+            console.log(data)
             if (type === 'chest'){
                 const xValuesWeekGraph = data.changesChest.datesArr;
                 const changesArr = data.changesChest.valuesArr
@@ -235,6 +238,7 @@ const getChartFullDataMonthly = (type) => {
                 chartDraw(xValuesWeekGraph, dataset, 'update', 'Kcal', gettext('Chart of kcal consumed and burned'))
             }
             else if (type === 'duration'){
+                console.log(data)
                 const xValuesWeekGraph = data.changesDuration.datesArr;
                 const durationArray = data.changesDuration.valuesArr
                 let dataset = [{
@@ -251,11 +255,11 @@ const getChartFullDataMonthly = (type) => {
                 chartDraw(xValuesWeekGraph, dataset, 'update',  gettext('Minutes'), gettext('Time chart of your activities in minutes'))
             }
             else if (type === 'macros'){
-                const xValuesWeekGraph = data.caloriesEaten.datesArr;
-                const kcalEaten = data.caloriesEaten.valuesArr
-                const proteinEaten = data.proteinEaten.valuesArr
-                const carbsEaten = data.carbsEaten.valuesArr
-                const carbsFats = data.fatsEaten.valuesArr
+                const xValuesWeekGraph = data.caloriesEatenPercent.datesArr;
+                const kcalEaten = data.caloriesEatenPercent.valuesArr
+                const proteinEaten = data.proteinEatenPercent.valuesArr
+                const carbsEaten = data.carbsEatenPercent.valuesArr
+                const carbsFats = data.fatsEatenPercent.valuesArr
                 let dataset = [{
                     data: [...kcalEaten],
                     label: `${gettext('Kcal Eaten')}`,
