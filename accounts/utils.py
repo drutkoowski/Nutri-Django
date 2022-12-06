@@ -317,10 +317,8 @@ def check_latest_change_value(change_json, month_num, year) -> float:
 
 def get_changes_on_month(change_json) -> dict:
     import datetime
-    import calendar
     current_month_num = datetime.datetime.now().month
     current_year = datetime.datetime.now().year
-    last_day_of_month = calendar.monthrange(current_year, current_month_num)[1]
     current_day_of_month = f'0{datetime.datetime.now().day}' if datetime.datetime.now().day < 10 else datetime.datetime.now().day
     weight_json = change_json
     change_dict = {}
@@ -331,7 +329,7 @@ def get_changes_on_month(change_json) -> dict:
             for key, value in i.items():
                 value = value
             date_str = (list(i.keys())[0]).replace('-', ' ').split()
-            if int(date_str[1]) == current_month_num:
+            if int(date_str[1]) == current_month_num and int(date_str[2]) == current_year:
                 changes_dates.append(f'{date_str[0]}-{date_str[1]}-{date_str[2]}')
                 changes_values.append(float(value))
         # first day of month
@@ -348,5 +346,10 @@ def get_changes_on_month(change_json) -> dict:
             'datesArr': changes_dates,
             'valuesArr': changes_values
         }
-    print(change_dict)
     return change_dict
+
+
+def format_to_iso_date(date_num):
+    iso_corrected = f'0{date_num}' if date_num < 10 else date_num
+
+    return iso_corrected

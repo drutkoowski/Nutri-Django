@@ -32,6 +32,8 @@ durationInput.addEventListener('change', (e) => {
 })
 typeInput.addEventListener('change', (e) => {
     typeValue = e.target.value
+    const weeklyItem = document.querySelector('.weekly')
+    weeklyItem.disabled = typeValue !== 'kcal' || typeValue !== 'macros' || typeValue !== 'duration';
     if (durationValue === 'weekly'){
         getChartFullDataWeekly(typeValue)
     }
@@ -189,7 +191,6 @@ const getChartFullDataMonthly = (type) => {
         url: url,
         success: function (response){
             const data = JSON.parse(response.data)
-            console.log(type)
             if (type === 'chest'){
                 const xValuesWeekGraph = data.changesChest.datesArr;
                 const changesArr = data.changesChest.valuesArr
@@ -204,14 +205,41 @@ const getChartFullDataMonthly = (type) => {
                     pointHoverRadius: 0,
                     backgroundColor: 'rgb(126,238,146)',
                 },]
-                chartDraw(xValuesWeekGraph, dataset, 'update', gettext('cm'), gettext('Graph of changes in your measurements (cm)'))
+                chartDraw(xValuesWeekGraph, dataset, 'update', 'cm', gettext('Graph of changes in your measurements (cm)'))
             }
-            else if (type === 'weight'){
-                const xValuesWeekGraph = data.changesWeight.datesArr;
-                const changesArr = data.changesWeight.valuesArr
+            else if (type === 'kcal'){
+                const xValuesWeekGraph = data.caloriesEaten.datesArr;
+                const kcalEaten = data.caloriesEaten.valuesArr
+                const kcalBurnt = data.caloriesBurnt.valuesArr
                 let dataset = [{
-                    data: [...changesArr],
-                    label: `${gettext('Weight')}`,
+                    data: [...kcalEaten],
+                    label: `${gettext('Eaten')}`,
+                    borderColor: 'rgb(126,238,146)',
+                    lineTension: 1,
+                    tension: 0.8,
+                    pointRadius: 0,
+                    borderWidth: 4,
+                    pointHoverRadius: 0,
+                    backgroundColor: 'rgb(126,238,146)',
+                },{
+                    data: [...kcalBurnt],
+                    label: `${gettext('Burnt')}`,
+                    borderColor: 'rgb(232,60,125)',
+                    lineTension: 1,
+                    tension: 0.8,
+                    pointRadius: 0,
+                    borderWidth: 4,
+                    pointHoverRadius: 0,
+                    backgroundColor: 'rgb(232,60,125)',
+                }]
+                chartDraw(xValuesWeekGraph, dataset, 'update', 'Kcal', gettext('Chart of kcal consumed and burned'))
+            }
+            else if (type === 'duration'){
+                const xValuesWeekGraph = data.changesDuration.datesArr;
+                const durationArray = data.changesDuration.valuesArr
+                let dataset = [{
+                    data: [...durationArray],
+                    label: `${gettext('Duration')}`,
                     borderColor: 'rgb(126,238,146)',
                     lineTension: 1,
                     tension: 0.8,
@@ -220,7 +248,72 @@ const getChartFullDataMonthly = (type) => {
                     pointHoverRadius: 0,
                     backgroundColor: 'rgb(126,238,146)',
                 },]
-                chartDraw(xValuesWeekGraph, dataset, 'update', gettext('kg'), gettext('Graph of changes in your measurements (cm)'))
+                chartDraw(xValuesWeekGraph, dataset, 'update',  gettext('Minutes'), gettext('Time chart of your activities in minutes'))
+            }
+            else if (type === 'macros'){
+                const xValuesWeekGraph = data.caloriesEaten.datesArr;
+                const kcalEaten = data.caloriesEaten.valuesArr
+                const proteinEaten = data.proteinEaten.valuesArr
+                const carbsEaten = data.carbsEaten.valuesArr
+                const carbsFats = data.fatsEaten.valuesArr
+                let dataset = [{
+                    data: [...kcalEaten],
+                    label: `${gettext('Kcal Eaten')}`,
+                    borderColor: 'rgb(126,238,146)',
+                    lineTension: 1,
+                    tension: 0.8,
+                    pointRadius: 0,
+                    borderWidth: 4,
+                    pointHoverRadius: 0,
+                    backgroundColor: 'rgb(126,238,146)',
+                },{
+                    data: [...proteinEaten],
+                    label: `${gettext('Protein')}`,
+                    borderColor: 'rgb(125,91,218)',
+                    lineTension: 1,
+                    tension: 0.8,
+                    pointRadius: 0,
+                    borderWidth: 4,
+                    pointHoverRadius: 0,
+                    backgroundColor: 'rgb(125,91,218)',
+                },{
+                    data: [...carbsEaten],
+                    label: `${gettext('Carbs')}`,
+                    borderColor: 'rgb(232,200,124)',
+                    lineTension: 1,
+                    tension: 0.8,
+                    pointRadius: 0,
+                    borderWidth: 4,
+                    pointHoverRadius: 0,
+                    backgroundColor: 'rgb(232,200,124)',
+                },{
+                    data: [...carbsFats],
+                    label: `${gettext('Fats')}`,
+                    borderColor: 'rgb(224,22,22)',
+                    lineTension: 1,
+                    tension: 0.8,
+                    pointRadius: 0,
+                    borderWidth: 4,
+                    pointHoverRadius: 0,
+                    backgroundColor: 'rgb(224,22,22)',
+                },]
+                chartDraw(xValuesWeekGraph, dataset, 'update', gettext('Percent'), gettext('Macro Value Chart according to your daily goals (%)'))
+            }
+            else if (type === 'weight'){
+                const xValuesWeekGraph = data.changesWeight.datesArr
+                const changesArr = data.changesWeight.valuesArr
+                let dataset = [{
+                    data: [...changesArr],
+                    label: `${gettext('Weight')}`,
+                    borderColor: 'rgb(236,202,60)',
+                    lineTension: 1,
+                    tension: 0.8,
+                    pointRadius: 0,
+                    borderWidth: 4,
+                    pointHoverRadius: 0,
+                    backgroundColor: 'rgb(236,202,60)',
+                },]
+                chartDraw(xValuesWeekGraph, dataset, 'update', 'kg', gettext('Graph of changes in your weight (kg)'))
             }
             else if (type === 'biceps'){
                 const xValuesWeekGraph = data.changesBiceps.datesArr;
@@ -228,15 +321,15 @@ const getChartFullDataMonthly = (type) => {
                 let dataset = [{
                     data: [...changesArr],
                     label: `${gettext('Biceps')}`,
-                    borderColor: 'rgb(126,238,146)',
+                    borderColor: 'rgb(126,161,238)',
                     lineTension: 1,
                     tension: 0.8,
                     pointRadius: 0,
                     borderWidth: 4,
                     pointHoverRadius: 0,
-                    backgroundColor: 'rgb(126,238,146)',
+                    backgroundColor: 'rgb(126,161,238)',
                 },]
-                chartDraw(xValuesWeekGraph, dataset, 'update', gettext('cm'), gettext('Graph of changes in your measurements (cm)'))
+                chartDraw(xValuesWeekGraph, dataset, 'update', 'cm', gettext('Graph of changes in your measurements (cm)'))
             }
             else if (type === 'waist'){
                 const xValuesWeekGraph = data.changesWaist.datesArr;
@@ -244,15 +337,15 @@ const getChartFullDataMonthly = (type) => {
                 let dataset = [{
                     data: [...changesArr],
                     label: `${gettext('Waist')}`,
-                    borderColor: 'rgb(126,238,146)',
+                    borderColor: 'rgb(236,223,65)',
                     lineTension: 1,
                     tension: 0.8,
                     pointRadius: 0,
                     borderWidth: 4,
                     pointHoverRadius: 0,
-                    backgroundColor: 'rgb(126,238,146)',
+                    backgroundColor: 'rgb(236,223,65)',
                 },]
-                chartDraw(xValuesWeekGraph, dataset, 'update', gettext('cm'), gettext('Graph of changes in your measurements (cm)'))
+                chartDraw(xValuesWeekGraph, dataset, 'update', 'cm', gettext('Graph of changes in your measurements (cm)'))
             }
              else if (type === 'hips'){
                 const xValuesWeekGraph = data.changesHips.datesArr;
@@ -260,15 +353,15 @@ const getChartFullDataMonthly = (type) => {
                 let dataset = [{
                     data: [...changesArr],
                     label: `${gettext('Hips')}`,
-                    borderColor: 'rgb(126,238,146)',
+                    borderColor: 'rgb(128,64,229)',
                     lineTension: 1,
                     tension: 0.8,
                     pointRadius: 0,
                     borderWidth: 4,
                     pointHoverRadius: 0,
-                    backgroundColor: 'rgb(126,238,146)',
+                    backgroundColor: 'rgb(128,64,229)',
                 },]
-                chartDraw(xValuesWeekGraph, dataset, 'update', gettext('cm'), gettext('Graph of changes in your measurements (cm)'))
+                chartDraw(xValuesWeekGraph, dataset, 'update', 'cm', gettext('Graph of changes in your measurements (cm)'))
             }
             else if (type === 'calves'){
                 const xValuesWeekGraph = data.changesCalves.datesArr;
@@ -276,15 +369,15 @@ const getChartFullDataMonthly = (type) => {
                 let dataset = [{
                     data: [...changesArr],
                     label: `${gettext('Calves')}`,
-                    borderColor: 'rgb(126,238,146)',
+                    borderColor: 'rgb(1,107,80)',
                     lineTension: 1,
                     tension: 0.8,
                     pointRadius: 0,
                     borderWidth: 4,
                     pointHoverRadius: 0,
-                    backgroundColor: 'rgb(126,238,146)',
+                    backgroundColor: 'rgb(1,107,80)',
                 },]
-                chartDraw(xValuesWeekGraph, dataset, 'update', gettext('cm'), gettext('Graph of changes in your measurements (cm)'))
+                chartDraw(xValuesWeekGraph, dataset, 'update', 'cm', gettext('Graph of changes in your measurements (cm)'))
             }
             else if (type === 'thighs'){
                 const xValuesWeekGraph = data.changesThighs.datesArr;
@@ -292,15 +385,15 @@ const getChartFullDataMonthly = (type) => {
                 let dataset = [{
                     data: [...changesArr],
                     label: `${gettext('Thighs')}`,
-                    borderColor: 'rgb(126,238,146)',
+                    borderColor: 'rgb(234,149,170)',
                     lineTension: 1,
                     tension: 0.8,
                     pointRadius: 0,
                     borderWidth: 4,
                     pointHoverRadius: 0,
-                    backgroundColor: 'rgb(126,238,146)',
+                    backgroundColor: 'rgb(234,149,170)',
                 },]
-                chartDraw(xValuesWeekGraph, dataset, 'update', gettext('cm'), gettext('Graph of changes in your measurements (cm)'))
+                chartDraw(xValuesWeekGraph, dataset, 'update', 'cm', gettext('Graph of changes in your measurements (cm)'))
             }
             else if (type === 'neck'){
                 const xValuesWeekGraph = data.changesNeck.datesArr;
@@ -308,15 +401,15 @@ const getChartFullDataMonthly = (type) => {
                 let dataset = [{
                     data: [...changesArr],
                     label: `${gettext('Neck')}`,
-                    borderColor: 'rgb(126,238,146)',
+                    borderColor: 'rgb(128,124,42)',
                     lineTension: 1,
                     tension: 0.8,
                     pointRadius: 0,
                     borderWidth: 4,
                     pointHoverRadius: 0,
-                    backgroundColor: 'rgb(126,238,146)',
+                    backgroundColor: 'rgb(128,124,42)',
                 },]
-                chartDraw(xValuesWeekGraph, dataset, 'update', gettext('cm'), gettext('Graph of changes in your measurements (cm)'))
+                chartDraw(xValuesWeekGraph, dataset, 'update', 'cm', gettext('Graph of changes in your measurements (cm)'))
             }
             else if (type === 'wrists'){
                 const xValuesWeekGraph = data.changesWrists.datesArr;
@@ -324,15 +417,15 @@ const getChartFullDataMonthly = (type) => {
                 let dataset = [{
                     data: [...changesArr],
                     label: `${gettext('Wrists')}`,
-                    borderColor: 'rgb(126,238,146)',
+                    borderColor: 'rgb(199,144,136)',
                     lineTension: 1,
                     tension: 0.8,
                     pointRadius: 0,
                     borderWidth: 4,
                     pointHoverRadius: 0,
-                    backgroundColor: 'rgb(126,238,146)',
+                    backgroundColor: 'rgb(199,144,136)',
                 },]
-                chartDraw(xValuesWeekGraph, dataset, 'update', gettext('cm'), gettext('Graph of changes in your measurements (cm)'))
+                chartDraw(xValuesWeekGraph, dataset, 'update', 'cm', gettext('Graph of changes in your measurements (cm)'))
             }
             else if (type === 'shoulders'){
                 const xValuesWeekGraph = data.changesShoulders.datesArr;
@@ -340,15 +433,15 @@ const getChartFullDataMonthly = (type) => {
                 let dataset = [{
                     data: [...changesArr],
                     label: `${gettext('Shoulders')}`,
-                    borderColor: 'rgb(126,238,146)',
+                    borderColor: 'rgb(41,199,165)',
                     lineTension: 1,
                     tension: 0.8,
                     pointRadius: 0,
                     borderWidth: 4,
                     pointHoverRadius: 0,
-                    backgroundColor: 'rgb(126,238,146)',
+                    backgroundColor: 'rgb(41,199,165)',
                 },]
-                chartDraw(xValuesWeekGraph, dataset, 'update', gettext('cm'), gettext('Graph of changes in your measurements (cm)'))
+                chartDraw(xValuesWeekGraph, dataset, 'update', 'cm', gettext('Graph of changes in your measurements (cm)'))
             }
         }
     })
@@ -651,7 +744,7 @@ const chartDraw = (labels, datasets, type, yLabelText, textAbove) => {
                     legend: {
                         display: true,
                         labels: {
-                            color: 'rgb(116,187,130)'
+                            color: 'rgb(0,0,0)'
                         },
                         title: {
                           display: true,
