@@ -2794,7 +2794,7 @@ label.year {
       width: 100%;
       grid-template-rows: 0.25fr 0.05fr 1.2fr 0.5fr 1.2fr; } }
   .dashboard__content__welcome-text {
-    margin-left: 5rem;
+    margin-left: 2rem;
     margin-top: 5rem;
     grid-column: 1 / -1;
     grid-row: 1/2;
@@ -2833,6 +2833,13 @@ label.year {
       @media only screen and (max-width: 28.5em) {
         .dashboard__content__welcome-text p {
           font-size: 1.2rem; } }
+    .dashboard__content__welcome-text__day-switcher {
+      display: flex; }
+      .dashboard__content__welcome-text__day-switcher img {
+        height: 2.5rem;
+        width: 2.5rem; }
+      .dashboard__content__welcome-text__day-switcher p {
+        margin: 0.2rem 1rem 0 1rem; }
   .dashboard__content__summary {
     display: grid;
     grid-template-rows: 1fr;
@@ -2842,7 +2849,7 @@ label.year {
     grid-column: 1 / -1;
     justify-items: center;
     align-items: center;
-    margin: 2rem 1rem 0 1rem;
+    margin: 0 2rem 0 2rem;
     animation-name: fade-bottom;
     animation-duration: 2s;
     animation-timing-function: ease-out; }
@@ -3189,7 +3196,7 @@ label.year {
     grid-column: 1 / -1;
     grid-column-gap: 2rem;
     justify-items: center;
-    margin: 4rem 1rem 5rem 1rem;
+    margin: 4rem 2rem 5rem 2rem;
     animation-name: fade-bottom;
     animation-duration: 2s;
     animation-timing-function: ease-out; }
@@ -6274,7 +6281,7 @@ div.modal--calendar__content-summary {
   min-height: 100vh;
   display: grid;
   grid-template-columns: 0.1fr 1fr 0.1fr;
-  grid-template-rows: 0.35fr 0.8fr 0.15fr;
+  grid-template-rows: 0.15fr 0.8fr 0.15fr;
   align-items: center;
   justify-items: center;
   position: relative; }

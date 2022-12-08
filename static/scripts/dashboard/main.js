@@ -1,6 +1,110 @@
+// custom function to get name of the day and return weekday number in format MON - SUN ( not default js function SUN - SAT) and utils
+const getWeekDayNumber = (dayName) => {
+    dayName = dayName.trim().toLowerCase()
+    if (dayName === 'monday' || dayName === 'poniedziałek'){
+        return 0
+    }
+    else if (dayName === 'tuesday' || dayName === 'wtorek'){
+        return 1
+    }
+    else if (dayName === 'wednesday' || dayName === 'środa'){
+        return 2
+    }
+    else if (dayName === 'thursday' || dayName === 'czwartek') {
+        return 3
+    }
+    else if (dayName === 'friday' || dayName === 'piątek'){
+        return 4
+    }
+    else if (dayName === 'saturday' || dayName === 'sobota') {
+        return 5
+    }
+    else if (dayName === 'sunday' || dayName === 'niedziela'){
+        return 6
+    }
+}
+
+function getPreviousDay(date = new Date()) {
+  const previous = new Date(date.getTime());
+  previous.setDate(date.getDate() - 1);
+  return previous;
+}
+
+function getNextDay(date = new Date()) {
+  const next = new Date(date.getTime());
+  next.setDate(date.getDate() + 1);
+  return next;
+}
+// chart
 let myChart = document.getElementById('summaryChart').getContext('2d')
 let weekChart = document.getElementById('summaryWeekly').getContext('2d')
 let nutritionDetails = document.getElementById('summaryNutritionDetails').getContext('2d')
+let summaryChartBox
+// date switcher init
+const dateSwitcherDate = document.querySelector('.dashboard__content__welcome-text__day-switcher__date')
+const langPrefix = window.location.href.split('/')[3];
+
+const capitalize = (word) => {
+    return word.toLowerCase()
+        .split(' ')
+        .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+        .join(' ')
+}
+let date = new Date();
+const currentDay = date.toLocaleDateString(langPrefix, {'day': "2-digit"})
+const currentMonth = date.toLocaleDateString(langPrefix, {'month': "2-digit"})
+const currentYear = date.toLocaleDateString(langPrefix, {'year': "numeric"})
+const currentWeekDayNumber = getWeekDayNumber(date.toLocaleDateString(langPrefix, {'weekday': "long"}))
+const options = {
+    weekday: "long",
+    year: "numeric",
+    month: "2-digit",
+    day: "numeric"
+};
+
+dateSwitcherDate.innerHTML =  capitalize(date.toLocaleDateString(langPrefix, options))
+
+// arrows
+const leftArrow = document.querySelector('#left-arrow-day')
+const rightArrow = document.querySelector('#right-arrow-day')
+leftArrow.addEventListener('click', () => {
+    date = getPreviousDay(date)
+    const prevWeekDayNumber = getWeekDayNumber(date.toLocaleDateString(langPrefix, {'weekday': "long"}))
+    if (prevWeekDayNumber < currentWeekDayNumber) {
+        dateSwitcherDate.innerHTML = capitalize(date.toLocaleDateString(langPrefix, options))
+        rightArrow.style.removeProperty('visibility')
+    }
+    else {
+        leftArrow.style.visibility = 'hidden'
+    }
+    if (prevWeekDayNumber === 0) {
+        leftArrow.style.visibility = 'hidden'
+    }
+    const day = date.toLocaleDateString(langPrefix, {'day': "2-digit"})
+    const month = date.toLocaleDateString(langPrefix, {'month': "2-digit"})
+    const year = date.toLocaleDateString(langPrefix, {'year': "numeric"})
+    getDataSummaryChart(day, month,year, 'update')
+})
+rightArrow.addEventListener('click', () => {
+    date = getNextDay(date)
+    const nextWeekDayNumber = getWeekDayNumber(date.toLocaleDateString(langPrefix, {'weekday': "long"}))
+    if (nextWeekDayNumber <= currentWeekDayNumber) {
+        dateSwitcherDate.innerHTML = capitalize(date.toLocaleDateString(langPrefix, options))
+        leftArrow.style.removeProperty('visibility')
+    }
+    else {
+        rightArrow.style.visibility = 'hidden'
+    }
+    if (nextWeekDayNumber === currentWeekDayNumber) {
+        rightArrow.style.visibility = 'hidden'
+    }
+    const day = date.toLocaleDateString(langPrefix, {'day': "2-digit"})
+    const month = date.toLocaleDateString(langPrefix, {'month': "2-digit"})
+    const year = date.toLocaleDateString(langPrefix, {'year': "numeric"})
+    getDataSummaryChart(day, month, year, 'update')
+})
+
+
 
 
 // watch if media query is true
@@ -16,12 +120,17 @@ function handleTabletChange(e) {
 
 
 // summary circle chart
-const getDataSummaryChart = () => {
+const getDataSummaryChart = (day, month, year, type) => {
     const langPrefix = window.location.href.split('/')[3];
     const url = window.location.origin + `/${langPrefix}/data/get/profile-nutrition-details`
     $.ajax({
         type: 'get',
         url: url,
+        data: {
+            'day': day,
+            'month': month,
+            'year': year,
+        },
         success: function (response) {
             // getting data response
             const data = JSON.parse(response.data)
@@ -84,36 +193,47 @@ const getDataSummaryChart = () => {
             proteinNeedsCard.innerHTML = `${Math.trunc(proteinMultiplier * data.weightKg)}`
             carbsNeedsCard.innerHTML = `${Math.trunc(carbsMultiplier * data.kcalGoal / 4)}`
             fatNeedsCard.innerHTML = `${Math.trunc((kcalGoal * 0.275) / 9)}`
-            let dataSummary = {
-              labels: [],
-              datasets: [
-                {
-                  data: [goalPercent, percentDiff],
-                  backgroundColor: [
-                    "#8be085",
-                    "#c8e3c8",
-                  ],
-                  // hoverBackgroundColor: [
-                  //   "#2ce04f",
-                  //   "#c1e5b7",
-                  // ]
+            if (type === 'create'){
+                let dataSummary = {
+                labels: [],
+                datasets: [{
+                    data: [Number(goalPercent), percentDiff],
+                    backgroundColor: [
+                        "#8be085",
+                        "#c8e3c8",
+                    ],
                 }]
             };
-            let summaryChartBox = new Chart(myChart, {
-              type: 'doughnut',
-              data: dataSummary,
-              options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                cutout: 50,
-                events: [],
-                legend: {
-                  display: false,
+             summaryChartBox = new Chart(myChart, {
+                type: 'doughnut',
+                data: dataSummary,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: 50,
+                    events: [],
+                    legend: {
+                        display: false,
+                    }
                 }
-              }
             });
              getDataMacroChart(kcalGoal,Math.trunc(proteinMultiplier * data.weightGoalKg),
                  Math.trunc(carbsMultiplier * data.kcalGoal / 4),Math.trunc((kcalGoal * 0.275) / 9))
+            }
+            else if (type === 'update'){
+                [Number(goalPercent), percentDiff]
+                summaryChartBox.data = {
+                    labels: [],
+                    datasets: [{
+                    data: [Number(goalPercent), percentDiff],
+                    backgroundColor: [
+                        "#8be085",
+                        "#c8e3c8",
+                    ],
+                    }]
+                };
+                summaryChartBox.update()
+            }
         },
     })
 }
@@ -127,7 +247,6 @@ const getDataWeeklyChart = () => {
          url: url,
          success: function (response) {
              const data = JSON.parse(response.data)
-             console.log(data)
              const weeklyKcalArr = []
              data.forEach(day => {
                  weeklyKcalArr.push(Math.round(day.dayKcal))
@@ -140,7 +259,6 @@ const getDataWeeklyChart = () => {
              else {
                  xValuesWeekGraph = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
              }
-             console.log(weeklyKcalArr)
              let dataWeekGraph = {
                  labels: [...xValuesWeekGraph],
                  datasets: [
@@ -288,7 +406,7 @@ const getDataMacroChart = (kcalDemand, proteinDemand, carbsDemand, fatDemand) =>
     // media query check
     handleTabletChange(mediaQuery)
     // graphs data init
-    getDataSummaryChart()
+    getDataSummaryChart(currentDay, currentMonth, currentYear, 'create')
     getDataWeeklyChart()
 // End Initial
 

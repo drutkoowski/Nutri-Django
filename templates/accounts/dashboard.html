@@ -4,7 +4,8 @@
 {% block scripts %}
     <script src="{% sass_src 'scripts/dashboard/main.js' %}" defer></script>
      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/2.1.0/chartjs-plugin-annotation.min.js" integrity="sha512-1uGDhRiDlpOPrTi54rJHu3oBLizqaadZDDft+j4fVeFih6eQBeRPJuuP3JcxIqJxIjzOmRq57XwwO4FT+/owIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>{% endblock scripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/2.1.0/chartjs-plugin-annotation.min.js" integrity="sha512-1uGDhRiDlpOPrTi54rJHu3oBLizqaadZDDft+j4fVeFih6eQBeRPJuuP3JcxIqJxIjzOmRq57XwwO4FT+/owIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+{% endblock scripts %}
 {% block content %}
     <div class="loader"></div>
     <div class="grid-layout-container">
@@ -13,7 +14,12 @@
             {% include 'components/sidebar/sidebar_small.html' %}
             <div class="dashboard__content__welcome-text">
                  <h1>{% trans 'Welcome back' %}, {{ get_current_user_profile.user.first_name}}.</h1>
-                <p>{% trans "Let's check quality of your nutrition for today!" %}</p>
+                 <p>{% trans "Let's check quality of your nutrition for today!" %}</p>
+                 <div class="dashboard__content__welcome-text__day-switcher">
+                     <img class="filter-green-dark" id="left-arrow-day" src="{% sass_src 'images/svg/left-arrow.svg' %}" alt="About Icon"/>
+                     <p class="dashboard__content__welcome-text__day-switcher__date"></p>
+                     <img class="filter-green-dark" id="right-arrow-day" style="visibility: hidden" src="{% sass_src 'images/svg/right-arrow.svg' %}" alt="About Icon"/>
+                 </div>
                 {% include 'accounts/navbar.html' %}
             </div>
 

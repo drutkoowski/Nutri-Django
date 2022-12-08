@@ -6,6 +6,8 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.db.models import Q
+
+from recipes.models import Recipe
 from .utils import date_for_weekday, calculate_user_nutrition_demand, edit_info_parameter_by_type, \
     get_measure_changes_yearly,get_changes_on_month, format_to_iso_date
 from accounts.models import Account, UserProfile
@@ -324,13 +326,16 @@ def update_user_parameter(request):
 @login_required(login_url='login')
 def get_profile_nutrition_details(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
+        day = request.GET.get('day')
+        month = request.GET.get('month')
+        year = request.GET.get('year')
         user_profile = UserProfile.objects.get(user=request.user)
         final_kcal_goal = calculate_user_nutrition_demand(user_profile)
         from datetime import datetime
         all_today_meals = Meal.objects.filter(created_by=user_profile,
-                                              created_at__contains=datetime.today().date()).all()
+                                              created_at__day=day, created_at__month=month, created_at__year=year).all()
         all_today_exercises = Workout.objects.filter(created_by=user_profile,
-                                                     created_at__contains=datetime.today().date()).all()
+                                                     created_at__day=day,created_at__month=month, created_at__year=year).all()
         sum_kcal_eaten = 0
         sum_protein_eaten = 0
         sum_carbs_eaten = 0
