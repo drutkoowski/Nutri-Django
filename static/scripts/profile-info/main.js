@@ -36,22 +36,31 @@ const neckInput = document.querySelector('.measurements__input-element__neck')
 const wristInput = document.querySelector('.measurements__input-element__wrists')
 const shouldersInput = document.querySelector('.measurements__input-element__shoulders')
 const chestChangeElement = document.querySelector('.measurements__input-element__chest__change')
+const chestChangeDateElement = document.querySelector('.measurements__input-element__chest__change-date')
 const chestChangeIcon = document.querySelector('.measurements__input-element__chest__icon')
 const bicepsChangeElement = document.querySelector('.measurements__input-element__biceps__change')
+const bicepsChangeDateElement = document.querySelector('.measurements__input-element__biceps__change-date')
 const bicepsChangeIcon = document.querySelector('.measurements__input-element__biceps__icon')
 const waistChangeElement = document.querySelector('.measurements__input-element__waist__change')
+const waistChangeDateElement = document.querySelector('.measurements__input-element__waist__change-date')
 const waistChangeIcon = document.querySelector('.measurements__input-element__waist__icon')
 const hipsChangeElement = document.querySelector('.measurements__input-element__hips__change')
+const hipsChangeDateElement = document.querySelector('.measurements__input-element__hips__change-date')
 const hipsChangeIcon = document.querySelector('.measurements__input-element__hips__icon')
 const calvesChangeElement = document.querySelector('.measurements__input-element__calves__change')
+const calvesChangeDateElement = document.querySelector('.measurements__input-element__calves__change-date')
 const calvesChangeIcon = document.querySelector('.measurements__input-element__calves__icon')
 const thighsChangeElement = document.querySelector('.measurements__input-element__thighs__change')
+const thighsChangeDateElement = document.querySelector('.measurements__input-element__thighs__change-date')
 const thighsChangeIcon = document.querySelector('.measurements__input-element__thighs__icon')
 const neckChangeElement = document.querySelector('.measurements__input-element__neck__change')
+const neckChangeDateElement = document.querySelector('.measurements__input-element__neck__change-date')
 const neckChangeIcon = document.querySelector('.measurements__input-element__neck__icon')
 const wristsChangeElement = document.querySelector('.measurements__input-element__wrists__change')
+const wristsChangeDateElement = document.querySelector('.measurements__input-element__wrists__change-date')
 const wristsChangeIcon = document.querySelector('.measurements__input-element__wrists__icon')
 const shouldersChangeElement = document.querySelector('.measurements__input-element__shoulders__change')
+const shouldersChangeDateElement = document.querySelector('.measurements__input-element__shoulders__change-date')
 const shouldersChangeIcon = document.querySelector('.measurements__input-element__shoulders__icon')
 // inputs
 const allInputs = document.querySelectorAll('.measurements__input-element')
@@ -67,19 +76,26 @@ const setStatusChangeIcon = (element, change) => {
     if (change > 0) {
         iconPath = '/static/images/svg/up-arrow-single.svg'
         element.classList.add('filter-green-dark')
+        element.classList.remove('filter-red')
     }
     else if (change < 0){
         iconPath = '/static/images/svg/down-arrow.svg'
         element.classList.add('filter-red')
+        element.classList.remove('filter-green-dark')
     }
     else {
         iconPath = '/static/images/svg/straight-arrow.svg'
+        element.classList.remove('filter-green-dark')
+        element.classList.remove('filter-red')
     }
     element.src = iconPath
 }
-const fillChanges = (element, change, elementIcon) => {
+const fillChanges = (element, change, elementIcon,dateElement, dateChange) => {
     if (change !== 0){
         element.innerHTML = `${change} cm`
+        if (dateChange){
+            dateElement.innerHTML =`(${dateChange})`
+        }
     }
     else {
         element.style.visibility = 'hidden'
@@ -204,15 +220,15 @@ const getMeasurementInfo = () => {
             neckInput.value = data.neck
             wristInput.value = data.wrists
             shouldersInput.value = data.shoulders
-            fillChanges(chestChangeElement, data.chestChange, chestChangeIcon)
-            fillChanges(bicepsChangeElement, data.bicepsChange, bicepsChangeIcon)
-            fillChanges(waistChangeElement, data.waistChange, waistChangeIcon)
-            fillChanges(hipsChangeElement, data.hipsChange, hipsChangeIcon)
-            fillChanges(calvesChangeElement, data.calvesChange, calvesChangeIcon)
-            fillChanges(thighsChangeElement, data.thighsChange, thighsChangeIcon)
-            fillChanges(neckChangeElement, data.neckChange, neckChangeIcon)
-            fillChanges(wristsChangeElement, data.wristsChange, wristsChangeIcon)
-            fillChanges(shouldersChangeElement, data.shouldersChange, shouldersChangeIcon)
+            fillChanges(chestChangeElement, data.chestChange, chestChangeIcon, chestChangeDateElement, data.chestDateChange)
+            fillChanges(bicepsChangeElement, data.bicepsChange, bicepsChangeIcon, bicepsChangeDateElement, data.bicepsDateChange)
+            fillChanges(waistChangeElement, data.waistChange, waistChangeIcon, waistChangeDateElement, data.waistDateChange)
+            fillChanges(hipsChangeElement, data.hipsChange, hipsChangeIcon, hipsChangeDateElement, data.hipsDateChange)
+            fillChanges(calvesChangeElement, data.calvesChange, calvesChangeIcon, calvesChangeDateElement, data.calvesDateChange)
+            fillChanges(thighsChangeElement, data.thighsChange, thighsChangeIcon, thighsChangeDateElement, data.thighsDateChange)
+            fillChanges(neckChangeElement, data.neckChange, neckChangeIcon, neckChangeDateElement, data.neckDateChange)
+            fillChanges(wristsChangeElement, data.wristsChange, wristsChangeIcon, wristsChangeDateElement, data.wristsDateChange)
+            fillChanges(shouldersChangeElement, data.shouldersChange, shouldersChangeIcon, shouldersChangeDateElement, data.shouldersDateChange)
         },
     })
 }

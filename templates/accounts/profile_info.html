@@ -99,6 +99,7 @@
                          <input type="number" class="measurements__input-element measurements__input-element__chest" maxlength="3" oninput="maxLengthCheck(this, 1, 200)" data-type="chest">
                          <p class="measurements__input-element__chest__change"></p>
                          <img src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="measurements__input-element__chest__icon">
+                         <small class="measurements__input-element__chest__change-date profile-info-measurements-date"></small>
                      </div>
                  </div>
                  <div class="measurements__measurements__item">
@@ -107,6 +108,7 @@
                          <input type="number" class="measurements__input-element measurements__input-element__biceps" maxlength="3" oninput="maxLengthCheck(this, 1, 100)" data-type="biceps">
                          <p class="measurements__input-element__biceps__change"></p>
                          <img src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="measurements__input-element__biceps__icon">
+                         <small class="measurements__input-element__biceps__change-date profile-info-measurements-date"></small>
                      </div>
                  </div>
                  <div class="measurements__measurements__item">
@@ -115,6 +117,7 @@
                          <input type="number" class="measurements__input-element measurements__input-element__waist" maxlength="3" oninput="maxLengthCheck(this, 1, 200)" data-type="waist">
                          <p class="measurements__input-element__waist__change"></p>
                          <img src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="measurements__input-element__waist__icon">
+                         <small class="measurements__input-element__waist__change-date profile-info-measurements-date"></small>
                      </div>
                  </div>
                  <div class="measurements__measurements__item">
@@ -123,6 +126,7 @@
                          <input type="number" class="measurements__input-element measurements__input-element__hips" maxlength="3" oninput="maxLengthCheck(this, 1, 200)" data-type="hips">
                          <p class="measurements__input-element__hips__change"></p>
                          <img src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="measurements__input-element__hips__icon">
+                         <small class="measurements__input-element__hips__change-date profile-info-measurements-date"></small>
                      </div>
                  </div>
                  <div class="measurements__measurements__item">
@@ -131,6 +135,7 @@
                          <input type="number" class="measurements__input-element measurements__input-element__calves" maxlength="3" oninput="maxLengthCheck(this, 1, 100)" data-type="calves">
                          <p class="measurements__input-element__calves__change"></p>
                          <img src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="measurements__input-element__calves__icon">
+                         <small class="measurements__input-element__calves__change-date profile-info-measurements-date"></small>
                      </div>
                  </div>
                  <div class="measurements__measurements__item">
@@ -139,6 +144,7 @@
                          <input type="number" class="measurements__input-element measurements__input-element__thighs" maxlength="3" oninput="maxLengthCheck(this, 1, 100)" data-type="thighs">
                          <p class="measurements__input-element__thighs__change"></p>
                          <img src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="measurements__input-element__thighs__icon">
+                         <small class="measurements__input-element__thighs__change-date profile-info-measurements-date"></small>
                      </div>
                  </div>
                  <div class="measurements__measurements__item">
@@ -147,6 +153,7 @@
                          <input type="number" class="measurements__input-element measurements__input-element__neck" maxlength="3" oninput="maxLengthCheck(this, 1, 100)" data-type="neck">
                          <p class="measurements__input-element__neck__change"></p>
                          <img src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="measurements__input-element__neck__icon">
+                         <small class="measurements__input-element__neck__change-date profile-info-measurements-date"></small>
                      </div>
                  </div>
                  <div class="measurements__measurements__item">
@@ -155,6 +162,7 @@
                          <input type="number" class="measurements__input-element measurements__input-element__wrists" maxlength="3" oninput="maxLengthCheck(this, 1, 100)" data-type="wrists">
                          <p class="measurements__input-element__wrists__change"></p>
                          <img src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="measurements__input-element__wrists__icon">
+                         <small class="measurements__input-element__wrists__change-date profile-info-measurements-date"></small>
                      </div>
                  </div>
                  <div class="measurements__measurements__item">
@@ -163,11 +171,12 @@
                          <input type="number" class="measurements__input-element measurements__input-element__shoulders" maxlength="3" oninput="maxLengthCheck(this, 1, 100)" data-type="shoulders">
                          <p class="measurements__input-element__shoulders__change"></p>
                          <img src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="measurements__input-element__shoulders__icon">
+                         <small class="measurements__input-element__shoulders__change-date profile-info-measurements-date"></small>
                      </div>
                  </div>
              </div>
              <div class="btn-light__container">
-                 <button class="btn-light edit-measurements">{% trans 'Edit' %}</button>
+                 <button class="btn-light edit-profile-info">{% trans 'Edit' %}</button>
              </div>
         </div>
     </div>
