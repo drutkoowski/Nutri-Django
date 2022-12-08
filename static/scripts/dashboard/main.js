@@ -134,6 +134,8 @@ const getDataSummaryChart = (day, month, year, type) => {
         success: function (response) {
             // getting data response
             const data = JSON.parse(response.data)
+            const statsInfoDay = date.toLocaleDateString(`${localeDateFormat}`)
+            graphDate.textContent = `${gettext('Summary')} ${statsInfoDay}`
             const kcalGoal = data.kcalGoal
             const eatenKcal = data.eatenKcal
             const burntKcal = data.burntKcal
@@ -221,7 +223,6 @@ const getDataSummaryChart = (day, month, year, type) => {
                  Math.trunc(carbsMultiplier * data.kcalGoal / 4),Math.trunc((kcalGoal * 0.275) / 9))
             }
             else if (type === 'update'){
-                [Number(goalPercent), percentDiff]
                 summaryChartBox.data = {
                     labels: [],
                     datasets: [{
