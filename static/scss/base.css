@@ -4285,14 +4285,25 @@ div.modal--calendar__content-summary {
       height: 3rem; }
       .measurements__body-info__item p {
         grid-column: 1/2;
+        margin-top: 1px;
         vertical-align: text-bottom; }
       .measurements__body-info__item div {
         grid-column: 2/3;
         display: flex; }
         .measurements__body-info__item div p {
-          width: 3rem;
+          width: 10rem;
           vertical-align: center;
+          text-align: center;
           margin-left: 1rem; }
+        .measurements__body-info__item div img {
+          height: 3rem;
+          width: 3rem;
+          vertical-align: text-bottom;
+          margin-top: 2px;
+          margin-left: 0.5rem;
+          transition: all .3s ease-in; }
+          .measurements__body-info__item div img:hover {
+            transform: scale(1.15); }
   .measurements__personal-info {
     grid-row: 3 / 4;
     grid-column: 1/-1;
@@ -8669,13 +8680,7 @@ div.modal--calendar__content-summary {
   padding: 0;
   box-sizing: inherit;
   scroll-behavior: smooth;
-  text-decoration: none;
-  scrollbar-face-color: #15e53c;
-  /* Firefox 63 compatibility */
-  scrollbar-track-color: #a6e3b4;
-  /* Firefox 63 compatibility */
-  scrollbar-color: #15e53c #a6e3b4;
-  scrollbar-width: thin; }
+  text-decoration: none; }
 
 html {
   font-size: 62.5%;

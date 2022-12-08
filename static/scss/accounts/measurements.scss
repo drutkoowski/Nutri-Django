@@ -102,16 +102,30 @@
         height: 3rem;
         p {
           grid-column: 1/2;
+          margin-top: 1px;
           vertical-align: text-bottom;
         }
         div {
           grid-column: 2/3;
           display: flex;
           p {
-            width: 3rem;
+            width: 10rem;
             vertical-align: center;
+            text-align: center;
             margin-left: 1rem;
           }
+          img {
+            height: 3rem;
+            width: 3rem;
+            vertical-align: text-bottom;
+            margin-top: 2px;;
+            margin-left: 0.5rem;
+            transition: all .3s ease-in;
+            &:hover {
+              transform: scale(1.15);
+            }
+          }
+
         }
       }
 

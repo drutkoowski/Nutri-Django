@@ -204,27 +204,22 @@ def get_user_body_measures(request):
         thighs_json = user_profile.thighs_json
         neck_json = user_profile.neck_json
         wrists_json = user_profile.wrists_json
+        weight_json = user_profile.weight_json
         shoulders_json = user_profile.shoulders_json
-        chest_cm = 0
-        change_chest = 0
-        biceps_cm = 0
-        change_biceps = 0
-        waist_cm = 0
-        change_waist = 0
-        hips_cm = 0
-        change_hips = 0
-        calves_cm = 0
-        change_calves = 0
-        thighs_cm = 0
-        change_thighs = 0
-        neck_cm = 0
-        change_neck = 0
-        wrists_cm = 0
-        change_wrists = 0
-        shoulders_cm = 0
-        change_shoulders = 0
-        chest_date_change = biceps_date_change = waist_date_change = hips_date_change = calves_date_change \
+
+        chest_cm = change_chest = biceps_cm = change_biceps = waist_cm = change_waist = hips_cm = change_hips = \
+            calves_cm = change_calves = thighs_cm = change_thighs = neck_cm = change_neck = wrists_cm = change_wrists \
+            = shoulders_cm = change_shoulders = change_weight = 0
+
+        chest_date_change = weight_date_change = biceps_date_change = waist_date_change = hips_date_change = calves_date_change \
             = thighs_date_change = neck_date_change = wrists_date_change = shoulders_date_change = None
+
+        if weight_json:
+            weight_kg = list(weight_json['changes'][-1].values())[0]
+            weight_date_change = list(weight_json['changes'][-1].keys())[0]
+            if len(weight_json['changes']) > 1:
+                prev_cm = list(weight_json['changes'][-2].values())[0]
+                change_weight = float(weight_kg) - float(prev_cm)
         if chest_json:
             chest_cm = list(chest_json['changes'][-1].values())[0]
             chest_date_change = list(chest_json['changes'][-1].keys())[0]
@@ -254,7 +249,7 @@ def get_user_body_measures(request):
             calves_date_change = list(calves_json['changes'][-1].keys())[0]
             if len(calves_json['changes']) > 1:
                 prev_cm = list(calves_json['changes'][-2].values())[0]
-                change_calves = float(hips_cm) - float(prev_cm)
+                change_calves = float(calves_cm) - float(prev_cm)
         if thighs_json:
             thighs_cm = list(thighs_json['changes'][-1].values())[0]
             thighs_date_change = list(thighs_json['changes'][-1].keys())[0]
@@ -281,6 +276,8 @@ def get_user_body_measures(request):
                 change_shoulders = float(shoulders_cm) - float(prev_cm)
 
         data = {
+            'weightChange': weight_kg,
+            'weightDateChange': weight_date_change,
             'chest': chest_cm,
             'chestChange': change_chest,
             'chestDateChange': chest_date_change,
@@ -309,7 +306,6 @@ def get_user_body_measures(request):
             'shouldersChange': change_shoulders,
             'shouldersDateChange': shoulders_date_change
         }
-        print(data)
         return JsonResponse({'status': 200, 'text': 'Operation success.', 'data': json.dumps(data)})
     else:
         return JsonResponse({'status': 405, 'text': 'Method not allowed.', 'data': ''})

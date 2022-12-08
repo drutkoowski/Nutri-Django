@@ -18,6 +18,9 @@ const activitySidebar = document.querySelector('.dashboard__sidebar__activity-le
 const bmiInput = document.querySelector('.measurements__input-element__bmi')
 const weightInput = document.querySelector('.measurements__input-element__weight')
 const heightInput = document.querySelector('.measurements__input-element__height')
+const weightChangeElement = document.querySelector('.measurements__input-element__weight__change')
+const weightChangeDateElement = document.querySelector('.measurements__input-element__weight__change-date')
+const weightChangeIcon = document.querySelector('.measurements__input-element__weight__icon')
 // about you
 const firstNameInput = document.querySelector('.measurements__input-element__fname')
 const lastNameInput = document.querySelector('.measurements__input-element__lname')
@@ -90,10 +93,9 @@ const setStatusChangeIcon = (element, change) => {
     }
     element.src = iconPath
 }
-const fillChanges = (element, change, elementIcon,dateElement, dateChange) => {
-    console.log(element, change, dateChange)
+const fillChanges = (element, change, elementIcon,dateElement, dateChange, unit) => {
     if (change !== 0){
-        element.innerHTML = `${change} cm`
+        element.innerHTML = `${change} ${unit}`
         element.style.removeProperty('visibility')
         if (dateChange){
             dateElement.innerHTML =`(${dateChange})`
@@ -222,15 +224,16 @@ const getMeasurementInfo = () => {
             neckInput.value = data.neck
             wristInput.value = data.wrists
             shouldersInput.value = data.shoulders
-            fillChanges(chestChangeElement, data.chestChange, chestChangeIcon, chestChangeDateElement, data.chestDateChange)
-            fillChanges(bicepsChangeElement, data.bicepsChange, bicepsChangeIcon, bicepsChangeDateElement, data.bicepsDateChange)
-            fillChanges(waistChangeElement, data.waistChange, waistChangeIcon, waistChangeDateElement, data.waistDateChange)
-            fillChanges(hipsChangeElement, data.hipsChange, hipsChangeIcon, hipsChangeDateElement, data.hipsDateChange)
-            fillChanges(calvesChangeElement, data.calvesChange, calvesChangeIcon, calvesChangeDateElement, data.calvesDateChange)
-            fillChanges(thighsChangeElement, data.thighsChange, thighsChangeIcon, thighsChangeDateElement, data.thighsDateChange)
-            fillChanges(neckChangeElement, data.neckChange, neckChangeIcon, neckChangeDateElement, data.neckDateChange)
-            fillChanges(wristsChangeElement, data.wristsChange, wristsChangeIcon, wristsChangeDateElement, data.wristsDateChange)
-            fillChanges(shouldersChangeElement, data.shouldersChange, shouldersChangeIcon, shouldersChangeDateElement, data.shouldersDateChange)
+            fillChanges(weightChangeElement, data.weightChange, weightChangeIcon, weightChangeDateElement, data.weightDateChange, 'kg')
+            fillChanges(chestChangeElement, data.chestChange, chestChangeIcon, chestChangeDateElement, data.chestDateChange, 'cm')
+            fillChanges(bicepsChangeElement, data.bicepsChange, bicepsChangeIcon, bicepsChangeDateElement, data.bicepsDateChange, 'cm')
+            fillChanges(waistChangeElement, data.waistChange, waistChangeIcon, waistChangeDateElement, data.waistDateChange, 'cm')
+            fillChanges(hipsChangeElement, data.hipsChange, hipsChangeIcon, hipsChangeDateElement, data.hipsDateChange, 'cm')
+            fillChanges(calvesChangeElement, data.calvesChange, calvesChangeIcon, calvesChangeDateElement, data.calvesDateChange, 'cm')
+            fillChanges(thighsChangeElement, data.thighsChange, thighsChangeIcon, thighsChangeDateElement, data.thighsDateChange, 'cm')
+            fillChanges(neckChangeElement, data.neckChange, neckChangeIcon, neckChangeDateElement, data.neckDateChange, 'cm')
+            fillChanges(wristsChangeElement, data.wristsChange, wristsChangeIcon, wristsChangeDateElement, data.wristsDateChange, 'cm')
+            fillChanges(shouldersChangeElement, data.shouldersChange, shouldersChangeIcon, shouldersChangeDateElement, data.shouldersDateChange, 'cm')
         },
     })
 }

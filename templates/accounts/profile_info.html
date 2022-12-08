@@ -38,6 +38,9 @@
                     <p>{% trans 'Weight' %}: </p>
                     <div>
                         <input type="number" class="measurements__input-element measurements__input-element__weight" data-type="weight" maxlength="3" oninput="maxLengthCheck(this, 30, 300)">
+                         <p class="measurements__input-element__weight__change"></p>
+                         <img src="{% sass_src 'images/svg/up-arrow-single.svg' %}" alt="Changes Icon" class="measurements__input-element__weight__icon">
+                         <small class="measurements__input-element__weight__change-date profile-info-measurements-date"></small>
                     </div>
                 </div>
             </div>

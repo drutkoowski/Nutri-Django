@@ -208,7 +208,7 @@ const getChartFullDataMonthly = (type) => {
                     pointHoverRadius: 0,
                     backgroundColor: 'rgb(126,238,146)',
                 },]
-                chartDraw(xValuesWeekGraph, dataset, 'update', 'cm', gettext('Graph of changes in your profile-info (cm)'))
+                chartDraw(xValuesWeekGraph, dataset, 'update', 'cm', gettext('Graph of changes in your measurements (cm)'))
             }
             else if (type === 'kcal'){
                 const xValuesWeekGraph = data.caloriesEaten.datesArr;
@@ -333,7 +333,7 @@ const getChartFullDataMonthly = (type) => {
                     pointHoverRadius: 0,
                     backgroundColor: 'rgb(126,161,238)',
                 },]
-                chartDraw(xValuesWeekGraph, dataset, 'update', 'cm', gettext('Graph of changes in your profile-info (cm)'))
+                chartDraw(xValuesWeekGraph, dataset, 'update', 'cm', gettext('Graph of changes in your measurements (cm)'))
             }
             else if (type === 'waist'){
                 const xValuesWeekGraph = data.changesWaist.datesArr;
@@ -349,7 +349,7 @@ const getChartFullDataMonthly = (type) => {
                     pointHoverRadius: 0,
                     backgroundColor: 'rgb(236,223,65)',
                 },]
-                chartDraw(xValuesWeekGraph, dataset, 'update', 'cm', gettext('Graph of changes in your profile-info (cm)'))
+                chartDraw(xValuesWeekGraph, dataset, 'update', 'cm', gettext('Graph of changes in your measurements (cm)'))
             }
              else if (type === 'hips'){
                 const xValuesWeekGraph = data.changesHips.datesArr;
@@ -365,7 +365,7 @@ const getChartFullDataMonthly = (type) => {
                     pointHoverRadius: 0,
                     backgroundColor: 'rgb(128,64,229)',
                 },]
-                chartDraw(xValuesWeekGraph, dataset, 'update', 'cm', gettext('Graph of changes in your profile-info (cm)'))
+                chartDraw(xValuesWeekGraph, dataset, 'update', 'cm', gettext('Graph of changes in your measurements (cm)'))
             }
             else if (type === 'calves'){
                 const xValuesWeekGraph = data.changesCalves.datesArr;
@@ -381,7 +381,7 @@ const getChartFullDataMonthly = (type) => {
                     pointHoverRadius: 0,
                     backgroundColor: 'rgb(1,107,80)',
                 },]
-                chartDraw(xValuesWeekGraph, dataset, 'update', 'cm', gettext('Graph of changes in your profile-info (cm)'))
+                chartDraw(xValuesWeekGraph, dataset, 'update', 'cm', gettext('Graph of changes in your measurements (cm)'))
             }
             else if (type === 'thighs'){
                 const xValuesWeekGraph = data.changesThighs.datesArr;
@@ -397,7 +397,7 @@ const getChartFullDataMonthly = (type) => {
                     pointHoverRadius: 0,
                     backgroundColor: 'rgb(234,149,170)',
                 },]
-                chartDraw(xValuesWeekGraph, dataset, 'update', 'cm', gettext('Graph of changes in your profile-info (cm)'))
+                chartDraw(xValuesWeekGraph, dataset, 'update', 'cm', gettext('Graph of changes in your measurements (cm)'))
             }
             else if (type === 'neck'){
                 const xValuesWeekGraph = data.changesNeck.datesArr;
@@ -413,7 +413,7 @@ const getChartFullDataMonthly = (type) => {
                     pointHoverRadius: 0,
                     backgroundColor: 'rgb(128,124,42)',
                 },]
-                chartDraw(xValuesWeekGraph, dataset, 'update', 'cm', gettext('Graph of changes in your profile-info (cm)'))
+                chartDraw(xValuesWeekGraph, dataset, 'update', 'cm', gettext('Graph of changes in your measurements (cm)'))
             }
             else if (type === 'wrists'){
                 const xValuesWeekGraph = data.changesWrists.datesArr;
@@ -429,7 +429,7 @@ const getChartFullDataMonthly = (type) => {
                     pointHoverRadius: 0,
                     backgroundColor: 'rgb(199,144,136)',
                 },]
-                chartDraw(xValuesWeekGraph, dataset, 'update', 'cm', gettext('Graph of changes in your profile-info (cm)'))
+                chartDraw(xValuesWeekGraph, dataset, 'update', 'cm', gettext('Graph of changes in your measurements (cm)'))
             }
             else if (type === 'shoulders'){
                 const xValuesWeekGraph = data.changesShoulders.datesArr;
@@ -445,7 +445,7 @@ const getChartFullDataMonthly = (type) => {
                     pointHoverRadius: 0,
                     backgroundColor: 'rgb(41,199,165)',
                 },]
-                chartDraw(xValuesWeekGraph, dataset, 'update', 'cm', gettext('Graph of changes in your profile-info (cm)'))
+                chartDraw(xValuesWeekGraph, dataset, 'update', 'cm', gettext('Graph of changes in your measurements (cm)'))
             }
         }
     })
@@ -585,7 +585,7 @@ const getChartFullDataYearly = (type) => {
                         pointHoverRadius: 0,
                     },
                 ]
-                chartDraw(  xValuesWeekGraph, dataset, 'update', gettext('cm'), gettext('Graph of changes in your profile-info (cm)'))
+                chartDraw(  xValuesWeekGraph, dataset, 'update', gettext('cm'), gettext('Graph of changes in your measurements (cm)'))
             }
             else if (type === 'chest'){
                 let dataset = [{
@@ -600,7 +600,7 @@ const getChartFullDataYearly = (type) => {
                         pointHoverRadius: 0,
                     },
                 ]
-                chartDraw(xValuesWeekGraph, dataset, 'update', gettext('cm'), gettext('Graph of changes in your profile-info (cm)'))
+                chartDraw(xValuesWeekGraph, dataset, 'update', gettext('cm'), gettext('Graph of changes in your measurements (cm)'))
             }
             else if (type === 'waist'){
                 let dataset = [{
@@ -615,7 +615,7 @@ const getChartFullDataYearly = (type) => {
                         pointHoverRadius: 0,
                     },
                 ]
-                chartDraw(  xValuesWeekGraph, dataset, 'update', gettext('cm'), gettext('Graph of changes in your profile-info (cm)'))
+                chartDraw(  xValuesWeekGraph, dataset, 'update', gettext('cm'), gettext('Graph of changes in your measurements (cm)'))
             }
              else if (type === 'hips'){
                 let dataset = [{
@@ -630,7 +630,7 @@ const getChartFullDataYearly = (type) => {
                         pointHoverRadius: 0,
                     },
                 ]
-                chartDraw(  xValuesWeekGraph, dataset, 'update', gettext('cm'), gettext('Graph of changes in your profile-info (cm)'))
+                chartDraw(  xValuesWeekGraph, dataset, 'update', gettext('cm'), gettext('Graph of changes in your measurements (cm)'))
             }
              else if (type === 'calves'){
                 let dataset = [{
@@ -645,7 +645,7 @@ const getChartFullDataYearly = (type) => {
                         pointHoverRadius: 0,
                     },
                 ]
-                chartDraw(  xValuesWeekGraph, dataset, 'update', gettext('cm'), gettext('Graph of changes in your profile-info (cm)'))
+                chartDraw(  xValuesWeekGraph, dataset, 'update', gettext('cm'), gettext('Graph of changes in your measurements (cm)'))
             }
              else if (type === 'thighs'){
                 let dataset = [{
@@ -660,7 +660,7 @@ const getChartFullDataYearly = (type) => {
                         pointHoverRadius: 0,
                     },
                 ]
-                chartDraw(xValuesWeekGraph, dataset, 'update', gettext('cm'), gettext('Graph of changes in your profile-info (cm)'))
+                chartDraw(xValuesWeekGraph, dataset, 'update', gettext('cm'), gettext('Graph of changes in your measurements (cm)'))
             }
              else if (type === 'neck'){
                 let dataset = [{
@@ -675,7 +675,7 @@ const getChartFullDataYearly = (type) => {
                         pointHoverRadius: 0,
                     },
                 ]
-                chartDraw(  xValuesWeekGraph, dataset, 'update', gettext('cm'), gettext('Graph of changes in your profile-info (cm)'))
+                chartDraw(  xValuesWeekGraph, dataset, 'update', gettext('cm'), gettext('Graph of changes in your measurements (cm)'))
             }
              else if (type === 'wrists'){
                 let dataset = [{
@@ -690,7 +690,7 @@ const getChartFullDataYearly = (type) => {
                         pointHoverRadius: 0,
                     },
                 ]
-                chartDraw(xValuesWeekGraph, dataset, 'update', gettext('cm'), gettext('Graph of changes in your profile-info (cm)'))
+                chartDraw(xValuesWeekGraph, dataset, 'update', gettext('cm'), gettext('Graph of changes in your measurements (cm)'))
             }
              else if (type === 'shoulders'){
                 let dataset = [{
@@ -705,7 +705,7 @@ const getChartFullDataYearly = (type) => {
                         pointHoverRadius: 0,
                     },
                 ]
-                chartDraw(  xValuesWeekGraph, dataset, 'update', gettext('cm'), gettext('Graph of changes in your profile-info (cm)'))
+                chartDraw(  xValuesWeekGraph, dataset, 'update', gettext('cm'), gettext('Graph of changes in your measurements (cm)'))
             }
         }
     })
