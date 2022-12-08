@@ -91,8 +91,10 @@ const setStatusChangeIcon = (element, change) => {
     element.src = iconPath
 }
 const fillChanges = (element, change, elementIcon,dateElement, dateChange) => {
+    console.log(element, change, dateChange)
     if (change !== 0){
         element.innerHTML = `${change} cm`
+        element.style.removeProperty('visibility')
         if (dateChange){
             dateElement.innerHTML =`(${dateChange})`
         }
