@@ -158,8 +158,8 @@ def get_saved_workout_template(request):
 def get_saved_workout_template_element(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
         element_id = request.GET.get('workoutElementId')
+        template_element = WorkoutTemplateElement.objects.get(pk=element_id)
         try:
-            template_element = WorkoutTemplateElement.objects.get(pk=element_id)
             template_obj_dict = {
                 "workoutTemplateElementId": template_element.pk,
                 "exerciseId": template_element.exercise.pk,
@@ -167,30 +167,30 @@ def get_saved_workout_template_element(request):
                 "kcal_burnt": template_element.kcal_burnt,
                 "templateElementName_en": template_element.exercise.en_name,
                 "templateElementName_pl": template_element.exercise.pl_name,
-                "unit_name_pl": template_element.exercise.unit.pl_name,
-                "unit_name_en": template_element.exercise.unit.en_name
-            }
+                "unit_name_pl": template_element.exercise.unit.pl_name if template_element.exercise.unit else None,
+                "unit_name_en": template_element.exercise.unit.en_name if template_element.exercise.unit else None
+             }
             exercise_obj_dict = {
                 "id": template_element.exercise.pk,
                 'en_name': template_element.exercise.en_name,
                 'pl_name': template_element.exercise.pl_name,
                 'category_id': template_element.exercise.category.pk,
-                'unit_id': template_element.exercise.unit.pk,
-                'unit_name_en': template_element.exercise.unit.en_name,
-                'unit_name_pl': template_element.exercise.unit.pl_name,
+                'unit_id': template_element.exercise.unit.pk if template_element.exercise.unit else None,
+                'unit_name_en': template_element.exercise.unit.en_name if template_element.exercise.unit else None,
+                'unit_name_pl': template_element.exercise.unit.pl_name if template_element.exercise.unit else None,
                 'category_name_en': template_element.exercise.category.en_category_name,
                 'category_name_pl': template_element.exercise.category.pl_category_name,
             }
             return JsonResponse(
-                {'status': 302, 'text': 'Workout Template Element Found',
-                 "workoutTemplateElement": json.dumps(template_obj_dict),
-                 "workoutElement": json.dumps(exercise_obj_dict)})
+                    {'status': 302, 'text': 'Workout Template Element Found',
+                     "workoutTemplateElement": json.dumps(template_obj_dict),
+                     "workoutElement": json.dumps(exercise_obj_dict)})
         except:
             return JsonResponse(
                 {'status': 404, 'text': 'Workout Template Element Not Found',
-                 "workoutTemplateElement": '',
-                 "workoutElement": ''
-                 })
+                    "workoutTemplateElement": '',
+                    "workoutElement": ''
+                })
     return redirect('home')
 
 
