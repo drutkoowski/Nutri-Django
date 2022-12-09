@@ -2793,11 +2793,11 @@ label.year {
       grid-row: 1/2; } }
   @media only screen and (max-width: 37.5em) {
     .dashboard__content {
-      grid-template-rows: 0.25fr 0.25fr 0.8fr 0.5fr 1.2fr; } }
+      grid-template-rows: 0.25fr 0.15fr 0.8fr 0.5fr 1.2fr; } }
   @media only screen and (max-width: 25em) {
     .dashboard__content {
       width: 100%;
-      grid-template-rows: 0.25fr 0.05fr 1.2fr 0.5fr 1.2fr; } }
+      grid-template-rows: 0.25fr 0.05fr 1fr 0.5fr 1.2fr; } }
   .dashboard__content__welcome-text {
     margin-left: 2rem;
     margin-top: 5rem;
@@ -2813,9 +2813,9 @@ label.year {
         grid-row: 2 / 3;
         margin-top: 1rem;
         font-size: 2.5rem; } }
-    @media only screen and (max-width: 37.5em) {
+    @media only screen and (max-width: 21.875em) {
       .dashboard__content__welcome-text {
-        margin: 0 auto 0 auto; } }
+        margin: 0 auto; } }
     @media only screen and (max-width: 93.75em) {
       .dashboard__content__welcome-text h1 {
         font-size: 4rem; } }
@@ -2825,7 +2825,7 @@ label.year {
         text-align: center; } }
     @media only screen and (max-width: 28.5em) {
       .dashboard__content__welcome-text h1 {
-        font-size: 2rem; } }
+        font-size: 2.3rem; } }
     .dashboard__content__welcome-text p {
       font-size: 1.5rem; }
       @media only screen and (max-width: 93.75em) {
@@ -2839,12 +2839,29 @@ label.year {
         .dashboard__content__welcome-text p {
           font-size: 1.2rem; } }
     .dashboard__content__welcome-text__day-switcher {
-      display: flex; }
+      display: flex;
+      margin-top: 1rem; }
+      @media only screen and (max-width: 75em) {
+        .dashboard__content__welcome-text__day-switcher {
+          margin-bottom: 1rem; } }
+      @media only screen and (max-width: 37.5em) {
+        .dashboard__content__welcome-text__day-switcher {
+          margin: 1rem auto 2rem auto; } }
       .dashboard__content__welcome-text__day-switcher img {
         height: 2.5rem;
         width: 2.5rem; }
+        @media only screen and (max-width: 93.75em) {
+          .dashboard__content__welcome-text__day-switcher img {
+            margin-top: 4px; } }
       .dashboard__content__welcome-text__day-switcher p {
         margin: 0.2rem 1rem 0 1rem; }
+        @media only screen and (max-width: 37.5em) {
+          .dashboard__content__welcome-text__day-switcher p {
+            margin: 0.5rem 1rem 0 1rem; } }
+        @media only screen and (max-width: 28.5em) {
+          .dashboard__content__welcome-text__day-switcher p {
+            margin: 0.5rem 1rem 0 1rem;
+            font-size: 1.5rem; } }
   .dashboard__content__summary {
     display: grid;
     grid-template-rows: 1fr;
@@ -3089,6 +3106,9 @@ label.year {
           color: var(--green-darker);
           font-weight: bolder;
           font-size: 4rem; }
+          @media only screen and (max-width: 75em) {
+            .dashboard__content__daily-summary__item--calories p span:first-of-type {
+              font-size: 3rem; } }
         .dashboard__content__daily-summary__item--calories p span {
           margin-top: 1rem;
           font-size: 3rem;
@@ -3097,9 +3117,12 @@ label.year {
             .dashboard__content__daily-summary__item--calories p span {
               font-size: 3rem;
               margin-top: 1.5rem; } }
+          @media only screen and (max-width: 75em) {
+            .dashboard__content__daily-summary__item--calories p span {
+              font-size: 2rem; } }
           @media only screen and (max-width: 28.5em) {
             .dashboard__content__daily-summary__item--calories p span {
-              font-size: 2.4rem; } }
+              font-size: 1.8rem; } }
       .dashboard__content__daily-summary__item--carbs {
         grid-column: 2/3; }
         @media only screen and (max-width: 56.25em) {
@@ -3120,6 +3143,9 @@ label.year {
           color: var(--green-darker);
           font-weight: bolder;
           font-size: 4rem; }
+          @media only screen and (max-width: 75em) {
+            .dashboard__content__daily-summary__item--carbs p span:first-of-type {
+              font-size: 3rem; } }
         .dashboard__content__daily-summary__item--carbs p span {
           margin-top: 1rem;
           font-size: 3rem;
@@ -3128,9 +3154,12 @@ label.year {
             .dashboard__content__daily-summary__item--carbs p span {
               font-size: 3rem;
               margin-top: 1.5rem; } }
+          @media only screen and (max-width: 75em) {
+            .dashboard__content__daily-summary__item--carbs p span {
+              font-size: 2rem; } }
           @media only screen and (max-width: 28.5em) {
             .dashboard__content__daily-summary__item--carbs p span {
-              font-size: 2.4rem; } }
+              font-size: 1.8rem; } }
       .dashboard__content__daily-summary__item--protein {
         grid-column: 3/4; }
         @media only screen and (max-width: 56.25em) {
@@ -3151,6 +3180,9 @@ label.year {
           color: var(--green-darker);
           font-weight: bolder;
           font-size: 4rem; }
+          @media only screen and (max-width: 75em) {
+            .dashboard__content__daily-summary__item--protein p span:first-of-type {
+              font-size: 3rem; } }
         .dashboard__content__daily-summary__item--protein p span {
           margin-top: 1rem;
           font-size: 3rem;
@@ -3159,9 +3191,12 @@ label.year {
             .dashboard__content__daily-summary__item--protein p span {
               font-size: 3rem;
               margin-top: 1.5rem; } }
+          @media only screen and (max-width: 75em) {
+            .dashboard__content__daily-summary__item--protein p span {
+              font-size: 2rem; } }
           @media only screen and (max-width: 28.5em) {
             .dashboard__content__daily-summary__item--protein p span {
-              font-size: 2.4rem; } }
+              font-size: 1.8rem; } }
       .dashboard__content__daily-summary__item--fat {
         grid-column: 4/5; }
         @media only screen and (max-width: 56.25em) {
@@ -3182,6 +3217,9 @@ label.year {
           color: var(--green-darker);
           font-weight: bolder;
           font-size: 4rem; }
+          @media only screen and (max-width: 75em) {
+            .dashboard__content__daily-summary__item--fat p span:first-of-type {
+              font-size: 3rem; } }
         .dashboard__content__daily-summary__item--fat p span {
           margin-top: 1rem;
           font-size: 3rem;
@@ -3190,9 +3228,12 @@ label.year {
             .dashboard__content__daily-summary__item--fat p span {
               font-size: 3rem;
               margin-top: 1.5rem; } }
+          @media only screen and (max-width: 75em) {
+            .dashboard__content__daily-summary__item--fat p span {
+              font-size: 2rem; } }
           @media only screen and (max-width: 28.5em) {
             .dashboard__content__daily-summary__item--fat p span {
-              font-size: 2.4rem; } }
+              font-size: 1.8rem; } }
   .dashboard__content__graphs {
     display: grid;
     grid-template-rows: 1fr;

@@ -63,11 +63,11 @@
       grid-row: 1/2;
     }
     @include respond(phone-lg){
-       grid-template-rows: 0.25fr 0.25fr 0.8fr 0.5fr 1.2fr;
+       grid-template-rows: 0.25fr 0.15fr 0.8fr 0.5fr 1.2fr;
     }
     @include respond(phone-md-sm){
       width: 100%;
-      grid-template-rows: 0.25fr 0.05fr 1.2fr 0.5fr 1.2fr;
+      grid-template-rows: 0.25fr 0.05fr 1fr 0.5fr 1.2fr;
     }
 
     //-webkit-box-shadow: 0px 0px 59px -22px rgba(66, 68, 90, 1);
@@ -89,10 +89,9 @@
         margin-top: 1rem;
         font-size: 2.5rem;
       }
-      @include respond(phone-lg) {
-        margin: 0 auto 0 auto;
+      @include respond(phone-sm){
+        margin: 0 auto;
       }
-
       h1 {
         @include respond(md-desktop) {
            font-size: 4rem;
@@ -102,7 +101,7 @@
           text-align: center;
         }
         @include respond(phone-md) {
-          font-size: 2rem;
+          font-size: 2.3rem;
         }
 
       }
@@ -122,12 +121,29 @@
       }
       &__day-switcher {
         display: flex;
+        margin-top: 1rem;
+        @include respond(tab-land){
+          margin-bottom: 1rem;
+        }
+        @include respond(phone-lg){
+          margin: 1rem auto 2rem auto;
+        }
         img {
           height: 2.5rem;
           width: 2.5rem;
+          @include respond(md-desktop){
+            margin-top: 4px;
+          }
         }
         p {
           margin: 0.2rem 1rem 0 1rem;
+          @include respond(phone-lg){
+            margin: 0.5rem 1rem 0 1rem;
+          }
+          @include respond(phone-md){
+             margin: 0.5rem 1rem 0 1rem;
+            font-size: 1.5rem;
+          }
         }
       }
     }
@@ -391,7 +407,6 @@
         &:hover {
           transform: scale(1.05);
         }
-
         &--calories {
           grid-column: 1/2;
 
@@ -414,6 +429,9 @@
             color: var(--green-darker);
             font-weight: bolder;
             font-size: 4rem;
+            @include respond(tab-land){
+               font-size: 3rem;
+            }
           }
           p span {
             margin-top: 1rem;
@@ -421,10 +439,13 @@
             color: var(--black-muted);
             @include respond(md-desktop) {
                font-size: 3rem;
-              margin-top: 1.5rem;
+               margin-top: 1.5rem;
             }
+             @include respond(tab-land){
+               font-size: 2rem;
+             }
             @include respond(phone-md) {
-              font-size: 2.4rem;
+              font-size: 1.8rem;
             }
           }
         }
@@ -451,6 +472,9 @@
             color: var(--green-darker);
             font-weight: bolder;
             font-size: 4rem;
+            @include respond(tab-land){
+               font-size: 3rem;
+            }
           }
           p span {
             margin-top: 1rem;
@@ -458,10 +482,13 @@
             color: var(--black-muted);
             @include respond(md-desktop) {
                font-size: 3rem;
-              margin-top: 1.5rem;
+               margin-top: 1.5rem;
             }
+             @include respond(tab-land){
+               font-size: 2rem;
+             }
             @include respond(phone-md) {
-              font-size: 2.4rem;
+              font-size: 1.8rem;
             }
           }
         }
@@ -489,6 +516,9 @@
             color: var(--green-darker);
             font-weight: bolder;
             font-size: 4rem;
+            @include respond(tab-land){
+               font-size: 3rem;
+            }
           }
           p span {
             margin-top: 1rem;
@@ -496,10 +526,13 @@
             color: var(--black-muted);
             @include respond(md-desktop) {
                font-size: 3rem;
-              margin-top: 1.5rem;
+               margin-top: 1.5rem;
             }
+             @include respond(tab-land){
+               font-size: 2rem;
+             }
             @include respond(phone-md) {
-              font-size: 2.4rem;
+              font-size: 1.8rem;
             }
           }
         }
@@ -514,10 +547,10 @@
            grid-column: 1/2;
            grid-row: 4/5;
          }
-           h4 {
+         h4 {
             margin-top: 1rem;
             text-transform: uppercase;
-              @include respond(phone-md) {
+            @include respond(phone-md) {
               margin-bottom: 1rem;
             }
           }
@@ -525,6 +558,9 @@
             color: var(--green-darker);
             font-weight: bolder;
             font-size: 4rem;
+            @include respond(tab-land){
+               font-size: 3rem;
+            }
           }
           p span {
             margin-top: 1rem;
@@ -532,10 +568,13 @@
             color: var(--black-muted);
             @include respond(md-desktop) {
                font-size: 3rem;
-              margin-top: 1.5rem;
+               margin-top: 1.5rem;
             }
+             @include respond(tab-land){
+               font-size: 2rem;
+             }
             @include respond(phone-md) {
-              font-size: 2.4rem;
+              font-size: 1.8rem;
             }
           }
         }
