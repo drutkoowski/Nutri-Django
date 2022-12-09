@@ -66,8 +66,9 @@ def edit_info_parameter_by_type(user_profile, parameter: str, value: int) -> Non
             for change in changes:
                 if today_date in change:
                     changes.pop()
-            changes.append(new_entry)
-            user_profile.weight_json = type_json
+            if not compare_change_latest_change(changes, value):
+                changes.append(new_entry)
+                user_profile.weight_json = type_json
         user_profile.save()
         return
     elif parameter == 'fname':
@@ -121,8 +122,9 @@ def edit_info_parameter_by_type(user_profile, parameter: str, value: int) -> Non
             for change in changes:
                 if today_date in change:
                     changes.pop()
-            changes.append(new_entry)
-            user_profile.chest_json = type_json
+            if not compare_change_latest_change(changes, value):
+                changes.append(new_entry)
+                user_profile.chest_json = type_json
     elif parameter == 'biceps':
         type_json = user_profile.biceps_json
         if len(type_json) == 0:
@@ -134,8 +136,9 @@ def edit_info_parameter_by_type(user_profile, parameter: str, value: int) -> Non
             for change in changes:
                 if today_date in change:
                     changes.pop()
-            changes.append(new_entry)
-            user_profile.biceps_json = type_json
+            if not compare_change_latest_change(changes, value):
+                changes.append(new_entry)
+                user_profile.biceps_json = type_json
     elif parameter == 'waist':
         type_json = user_profile.waist_json
         if len(type_json) == 0:
@@ -147,8 +150,9 @@ def edit_info_parameter_by_type(user_profile, parameter: str, value: int) -> Non
             for change in changes:
                 if today_date in change:
                     changes.pop()
-            changes.append(new_entry)
-            user_profile.waist_json = type_json
+            if not compare_change_latest_change(changes, value):
+                changes.append(new_entry)
+                user_profile.waist_json = type_json
     elif parameter == 'hips':
         type_json = user_profile.hips_json
         if len(type_json) == 0:
@@ -160,8 +164,9 @@ def edit_info_parameter_by_type(user_profile, parameter: str, value: int) -> Non
             for change in changes:
                 if today_date in change:
                     changes.pop()
-            changes.append(new_entry)
-            user_profile.hips_json = type_json
+            if not compare_change_latest_change(changes, value):
+                changes.append(new_entry)
+                user_profile.hips_json = type_json
     elif parameter == 'calves':
         type_json = user_profile.calves_json
         if len(type_json) == 0:
@@ -173,8 +178,9 @@ def edit_info_parameter_by_type(user_profile, parameter: str, value: int) -> Non
             for change in changes:
                 if today_date in change:
                     changes.pop()
-            changes.append(new_entry)
-            user_profile.calves_json = type_json
+            if not compare_change_latest_change(changes, value):
+                changes.append(new_entry)
+                user_profile.calves_json = type_json
     elif parameter == 'thighs':
         type_json = user_profile.thighs_json
         if len(type_json) == 0:
@@ -186,8 +192,9 @@ def edit_info_parameter_by_type(user_profile, parameter: str, value: int) -> Non
             for change in changes:
                 if today_date in change:
                     changes.pop()
-            changes.append(new_entry)
-            user_profile.thighs_json = type_json
+            if not compare_change_latest_change(changes, value):
+                changes.append(new_entry)
+                user_profile.thighs_json = type_json
     elif parameter == 'neck':
         type_json = user_profile.neck_json
         if len(type_json) == 0:
@@ -199,8 +206,9 @@ def edit_info_parameter_by_type(user_profile, parameter: str, value: int) -> Non
             for change in changes:
                 if today_date in change:
                     changes.pop()
-            changes.append(new_entry)
-            user_profile.neck_json = type_json
+            if not compare_change_latest_change(changes, value):
+                changes.append(new_entry)
+                user_profile.neck_json = type_json
     elif parameter == 'wrists':
         type_json = user_profile.wrists_json
         if len(type_json) == 0:
@@ -212,8 +220,9 @@ def edit_info_parameter_by_type(user_profile, parameter: str, value: int) -> Non
             for change in changes:
                 if today_date in change:
                     changes.pop()
-            changes.append(new_entry)
-            user_profile.wrists_json = type_json
+            if not compare_change_latest_change(changes, value):
+                changes.append(new_entry)
+                user_profile.wrists_json = type_json
     elif parameter == 'shoulders':
         type_json = user_profile.shoulders_json
         if len(type_json) == 0:
@@ -225,9 +234,9 @@ def edit_info_parameter_by_type(user_profile, parameter: str, value: int) -> Non
             for change in changes:
                 if today_date in change:
                     changes.pop()
-            changes.append(new_entry)
-            user_profile.shoulders_json = type_json
-
+            if not compare_change_latest_change(changes, value):
+                changes.append(new_entry)
+                user_profile.shoulders_json = type_json
     user_profile.save()
 
 
@@ -305,6 +314,16 @@ def check_latest_change_value(change_json, month_num, year) -> float:
             if int(date_str[1]) < month_num and int(date_str[2]) <= year:
                 latest_value = value_handler
     return float(latest_value)
+
+
+def compare_change_latest_change(change_json, change) -> bool:
+    last_change_items = change_json[-1].items()
+    for key, value in last_change_items:
+        value_handler = value
+        if value_handler == change:
+            return True
+    else:
+        return False
 
 
 def check_latest_change_value_yearly(change_json, year) -> float:

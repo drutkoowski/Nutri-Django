@@ -193,7 +193,6 @@ const getChartFullDataMonthly = (type) => {
         url: url,
         success: function (response){
             const data = JSON.parse(response.data)
-            console.log(data)
             if (type === 'chest'){
                 const xValuesWeekGraph = data.changesChest.datesArr;
                 const changesArr = data.changesChest.valuesArr

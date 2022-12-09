@@ -320,7 +320,7 @@ def update_user_parameter(request):
         data = json.loads(request.POST.get('data'))
         for element in data:
             edit_info_parameter_by_type(user_profile, element['type'], element['value'])
-        return JsonResponse({'status': 200, 'text': 'Edit Information Deleted'})
+        return JsonResponse({'status': 200, 'text': 'Edit Information Updated'})
 
 
 @login_required(login_url='login')
@@ -335,7 +335,7 @@ def get_profile_nutrition_details(request):
         all_today_meals = Meal.objects.filter(created_by=user_profile,
                                               created_at__day=day, created_at__month=month, created_at__year=year).all()
         all_today_exercises = Workout.objects.filter(created_by=user_profile,
-                                                     created_at__day=day,created_at__month=month, created_at__year=year).all()
+                                                     created_at__day=day, created_at__month=month, created_at__year=year).all()
         sum_kcal_eaten = 0
         sum_protein_eaten = 0
         sum_carbs_eaten = 0
