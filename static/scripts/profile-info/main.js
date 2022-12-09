@@ -108,53 +108,57 @@ const fillChanges = (element, change, elementIcon,dateElement, dateChange, unit)
 }
 const buttonEditListener = () => {
     editBtn.addEventListener('click', () => {
-        const editArr = []
-        const url = window.location.origin + `/${langPrefix}/data/update/user-parameters`
-        const inputElementsAll = document.querySelectorAll('.measurements__input-element')
-        const loader = document.querySelector('.loader-message')
-        inputElementsAll.forEach(input => {
-            const value = input.value
-            const type = input.dataset.type
-            const editObject = {
-                'type': type,
-                'value': value
-            }
-            editArr.push(editObject)
-        })
-        $.ajax({
-            type: 'post',
-            url: url,
-            data: {
-                'data': JSON.stringify(editArr),
-                'csrfmiddlewaretoken': csrfToken
-            },
-            beforeSend: function (){
-                loader.classList.remove('not-visible')
-                loader.style.transition = 'unset'
-                loader.style.opacity = '0.95'
-                const loaderMsg = document.querySelector('.loader-message__message')
-                const divParent = loaderMsg.parentElement.getBoundingClientRect()
-                loaderMsg.innerHTML = gettext('Updating Profile')
-                const loaderY = (loaderMsg.getBoundingClientRect().left) - divParent.left + 37.5 - loaderMsg.clientWidth / 2;
-                loaderMsg.style.left = `${loaderY}px`
-            },
-            success: function (response){
-                if (response.status === 200){
-                    getBodyInfo()
-                    getPersonalInfo()
-                    getMeasurementInfo()
+        if (isChanged) {
+            const editArr = []
+            const url = window.location.origin + `/${langPrefix}/data/update/user-parameters`
+            const inputElementsAll = document.querySelectorAll('.measurements__input-element')
+            const loader = document.querySelector('.loader-message')
+            inputElementsAll.forEach(input => {
+                const value = input.value
+                const type = input.dataset.type
+                const editObject = {
+                    'type': type,
+                    'value': value
                 }
-            },
-             complete: function (res){
-                 setTimeout(function (){
+                editArr.push(editObject)
+            })
+            $.ajax({
+                type: 'post',
+                url: url,
+                data: {
+                    'data': JSON.stringify(editArr),
+                    'csrfmiddlewaretoken': csrfToken
+                },
+                beforeSend: function (){
+                    loader.classList.remove('not-visible')
+                    loader.style.transition = 'unset'
+                    loader.style.opacity = '0.95'
                     const loaderMsg = document.querySelector('.loader-message__message')
-                    loaderMsg.innerHTML = ''
-                    loader.classList.add('not-visible')
-                    loader.style.removeProperty('transition')
-                    loader.style.removeProperty('opacity')
-                }, 1500)
-            }
-        })
+                    const divParent = loaderMsg.parentElement.getBoundingClientRect()
+                    loaderMsg.innerHTML = gettext('Updating Profile')
+                    loaderMsg.style.removeProperty('left')
+                    const loaderY = (loaderMsg.getBoundingClientRect().left) - divParent.left + 37.5 - loaderMsg.clientWidth / 2;
+                    loaderMsg.style.left = `${loaderY}px`
+                },
+                success: function (response){
+                    if (response.status === 200){
+                        getBodyInfo()
+                        getPersonalInfo()
+                        getMeasurementInfo()
+                    }
+                },
+                 complete: function (res){
+                     setTimeout(function (){
+                        const loaderMsg = document.querySelector('.loader-message__message')
+                        loaderMsg.innerHTML = ''
+                        loader.classList.add('not-visible')
+                        loader.style.removeProperty('transition')
+                        loader.style.removeProperty('opacity')
+                    }, 1500)
+                }
+            })
+        }
+
     })
 }
 

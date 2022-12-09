@@ -2002,7 +2002,10 @@ ORDER: Base + typography > general layout + grid > page layout > components
       font-size: 3rem; } }
   @media only screen and (max-width: 28.5em) {
     .dashboard__sidebar--small__upper {
-      margin-left: 2rem; } }
+      margin-left: 3rem; } }
+  @media only screen and (max-width: 37.5em) {
+    .dashboard__sidebar--small__upper {
+      margin-left: 3rem; } }
   @media only screen and (max-width: 75em) {
     .dashboard__sidebar--small__upper img {
       width: 6rem;
@@ -2747,8 +2750,10 @@ label.year {
   padding-top: 5rem; }
   @media only screen and (max-width: 93.75em) {
     .grid-layout-container {
-      height: auto;
-      grid-template-rows: 0.15fr 1fr; } }
+      grid-template-rows: 1fr; } }
+  @media only screen and (max-width: 93.75em) {
+    .grid-layout-container {
+      height: auto; } }
   @media only screen and (max-width: 75em) {
     .grid-layout-container {
       grid-template-columns: 0.05fr 1fr 0.05fr;
@@ -3367,6 +3372,9 @@ label.year {
   border-radius: 20px;
   color: white;
   margin-left: -20px; }
+  @media only screen and (max-width: 93.75em) {
+    .dashboard-stats {
+      grid-template-rows: .15fr 0.35fr 1fr; } }
   @media only screen and (max-width: 75em) {
     .dashboard-stats {
       height: auto;
@@ -3388,7 +3396,7 @@ label.year {
         margin-left: 2rem; } }
   @media only screen and (max-width: 21.875em) {
     .dashboard-stats {
-      grid-template-rows: 0.15fr 0.15fr 0.2fr 0.6fr; } }
+      grid-template-rows: 0.25fr 0.25fr 0.15fr 1fr; } }
   .dashboard-stats__welcome-text {
     grid-row: 1/2;
     grid-column: 1 / -1;
@@ -3446,31 +3454,32 @@ label.year {
       .dashboard-stats__stats {
         grid-column-gap: 0;
         grid-template-columns: 1fr 0.75fr; } }
-    @media only screen and (max-width: 37.5em) {
+    @media only screen and (max-width: 46.875em) {
       .dashboard-stats__stats {
-        margin-left: 3rem;
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr; } }
-    @media only screen and (max-width: 28.5em) {
+    @media only screen and (max-width: 37.5em) {
       .dashboard-stats__stats {
         margin-left: 2rem; } }
     .dashboard-stats__stats__info {
       grid-column: 1/2;
       margin-top: 3rem; }
+      @media only screen and (max-width: 46.875em) {
+        .dashboard-stats__stats__info {
+          grid-column: 1/2;
+          grid-row: 1/2; } }
       @media only screen and (max-width: 21.875em) {
         .dashboard-stats__stats__info {
           margin-top: 0; } }
       .dashboard-stats__stats__info h3 {
         text-align: center; }
-        @media only screen and (max-width: 75em) {
+        @media only screen and (max-width: 93.75em) {
           .dashboard-stats__stats__info h3 {
             text-align: unset; } }
         @media only screen and (max-width: 62.5em) {
           .dashboard-stats__stats__info h3 {
-            margin-top: 2rem; } }
-        @media only screen and (max-width: 46.875em) {
-          .dashboard-stats__stats__info h3 {
-            font-size: 1.75rem; } }
+            margin-top: 2rem;
+            font-size: 2rem; } }
       .dashboard-stats__stats__info div {
         margin-top: 1rem;
         display: grid;
@@ -3482,32 +3491,33 @@ label.year {
             font-size: 1.35rem;
             display: flex;
             flex-direction: column; } }
+        @media only screen and (max-width: 62.5em) {
+          .dashboard-stats__stats__info div {
+            font-size: 2rem; } }
         @media only screen and (max-width: 37.5em) {
           .dashboard-stats__stats__info div {
             display: grid;
             grid-template-columns: 1fr 1fr;
             grid-template-rows: auto; } }
+        @media only screen and (max-width: 28.5em) {
+          .dashboard-stats__stats__info div {
+            font-size: 1.4rem; } }
     .dashboard-stats__stats__averages {
       grid-column: 2/3;
       margin-top: 3rem; }
-      @media only screen and (max-width: 37.5em) {
+      @media only screen and (max-width: 46.875em) {
         .dashboard-stats__stats__averages {
-          grid-row: 2/3;
-          grid-column: 1/2; } }
-      @media only screen and (max-width: 21.875em) {
-        .dashboard-stats__stats__averages {
-          margin-top: 0; } }
+          grid-column: 1/2;
+          grid-row: 2/3; } }
       .dashboard-stats__stats__averages h3 {
         text-align: center; }
-        @media only screen and (max-width: 75em) {
+        @media only screen and (max-width: 93.75em) {
           .dashboard-stats__stats__averages h3 {
             text-align: unset; } }
         @media only screen and (max-width: 62.5em) {
           .dashboard-stats__stats__averages h3 {
-            margin-top: 2rem; } }
-        @media only screen and (max-width: 46.875em) {
-          .dashboard-stats__stats__averages h3 {
-            font-size: 1.75rem; } }
+            margin-top: 2rem;
+            font-size: 2rem; } }
       .dashboard-stats__stats__averages div {
         margin-top: 1rem;
         display: grid;
@@ -3519,11 +3529,17 @@ label.year {
             font-size: 1.35rem;
             display: flex;
             flex-direction: column; } }
+        @media only screen and (max-width: 62.5em) {
+          .dashboard-stats__stats__averages div {
+            font-size: 2rem; } }
         @media only screen and (max-width: 37.5em) {
           .dashboard-stats__stats__averages div {
             display: grid;
             grid-template-columns: 1fr 1fr;
             grid-template-rows: auto; } }
+        @media only screen and (max-width: 28.5em) {
+          .dashboard-stats__stats__averages div {
+            font-size: 1.4rem; } }
   .dashboard-stats__graph {
     display: grid;
     grid-template-columns: 1fr 0.55fr;
@@ -3535,6 +3551,7 @@ label.year {
     animation-timing-function: ease-out; }
     @media only screen and (max-width: 93.75em) {
       .dashboard-stats__graph {
+        margin-top: 2rem;
         grid-template-columns: 1fr;
         grid-template-rows: 0.3fr 1fr; } }
     @media only screen and (max-width: 75em) {
@@ -3592,6 +3609,9 @@ label.year {
       .dashboard-stats__graph__customization__item-container {
         display: grid;
         grid-template-columns: 0.5fr 1fr; }
+        @media only screen and (max-width: 25em) {
+          .dashboard-stats__graph__customization__item-container {
+            grid-template-columns: 0.35fr 1fr; } }
         .dashboard-stats__graph__customization__item-container:nth-of-type(n+2) {
           margin-top: 2rem; }
       .dashboard-stats__graph__customization h1 {
@@ -3607,8 +3627,9 @@ label.year {
       .dashboard-stats__graph__customization label {
         font-size: 3rem;
         vertical-align: text-top; }
-        @media only screen and (max-width: 93.75em) {
+        @media only screen and (max-width: 25em) {
           .dashboard-stats__graph__customization label {
+            margin-top: 0.5rem;
             font-size: 2rem; } }
       .dashboard-stats__graph__customization__item {
         margin-top: 0.55rem;
@@ -3638,20 +3659,31 @@ label.year {
           font-size: 1.3rem; }
         .dashboard-stats__graph__customization__item option:disabled {
           color: rgba(0, 0, 0, 0.2); }
-
+        @media only screen and (max-width: 25em) {
+          .dashboard-stats__graph__customization__item {
+            margin-left: 0.5rem;
+            height: 2.5rem;
+            padding: 0.5rem 2rem;
+            font-size: 1rem; } }
 .summaryGraph__container {
   margin-left: 2rem;
   margin-top: 2rem;
   margin-right: 2rem;
   height: 40rem;
   width: auto; }
+  @media only screen and (max-width: 93.75em) {
+    .summaryGraph__container {
+      margin: 2rem; } }
   @media only screen and (max-width: 84.375em) {
     .summaryGraph__container {
       height: 35rem; } }
   @media only screen and (max-width: 56.25em) {
     .summaryGraph__container {
       height: 30rem;
-      margin-left: 0.5rem; } }
+      margin: 0.75rem; } }
+  @media only screen and (max-width: 25em) {
+    .summaryGraph__container {
+      margin: 0.5rem 0; } }
 .activity-calendar {
   height: auto;
   max-height: 100vh;

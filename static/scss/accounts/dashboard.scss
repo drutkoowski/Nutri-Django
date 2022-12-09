@@ -14,9 +14,11 @@
   -o-background-size: cover;
   background-size: cover;
   padding-top: 5rem;
+  @include respond(md-desktop){
+      grid-template-rows: 1fr;
+  }
    @include respond(md-desktop) {
       height: auto;
-      grid-template-rows: 0.15fr 1fr;
   }
   @include respond(tab-land) {
       grid-template-columns: 0.05fr 1fr 0.05fr;

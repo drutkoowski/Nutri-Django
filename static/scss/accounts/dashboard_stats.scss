@@ -10,7 +10,9 @@
     border-radius: 20px;
     color: white;
     margin-left: -20px;
-
+    @include respond(md-desktop){
+      grid-template-rows: .15fr 0.35fr 1fr;
+    }
     @include respond(tab-land) {
       height: auto;
       display: grid;
@@ -34,7 +36,7 @@
       }
     }
     @include respond(phone-sm){
-      grid-template-rows: 0.15fr 0.15fr 0.2fr 0.6fr;
+      grid-template-rows: 0.25fr 0.25fr 0.15fr 1fr;
     }
 
     &__welcome-text {
@@ -98,30 +100,32 @@
       grid-column-gap: 0;
       grid-template-columns: 1fr 0.75fr;
     }
-    @include respond(phone-lg){
-       margin-left: 3rem;
-       grid-template-columns: 1fr;
-       grid-template-rows: 1fr 1fr;
+    @include respond(tab-sm){
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr;
     }
-    @include respond(phone-md){
+    @include respond(phone-lg){
       margin-left: 2rem;
     }
+
     &__info{
       grid-column: 1/2;
       margin-top: 3rem;
+      @include respond(tab-sm){
+         grid-column: 1/2;
+         grid-row: 1/2;
+      }
       @include respond(phone-sm){
         margin-top: 0;
       }
       h3 {
         text-align: center;
-        @include respond(tab-land){
+        @include respond(md-desktop){
           text-align: unset;
         }
         @include respond(tab-md){
            margin-top: 2rem;
-        }
-        @include respond(tab-sm){
-          font-size: 1.75rem;
+          font-size: 2rem;
         }
       }
       div {
@@ -135,33 +139,34 @@
           display: flex;
           flex-direction: column;
         }
+        @include respond(tab-md){
+          font-size: 2rem;
+        }
         @include respond(phone-lg){
           display: grid;
           grid-template-columns: 1fr 1fr;
           grid-template-rows: auto;
+        }
+        @include respond(phone-md){
+          font-size: 1.4rem;
         }
       }
     }
     &__averages{
       grid-column: 2/3;
       margin-top: 3rem;
-      @include respond(phone-lg){
-         grid-row: 2/3;
+      @include respond(tab-sm){
          grid-column: 1/2;
-      }
-      @include respond(phone-sm){
-        margin-top: 0;
+         grid-row: 2/3;
       }
       h3 {
         text-align: center;
-        @include respond(tab-land){
+        @include respond(md-desktop){
           text-align: unset;
         }
-        @include respond(tab-md){
+       @include respond(tab-md){
            margin-top: 2rem;
-        }
-        @include respond(tab-sm){
-          font-size: 1.75rem;
+           font-size: 2rem;
         }
       }
       div {
@@ -175,10 +180,16 @@
           display: flex;
           flex-direction: column;
         }
+        @include respond(tab-md){
+          font-size: 2rem;
+        }
         @include respond(phone-lg){
           display: grid;
           grid-template-columns: 1fr 1fr;
           grid-template-rows: auto;
+        }
+        @include respond(phone-md){
+          font-size: 1.4rem;
         }
       }
     }
@@ -194,6 +205,7 @@
     animation-duration: 2s;
     animation-timing-function: ease-out;
      @include respond(md-desktop) {
+       margin-top: 2rem;
        grid-template-columns: 1fr;
        grid-template-rows: 0.3fr 1fr;
      }
@@ -254,6 +266,9 @@
       &__item-container{
           display: grid;
           grid-template-columns: 0.5fr 1fr;
+          @include respond(phone-md-sm){
+             grid-template-columns: 0.35fr 1fr;
+          }
           &:nth-of-type(n+2){
             margin-top: 2rem;
           }
@@ -272,8 +287,9 @@
       label {
         font-size: 3rem;
         vertical-align: text-top;
-        @include respond(md-desktop) {
-            font-size: 2rem;
+        @include respond(phone-md-sm){
+          margin-top: 0.5rem;
+          font-size: 2rem;
         }
       }
       &__item {
@@ -306,6 +322,12 @@
         option:disabled {
           color: rgba(0,0,0,0.2);
         }
+         @include respond(phone-md-sm){
+          margin-left: 0.5rem;
+          height: 2.5rem;
+          padding: 0.5rem 2rem;
+          font-size: 1rem;
+        }
       }
     }
   }
@@ -320,12 +342,18 @@
     margin-right: 2rem;
     height: 40rem;
     width: auto;
+    @include respond(md-desktop){
+      margin: 2rem;
+    }
     @include respond(tab-desktop) {
       height: 35rem;
     }
     @include respond(tab-port) {
       height: 30rem;
-      margin-left: 0.5rem;
+      margin: 0.75rem;
+    }
+    @include respond(phone-md-sm){
+      margin: 0.5rem 0;
     }
   }
 }

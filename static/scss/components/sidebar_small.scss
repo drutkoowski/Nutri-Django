@@ -19,8 +19,10 @@
         font-size: 3rem;
       }
       @include respond(phone-md) {
-        margin-left: 2rem;
-
+        margin-left: 3rem;
+      }
+      @include respond(phone-lg){
+        margin-left: 3rem;
       }
      img {
         @include respond(tab-land) {
