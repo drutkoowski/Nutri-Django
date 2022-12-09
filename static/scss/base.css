@@ -4288,15 +4288,19 @@ div.modal--calendar__content-summary {
       height: auto;
       display: grid;
       grid-template-columns: 1fr;
-      grid-template-rows: 0.15fr 0.15fr 0.3fr 0.5fr;
+      grid-template-rows: 0.15fr 0.15fr 0.3fr 0.5fr auto;
       margin-top: 2rem;
       grid-column: 2/3;
       grid-row: 1/2;
-      margin-left: -0px; } }
+      margin-left: 0;
+      max-height: unset; } }
   @media only screen and (max-width: 62.5em) {
     .measurements {
       grid-column: 1/2;
       grid-row: 1/2; } }
+  @media only screen and (max-width: 46.875em) {
+    .measurements {
+      grid-template-rows: 0.15fr 0.15fr 0.3fr 1fr auto; } }
   @media only screen and (max-width: 31.25em) {
     .measurements .dashboard__sidebar--small__upper {
       margin-left: 2.5rem; }
@@ -4316,12 +4320,15 @@ div.modal--calendar__content-summary {
     position: relative; }
     .measurements__welcome-text h1 {
       margin-top: 1rem; }
+      @media only screen and (max-width: 25em) {
+        .measurements__welcome-text h1 {
+          font-size: 1.75rem; } }
     @media only screen and (max-width: 75em) {
       .measurements__welcome-text {
         grid-column: 1/2;
         grid-row: 2/3;
         font-size: 2rem;
-        margin-left: 5rem; } }
+        margin: 0 0 2rem 0; } }
     @media only screen and (max-width: 56.25em) {
       .measurements__welcome-text {
         font-size: 1.7rem;
@@ -4332,13 +4339,6 @@ div.modal--calendar__content-summary {
     @media only screen and (max-width: 31.25em) {
       .measurements__welcome-text {
         font-size: 1.3rem; } }
-    @media only screen and (max-width: 37.5em) {
-      .measurements__welcome-text {
-        margin-left: 3rem; } }
-    @media only screen and (max-width: 25em) {
-      .measurements__welcome-text {
-        font-size: 1rem;
-        margin-left: 2rem; } }
     @media only screen and (max-width: 37.5em) {
       .measurements__welcome-text p {
         font-size: 1.4rem; } }
@@ -4356,17 +4356,51 @@ div.modal--calendar__content-summary {
     animation-duration: 2s;
     animation-timing-function: ease-out;
     transition: all .2s ease-in; }
+    @media only screen and (max-width: 84.375em) {
+      .measurements__body-info {
+        grid-column-gap: 2rem; } }
+    @media only screen and (max-width: 75em) {
+      .measurements__body-info {
+        grid-row: 3/4; } }
+    @media only screen and (max-width: 46.875em) {
+      .measurements__body-info {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto; } }
     .measurements__body-info h3 {
       grid-column: 1/3; }
+      @media only screen and (max-width: 25em) {
+        .measurements__body-info h3 {
+          font-size: 1.75rem; } }
     .measurements__body-info__item {
       display: grid;
       grid-template-columns: 0.3fr 1fr;
       grid-template-rows: 1fr;
       height: 3rem; }
+      @media only screen and (max-width: 75em) {
+        .measurements__body-info__item {
+          grid-template-columns: 0.25fr 1fr; } }
+      @media only screen and (max-width: 62.5em) {
+        .measurements__body-info__item {
+          grid-template-columns: 0.35fr 1fr; } }
+      @media only screen and (max-width: 46.875em) {
+        .measurements__body-info__item {
+          grid-column: 1/3;
+          grid-template-columns: 0.55fr 1fr; } }
+      @media only screen and (max-width: 28.5em) {
+        .measurements__body-info__item {
+          grid-template-columns: 0.4fr 1fr; } }
       .measurements__body-info__item p {
         grid-column: 1/2;
         margin-top: 1px;
         vertical-align: text-bottom; }
+        @media only screen and (max-width: 75em) {
+          .measurements__body-info__item p {
+            font-size: 1.5rem;
+            margin-top: 3px; } }
+        @media only screen and (max-width: 25em) {
+          .measurements__body-info__item p {
+            font-size: 1.2rem;
+            margin-top: 7px; } }
       .measurements__body-info__item div {
         grid-column: 2/3;
         display: flex; }
@@ -4375,6 +4409,17 @@ div.modal--calendar__content-summary {
           vertical-align: center;
           text-align: center;
           margin-left: 1rem; }
+          @media only screen and (max-width: 75em) {
+            .measurements__body-info__item div p {
+              margin-left: 0.3rem;
+              width: 8rem;
+              margin-top: 5px; } }
+          @media only screen and (max-width: 25em) {
+            .measurements__body-info__item div p {
+              margin-left: 0.1rem;
+              width: 5rem;
+              font-size: 1.2rem;
+              margin-top: 7px; } }
         .measurements__body-info__item div img {
           height: 3rem;
           width: 3rem;
@@ -4382,6 +4427,13 @@ div.modal--calendar__content-summary {
           margin-top: 2px;
           margin-left: 0.5rem;
           transition: all .3s ease-in; }
+          @media only screen and (max-width: 21.875em) {
+            .measurements__body-info__item div img {
+              height: 2rem;
+              width: 2rem;
+              margin-left: 0;
+              margin-top: 7px;
+              margin-right: 0.25rem; } }
           .measurements__body-info__item div img:hover {
             transform: scale(1.15); }
   .measurements__personal-info {
@@ -4396,16 +4448,50 @@ div.modal--calendar__content-summary {
     animation-duration: 2s;
     animation-timing-function: ease-out;
     transition: all .2s ease-in; }
+    @media only screen and (max-width: 84.375em) {
+      .measurements__personal-info {
+        grid-column-gap: 2rem; } }
+    @media only screen and (max-width: 75em) {
+      .measurements__personal-info {
+        grid-row: 4/5; } }
+    @media only screen and (max-width: 46.875em) {
+      .measurements__personal-info {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto; } }
     .measurements__personal-info h3 {
       grid-column: 1/3; }
+      @media only screen and (max-width: 25em) {
+        .measurements__personal-info h3 {
+          font-size: 1.75rem; } }
     .measurements__personal-info__item {
       display: grid;
       grid-template-columns: 0.3fr 1fr;
       grid-template-rows: 1fr;
       height: 3rem; }
+      @media only screen and (max-width: 75em) {
+        .measurements__personal-info__item {
+          grid-template-columns: 0.25fr 1fr; } }
+      @media only screen and (max-width: 62.5em) {
+        .measurements__personal-info__item {
+          grid-template-columns: 0.35fr 1fr; } }
+      @media only screen and (max-width: 46.875em) {
+        .measurements__personal-info__item {
+          grid-column: 1/3;
+          grid-template-columns: 0.55fr 1fr; } }
+      @media only screen and (max-width: 28.5em) {
+        .measurements__personal-info__item {
+          grid-template-columns: 0.4fr 1fr; } }
       .measurements__personal-info__item p {
         grid-column: 1/2;
         vertical-align: text-bottom; }
+        @media only screen and (max-width: 75em) {
+          .measurements__personal-info__item p {
+            font-size: 1.5rem;
+            margin-top: 3px; } }
+        @media only screen and (max-width: 25em) {
+          .measurements__personal-info__item p {
+            font-size: 1.2rem;
+            margin-top: 7px; } }
       .measurements__personal-info__item div {
         grid-column: 2/3;
         display: flex; }
@@ -4413,6 +4499,16 @@ div.modal--calendar__content-summary {
           width: 3rem;
           vertical-align: center;
           margin-left: 1rem; }
+          @media only screen and (max-width: 75em) {
+            .measurements__personal-info__item div p {
+              margin-left: 0.3rem;
+              margin-top: 5px; } }
+          @media only screen and (max-width: 25em) {
+            .measurements__personal-info__item div p {
+              margin-left: 0.1rem;
+              width: 5rem;
+              font-size: 1.2rem;
+              margin-top: 7px; } }
   .measurements__measurements {
     grid-row: 4 / 5;
     grid-column: 1/-1;
@@ -4425,17 +4521,51 @@ div.modal--calendar__content-summary {
     animation-duration: 2s;
     animation-timing-function: ease-out;
     transition: all .2s ease-in; }
+    @media only screen and (max-width: 84.375em) {
+      .measurements__measurements {
+        grid-column-gap: 2rem; } }
+    @media only screen and (max-width: 75em) {
+      .measurements__measurements {
+        grid-row: 5/6; } }
+    @media only screen and (max-width: 46.875em) {
+      .measurements__measurements {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto; } }
     .measurements__measurements h3 {
       grid-column: 1/3; }
+      @media only screen and (max-width: 25em) {
+        .measurements__measurements h3 {
+          font-size: 1.75rem; } }
     .measurements__measurements__item {
       display: grid;
       grid-template-columns: 0.3fr 1fr;
       grid-template-rows: 1fr;
       height: 3rem; }
+      @media only screen and (max-width: 75em) {
+        .measurements__measurements__item {
+          grid-template-columns: 0.25fr 1fr; } }
+      @media only screen and (max-width: 62.5em) {
+        .measurements__measurements__item {
+          grid-template-columns: 0.35fr 1fr; } }
+      @media only screen and (max-width: 46.875em) {
+        .measurements__measurements__item {
+          grid-column: 1/3;
+          grid-template-columns: 0.55fr 1fr; } }
+      @media only screen and (max-width: 28.5em) {
+        .measurements__measurements__item {
+          grid-template-columns: 0.4fr 1fr; } }
       .measurements__measurements__item p {
         grid-column: 1/2;
         margin-top: 1px;
         vertical-align: text-bottom; }
+        @media only screen and (max-width: 75em) {
+          .measurements__measurements__item p {
+            font-size: 1.5rem;
+            margin-top: 3px; } }
+        @media only screen and (max-width: 25em) {
+          .measurements__measurements__item p {
+            font-size: 1.2rem;
+            margin-top: 7px; } }
       .measurements__measurements__item div {
         grid-column: 2/3;
         display: flex; }
@@ -4444,6 +4574,17 @@ div.modal--calendar__content-summary {
           vertical-align: center;
           text-align: center;
           margin-left: 1rem; }
+          @media only screen and (max-width: 75em) {
+            .measurements__measurements__item div p {
+              margin-left: 0.3rem;
+              width: 8rem;
+              margin-top: 5px; } }
+          @media only screen and (max-width: 25em) {
+            .measurements__measurements__item div p {
+              margin-left: 0.1rem;
+              width: 5rem;
+              font-size: 1.2rem;
+              margin-top: 7px; } }
         .measurements__measurements__item div img {
           height: 3rem;
           width: 3rem;
@@ -4451,6 +4592,16 @@ div.modal--calendar__content-summary {
           margin-top: 2px;
           margin-left: 0.5rem;
           transition: all .3s ease-in; }
+          @media only screen and (max-width: 31.25em) {
+            .measurements__measurements__item div img {
+              margin-left: 0; } }
+          @media only screen and (max-width: 21.875em) {
+            .measurements__measurements__item div img {
+              height: 2rem;
+              width: 2rem;
+              margin-left: 0;
+              margin-top: 7px;
+              margin-right: 0.25rem; } }
           .measurements__measurements__item div img:hover {
             transform: scale(1.15); }
 
@@ -4466,6 +4617,21 @@ div.modal--calendar__content-summary {
   margin: auto 0;
   font-size: 1rem;
   transition: all .3s ease-in; }
+  @media only screen and (max-width: 56.25em) {
+    .measurements__input-element {
+      width: 7rem;
+      font-size: 1rem; } }
+  @media only screen and (max-width: 46.875em) {
+    .measurements__input-element {
+      width: 10rem;
+      font-size: 1.2rem; } }
+  @media only screen and (max-width: 31.25em) {
+    .measurements__input-element {
+      width: 7rem;
+      font-size: 1rem; } }
+  @media only screen and (max-width: 21.875em) {
+    .measurements__input-element {
+      width: 6rem; } }
   .measurements__input-element:hover {
     transform: translateY(-1px); }
   .measurements__input-element:focus[type='number'] {
@@ -4483,7 +4649,18 @@ div.modal--calendar__content-summary {
   font-weight: bold;
   margin: auto 0;
   font-size: 1rem; }
-
+  @media only screen and (max-width: 56.25em) {
+    .measurements__input-element__disabled {
+      width: 7rem;
+      font-size: 1rem; } }
+  @media only screen and (max-width: 46.875em) {
+    .measurements__input-element__disabled {
+      width: 10rem;
+      font-size: 1.2rem; } }
+  @media only screen and (max-width: 31.25em) {
+    .measurements__input-element__disabled {
+      width: 7rem;
+      font-size: 1rem; } }
 .btn-light__container {
   animation-name: fade-bottom;
   animation-duration: 2s;
@@ -4496,10 +4673,33 @@ div.modal--calendar__content-summary {
     display: block;
     margin-left: auto;
     margin-right: 2rem; }
-
+    @media only screen and (max-width: 56.25em) {
+      .btn-light__container button {
+        margin-top: 2rem; } }
+    @media only screen and (max-width: 25em) {
+      .btn-light__container button {
+        padding: 0.75rem 1rem;
+        font-size: 1.25rem; } }
 .profile-info-measurements-date {
   font-size: 1.2rem;
   margin: auto 0 auto 1rem; }
+  @media only screen and (max-width: 75em) {
+    .profile-info-measurements-date {
+      margin: auto 0 auto 1rem;
+      padding-top: 5px; } }
+  @media only screen and (max-width: 31.25em) {
+    .profile-info-measurements-date {
+      margin: auto 0 auto 0; } }
+  @media only screen and (max-width: 21.875em) {
+    .profile-info-measurements-date {
+      font-size: 1rem; } }
+@media only screen and (max-width: 56.25em) {
+  .grid-layout-container .dashboard__sidebar--small__upper {
+    margin-left: 0 !important; } }
+
+@media only screen and (max-width: 37.5em) {
+  .grid-layout-container .dashboard__sidebar--small__upper p {
+    margin-top: 4px; } }
 
 .meals-layout-container {
   width: 100vw;
