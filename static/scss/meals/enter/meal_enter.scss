@@ -1,0 +1,171 @@
+.meals-enter-layout-container {
+  width: 100vw;
+  height: auto;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 0.1fr 1fr 0.1fr;
+  grid-template-rows: 0.2fr 1fr;
+  align-items: center;
+  justify-items: center;
+  position: relative;
+  @include respond(md-desktop){
+      grid-template-columns: 0.05fr 1fr 0.05fr;
+  }
+  @include respond(tab-desktop) {
+    grid-template-columns: 0.05fr 1fr 0.05fr;
+    grid-template-rows: 0.30fr 2fr 0.15fr;
+    height: auto;
+    background-image: linear-gradient(to bottom, rgba(246, 244, 244, 0.5), rgba(148, 147, 147, 0.84)), url("https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+
+.meals-enter{
+    display: grid;
+    grid-template-columns: 0.15fr 1fr 0.15fr;
+    grid-template-rows: 1fr;
+    grid-column: 2/3;
+    grid-row: 2/3;
+    justify-self: stretch;
+    justify-items: center;
+    @include respond(tab-md){
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        justify-self: center;
+        width: 55rem;
+        grid-column-gap: 0;
+        grid-row-gap: 10rem;
+    }
+    @include respond(phone-lg){
+        width: 45rem;
+    }
+     @include respond(phone-md-lg){
+        width: 35rem;
+    }
+    @include respond(phone-md-sm){
+        width: 30rem;
+    }
+    @include respond(phone-sm){
+        width: 25rem;
+    }
+
+    &__card {
+      grid-column: 2/3;
+      background-color: rgb(189, 231, 197);
+      justify-self: stretch;
+      height: 60rem;
+      border-radius: 20px;
+      transition: all .3s ease-in;
+      -webkit-box-shadow: 0px 0px 8px 2px rgba(66, 68, 90, 1);
+      -moz-box-shadow: 0px 0px 8px 2px rgba(66, 68, 90, 1);
+      box-shadow: 0px 0px 8px 2px rgba(66, 68, 90, 1);
+      animation-name: fade-bottom;
+      animation-duration: 1s;
+      animation-timing-function: ease-out;
+      h3 {
+        color: var(--color-white);
+        font-size: 2rem;
+        text-align: center;
+        margin: 7.5rem 0;
+      }
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+}
+
+
+.modal-enter__content{
+  width: 60rem;
+  height: 30rem;
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 3rem;
+    &__bar-code {
+      grid-column: 1/3;
+      grid-row: 1/2;
+      margin: 0 auto;
+      h3 {
+        font-size: 3rem;
+        text-align: center;
+      }
+      p {
+        font-size: 2rem;
+        text-align: center;
+      }
+      &__search {
+          margin: 2rem auto;
+          position: relative;
+          input {
+           border-radius: 5px;
+           border: 1px solid black;
+           text-align: center;
+           width: 100%;
+           height: 4rem;
+           font-size: 1.5rem;
+           @include respond(tab-sm){
+              width: 100%;
+           }
+          }
+          &__icon {
+            position: absolute;
+            top: 20%;
+            right: 2%;
+          }
+      }
+    }
+    &__card {
+      justify-self: stretch;
+      background-color: var(--color-white);
+      height: 20rem;
+      border-radius: 10px;
+      transition: all .3s ease-in;
+      -webkit-box-shadow: 0px 0px 8px 2px rgba(66, 68, 90, 1);
+      -moz-box-shadow: 0px 0px 8px 2px rgba(66, 68, 90, 1);
+      box-shadow: 0px 0px 8px 2px rgba(66, 68, 90, 1);
+      img {
+        display: block;
+        height: 7rem;
+        width: 7rem;
+        margin: 2rem auto;
+        transition: all .3s ease-in;
+        &:hover {
+          transform: translateX(5px);
+        }
+      }
+      h3 {
+        text-align: center;
+        color: var(--color-white);
+        margin: 6rem 0 0 0;
+        font-size: 3rem;
+      }
+      &:hover {
+        transform: scale(1.05);
+      }
+      &--traditional {
+        background-image: linear-gradient(to right bottom, rgba(241, 241, 241, 0.3), rgba(82, 82, 82, 0.5)),
+        url('/static/images/traditional-way-meal-enter.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+      }
+      &--bar-code {
+        background-image: linear-gradient(to right bottom, rgba(241, 241, 241, 0.3), rgba(82, 82, 82, 0.5)),
+        url('https://static.boredpanda.com/blog/wp-content/uploads/2017/08/Clever-Barcode-Designs-103-599e7fd2f3697__700.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size:cover;
+
+      }
+    }
+  }
+
+}
+
+

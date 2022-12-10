@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-08 17:24+0100\n"
+"POT-Creation-Date: 2022-12-09 21:26+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -81,57 +81,57 @@ msgstr "UWAGA: Zapisane Aktywności/Posiłki są zaznaczone zielonymi kropkami"
 msgid "Click at them to get more information"
 msgstr "Kliknij na nie, aby uzyskać więcej informacji"
 
-#: .\templates\accounts\dashboard.html:15
+#: .\templates\accounts\dashboard.html:16
 msgid "Welcome back"
 msgstr "Witamy z powrotem"
 
-#: .\templates\accounts\dashboard.html:16
+#: .\templates\accounts\dashboard.html:17
 msgid "Let's check quality of your nutrition for today!"
 msgstr "Sprawdźmy jakość Twojego dzisiejszego odżywiania!"
 
-#: .\templates\accounts\dashboard.html:22 .\templates\accounts\navbar.html:20
+#: .\templates\accounts\dashboard.html:28 .\templates\accounts\navbar.html:20
 #: .\templates\accounts\navbar_small.html:20
 msgid "Meals"
 msgstr "Posiłki"
 
-#: .\templates\accounts\dashboard.html:25
+#: .\templates\accounts\dashboard.html:31
 msgid "Activities"
 msgstr "Aktywności"
 
-#: .\templates\accounts\dashboard.html:28 .\templates\accounts\navbar.html:22
+#: .\templates\accounts\dashboard.html:34 .\templates\accounts\navbar.html:22
 #: .\templates\accounts\navbar_small.html:22
 msgid "Recipes"
 msgstr "Przepisy"
 
-#: .\templates\accounts\dashboard.html:32
+#: .\templates\accounts\dashboard.html:38
 msgid "Summary"
 msgstr "Podsumowanie"
 
-#: .\templates\accounts\dashboard.html:33
+#: .\templates\accounts\dashboard.html:39
 msgid "Goal"
 msgstr "Cel"
 
-#: .\templates\accounts\dashboard.html:34
+#: .\templates\accounts\dashboard.html:40
 msgid "Eaten"
 msgstr "Zjedzone"
 
-#: .\templates\accounts\dashboard.html:35
+#: .\templates\accounts\dashboard.html:41
 msgid "Burnt"
 msgstr "Spalone"
 
-#: .\templates\accounts\dashboard.html:36
+#: .\templates\accounts\dashboard.html:42
 msgid "Remaining"
 msgstr "Pozostałe"
 
-#: .\templates\accounts\dashboard.html:42
+#: .\templates\accounts\dashboard.html:48
 msgid "of the goal"
 msgstr "celu"
 
-#: .\templates\accounts\dashboard.html:51
+#: .\templates\accounts\dashboard.html:57
 msgid "Calories"
 msgstr "Kalorie"
 
-#: .\templates\accounts\dashboard.html:55
+#: .\templates\accounts\dashboard.html:61
 #: .\templates\accounts\dashboard_stats.html:27
 #: .\templates\accounts\dashboard_stats.html:34
 #: .\templates\meals\add\add_meals.html:94
@@ -139,7 +139,7 @@ msgstr "Kalorie"
 msgid "Carbs"
 msgstr "Węglowodany"
 
-#: .\templates\accounts\dashboard.html:60
+#: .\templates\accounts\dashboard.html:66
 #: .\templates\accounts\dashboard_stats.html:25
 #: .\templates\accounts\dashboard_stats.html:35
 #: .\templates\meals\add\add_meals.html:93
@@ -147,23 +147,23 @@ msgstr "Węglowodany"
 msgid "Protein"
 msgstr "Białko"
 
-#: .\templates\accounts\dashboard.html:65
+#: .\templates\accounts\dashboard.html:71
 #: .\templates\accounts\dashboard_stats.html:26
 #: .\templates\meals\add\add_meals.html:95
 #: .\templates\meals\add\add_meals.html:107
 msgid "Fat"
 msgstr "Tłuszcze"
 
-#: .\templates\accounts\dashboard.html:72
+#: .\templates\accounts\dashboard.html:78
 #, python-format
 msgid "Weekly Goal Fulfillment (%%)"
 msgstr "Tygodniowe Wypełnienie Celu (%)"
 
-#: .\templates\accounts\dashboard.html:78
+#: .\templates\accounts\dashboard.html:84
 msgid "Weekly Calorie Graph"
 msgstr "Tygodniowy wykres kaloryczny"
 
-#: .\templates\accounts\dashboard.html:82
+#: .\templates\accounts\dashboard.html:88
 msgid "Weekly average kcal income is shown by golden line on the chart"
 msgstr ""
 "Tygodniowa średnia spożytych kalorii jest zaznaczona kolorem złotym na "
@@ -656,16 +656,14 @@ msgstr ""
 "białko,węglowodany i wiele innych."
 
 #: .\templates\meals\meals.html:26
-msgid "Meals Propositions"
-msgstr "Propozycje Posiłków"
+msgid "Enter"
+msgstr "Wprowadź"
 
 #: .\templates\meals\meals.html:27
 msgid ""
-"Browse the dish suggestions with their recipes and other information "
-"constructed by us just for you."
-msgstr ""
-"Przeglądaj propozycje dań z ich przepisami i innymi informacjami "
-"skonstruowane przez nas specjalnie dla Ciebie."
+"Share an ingredient or meal that is not in our database and improve the "
+"experience of other users."
+msgstr "Podziel się składnikiem lub posiłkiem, który nie znajduje się w naszej bazie i ulepsz doświadczenia innych użytkowników."
 
 #: .\templates\meals\meals.html:31
 msgid ""
@@ -2098,6 +2096,16 @@ msgid ""
 "Set the precision for numeric computations in the SASS processor. Default: "
 "settings.SASS_PRECISION."
 msgstr ""
+
+#~ msgid "Meals Propositions"
+#~ msgstr "Propozycje Posiłków"
+
+#~ msgid ""
+#~ "Browse the dish suggestions with their recipes and other information "
+#~ "constructed by us just for you."
+#~ msgstr ""
+#~ "Przeglądaj propozycje dań z ich przepisami i innymi informacjami "
+#~ "skonstruowane przez nas specjalnie dla Ciebie."
 
 #~ msgid "Measures"
 #~ msgstr "Pomiary"

@@ -16,10 +16,10 @@ mealsAddCard.addEventListener('click', e => {
     location.href = location.origin + `/${langPrefix}/meals/add`
 })
 
-const mealsPropositionCard = document.querySelector('.meals__card--proposition')
-mealsPropositionCard.addEventListener('click', e => {
+const mealsEnterCard = document.querySelector('.meals__card--enter')
+mealsEnterCard.addEventListener('click', e => {
     const langPrefix = window.location.href.split('/')[3];
-    location.href = location.origin + `/${langPrefix}/meals/propositions`
+    location.href = location.origin + `/${langPrefix}/meals/enter`
 })
 
 const mealsSaved = document.querySelector('.meals__card--saved')

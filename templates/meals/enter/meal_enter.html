@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load sass_tags %}
+{% load i18n %}
+{% block scripts %}
+     <script src="{% sass_src 'scripts/meals/enter/main.js' %}" defer></script>
+{% endblock scripts %}
+{% block content %}
+    <div class="loader"></div>
+     <div class="bg-video" id="meals-video-container">
+       <div class="overlay-large"></div>
+         <video id="meals-video" class="bg-video__content" autoplay muted loop>
+             <source src="{% sass_src 'video/meals_bg_video.mp4' %}" type="video/mp4">
+             <source src="{% sass_src 'video/meals_bg_video.webm' %}" type="video/webm">
+             Your browser is not supported!
+         </video>
+     </div>
+    <div class="meals-enter-layout-container">
+        {% include 'accounts/navbar.html' %}
+         {% include 'accounts/navbar_small.html' %}
+        <div class="meals-enter grid-full-span">
+            <div class="meals-enter__card">
+                <h3>{% trans 'Your ingredient' %}</h3>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-queued" style="z-index: 2400">
+         <div class="modal-queued__content modal-enter__content">
+              <div class="modal-queued__close-button">&times;</div>
+              <div class="modal-enter__content__container">
+                  <div class="modal-enter__content__container__card modal-enter__content__container__card--traditional">
+                      <h3>{% trans 'Traditional way' %}</h3>
+                      <img src="{% sass_src 'images/svg/right-arrow.svg' %}" class="filter-white" alt="Arrow Right Icon">
+                  </div>
+                  <div class="modal-enter__content__container__card modal-enter__content__container__card--bar-code">
+                      <h3>{% trans 'BAR CODE' %}</h3>
+                       <img src="{% sass_src 'images/svg/right-arrow.svg' %}" class="filter-white" alt="Arrow Right Icon">
+                  </div>
+             </div>
+         </div>
+    </div>
+{% endblock %}

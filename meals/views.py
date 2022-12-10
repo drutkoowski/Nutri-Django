@@ -29,8 +29,8 @@ def add_meal_view(request):
 
 
 @login_required(login_url='login')
-def meal_propositions_view(request):
-    return render(request, 'meals/propositions/meal_propositions.html')
+def meal_enter_view(request):
+    return render(request, 'meals/enter/meal_enter.html')
 
 
 @login_required(login_url='login')
