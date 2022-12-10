@@ -5661,6 +5661,8 @@ div.modal--calendar__content-summary {
           @media only screen and (max-width: 46.875em) {
             .modal-enter__content__container__bar-code__search input {
               width: 100%; } }
+          .modal-enter__content__container__bar-code__search input::placeholder {
+            text-transform: uppercase; }
         .modal-enter__content__container__bar-code__search__icon {
           position: absolute;
           top: 20%;

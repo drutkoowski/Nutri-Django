@@ -111,6 +111,9 @@
            @include respond(tab-sm){
               width: 100%;
            }
+           &::placeholder{
+              text-transform: uppercase;
+           }
           }
           &__icon {
             position: absolute;
