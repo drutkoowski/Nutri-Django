@@ -19,15 +19,44 @@
          {% include 'accounts/navbar_small.html' %}
         <div class="meals-enter grid-full-span">
             <div class="meals-enter__card">
-                <h3>{% trans 'Your ingredient' %}</h3>
-
+                <h3>{% trans 'Your ingredient/meal' %}</h3>
+                <div>
+                    <label id='name-label' for="name">{% trans 'Name' %}</label>
+                    <input type="text" id="name" placeholder="{% trans 'Name' %}">
+                </div>
+                <div>
+                    <label id='category-label' for="category">{% trans 'Category' %}</label>
+                    <input type="text" id="category" placeholder="{% trans 'Category' %}">
+                </div>
+                <div>
+                    <label id='kcal-label' for="kcal">{% trans 'Kcal' %}</label>
+                    <input type="text" id="kcal" placeholder="{% trans 'Kcal' %}">
+                </div>
+                <div>
+                    <label id='carbs-label' for="carbs">{% trans 'Carbs' %}</label>
+                    <input type="text" id="carbs" placeholder="{% trans 'Carbs' %} (g)">
+                </div>
+                <div>
+                    <label id='fats-label' for="fats">{% trans 'Fats' %}</label>
+                    <input type="text" id="fats" placeholder="{% trans 'Fats' %} (g)">
+                </div>
+                <div>
+                    <label id='protein-label' for="protein">{% trans 'Protein' %}</label>
+                    <input type="text" id="protein" placeholder="{% trans 'Protein' %} (g)">
+                </div>
+                <div>
+                    <label id='serving-label' for="serving">{% trans 'Serving grams' %}</label>
+                    <input type="text" id="serving" placeholder="{% trans 'Serving grams' %}">
+                </div>
+                <p>{% trans 'Nutrition Grade' %}: <span id="grade"></span></p>
+                <button class="btn-light">{% trans 'Add' %}</button>
             </div>
         </div>
     </div>
 
     <div class="modal-queued" style="z-index: 2400">
          <div class="modal-queued__content modal-enter__content">
-              <div class="modal-queued__close-button">&times;</div>
+              <div class="modal-queued__close-button modal-enter__close-button">&times;</div>
               <div class="modal-enter__content__container">
                   <div class="modal-enter__content__container__card modal-enter__content__container__card--traditional">
                       <h3>{% trans 'Traditional way' %}</h3>
