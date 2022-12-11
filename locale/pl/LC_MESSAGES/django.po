@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-09 21:26+0100\n"
+"POT-Creation-Date: 2022-12-11 16:40+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -136,6 +136,8 @@ msgstr "Kalorie"
 #: .\templates\accounts\dashboard_stats.html:34
 #: .\templates\meals\add\add_meals.html:94
 #: .\templates\meals\add\add_meals.html:106
+#: .\templates\meals\enter\meal_enter.html:36
+#: .\templates\meals\enter\meal_enter.html:37
 msgid "Carbs"
 msgstr "Węglowodany"
 
@@ -144,6 +146,8 @@ msgstr "Węglowodany"
 #: .\templates\accounts\dashboard_stats.html:35
 #: .\templates\meals\add\add_meals.html:93
 #: .\templates\meals\add\add_meals.html:105
+#: .\templates\meals\enter\meal_enter.html:44
+#: .\templates\meals\enter\meal_enter.html:45
 msgid "Protein"
 msgstr "Białko"
 
@@ -203,6 +207,8 @@ msgid "Kcal Eaten"
 msgstr "Spożyte Kcal"
 
 #: .\templates\accounts\dashboard_stats.html:37
+#: .\templates\meals\enter\meal_enter.html:40
+#: .\templates\meals\enter\meal_enter.html:41
 msgid "Fats"
 msgstr "Tłuszcze"
 
@@ -630,16 +636,50 @@ msgid "Meals on"
 msgstr "Posiłki w"
 
 #: .\templates\meals\add\add_meals.html:102
+#: .\templates\meals\enter\meal_enter.html:28
+#: .\templates\meals\enter\meal_enter.html:29
 msgid "Category"
 msgstr "Kategoria"
 
 #: .\templates\meals\add\add_meals.html:104
+#: .\templates\meals\enter\meal_enter.html:32
+#: .\templates\meals\enter\meal_enter.html:33
 msgid "Kcal"
 msgstr "Kcal"
 
 #: .\templates\meals\add\add_meals.html:113
 msgid "No meals added for today..."
 msgstr "Brak posiłków dodanych dzisiaj..."
+
+#: .\templates\meals\enter\meal_enter.html:22
+msgid "Your ingredient/meal"
+msgstr "Twój składnik/posiłek"
+
+#: .\templates\meals\enter\meal_enter.html:24
+#: .\templates\meals\enter\meal_enter.html:25
+msgid "Name"
+msgstr "Nazwa"
+
+#: .\templates\meals\enter\meal_enter.html:48
+#: .\templates\meals\enter\meal_enter.html:49
+msgid "Serving grams"
+msgstr "Gramy"
+
+#: .\templates\meals\enter\meal_enter.html:51
+msgid "Nutrition Grade"
+msgstr "Stopień odżywienia"
+
+#: .\templates\meals\enter\meal_enter.html:52
+msgid "Add"
+msgstr "Dodaj"
+
+#: .\templates\meals\enter\meal_enter.html:62
+msgid "Traditional way"
+msgstr "Tradycyjny sposób"
+
+#: .\templates\meals\enter\meal_enter.html:66
+msgid "BAR CODE"
+msgstr "Kod Kreskowy"
 
 #: .\templates\meals\meals.html:22
 msgid "Add Meal"
@@ -663,7 +703,9 @@ msgstr "Wprowadź"
 msgid ""
 "Share an ingredient or meal that is not in our database and improve the "
 "experience of other users."
-msgstr "Podziel się składnikiem lub posiłkiem, który nie znajduje się w naszej bazie i ulepsz doświadczenia innych użytkowników."
+msgstr ""
+"Podziel się składnikiem lub posiłkiem, który nie znajduje się w naszej bazie "
+"i ulepsz doświadczenia innych użytkowników."
 
 #: .\templates\meals\meals.html:31
 msgid ""
@@ -2121,9 +2163,6 @@ msgstr ""
 
 #~ msgid "Activity Level"
 #~ msgstr "Poziom Aktywności"
-
-#~ msgid "Nutrition Weekly Averages"
-#~ msgstr "Średnie wartości tygodniowego odżywiania"
 
 #~ msgid "Days on Nutri"
 #~ msgstr "Dni na Nutri"

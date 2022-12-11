@@ -57,7 +57,6 @@ barCodeBtn.addEventListener('click', () => {
                 console.log(response)
                 if (response.status !== 0){
                     const data = response['product']
-                    console.log(data)
                     const productNameEn = data['product_name_en'] ? data['product_name_en'] : data['product_name']
                     const productNamePl = data['product_name_pl'] ? data['product_name_pl'] : data['product_name']
                     const servingGrams = data['nutrition_data_per']
@@ -66,17 +65,41 @@ barCodeBtn.addEventListener('click', () => {
                     const kcal = data['nutriments']['energy_value']
                     const fat = data['nutriments']['fat_value']
                     const protein = data['nutriments']['proteins_value']
-                    const elementSizeGrams = data['quantity']
-                    console.log(productNamePl, productNameEn, servingGrams, nutriScoreGrade, carbs, kcal, fat, protein)
-                    inputName.value = langPrefix === 'en' ? productNameEn + ` (${elementSizeGrams})` : productNamePl + ` (${elementSizeGrams})`
-                    inputKcal.value = `${kcal} kcal`
-                    inputCarbs.value = `${carbs} g`
-                    inputFats.value = `${fat} g`
-                    inputProtein.value = `${protein} g`
-                    inputServing.value = `${servingGrams}`
+                    const elementSizeGrams = data['quantity'] === undefined || !data['quantity'] ? '' : `(${data['quantity']})`
+                    const productName = langPrefix === 'en' ? productNameEn : productNamePl
+                    inputName.value = productName + elementSizeGrams
+                    inputName.disabled = !(productName)
+                    if (kcal !== undefined || kcal){
+                        inputKcal.value = `${kcal} kcal`
+                    }
+                    inputKcal.disabled = !!(kcal || kcal === 0)
+                    if (carbs !== undefined || carbs){
+                        inputCarbs.value = `${carbs} g`
+                    }
+
+                    inputCarbs.disabled = !!(carbs || carbs === 0)
+                    if (fat !== undefined || fat) {
+                        inputFats.value = `${fat} g`
+                    }
+
+                    inputFats.disabled = !!(fat || fat === 0)
+                    if (protein !== undefined || protein){
+                         inputProtein.value = `${protein} g`
+                    }
+
+                    inputProtein.disabled = !!(protein || protein === 0)
+                    if (servingGrams !== undefined || servingGrams){
+                        inputServing.value = `${servingGrams}`
+                    }
+                    inputServing.disabled = !!(servingGrams || servingGrams === 0)
+                    const nutriGradeLabel = document.querySelector('#nutrition-grade')
+                    nutriGradeLabel.classList.remove('not-visible')
                     nutriGrade.innerHTML = nutriScoreGrade ? nutriScoreGrade : gettext('Unknown')
-                    const modal = document.querySelector('.modal-queued')
-                    modal.classList.add('not-visible')
+                    $("." + "modal-queued").fadeOut(900, () => {
+                        document.querySelector('.modal-queued').style.removeProperty('display')
+                        document.querySelector('.modal-queued').classList.add('not-visible')
+                    });
+
                 }
                 else {
                     const errorMsg = document.querySelector('.modal-enter__content__container__bar-code__error-msg')

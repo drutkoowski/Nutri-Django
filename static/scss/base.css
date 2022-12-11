@@ -5653,6 +5653,8 @@ div.modal--calendar__content-summary {
         text-align: center; }
         .meals-enter__card div input:hover {
           transform: scale(1.05); }
+        .meals-enter__card div input::placeholder {
+          color: var(--red-light); }
     .meals-enter__card p {
       margin-top: 1.5rem;
       color: var(--color-white);

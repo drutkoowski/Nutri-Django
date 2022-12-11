@@ -48,7 +48,7 @@
                     <label id='serving-label' for="serving">{% trans 'Serving grams' %}</label>
                     <input type="text" id="serving" placeholder="{% trans 'Serving grams' %}">
                 </div>
-                <p>{% trans 'Nutrition Grade' %}: <span id="grade"></span></p>
+                <p class="not-visible" id="nutrition-grade">{% trans 'Nutrition Grade' %}: <span id="grade"></span></p>
                 <button class="btn-light">{% trans 'Add' %}</button>
             </div>
         </div>
@@ -63,7 +63,7 @@
                       <img src="{% sass_src 'images/svg/right-arrow.svg' %}" class="filter-white" alt="Arrow Right Icon">
                   </div>
                   <div class="modal-enter__content__container__card modal-enter__content__container__card--bar-code">
-                      <h3>{% trans 'BAR CODE' %}</h3>
+                       <h3>{% trans 'BAR CODE' %}</h3>
                        <img src="{% sass_src 'images/svg/right-arrow.svg' %}" class="filter-white" alt="Arrow Right Icon">
                   </div>
              </div>

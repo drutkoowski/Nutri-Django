@@ -101,6 +101,9 @@
           &:hover {
             transform: scale(1.05);
           }
+          &::placeholder {
+            color: var(--red-light);
+          }
         }
       }
       p {
