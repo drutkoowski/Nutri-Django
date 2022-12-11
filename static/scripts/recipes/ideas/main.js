@@ -93,11 +93,6 @@ inputIngredientsBtn.addEventListener('click', () => {
         const langPrefix = window.location.href.split('/')[3];
         const url = location.origin + `/${langPrefix}/recipes/get-recipes-by-ingredients`
         let functionTimeExecutionCounter
-        let isCenteredOne = false
-        let isCenteredTwo = false
-        let isCenteredThree = false
-        let isCenteredFour = false
-        let isCenteredFive = false
         $.ajax({
             type: 'POST',
             url: url,

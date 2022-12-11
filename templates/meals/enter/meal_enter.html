@@ -5,6 +5,7 @@
      <script src="{% sass_src 'scripts/meals/enter/main.js' %}" defer></script>
 {% endblock scripts %}
 {% block content %}
+    {% csrf_token %}
     <div class="loader"></div>
      <div class="bg-video" id="meals-video-container">
        <div class="overlay-large"></div>
@@ -22,36 +23,36 @@
                 <h3>{% trans 'Your ingredient/meal' %}</h3>
                 <div>
                     <label id='name-label' for="name">{% trans 'Name' %}</label>
-                    <input type="text" id="name" placeholder="{% trans 'Name' %}">
+                    <input class='meals-enter__input' type="text" id="name" placeholder="{% trans 'Name' %}">
                 </div>
                 <div>
                     <label id='category-label' for="category">{% trans 'Category' %}</label>
-                    <select name="category" id="category">
-                        <option value="0" data-selected="false" disabled selected>{% trans 'Category' %}</option>
+                    <select name="category" id="category" class='meals-enter__input'>
+                        <option value="empty" data-selected="false" disabled selected style="font-weight: bold; color: var(--red-light)">{% trans 'Category' %}</option>
                         {% for category in meal_categories %}
-                            <option data-selected="true" value="{{ category.pk }}">{% if '/pl/' in request.path %}{{ category.pl_category_name }}{% else %}{{ category.en_category_name }}{% endif %}</option>
+                            <option data-selected="true" data-value='{{ category.pk }}' value="{{ category.pk }}">{% if '/pl/' in request.path %}{{ category.pl_category_name }}{% else %}{{ category.en_category_name }}{% endif %}</option>
                         {% endfor %}
                     </select>
                 </div>
                 <div>
                     <label id='kcal-label' for="kcal">{% trans 'Kcal' %}</label>
-                    <input type="text" id="kcal" placeholder="{% trans 'Kcal' %}">
+                    <input class='meals-enter__input' pattern="^[0-9]*$" type="text" id="kcal" placeholder="{% trans 'Kcal' %}">
                 </div>
                 <div>
                     <label id='carbs-label' for="carbs">{% trans 'Carbs' %}</label>
-                    <input type="text" id="carbs" placeholder="{% trans 'Carbs' %} (g)">
+                    <input class='meals-enter__input' pattern="^[0-9]*$" type="text" id="carbs" placeholder="{% trans 'Carbs' %} (g)">
                 </div>
                 <div>
                     <label id='fats-label' for="fats">{% trans 'Fats' %}</label>
-                    <input type="text" id="fats" placeholder="{% trans 'Fats' %} (g)">
+                    <input class='meals-enter__input' pattern="^[0-9]*$" type="text" id="fats" placeholder="{% trans 'Fats' %} (g)">
                 </div>
                 <div>
                     <label id='protein-label' for="protein">{% trans 'Protein' %}</label>
-                    <input type="text" id="protein" placeholder="{% trans 'Protein' %} (g)">
+                    <input class='meals-enter__input' pattern="^[0-9]*$" type="text" id="protein" placeholder="{% trans 'Protein' %} (g)">
                 </div>
                 <div>
                     <label id='serving-label' for="serving">{% trans 'Serving grams' %}</label>
-                    <input type="text" id="serving" placeholder="{% trans 'Serving grams' %}">
+                    <input class='meals-enter__input' pattern="^[0-9]*$" type="text" id="serving" placeholder="{% trans 'Serving grams' %}">
                 </div>
                 <p class="not-visible" id="nutrition-grade">{% trans 'Nutrition Grade' %}: <span id="grade"></span></p>
                 <button class="btn-light">{% trans 'Add' %}</button>

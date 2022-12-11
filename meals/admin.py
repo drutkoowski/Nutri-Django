@@ -15,8 +15,8 @@ class CategoryIngredientAdmin(admin.ModelAdmin):
 
 class IngredientAdmin(admin.ModelAdmin):
     list_display = (
-        "en_name", "pl_name", "unit", "category", "kcal", "carbs", "protein", "fat", "fiber", "saturated_fat",
-        "cholesterol", "sodium", "sugar", "potassium", "serving_grams", "serving_ml")
+        "en_name", "pl_name", "unit", "category", "kcal", "carbs", "protein", "fat", "serving_grams", "serving_ml",
+        "verified", "created_by")
     ordering = ('en_name', 'kcal',)
     search_fields = ("pl_name",)
     list_filter = ('category', 'unit',)

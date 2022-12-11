@@ -2,6 +2,7 @@ import datetime
 import json
 
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 
@@ -81,7 +82,8 @@ def live_search_ingredients(request):
                     i['category_name_pl'] = category.get_category_name_pl()
                     i['unit_multiplier'] = unit_name.multiplier
                 if len(ingredients) > 0:
-                    return JsonResponse({'status': 200, 'text': 'There are ingredients found.', 'ingredients': ingredients})
+                    return JsonResponse(
+                        {'status': 200, 'text': 'There are ingredients found.', 'ingredients': ingredients})
                 else:
                     return JsonResponse({'status': 404, 'text': 'There are not ingredients found.', 'ingredients': []})
             else:
@@ -90,6 +92,41 @@ def live_search_ingredients(request):
             return JsonResponse({'status': 404, 'text': 'There are not ingredients found.', 'ingredients': []})
     else:
         return redirect('home')
+
+
+@login_required(login_url='login')
+def add_new_meal_element(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
+        user_profile = UserProfile.objects.get(user=request.user)
+        category_pk = request.POST.get('categoryPk')
+        kcal = request.POST.get('kcal')
+        carbs = request.POST.get('carbs')
+        fat = request.POST.get('fat')
+        protein = request.POST.get('protein')
+        serving_grams = request.POST.get('servingGrams')
+        lang_code = request.POST.get('langCode')
+        name = request.POST.get('name')
+        category = IngredientCategory.objects.get(pk=category_pk)
+        unit = IngredientUnit.objects.get(pl_name__iexact='g')
+        from googletrans import Translator
+        translator = Translator()
+        if lang_code == 'pl':
+            name_pl = name
+            name_en = translator.translate(name, dest='en').text
+        else:
+            name_en = name
+            name_pl = translator.translate(name, dest='pl').text
+
+        is_existing = Ingredient.objects.filter(Q(pl_name__iexact=name_pl) | Q(en_name__iexact=name_en)).all()
+        if not is_existing.exists():
+            element = Ingredient.objects.create(pl_name=name_pl, en_name=name_en, category=category, kcal=kcal, carbs=carbs,
+                                            protein=protein, fat=fat, unit=unit, serving_grams=serving_grams, created_by=user_profile,
+                                            verified=False)
+            element.save()
+            print(element)
+            return JsonResponse({'status': 200, 'text': 'Element created'})
+        else:
+            return JsonResponse({'status': 400, 'text': 'Element not created'})
 
 
 @login_required(login_url='login')
@@ -130,8 +167,8 @@ def add_today_meal_ajax(request):
                     multiplier = quantity / 100.0
                 else:
                     multiplier = quantity
-                meal_kcal = round(float(ingredient.kcal) * float(multiplier),2)
-                meal_carbs = round(float(ingredient.carbs) * float(multiplier),2)
+                meal_kcal = round(float(ingredient.kcal) * float(multiplier), 2)
+                meal_carbs = round(float(ingredient.carbs) * float(multiplier), 2)
 
                 meal_protein = None if ingredient.protein is None else round(
                     float(ingredient.protein) * float(multiplier), 5)

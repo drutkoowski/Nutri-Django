@@ -16,7 +16,7 @@
                  <h1>{% trans 'Welcome back' %}, {{ get_current_user_profile.user.first_name}}.</h1>
                  <p>{% trans "Let's check quality of your nutrition for today!" %}</p>
                  <div class="dashboard__content__welcome-text__day-switcher">
-                     <img class="filter-green-dark" id="left-arrow-day" src="{% sass_src 'images/svg/left-arrow.svg' %}" alt="About Icon"/>
+                     <img class="filter-green-dark" id="left-arrow-day" style="visibility: hidden" src="{% sass_src 'images/svg/left-arrow.svg' %}" alt="About Icon"/>
                      <p class="dashboard__content__welcome-text__day-switcher__date"></p>
                      <img class="filter-green-dark" id="right-arrow-day" style="visibility: hidden" src="{% sass_src 'images/svg/right-arrow.svg' %}" alt="About Icon"/>
                  </div>

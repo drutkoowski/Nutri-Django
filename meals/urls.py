@@ -10,6 +10,7 @@ urlpatterns = [
     # ajax calls
     path('/data/live-search-ingredients', views.live_search_ingredients, name='live-search-ingredients-ajax'),
     path('/data/save/added-meal', views.add_today_meal_ajax, name='add-today-meal-ajax'),
+    path('/data/save/new-meal-element', views.add_new_meal_element, name='add-new-meal-element'),
     path('/data/get/saved-meal/macro-summary', views.get_eaten_macro_today, name='get-eaten-macro-today'),
     path('/data/get/saved-meal/template', views.get_saved_meal_template, name='saved-meal-template-ajax'),
     path('/data/get/saved-meal/template/element', views.get_saved_meal_template_element,

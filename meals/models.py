@@ -40,19 +40,15 @@ class Ingredient(models.Model):
     pl_name = models.CharField(max_length=100, blank=True)
     en_name = models.CharField(max_length=100, blank=False)
     category = models.ForeignKey(IngredientCategory, on_delete=models.SET_DEFAULT, default=None, blank=True, null=True)
-    unit = models.ForeignKey(IngredientUnit, blank=False, on_delete=models.CASCADE)
+    unit = models.ForeignKey(IngredientUnit, blank=False, on_delete=models.SET_DEFAULT, default=None)
     kcal = models.FloatField(blank=False, default=None)
     carbs = models.FloatField(blank=True, default=None, null=True)
     protein = models.FloatField(blank=True, default=None, null=True)
     fat = models.FloatField(blank=True, default=None, null=True)
-    fiber = models.FloatField(blank=True, default=None, null=True)
-    saturated_fat = models.FloatField(blank=True, default=None, null=True)
-    cholesterol = models.FloatField(blank=True, default=None, null=True)
-    sodium = models.FloatField(blank=True, default=None, null=True)
-    sugar = models.FloatField(blank=True, default=None, null=True)
-    potassium = models.FloatField(blank=True, default=None, null=True)
     serving_grams = models.FloatField(blank=True, default=None, null=True)
     serving_ml = models.FloatField(blank=True, default=None, null=True)
+    created_by = models.ForeignKey(UserProfile, blank=False, default=None, on_delete=models.SET_NULL, null=True)
+    verified = models.BooleanField(blank=False, default=True)
 
     def __str__(self):
         return f"{self.pl_name} / {self.en_name}"

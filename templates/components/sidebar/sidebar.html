@@ -23,7 +23,7 @@
          {{ get_current_user_profile.weight }} kg
     </div>
     <div class="dashboard__sidebar__goal">
-        {% trans 'Your Goal' %}: {{ get_translated_profile_info.goal }} {% if get_current_user_profile.goal_weight == 'gain-weight' or get_current_user_profile.goal_weight == 'lose-weight' %}({{ get_current_user_profile.goal_kg }} kg){% endif %}
+        {% trans 'Goal' %}: {{ get_translated_profile_info.goal }} {% if get_current_user_profile.goal_weight == 'gain-weight' or get_current_user_profile.goal_weight == 'lose-weight' %}({{ get_current_user_profile.goal_kg }} kg){% endif %}
     </div>
     <div class="dashboard__sidebar__activity-level">
         {% trans 'Activity' %}: {{ get_translated_profile_info.activityLevel }}

@@ -63,9 +63,11 @@ const options = {
 };
 
 dateSwitcherDate.innerHTML =  capitalize(date.toLocaleDateString(langPrefix, options))
-
 // arrows
 const leftArrow = document.querySelector('#left-arrow-day')
+if (date.getDay() !== 1){
+    leftArrow.style.removeProperty('visibility')
+}
 const rightArrow = document.querySelector('#right-arrow-day')
 leftArrow.addEventListener('click', () => {
     date = getPreviousDay(date)
@@ -330,6 +332,9 @@ const getDataMacroChart = (kcalDemand, proteinDemand, carbsDemand, fatDemand) =>
             let sumProtein = 0
             let sumFat = 0
             let dayOfWeek = new Date().getDay();
+            if (dayOfWeek === 0 ){
+                dayOfWeek = 7
+            }
             data.forEach(day => {
                 sumKcal = sumKcal + day.dayKcal
                 sumCarbs = sumCarbs + day.dayCarbs
