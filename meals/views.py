@@ -30,7 +30,11 @@ def add_meal_view(request):
 
 @login_required(login_url='login')
 def meal_enter_view(request):
-    return render(request, 'meals/enter/meal_enter.html')
+    meal_categories = IngredientCategory.objects.all()
+    context = {
+        'meal_categories': meal_categories
+    }
+    return render(request, 'meals/enter/meal_enter.html', context)
 
 
 @login_required(login_url='login')

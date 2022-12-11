@@ -5642,7 +5642,7 @@ div.modal--calendar__content-summary {
       margin-top: 1.5rem; }
       .meals-enter__card div label {
         font-size: 2rem; }
-      .meals-enter__card div input {
+      .meals-enter__card div input, .meals-enter__card div select {
         width: 15rem;
         background-color: var(--color-white);
         outline: none;
@@ -5651,9 +5651,9 @@ div.modal--calendar__content-summary {
         border-radius: 10px;
         transition: all .3s ease-in;
         text-align: center; }
-        .meals-enter__card div input:hover {
+        .meals-enter__card div input:hover, .meals-enter__card div select:hover {
           transform: scale(1.05); }
-        .meals-enter__card div input::placeholder {
+        .meals-enter__card div input::placeholder, .meals-enter__card div select::placeholder {
           color: var(--red-light); }
     .meals-enter__card p {
       margin-top: 1.5rem;
