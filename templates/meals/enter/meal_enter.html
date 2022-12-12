@@ -28,7 +28,7 @@
                 <div>
                     <label id='category-label' for="category">{% trans 'Category' %}</label>
                     <select name="category" id="category" class='meals-enter__input'>
-                        <option value="empty" data-selected="false" disabled selected style="font-weight: bold; color: var(--red-light)">{% trans 'Category' %}</option>
+                        <option value="empty" data-selected="false" disabled selected>{% trans 'Category' %}</option>
                         {% for category in meal_categories %}
                             <option data-selected="true" data-value='{{ category.pk }}' value="{{ category.pk }}">{% if '/pl/' in request.path %}{{ category.pl_category_name }}{% else %}{{ category.en_category_name }}{% endif %}</option>
                         {% endfor %}

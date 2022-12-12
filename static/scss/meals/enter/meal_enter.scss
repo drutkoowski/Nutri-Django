@@ -25,32 +25,12 @@
 
 .meals-enter{
     display: grid;
-    grid-template-columns: 0.5fr 1fr 0.5fr;
+    grid-template-columns: 1.1fr 1fr 1.1fr;
     grid-template-rows: 1fr;
     grid-column: 2/3;
     grid-row: 2/3;
     justify-self: stretch;
     justify-items: center;
-    @include respond(tab-md){
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr 1fr;
-        justify-self: center;
-        width: 55rem;
-        grid-column-gap: 0;
-        grid-row-gap: 10rem;
-    }
-    @include respond(phone-lg){
-        width: 45rem;
-    }
-     @include respond(phone-md-lg){
-        width: 35rem;
-    }
-    @include respond(phone-md-sm){
-        width: 30rem;
-    }
-    @include respond(phone-sm){
-        width: 25rem;
-    }
 
     &__card {
       grid-column: 2/3;
@@ -65,7 +45,7 @@
       animation-name: fade-bottom;
       animation-duration: 1s;
       animation-timing-function: ease-out;
-      padding: 2rem 2rem 0 2rem;
+      padding: 2rem 0.5rem 0 0.5rem;
       h3 {
         color: var(--color-white);
         font-size: 3rem;
@@ -78,19 +58,24 @@
       button {
         display: block;
         padding: 0.75rem 1.5rem;
-        margin: 0 2rem 2rem auto;
+        margin: 2rem 2rem 2rem auto;
       }
       div {
-        display: grid;
-        grid-template-columns: 0.35fr 1fr;
-        grid-template-rows: 1fr;
+        //display: grid;
+        //grid-template-columns: 0.35fr 1fr;
+        //grid-template-rows: 1fr;
         color: var(--color-white);
         margin-top: 1.5rem;
+        display: flex;
+        justify-content: center;
         label {
+          display: inline-block;
           font-size: 2rem;
+          width: 15rem;
         }
         input, select {
           width: 15rem;
+          height: 3rem;
           background-color: var(--color-white);
           outline: none;
           color: var(--black-muted);
@@ -98,11 +83,9 @@
           border-radius: 10px;
           transition: all .3s ease-in;
           text-align: center;
+          justify-self: center;
           &:hover {
             transform: scale(1.05);
-          }
-          &::placeholder {
-            color: var(--red-light);
           }
         }
       }
@@ -110,6 +93,7 @@
         margin-top: 1.5rem;
         color: var(--color-white);
         font-size: 2rem;
+        text-align: center;
         span {
           text-transform: uppercase;
           font-weight: bold;

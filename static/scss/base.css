@@ -5583,32 +5583,12 @@ div.modal--calendar__content-summary {
       background-size: cover; } }
 .meals-enter {
   display: grid;
-  grid-template-columns: 0.5fr 1fr 0.5fr;
+  grid-template-columns: 1.1fr 1fr 1.1fr;
   grid-template-rows: 1fr;
   grid-column: 2/3;
   grid-row: 2/3;
   justify-self: stretch;
   justify-items: center; }
-  @media only screen and (max-width: 62.5em) {
-    .meals-enter {
-      grid-template-columns: 1fr;
-      grid-template-rows: 1fr 1fr 1fr;
-      justify-self: center;
-      width: 55rem;
-      grid-column-gap: 0;
-      grid-row-gap: 10rem; } }
-  @media only screen and (max-width: 37.5em) {
-    .meals-enter {
-      width: 45rem; } }
-  @media only screen and (max-width: 31.25em) {
-    .meals-enter {
-      width: 35rem; } }
-  @media only screen and (max-width: 25em) {
-    .meals-enter {
-      width: 30rem; } }
-  @media only screen and (max-width: 21.875em) {
-    .meals-enter {
-      width: 25rem; } }
   .meals-enter__card {
     grid-column: 2/3;
     background-color: #bde7c5;
@@ -5622,7 +5602,7 @@ div.modal--calendar__content-summary {
     animation-name: fade-bottom;
     animation-duration: 1s;
     animation-timing-function: ease-out;
-    padding: 2rem 2rem 0 2rem; }
+    padding: 2rem 0.5rem 0 0.5rem; }
     .meals-enter__card h3 {
       color: var(--color-white);
       font-size: 3rem;
@@ -5633,32 +5613,34 @@ div.modal--calendar__content-summary {
     .meals-enter__card button {
       display: block;
       padding: 0.75rem 1.5rem;
-      margin: 0 2rem 2rem auto; }
+      margin: 2rem 2rem 2rem auto; }
     .meals-enter__card div {
-      display: grid;
-      grid-template-columns: 0.35fr 1fr;
-      grid-template-rows: 1fr;
       color: var(--color-white);
-      margin-top: 1.5rem; }
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: center; }
       .meals-enter__card div label {
-        font-size: 2rem; }
+        display: inline-block;
+        font-size: 2rem;
+        width: 15rem; }
       .meals-enter__card div input, .meals-enter__card div select {
         width: 15rem;
+        height: 3rem;
         background-color: var(--color-white);
         outline: none;
         color: var(--black-muted);
         border: 1px solid var(--green-light);
         border-radius: 10px;
         transition: all .3s ease-in;
-        text-align: center; }
+        text-align: center;
+        justify-self: center; }
         .meals-enter__card div input:hover, .meals-enter__card div select:hover {
           transform: scale(1.05); }
-        .meals-enter__card div input::placeholder, .meals-enter__card div select::placeholder {
-          color: var(--red-light); }
     .meals-enter__card p {
       margin-top: 1.5rem;
       color: var(--color-white);
-      font-size: 2rem; }
+      font-size: 2rem;
+      text-align: center; }
       .meals-enter__card p span {
         text-transform: uppercase;
         font-weight: bold; }
