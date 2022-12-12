@@ -594,6 +594,7 @@
   animation-duration: 1.5s;
   animation-timing-function: ease-out;
   transition: all .2s ease-in;
+  text-align: center;
   @include respond(tab-sm) {
     margin-top: 10rem!important;
     font-size: 1.5rem!important;

@@ -53,15 +53,28 @@ def saved_meals_view(request):
 def live_search_ingredients(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
         query = request.GET.get('query')
+        is_verified = str(request.GET.get('isVerified'))
         lang_code = request.path.split('/')[1]
         if query != '':
-            if (lang_code == 'pl'):
+            if lang_code == 'pl' and is_verified == 'true':
+                check_if_ingredient_exists = Ingredient.objects.filter(
+                    pl_name__iregex=r"\b{0}\b".format(query), verified=True).all().union(
+                    Ingredient.objects.filter(
+                        pl_name__istartswith=query, verified=True
+                    )).all()
+            elif lang_code == 'pl' and is_verified == 'false':
                 check_if_ingredient_exists = Ingredient.objects.filter(
                     pl_name__iregex=r"\b{0}\b".format(query)).all().union(
                     Ingredient.objects.filter(
                         pl_name__istartswith=query
                     )).all()
-            else:
+            if lang_code == 'en' and is_verified == 'true':
+                check_if_ingredient_exists = Ingredient.objects.filter(
+                    en_name__iregex=r"\b{0}\b".format(query), verified=True).all().union(
+                    Ingredient.objects.filter(
+                        en_name__istartswith=query, verified=True
+                    )).all()
+            elif lang_code == 'en' and is_verified == 'false':
                 check_if_ingredient_exists = Ingredient.objects.filter(
                     en_name__iregex=r"\b{0}\b".format(query)).all().union(
                     Ingredient.objects.filter(
@@ -175,22 +188,6 @@ def add_today_meal_ajax(request):
 
                 meal_fat = None if ingredient.fat is None else round(float(ingredient.fat) * float(multiplier), 5)
 
-                meal_fiber = None if ingredient.fiber is None else round(float(ingredient.fiber) * float(multiplier), 5)
-
-                meal_saturated_fat = None if ingredient.saturated_fat is None else round(
-                    float(ingredient.saturated_fat) * float(multiplier), 5)
-
-                meal_cholesterol = None if ingredient.cholesterol is None else round(
-                    float(ingredient.cholesterol) * float(multiplier), 5)
-
-                meal_sodium = None if ingredient.sodium is None else round(float(ingredient.sodium) * float(multiplier),
-                                                                           5)
-
-                meal_sugar = None if ingredient.sugar is None else round(float(ingredient.sugar) * float(multiplier), 5)
-
-                meal_potassium = None if ingredient.potassium is None else round(
-                    float(ingredient.potassium) * float(multiplier), 5)
-
                 meal_serving_grams = None if ingredient.serving_grams is None else round(float(
                     ingredient.serving_grams) * float(multiplier), 5)
 
@@ -199,10 +196,7 @@ def add_today_meal_ajax(request):
 
                 meal = Meal.objects.create(created_by=user_profile, quantity=quantity, ingredient=ingredient,
                                            kcal=meal_kcal, carbs=meal_carbs, protein=meal_protein, fat=meal_fat,
-                                           fiber=meal_fiber, saturated_fat=meal_saturated_fat,
-                                           cholesterol=meal_cholesterol, sodium=meal_sodium, sugar=meal_sugar,
-                                           potassium=meal_potassium, serving_grams=meal_serving_grams,
-                                           serving_ml=meal_serving_ml)
+                                           serving_grams=meal_serving_grams,serving_ml=meal_serving_ml)
                 meal.save()
             return JsonResponse({'status': 201, 'text': 'Created.'})
         return JsonResponse({'status': 400, 'text': 'Not Created.'})

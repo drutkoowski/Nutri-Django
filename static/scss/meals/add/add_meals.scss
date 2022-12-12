@@ -151,12 +151,28 @@
       height: auto;
       max-height: 55rem;
     }
-
     &__bar {
       margin: 2rem auto;
       position: relative;
       @include respond(tab-sm){
         width: 85%;
+      }
+      &__is-verified{
+        display: flex;
+        justify-content: end;
+        p {
+          display: inline-block;
+          font-size: 2rem;
+          color: var(--color-white);
+          margin-right: 2rem;
+        }
+        img {
+          display: inline-block;
+          height: 2rem;
+          width: 2rem;
+          margin-top: 3px;
+          margin-right: 1rem;
+        }
       }
       input {
          border-radius: 5px;
@@ -277,12 +293,9 @@
       }
       }
       h3 {
-        margin: 4rem 2rem;
+        margin-bottom: 2rem;
         font-size: 2rem;
         font-weight: bold;
-        @include respond(tab-port){
-          margin: 2rem 2rem
-        }
       }
     }
   }
@@ -708,7 +721,8 @@
 .check-today-meals{
   display: flex;
   text-align: center;
-  margin: 7.5rem auto auto auto;
+  margin-top: auto;
+  margin-bottom: 2rem;
   border-radius: 5px;
   height: 3rem;
   padding: 1rem 4rem;

@@ -3,6 +3,8 @@ const navBarEl = document.querySelector('.navbar--dashboard')
 navBarEl.style.marginTop = '0'
 navBarEl.style.paddingTop = '3rem'
 ///
+let onlyVerified = true
+
 
 function hideModal(modalClass) {
     $("." + modalClass).fadeOut(900, e => {
@@ -37,7 +39,20 @@ navbar.classList.toggle('fix-navbar')
 if (mealsVideo) {
     mealsVideo.playbackRate = 0.5;
 }
-
+const verifiedIcon = document.querySelector('.verified-icon')
+verifiedIcon.addEventListener('click', () => {
+    if (verifiedIcon.id === 'verified') {
+        verifiedIcon.id = 'unverified'
+        verifiedIcon.src = '/static/images/svg/unchecked.svg'
+        onlyVerified = false
+    }
+    else {
+        verifiedIcon.id = 'verified'
+        verifiedIcon.src = '/static/images/svg/checked.svg'
+        onlyVerified = true
+    }
+    console.log(onlyVerified)
+})
 // animations
 const shakeAnimation = (contentBox) => {
     setTimeout(() => {
@@ -130,12 +145,13 @@ const ajaxCallSearch = (query) => {
     const langPrefix = window.location.href.split('/')[3];
     const url = window.location.origin + `/${langPrefix}/meals/data/live-search-ingredients`
     const searchResponseBox = document.querySelector('.add-meals__search__results__container')
-
+    console.log(onlyVerified)
     $.ajax({
         type: "GET",
         url: url,
         data: {
             'query': query,
+            'isVerified': onlyVerified,
         },
         success: function (response){
             const status = response.status
@@ -240,12 +256,12 @@ const ajaxCallSearch = (query) => {
                 searchElements.forEach(el => {
                     el.remove()
                 })
-                searchResponseBox.innerHTML = `<h3 class="search-results-info">${gettext('No search results.')}</h3>`
+                searchResponseBox.innerHTML = `<h3 class="search-results-info" style="margin-top: 5rem!important;">${gettext('No search results.')}</h3>`
             }
 
             },
         error: function (error) {
-            searchResponseBox.innerHTML = `<h3 class="search-results-info">${gettext('No search results.')}</h3>`
+            searchResponseBox.innerHTML = `<h3 class="search-results-info" style="margin-top: 5rem!important;">${gettext('No search results.')}</h3>`
             const searchElements = Array.from(searchResponseBox.children)
                 searchElements.forEach(el => {
                     el.remove()
@@ -420,7 +436,7 @@ searchInput.addEventListener('input', e => {
 
     }
     else {
-        searchResponseBox.innerHTML = `<h3 class="search-results-info" style="text-align: center">${gettext('Try to search meal or ingredients that have you eaten today.')}
+        searchResponseBox.innerHTML = `<h3 class="search-results-info" style="margin-top: 5rem!important;">${gettext('Try to search meal or ingredients that have you eaten today.')}
                             <br>${gettext('Results will appear here.')}</h3>`
     }
 })

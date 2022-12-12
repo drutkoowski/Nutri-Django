@@ -5013,6 +5013,20 @@ div.modal--calendar__content-summary {
       @media only screen and (max-width: 46.875em) {
         .add-meals__search__bar {
           width: 85%; } }
+      .add-meals__search__bar__is-verified {
+        display: flex;
+        justify-content: end; }
+        .add-meals__search__bar__is-verified p {
+          display: inline-block;
+          font-size: 2rem;
+          color: var(--color-white);
+          margin-right: 2rem; }
+        .add-meals__search__bar__is-verified img {
+          display: inline-block;
+          height: 2rem;
+          width: 2rem;
+          margin-top: 3px;
+          margin-right: 1rem; }
       .add-meals__search__bar input {
         border-radius: 5px;
         border: none;
@@ -5116,12 +5130,9 @@ div.modal--calendar__content-summary {
           .add-meals__search__results__container__item p {
             grid-column: 1/2; }
       .add-meals__search__results h3 {
-        margin: 4rem 2rem;
+        margin-bottom: 2rem;
         font-size: 2rem;
         font-weight: bold; }
-        @media only screen and (max-width: 56.25em) {
-          .add-meals__search__results h3 {
-            margin: 2rem 2rem; } }
   .add-meals__added {
     height: 55rem;
     background-color: #bde7c5;
@@ -5489,7 +5500,8 @@ div.modal--calendar__content-summary {
 .check-today-meals {
   display: flex;
   text-align: center;
-  margin: 7.5rem auto auto auto;
+  margin-top: auto;
+  margin-bottom: 2rem;
   border-radius: 5px;
   height: 3rem;
   padding: 1rem 4rem;
@@ -7219,7 +7231,8 @@ div.modal--calendar__content-summary {
   animation-name: fade-bottom;
   animation-duration: 1.5s;
   animation-timing-function: ease-out;
-  transition: all .2s ease-in; }
+  transition: all .2s ease-in;
+  text-align: center; }
   @media only screen and (max-width: 46.875em) {
     .search-results-info {
       margin-top: 10rem !important;

@@ -20,7 +20,15 @@
              {% include 'accounts/navbar_small.html' %}
             <div class="add-meals grid-full-span">
                 <div class="add-meals__search">
-                    <div class="add-meals__search__bar"><input class="search-meal-add search-input" type="text" placeholder="{% trans 'Search' %}"/><span><img class="add-meals__search__bar__icon" src="{% sass_src 'images/svg/search.svg' %}" alt="Search Icon" /></span></div>
+                    <div class="add-meals__search__bar">
+                        <input class="search-meal-add search-input" type="text" placeholder="{% trans 'Search' %}"/>
+                         <span>
+                            <img class="add-meals__search__bar__icon" src="{% sass_src 'images/svg/search.svg' %}" alt="Search Icon" />
+                         </span>
+                    </div>
+                    <div class="add-meals__search__bar__is-verified">
+                        <img src="{% sass_src 'images/svg/checked.svg' %}" id="verified" alt="Checked Icon" class="filter-white verified-icon"><p>{% trans 'Only verified' %}</p>
+                    </div>
                     <div class="add-meals__search__results">
                         <div class="saved-meals__search__results__heading-box">
                             <h3>{% trans 'Your search results' %}</h3>
