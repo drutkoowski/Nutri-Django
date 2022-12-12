@@ -61,9 +61,7 @@ def live_search_exercises(request):
             if lang_code == 'pl' and is_verified == 'true':
                 check_if_exercise_exists = Exercise.objects.filter(
                     pl_name__iregex=r"\b{0}\b".format(query), verified=True).all().union(
-                    Exercise.objects.filter(
-                        pl_name__istartswith=query
-                    ), verified=True).all()
+                    Exercise.objects.filter(pl_name__istartswith=query, verified=True)).all()
             elif lang_code == 'pl' and is_verified == 'false':
                 check_if_exercise_exists = Exercise.objects.filter(
                     pl_name__iregex=r"\b{0}\b".format(query)).all().union(
@@ -73,9 +71,7 @@ def live_search_exercises(request):
             if lang_code == 'en' and is_verified == 'true':
                 check_if_exercise_exists = Exercise.objects.filter(
                     en_name__iregex=r"\b{0}\b".format(query), verified=True).all().union(
-                    Exercise.objects.filter(
-                        en_name__istartswith=query
-                    ), verified=True).all()
+                    Exercise.objects.filter(en_name__istartswith=query, verified=True)).all()
             elif lang_code == 'en' and is_verified == 'false':
                 check_if_exercise_exists = Exercise.objects.filter(
                     en_name__iregex=r"\b{0}\b".format(query)).all().union(

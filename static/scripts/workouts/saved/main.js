@@ -40,15 +40,36 @@ const clearCardContent = () => {
         saveNewWorkoutButton.disabled = false
     }
 }
+let onlyVerifiedEdit = true
+let onlyVerifiedAdd = true
 
-function hideModal(modalClass) {
-    $("." + modalClass).fadeOut(900, e => {
-         const modal = document.querySelector(`.${modalClass}`)
-         modal.classList.add('not-visible')
-         modal.style.removeProperty('display')
-         modal.style.removeProperty('zIndex')
-    });
-}
+const verifiedIconEdit = document.querySelector('#verified-edit')
+verifiedIconEdit.addEventListener('click', () => {
+    if (verifiedIconEdit.id === 'verified-edit') {
+        verifiedIconEdit.id = 'unverified-edit'
+        verifiedIconEdit.src = '/static/images/svg/unchecked.svg'
+        onlyVerifiedEdit = false
+    }
+    else {
+        verifiedIconEdit.id = 'verified-edit'
+        verifiedIconEdit.src = '/static/images/svg/checked.svg'
+        onlyVerifiedEdit = true
+    }
+})
+
+const verifiedIconAdd = document.querySelector('#verified-add')
+verifiedIconAdd.addEventListener('click', () => {
+    if (verifiedIconAdd.id === 'verified-add') {
+        verifiedIconAdd.id = 'unverified-add'
+        verifiedIconAdd.src = '/static/images/svg/unchecked.svg'
+        onlyVerifiedAdd = false
+    }
+    else {
+        verifiedIconAdd.id = 'verified-add'
+        verifiedIconAdd.src = '/static/images/svg/checked.svg'
+        onlyVerifiedAdd = true
+    }
+})
 
 
 
@@ -92,6 +113,7 @@ const ajaxCall = (query, searchResponseBox) => {
         url: url,
         data: {
             'query': query,
+            'isVerified': onlyVerifiedAdd
         },
         success: function (response){
             const status = response.status
@@ -168,6 +190,7 @@ const ajaxCallEditWorkout = (query) => {
         url: url,
         data: {
             'query': query,
+            'isVerified': onlyVerifiedEdit
         },
         success: function (response){
             const status = response.status
@@ -533,7 +556,7 @@ const getWorkoutTemplateElement = (workoutObj, workoutName, kcal, ids_array) => 
     const addNewElementBtn = document.querySelector('.add-new-element-box')
     addNewElementBtn.addEventListener('click', () => {
         const modalAddSearch = document.querySelector('.modal-edit-search')
-        modal.style.zIndex = '22000'
+        modalAddSearch.style.zIndex = '22000'
         modalAddSearch.classList.toggle('not-visible')
     })
     const workoutSaveButton = document.querySelector('.save-updated-template-workout')

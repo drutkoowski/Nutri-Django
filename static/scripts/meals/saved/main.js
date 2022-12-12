@@ -19,6 +19,36 @@ const csrf = document.getElementsByName('csrfmiddlewaretoken')
 const csrfToken = csrf[0].value
 
 let isCardVisible = false
+let onlyVerifiedEdit = true
+let onlyVerifiedAdd = true
+
+const verifiedIconEdit = document.querySelector('#verified-edit')
+verifiedIconEdit.addEventListener('click', () => {
+    if (verifiedIconEdit.id === 'verified-edit') {
+        verifiedIconEdit.id = 'unverified-edit'
+        verifiedIconEdit.src = '/static/images/svg/unchecked.svg'
+        onlyVerifiedEdit = false
+    }
+    else {
+        verifiedIconEdit.id = 'verified-edit'
+        verifiedIconEdit.src = '/static/images/svg/checked.svg'
+        onlyVerifiedEdit = true
+    }
+})
+
+const verifiedIconAdd = document.querySelector('#verified-add')
+verifiedIconAdd.addEventListener('click', () => {
+    if (verifiedIconAdd.id === 'verified-add') {
+        verifiedIconAdd.id = 'unverified-add'
+        verifiedIconAdd.src = '/static/images/svg/unchecked.svg'
+        onlyVerifiedAdd = false
+    }
+    else {
+        verifiedIconAdd.id = 'verified-add'
+        verifiedIconAdd.src = '/static/images/svg/checked.svg'
+        onlyVerifiedAdd = true
+    }
+})
 
 const clearCardContent = () => {
     const parentContent = document.querySelector('.saved-meals__added--saved__content')
@@ -82,6 +112,7 @@ const ajaxCall = (query, searchResponseBox) => {
         url: url,
         data: {
             'query': query,
+            'isVerified': onlyVerifiedAdd
         },
         success: function (response){
             const status = response.status
@@ -207,6 +238,7 @@ const ajaxCallEditMeal = (query) => {
         url: url,
         data: {
             'query': query,
+            'isVerified': onlyVerifiedEdit
         },
         success: function (response){
             const status = response.status

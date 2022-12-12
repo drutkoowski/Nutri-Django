@@ -172,6 +172,10 @@
           width: 2rem;
           margin-top: 3px;
           margin-right: 1rem;
+          transition: all .3s ease-in;
+          &:hover {
+            transform: scale(1.05);
+          }
         }
       }
       input {

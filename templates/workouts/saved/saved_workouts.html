@@ -72,7 +72,10 @@
                 <div class="modal-queued modal-edit-search not-visible">
                      <div class="modal-queued__content modal-edit-search__content">
                          <div class="modal-queued__close-button modal-edit-search__close-button">&times;</div>
-                         <h1 class="modal-queued--heading modal-edit-search__heading">{% trans 'Search for your activity components' %}</h1>
+                         <h1 class="modal-queued--heading modal-edit-search__heading" style="margin-bottom: 0!important;">{% trans 'Search for your activity components' %}</h1>
+                          <div class="add-meals__search__bar__is-verified">
+                            <img src="{% sass_src 'images/svg/checked.svg' %}" id="verified-edit" alt="Checked Icon" class="filter-white verified-icon"><p>{% trans 'Only verified' %}</p>
+                         </div>
                          <div class="add-new-element-template-search-bar modal-edit-search__content__search"><input class="new-saved-workout-search input-scale modal-edit-search__content__search-bar" type="text" placeholder="{% trans 'Search' %}"/><span><img class="add-workouts__search__bar__icon" src="{% sass_src 'images/svg/search.svg' %}" alt="Search Icon" /></span></div>
                             <div class="saved-workouts__added--saved__content__search-response modal-edit-search__content__search-response not-visible">
                                 <div class="saved-workouts__added--saved__content__search-response__item"></div>
@@ -83,7 +86,10 @@
                 <div class="modal-queued modal-add-search not-visible">
                      <div class="modal-queued__content modal-add-search__content">
                          <div class="modal-queued__close-button modal-add-search__close-button">&times;</div>
-                         <h1 class="modal-queued--heading modal-add-search__heading">{% trans 'Search for your activity components' %}</h1>
+                         <h1 class="modal-queued--heading modal-add-search__heading" style="margin-bottom: 0!important;">{% trans 'Search for your activity components' %}</h1>
+                          <div class="add-meals__search__bar__is-verified">
+                            <img src="{% sass_src 'images/svg/checked.svg' %}" id="verified-add" alt="Checked Icon" class="filter-white verified-icon"><p>{% trans 'Only verified' %}</p>
+                         </div>
                          <div class="saved-workouts__added--saved__content__search-bar modal-add-search__content__search"><input class="new-saved-workout-search input-scale modal-add-search__content__search-bar" type="text" placeholder="{% trans 'Search' %}"/><span><img class="add-workouts__search__bar__icon" src="{% sass_src 'images/svg/search.svg' %}" alt="Search Icon" /></span></div>
                           <div class="saved-workouts__added--saved__content__search-response modal-add-search__content__search-response not-visible">
                               <div class="saved-workouts__added--saved__content__search-response__item"></div>

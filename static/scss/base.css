@@ -5026,7 +5026,10 @@ div.modal--calendar__content-summary {
           height: 2rem;
           width: 2rem;
           margin-top: 3px;
-          margin-right: 1rem; }
+          margin-right: 1rem;
+          transition: all .3s ease-in; }
+          .add-meals__search__bar__is-verified img:hover {
+            transform: scale(1.05); }
       .add-meals__search__bar input {
         border-radius: 5px;
         border: none;
