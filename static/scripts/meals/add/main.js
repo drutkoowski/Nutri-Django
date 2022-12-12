@@ -435,7 +435,7 @@ searchInput.addEventListener('input', e => {
     }
     else {
         searchResponseBox.innerHTML = `<h3 class="search-results-info" style="margin-top: 5rem!important;">${gettext('Try to search meal or ingredients that have you eaten today.')}
-                            <br>${gettext('Results will appear here.')}</h3>`
+        <br>${gettext('Results will appear here.')}</h3>`
     }
 })
 
@@ -475,29 +475,6 @@ checkYourMealsBtn.addEventListener('click', () => {
     openModal('.modal-queued__today-meals-list')
 })
 
-const animateDeletingElementByClass = (elementClass, duration) => {
-    const element = document.querySelector(elementClass)
-     if (!element.classList.contains('not-visible')) {
-         $(elementClass).animate({
-                top: '-15rem',
-                opacity: '0',
-
-            }, 300)
-             setTimeout(function () {
-                 element.classList.add('not-visible')
-                 element.style.removeProperty('display')
-                 element.style.removeProperty('opacity')
-                element.style.removeProperty('top')
-             }, duration)
-     }
-     else {
-            element.style.removeProperty('opacity')
-            element.style.removeProperty('top')
-            element.classList.remove('not-visible')
-            element.style.removeProperty('display')
-        }
-}
-
 
 const updateSummary = () => {
     const langPrefix = window.location.href.split('/')[3];
@@ -532,6 +509,11 @@ const updateSummary = () => {
 
 const modalCloseTodayMeals = document.querySelector('.modal-queued__today-meals__close-button')
 modalCloseTodayMeals.addEventListener('click', () => {
-    animateDeletingElementByClass('.modal-queued__today-meals-list', 1200)
+        $("." + "modal-queued__today-meals-list").fadeOut(900, () => {
+            const modal = document.querySelector(`.modal-queued__today-meals-list`)
+            modal.classList.add('not-visible')
+            modal.style.removeProperty('display')
+            modal.style.zIndex = '0'
+        });
 })
 

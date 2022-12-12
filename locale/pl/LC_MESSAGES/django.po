@@ -958,7 +958,7 @@ msgstr "Dodawanie Twojego szablonu posiłku do bazy..."
 #: .\templates\workouts\saved\saved_workouts.html:75
 #: .\templates\workouts\saved\saved_workouts.html:86
 msgid "Search for your activity components"
-msgstr "Szukaj składowych posiłku"
+msgstr "Szukaj składowych aktywności"
 
 #: .\templates\workouts\workouts.html:22
 msgid "Add Activity"

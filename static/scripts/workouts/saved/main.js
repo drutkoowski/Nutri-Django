@@ -747,12 +747,6 @@ saveNewWorkoutButton.addEventListener('click', () => {
     const searchInput = document.querySelector('.modal-add-search__content__search-bar')
     searchInput.addEventListener('input', e => {
         const searchValue = e.target.value
-        const addedContent = document.querySelector('.saved-workouts__added--saved__content__workout')
-        if (searchValue.length === 0 && addedContent.classList.contains('not-visible')) {
-            $('.info-search-saved').fadeOut('350', e => {
-                document.querySelector('.info-search-saved').classList.remove('not-visible')
-            })
-        }
         const searchResponseBox = document.querySelector('.modal-add-search__content__search-response')
         const searchElements = Array.from(searchResponseBox.children)
         searchElements.forEach(el => {

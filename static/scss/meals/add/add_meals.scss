@@ -666,8 +666,8 @@
   width: 6rem;
   height: 4rem;
   font-size: 1.5rem;
-  border: 1px solid #13aa52;
-  background-color: #13aa52;
+  border: 1px solid var(--green-darker);
+  background-color: var(--green-darker);
   color: white;
   cursor: pointer;
   text-transform: uppercase;
@@ -682,8 +682,8 @@
   width: 6rem;
   height: 4rem;
   font-size: 1.5rem;
-  border: 1px solid #ff041b;
-  background-color: var(--red);
+  border: 1px solid rgb(238, 62, 62);
+  background-color: rgb(238, 62, 62);
   color: white;
   cursor: pointer;
   text-transform: uppercase;

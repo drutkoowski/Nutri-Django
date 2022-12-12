@@ -182,7 +182,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   --green-third: rgb(23, 248, 0);
   --green-darker: rgba(0,128,0, 1);
   --green-modal: #afe0a5;
-  --red: rgba(241, 2, 2, 0.69);
+  --red: rgba(231, 33, 33, 0.69);
   --red-light: rgba(241, 2, 2, 0.49);
   --black-muted: rgba(1, 1, 1, 0.75);
   --color-white: rgba(255, 255, 255, 1);
@@ -5454,8 +5454,8 @@ div.modal--calendar__content-summary {
   width: 6rem;
   height: 4rem;
   font-size: 1.5rem;
-  border: 1px solid #13aa52;
-  background-color: #13aa52;
+  border: 1px solid var(--green-darker);
+  background-color: var(--green-darker);
   color: white;
   cursor: pointer;
   text-transform: uppercase;
@@ -5468,8 +5468,8 @@ div.modal--calendar__content-summary {
   width: 6rem;
   height: 4rem;
   font-size: 1.5rem;
-  border: 1px solid #ff041b;
-  background-color: var(--red);
+  border: 1px solid #ee3e3e;
+  background-color: #ee3e3e;
   color: white;
   cursor: pointer;
   text-transform: uppercase;

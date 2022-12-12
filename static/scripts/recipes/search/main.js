@@ -70,16 +70,6 @@ const capitalize = (word) => {
         .join(' ')
 }
 
-// let hideModal = function (modalClass) {
-//     console.log(modalClass)
-//     $("." + modalClass).fadeOut(900, () => {
-//          const modal = document.querySelector(`.${modalClass}`)
-//          console.log(modal)
-//          modal.classList.add('not-visible')
-//          modal.style.removeProperty('display')
-//          modal.style.zIndex = '0'
-//     });
-// }
 
 let openModal = function (modalClass) {
         let div = document.querySelector(modalClass);

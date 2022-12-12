@@ -21,7 +21,6 @@ const csrfToken = csrf[0].value
 let isCardVisible = false
 let onlyVerifiedEdit = true
 let onlyVerifiedAdd = true
-
 const verifiedIconEdit = document.querySelector('#verified-edit')
 verifiedIconEdit.addEventListener('click', () => {
     if (verifiedIconEdit.id === 'verified-edit') {
@@ -61,9 +60,6 @@ const clearCardContent = () => {
     if(inputEl && saveEl) {
         inputEl.remove()
         saveEl.remove()
-    }
-    if (saveNewMealButton.disabled) {
-        saveNewMealButton.disabled = false
     }
 }
 
@@ -667,7 +663,6 @@ saveNewMealButton.addEventListener('click', () => {
             $(this).removeClass('animate');
      });
      clearCardContent()
-     saveNewMealButton.disabled = true
      headingAdjustableCard.innerHTML = gettext("Create New Meal Template")
      const modalAddMeal = document.querySelector('.modal-add-search')
      modalAddMeal.style.zIndex = '83281'
