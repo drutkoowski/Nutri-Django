@@ -51,7 +51,6 @@ verifiedIcon.addEventListener('click', () => {
         verifiedIcon.src = '/static/images/svg/checked.svg'
         onlyVerified = true
     }
-    console.log(onlyVerified)
 })
 // animations
 const shakeAnimation = (contentBox) => {
@@ -145,7 +144,6 @@ const ajaxCallSearch = (query) => {
     const langPrefix = window.location.href.split('/')[3];
     const url = window.location.origin + `/${langPrefix}/meals/data/live-search-ingredients`
     const searchResponseBox = document.querySelector('.add-meals__search__results__container')
-    console.log(onlyVerified)
     $.ajax({
         type: "GET",
         url: url,

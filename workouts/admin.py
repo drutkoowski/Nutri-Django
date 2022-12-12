@@ -8,8 +8,10 @@ from .models import ExerciseUnit, Exercise, Workout, ExerciseCategory, \
 class ExerciseUnitAdmin(admin.ModelAdmin):
     list_display = ("en_name", "pl_name", "multiplier",)
 
+
 class ExerciseTimeUnitAdmin(admin.ModelAdmin):
     list_display = ("en_time_unit_name", "pl_time_unit_name",)
+
 
 class CategoryExerciseAdmin(admin.ModelAdmin):
     list_display = ("pl_category_name", "en_category_name",)
@@ -18,7 +20,7 @@ class CategoryExerciseAdmin(admin.ModelAdmin):
 
 class ExerciseAdmin(admin.ModelAdmin):
     list_display = (
-        "en_name", "pl_name", "unit", "category", "met",)
+        "en_name", "pl_name", "unit", 'time_unit', "category",  "met", 'created_by', 'verified')
     ordering = ('en_name', 'pl_name',)
     search_fields = ("pl_name",)
     list_filter = ('category', 'unit',)
@@ -33,6 +35,7 @@ class ExerciseAdmin(admin.ModelAdmin):
 class WorkoutAdmin(admin.ModelAdmin):
     list_display = (
         "exercises", "created_by", "created_at", "kcal_burnt_sum", "min_spent_sum")
+
     def exercises(self, obj):
         return "\n".join([f'{a.exercise.pl_name}/{a.exercise.en_name}' for a in obj.workout_elements.all()])
 

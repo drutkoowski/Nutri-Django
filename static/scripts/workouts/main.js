@@ -10,13 +10,19 @@ if (menuWorkoutsVideo) {
 window.onresize = function(){ location.reload(); }
 
 const workoutAddCard = document.querySelector('.workouts__card--add')
-workoutAddCard.addEventListener('click', e => {
+workoutAddCard.addEventListener('click', () => {
     const langPrefix = window.location.href.split('/')[3];
     location.href = location.origin + `/${langPrefix}/workouts/add`
 })
 
+const workoutEnter = document.querySelector('.workouts__card--enter')
+workoutEnter.addEventListener('click', () => {
+    const langPrefix = window.location.href.split('/')[3];
+    location.href = location.origin + `/${langPrefix}/workouts/enter`
+})
+
 const savedWorkoutsCard = document.querySelector('.workouts__card--saved')
-savedWorkoutsCard.addEventListener('click', e => {
+savedWorkoutsCard.addEventListener('click', () => {
     const langPrefix = window.location.href.split('/')[3];
     location.href = location.origin + `/${langPrefix}/workouts/saved`
 })

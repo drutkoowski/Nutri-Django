@@ -136,7 +136,6 @@ def add_new_meal_element(request):
                                             protein=protein, fat=fat, unit=unit, serving_grams=serving_grams, created_by=user_profile,
                                             verified=False)
             element.save()
-            print(element)
             return JsonResponse({'status': 200, 'text': 'Element created'})
         else:
             return JsonResponse({'status': 400, 'text': 'Element not created'})
@@ -270,12 +269,6 @@ def get_saved_meal_template_element(request):
                 'carbs': template_element.ingredient.carbs,
                 'protein': template_element.ingredient.protein,
                 'fat': template_element.ingredient.fat,
-                'fiber': template_element.ingredient.fiber,
-                'saturated_fat': template_element.ingredient.saturated_fat,
-                'cholesterol': template_element.ingredient.cholesterol,
-                'sodium': template_element.ingredient.sodium,
-                'sugar': template_element.ingredient.sugar,
-                'potassium': template_element.ingredient.potassium,
                 'serving_grams': template_element.ingredient.serving_grams,
                 'serving_ml': template_element.ingredient.serving_ml,
                 'unit_name_en': template_element.ingredient.unit.en_name,

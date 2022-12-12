@@ -1,6 +1,7 @@
 import datetime
 import json
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from accounts.models import UserProfile
@@ -31,6 +32,15 @@ def add_workout_view(request):
 
 
 @login_required(login_url='login')
+def enter_activity(request):
+    activity_categories = ExerciseCategory.objects.all()
+    context = {
+        'activity_categories': activity_categories
+    }
+    return render(request, 'workouts/enter/activity_enter.html', context)
+
+
+@login_required(login_url='login')
 def saved_workout_view(request):
     user_profile = UserProfile.objects.filter(user=request.user)
     workout_templates = WorkoutTemplate.objects.filter(created_by__in=user_profile).all()
@@ -46,20 +56,32 @@ def live_search_exercises(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
         query = request.GET.get('query')
         lang_code = request.path.split('/')[1]
+        is_verified = str(request.GET.get('isVerified'))
         if query != '':
-            if (lang_code == 'pl'):
+            if lang_code == 'pl' and is_verified == 'true':
+                check_if_exercise_exists = Exercise.objects.filter(
+                    pl_name__iregex=r"\b{0}\b".format(query), verified=True).all().union(
+                    Exercise.objects.filter(
+                        pl_name__istartswith=query
+                    ), verified=True).all()
+            elif lang_code == 'pl' and is_verified == 'false':
                 check_if_exercise_exists = Exercise.objects.filter(
                     pl_name__iregex=r"\b{0}\b".format(query)).all().union(
                     Exercise.objects.filter(
                         pl_name__istartswith=query
                     )).all()
-            else:
+            if lang_code == 'en' and is_verified == 'true':
+                check_if_exercise_exists = Exercise.objects.filter(
+                    en_name__iregex=r"\b{0}\b".format(query), verified=True).all().union(
+                    Exercise.objects.filter(
+                        en_name__istartswith=query
+                    ), verified=True).all()
+            elif lang_code == 'en' and is_verified == 'false':
                 check_if_exercise_exists = Exercise.objects.filter(
                     en_name__iregex=r"\b{0}\b".format(query)).all().union(
                     Exercise.objects.filter(
                         en_name__istartswith=query
                     )).all()
-
             # "\y" or "\b" depends on postgres or not (\y - postgres)
             if check_if_exercise_exists is not None:
                 exercises = list(check_if_exercise_exists.values())
@@ -87,6 +109,35 @@ def live_search_exercises(request):
             return JsonResponse({'status': 404, 'text': 'There are not exercises found.', 'exercises': []})
     else:
         return redirect('home')
+
+
+@login_required(login_url='login')
+def add_new_activity_element(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
+        user_profile = UserProfile.objects.get(user=request.user)
+        category_pk = request.POST.get('categoryPk')
+        met = request.POST.get('met')
+        lang_code = request.POST.get('langCode')
+        name = request.POST.get('name')
+        category = ExerciseCategory.objects.get(pk=category_pk)
+        time_unit = ExerciseTimeUnit.objects.get(en_time_unit_name='minutes')
+        from googletrans import Translator
+        translator = Translator()
+        if lang_code == 'pl':
+            name_pl = name
+            name_en = translator.translate(name, dest='en').text
+        else:
+            name_en = name
+            name_pl = translator.translate(name, dest='pl').text
+
+        is_existing = Exercise.objects.filter(Q(pl_name__iexact=name_pl) | Q(en_name__iexact=name_en)).all()
+        if not is_existing.exists():
+            element = Exercise.objects.create(pl_name=name_pl, en_name=name_en, category=category, met=met,
+                                              time_unit=time_unit, unit=None, created_by=user_profile, verified=False)
+            element.save()
+            return JsonResponse({'status': 200, 'text': 'Element created'})
+        else:
+            return JsonResponse({'status': 400, 'text': 'Element not created'})
 
 
 @login_required(login_url='login')
@@ -169,7 +220,7 @@ def get_saved_workout_template_element(request):
                 "templateElementName_pl": template_element.exercise.pl_name,
                 "unit_name_pl": template_element.exercise.unit.pl_name if template_element.exercise.unit else None,
                 "unit_name_en": template_element.exercise.unit.en_name if template_element.exercise.unit else None
-             }
+            }
             exercise_obj_dict = {
                 "id": template_element.exercise.pk,
                 'en_name': template_element.exercise.en_name,
@@ -182,15 +233,15 @@ def get_saved_workout_template_element(request):
                 'category_name_pl': template_element.exercise.category.pl_category_name,
             }
             return JsonResponse(
-                    {'status': 302, 'text': 'Workout Template Element Found',
-                     "workoutTemplateElement": json.dumps(template_obj_dict),
-                     "workoutElement": json.dumps(exercise_obj_dict)})
+                {'status': 302, 'text': 'Workout Template Element Found',
+                 "workoutTemplateElement": json.dumps(template_obj_dict),
+                 "workoutElement": json.dumps(exercise_obj_dict)})
         except:
             return JsonResponse(
                 {'status': 404, 'text': 'Workout Template Element Not Found',
-                    "workoutTemplateElement": '',
-                    "workoutElement": ''
-                })
+                 "workoutTemplateElement": '',
+                 "workoutElement": ''
+                 })
     return redirect('home')
 
 
@@ -368,91 +419,3 @@ def delete_saved_workout_template(request):
             return JsonResponse({'status': 200, 'text': 'Object deleted successfully!'})
         except:
             return JsonResponse({'status': 401, 'text': 'Object not deleted!'})
-
-
-def test(request):
-    import json
-
-    # Opening JSON file
-    f = open('C:\\Users\\user\\PycharmProjects\\pythonProject30\\data.json', encoding='utf-8')
-
-    # returns JSON object as
-    # a dictionary
-    data = json.load(f)
-    from googletrans import Translator
-    translator = Translator()
-    for exercise in data:
-
-        met = exercise[0]['met']
-        exercise_met = round(float(met), 2)
-        exercise_name = exercise[0]['exerciseName']
-        try:
-
-            translation = translator.translate(exercise_name, dest='pl')
-            category = ExerciseCategory.objects.filter(en_category_name__iexact='Gym exercises').first()
-            # unit = ExerciseUnit.objects.filter(en_name__iexact='km').first()
-            time_unit = ExerciseTimeUnit.objects.filter(en_time_unit_name__iexact='minutes').first()
-            if_exists = Exercise.objects.filter(pl_name__iexact=translation.text, en_name__iexact=exercise_name).first()
-            if_exists2 = Exercise.objects.filter(en_name__iexact=exercise_name, met=met).first()
-            # print(exercise_met, exercise_name, unit, category, time_unit, translation.text)
-            if if_exists is None and if_exists2 is None:
-                new_ingredient = Exercise.objects.create(pl_name=translation.text, en_name=exercise_name,
-                                                         category=category, time_unit=time_unit, met=exercise_met)
-                new_ingredient.save()
-                print(f'{exercise_name} dodano')
-        except:
-            pass
-        else:
-            pass
-    return render(request, 'workouts/test.html')
-
-
-def test2(request):
-    return
-
-# def add_ingredient(request):
-#     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
-#         meal_name = request.POST.get('mealName')
-#         serving_unit = request.POST.get('serving_unit')
-#         calories = round(float(request.POST.get('calories')), 5)
-#         cholesterol = round(float(request.POST.get('cholesterol')), 5)
-#         fiber = round(float(request.POST.get('fiber')), 5)
-#         potassium = round(float(request.POST.get('potassium')), 5)
-#         saturated_fat = round(float(request.POST.get('saturated_fat')), 5)
-#         sodium = round(float(request.POST.get('sodium')), 5)
-#         sugars = round(float(request.POST.get('sugars')), 5)
-#         carbs = round(float(request.POST.get('carbs')), 5)
-#         fat = round(float(request.POST.get('fat')), 5)
-#         protein = round(float(request.POST.get('protein')), 5)
-#         serving_grams = round(float(request.POST.get('serving_grams')), 5)
-#         serving_ml = round(float(request.POST.get('servingMl')), 5)
-#         category = IngredientCategory.objects.filter(en_category_name__iexact='Meat').first()
-#
-#         unit = IngredientUnit.objects.filter(en_name__iexact=serving_unit).first()
-#         from googletrans import Translator
-#
-#         translator = Translator()
-#         translation = translator.translate(meal_name, dest='pl')
-#         if_exists = Ingredient.objects.filter(pl_name__iexact=translation.text, en_name__iexact=meal_name).first()
-#         if_exist2 = Ingredient.objects.filter(kcal=calories,
-#                                               unit=unit, cholesterol=cholesterol, carbs=carbs,
-#                                               protein=protein, fat=fat, fiber=fiber,
-#                                               saturated_fat=saturated_fat, sodium=sodium,
-#                                               sugar=sugars, potassium=potassium,
-#                                               serving_grams=serving_grams).first()
-#         if if_exists is None and if_exist2 is None:
-#             new_ingredient = Ingredient.objects.create(pl_name=translation.text, en_name=meal_name, kcal=calories,
-#                                                        unit=unit, cholesterol=cholesterol, carbs=carbs,
-#                                                        protein=protein, fat=fat, fiber=fiber,
-#                                                        saturated_fat=saturated_fat, sodium=sodium,
-#                                                        sugar=sugars, potassium=potassium,
-#                                                        serving_grams=serving_grams, category=category,
-#                                                        serving_ml=serving_ml)
-#             new_ingredient.save()
-#             return JsonResponse({'status': 201})
-#         else:
-#             print(
-#                 f"{meal_name}, {serving_unit}, {calories}, {cholesterol}, {fiber}, {potassium}, {saturated_fat}, {sodium}, {sugars}, {carbs}, {fat}, {protein}, {serving_grams}")
-#             return JsonResponse({'status': 302})
-#     else:
-#         return JsonResponse({'status': 404})

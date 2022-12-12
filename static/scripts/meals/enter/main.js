@@ -18,11 +18,7 @@ const categoryInput = document.querySelector('#category')
 const allInputs = Array.from(document.querySelectorAll('.meals-enter__input'))
 allInputs.forEach(input => {
     input.addEventListener('input', () => {
-        var reg = /^\d+$/;
-        if (!reg.test(input.value) && input.id !== 'name'){
-            input.value = ''
-        }
-        input.value = input.value.slice(0,3);
+        input.value = input.value.slice(0,4);
         input.dataset.value = input.value
     })
 })
@@ -80,7 +76,7 @@ barCodeBtn.addEventListener('click', () => {
                     const kcal = data['nutriments']['energy_value']
                     const fat = data['nutriments']['fat_value']
                     const protein = data['nutriments']['proteins_value']
-                    const elementSizeGrams = data['quantity'] === undefined || !data['quantity'] ? '' : `(${data['quantity']})`
+                    const elementSizeGrams = data['quantity'] === undefined || !data['quantity'] ? '' : ` (${data['quantity']})`
                     const productName = langPrefix === 'en' ? productNameEn : productNamePl
                     inputName.dataset.value = productName + elementSizeGrams
                     inputName.value = productName + elementSizeGrams

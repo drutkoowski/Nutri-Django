@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-11 16:40+0100\n"
+"POT-Creation-Date: 2022-12-12 16:27+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -349,7 +349,7 @@ msgstr "Spalone"
 #: .\static\scripts\activity-calendar\activity-calendar.js:55
 #: .\static\scripts\activity-calendar\activity-calendar.js:164
 #: .\static\scripts\activity-calendar\activity-calendar.js:175
-#: .\static\scripts\dashboard\main.js:366
+#: .\static\scripts\dashboard\main.js:371
 #: .\static\scripts\dashboard\stats.js:134
 #: .\static\scripts\dashboard\stats.js:284
 #: .\static\scripts\dashboard\stats.js:535
@@ -359,7 +359,7 @@ msgstr "Węglowodany"
 #: .\static\scripts\activity-calendar\activity-calendar.js:56
 #: .\static\scripts\activity-calendar\activity-calendar.js:164
 #: .\static\scripts\activity-calendar\activity-calendar.js:173
-#: .\static\scripts\dashboard\main.js:366
+#: .\static\scripts\dashboard\main.js:371
 #: .\static\scripts\dashboard\stats.js:101
 #: .\static\scripts\dashboard\stats.js:274
 #: .\static\scripts\dashboard\stats.js:502
@@ -367,7 +367,7 @@ msgid "Protein"
 msgstr "Białko"
 
 #: .\static\scripts\activity-calendar\activity-calendar.js:57
-#: .\static\scripts\dashboard\main.js:366
+#: .\static\scripts\dashboard\main.js:371
 #: .\static\scripts\dashboard\stats.js:122
 #: .\static\scripts\dashboard\stats.js:294
 #: .\static\scripts\dashboard\stats.js:523
@@ -404,16 +404,16 @@ msgstr "Czas trwania"
 msgid "You have not added any activities on this day"
 msgstr "Nie dodałeś żadnych aktywności dla tego dnia"
 
-#: .\static\scripts\dashboard\main.js:138
-#: .\static\scripts\dashboard\main.js:423
+#: .\static\scripts\dashboard\main.js:140
+#: .\static\scripts\dashboard\main.js:428
 msgid "Summary"
 msgstr "Podsumowanie"
 
-#: .\static\scripts\dashboard\main.js:366
+#: .\static\scripts\dashboard\main.js:371
 msgid "Kcal Goal"
 msgstr "Cel kaloryczny"
 
-#: .\static\scripts\dashboard\main.js:383
+#: .\static\scripts\dashboard\main.js:388
 msgid "Percent (%)"
 msgstr "Procent (%)"
 
@@ -587,7 +587,7 @@ msgstr "Wystąpił błąd.. spróbuj jeszcze raz."
 msgid "Email or password field is not valid."
 msgstr "Pole email lub hasła jest nieprawidłowe."
 
-#: .\static\scripts\meals\add\main.js:174
+#: .\static\scripts\meals\add\main.js:190
 #: .\static\scripts\meals\saved\main.js:116
 #: .\static\scripts\meals\saved\main.js:241
 #: .\static\scripts\workouts\add\main.js:185
@@ -596,48 +596,48 @@ msgstr "Pole email lub hasła jest nieprawidłowe."
 msgid "Category"
 msgstr "Kategoria"
 
-#: .\static\scripts\meals\add\main.js:243
-#: .\static\scripts\meals\add\main.js:248
+#: .\static\scripts\meals\add\main.js:259
+#: .\static\scripts\meals\add\main.js:264
 #: .\static\scripts\workouts\add\main.js:250
 #: .\static\scripts\workouts\add\main.js:255
 msgid "No search results."
 msgstr "Brak rezultatów wyszukiwania."
 
-#: .\static\scripts\meals\add\main.js:404
+#: .\static\scripts\meals\add\main.js:420
 msgid "No saved templates yet"
 msgstr "Brak zapisanych szablonów"
 
-#: .\static\scripts\meals\add\main.js:423
+#: .\static\scripts\meals\add\main.js:439
 msgid "Try to search meal or ingredients that have you eaten today."
 msgstr "Spróbuj wyszukać posiłek lub składniki, które zjadłeś/aś dzisiaj."
 
-#: .\static\scripts\meals\add\main.js:424
+#: .\static\scripts\meals\add\main.js:440
 #: .\static\scripts\workouts\add\main.js:414
 msgid "Results will appear here."
 msgstr "Wyniki pojawią się tutaj."
 
-#: .\static\scripts\meals\enter\main.js:31
+#: .\static\scripts\meals\enter\main.js:47
 msgid "Type BAR Code Below"
 msgstr "Wpisz kod kreskowy poniżej"
 
-#: .\static\scripts\meals\enter\main.js:33
+#: .\static\scripts\meals\enter\main.js:49
 msgid "Bar Code"
 msgstr "Kod kreskowy"
 
-#: .\static\scripts\meals\enter\main.js:34
+#: .\static\scripts\meals\enter\main.js:50
 msgid ""
 "Bar code usually contains 13 letters, fe. \"5449000000996\" stands for Coca "
 "Cola."
-msgstr "Kod kreskowy zawiera zazwyczaj 13 cyfr, np. 5449000000996 oznacza Coca Colę."
+msgstr ""
+"Kod kreskowy zawiera zazwyczaj 13 cyfr, np. 5449000000996 oznacza Coca Colę."
 
-#: .\static\scripts\meals\enter\main.js:77
+#: .\static\scripts\meals\enter\main.js:118
 #: .\static\scripts\recipes\ideas\main.js:22
-#: .\static\scripts\recipes\ideas\main.js:171
+#: .\static\scripts\recipes\ideas\main.js:166
 msgid "Unknown"
 msgstr "Nieznane"
 
-#: .\static\scripts\meals\enter\main.js:86
-#| msgid "We could not match any user with these credentials."
+#: .\static\scripts\meals\enter\main.js:128
 msgid "We could not find any matching element."
 msgstr "Nie udało nam się znaleźć pasującego elementu."
 
@@ -727,43 +727,43 @@ msgstr "dla"
 msgid "persons"
 msgstr "osób"
 
-#: .\static\scripts\recipes\ideas\main.js:120
+#: .\static\scripts\recipes\ideas\main.js:115
 msgid "Searching for recipes in our database"
 msgstr "Szukanie Twojego przepisu w naszej bazie"
 
-#: .\static\scripts\recipes\ideas\main.js:126
+#: .\static\scripts\recipes\ideas\main.js:121
 msgid "Searching for recipes into the web"
 msgstr "Szukanie przepisów dostępnych w sieci"
 
-#: .\static\scripts\recipes\ideas\main.js:132
+#: .\static\scripts\recipes\ideas\main.js:127
 msgid "Translating and formatting recipes"
 msgstr "Tłumaczenie oraz formatowanie przepisów"
 
-#: .\static\scripts\recipes\ideas\main.js:139
+#: .\static\scripts\recipes\ideas\main.js:134
 msgid "It takes longer than usual, be patient"
 msgstr "Trwa to dłużej niż zazwyczaj, bądź cierpliwy"
 
-#: .\static\scripts\recipes\ideas\main.js:146
+#: .\static\scripts\recipes\ideas\main.js:141
 msgid "Something went wrong..."
 msgstr "Coś poszło nie tak, spróbuj ponownie."
 
-#: .\static\scripts\recipes\ideas\main.js:171
+#: .\static\scripts\recipes\ideas\main.js:166
 msgid "Difficulty:"
 msgstr "Poziom trudności:"
 
-#: .\static\scripts\recipes\ideas\main.js:181
+#: .\static\scripts\recipes\ideas\main.js:176
 msgid "Nutri Verified"
 msgstr "Zweryfikowane przez Nutri"
 
-#: .\static\scripts\recipes\ideas\main.js:184
+#: .\static\scripts\recipes\ideas\main.js:179
 msgid "Not verified"
 msgstr "Niezweryfikowane"
 
-#: .\static\scripts\recipes\ideas\main.js:191
+#: .\static\scripts\recipes\ideas\main.js:186
 msgid "servings"
 msgstr "porcje"
 
-#: .\static\scripts\recipes\ideas\main.js:196
+#: .\static\scripts\recipes\ideas\main.js:191
 #: .\static\scripts\recipes\search\main.js:138
 msgid "See"
 msgstr "Zobacz"

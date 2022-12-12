@@ -186,9 +186,9 @@
 
     }
 
-    &--proposition {
+    &--enter {
       background-image: linear-gradient(to right bottom, rgba(241, 241, 241, 0.3), rgba(82, 82, 82, 0.5)),
-      url('/static/images/workout_propostions.jpg');
+      url('/static/images/workout_enter.jpg');
       background-size: cover;
       @include respond(md-desktop) {
         grid-column: 2/3;

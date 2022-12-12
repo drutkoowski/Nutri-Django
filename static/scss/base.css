@@ -5595,7 +5595,7 @@ div.modal--calendar__content-summary {
       background-size: cover; } }
 .meals-enter {
   display: grid;
-  grid-template-columns: 1.1fr 1fr 1.1fr;
+  grid-template-columns: 0.75fr 1fr 0.75fr;
   grid-template-rows: 1fr;
   grid-column: 2/3;
   grid-row: 2/3;
@@ -5630,7 +5630,7 @@ div.modal--calendar__content-summary {
       color: var(--color-white);
       margin-top: 1.5rem;
       display: flex;
-      justify-content: center; }
+      margin-left: 7.5rem; }
       .meals-enter__card div label {
         display: inline-block;
         font-size: 2rem;
@@ -5652,7 +5652,7 @@ div.modal--calendar__content-summary {
       margin-top: 1.5rem;
       color: var(--color-white);
       font-size: 2rem;
-      text-align: center; }
+      margin-left: 7.5rem; }
       .meals-enter__card p span {
         text-transform: uppercase;
         font-weight: bold; }
@@ -6698,11 +6698,11 @@ div.modal--calendar__content-summary {
           background-size: cover;
           grid-column: 2/3;
           grid-row: 1/2; } }
-    .workouts__card--proposition {
-      background-image: linear-gradient(to right bottom, rgba(241, 241, 241, 0.3), rgba(82, 82, 82, 0.5)), url("/static/images/workout_propostions.jpg");
+    .workouts__card--enter {
+      background-image: linear-gradient(to right bottom, rgba(241, 241, 241, 0.3), rgba(82, 82, 82, 0.5)), url("/static/images/workout_enter.jpg");
       background-size: cover; }
       @media only screen and (max-width: 93.75em) {
-        .workouts__card--proposition {
+        .workouts__card--enter {
           grid-column: 2/3;
           grid-row: 2/3; } }
     .workouts__card--saved {
@@ -6953,7 +6953,7 @@ div.modal--calendar__content-summary {
           .add-workouts__search__results__container__item p {
             grid-column: 1/2; }
       .add-workouts__search__results h3 {
-        margin: 4rem 2rem;
+        margin-bottom: 2rem;
         font-size: 2rem;
         font-weight: bold; }
         @media only screen and (max-width: 56.25em) {
@@ -7428,6 +7428,97 @@ div.modal--calendar__content-summary {
   @media only screen and (max-width: 21.875em) {
     .workouts-on-date {
       font-size: 1.2rem; } }
+.met-info {
+  font-size: 1.25rem !important; }
+  .met-info span {
+    font-weight: bold; }
+
+.activity-enter-layout-container {
+  width: 100vw;
+  height: auto;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 0.1fr 1fr 0.1fr;
+  grid-template-rows: 0.2fr 1fr;
+  align-items: center;
+  justify-items: center;
+  position: relative; }
+  @media only screen and (max-width: 93.75em) {
+    .activity-enter-layout-container {
+      grid-template-columns: 0.05fr 1fr 0.05fr; } }
+  @media only screen and (max-width: 84.375em) {
+    .activity-enter-layout-container {
+      grid-template-columns: 0.05fr 1fr 0.05fr;
+      grid-template-rows: 0.30fr 2fr 0.15fr;
+      height: auto;
+      background-image: linear-gradient(to bottom, rgba(246, 244, 244, 0.5), rgba(148, 147, 147, 0.84)), url("https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover; } }
+.activity-enter {
+  display: grid;
+  grid-template-columns: 0.75fr 1fr 0.75fr;
+  grid-template-rows: 1fr;
+  grid-column: 2/3;
+  grid-row: 2/3;
+  justify-self: stretch;
+  justify-items: center; }
+  .activity-enter__card {
+    grid-column: 2/3;
+    background-color: #bde7c5;
+    justify-self: stretch;
+    height: auto;
+    border-radius: 20px;
+    transition: all .3s ease-in;
+    -webkit-box-shadow: 0px 0px 8px 2px #42445a;
+    -moz-box-shadow: 0px 0px 8px 2px #42445a;
+    box-shadow: 0px 0px 8px 2px #42445a;
+    animation-name: fade-bottom;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    padding: 2rem 0.5rem 0 0.5rem; }
+    .activity-enter__card h3 {
+      color: var(--color-white);
+      font-size: 3rem;
+      text-align: center;
+      margin-top: 2rem; }
+    .activity-enter__card hr {
+      border: 1px solid var(--black-muted); }
+    .activity-enter__card button {
+      display: block;
+      padding: 0.75rem 1.5rem;
+      margin: 2rem 2rem 2rem auto; }
+    .activity-enter__card div {
+      color: var(--color-white);
+      margin-top: 1.5rem;
+      display: flex;
+      margin-left: 7.5rem; }
+      .activity-enter__card div label {
+        display: inline-block;
+        font-size: 2rem;
+        width: 15rem; }
+      .activity-enter__card div input, .activity-enter__card div select {
+        width: 15rem;
+        height: 3rem;
+        background-color: var(--color-white);
+        outline: none;
+        color: var(--black-muted);
+        border: 1px solid var(--green-light);
+        border-radius: 10px;
+        transition: all .3s ease-in;
+        text-align: center;
+        justify-self: center; }
+        .activity-enter__card div input:hover, .activity-enter__card div select:hover {
+          transform: scale(1.05); }
+    .activity-enter__card p {
+      margin-top: 1.5rem;
+      color: var(--color-white);
+      font-size: 2rem;
+      margin-left: 7.5rem; }
+      .activity-enter__card p span {
+        text-transform: uppercase;
+        font-weight: bold; }
+
 .saved-workouts-layout-container {
   width: 100vw;
   height: 100vh;

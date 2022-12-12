@@ -2,6 +2,22 @@
 const navBarEl = document.querySelector('.navbar--dashboard')
 navBarEl.classList.toggle('fix-navbar')
 ///
+let onlyVerified = true
+
+const verifiedIcon = document.querySelector('.verified-icon')
+verifiedIcon.addEventListener('click', () => {
+    if (verifiedIcon.id === 'verified') {
+        verifiedIcon.id = 'unverified'
+        verifiedIcon.src = '/static/images/svg/unchecked.svg'
+        onlyVerified = false
+    }
+    else {
+        verifiedIcon.id = 'verified'
+        verifiedIcon.src = '/static/images/svg/checked.svg'
+        onlyVerified = true
+    }
+})
+
 
 const updateSummary = () => {
     const langPrefix = window.location.href.split('/')[3];
@@ -153,6 +169,7 @@ const ajaxCallSearch = (query) => {
         url: url,
         data: {
             'query': query,
+            'isVerified': onlyVerified,
         },
         success: function (response){
             const status = response.status

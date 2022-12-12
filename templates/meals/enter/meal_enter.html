@@ -7,7 +7,7 @@
 {% block content %}
     {% csrf_token %}
     <div class="loader"></div>
-     <div class="bg-video" id="meals-video-container">
+     <div class="bg-video-fixed" id="meals-video-container">
        <div class="overlay-large"></div>
          <video id="meals-video" class="bg-video__content" autoplay muted loop>
              <source src="{% sass_src 'video/meals_bg_video.mp4' %}" type="video/mp4">
@@ -36,23 +36,23 @@
                 </div>
                 <div>
                     <label id='kcal-label' for="kcal">{% trans 'Kcal' %}</label>
-                    <input class='meals-enter__input' pattern="^[0-9]*$" type="text" id="kcal" placeholder="{% trans 'Kcal' %}">
+                    <input class='meals-enter__input' type="number" onkeydown="return event.keyCode !== 69" id="kcal" placeholder="{% trans 'Kcal' %}">
                 </div>
                 <div>
                     <label id='carbs-label' for="carbs">{% trans 'Carbs' %}</label>
-                    <input class='meals-enter__input' pattern="^[0-9]*$" type="text" id="carbs" placeholder="{% trans 'Carbs' %} (g)">
+                    <input class='meals-enter__input' type="number" onkeydown="return event.keyCode !== 69" id="carbs" placeholder="{% trans 'Carbs' %} (g)">
                 </div>
                 <div>
                     <label id='fats-label' for="fats">{% trans 'Fats' %}</label>
-                    <input class='meals-enter__input' pattern="^[0-9]*$" type="text" id="fats" placeholder="{% trans 'Fats' %} (g)">
+                    <input class='meals-enter__input' type="number" onkeydown="return event.keyCode !== 69" id="fats" placeholder="{% trans 'Fats' %} (g)">
                 </div>
                 <div>
                     <label id='protein-label' for="protein">{% trans 'Protein' %}</label>
-                    <input class='meals-enter__input' pattern="^[0-9]*$" type="text" id="protein" placeholder="{% trans 'Protein' %} (g)">
+                    <input class='meals-enter__input' type="number" onkeydown="return event.keyCode !== 69" id="protein" placeholder="{% trans 'Protein' %} (g)">
                 </div>
                 <div>
                     <label id='serving-label' for="serving">{% trans 'Serving grams' %}</label>
-                    <input class='meals-enter__input' pattern="^[0-9]*$" type="text" id="serving" placeholder="{% trans 'Serving grams' %}">
+                    <input class='meals-enter__input' type="number" onkeydown="return event.keyCode !== 69" id="serving" placeholder="{% trans 'Serving grams' %}">
                 </div>
                 <p class="not-visible" id="nutrition-grade">{% trans 'Nutrition Grade' %}: <span id="grade"></span></p>
                 <button class="btn-light">{% trans 'Add' %}</button>

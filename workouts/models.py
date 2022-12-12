@@ -60,6 +60,8 @@ class Exercise(models.Model):
     unit = models.ForeignKey(ExerciseUnit, blank=True, default=None, null=True, on_delete=models.CASCADE)
     time_unit = models.ForeignKey(ExerciseTimeUnit, blank=True, null=True, on_delete=models.SET_DEFAULT, default=None)
     met = models.FloatField(blank=False, default=1)
+    created_by = models.ForeignKey(UserProfile, blank=False, default=None, on_delete=models.SET_NULL, null=True)
+    verified = models.BooleanField(blank=False, default=True)
 
     def __str__(self):
         return f"{self.pl_name} / {self.en_name}"
@@ -80,7 +82,6 @@ class Workout(models.Model):
     min_spent_sum = models.FloatField(blank=True, null=True)
     kcal_burnt_sum = models.FloatField(blank=True, null=True)
     created_by = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
-
     def __str__(self):
         return f'{self.id} / {self.created_by}'
 

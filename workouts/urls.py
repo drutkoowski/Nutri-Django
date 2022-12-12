@@ -5,8 +5,8 @@ from . import views
 urlpatterns = [
     path('', views.workouts_view, name='workouts'),
     path('/add', views.add_workout_view, name='add-workout'),
+    path('/enter', views.enter_activity, name='enter-activity'),
     path('/saved', views.saved_workout_view, name='saved-workout'),
-    path('/test', views.test, name='asdas'),
     # ajax
     path('/data/live-search-exercises', views.live_search_exercises, name='live-search-exercises-ajax'),
     path('/data/get-exercise', views.get_exercise_by_id, name='get-exercise-by-id'),
@@ -17,9 +17,9 @@ urlpatterns = [
     path('/data/save/workout-template', views.save_workout_template, name='save-workout-template'),
     path('/data/save/workout-template/element', views.save_workout_template_element, name='save-workout-template-element'),
     path('/data/save/added-workout', views.add_today_exercise, name='add-today-exercise'),
+    path('/data/save/new-activity-element', views.add_new_activity_element, name='add-new-activity-element'),
     path('/data/delete/saved-workout/template', views.delete_saved_workout_template, name='delete-saved-workout-template'),
     path('/data/delete/added-workout', views.delete_today_workout, name='delete-today-workout'),
     path('/data/delete/added-workout/element', views.delete_today_workout_element, name='delete-today-workout-element'),
     path('/data/delete/workout-template/element', views.delete_workout_template_element, name='delete-workout-template-element'),
-    path('/data/add-data', views.test2, name='add-data'),
 ]

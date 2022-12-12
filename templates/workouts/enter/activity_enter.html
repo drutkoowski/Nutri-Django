@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load sass_tags %}
+{% load i18n %}
+{% block scripts %}
+     <script src="{% sass_src 'scripts/workouts/enter/main.js' %}" defer></script>
+{% endblock scripts %}
+{% block content %}
+    {% csrf_token %}
+    <div class="loader"></div>
+     <div class="bg-video-fixed" id="add-workouts-video-container">
+      <div class="overlay-large"></div>
+         <video id="add-workouts-video" class="bg-video-fixed__content" autoplay muted loop>
+             <source src="{% sass_src 'video/bg_video_login.mp4' %}" type="video/mp4">
+             <source src="{% sass_src 'video/bg_video_login.webm' %}" type="video/webm">
+             {% trans 'Your browser is not supported!' %}
+         </video>
+     </div>
+    <div class="activity-enter-layout-container">
+        {% include 'accounts/navbar.html' %}
+         {% include 'accounts/navbar_small.html' %}
+        <div class="activity-enter grid-full-span">
+            <div class="activity-enter__card">
+                <h3>{% trans 'Your activity' %}</h3>
+                <div>
+                    <label id='name-label' for="name">{% trans 'Name' %}</label>
+                    <input class='activity-enter__input' type="text" id="name" placeholder="{% trans 'Name' %}">
+                </div>
+                <div>
+                    <label id='category-label' for="category">{% trans 'Category' %}</label>
+                    <select name="category" id="category" class='activity-enter__input'>
+                        <option value="empty" data-selected="false" disabled selected>{% trans 'Category' %}</option>
+                        {% for category in activity_categories %}
+                            <option data-selected="true" data-value='{{ category.pk }}' value="{{ category.pk }}">{% if '/pl/' in request.path %}{{ category.pl_category_name }}{% else %}{{ category.en_category_name }}{% endif %}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div>
+                    <label id='met-label' for="met">{% trans 'MET' %}</label>
+                    <input class='activity-enter__input' type="number" onkeydown="return event.keyCode !== 69" id="met" placeholder="{% trans 'MET Indicator' %}">
+                </div>
+                <p class="met-info"><span>{% trans 'What is MET?' %}</span><br>
+                {% trans 'MET stands for average energy expenditure during a given activity ( 1 MET is the energy you consume during inactivity).' %}
+                </p>
+                <p class="met-info"><span>{% trans 'How to calculate MET?' %}</span><br>
+                    MET = KCAL / KG * MIN * 3.5 * 0.005
+                </p>
+                <button class="btn-light">{% trans 'Add' %}</button>
+            </div>
+        </div>
+    </div>
+     <div class="modal-signup not-visible" style="z-index: 24555">
+        <div class="modal-signup__content">
+            <div class="modal-signup__close-button">&times;</div>
+            <h1 id="modal-header-msg"></h1>
+            <div class="loader--signup"></div>
+        </div>
+    </div>
+{% endblock %}
