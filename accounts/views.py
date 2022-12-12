@@ -278,7 +278,7 @@ def get_user_body_measures(request):
                 change_shoulders = float(shoulders_cm) - float(prev_cm)
 
         data = {
-            'weightChange': weight_kg,
+            'weightChange': change_weight,
             'weightDateChange': weight_date_change,
             'chest': chest_cm,
             'chestChange': change_chest,
