@@ -169,13 +169,23 @@ const ajaxCallSearch = (query) => {
                    let ingredientName
                    let unit_name
                    if (langPrefix === 'pl'){
-                       isGram = ingredient.unit_name_pl === 'g' ? '' : `lub ${Math.round(ingredient.serving_grams)} g`
+                       if (Number(ingredient.serving_grams) === 0){
+                           isGram = ''
+                       }
+                       else {
+                           isGram = ingredient.unit_name_pl === 'g' ? '' : `lub ${Math.round(ingredient.serving_grams)} g`
+                       }
                        categoryName = ingredient.category_name_pl
                        ingredientName = ingredient.pl_name
                        unit_name = ingredient.unit_name_pl
                    }
                    else {
-                       isGram = ingredient.unit_name_en === 'g' ? '' : `or ${Math.round(ingredient.serving_grams)} g`
+                       if (Number(ingredient.serving_grams) === 0){
+                           isGram = ''
+                       }
+                       else {
+                           isGram = ingredient.unit_name_en === 'g' ? '' : `or ${Math.round(ingredient.serving_grams)} g`
+                       }
                        categoryName = ingredient.category_name_en
                        ingredientName = ingredient.en_name
                        unit_name = ingredient.unit_name_en
@@ -212,14 +222,24 @@ const ajaxCallSearch = (query) => {
                             let mealName
                             let unitName
                             if (langPrefix === 'pl') {
-                                isGram = getMealObject.unit_name_pl === 'g' ? '' : `lub ${Math.round(getMealObject.serving_grams)} g`
+                                if (Number(getMealObject.serving_grams) === 0){
+                                    isGram = ''
+                                }
+                                else {
+                                    isGram = getMealObject.unit_name_pl === 'g' ? '' : `lub ${Math.round(getMealObject.serving_grams)} g`
+                                }
                                 mealName = getMealObject.pl_name
                                 unitName = getMealObject.unit_name_pl
                             }
                             else {
-                                isGram = getMealObject.unit_name_en === 'g' ? '' : `or ${Math.round(getMealObject.serving_grams)} g`
-                                mealName = getMealObject.en_name
-                                unitName = getMealObject.unit_name_en
+                                if (Number(getMealObject.serving_grams) === 0) {
+                                    isGram = ''
+                                }
+                                else {
+                                    isGram = getMealObject.unit_name_en === 'g' ? '' : `or ${Math.round(getMealObject.serving_grams)} g`
+                                }
+                                 mealName = getMealObject.en_name
+                                 unitName = getMealObject.unit_name_en
                             }
                             const infoResults = document.querySelector('.saved-results-info')
                             infoResults.classList.add('not-visible')

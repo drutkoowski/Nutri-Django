@@ -175,10 +175,11 @@ def add_today_meal_ajax(request):
                 ingredient = Ingredient.objects.filter(pk=item['ingredientId']).first()
                 unit_ml_g = ingredient.unit.en_name == 'g' or ingredient.unit.en_name == 'ml'
                 quantity = float(item['quantity'])
-                if (unit_ml_g):
+                if unit_ml_g:
                     multiplier = quantity / 100.0
                 else:
                     multiplier = quantity
+                print(ingredient.kcal, multiplier, round(float(ingredient.kcal) * float(multiplier), 2))
                 meal_kcal = round(float(ingredient.kcal) * float(multiplier), 2)
                 meal_carbs = round(float(ingredient.carbs) * float(multiplier), 2)
 
