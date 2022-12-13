@@ -132,8 +132,18 @@ def add_new_meal_element(request):
 
         is_existing = Ingredient.objects.filter(Q(pl_name__iexact=name_pl) | Q(en_name__iexact=name_en)).all()
         if not is_existing.exists():
-            element = Ingredient.objects.create(pl_name=name_pl, en_name=name_en, category=category, kcal=kcal, carbs=carbs,
-                                            protein=protein, fat=fat, unit=unit, serving_grams=serving_grams, created_by=user_profile,
+            divide = float(serving_grams)
+            handler_kcal = 0 if kcal is None else float(kcal) / divide
+            handler_carbs = 0 if carbs is None else float(carbs) / divide
+            handler_protein = 0 if protein is None else float(protein) / divide
+            handler_fat = 0 if fat is None else float(fat) / divide
+            new_serving_grams = 100.0
+            new_kcal = round(handler_kcal * new_serving_grams, 2)
+            new_carbs = round(handler_carbs * new_serving_grams, 2)
+            new_fat = round(handler_fat * new_serving_grams, 2)
+            new_protein = round(handler_protein * new_serving_grams, 2)
+            element = Ingredient.objects.create(pl_name=name_pl, en_name=name_en, category=category, kcal=new_kcal, carbs=new_carbs,
+                                            protein=new_protein, fat=new_fat, unit=unit, serving_grams=new_serving_grams, created_by=user_profile,
                                             verified=False)
             element.save()
             return JsonResponse({'status': 200, 'text': 'Element created'})
