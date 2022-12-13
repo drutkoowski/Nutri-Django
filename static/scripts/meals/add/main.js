@@ -529,11 +529,11 @@ const updateSummary = () => {
 
 const modalCloseTodayMeals = document.querySelector('.modal-queued__today-meals__close-button')
 modalCloseTodayMeals.addEventListener('click', () => {
-        $("." + "modal-queued__today-meals-list").fadeOut(900, () => {
-            const modal = document.querySelector(`.modal-queued__today-meals-list`)
-            modal.classList.add('not-visible')
-            modal.style.removeProperty('display')
-            modal.style.zIndex = '0'
-        });
+    $("." + "modal-queued__today-meals-list").fadeOut(900, () => {
+        const modal = document.querySelector(`.modal-queued__today-meals-list`)
+        modal.classList.add('not-visible')
+        modal.style.removeProperty('display')
+        modal.style.zIndex = '0'
+    });
 })
 

@@ -672,11 +672,21 @@ $(searchContainer).addClass('animate-left').on("animationend", function(){
 
 // modal close listeners
 modalCloseEdit.addEventListener('click', () => {
-    animateDeletingElementByClass('.modal-edit-search', 1200)
+     $("." + "modal-edit-search").fadeOut(900, () => {
+        const modal = document.querySelector(`.modal-edit-search`)
+        modal.classList.add('not-visible')
+        modal.style.removeProperty('display')
+        modal.style.zIndex = '0'
+    });
 })
 
 modalCloseAdd.addEventListener('click', () => {
-    animateDeletingElementByClass('.modal-add-search', 1200)
+    $("." + "modal-add-search").fadeOut(900, () => {
+        const modal = document.querySelector(`.modal-add-search`)
+        modal.classList.add('not-visible')
+        modal.style.removeProperty('display')
+        modal.style.zIndex = '0'
+    });
 })
 
 
@@ -817,31 +827,6 @@ deleteButtons.forEach(button => {
         deleteWorkoutTemplate(workoutTemplateId)
     })
 })
-
-// animations
-const animateDeletingElementByClass = (elementClass, duration) => {
-    const element = document.querySelector(elementClass)
-     if (!element.classList.contains('not-visible')) {
-         $(elementClass).animate({
-                top: '-15rem',
-                opacity: '0',
-
-            }, 300)
-             setTimeout(function () {
-                 element.classList.add('not-visible')
-                 element.style.removeProperty('display')
-                 element.style.removeProperty('opacity')
-                element.style.removeProperty('top')
-             }, duration)
-     }
-     else {
-            element.style.removeProperty('opacity')
-            element.style.removeProperty('top')
-            element.classList.remove('not-visible')
-            element.style.removeProperty('display')
-        }
-}
-
 
 const shakeAnimation = (contentBox) => {
     setTimeout(() => {

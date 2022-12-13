@@ -542,7 +542,14 @@ const openModalAcceptDeny = (handler, id, button) => {
 
 const modalCloseTodayWorkouts = document.querySelector('.modal__today-workouts-list__close-button')
 modalCloseTodayWorkouts.addEventListener('click', () => {
-    animateDeletingElementByClass('.modal__today-workouts-list', 1200)
+    $("." + "modal__today-workouts-list").fadeOut(900, () => {
+        const modal = document.querySelector(`.modal__today-workouts-list`)
+        modal.classList.add('not-visible')
+        modal.style.removeProperty('display')
+        modal.style.zIndex = '0'
+    });
+
+    // animateDeletingElementByClass('.modal__today-workouts-list', 1200)
 })
 
 const removeWorkoutBtns = document.querySelectorAll('.remove-workout')

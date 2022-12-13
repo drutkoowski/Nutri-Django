@@ -63,13 +63,7 @@ const clearCardContent = () => {
     }
 }
 
-function hideModal(modalClass) {
-    $("." + modalClass).fadeOut(900, e => {
-         const modal = document.querySelector(`.${modalClass}`)
-         modal.classList.add('not-visible')
-         modal.style.removeProperty('display')
-    });
-}
+
 
 let watch_media_query = '(max-width:  84.375em)';
 let watch_small_media_query = '(max-width: 56.25em)';
@@ -458,7 +452,12 @@ const deleteMealTemplate = (id) => {
                 const modalHeading = modal.querySelector('.modal-queued--heading')
                 modalHeading.innerHTML = gettext(`Removing selected activity template from database..`)
                 closeModalBtn.addEventListener('click', () => {
-                    modal.style.removeProperty('zIndex')
+                    $("." + "modal-queued").fadeOut(900, () => {
+                        const modal = document.querySelector(`.modal-queued`)
+                        modal.classList.add('not-visible')
+                        modal.style.removeProperty('display')
+                        modal.style.zIndex = '0'
+                    });
                     window.location = window.location.href;
                 })
                 setInterval(function () {
@@ -635,13 +634,21 @@ $(searchContainer).addClass('animate-left').on("animationend", function(){
 
 // modal close listeners
 modalCloseEdit.addEventListener('click', () => {
-    document.querySelector('.modal-edit-search').style.removeProperty('zIndex')
-    animateDeletingElementByClass('.modal-edit-search', 1200)
+    $("." + "modal-edit-search").fadeOut(900, () => {
+        const modal = document.querySelector(`.modal-edit-search`)
+        modal.classList.add('not-visible')
+        modal.style.removeProperty('display')
+        modal.style.zIndex = '0'
+    });
 })
 
 modalCloseAdd.addEventListener('click', () => {
-    document.querySelector('.modal-add-search').style.removeProperty('zIndex')
-    animateDeletingElementByClass('.modal-add-search', 1200)
+    $("." + "modal-add-search").fadeOut(900, () => {
+        const modal = document.querySelector(`.modal-add-search`)
+        modal.classList.add('not-visible')
+        modal.style.removeProperty('display')
+        modal.style.zIndex = '0'
+    });
 })
 
 
@@ -790,30 +797,6 @@ deleteButtons.forEach(button => {
         deleteMealTemplate(mealTemplateId)
     })
 })
-
-// animations
-const animateDeletingElementByClass = (elementClass, duration) => {
-    const element = document.querySelector(elementClass)
-     if (!element.classList.contains('not-visible')) {
-         $(elementClass).animate({
-                top: '-15rem',
-                opacity: '0',
-
-            }, 300)
-             setTimeout(function () {
-                 element.classList.add('not-visible')
-                 element.style.removeProperty('display')
-                 element.style.removeProperty('opacity')
-                element.style.removeProperty('top')
-             }, duration)
-     }
-     else {
-            element.style.removeProperty('opacity')
-            element.style.removeProperty('top')
-            element.classList.remove('not-visible')
-            element.style.removeProperty('display')
-        }
-}
 
 
 const shakeAnimation = (contentBox) => {

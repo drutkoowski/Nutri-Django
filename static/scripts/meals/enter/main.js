@@ -129,8 +129,12 @@ barCodeBtn.addEventListener('click', () => {
 })
 
 closeBtn.addEventListener('click', () => {
-    const modal = document.querySelector('.modal-queued')
-    modal.classList.add('not-visible')
+    $("." + "modal-queued").fadeOut(900, () => {
+        const modal = document.querySelector(`.modal-queued`)
+        modal.classList.add('not-visible')
+        modal.style.removeProperty('display')
+        modal.style.zIndex = '0'
+    });
 })
 
 

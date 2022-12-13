@@ -129,10 +129,6 @@
 
 
 .modal-edit-search{
-   transition: all .2s ease-in;
-  -webkit-box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
-  -moz-box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
-  box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
   &__heading {
     text-align: center;
   }
@@ -169,10 +165,6 @@
 }
 
 .modal-add-search{
-   transition: all .2s ease-in;
-   -webkit-box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
-   -moz-box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
-   box-shadow: 0px 0px 18px -7px rgba(66, 68, 90, 1);
   &__heading {
     text-align: center;
   }
