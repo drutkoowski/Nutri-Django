@@ -1,15 +1,19 @@
 import json
 from datetime import date
-
+from django.core.mail import EmailMessage
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.tokens import default_token_generator
+from django.contrib.sites.shortcuts import get_current_site
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.db.models import Q
-
-from recipes.models import Recipe
+from django.template.loader import render_to_string
+from django.utils.encoding import force_bytes
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from Nutri.settings import EMAIL_HOST_USER
 from .utils import date_for_weekday, calculate_user_nutrition_demand, edit_info_parameter_by_type, \
-    get_measure_changes_yearly,get_changes_on_month, format_to_iso_date
+    get_measure_changes_yearly, get_changes_on_month, format_to_iso_date
 from accounts.models import Account, UserProfile
 from meals.models import Meal
 from workouts.models import Workout
@@ -26,6 +30,7 @@ def signup_view(request):
     if request.user.is_authenticated:
         return redirect('dashboard')
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == "POST":
+        lang_code = request.path.split('/')[1]
         goal_weight = request.POST.get('goal-weight')
         activity_level = request.POST.get('activity-level')
         body_cm = request.POST.get('body-cm')
@@ -40,7 +45,29 @@ def signup_view(request):
         password = request.POST.get('password')
         user = Account.objects.create_user(first_name=first_name, last_name=last_name, username=username, email=email,
                                            password=password)
-        user.is_active = True  # temporary
+        current_site = get_current_site(request)
+        if lang_code == 'pl':
+            mail_subject = 'Nutri, aktywacja Twojego konta'
+            message = render_to_string("accounts/emails/account_verification_email_pl.html", {
+                "user": user,
+                "domain": current_site,
+                "uid": urlsafe_base64_encode(force_bytes(user.pk)),
+                "token": default_token_generator.make_token(user),
+
+            })
+        else:
+            mail_subject = "Nutri, activation your account"
+            message = render_to_string("accounts/emails/account_verification_email.html", {
+                "user": user,
+                "domain": current_site,
+                "uid": urlsafe_base64_encode(force_bytes(user.pk)),
+                "token": default_token_generator.make_token(user),
+
+            }, request=request)
+        to_email = email
+        send_email = EmailMessage(from_email=EMAIL_HOST_USER, subject=mail_subject, body=message, to=[to_email])
+        send_email.send()
+        # user.is_active = True  # temporary
         profile = UserProfile()
         profile.user = user
         profile.activity_level = activity_level
@@ -52,7 +79,22 @@ def signup_view(request):
         profile.gender = gender
         profile.save()
         user.save()
+        # return redirect(f"/${lang_code}/login/?command=verification&email=" + email)
     return render(request, 'accounts/signup.html')
+
+
+def activate(request, uidb64, token):
+    try:
+        uid = urlsafe_base64_decode(uidb64).decode()
+        user = Account._default_manager.get(pk=uid)
+    except (TypeError, ValueError, OverflowError, Account.DoesNotExist):
+        user = None
+    if user is not None and default_token_generator.check_token(user, token):
+        user.is_active = True
+        user.save()
+        return redirect('login')
+    else:
+        return redirect("signup")
 
 
 def login_view(request):
@@ -335,7 +377,8 @@ def get_profile_nutrition_details(request):
         all_today_meals = Meal.objects.filter(created_by=user_profile,
                                               created_at__day=day, created_at__month=month, created_at__year=year).all()
         all_today_exercises = Workout.objects.filter(created_by=user_profile,
-                                                     created_at__day=day, created_at__month=month, created_at__year=year).all()
+                                                     created_at__day=day, created_at__month=month,
+                                                     created_at__year=year).all()
         sum_kcal_eaten = 0
         sum_protein_eaten = 0
         sum_carbs_eaten = 0
@@ -654,8 +697,9 @@ def get_graph_stats_info_monthly(request):
         for i in range(1, int(current_day_of_month) + 1):
             meals = Meal.objects.filter(created_by=user_profile, created_at__month=current_month_num, created_at__day=i,
                                         created_at__year=current_year).all()
-            workouts = Workout.objects.filter(created_by=user_profile, created_at__month=current_month_num, created_at__day=i,
-                                        created_at__year=current_year).all()
+            workouts = Workout.objects.filter(created_by=user_profile, created_at__month=current_month_num,
+                                              created_at__day=i,
+                                              created_at__year=current_year).all()
             sum_kcal_eaten = 0
             sum_kcal_burnt = 0
             sum_protein_eaten = 0
@@ -778,8 +822,10 @@ def get_graph_stats_info_yearly(request):
         else:
             protein_multiplier = 1.3
         for i in range(1, 13):
-            meals = Meal.objects.filter(created_by=user_profile, created_at__month=i, created_at__year=current_year).all()
-            workouts = Workout.objects.filter(created_by=user_profile, created_at__month=i, created_at__year=current_year).all()
+            meals = Meal.objects.filter(created_by=user_profile, created_at__month=i,
+                                        created_at__year=current_year).all()
+            workouts = Workout.objects.filter(created_by=user_profile, created_at__month=i,
+                                              created_at__year=current_year).all()
             monthly_kcal_eaten = 0
             monthly_kcal_burnt_sum = 0
             monthly_carbs = 0
@@ -801,7 +847,8 @@ def get_graph_stats_info_yearly(request):
                 monthly_kcal_percentages.append(round(((monthly_kcal_eaten / month_days) / kcal_demand) * 100, 2))
                 monthly_carbs_percentages.append(round(((monthly_carbs / month_days) / carbsDemand) * 100, 2))
                 monthly_protein_percentages.append(
-                    round(((monthly_protein / (protein_multiplier * float(protein_multiplier * float(user_profile.goal_kg)))) / month_days) * 100, 2))
+                    round(((monthly_protein / (protein_multiplier * float(
+                        protein_multiplier * float(user_profile.goal_kg)))) / month_days) * 100, 2))
                 monthly_fats_percentages.append(
                     round((monthly_fats / ((kcal_demand * 0.275) / 9)) / month_days, 2) * 100)
                 monthly_kcal.append(round(monthly_kcal_eaten, 2))
