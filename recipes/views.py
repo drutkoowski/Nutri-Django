@@ -42,21 +42,18 @@ def live_search_recipes(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
         query = request.GET.get('query')
         lang_code = request.path.split('/')[1]
+        is_verified = request.GET.get('isVerified')
+        if is_verified == 'true':
+            is_verified = True
+        else:
+            is_verified = False
         if query != '':
-            if (lang_code == 'pl'):
+            if lang_code == 'pl':
                 check_if_recipe_exists = Recipe.objects.filter(
-                    Q(name_pl__istartswith=query) | Q(name_pl__icontains=query) & Q(verified=True))
-                # check_if_recipe_exists = Recipe.objects.filter(
-                #     name_pl__iregex=r"\b{0}\b".format(query)).all().union(
-                #     Recipe.objects.filter(
-                #         name_pl__istartswith=query
-                #     )).all().union(
-                #     Recipe.objects.filter(
-                #         name_pl__icontains=query
-                #     )).all()
+                    Q(name_pl__istartswith=query) | Q(name_pl__icontains=query) & Q(verified=is_verified))
             else:
                 check_if_recipe_exists = Recipe.objects.filter(
-                    Q(name_en__istartswith=query) | Q(name_en__icontains=query) & Q(verified=True))
+                    Q(name_en__istartswith=query) | Q(name_en__icontains=query) & Q(verified=is_verified))
                 # check_if_recipe_exists = Recipe.objects.filter(
                 #     name_en__iregex=r"\b{0}\b".format(query)).all().union(
                 #     Recipe.objects.filter(
@@ -178,9 +175,14 @@ def get_recipe_info_by_id(request):
 def get_random_recipe(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
         lang_code = request.path.split('/')[1]
+        is_verified = request.GET.get('isVerified')
+        if is_verified == 'true':
+            is_verified = True
+        else:
+            is_verified = False
         import random
         try:
-            recipes = list(Recipe.objects.filter(verified=True).all())
+            recipes = list(Recipe.objects.filter(verified=is_verified).all())
             random_recipe = random.choice(recipes)
             if lang_code == 'pl':
                 recipe_dict = {

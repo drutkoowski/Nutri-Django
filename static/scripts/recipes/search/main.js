@@ -1,20 +1,32 @@
 const mealsVideo = document.getElementById('meals-video')
 const navbar = document.querySelector('.navbar--dashboard')
 const csrfToken = document.getElementsByName('csrfmiddlewaretoken')[0].value
-
+let onlyVerified = true
 navbar.classList.toggle('fix-navbar')
 
 if (mealsVideo) {
     mealsVideo.playbackRate = 0.55;
 }
 
-
+const verifiedIcon = document.querySelector('.verified-icon')
+verifiedIcon.addEventListener('click', () => {
+    if (verifiedIcon.id === 'verified') {
+        verifiedIcon.id = 'unverified'
+        verifiedIcon.src = '/static/images/svg/unchecked.svg'
+        onlyVerified = false
+    }
+    else {
+        verifiedIcon.id = 'verified'
+        verifiedIcon.src = '/static/images/svg/checked.svg'
+        onlyVerified = true
+    }
+})
 const fillModalRecipe = (response) => {
     const recipe = JSON.parse(response['recipe'])
     const headingModal = document.querySelector('.modal-queued__recipe__heading')
     headingModal.innerHTML = recipe.name
     const difficultyBox = document.querySelector('.modal-queued__recipe__difficulty')
-    difficultyBox.innerHTML = recipe.difficulty
+    difficultyBox.innerHTML = recipe.difficulty ? recipe.difficulty : gettext("Unknown")
     const durationBox = document.querySelector('.modal-queued__recipe__duration')
     durationBox.innerHTML = `${recipe.duration}`
     const personCount = document.querySelector('.modal-queued__recipe__person-count')
@@ -98,6 +110,7 @@ const searchRecipes = (query) => {
         url: url,
         data: {
             'query': query,
+            'isVerified': onlyVerified
         },
         success: function (response){
             if (response.status === 200) {
@@ -116,7 +129,7 @@ const searchRecipes = (query) => {
                     const recipeName = recipe.name
                     const recipeDuration = recipe.duration
                     const recipePersonCount = recipe.person_count
-                    const recipeDifficulty = recipe.difficulty
+                    const recipeDifficulty = recipe.difficulty ? recipe.difficulty : gettext("Unknown")
                     let contentToAppend = `
                         <div class="recipe-search__search__results__container__item">
                             <div class="recipe-search__search__results__container__item--heading">
@@ -182,6 +195,9 @@ randomRecipeBtn.addEventListener('click', () => {
     $.ajax({
         type: 'get',
         url: url,
+        data: {
+          'isVerified': onlyVerified
+        },
         success: function (response) {
             if (response.status === 200) {
                 fillModalRecipe(response)

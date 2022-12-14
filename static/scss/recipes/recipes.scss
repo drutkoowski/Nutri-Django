@@ -183,7 +183,7 @@
 
     &--add {
       background-image: linear-gradient(to right bottom, rgba(241, 241, 241, 0.3), rgba(82, 82, 82, 0.5)),
-      url('/static/images/recipe_ideas_bg_photo.jpg');
+      url('/static/images/recipe_add_bg_photo.jpg');
       background-size: cover;
       @include respond(md-desktop) {
         grid-column: 2/3;

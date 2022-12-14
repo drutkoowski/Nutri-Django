@@ -4685,10 +4685,6 @@ div.modal--calendar__content-summary {
   @media only screen and (max-width: 21.875em) {
     .profile-info-measurements-date {
       font-size: 1rem; } }
-@media only screen and (max-width: 56.25em) {
-  .grid-layout-container .dashboard__sidebar--small__upper {
-    margin-left: 0 !important; } }
-
 @media only screen and (max-width: 37.5em) {
   .grid-layout-container .dashboard__sidebar--small__upper p {
     margin-top: 4px; } }
@@ -8522,7 +8518,7 @@ div.modal--calendar__content-summary {
           grid-column: 2/3;
           grid-row: 1/2; } }
     .recipes__card--add {
-      background-image: linear-gradient(to right bottom, rgba(241, 241, 241, 0.3), rgba(82, 82, 82, 0.5)), url("/static/images/recipe_ideas_bg_photo.jpg");
+      background-image: linear-gradient(to right bottom, rgba(241, 241, 241, 0.3), rgba(82, 82, 82, 0.5)), url("/static/images/recipe_add_bg_photo.jpg");
       background-size: cover; }
       @media only screen and (max-width: 93.75em) {
         .recipes__card--add {

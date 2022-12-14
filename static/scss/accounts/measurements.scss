@@ -466,13 +466,6 @@
   }
 }
 
-@include respond(tab-port){
-  .grid-layout-container {
-    .dashboard__sidebar--small__upper{
-      margin-left: 0!important;
-    }
-  }
-}
 @include respond(phone-lg){
   .grid-layout-container {
     .dashboard__sidebar--small__upper{

@@ -34,9 +34,12 @@
                             </span>
                         </div>
                     </div>
-                        <div class="recipe-search__search__results__container">
-                            <h3 class="recipe-info-message">{% trans 'Results will appear here.' %}</h3>
-                        </div>
+                    <div class="add-meals__search__bar__is-verified">
+                        <img src="{% sass_src 'images/svg/checked.svg' %}" id="verified" alt="Checked Icon" class="filter-white verified-icon"><p style="margin-right: 0!important;">{% trans 'Only verified' %}</p>
+                    </div>
+                    <div class="recipe-search__search__results__container">
+                       <h3 class="recipe-info-message">{% trans 'Results will appear here.' %}</h3>
+                    </div>
                     </div>
                     <div class="recipe-search__search__save-new">
                         <p>{% trans "Don't you know what do you want to eat?" %}</p>
