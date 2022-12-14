@@ -116,8 +116,8 @@ def add_new_recipe(request):
                 recipe.name_en = translate_recipe_name(recipe_name, 'en')
                 recipe.difficulty_pl = translate_recipe_difficulty_to_pl(recipe_difficulty)
                 recipe.difficulty_en = recipe_difficulty
-                recipe.ingredients_pl = translate_recipe_ingredients(recipe_ingredients, 'pl')
-                recipe.ingredients_en = recipe_ingredients
+                recipe.ingredients_pl = recipe_ingredients
+                recipe.ingredients_en = translate_recipe_ingredients(recipe_ingredients, 'en')
                 recipe.steps_pl = recipe_steps
                 recipe.steps_en = translate_recipe_steps(recipe_steps, 'en')
             else:
@@ -133,7 +133,7 @@ def add_new_recipe(request):
             recipe.person_count = recipe_servings
             recipe.author = user_profile.user.username
             recipe.verified = False
-            recipe.save()
+            # recipe.save()
             return JsonResponse({'status': 200, 'text': 'Recipe created.'})
         except:
             return JsonResponse({'status': 400, 'text': 'Recipe not created.'})

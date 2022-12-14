@@ -250,12 +250,10 @@ def translate_recipe_ingredients(ingredient_dict: dict, dest: str) -> dict:
 
 
 def translate_recipe_difficulty_to_pl(difficulty: str) -> str:
-    print('eeeeeee',difficulty)
     if difficulty.lower() == 'easy':
         translated_difficulty = 'łatwe'
     if difficulty.lower() == 'medium':
         translated_difficulty = 'średnie'
     if difficulty.lower() == 'hard':
         translated_difficulty = 'trudne'
-    print(translated_difficulty)
     return translated_difficulty

@@ -9095,22 +9095,27 @@ div.modal--calendar__content-summary {
       color: var(--color-white);
       text-align: center;
       font-size: 3.5rem; }
-    .recipe-add__search__input-box {
+    .recipe-add__search__general {
       display: grid;
-      grid-template-columns: 0.2fr 1fr;
-      grid-template-rows: 1fr;
-      margin-top: 2rem; }
-      .recipe-add__search__input-box label {
-        font-size: 2rem;
-        color: var(--color-white); }
-      .recipe-add__search__input-box input, .recipe-add__search__input-box select {
-        border-radius: 10px;
-        width: 15rem;
-        color: var(--black-muted);
-        border: none;
-        text-align: center; }
-      .recipe-add__search__input-box select {
-        padding-left: 1rem; }
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+      grid-column-gap: 2rem; }
+      .recipe-add__search__general__input-box {
+        display: grid;
+        grid-template-columns: 0.35fr 1fr;
+        grid-template-rows: 1fr;
+        margin-top: 2rem; }
+        .recipe-add__search__general__input-box label {
+          font-size: 2rem;
+          color: var(--color-white); }
+        .recipe-add__search__general__input-box input, .recipe-add__search__general__input-box select {
+          border-radius: 10px;
+          width: 15rem;
+          color: var(--black-muted);
+          border: none;
+          text-align: center; }
+        .recipe-add__search__general__input-box select {
+          padding-left: 1rem; }
     .recipe-add__search__container {
       display: grid;
       grid-template-columns: 1fr 1fr;

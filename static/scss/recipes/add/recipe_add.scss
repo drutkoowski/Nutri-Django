@@ -64,26 +64,33 @@
       text-align: center;
       font-size: 3.5rem;
     }
-    &__input-box {
+    &__general{
       display: grid;
-      grid-template-columns: 0.2fr 1fr;
-      grid-template-rows: 1fr;
-      margin-top: 2rem;
-      label {
-        font-size: 2rem;
-        color: var(--color-white);
-      }
-      input, select {
-        border-radius: 10px;
-        width: 15rem;
-        color: var(--black-muted);
-        border: none;
-        text-align: center;
-      }
-      select {
-        padding-left: 1rem;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+      grid-column-gap: 2rem;
+        &__input-box {
+        display: grid;
+        grid-template-columns: 0.35fr 1fr;
+        grid-template-rows: 1fr;
+        margin-top: 2rem;
+        label {
+          font-size: 2rem;
+          color: var(--color-white);
+        }
+        input, select {
+          border-radius: 10px;
+          width: 15rem;
+          color: var(--black-muted);
+          border: none;
+          text-align: center;
+        }
+        select {
+          padding-left: 1rem;
+        }
       }
     }
+
     &__container {
       display: grid;
       grid-template-columns: 1fr 1fr;

@@ -1,3 +1,6 @@
+// navbar
+const navbar = document.querySelector('.navbar--dashboard')
+navbar.classList.toggle('fix-navbar')
 // csrf
 const csrf = document.getElementsByName('csrfmiddlewaretoken')
 const csrfToken = csrf[0].value
@@ -80,6 +83,11 @@ saveRecipeBtn.addEventListener('click', () => {
             ingObjArr.push(ingObj)
         })
         const url = window.location.origin + `/${langPrefix}/recipes/save/new-recipe`
+        let functionTimeExecutionCounter
+        const loader = document.querySelector('.loader-message')
+        loader.classList.remove('not-visible')
+        loader.style.transition = 'unset'
+        loader.style.opacity = '0.95'
         $.ajax({
             type: 'post',
             url: url,
@@ -92,11 +100,58 @@ saveRecipeBtn.addEventListener('click', () => {
                 'recipeSteps': JSON.stringify(stepsArr),
                 'recipeIngredients': JSON.stringify(ingObjArr)
             },
+            beforeSend: function (){
+              let start = new Date().getTime();
+              functionTimeExecutionCounter = setInterval(function (){
+                const loaderMsg = document.querySelector('.loader-message__message')
+                const divParent = loaderMsg.parentElement.getBoundingClientRect()
+                let end = new Date().getTime();
+                let time = (end - start) / 1000;
+                if (time >= 1 && time < 4){
+                    loaderMsg.innerHTML = gettext('Adding recipe into the database')
+                    loaderMsg.style.removeProperty('left')
+                    const loaderY = (loaderMsg.getBoundingClientRect().left) - divParent.left + 37.5 - loaderMsg.clientWidth / 2;
+                    loaderMsg.style.left = `${loaderY}px`
+                }
+                else if (time >= 4 && time < 10){
+                    loaderMsg.innerHTML = gettext('Translating and formating recipe')
+                    loaderMsg.style.removeProperty('left')
+                    const loaderY = (loaderMsg.getBoundingClientRect().left) - divParent.left + 37.5 - loaderMsg.clientWidth / 2;
+                    loaderMsg.style.left = `${loaderY}px`
+                }
+                else if (time >= 10 && time < 14){
+                    loaderMsg.innerHTML = gettext('It takes longer than usual, be patient')
+                    loaderMsg.style.removeProperty('left')
+                    const loaderY = (loaderMsg.getBoundingClientRect().left) - divParent.left + 37.5 - loaderMsg.clientWidth / 2;
+                    loaderMsg.style.left = `${loaderY}px`
+
+                }
+                else if (time >= 14){
+                    loaderMsg.innerHTML = gettext('Something went wrong...')
+                    loaderMsg.style.removeProperty('left')
+                    const loaderY = (loaderMsg.getBoundingClientRect().left) - divParent.left + 37.5 - loaderMsg.clientWidth / 2;
+                    loaderMsg.style.left = `${loaderY}px`
+                }
+              }, 1000)
+            },
             success: function (response){
-                console.log(response)
+                // const modal = document.querySelector('.modal-signup')
+                // modal.classList.remove('not-visible')
+                // setTimeout(function (){
+                //     location.reload()
+                // }, 2500)
+                location.reload()
+            },
+            complete: function (res){
+                 clearInterval(functionTimeExecutionCounter)
+                 setTimeout(function (){
+                    loader.classList.add('not-visible')
+                    loader.style.removeProperty('transition')
+                    loader.style.removeProperty('opacity')
+                }, 1500)
             }
         })
-        console.log(name, difficulty,duration,servings, stepsArr,ingObjArr)
+
     }
     else {
         const errorMsg = document.querySelector('.recipe-add-error-msg')
@@ -154,6 +209,15 @@ stepCreatingButton.addEventListener('click', () => {
         const temporaryInput = addedStepsBox.querySelector('#temporary-id')
         temporaryInput.addEventListener('input', () => {
             temporaryInput.value = temporaryInput.value.slice(0,120)
+            if (temporaryInput.value.length <= 8) {
+                const parent = temporaryInput.parentElement
+                parent.remove()
+            }
+        })
+        const removeIcon = addedStepsBox.getElementsByTagName('img')[0]
+        removeIcon.addEventListener('click', () => {
+            const parent = removeIcon.parentElement
+            parent.remove()
         })
         temporaryInput.removeAttribute('id')
     }
@@ -196,11 +260,23 @@ ingredientCreatingButton.addEventListener('click', () => {
         addedIngredientsBox.insertAdjacentHTML('afterbegin', recipeIngredient)
         const quantityTemporary = addedIngredientsBox.querySelector('#temporary-ig-quantity')
         const ingredientTemporary = addedIngredientsBox.querySelector('#temporary-ig-quantity')
+        const removeIcon = addedIngredientsBox.getElementsByTagName('img')[0]
         quantityTemporary.addEventListener('input', () => {
             quantityTemporary.value = quantityTemporary.value.slice(0,25)
+            if (quantityTemporary.value.length === 0) {
+                const parent = quantityTemporary.parentElement
+                parent.remove()
+            }
         })
         ingredientTemporary.addEventListener('input', () => {
             ingredientTemporary.value = ingredientTemporary.value.slice(0,70)
+            if (ingredientTemporary.value.length <= 2) {
+                ingredientTemporary.value = ingredientTemporary.value.slice(0,70)
+            }
+        })
+        removeIcon.addEventListener('click', () => {
+            const parent = removeIcon.parentElement
+            parent.remove()
         })
         quantityTemporary.removeAttribute('id')
         ingredientTemporary.removeAttribute('id')
