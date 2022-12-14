@@ -5,12 +5,14 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.http import JsonResponse
 
+from accounts.models import UserProfile
 from recipes.models import Recipe
 from django.shortcuts import render, redirect
 
 # Create your views here.
 from recipes.utils import get_spoonacular_recipe_by_ingredient, get_spoonacular_recipe_by_id, \
-    check_or_create_spoonacular_recipe
+    check_or_create_spoonacular_recipe, translate_recipe_name, translate_recipe_steps, translate_recipe_ingredients, \
+    translate_recipe_difficulty_to_pl
 
 
 @login_required(login_url='login')
@@ -94,6 +96,43 @@ def live_search_recipes(request):
             return JsonResponse({'status': 404, 'text': 'There are not recipes found.', 'recipes': []})
     else:
         return redirect('home')
+
+
+@login_required(login_url='login')
+def add_new_recipe(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
+        lang_code = request.path.split('/')[1]
+        user_profile = UserProfile.objects.get(user=request.user)
+        recipe_name = request.POST.get('recipeName')
+        recipe_difficulty = request.POST.get('recipeDifficulty')
+        recipe_duration = request.POST.get('recipeDuration')
+        recipe_servings = request.POST.get('recipeServings')
+        recipe_steps = json.loads(request.POST.get('recipeSteps'))
+        recipe_ingredients = json.loads(request.POST.get('recipeIngredients'))
+        recipe = Recipe()
+        if lang_code == 'pl':
+            recipe.name_pl = recipe_name
+            recipe.name_en = translate_recipe_name(recipe_name, 'en')
+            recipe.difficulty_pl = translate_recipe_difficulty_to_pl(recipe_difficulty)
+            recipe.ingredients_pl = json.dumps(translate_recipe_ingredients(recipe_ingredients, 'en'))
+            recipe.ingredients_pl = json.dumps(recipe_ingredients)
+            recipe.steps_pl = json.dumps(recipe_steps)
+            recipe.steps_en = json.dumps(translate_recipe_steps(recipe_steps, 'en'))
+        else:
+            recipe.name_en = recipe_name
+            recipe.name_pl = translate_recipe_name(recipe_name, 'pl')
+            recipe.difficulty_en = recipe_difficulty
+            recipe.difficulty_pl = translate_recipe_difficulty_to_pl(recipe_difficulty)
+            recipe.ingredients_en = json.dumps(recipe_ingredients)
+            recipe.ingredients_pl = json.dumps(translate_recipe_ingredients(recipe_ingredients, 'pl'))
+            recipe.steps_en = json.dumps(recipe_steps)
+            recipe.steps_pl = json.dumps(translate_recipe_steps(recipe_steps, 'pl'))
+        recipe.duration = recipe_duration
+        recipe.person_count = recipe_servings
+        recipe.author = user_profile.user.username
+        recipe.verified = False
+        recipe.save()
+        return JsonResponse({'status': 200, 'text': 'Recipe created.'})
 
 
 @login_required(login_url='login')

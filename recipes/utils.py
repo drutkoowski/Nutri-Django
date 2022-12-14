@@ -1,6 +1,7 @@
 import random
 from decouple import config
 import requests
+
 from recipes.models import Recipe
 
 API_KEYS = [config('API_KEY'), config('API_KEY2')]
@@ -216,3 +217,45 @@ def convert_en_spoonacular_unit(unit: str, amount: float) -> str:
         return new_quantity_str
     else:
         return f'{amount}'
+
+
+def translate_recipe_steps(steps: list, dest: str) -> list:
+    translated_array = []
+    from googletrans import Translator
+    for step in steps:
+        translator = Translator()
+        translated_recipe_step = translator.translate(step, dest=dest).text
+        translated_array.append(translated_recipe_step)
+    return translated_array
+
+
+def translate_recipe_name(name: str, dest: str) -> str:
+    from googletrans import Translator
+    translator = Translator()
+    translated_name = translator.translate(name, dest=dest).text
+    return translated_name
+
+
+def translate_recipe_ingredients(ingredient_dict: dict, dest: str) -> dict:
+    from googletrans import Translator
+    translator = Translator()
+    for element in ingredient_dict:
+        ingredient_name = element['ingredient']
+        quantity = element['quantity']
+        translated_name = translator.translate(ingredient_name, dest=dest).text
+        translated_quantity = translator.translate(quantity, dest=dest).text
+        element['ingredient'] = translated_name
+        element['quantity'] = translated_quantity
+    return ingredient_dict
+
+
+def translate_recipe_difficulty_to_pl(difficulty: str) -> str:
+    print('eeeeeee',difficulty)
+    if difficulty.lower() == 'easy':
+        translated_difficulty = 'łatwe'
+    if difficulty.lower() == 'medium':
+        translated_difficulty = 'średnie'
+    if difficulty.lower() == 'hard':
+        translated_difficulty = 'trudne'
+    print(translated_difficulty)
+    return translated_difficulty

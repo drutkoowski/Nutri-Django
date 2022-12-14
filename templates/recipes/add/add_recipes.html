@@ -27,6 +27,7 @@
             <div class="recipe-add grid-full-span recipe-ideas">
                 <div class="recipe-add__search">
                     <h3>{% trans 'Add your own recipe' %}</h3>
+                    <p class="recipe-add-error-msg recipes__error-msg" style="visibility: hidden; margin-left: 0!important;">qweeqewq</p>
                     <div class="recipe-add__search__input-box">
                         <label for="name">{% trans 'Recipe Name' %}</label>
                         <input type="text" id="name" placeholder="{% trans 'Recipe Name' %}">
@@ -41,7 +42,7 @@
                     </div>
                     <div class="recipe-add__search__input-box">
                         <label for="duration">{% trans 'Duration' %}</label>
-                        <input type="text" id="duration" placeholder="{% trans 'Minutes' %}" onkeydown="return event.keyCode !== 69">
+                        <input type="number" id="duration" placeholder="{% trans 'Minutes' %}" onkeydown="return event.keyCode !== 69">
                     </div>
                     <div class="recipe-add__search__input-box">
                         <label for="servings">{% trans 'Servings' %}</label>
@@ -63,30 +64,25 @@
                     <div class="recipe-add__search__container">
                         <div class="recipe-add__search__container__steps">
                             <h4>{% trans 'Step by step' %}</h4>
+                            <p class="recipe-add__search__container__steps__error-msg recipes__error-msg"></p>
                             <div class="recipe-add__search__container__steps__elements-box">
                                 <div class="recipe-add__search__container__steps__elements-box__element">
-                                    <input type="text" id="step-element" placeholder="{% trans 'For example (Add pasta and striped Parma ham)' %}">
-                                    <img src="{% sass_src 'images/svg/plus.svg' %}" class="filter-green" alt="Add Icon">
+                                    <input type="text" id="step-element" class="recipes-add__text-input__step" placeholder="{% trans 'For example (Add pasta and striped Parma ham)' %}">
+                                    <img src="{% sass_src 'images/svg/plus.svg' %}" id='add-step' class="filter-green" alt="Add Icon">
                                 </div>
-                                <div class="recipe-add__search__container__steps__elements-box__already-added">
-                                    <input type="text" id="step-element">
-                                    <img src="{% sass_src 'images/svg/minus.svg' %}" class="filter-red" alt="Remove Icon">
-                                </div>
+                                <div class="recipe-add__search__container__steps__elements-box__already-added"></div>
                             </div>
                         </div>
                         <div class="recipe-add__search__container__ingredients">
                             <h4>{% trans 'Ingredients' %}</h4>
+                            <p class="recipe-add__search__container__ingredients__error-msg recipes__error-msg"></p>
                             <div class="recipe-add__search__container__ingredients__elements-box">
                                 <div class="recipe-add__search__container__ingredients__elements-box__element">
-                                    <input type="number" class="recipes-add__number-input" placeholder="{% trans 'Quantity' %}">
-                                    <input type="text" class="recipes-add__text-input" placeholder="{% trans 'Ingredient (fe. Pasta)' %}">
-                                    <img src="{% sass_src 'images/svg/plus.svg' %}" class="filter-green" alt="Add Icon">
+                                    <input type="text" class="recipes-add__text-input__ingredient-sm" id='quantity-ingredient' placeholder="{% trans 'fe. 300 g' %}">
+                                    <input type="text" class="recipes-add__text-input__ingredient-lg" id='ingredient-element' placeholder="{% trans 'Ingredient (fe. Pasta)' %}">
+                                    <img src="{% sass_src 'images/svg/plus.svg' %}" id='add-ingredient' class="filter-green" alt="Add Icon">
                                 </div>
-                                <div class="recipe-add__search__container__ingredients__elements-box__already-added">
-                                    <input type="number" class="recipes-add__number-input">
-                                    <input type="text" class="recipes-add__text-input">
-                                    <img src="{% sass_src 'images/svg/minus.svg' %}" class="filter-red" alt="Remove Icon">
-                                </div>
+                                <div class="recipe-add__search__container__ingredients__elements-box__already-added"></div>
                             </div>
                         </div>
                     </div>
