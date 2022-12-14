@@ -59,21 +59,45 @@
     -moz-box-shadow: 0px 0px 8px 2px rgba(66, 68, 90, 1);
     box-shadow: 0px 0px 8px 2px rgba(66, 68, 90, 1);
     padding: 2rem 2rem;
+    max-height: 55rem;
+    @include respond(tab-sm){
+      grid-column: 1/2;
+    }
+    @include respond(tab-land){
+      height: auto;
+      max-height: unset;
+    }
+    @include respond(phone-md){
+      padding: 2rem 0;
+    }
     h3 {
       color: var(--color-white);
       text-align: center;
       font-size: 3.5rem;
+      @include respond(phone-md-lg){
+        font-size: 2.5rem;
+      }
     }
     &__general{
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: auto;
       grid-column-gap: 2rem;
+      @include respond(tab-port){
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+      }
+      @include respond(phone-md-lg){
+        margin-left: 1rem;
+      }
         &__input-box {
         display: grid;
         grid-template-columns: 0.35fr 1fr;
         grid-template-rows: 1fr;
         margin-top: 2rem;
+        @include respond(phone-md-sm){
+          grid-template-columns: 0.5fr 1fr;
+        }
         label {
           font-size: 2rem;
           color: var(--color-white);
@@ -96,13 +120,29 @@
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr;
       grid-column-gap: 2.5rem;
+      @include respond(tab-land){
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+      }
       &__steps {
-        grid-column: 1/2;
         background-color: var(--color-white);
         border-radius: 10px;
         justify-self: stretch;
         margin-top: 3rem;
         min-height: 25rem;
+        @include respond(phone-md-lg){
+          width: 40rem;
+          margin: 3rem auto 0 auto;
+        }
+        @include respond(phone-md-sm){
+          width: 35rem;
+        }
+        @include respond(phone-sm){
+          width: 30rem;
+        }
+        @include respond(phone-ultra-sm){
+          width: auto;
+        }
         h4 {
           margin-top: 0.5rem;
           font-size: 2rem;
@@ -134,9 +174,15 @@
             &__element {
               display: grid;
               grid-template-columns: auto 4rem;
+              @include respond(phone-md-sm){
+                grid-template-columns: auto 2rem;
+             }
               img {
                 margin-left: 1rem;
                 margin-top: 0.3rem;
+                @include respond(phone-md-sm){
+                  margin-left: 0;
+              }
               }
               input {
                   height: 3rem;
@@ -149,17 +195,33 @@
                   &::placeholder {
                     color: var(--color-white)
                   }
+                 @include respond(phone-md){
+                   font-size: 1rem;
+                   overflow-x: auto;
+                 }
                 }
             }
          }
       }
       &__ingredients {
-        grid-column: 2/3;
         background-color: var(--color-white);
         border-radius: 10px;
         justify-self: stretch;
         margin-top: 3rem;
         min-height: 25rem;
+        @include respond(phone-md-lg){
+          width: 40rem;
+          margin: 3rem auto 0 auto;
+        }
+        @include respond(phone-md-sm){
+          width: 35rem;
+        }
+        @include respond(phone-sm){
+          width: 30rem;
+        }
+        @include respond(phone-ultra-sm){
+          width: auto;
+        }
         h4 {
           margin-top: 0.5rem;
           font-size: 2rem;
@@ -190,9 +252,15 @@
           &__element {
             display: grid;
             grid-template-columns: min-content auto 4rem;
+            @include respond(phone-md-sm){
+              grid-template-columns: min-content auto 2rem;
+            }
             img {
               margin-left: 1rem;
               margin-top: 0.3rem;
+              @include respond(phone-md-sm){
+              margin-left: 0;
+            }
             }
           }
         }
@@ -220,10 +288,21 @@
   &__ingredient-sm {
     @extend .recipes-add__text-input;
     width: 12rem;
+    @include respond(tab-land){
+      width: 16rem;
+    }
+    @include respond(phone-lg){
+      width: 12rem;
+    }
   }
   &__ingredient-lg {
     @extend .recipes-add__text-input;
     width: auto;
+  }
+  @include respond(phone-md){
+    font-size: 1rem;
+    overflow-x: auto;
+    margin-right: 0.5rem;
   }
 }
 
@@ -233,6 +312,10 @@
   margin-left: auto;
   padding: 1rem 2rem;
   text-transform: uppercase;
+  @include respond(phone-md){
+    margin-top: 2rem;
+    margin-right: 2rem;
+  }
 }
 
 .recipes__error-msg {
