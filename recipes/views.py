@@ -110,29 +110,33 @@ def add_new_recipe(request):
         recipe_steps = json.loads(request.POST.get('recipeSteps'))
         recipe_ingredients = json.loads(request.POST.get('recipeIngredients'))
         recipe = Recipe()
-        if lang_code == 'pl':
-            recipe.name_pl = recipe_name
-            recipe.name_en = translate_recipe_name(recipe_name, 'en')
-            recipe.difficulty_pl = translate_recipe_difficulty_to_pl(recipe_difficulty)
-            recipe.ingredients_pl = json.dumps(translate_recipe_ingredients(recipe_ingredients, 'en'))
-            recipe.ingredients_pl = json.dumps(recipe_ingredients)
-            recipe.steps_pl = json.dumps(recipe_steps)
-            recipe.steps_en = json.dumps(translate_recipe_steps(recipe_steps, 'en'))
-        else:
-            recipe.name_en = recipe_name
-            recipe.name_pl = translate_recipe_name(recipe_name, 'pl')
-            recipe.difficulty_en = recipe_difficulty
-            recipe.difficulty_pl = translate_recipe_difficulty_to_pl(recipe_difficulty)
-            recipe.ingredients_en = json.dumps(recipe_ingredients)
-            recipe.ingredients_pl = json.dumps(translate_recipe_ingredients(recipe_ingredients, 'pl'))
-            recipe.steps_en = json.dumps(recipe_steps)
-            recipe.steps_pl = json.dumps(translate_recipe_steps(recipe_steps, 'pl'))
-        recipe.duration = recipe_duration
-        recipe.person_count = recipe_servings
-        recipe.author = user_profile.user.username
-        recipe.verified = False
-        recipe.save()
-        return JsonResponse({'status': 200, 'text': 'Recipe created.'})
+        try:
+            if lang_code == 'pl':
+                recipe.name_pl = recipe_name
+                recipe.name_en = translate_recipe_name(recipe_name, 'en')
+                recipe.difficulty_pl = translate_recipe_difficulty_to_pl(recipe_difficulty)
+                recipe.difficulty_en = recipe_difficulty
+                recipe.ingredients_pl = translate_recipe_ingredients(recipe_ingredients, 'pl')
+                recipe.ingredients_en = recipe_ingredients
+                recipe.steps_pl = recipe_steps
+                recipe.steps_en = translate_recipe_steps(recipe_steps, 'en')
+            else:
+                recipe.name_en = recipe_name
+                recipe.name_pl = translate_recipe_name(recipe_name, 'pl')
+                recipe.difficulty_en = recipe_difficulty
+                recipe.difficulty_pl = translate_recipe_difficulty_to_pl(recipe_difficulty)
+                recipe.ingredients_en = recipe_ingredients
+                recipe.ingredients_pl = translate_recipe_ingredients(recipe_ingredients, 'pl')
+                recipe.steps_en = recipe_steps
+                recipe.steps_pl = translate_recipe_steps(recipe_steps, 'pl')
+            recipe.duration = recipe_duration
+            recipe.person_count = recipe_servings
+            recipe.author = user_profile.user.username
+            recipe.verified = False
+            recipe.save()
+            return JsonResponse({'status': 200, 'text': 'Recipe created.'})
+        except:
+            return JsonResponse({'status': 400, 'text': 'Recipe not created.'})
 
 
 @login_required(login_url='login')

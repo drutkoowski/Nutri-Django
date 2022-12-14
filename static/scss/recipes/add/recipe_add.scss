@@ -80,6 +80,9 @@
         border: none;
         text-align: center;
       }
+      select {
+        padding-left: 1rem;
+      }
     }
     &__container {
       display: grid;

@@ -9109,6 +9109,8 @@ div.modal--calendar__content-summary {
         color: var(--black-muted);
         border: none;
         text-align: center; }
+      .recipe-add__search__input-box select {
+        padding-left: 1rem; }
     .recipe-add__search__container {
       display: grid;
       grid-template-columns: 1fr 1fr;
