@@ -32,25 +32,25 @@
 
 .recipes {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr;
   grid-column: 2/3;
   grid-row: 2/3;
   width: 100%;
   height: 100%;
-  grid-column-gap: 15rem;
+  grid-column-gap: 5rem;
   margin-top: 15rem;
 
    @include respond(md-desktop) {
     grid-template-columns: 0.2fr 1fr 0.2fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
     grid-column-gap: 0;
     grid-row-gap: 5rem;
     margin-top: 5rem;
   }
   @include respond(phone-lg) {
     grid-template-columns: 0.05fr 1fr 0.05fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
     grid-column-gap: 0;
     grid-row-gap: 5rem;
     margin-top: 5rem;
@@ -181,13 +181,23 @@
 
     }
 
-    &--ideas {
+    &--add {
       background-image: linear-gradient(to right bottom, rgba(241, 241, 241, 0.3), rgba(82, 82, 82, 0.5)),
       url('/static/images/recipe_ideas_bg_photo.jpg');
       background-size: cover;
       @include respond(md-desktop) {
         grid-column: 2/3;
         grid-row: 2/3;
+      }
+    }
+
+    &--ideas {
+      background-image: linear-gradient(to right bottom, rgba(241, 241, 241, 0.3), rgba(82, 82, 82, 0.5)),
+      url('/static/images/recipe_ideas_bg_photo.jpg');
+      background-size: cover;
+      @include respond(md-desktop) {
+        grid-column: 2/3;
+        grid-row: 3/4;
       }
     }
   }

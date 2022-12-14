@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load sass_tags %}
+{% load i18n %}
+{% block scripts %}
+     <script src="{% sass_src 'scripts/recipes/add/main.js' %}" defer></script>
+{% endblock scripts %}
+{% block content %}
+    {% csrf_token %}
+    <div class="loader"></div>
+    <div class="loader-message not-visible">
+        <div>
+            <p class="loader-message__message" style="white-space: nowrap;"></p>
+        </div>
+    </div>
+      <div class="bg-video-fixed" id="add-meals-video-container">
+        <div class="overlay-large"></div>
+         <video id="add-meals-video" class="bg-video__content" autoplay muted loop>
+             <source src="{% sass_src 'video/meals_bg_video.mp4' %}" type="video/mp4">
+             <source src="{% sass_src 'video/meals_bg_video.webm' %}" type="video/webm">
+             Your browser is not supported!
+         </video>
+     </div>
+
+        <div class="recipe-add-layout-container">
+            {% include 'accounts/navbar.html' %}
+             {% include 'accounts/navbar_small.html' %}
+            <div class="recipe-add grid-full-span recipe-ideas">
+                <div class="recipe-add__search">
+                    <h3>{% trans 'Add your own recipe' %}</h3>
+                    <div class="recipe-add__search__input-box">
+                        <label for="name">{% trans 'Recipe Name' %}</label>
+                        <input type="text" id="name" placeholder="{% trans 'Recipe Name' %}">
+                    </div>
+                    <div class="recipe-add__search__input-box">
+                        <label for="difficulty">{% trans 'Difficulty' %}</label>
+                        <select type="text" id="difficulty">
+                            <option value="easy">{% trans 'Easy' %}</option>
+                            <option value="medium">{% trans 'Medium' %}</option>
+                            <option value="hard">{% trans 'Hard' %}</option>
+                        </select>
+                    </div>
+                    <div class="recipe-add__search__input-box">
+                        <label for="duration">{% trans 'Duration' %}</label>
+                        <input type="text" id="duration" placeholder="{% trans 'Minutes' %}" onkeydown="return event.keyCode !== 69">
+                    </div>
+                    <div class="recipe-add__search__input-box">
+                        <label for="servings">{% trans 'Servings' %}</label>
+                        <select type="text" id="servings">
+                            <option value="1">1x</option>
+                            <option value="2">2x</option>
+                            <option value="3">3x</option>
+                            <option value="4">4x</option>
+                            <option value="5">5x</option>
+                            <option value="6">6x</option>
+                            <option value="7">7x</option>
+                            <option value="8">8x</option>
+                            <option value="9">9x</option>
+                            <option value="10">10x</option>
+                            <option value="11">11x</option>
+                            <option value="12">12x</option>
+                        </select>
+                    </div>
+                    <div class="recipe-add__search__container">
+                        <div class="recipe-add__search__container__steps">
+                            <h4>{% trans 'Step by step' %}</h4>
+                            <div class="recipe-add__search__container__steps__elements-box">
+                                <div class="recipe-add__search__container__steps__elements-box__element">
+                                    <input type="text" id="step-element" placeholder="{% trans 'For example (Add pasta and striped Parma ham)' %}">
+                                    <img src="{% sass_src 'images/svg/plus.svg' %}" class="filter-green" alt="Add Icon">
+                                </div>
+                                <div class="recipe-add__search__container__steps__elements-box__already-added">
+                                    <input type="text" id="step-element">
+                                    <img src="{% sass_src 'images/svg/minus.svg' %}" class="filter-red" alt="Remove Icon">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="recipe-add__search__container__ingredients">
+                            <h4>{% trans 'Ingredients' %}</h4>
+                            <div class="recipe-add__search__container__ingredients__elements-box">
+                                <div class="recipe-add__search__container__ingredients__elements-box__element">
+                                    <input type="number" class="recipes-add__number-input" placeholder="{% trans 'Quantity' %}">
+                                    <input type="text" class="recipes-add__text-input" placeholder="{% trans 'Ingredient (fe. Pasta)' %}">
+                                    <img src="{% sass_src 'images/svg/plus.svg' %}" class="filter-green" alt="Add Icon">
+                                </div>
+                                <div class="recipe-add__search__container__ingredients__elements-box__already-added">
+                                    <input type="number" class="recipes-add__number-input">
+                                    <input type="text" class="recipes-add__text-input">
+                                    <img src="{% sass_src 'images/svg/minus.svg' %}" class="filter-red" alt="Remove Icon">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="new-recipe-add btn-light">{% trans 'Save' %}</button>
+                </div>
+            </div>
+        </div>
+{% endblock %}

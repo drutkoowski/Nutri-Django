@@ -15,6 +15,12 @@ searchRecipeCard.addEventListener('click', () => {
     location.href = location.origin + `/${langPrefix}/recipes/search`
 })
 
+const addRecipeCard = document.querySelector('.recipes__card--add')
+addRecipeCard.addEventListener('click', () => {
+    const langPrefix = window.location.href.split('/')[3];
+    location.href = location.origin + `/${langPrefix}/recipes/add`
+})
+
 const recipeIdeasCard = document.querySelector('.recipes__card--ideas')
 recipeIdeasCard.addEventListener('click', () => {
     const langPrefix = window.location.href.split('/')[3];
