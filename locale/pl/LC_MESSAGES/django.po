@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-14 17:11+0100\n"
+"POT-Creation-Date: 2022-12-14 21:48+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -218,7 +218,7 @@ msgid "Graph Customization"
 msgstr "Ustawienia wykresu"
 
 #: .\templates\accounts\dashboard_stats.html:50
-#: .\templates\recipes\add\add_recipes.html:44
+#: .\templates\recipes\add\add_recipes.html:45
 #: .\templates\workouts\add\add_workouts.html:97
 #: .\templates\workouts\add\add_workouts.html:117
 #: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1758
@@ -471,7 +471,9 @@ msgid "Do you have an account?"
 msgstr "Masz już konto?"
 
 #: .\templates\accounts\signup.html:44
-msgid "Signed up successfully... Redirecting to login page."
+#, fuzzy
+#| msgid "Signed up successfully... Redirecting to login page."
+msgid "Verification link has been sent... Redirecting to login page."
 msgstr "Zarejestrowano pomyślnie... Przenoszenie na stronę logowania."
 
 #: .\templates\components\navbar\navbar.html:21
@@ -567,11 +569,12 @@ msgstr "Szukaj"
 #: .\templates\meals\add\add_meals.html:30
 #: .\templates\meals\saved\saved_meals.html:75
 #: .\templates\meals\saved\saved_meals.html:89
+#: .\templates\recipes\search\search_recipes.html:38
 #: .\templates\workouts\add\add_workouts.html:27
 #: .\templates\workouts\saved\saved_workouts.html:77
 #: .\templates\workouts\saved\saved_workouts.html:91
 msgid "Only verified"
-msgstr ""
+msgstr "Tylko zweryfikowane"
 
 #: .\templates\meals\add\add_meals.html:34
 #: .\templates\workouts\add\add_workouts.html:29
@@ -583,7 +586,7 @@ msgid "Try to search meal or ingredients that have you eaten today."
 msgstr "Spróbuj wyszukać posiłek lub składnik, który zjadłeś/aś."
 
 #: .\templates\meals\add\add_meals.html:38
-#: .\templates\recipes\search\search_recipes.html:38
+#: .\templates\recipes\search\search_recipes.html:41
 #: .\templates\workouts\add\add_workouts.html:33
 msgid "Results will appear here."
 msgstr "Twoje rezultaty wyszukiwania pojawią się tutaj."
@@ -611,7 +614,7 @@ msgid "No saved templates yet"
 msgstr "Brak zapisanych szablonów"
 
 #: .\templates\meals\add\add_meals.html:70
-#: .\templates\recipes\add\add_recipes.html:89
+#: .\templates\recipes\add\add_recipes.html:91
 #: .\templates\workouts\add\add_workouts.html:65
 msgid "Save"
 msgstr "Zapisz"
@@ -668,6 +671,7 @@ msgstr "Twój składnik/posiłek"
 
 #: .\templates\meals\enter\meal_enter.html:25
 #: .\templates\meals\enter\meal_enter.html:26
+#: .\templates\recipes\add\add_recipes.html:33
 #: .\templates\workouts\enter\activity_enter.html:25
 #: .\templates\workouts\enter\activity_enter.html:26
 msgid "Name"
@@ -765,58 +769,61 @@ msgstr "Szukaj składowych posiłku"
 msgid "Add your own recipe"
 msgstr "Dodaj swój własny przepis"
 
-#: .\templates\recipes\add\add_recipes.html:32
-#: .\templates\recipes\add\add_recipes.html:33
+#: .\templates\recipes\add\add_recipes.html:34
 msgid "Recipe Name"
 msgstr "Nazwa Przepisu"
 
-#: .\templates\recipes\add\add_recipes.html:36
+#: .\templates\recipes\add\add_recipes.html:37
 msgid "Difficulty"
 msgstr "Trudność"
 
-#: .\templates\recipes\add\add_recipes.html:38
+#: .\templates\recipes\add\add_recipes.html:39
 msgid "Easy"
 msgstr "Łatwe"
 
-#: .\templates\recipes\add\add_recipes.html:39
+#: .\templates\recipes\add\add_recipes.html:40
 msgid "Medium"
 msgstr "Średnie"
 
-#: .\templates\recipes\add\add_recipes.html:40
+#: .\templates\recipes\add\add_recipes.html:41
 msgid "Hard"
 msgstr "Trudne"
 
-#: .\templates\recipes\add\add_recipes.html:45
+#: .\templates\recipes\add\add_recipes.html:46
 msgid "Minutes"
 msgstr "Minuty"
 
-#: .\templates\recipes\add\add_recipes.html:48
+#: .\templates\recipes\add\add_recipes.html:49
 msgid "Servings"
 msgstr "Porcje"
 
-#: .\templates\recipes\add\add_recipes.html:66
+#: .\templates\recipes\add\add_recipes.html:68
 #: .\templates\recipes\ideas\recipes_ideas.html:101
-#: .\templates\recipes\search\search_recipes.html:79
+#: .\templates\recipes\search\search_recipes.html:82
 msgid "Step by step"
 msgstr "Krok po kroku"
 
-#: .\templates\recipes\add\add_recipes.html:70
+#: .\templates\recipes\add\add_recipes.html:72
 msgid "For example - Add pasta and striped Parma ham"
 msgstr "Na przykład - Dodaj Makaron i szynkę parmeńską"
 
-#: .\templates\recipes\add\add_recipes.html:77
+#: .\templates\recipes\add\add_recipes.html:79
 #: .\templates\recipes\ideas\recipes_ideas.html:96
-#: .\templates\recipes\search\search_recipes.html:75
+#: .\templates\recipes\search\search_recipes.html:78
 msgid "Ingredients"
 msgstr "Składniki"
 
-#: .\templates\recipes\add\add_recipes.html:81
+#: .\templates\recipes\add\add_recipes.html:83
 msgid "fe. 300 g"
 msgstr "np. 300 g"
 
-#: .\templates\recipes\add\add_recipes.html:82
+#: .\templates\recipes\add\add_recipes.html:84
 msgid "Ingredient (fe. Pasta)"
 msgstr "Składnik (np. Makaron)"
+
+#: .\templates\recipes\add\add_recipes.html:98
+msgid "Your recipe added successfully."
+msgstr "Twój przepis dodany pomyślnie."
 
 #: .\templates\recipes\ideas\recipes_ideas.html:31
 msgid "Suggested recipes"
@@ -860,12 +867,12 @@ msgstr ""
 "Coś poszło nie tak, nie byliśmy w stanie pobrać informacji o tym przepisie."
 
 #: .\templates\recipes\ideas\recipes_ideas.html:73
-#: .\templates\recipes\search\search_recipes.html:52
+#: .\templates\recipes\search\search_recipes.html:55
 msgid "Author"
 msgstr "Autor"
 
 #: .\templates\recipes\ideas\recipes_ideas.html:75
-#: .\templates\recipes\search\search_recipes.html:54
+#: .\templates\recipes\search\search_recipes.html:57
 msgid "What do you need to make it by yourself?"
 msgstr "Co potrzebujesz by wykonać to samemu?"
 
@@ -903,11 +910,11 @@ msgstr "Pomysł na przepis"
 msgid "Search for recipe"
 msgstr "Szukaj przepisu"
 
-#: .\templates\recipes\search\search_recipes.html:42
+#: .\templates\recipes\search\search_recipes.html:45
 msgid "Don't you know what do you want to eat?"
 msgstr "Nie wiesz co chcesz zjeść?"
 
-#: .\templates\recipes\search\search_recipes.html:43
+#: .\templates\recipes\search\search_recipes.html:46
 msgid "Random Recipe"
 msgstr "Wylosuj Przepis"
 

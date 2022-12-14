@@ -1,7 +1,7 @@
 import json
 from datetime import date
 from django.core.mail import EmailMessage
-from django.contrib import auth
+from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.sites.shortcuts import get_current_site
@@ -79,8 +79,29 @@ def signup_view(request):
         profile.gender = gender
         profile.save()
         user.save()
-        # return redirect(f"/${lang_code}/login/?command=verification&email=" + email)
     return render(request, 'accounts/signup.html')
+
+
+def forgot_password_view(request):
+    return render(request, 'accounts/forgot_password.html')
+
+
+def resetpassword_validate(request, uidb64, token):
+    try:
+        uid = urlsafe_base64_decode(uidb64).decode()
+        user = Account._default_manager.get(pk=uid)
+    except(TypeError, ValueError, OverflowError, Account.DoesNotExist):
+        user = None
+    if user is not None and default_token_generator.check_token(user, token):
+        request.session['uid'] = uid
+        return redirect('reset-password')
+    else:
+        messages.error(request, "This link has been expired!")
+        return redirect("login")
+
+
+def reset_password_view(request):
+    return render(request, 'accounts/reset_password.html')
 
 
 def activate(request, uidb64, token):
@@ -136,6 +157,8 @@ def login_user(request):
         email_address = request.POST.get('emailAddress')
         password = request.POST.get('password')
         check_if_user_exists = Account.objects.filter(email__iexact=email_address).first()
+        if not check_if_user_exists.is_active:
+            return JsonResponse({'status': 405, 'text': 'User not verified'})
         if check_if_user_exists:
             user = auth.authenticate(username=check_if_user_exists.username, password=password)
         else:
@@ -148,6 +171,53 @@ def login_user(request):
     else:
         return redirect('home-page')
 
+
+def forgot_password(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
+        user_profile_email = request.POST.get('emailAddress')
+        check_if_user_exists = Account.objects.filter(email__iexact=user_profile_email).first()
+        if check_if_user_exists:
+            if not check_if_user_exists.is_active:
+                return JsonResponse({'status': 405, 'text': 'User not verified'})
+            current_site = get_current_site(request)
+            lang_code = request.path.split('/')[1]
+            if lang_code == 'pl':
+                mail_subject = "Nutri: Zresetuj swoje hasło"
+                message = render_to_string("accounts/emails/reset_password_pl.html", {
+                    "user": check_if_user_exists,
+                    "domain": current_site,
+                    "uid": urlsafe_base64_encode(force_bytes(check_if_user_exists.pk)),
+                    "token": default_token_generator.make_token(check_if_user_exists),
+                })
+            else:
+                mail_subject = "Reset your password"
+                message = render_to_string("accounts/emails/reset_password.html", {
+                    "user": check_if_user_exists,
+                    "domain": current_site,
+                    "uid": urlsafe_base64_encode(force_bytes(check_if_user_exists.pk)),
+                    "token": default_token_generator.make_token(check_if_user_exists),
+                })
+            to_email = check_if_user_exists.email
+            send_email = EmailMessage(from_email=EMAIL_HOST_USER, subject=mail_subject, body=message, to=[to_email])
+            send_email.send()
+            return JsonResponse({'status': 200, 'text': 'Email sent.'})
+        else:
+            return JsonResponse({'status': 404, 'text': 'User not found.'})
+    else:
+        return JsonResponse({'status': 405, 'text': 'Method not allowed.'})
+
+
+def reset_password_ajax(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
+        try:
+            password = request.POST.get('password')
+            uid = request.session.get("uid")
+            user = Account.objects.get(pk=uid)
+            user.set_password(password)
+            user.save()
+            return JsonResponse({'status': 200, 'text': 'User password changed.'})
+        except:
+            return JsonResponse({'status': 405, 'text': 'User password not changed.'})
 
 def check_if_taken(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':

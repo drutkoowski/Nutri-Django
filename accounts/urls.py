@@ -1,10 +1,11 @@
-from django.urls import path, include
+from django.urls import path
 from . import views
 
 
 urlpatterns = [
     path("", views.home_page, name="home-page"),
     path("signup", views.signup_view, name='signup'),
+    path("forgot-password", views.forgot_password_view, name='forgot-password'),
     path('login', views.login_view, name='login'),
     path('dashboard', views.dashboard_view, name='dashboard'),
     path('logout', views.logout_view, name='logout'),
@@ -12,8 +13,12 @@ urlpatterns = [
     path('dashboard/stats', views.dashboard_stats_view, name='stats'),
     path('profile-info', views.profile_info_view, name='profile-info'),
     path("activate/<uidb64>/<token>/", views.activate, name="activate"),
+    path("resetpassword_validate/<uidb64>/<token>/", views.resetpassword_validate, name="resetpassword_validate"),
+    path("reset-password", views.reset_password_view, name="reset-password"),
     # ajax views
     path('data/login-user', views.login_user, name='login-user'),
+    path('data/forgot-password', views.forgot_password, name='forgot-password-ajax'),
+    path("data/reset-user-password", views.reset_password_ajax, name="reset-password-ajax"),
     path('data/check-if-taken', views.check_if_taken, name='check-if-taken'),
     path('data/get-user-body-params', views.get_user_body_params, name='get-user-body-params'),
     path('data/get-user-personal-info', views.get_user_personal_info, name='get-user-personal-info'),

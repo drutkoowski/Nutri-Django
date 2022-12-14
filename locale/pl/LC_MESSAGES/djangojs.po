@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-14 17:11+0100\n"
+"POT-Creation-Date: 2022-12-14 21:48+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -569,7 +569,7 @@ msgstr "dni na Nutri"
 
 #: .\static\scripts\login\main.js:33
 msgid "Email input is not valid email."
-msgstr "Pole email lub hasła jest nieprawidłowe."
+msgstr "Wprowadzony Email jest niepoprawny."
 
 #: .\static\scripts\login\main.js:53
 msgid "Password too short."
@@ -579,11 +579,15 @@ msgstr "Twoje hasło jest zbyt krótkie!"
 msgid "We could not match any user with these credentials."
 msgstr "Nie udało nam się znaleźć użytkownika z podanymi danymi."
 
-#: .\static\scripts\login\main.js:89
+#: .\static\scripts\login\main.js:87
+msgid "Your account is not verified. Click at email we sent you."
+msgstr "Twoje konto jest niezweryfikowane. Sprawdź email, który Ci wysłaliśmy."
+
+#: .\static\scripts\login\main.js:92
 msgid "Error occurred.. try again."
 msgstr "Wystąpił błąd.. spróbuj jeszcze raz."
 
-#: .\static\scripts\login\main.js:118
+#: .\static\scripts\login\main.js:121
 msgid "Email or password field is not valid."
 msgstr "Pole email lub hasła jest nieprawidłowe."
 
@@ -634,6 +638,8 @@ msgstr ""
 #: .\static\scripts\meals\enter\main.js:114
 #: .\static\scripts\recipes\ideas\main.js:22
 #: .\static\scripts\recipes\ideas\main.js:166
+#: .\static\scripts\recipes\search\main.js:29
+#: .\static\scripts\recipes\search\main.js:132
 msgid "Unknown"
 msgstr "Nieznane"
 
@@ -716,39 +722,61 @@ msgstr "Przytyć"
 msgid "Maintain Weight"
 msgstr "Utrzymać wagę"
 
-#: .\static\scripts\recipes\add\main.js:105
-#: .\static\scripts\recipes\add\main.js:113
+#: .\static\scripts\recipes\add\main.js:111
+#, fuzzy
+#| msgid "Searching for recipes in our database"
+msgid "Adding recipe into the database"
+msgstr "Szukanie Twojego przepisu w naszej bazie"
+
+#: .\static\scripts\recipes\add\main.js:117
+#, fuzzy
+#| msgid "Translating and formatting recipes"
+msgid "Translating and formating recipe"
+msgstr "Tłumaczenie oraz formatowanie przepisów"
+
+#: .\static\scripts\recipes\add\main.js:123
+#: .\static\scripts\recipes\ideas\main.js:134
+msgid "It takes longer than usual, be patient"
+msgstr "Trwa to dłużej niż zazwyczaj, bądź cierpliwy"
+
+#: .\static\scripts\recipes\add\main.js:130
+#: .\static\scripts\recipes\ideas\main.js:141
+msgid "Something went wrong..."
+msgstr "Coś poszło nie tak, spróbuj ponownie."
+
+#: .\static\scripts\recipes\add\main.js:160
+#: .\static\scripts\recipes\add\main.js:168
 msgid "Fill out all the indicated forms."
 msgstr "Wypełnij wszystkie wskazane formularze."
 
-#: .\static\scripts\recipes\add\main.js:169
-#: .\static\scripts\recipes\add\main.js:177
+#: .\static\scripts\recipes\add\main.js:233
+#: .\static\scripts\recipes\add\main.js:241
 msgid "Step description is too short."
 msgstr "Opis kroku jest zbyt krótki."
 
-#: .\static\scripts\recipes\add\main.js:218
-#: .\static\scripts\recipes\add\main.js:226
+#: .\static\scripts\recipes\add\main.js:294
+#: .\static\scripts\recipes\add\main.js:302
 msgid "Ingredient quantity is empty."
 msgstr "Ilość składników jest pusta."
 
-#: .\static\scripts\recipes\add\main.js:237
-#: .\static\scripts\recipes\add\main.js:245
+#: .\static\scripts\recipes\add\main.js:313
+#: .\static\scripts\recipes\add\main.js:321
 msgid "Ingredient name is too short."
 msgstr "Nazwa składnika jest zbyt krótka."
 
-#: .\static\scripts\recipes\add\main.js:260
-#: .\static\scripts\recipes\add\main.js:268
+#: .\static\scripts\recipes\add\main.js:336
+#: .\static\scripts\recipes\add\main.js:344
 msgid "Ingredient name and quantity are empty."
 msgstr "Nazwa składnika i ilość są puste."
 
 #: .\static\scripts\recipes\ideas\main.js:26
-#: .\static\scripts\recipes\search\main.js:21
-#: .\static\scripts\recipes\search\main.js:123
+#: .\static\scripts\recipes\search\main.js:33
+#: .\static\scripts\recipes\search\main.js:136
 msgid "for"
 msgstr "dla"
 
 #: .\static\scripts\recipes\ideas\main.js:26
-#: .\static\scripts\recipes\search\main.js:21
+#: .\static\scripts\recipes\search\main.js:33
 msgid "persons"
 msgstr "osób"
 
@@ -763,14 +791,6 @@ msgstr "Szukanie przepisów dostępnych w sieci"
 #: .\static\scripts\recipes\ideas\main.js:127
 msgid "Translating and formatting recipes"
 msgstr "Tłumaczenie oraz formatowanie przepisów"
-
-#: .\static\scripts\recipes\ideas\main.js:134
-msgid "It takes longer than usual, be patient"
-msgstr "Trwa to dłużej niż zazwyczaj, bądź cierpliwy"
-
-#: .\static\scripts\recipes\ideas\main.js:141
-msgid "Something went wrong..."
-msgstr "Coś poszło nie tak, spróbuj ponownie."
 
 #: .\static\scripts\recipes\ideas\main.js:166
 msgid "Difficulty:"
@@ -789,11 +809,11 @@ msgid "servings"
 msgstr "porcje"
 
 #: .\static\scripts\recipes\ideas\main.js:191
-#: .\static\scripts\recipes\search\main.js:128
+#: .\static\scripts\recipes\search\main.js:141
 msgid "See"
 msgstr "Zobacz"
 
-#: .\static\scripts\recipes\search\main.js:126
+#: .\static\scripts\recipes\search\main.js:139
 msgid "Difficulty level: "
 msgstr "Poziom trudności: "
 

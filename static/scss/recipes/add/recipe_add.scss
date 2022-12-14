@@ -245,8 +245,10 @@
               img {
                 margin-left: 1rem;
                 margin-top: 0.3rem;
+                &:hover {
+                  transform: scale(1.05);
+                }
               }
-
             }
           }
           &__element {
@@ -258,9 +260,13 @@
             img {
               margin-left: 1rem;
               margin-top: 0.3rem;
+              transition: all .3s ease-in;
+              &:hover {
+                transform: scale(1.05);
+              }
               @include respond(phone-md-sm){
-              margin-left: 0;
-            }
+                margin-left: 0;
+              }
             }
           }
         }

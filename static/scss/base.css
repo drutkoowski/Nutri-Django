@@ -9312,6 +9312,8 @@ div.modal--calendar__content-summary {
             .recipe-add__search__container__ingredients__elements-box__already-added__element img {
               margin-left: 1rem;
               margin-top: 0.3rem; }
+              .recipe-add__search__container__ingredients__elements-box__already-added__element img:hover {
+                transform: scale(1.05); }
           .recipe-add__search__container__ingredients__elements-box__element {
             display: grid;
             grid-template-columns: min-content auto 4rem; }
@@ -9320,7 +9322,10 @@ div.modal--calendar__content-summary {
                 grid-template-columns: min-content auto 2rem; } }
             .recipe-add__search__container__ingredients__elements-box__element img {
               margin-left: 1rem;
-              margin-top: 0.3rem; }
+              margin-top: 0.3rem;
+              transition: all .3s ease-in; }
+              .recipe-add__search__container__ingredients__elements-box__element img:hover {
+                transform: scale(1.05); }
               @media only screen and (max-width: 25em) {
                 .recipe-add__search__container__ingredients__elements-box__element img {
                   margin-left: 0; } }
