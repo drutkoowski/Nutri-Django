@@ -1,11 +1,9 @@
 .about {
     display: grid;
-    grid-template-columns: 0.3fr 1fr 1fr 0.3fr;
+    grid-template-columns: 0.1fr 0.7fr 1fr;
     grid-template-rows: 1fr;
-    height: 55rem;
-    margin-top: 15rem;
+    height: 100vh;
     column-gap: 10rem;
-
    @include respond(md-desktop) {
       grid-template-columns: 0.15fr 1fr 1fr 0.15fr;
       grid-template-rows: 1fr;
@@ -39,82 +37,31 @@
     @include respond(phone-sm) {
       height: 45rem;
     }
-
-  &__paragraph {
-    font-size: 3rem;
-    line-height: 5.5rem;
-    white-space: pre-line;
-
-   @include respond(md-desktop) {
-      font-size: 2.2rem;
+    &__svg {
+      height: 5rem;
+      width: 5rem;
+      vertical-align: text-bottom;
+      display: inline-block;
     }
-
-     @include respond(tab-land) {
-        font-size: 1.8rem;
-        line-height: 4.5rem;
-    }
-      @include respond(phone-lg) {
-        font-size: 1.6rem;
-        line-height: 3.5rem;
-    }
-
-     @include respond(phone-md) {
-       font-size: 1.5rem;
-       line-height: 2.5rem;
-    }
-
-     @include respond(phone-sm) {
-       font-size: 1.4rem;
-       line-height: 2.2rem;
-      }
-
-
-
-    &--1{
+    &__img-phone {
+      margin-top: 10rem;
       grid-column: 2/3;
-       @include respond(tab-sm) {
-             display: none;
-       }
-      &--sm {
-        display: none;
-         @include respond(tab-sm) {
-            grid-column: 1/2;
-            display: inline;
-            grid-row: 1/2;
-       }
-      }
-      @include respond(tab-md) {
-        grid-column: 1/2;
-        margin-left: 2rem;
-      }
-
+      height: 80vh;
+      width: 50rem;
     }
-
-    &--2 {
+    &__meanings{
+      margin-top: 10rem;
       grid-column: 3/4;
-       @include respond(tab-sm) {
-             display: none;
-       }
-      &--sm {
-        display: none;
-         @include respond(tab-sm) {
-            display: inline;
-            grid-column: 1/2;
-            grid-row: 2/3;
-       }
+      h1{
+        font-size: 5rem;
       }
-      @include respond(tab-md) {
-          grid-column: 2/3;
-          margin-right: 2rem;
-      }
-    }
-
-    &--tabulator {
-      padding-left: 5rem;
-
-      @include respond(tab-port) {
-        padding-left: 3rem;
+      div{
+        margin-top: 5rem;
+        font-size: 2.5rem;
+        h3 {
+           display: inline-block;
+           margin-left: 2rem;
         }
+      }
     }
-  }
 }

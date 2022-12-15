@@ -325,7 +325,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   @media only screen and (max-width: 75em) {
     .navigation__background {
       top: 3.5rem;
-      right: 6.1rem; } }
+      right: 6rem; } }
   @media only screen and (max-width: 28.5em) {
     .navigation__background {
       right: 3.1rem;
@@ -561,10 +561,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 .about {
   display: grid;
-  grid-template-columns: 0.3fr 1fr 1fr 0.3fr;
+  grid-template-columns: 0.1fr 0.7fr 1fr;
   grid-template-rows: 1fr;
-  height: 55rem;
-  margin-top: 15rem;
+  height: 100vh;
   column-gap: 10rem; }
   @media only screen and (max-width: 93.75em) {
     .about {
@@ -594,72 +593,34 @@ ORDER: Base + typography > general layout + grid > page layout > components
   @media only screen and (max-width: 21.875em) {
     .about {
       height: 45rem; } }
-  .about__paragraph {
-    font-size: 3rem;
-    line-height: 5.5rem;
-    white-space: pre-line; }
-    @media only screen and (max-width: 93.75em) {
-      .about__paragraph {
-        font-size: 2.2rem; } }
-    @media only screen and (max-width: 75em) {
-      .about__paragraph {
-        font-size: 1.8rem;
-        line-height: 4.5rem; } }
-    @media only screen and (max-width: 37.5em) {
-      .about__paragraph {
-        font-size: 1.6rem;
-        line-height: 3.5rem; } }
-    @media only screen and (max-width: 28.5em) {
-      .about__paragraph {
-        font-size: 1.5rem;
-        line-height: 2.5rem; } }
-    @media only screen and (max-width: 21.875em) {
-      .about__paragraph {
-        font-size: 1.4rem;
-        line-height: 2.2rem; } }
-    .about__paragraph--1 {
-      grid-column: 2/3; }
-      @media only screen and (max-width: 46.875em) {
-        .about__paragraph--1 {
-          display: none; } }
-      .about__paragraph--1--sm {
-        display: none; }
-        @media only screen and (max-width: 46.875em) {
-          .about__paragraph--1--sm {
-            grid-column: 1/2;
-            display: inline;
-            grid-row: 1/2; } }
-      @media only screen and (max-width: 62.5em) {
-        .about__paragraph--1 {
-          grid-column: 1/2;
-          margin-left: 2rem; } }
-    .about__paragraph--2 {
-      grid-column: 3/4; }
-      @media only screen and (max-width: 46.875em) {
-        .about__paragraph--2 {
-          display: none; } }
-      .about__paragraph--2--sm {
-        display: none; }
-        @media only screen and (max-width: 46.875em) {
-          .about__paragraph--2--sm {
-            display: inline;
-            grid-column: 1/2;
-            grid-row: 2/3; } }
-      @media only screen and (max-width: 62.5em) {
-        .about__paragraph--2 {
-          grid-column: 2/3;
-          margin-right: 2rem; } }
-    .about__paragraph--tabulator {
-      padding-left: 5rem; }
-      @media only screen and (max-width: 56.25em) {
-        .about__paragraph--tabulator {
-          padding-left: 3rem; } }
+  .about__svg {
+    height: 5rem;
+    width: 5rem;
+    vertical-align: text-bottom;
+    display: inline-block; }
+  .about__img-phone {
+    margin-top: 10rem;
+    grid-column: 2/3;
+    height: 80vh;
+    width: 50rem; }
+  .about__meanings {
+    margin-top: 10rem;
+    grid-column: 3/4; }
+    .about__meanings h1 {
+      font-size: 5rem; }
+    .about__meanings div {
+      margin-top: 5rem;
+      font-size: 2.5rem; }
+      .about__meanings div h3 {
+        display: inline-block;
+        margin-left: 2rem; }
+
 .why-nutri {
   display: grid;
   margin-top: 10rem;
   grid-template-rows: 0.15fr 1fr;
   grid-template-columns: 1fr 1fr 1fr;
-  height: 75rem; }
+  height: 100vh; }
   @media only screen and (max-width: 75em) {
     .why-nutri {
       height: auto; } }
@@ -829,9 +790,8 @@ ORDER: Base + typography > general layout + grid > page layout > components
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   grid-row-gap: 10rem;
-  height: auto;
-  margin-top: 5rem;
-  position: relative; }
+  position: relative;
+  height: 100vh; }
   @media only screen and (max-width: 46.875em) {
     .gains {
       grid-template-columns: 1fr 1fr;
@@ -937,7 +897,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
-  margin-top: 15rem;
   height: 100vh;
   position: relative; }
   .make-goals-real__flex-container {
@@ -966,7 +925,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   grid-template-rows: 1fr;
   grid-template-columns: 1fr;
   margin-top: 15rem;
-  height: 60rem;
+  height: 100vh;
   justify-content: center;
   margin-left: 5rem;
   margin-right: 5rem; }

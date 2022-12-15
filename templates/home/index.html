@@ -5,11 +5,8 @@
 {#    spinner #}
 <div class="loader"></div>
     <div class="grid-container">
-
-        <div class="background-photo-container--header grid-full-span">
-
+        <div class="background-photo-container--header grid-full-span section">
           {% include 'components/navbar/navbar.html' %}
-
             <div class="grid-full-span header">
                 <div class="header__flex-container">
                     <h2 id='header-upper' class="header__quote--upper">Header text<span class="header__nutri-dot">.</span></h2>
@@ -18,30 +15,36 @@
 
             </div>
         </div>
-        <div class="about grid-full-span reveal fade-bottom">
-            <p class="about__paragraph about__paragraph--1">
-                <span class="about__paragraph--tabulator">{% trans 'People' %}</span> who discovered and analysed their food habits achieve more than double weight loss comparing to the people who didn't<span class="header__nutri-dot">.</span>
-                The right supplementation, adapted to your eating customs, is the main key to your success<span class="header__nutri-dot">.</span>
-                Proper personalisation of results and accurate suggestions will help you understand appropriate eating habits regarding your diet and exercise regime<span class="header__nutri-dot">.</span>
-            </p>
+        <div class="about grid-full-span reveal fade-bottom section">
+            <img src="{% static 'images/bg_photo.png' %}" class="about__img-phone" alt="Phone Img">
+            <div class="about__meanings">
+                <h1><span style="font-size: 6rem">Nutri</span> - {% trans ' one word' %}<span class="header__nutri-dot">.</span>{% trans ' Many meanings' %}<span class="header__nutri-dot">.</span></h1>
+                <div>
+                    <img src="{% static 'images/svg/approved.svg' %}" class="about__svg filter-gold" alt="Quality Icon">
+                    <h3>{% trans 'Multifunctional' %}<span class="header__nutri-dot">.</span></h3>
+                </div>
+                <div>
+                    <img src="{% static 'images/svg/approved.svg' %}" class="about__svg filter-gold" alt="Quality Icon">
+                    <h3>{% trans 'Simplicity' %}<span class="header__nutri-dot">.</span></h3>
+                </div>
+                <div>
+                    <img src="{% static 'images/svg/approved.svg' %}" class="about__svg filter-gold" alt="Quality Icon">
+                    <h3>{% trans 'Accessibility' %}<span class="header__nutri-dot">.</span></h3>
+                </div>
+                <div>
+                    <img src="{% static 'images/svg/approved.svg' %}" class="about__svg filter-gold" alt="Quality Icon">
+                    <h3>{% trans 'Accuracy' %}<span class="header__nutri-dot">.</span></h3>
+                </div>
+                 <div>
+                    <img src="{% static 'images/svg/approved.svg' %}" class="about__svg filter-gold" alt="Quality Icon">
+                    <h3>{% trans 'Innovation' %}<span class="header__nutri-dot">.</span></h3>
+                </div>
+            </div>
 
-            <p class="about__paragraph about__paragraph--1--sm">
-                <span class="about__paragraph--tabulator">People</span> who discovered and analysed their food habits achieve more than double weight loss comparing to the people who didn't<span class="header__nutri-dot">.</span>
-                The right supplementation, adapted to your eating customs, is the main key to your success<span class="header__nutri-dot">.</span>Proper personalisation of results and accurate suggestions will help you understand appropriate eating habits regarding your diet and exercise regime<span class="header__nutri-dot">.</span>
-            </p>
-
-            <p class="about__paragraph about__paragraph--2">
-                <span class="about__paragraph--tabulator">This</span> is a crucial element in changing your life for the better<span class="header__nutri-dot">.</span> In addition, by using Nutri<span class="header__nutri-dot">.</span> you will be able to search our recipe database for what ingredients and diet you currently have to make your daily menu wider<span class="header__nutri-dot">.</span> You can find all this and more at Nutri<span class="header__nutri-dot">.</span>
-                We are something more than just calorie counter<span class="header__nutri-dot">.</span><br> We are the tool that will lead you to success<span class="header__nutri-dot">.</span>
-            </p>
-
-            <p class="about__paragraph about__paragraph--2--sm">
-                <span class="about__paragraph--tabulator">This</span> is a crucial element in changing your life for the better<span class="header__nutri-dot">.</span> In addition, by using Nutri<span class="header__nutri-dot">.</span> you will be able to search our recipe database for what ingredients and diet you currently have to make your daily menu wider<span class="header__nutri-dot">.</span> You can find all this and more at Nutri<span class="header__nutri-dot">.</span>We are something more than just calorie counter<span class="header__nutri-dot">.</span> We are the tool that will lead you to success<span class="header__nutri-dot">.</span>
-            </p>
         </div>
 
 
-         <div class="make-goals-real grid-full-span reveal fade-bottom">
+         <div class="make-goals-real grid-full-span reveal fade-bottom section">
            <div class="bg-video">
                 <video id="goals-video" class="bg-video__content" autoplay muted loop>
                     <source src="{% static 'video/video_bg_real.mp4' %}" type="video/mp4">
@@ -54,7 +57,7 @@
                 </div>
         </div>
 
-        <div class="why-nutri grid-full-span reveal fade-bottom">
+        <div class="why-nutri grid-full-span reveal fade-bottom section">
             <h3 class="why-nutri__title">{% trans 'Discover Your Nutrition' %}<span class="header__nutri-dot">.</span></h3>
             <div class="why-nutri__card-1 why-nutri__card">
                 <img class="why-nutri__card__icon filter-gold" src="{% static 'images/svg/phone-approved.svg' %}" alt="Phone approved Icon" />
@@ -72,7 +75,7 @@
 
 
 
-        <div class="gains grid-full-span reveal fade-bottom">
+        <div class="gains grid-full-span reveal fade-bottom section">
             <div class="bg-video">
                 <video id="gains-video" class="bg-video__content" autoplay muted loop>
                     <source src="{% static 'video/bg_video_gains.mp4' %}" type="video/mp4">
@@ -107,18 +110,16 @@
             </div>
         </div>
 
-        <div class="reviews grid-full-span reveal fade-bottom">
+        <div class="reviews grid-full-span reveal fade-bottom section">
             {% include 'components/carousel/carousel.html' %}
         </div>
 
-        <div class="grid-full-span" style="margin-bottom: 15rem;"></div>
+        <div class="grid-full-span section" style="margin-bottom: 15rem;"></div>
         <div class="footer grid-full-span">
             <div class="footer__flex-container">
                 <div class="footer__creator">{% trans 'Created with &hearts; by' %} Damian Rutkowski</div>
                 <div class="footer__copyright"></div>
                 <div class="footer__contact">
-{#                    <img class="footer__contact__image" src="{% static 'images/svg/github.svg' %}" alt="Github Icon" />#}
-{#                    <img class="footer__contact__image filter-gold" src="{% static 'images/svg/facebook.svg' %}" alt="Facebook Icon" />#}
                     <div class="footer__contact__image footer__contact__image--github"></div>
                     <div class="footer__contact__image footer__contact__image--facebook"></div>
                 </div>
@@ -128,4 +129,5 @@
 {% endblock content %}
 {% block scripts %}
     <script src="{% static 'scripts/carousel.js' %}" defer></script>
+    <script src="{% static 'scripts/home.js' %}" defer></script>
 {% endblock scripts %}

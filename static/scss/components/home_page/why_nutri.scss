@@ -3,12 +3,11 @@
     margin-top: 10rem;
     grid-template-rows: 0.15fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
-    height: 75rem;
+    height: 100vh;
 
   @include respond(tab-land) {
      height: auto;
     }
-
     @include respond(phone-lg) {
       grid-template-rows: 0.1fr 1fr 1fr 1fr;
       grid-template-columns: 1fr;

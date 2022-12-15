@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-15 01:07+0100\n"
+"POT-Creation-Date: 2022-12-15 03:35+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,21 +28,25 @@ msgstr "Polski"
 msgid "English"
 msgstr "Angielski"
 
-#: .\templates\404.html:170
+#: .\templates\404.html:174 .\templates\500.html:175
 msgid "Error"
 msgstr "Błąd"
 
-#: .\templates\404.html:171
+#: .\templates\404.html:175 .\templates\500.html:176
 msgid "Couldn't launch :("
 msgstr "Nie dało się uruchomić :(."
 
-#: .\templates\404.html:172
+#: .\templates\404.html:176
 msgid "Page Not Found - lets take you"
 msgstr "Strona nie została znaleziona - zabierzmy cię"
 
-#: .\templates\404.html:172
+#: .\templates\404.html:176 .\templates\500.html:177
 msgid "Back."
 msgstr "z powrotem"
+
+#: .\templates\500.html:177
+msgid "Server encountered an unexpected error - lets take you"
+msgstr "Serwer napotkał nieoczekiwany błąd - zabierzmy cię"
 
 #: .\templates\accounts\activity_calendar.html:18
 msgid "Activity Calendar"
@@ -322,7 +326,7 @@ msgstr "Ramiona"
 #: .\templates\accounts\forgot_password.html:15
 #: .\templates\accounts\login.html:15
 #: .\templates\accounts\reset_password.html:15
-#: .\templates\accounts\signup.html:15 .\templates\home\index.html:80
+#: .\templates\accounts\signup.html:15 .\templates\home\index.html:86
 #: .\templates\meals\add\add_meals.html:14 .\templates\meals\meals.html:14
 #: .\templates\recipes\recipes.html:14
 #: .\templates\workouts\add\add_workouts.html:14
@@ -559,63 +563,87 @@ msgstr "Kontakt"
 msgid "years old"
 msgstr "lata"
 
-#: .\templates\home\index.html:23
-msgid "People"
-msgstr "Ludzie"
+#: .\templates\home\index.html:24
+msgid " one word"
+msgstr " jeden wyraz"
 
-#: .\templates\home\index.html:53
+#: .\templates\home\index.html:24
+msgid " Many meanings"
+msgstr " Wiele znaczeń"
+
+#: .\templates\home\index.html:27
+msgid "Multifunctional"
+msgstr "Wielofunkcyjność"
+
+#: .\templates\home\index.html:31
+msgid "Simplicity"
+msgstr "Prostota"
+
+#: .\templates\home\index.html:35
+msgid "Accessibility"
+msgstr "Dostępność"
+
+#: .\templates\home\index.html:39
+msgid "Accuracy"
+msgstr "Dokładność"
+
+#: .\templates\home\index.html:43
+msgid "Innovation"
+msgstr "Innowacja"
+
+#: .\templates\home\index.html:59
 msgid "Using Nutri"
 msgstr "Używając Nutri"
 
-#: .\templates\home\index.html:53
+#: .\templates\home\index.html:59
 msgid "You can make your goal real"
 msgstr "Możesz spełnić swój cel"
 
-#: .\templates\home\index.html:58
+#: .\templates\home\index.html:64
 msgid "Discover Your Nutrition"
 msgstr "Poznaj swoje odżywianie"
 
-#: .\templates\home\index.html:61
+#: .\templates\home\index.html:67
 msgid "Desktop and Mobile accessibility"
 msgstr "Dostępność desktopowa i mobilna"
 
-#: .\templates\home\index.html:65
+#: .\templates\home\index.html:71
 msgid "Completely free of charge"
 msgstr "Całkowicie bezpłatnie"
 
-#: .\templates\home\index.html:69
+#: .\templates\home\index.html:75
 msgid "Appreciated by"
 msgstr "Doceniony przez"
 
-#: .\templates\home\index.html:69
+#: .\templates\home\index.html:75
 msgid "users"
 msgstr "użytkowników"
 
-#: .\templates\home\index.html:85
+#: .\templates\home\index.html:91
 msgid "Calculate daily KCAL"
 msgstr "Obliczaj dzienne KCAL"
 
-#: .\templates\home\index.html:90
+#: .\templates\home\index.html:96
 msgid "Search for recipes"
 msgstr "Szukaj przepisów"
 
-#: .\templates\home\index.html:94
+#: .\templates\home\index.html:100
 msgid "Save your progress"
 msgstr "Zapisuj postępy"
 
-#: .\templates\home\index.html:98
+#: .\templates\home\index.html:104
 msgid "Many personalization methods"
 msgstr "Wiele metod personalizacji"
 
-#: .\templates\home\index.html:102
+#: .\templates\home\index.html:108
 msgid "Add your exercises"
 msgstr "Dodawaj swoje ćwiczenia"
 
-#: .\templates\home\index.html:106
+#: .\templates\home\index.html:112
 msgid "Share your progress"
 msgstr "Dziel się sukcesem"
 
-#: .\templates\home\index.html:117
+#: .\templates\home\index.html:123
 msgid "Created with &hearts; by"
 msgstr "Stworzone z &hearts; przez"
 
@@ -2297,6 +2325,9 @@ msgid ""
 "Set the precision for numeric computations in the SASS processor. Default: "
 "settings.SASS_PRECISION."
 msgstr ""
+
+#~ msgid "People"
+#~ msgstr "Ludzie"
 
 #~ msgid "Activity Propositions"
 #~ msgstr "Propozycje Aktywności"
