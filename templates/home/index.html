@@ -15,17 +15,10 @@
 
             </div>
         </div>
-        <div class="about grid-full-span section">
-              <div class="bg-video">
-                <video id="goals-video" class="bg-video__content" autoplay muted loop>
-                    <source src="{% static 'video/video_bg_real.mp4' %}" type="video/mp4">
-                    <source src="{% static 'video/bg_video_real.webm' %}" type="video/webm">
-                    Your browser is not supported!
-                </video>
-            </div>
+        <div class="about grid-full-span reveal fade-bottom" id="about">
             <img src="{% static 'images/bg_photo.png' %}" class="about__img-phone" alt="Phone Img">
             <div class="about__meanings">
-                <h1><span style="font-size: 6rem">Nutri</span> - {% trans ' one word' %}<span class="header__nutri-dot">.</span>{% trans ' Many meanings' %}<span class="header__nutri-dot">.</span></h1>
+                <h1>Nutri - {% trans ' one word' %}<span class="header__nutri-dot">.</span>{% trans ' Many meanings' %}<span class="header__nutri-dot">.</span></h1>
                 <div>
                     <img src="{% static 'images/svg/approved.svg' %}" class="about__svg filter-gold" alt="Quality Icon">
                     <h3>{% trans 'Multifunctional' %}<span class="header__nutri-dot">.</span></h3>
@@ -51,7 +44,7 @@
         </div>
 
 
-         <div class="make-goals-real grid-full-span section">
+         <div class="make-goals-real grid-full-span section reveal fade-bottom">
            <div class="bg-video">
                 <video id="goals-video" class="bg-video__content" autoplay muted loop>
                     <source src="{% static 'video/video_bg_real.mp4' %}" type="video/mp4">
@@ -64,24 +57,17 @@
               </div>
         </div>
 
-        <div class="why-nutri grid-full-span section">
-             <div class="bg-video">
-                <video id="goals-video" class="bg-video__content" autoplay muted loop>
-                    <source src="{% static 'video/video_bg_real.mp4' %}" type="video/mp4">
-                    <source src="{% static 'video/bg_video_real.webm' %}" type="video/webm">
-                    Your browser is not supported!
-                </video>
-            </div>
+        <div class="why-nutri grid-full-span section fade-bottom">
             <h3 class="why-nutri__title">{% trans 'Discover Your Nutrition' %}<span class="header__nutri-dot">.</span></h3>
-            <div class="why-nutri__card-1 why-nutri__card">
+            <div class="why-nutri__card-1 why-nutri__card reveal fade-bottom">
                 <img class="why-nutri__card__icon filter-gold" src="{% static 'images/svg/phone-approved.svg' %}" alt="Phone approved Icon" />
                 <p class="why-nutri__card__description">{% trans 'Desktop and Mobile accessibility' %}<span class="header__nutri-dot">.</span></p>
             </div>
-            <div class="why-nutri__card-2 why-nutri__card">
+            <div class="why-nutri__card-2 why-nutri__card reveal fade-bottom">
                 <img class="why-nutri__card__icon filter-gold" src="{% static 'images/svg/save-money.svg' %}" alt="Free of charge Icon" />
                 <p class="why-nutri__card__description">{% trans 'Completely free of charge' %}<span class="header__nutri-dot">.</span></p>
             </div>
-            <div class="why-nutri__card-3 why-nutri__card">
+            <div class="why-nutri__card-3 why-nutri__card reveal fade-bottom">
                  <img class="why-nutri__card__icon filter-gold" src="{% static 'images/svg/approved.svg' %}" alt="Approved Icon" />
                 <p class="why-nutri__card__description">{% trans 'Appreciated by' %} <b>172</b> {% trans 'users' %}<span class="header__nutri-dot">.</span></p>
             </div>
@@ -89,7 +75,7 @@
 
 
 
-        <div class="gains grid-full-span section">
+        <div class="gains grid-full-span section reveal fade-bottom">
             <div class="bg-video">
                 <video id="gains-video" class="bg-video__content" autoplay muted loop>
                     <source src="{% static 'video/bg_video_gains.mp4' %}" type="video/mp4">
@@ -124,12 +110,12 @@
             </div>
         </div>
 
-        <div class="reviews grid-full-span section">
+        <div class="reviews grid-full-span section reveal fade-bottom" id="reviews">
             {% include 'components/carousel/carousel.html' %}
         </div>
 
-        <div class="grid-full-span section"></div>
-        <div class="footer grid-full-span">
+        <div class="grid-full-span"></div>
+        <div class="footer grid-full-span section" id="contact">
             <div class="footer__flex-container">
                 <div class="footer__creator">{% trans 'Created with &hearts; by' %} Damian Rutkowski</div>
                 <div class="footer__copyright"></div>

@@ -281,3 +281,17 @@ ORDER: Base + typography > general layout + grid > page layout > components
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+
+.animate-top{
+  transition: all .3s ease-in;
+  animation-name: fade-bottom;
+  animation-duration: 1.3s;
+  animation-timing-function: ease-out;
+}
+
+.animate-bottom{
+  transition: all .3s ease-in;
+  animation-name: fade-top;
+  animation-duration: 1.3s;
+  animation-timing-function: ease-out;
+}

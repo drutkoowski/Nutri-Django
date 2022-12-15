@@ -22,7 +22,6 @@ if (flagsIcons){
 }
 
 
-
 if ((location.href !== location.origin + '/pl' || location.href !== location.origin + '/en' || location.href !== location.origin + '/pl/' || location.href !== location.origin + '/en/') && location.href !== location.origin + '/pl/login/' && location.href !== location.origin + '/pl/login' && location.href !== location.origin + '/en/login/' && location.href !== location.origin + '/en/login' && location.href !== location.origin + '/pl/signup/' && location.href !== location.origin + '/pl/signup' && location.href !== location.origin + '/en/signup/' && location.href !== location.origin + '/en/signup') {
 
     const hamburgerNav = document.getElementById('navi-toggle')

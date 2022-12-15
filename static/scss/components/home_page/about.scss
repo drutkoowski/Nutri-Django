@@ -2,65 +2,130 @@
     display: grid;
     grid-template-columns: 0.1fr 0.7fr 1fr;
     grid-template-rows: 1fr;
-    height: 100vh;
     column-gap: 10rem;
    @include respond(md-desktop) {
-      grid-template-columns: 0.15fr 1fr 1fr 0.15fr;
+      grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr;
       column-gap: 5rem;
     }
 
     @include respond(tab-land) {
-      grid-template-columns: 0.05fr 1fr 1fr 0.05fr;
-      grid-template-rows: 1fr;
+      column-gap: 3rem;
     }
-
-   @include respond(tab-md) {
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr;
-    }
-
-   @include respond(tab-sm) {
-      margin-top: 5rem;
+    @include respond(tab-port){
       grid-template-columns: 1fr;
-      grid-template-rows: 1fr 1fr;
-      margin-left: 5rem;
-      margin-right: 5rem;
-    }
-
-   @include respond(phone-md) {
-      margin-left: 2.5rem;
-      margin-right: 2.5rem;
-      height: 35rem;
-    }
-
-    @include respond(phone-sm) {
-      height: 45rem;
+      grid-template-rows: 1fr;
     }
     &__svg {
       height: 5rem;
       width: 5rem;
       vertical-align: text-bottom;
       display: inline-block;
+      @include respond(tab-land){
+         height: 4rem;
+         width: 4rem;
+         vertical-align: text-top;
+      }
+      @include respond(tab-md){
+        height: 3rem;
+        width: 3rem;
+      }
+      @include respond(phone-md-lg){
+        height: 2rem;
+        width: 2rem;
+      }
     }
     &__img-phone {
       margin-top: 10rem;
       grid-column: 2/3;
-      height: 80vh;
+      min-height: 30rem;
+      max-height: 80%;
       width: 50rem;
+      @include respond(md-desktop){
+        grid-column: 1/2;
+        margin-left: 5rem;
+      }
+      @include respond(tab-land){
+        width: 40rem;
+        margin-left: 2rem;
+      }
+      @include respond(tab-port){
+         grid-column: 1/2;
+         grid-row: 2/3;
+         display: flex;
+         justify-self: center;
+         margin-top: 5rem;
+         margin-left: 0;
+      }
+      @include respond(phone-md-lg){
+        margin-top: 0;
+      }
+      @include respond(phone-md-sm){
+        width: 35rem;
+      }
+      @include respond(phone-sm){
+        width: 30rem;
+      }
     }
     &__meanings{
       margin-top: 10rem;
       grid-column: 3/4;
+      @include respond(md-desktop){
+           grid-column: 2/3;
+      }
+      @include respond(tab-land){
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+      }
+      @include respond(tab-port){
+         grid-column: 1/2;
+         grid-row: 1/2;
+         justify-self: center;
+      }
       h1{
         font-size: 5rem;
+        margin-top: 5rem;
+        @include respond(md-desktop){
+          font-size: 3.5rem;
+        }
+        @include respond(tab-md){
+          font-size: 2.5rem;
+        }
+        @include respond(tab-port){
+          font-size: 3.5rem;
+          margin-top: 1rem;
+          align-self: center;
+          text-align: center;
+        }
+        @include respond(phone-md-lg){
+          font-size: 2.5rem;
+        }
+        @include respond(phone-md-sm){
+          font-size: 2rem;
+        }
       }
       div{
         margin-top: 5rem;
         font-size: 2.5rem;
+        @include respond(tab-port){
+           align-self: center;
+           text-align: center;
+           justify-content: center;
+           justify-items: center;
+           margin-top: 2rem;
+        }
         h3 {
            display: inline-block;
            margin-left: 2rem;
+           @include respond(tab-md) {
+             font-size: 2rem;
+             vertical-align: text-top;
+          }
+          @include respond(phone-md-lg){
+            font-size: 1.5rem;
+            margin-left: 0.5rem;
+          }
         }
       }
     }
@@ -77,5 +142,8 @@
   cursor: pointer;
   &:hover {
     transform: scale(1.05) translateY(-5px);
+  }
+  @include respond(md-desktop){
+    right: 5%;
   }
 }

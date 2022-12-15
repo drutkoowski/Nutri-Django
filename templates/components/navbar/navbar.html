@@ -19,9 +19,9 @@
                 </li>
                 <li class="navigation__item"><a href="{% url 'login' %}" class="navigation__link"><span><img class="navigation__link__icon filter-gold" src="{% static 'images/svg/key.svg' %}" alt="Log in Icon" /></span>{% trans 'Log in' %}</a></li>
                 <li class="navigation__item"><a href="{% url 'signup' %}" class="navigation__link"><span><img class="navigation__link__icon filter-gold" src="{% static 'images/svg/new.svg' %}" alt="Sign up Icon" /></span>{% trans 'Sign up' %}</a></li>
-                <li class="navigation__item"><a href="#" class="navigation__link"><span><img class="navigation__link__icon filter-gold" src="{% static 'images/svg/about.svg' %}" alt="About Icon" /></span>{% trans 'About' %}</a></li>
-                <li class="navigation__item"><a href="#" class="navigation__link"><span><img class="navigation__link__icon filter-gold" src="{% static 'images/svg/star-outline.svg' %}" alt="Reviews Icon" /></span>{% trans 'Reviews' %}</a></li>
-                <li class="navigation__item"><a href="#" class="navigation__link"><span><img class="navigation__link__icon filter-gold" src="{% static 'images/svg/contacts.svg' %}" alt="Contact Icon" /></span>{% trans 'Contact' %}</a></li>
+                <li class="navigation__item"><a href="{% url 'home-page'%}#about" id="nav-about" class="navigation__link"><span><img class="navigation__link__icon filter-gold" src="{% static 'images/svg/about.svg' %}" alt="About Icon" /></span>{% trans 'About' %}</a></li>
+                <li class="navigation__item"><a href="{% url 'home-page'%}#reviews" id="nav-reviews" class="navigation__link"><span><img class="navigation__link__icon filter-gold" src="{% static 'images/svg/star-outline.svg' %}" alt="Reviews Icon" /></span>{% trans 'Reviews' %}</a></li>
+                <li class="navigation__item"><a href="{% url 'home-page'%}#contact" id="nav-contact" class="navigation__link"><span><img class="navigation__link__icon filter-gold" src="{% static 'images/svg/contacts.svg' %}" alt="Contact Icon" /></span>{% trans 'Contact' %}</a></li>
             </ul>
         </nav>
     </div>
