@@ -13,6 +13,10 @@
   @include respond(tab-port) {
     margin-top: 2rem;
   }
+  @include respond(phone-md){
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+  }
 
   &__item {
     height: 100%;
@@ -37,6 +41,9 @@
     grid-template-columns: 0.2fr 1fr 0.2fr;
     grid-template-rows: 1fr;
   }
+  @include respond(phone-md) {
+    grid-gap: 1rem;
+  }
 
     &__card {
       overflow: hidden;
@@ -44,44 +51,38 @@
       display: flex;
       flex-direction: column;
       border-radius: 20px;
-      height: 45rem;
+      height: 35rem;
       width: 40rem;
       justify-self: stretch;
       align-self: center;
       transition: all 1s ease;
-
-      @include respond(md-desktop) {
+      margin-left: -1rem;
+      @include respond(tab-md){
+        height: 30rem;
         width: 30rem;
-        height: 40rem;
       }
-
-      @include respond(tab-port) {
-        width: 25rem;
-        height: 35rem;
-      }
-
       @include respond(tab-sm) {
         width: 45rem;
-        height: 35rem;
+        height: 30rem;
+        margin-left: 0;
       }
 
        @include respond(phone-lg) {
         width: 30rem;
-        height: 35rem;
+        height: 30rem;
       }
 
        @include respond(phone-md) {
-        width: 20rem;
-        height: 40rem;
+        width: 25rem;
+        height: 30rem;
       }
 
        @include respond(phone-sm) {
-        width: 15rem;
+        width: 20rem;
       }
 
       &__flex-container {
         display: flex;
-
       }
 
       &__username {
@@ -153,6 +154,16 @@
       &--1 {
         grid-column: 2/3;
         padding: 2rem;
+        @include respond(tab-sm){
+          margin-left: 3rem;
+        }
+        @include respond(phone-md-lg){
+          margin-left: 1rem;
+        }
+        @include respond(phone-md){
+          margin-left: 0;
+          margin-right: 2rem;
+        }
       }
 
       &--2 {

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-15 00:38+0100\n"
+"POT-Creation-Date: 2022-12-15 22:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -403,6 +403,10 @@ msgstr "Czas trwania"
 #: .\static\scripts\activity-calendar\activity-calendar.js:227
 msgid "You have not added any activities on this day"
 msgstr "Nie dodałeś żadnych aktywności dla tego dnia"
+
+#: .\static\scripts\carousel.js:19
+msgid "This application is second to none. Unique in its simplicity."
+msgstr "Ta aplikacja nie ma sobie równych. Wyjątkowa w swojej prostocie."
 
 #: .\static\scripts\dashboard\main.js:140
 #: .\static\scripts\dashboard\main.js:428
@@ -826,7 +830,9 @@ msgstr "Poziom trudności: "
 
 #: .\static\scripts\reset-password\main.js:52
 msgid "Your password recovery link is not valid or not existing. Try again."
-msgstr "Twój link do odzyskiwania hasła jest nieprawidłowy lub nie istnieje. Spróbuj ponownie."
+msgstr ""
+"Twój link do odzyskiwania hasła jest nieprawidłowy lub nie istnieje. Spróbuj "
+"ponownie."
 
 #: .\static\scripts\reset-password\main.js:73
 msgid "Password mismatches."

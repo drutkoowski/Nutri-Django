@@ -23,7 +23,11 @@ from workouts.models import Workout
 
 
 def home_page(request):
-    return render(request, 'home/index.html')
+    how_many_users = UserProfile.objects.all().count()
+    context = {
+        'users_count': how_many_users
+    }
+    return render(request, 'home/index.html', context)
 
 
 def signup_view(request):

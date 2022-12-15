@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-15 03:35+0100\n"
+"POT-Creation-Date: 2022-12-15 22:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -326,7 +326,7 @@ msgstr "Ramiona"
 #: .\templates\accounts\forgot_password.html:15
 #: .\templates\accounts\login.html:15
 #: .\templates\accounts\reset_password.html:15
-#: .\templates\accounts\signup.html:15 .\templates\home\index.html:86
+#: .\templates\accounts\signup.html:15 .\templates\home\index.html:83
 #: .\templates\meals\add\add_meals.html:14 .\templates\meals\meals.html:14
 #: .\templates\recipes\recipes.html:14
 #: .\templates\workouts\add\add_workouts.html:14
@@ -538,10 +538,40 @@ msgid "Do you have an account?"
 msgstr "Masz już konto?"
 
 #: .\templates\accounts\signup.html:44
-#, fuzzy
-#| msgid "Signed up successfully... Redirecting to login page."
 msgid "Verification link has been sent... Redirecting to login page."
 msgstr "Zarejestrowano pomyślnie... Przenoszenie na stronę logowania."
+
+#: .\templates\components\carousel\carousel.html:25
+msgid "Brilliant tool, you will definitely not be disappointed!"
+msgstr "Genialne narzędzie, na pewno nie będziesz zawiedziony!"
+
+#: .\templates\components\carousel\carousel.html:41
+msgid ""
+"I loved Nutri very quickly, very easy to use and most importantly.... free :)"
+msgstr "Bardzo szybko pokochałam Nutri, bardzo łatwy w obsłudze i co najważniejsze.... darmowe :)"
+
+#: .\templates\components\carousel\carousel.html:56
+msgid ""
+"I've used many other apps, but this one definitely has the most pertinent "
+"suggestions and data, definitely recommended for anyone."
+msgstr "Korzystałam z wielu innych aplikacji, ale ta zdecydowanie ma najbardziej trafne sugestie i dane, zdecydowanie polecam dla każdego."
+
+#: .\templates\components\carousel\carousel.html:73
+msgid ""
+"This application is second to none. Thanks to Nutri, I have learned a lot "
+"about myself and my eating habits, thanks to which I have achieved vital "
+"form. I recommend <3!!!"
+msgstr "Ta aplikacja nie ma sobie równych. Dzięki Nutri dowiedziałam się wiele o sobie i swoich nawykach żywieniowych, dzięki czemu osiągnęłam życiową formę. Polecam <3!!!"
+
+#: .\templates\components\carousel\carousel.html:89
+msgid ""
+"From the very beginning I fell in love with Nutri, which, in my opinion, is "
+"the perfect combination of functionalities I care most about."
+msgstr "Od samego początku zakochałam się w Nutri, które moim zdaniem jest idealnym połączeniem funkcjonalności, na których najbardziej mi zależy."
+
+#: .\templates\components\carousel\carousel.html:105
+msgid "Simply Nutri, I recommend checking it out for everyone."
+msgstr "Po prostu Nutri, polecam sprawdzić dla każdego."
 
 #: .\templates\components\navbar\navbar.html:21
 msgid "Sign up"
@@ -563,87 +593,87 @@ msgstr "Kontakt"
 msgid "years old"
 msgstr "lata"
 
-#: .\templates\home\index.html:24
+#: .\templates\home\index.html:21
 msgid " one word"
 msgstr " jeden wyraz"
 
-#: .\templates\home\index.html:24
+#: .\templates\home\index.html:21
 msgid " Many meanings"
 msgstr " Wiele znaczeń"
 
-#: .\templates\home\index.html:27
+#: .\templates\home\index.html:24
 msgid "Multifunctional"
 msgstr "Wielofunkcyjność"
 
-#: .\templates\home\index.html:31
+#: .\templates\home\index.html:28
 msgid "Simplicity"
 msgstr "Prostota"
 
-#: .\templates\home\index.html:35
+#: .\templates\home\index.html:32
 msgid "Accessibility"
 msgstr "Dostępność"
 
-#: .\templates\home\index.html:39
+#: .\templates\home\index.html:36
 msgid "Accuracy"
 msgstr "Dokładność"
 
-#: .\templates\home\index.html:43
+#: .\templates\home\index.html:40
 msgid "Innovation"
 msgstr "Innowacja"
 
-#: .\templates\home\index.html:59
+#: .\templates\home\index.html:56
 msgid "Using Nutri"
 msgstr "Używając Nutri"
 
-#: .\templates\home\index.html:59
+#: .\templates\home\index.html:56
 msgid "You can make your goal real"
 msgstr "Możesz spełnić swój cel"
 
-#: .\templates\home\index.html:64
+#: .\templates\home\index.html:61
 msgid "Discover Your Nutrition"
 msgstr "Poznaj swoje odżywianie"
 
-#: .\templates\home\index.html:67
+#: .\templates\home\index.html:64
 msgid "Desktop and Mobile accessibility"
 msgstr "Dostępność desktopowa i mobilna"
 
-#: .\templates\home\index.html:71
+#: .\templates\home\index.html:68
 msgid "Completely free of charge"
 msgstr "Całkowicie bezpłatnie"
 
-#: .\templates\home\index.html:75
+#: .\templates\home\index.html:72
 msgid "Appreciated by"
-msgstr "Doceniony przez"
+msgstr "Docenieni przez"
 
-#: .\templates\home\index.html:75
+#: .\templates\home\index.html:72
 msgid "users"
 msgstr "użytkowników"
 
-#: .\templates\home\index.html:91
+#: .\templates\home\index.html:88
 msgid "Calculate daily KCAL"
 msgstr "Obliczaj dzienne KCAL"
 
-#: .\templates\home\index.html:96
+#: .\templates\home\index.html:93
 msgid "Search for recipes"
 msgstr "Szukaj przepisów"
 
-#: .\templates\home\index.html:100
+#: .\templates\home\index.html:97
 msgid "Save your progress"
 msgstr "Zapisuj postępy"
 
-#: .\templates\home\index.html:104
+#: .\templates\home\index.html:101
 msgid "Many personalization methods"
 msgstr "Wiele metod personalizacji"
 
-#: .\templates\home\index.html:108
+#: .\templates\home\index.html:105
 msgid "Add your exercises"
 msgstr "Dodawaj swoje ćwiczenia"
 
-#: .\templates\home\index.html:112
+#: .\templates\home\index.html:109
 msgid "Share your progress"
 msgstr "Dziel się sukcesem"
 
-#: .\templates\home\index.html:123
+#: .\templates\home\index.html:120
 msgid "Created with &hearts; by"
 msgstr "Stworzone z &hearts; przez"
 

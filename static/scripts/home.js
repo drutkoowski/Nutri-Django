@@ -122,7 +122,7 @@
 //
 //
 //
-
+window.onresize = function(){ location.reload(); }
 
 const navAbout = document.querySelector('#nav-about')
 navAbout.addEventListener('click', () => {

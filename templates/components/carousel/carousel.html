@@ -1,4 +1,5 @@
  {% load static %}
+ {% load i18n %}
  <div class="reviews__item carousel">
                 <button class="carousel__button carousel__button--left">
                     <img src="{% static 'images/svg/left-arrow.svg' %}" alt="arrow-left">
@@ -8,11 +9,10 @@
                         <ul class="carousel__track">
 {#                            first slide#}
                             <li id='carousel__slide--first-slide' class="carousel__slide current-slide">
-
                                 <div class="carousel__slide__card carousel__slide__card--1">
                                      <figure class="carousel__slide__card__flex-container story__shape">
-                                         <img class="carousel__slide__card__avatar" src="{% static 'images/user-image1.jpg' %}" alt="">
-                                        <figcaption class="story__caption carousel__slide__card__username">Mary Ouery</figcaption>
+                                         <img class="carousel__slide__card__avatar" src="https://images.unsplash.com/photo-1624561172888-ac93c696e10c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=689&q=80" alt="User Image">
+                                        <figcaption class="story__caption carousel__slide__card__username">Marcin</figcaption>
                                     </figure>
                                     <div class="carousel__slide__card__stars">
                                         <img class="carousel__slide__card__stars__star" src="{% static 'images/svg/star.svg' %}" alt="Star Icon">
@@ -21,13 +21,15 @@
                                         <img class="carousel__slide__card__stars__star" src="{% static 'images/svg/star.svg' %}" alt="Star Icon">
                                         <img class="carousel__slide__card__stars__star" src="{% static 'images/svg/star.svg' %}" alt="Star Icon">
                                     </div>
-                                    <p class="carousel__slide__card__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, autem beatae dicta inventore, laborum neque nihil nobis obcaecati placeat quisquam quod sunt vel voluptatibus? Accusamus debitis eaque illo molestias nemo.</p>
+                                    <p class="carousel__slide__card__description">
+                                        {% trans 'Brilliant tool, you will definitely not be disappointed!' %}
+                                    </p>
                                  </div>
 
                                 <div class="carousel__slide__card carousel__slide__card--2">
                                      <figure class="carousel__slide__card__flex-container story__shape">
-                                         <img class="carousel__slide__card__avatar" src="{% static 'images/user-image1.jpg' %}" alt="">
-                                        <figcaption class="story__caption carousel__slide__card__username">Mary Ouery</figcaption>
+                                         <img class="carousel__slide__card__avatar" src="https://images.unsplash.com/photo-1531384441138-2736e62e0919?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="User Image">
+                                        <figcaption class="story__caption carousel__slide__card__username">Michael</figcaption>
                                     </figure>
                                     <div class="carousel__slide__card__stars">
                                         <img class="carousel__slide__card__stars__star" src="{% static 'images/svg/star.svg' %}" alt="Star Icon">
@@ -36,13 +38,13 @@
                                         <img class="carousel__slide__card__stars__star" src="{% static 'images/svg/star.svg' %}" alt="Star Icon">
                                         <img class="carousel__slide__card__stars__star" src="{% static 'images/svg/star.svg' %}" alt="Star Icon">
                                     </div>
-                                    <p class="carousel__slide__card__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, autem beatae dicta inventore, laborum neque nihil nobis obcaecati placeat quisquam quod sunt vel voluptatibus? Accusamus debitis eaque illo molestias nemo.</p>
+                                    <p class="carousel__slide__card__description">{% trans 'I loved Nutri very quickly, very easy to use and most importantly.... free :)' %}</p>
                                  </div>
 
                                   <div class="carousel__slide__card carousel__slide__card--3">
                                      <figure class="carousel__slide__card__flex-container story__shape">
-                                         <img class="carousel__slide__card__avatar" src="{% static 'images/user-image1.jpg' %}" alt="">
-                                        <figcaption class="story__caption carousel__slide__card__username">Mary Ouery</figcaption>
+                                         <img class="carousel__slide__card__avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="User Image">
+                                        <figcaption class="story__caption carousel__slide__card__username">Laura</figcaption>
                                     </figure>
                                     <div class="carousel__slide__card__stars">
                                         <img class="carousel__slide__card__stars__star" src="{% static 'images/svg/star.svg' %}" alt="Star Icon">
@@ -51,15 +53,15 @@
                                         <img class="carousel__slide__card__stars__star" src="{% static 'images/svg/star.svg' %}" alt="Star Icon">
                                         <img class="carousel__slide__card__stars__star" src="{% static 'images/svg/star.svg' %}" alt="Star Icon">
                                     </div>
-                                    <p class="carousel__slide__card__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, autem beatae dicta inventore, laborum neque nihil nobis obcaecati placeat quisquam quod sunt vel voluptatibus? Accusamus debitis eaque illo molestias nemo.</p>
+                                    <p class="carousel__slide__card__description">{% trans "I've used many other apps, but this one definitely has the most pertinent suggestions and data, definitely recommended for anyone." %}</p>
                                  </div>
                             </li>
 
                             <li class="carousel__slide">
-                                  <div class="carousel__slide__card carousel__slide__card--1">
+                                 <div class="carousel__slide__card carousel__slide__card--1">
                                      <figure class="carousel__slide__card__flex-container story__shape">
-                                         <img class="carousel__slide__card__avatar" src="{% static 'images/user-image1.jpg' %}" alt="">
-                                        <figcaption class="story__caption carousel__slide__card__username">Mary Ouery</figcaption>
+                                         <img class="carousel__slide__card__avatar" src="{% static 'images/anita_image.png' %}" alt="User Image">
+                                        <figcaption class="story__caption carousel__slide__card__username">Anita</figcaption>
                                     </figure>
                                     <div class="carousel__slide__card__stars">
                                         <img class="carousel__slide__card__stars__star" src="{% static 'images/svg/star.svg' %}" alt="Star Icon">
@@ -68,13 +70,13 @@
                                         <img class="carousel__slide__card__stars__star" src="{% static 'images/svg/star.svg' %}" alt="Star Icon">
                                         <img class="carousel__slide__card__stars__star" src="{% static 'images/svg/star.svg' %}" alt="Star Icon">
                                     </div>
-                                    <p class="carousel__slide__card__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, autem beatae dicta inventore, laborum neque nihil nobis obcaecati placeat quisquam quod sunt vel voluptatibus? Accusamus debitis eaque illo molestias nemo.</p>
+                                    <p class="carousel__slide__card__description">{% trans 'This application is second to none. Thanks to Nutri, I have learned a lot about myself and my eating habits, thanks to which I have achieved vital form. I recommend <3!!!' %}</p>
                                  </div>
 
-                                 <div class="carousel__slide__card carousel__slide__card--2">
+                                <div class="carousel__slide__card carousel__slide__card--2">
                                      <figure class="carousel__slide__card__flex-container story__shape">
-                                         <img class="carousel__slide__card__avatar" src="{% static 'images/user-image1.jpg' %}" alt="">
-                                        <figcaption class="story__caption carousel__slide__card__username">Mary Ouery</figcaption>
+                                         <img class="carousel__slide__card__avatar" src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="User Image">
+                                        <figcaption class="story__caption carousel__slide__card__username">John</figcaption>
                                     </figure>
                                     <div class="carousel__slide__card__stars">
                                         <img class="carousel__slide__card__stars__star" src="{% static 'images/svg/star.svg' %}" alt="Star Icon">
@@ -83,60 +85,15 @@
                                         <img class="carousel__slide__card__stars__star" src="{% static 'images/svg/star.svg' %}" alt="Star Icon">
                                         <img class="carousel__slide__card__stars__star" src="{% static 'images/svg/star.svg' %}" alt="Star Icon">
                                     </div>
-                                    <p class="carousel__slide__card__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, autem beatae dicta inventore, laborum neque nihil nobis obcaecati placeat quisquam quod sunt vel voluptatibus? Accusamus debitis eaque illo molestias nemo.</p>
-                                 </div>
-
-                                 <div class="carousel__slide__card carousel__slide__card--3">
-                                     <figure class="carousel__slide__card__flex-container story__shape">
-                                         <img class="carousel__slide__card__avatar" src="{% static 'images/user-image1.jpg' %}" alt="">
-                                        <figcaption class="story__caption carousel__slide__card__username">Mary Ouery</figcaption>
-                                    </figure>
-                                    <div class="carousel__slide__card__stars">
-                                        <img class="carousel__slide__card__stars__star" src="{% static 'images/svg/star.svg' %}" alt="Star Icon">
-                                        <img class="carousel__slide__card__stars__star" src="{% static 'images/svg/star.svg' %}" alt="Star Icon">
-                                        <img class="carousel__slide__card__stars__star" src="{% static 'images/svg/star.svg' %}" alt="Star Icon">
-                                        <img class="carousel__slide__card__stars__star" src="{% static 'images/svg/star.svg' %}" alt="Star Icon">
-                                        <img class="carousel__slide__card__stars__star" src="{% static 'images/svg/star.svg' %}" alt="Star Icon">
-                                    </div>
-                                    <p class="carousel__slide__card__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, autem beatae dicta inventore, laborum neque nihil nobis obcaecati placeat quisquam quod sunt vel voluptatibus? Accusamus debitis eaque illo molestias nemo.</p>
-                                 </div>
-                            </li>
-
-                            <li id='carousel__slide--last-slide' class="carousel__slide">
-                               <div class="carousel__slide__card carousel__slide__card--1">
-                                     <figure class="carousel__slide__card__flex-container story__shape">
-                                         <img class="carousel__slide__card__avatar" src="{% static 'images/user-image1.jpg' %}" alt="">
-                                        <figcaption class="story__caption carousel__slide__card__username">Mary Ouery</figcaption>
-                                    </figure>
-                                    <div class="carousel__slide__card__stars">
-                                        <img class="carousel__slide__card__stars__star" src="{% static 'images/svg/star.svg' %}" alt="Star Icon">
-                                        <img class="carousel__slide__card__stars__star" src="{% static 'images/svg/star.svg' %}" alt="Star Icon">
-                                        <img class="carousel__slide__card__stars__star" src="{% static 'images/svg/star.svg' %}" alt="Star Icon">
-                                        <img class="carousel__slide__card__stars__star" src="{% static 'images/svg/star.svg' %}" alt="Star Icon">
-                                        <img class="carousel__slide__card__stars__star" src="{% static 'images/svg/star.svg' %}" alt="Star Icon">
-                                    </div>
-                                    <p class="carousel__slide__card__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, autem beatae dicta inventore, laborum neque nihil nobis obcaecati placeat quisquam quod sunt vel voluptatibus? Accusamus debitis eaque illo molestias nemo.</p>
-                                 </div>
-
-                                 <div class="carousel__slide__card carousel__slide__card--2">
-                                     <figure class="carousel__slide__card__flex-container story__shape">
-                                         <img class="carousel__slide__card__avatar" src="{% static 'images/user-image1.jpg' %}" alt="">
-                                        <figcaption class="story__caption carousel__slide__card__username">Mary Ouery</figcaption>
-                                    </figure>
-                                    <div class="carousel__slide__card__stars">
-                                        <img class="carousel__slide__card__stars__star" src="{% static 'images/svg/star.svg' %}" alt="Star Icon">
-                                        <img class="carousel__slide__card__stars__star" src="{% static 'images/svg/star.svg' %}" alt="Star Icon">
-                                        <img class="carousel__slide__card__stars__star" src="{% static 'images/svg/star.svg' %}" alt="Star Icon">
-                                        <img class="carousel__slide__card__stars__star" src="{% static 'images/svg/star.svg' %}" alt="Star Icon">
-                                        <img class="carousel__slide__card__stars__star" src="{% static 'images/svg/star.svg' %}" alt="Star Icon">
-                                    </div>
-                                    <p class="carousel__slide__card__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, autem beatae dicta inventore, laborum neque nihil nobis obcaecati placeat quisquam quod sunt vel voluptatibus? Accusamus debitis eaque illo molestias nemo.</p>
+                                    <p class="carousel__slide__card__description">
+                                        {% trans 'From the very beginning I fell in love with Nutri, which, in my opinion, is the perfect combination of functionalities I care most about.' %}
+                                    </p>
                                  </div>
 
                                  <div class="carousel__slide__card carousel__slide__card--3">
                                      <figure class="carousel__slide__card__flex-container story__shape">
-                                         <img class="carousel__slide__card__avatar" src="{% static 'images/user-image1.jpg' %}" alt="">
-                                        <figcaption class="story__caption carousel__slide__card__username">Mary Ouery</figcaption>
+                                         <img class="carousel__slide__card__avatar" src="https://images.unsplash.com/photo-1515938736719-95b568dc8dd8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="User Image">
+                                        <figcaption class="story__caption carousel__slide__card__username">Kamil</figcaption>
                                     </figure>
                                     <div class="carousel__slide__card__stars">
                                         <img class="carousel__slide__card__stars__star" src="{% static 'images/svg/star.svg' %}" alt="Star Icon">
@@ -145,9 +102,8 @@
                                         <img class="carousel__slide__card__stars__star" src="{% static 'images/svg/star.svg' %}" alt="Star Icon">
                                         <img class="carousel__slide__card__stars__star" src="{% static 'images/svg/star.svg' %}" alt="Star Icon">
                                     </div>
-                                    <p class="carousel__slide__card__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, autem beatae dicta inventore, laborum neque nihil nobis obcaecati placeat quisquam quod sunt vel voluptatibus? Accusamus debitis eaque illo molestias nemo.</p>
+                                    <p class="carousel__slide__card__description">{% trans 'Simply Nutri, I recommend checking it out for everyone.' %}</p>
                                  </div>
-
                             </li>
                         </ul>
                     </div>
