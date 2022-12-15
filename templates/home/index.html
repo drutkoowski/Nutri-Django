@@ -15,7 +15,14 @@
 
             </div>
         </div>
-        <div class="about grid-full-span reveal fade-bottom section">
+        <div class="about grid-full-span section">
+              <div class="bg-video">
+                <video id="goals-video" class="bg-video__content" autoplay muted loop>
+                    <source src="{% static 'video/video_bg_real.mp4' %}" type="video/mp4">
+                    <source src="{% static 'video/bg_video_real.webm' %}" type="video/webm">
+                    Your browser is not supported!
+                </video>
+            </div>
             <img src="{% static 'images/bg_photo.png' %}" class="about__img-phone" alt="Phone Img">
             <div class="about__meanings">
                 <h1><span style="font-size: 6rem">Nutri</span> - {% trans ' one word' %}<span class="header__nutri-dot">.</span>{% trans ' Many meanings' %}<span class="header__nutri-dot">.</span></h1>
@@ -44,7 +51,7 @@
         </div>
 
 
-         <div class="make-goals-real grid-full-span reveal fade-bottom section">
+         <div class="make-goals-real grid-full-span section">
            <div class="bg-video">
                 <video id="goals-video" class="bg-video__content" autoplay muted loop>
                     <source src="{% static 'video/video_bg_real.mp4' %}" type="video/mp4">
@@ -54,10 +61,17 @@
             </div>
               <div class="make-goals-real__flex-container">
                     <h2 id='make-goals-real-upper' class="make-goals-real__quote--upper">{% trans 'Using Nutri' %}<span class="header__nutri-dot" style="margin-right: 1px">.</span> {% trans 'You can make your goal real' %}<span class="header__nutri-dot">.</span></h2>
-                </div>
+              </div>
         </div>
 
-        <div class="why-nutri grid-full-span reveal fade-bottom section">
+        <div class="why-nutri grid-full-span section">
+             <div class="bg-video">
+                <video id="goals-video" class="bg-video__content" autoplay muted loop>
+                    <source src="{% static 'video/video_bg_real.mp4' %}" type="video/mp4">
+                    <source src="{% static 'video/bg_video_real.webm' %}" type="video/webm">
+                    Your browser is not supported!
+                </video>
+            </div>
             <h3 class="why-nutri__title">{% trans 'Discover Your Nutrition' %}<span class="header__nutri-dot">.</span></h3>
             <div class="why-nutri__card-1 why-nutri__card">
                 <img class="why-nutri__card__icon filter-gold" src="{% static 'images/svg/phone-approved.svg' %}" alt="Phone approved Icon" />
@@ -75,7 +89,7 @@
 
 
 
-        <div class="gains grid-full-span reveal fade-bottom section">
+        <div class="gains grid-full-span section">
             <div class="bg-video">
                 <video id="gains-video" class="bg-video__content" autoplay muted loop>
                     <source src="{% static 'video/bg_video_gains.mp4' %}" type="video/mp4">
@@ -110,11 +124,11 @@
             </div>
         </div>
 
-        <div class="reviews grid-full-span reveal fade-bottom section">
+        <div class="reviews grid-full-span section">
             {% include 'components/carousel/carousel.html' %}
         </div>
 
-        <div class="grid-full-span section" style="margin-bottom: 15rem;"></div>
+        <div class="grid-full-span section"></div>
         <div class="footer grid-full-span">
             <div class="footer__flex-container">
                 <div class="footer__creator">{% trans 'Created with &hearts; by' %} Damian Rutkowski</div>
@@ -126,6 +140,7 @@
             </div>
         </div>
     </div>
+    <img src="{% static 'images/scroll-up.png' %}" class="scroll-up-arrow filter-gold" alt="Arrow Icon">
 {% endblock content %}
 {% block scripts %}
     <script src="{% static 'scripts/carousel.js' %}" defer></script>

@@ -22,6 +22,9 @@
 .active.fade-right {
   animation: fade-right 1s ease-in; }
 
+.active.fade-top {
+  animation: fade-top 1s ease-in; }
+
 .filter-gold {
   filter: invert(78%) sepia(67%) saturate(657%) hue-rotate(356deg) brightness(98%) contrast(107%); }
 
@@ -164,6 +167,20 @@ ORDER: Base + typography > general layout + grid > page layout > components
   animation-name: fade-bottom;
   animation-duration: 1s;
   animation-timing-function: ease-out; }
+
+.fade-bottom-animation {
+  animation-name: fade-top;
+  animation-duration: 1s;
+  animation-timing-function: ease-out; }
+
+.no-scroll::-webkit-scrollbar {
+  display: none; }
+
+.no-scroll {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */ }
 
 .grid-full-span {
   grid-column: 1/-1; }
@@ -615,6 +632,17 @@ ORDER: Base + typography > general layout + grid > page layout > components
         display: inline-block;
         margin-left: 2rem; }
 
+.scroll-up-arrow {
+  position: fixed;
+  top: 92%;
+  right: 4%;
+  height: 5rem;
+  width: 5rem;
+  transition: all .3s ease-in;
+  cursor: pointer; }
+  .scroll-up-arrow:hover {
+    transform: scale(1.05) translateY(-5px); }
+
 .why-nutri {
   display: grid;
   margin-top: 10rem;
@@ -924,7 +952,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 1fr;
-  margin-top: 15rem;
   height: 100vh;
   justify-content: center;
   margin-left: 5rem;

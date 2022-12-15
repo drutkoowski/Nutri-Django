@@ -26,6 +26,10 @@
   animation: fade-right 1s ease-in;
 }
 
+.active.fade-top {
+  animation: fade-top 1s ease-in;
+}
+
 // svg color
 
 .filter-gold {
@@ -261,4 +265,19 @@ ORDER: Base + typography > general layout + grid > page layout > components
    animation-name: fade-bottom;
    animation-duration: 1s;
    animation-timing-function: ease-out;
+}
+
+.fade-bottom-animation {
+   animation-name: fade-top;
+   animation-duration: 1s;
+   animation-timing-function: ease-out;
+}
+
+.no-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scroll {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }

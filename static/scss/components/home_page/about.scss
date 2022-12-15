@@ -65,3 +65,17 @@
       }
     }
 }
+
+
+.scroll-up-arrow{
+  position: fixed;
+  top: 92%;
+  right: 4%;
+  height: 5rem;
+  width: 5rem;
+  transition: all .3s ease-in;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.05) translateY(-5px);
+  }
+}
