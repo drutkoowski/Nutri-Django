@@ -203,7 +203,7 @@ AWS_HEADERS = {
     "Access-Control-Allow-Origin": "*",
 }
 STATICFILES_DIRS = [
-    'instaclone/static',
+    'static',
 ]
 MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/media/"
 DEFAULT_FILE_STORAGE = "instaclone.media_storages.MediaStorage"
