@@ -150,6 +150,14 @@ def profile_info_view(request):
     return render(request, 'accounts/profile_info.html')
 
 
+def error_404(request, exception):
+    return render(request, '404.html', status=404)
+
+
+def error_500(request, exception):
+    return render(request, '500.html', status=405)
+
+
 # # # # # AJAX VIEWS # # # # #
 
 def login_user(request):
@@ -218,6 +226,7 @@ def reset_password_ajax(request):
             return JsonResponse({'status': 200, 'text': 'User password changed.'})
         except:
             return JsonResponse({'status': 405, 'text': 'User password not changed.'})
+
 
 def check_if_taken(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':

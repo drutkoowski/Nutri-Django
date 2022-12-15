@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-14 21:48+0100\n"
+"POT-Creation-Date: 2022-12-15 01:07+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,6 +27,22 @@ msgstr "Polski"
 #: .\Nutri\settings.py:158
 msgid "English"
 msgstr "Angielski"
+
+#: .\templates\404.html:170
+msgid "Error"
+msgstr "Błąd"
+
+#: .\templates\404.html:171
+msgid "Couldn't launch :("
+msgstr "Nie dało się uruchomić :(."
+
+#: .\templates\404.html:172
+msgid "Page Not Found - lets take you"
+msgstr "Strona nie została znaleziona - zabierzmy cię"
+
+#: .\templates\404.html:172
+msgid "Back."
+msgstr "z powrotem"
 
 #: .\templates\accounts\activity_calendar.html:18
 msgid "Activity Calendar"
@@ -303,22 +319,56 @@ msgstr "Nadgarstki"
 msgid "Shoulders"
 msgstr "Ramiona"
 
-#: .\templates\accounts\login.html:15 .\templates\accounts\signup.html:15
-#: .\templates\home\index.html:80 .\templates\meals\add\add_meals.html:14
-#: .\templates\meals\meals.html:14 .\templates\recipes\recipes.html:14
+#: .\templates\accounts\forgot_password.html:15
+#: .\templates\accounts\login.html:15
+#: .\templates\accounts\reset_password.html:15
+#: .\templates\accounts\signup.html:15 .\templates\home\index.html:80
+#: .\templates\meals\add\add_meals.html:14 .\templates\meals\meals.html:14
+#: .\templates\recipes\recipes.html:14
 #: .\templates\workouts\add\add_workouts.html:14
 #: .\templates\workouts\enter\activity_enter.html:15
 #: .\templates\workouts\workouts.html:14
 msgid "Your browser is not supported!"
 msgstr "Twoja przeglądarka nie jest obsługiwana!"
 
-#: .\templates\accounts\login.html:25
-msgid "Sign into your account"
-msgstr "Zaloguj się do swojego konta"
+#: .\templates\accounts\forgot_password.html:25
+#: .\templates\accounts\reset_password.html:25
+msgid "Recover your password"
+msgstr "Odzyskaj swoje hasło"
 
+#: .\templates\accounts\forgot_password.html:29
 #: .\templates\accounts\login.html:29
 msgid "Email Address"
 msgstr "Adres Email"
+
+#: .\templates\accounts\forgot_password.html:31
+msgid "Recover"
+msgstr "Odzyskaj"
+
+#: .\templates\accounts\forgot_password.html:33
+#: .\templates\accounts\login.html:34
+#: .\templates\accounts\reset_password.html:34
+msgid "Don't you have an account?"
+msgstr "Nie masz konta?"
+
+#: .\templates\accounts\forgot_password.html:34
+#: .\templates\accounts\reset_password.html:35
+msgid "Remember password?"
+msgstr "Pamiętasz hasło?"
+
+#: .\templates\accounts\forgot_password.html:41
+msgid "We sent you an email, click at link inside to recover your password."
+msgstr ""
+"Wysłaliśmy Ci wiadomość e-mail, kliknij na link w środku, aby odzyskać swoje "
+"hasło."
+
+#: .\templates\accounts\forgot_password.html:42
+msgid "Redirecting"
+msgstr "Przekierowywanie"
+
+#: .\templates\accounts\login.html:25
+msgid "Sign into your account"
+msgstr "Zaloguj się do swojego konta"
 
 #: .\templates\accounts\login.html:30
 msgid "Password"
@@ -328,10 +378,6 @@ msgstr "Hasło"
 #: .\templates\components\navbar\navbar.html:20
 msgid "Log in"
 msgstr "Zaloguj się"
-
-#: .\templates\accounts\login.html:34
-msgid "Don't you have an account?"
-msgstr "Nie masz konta?"
 
 #: .\templates\accounts\login.html:35 .\templates\accounts\signup.html:38
 msgid "Forgot password?"
@@ -453,6 +499,23 @@ msgstr "Pomiary"
 #: .\templates\accounts\profile_info.html:182
 msgid "Edit"
 msgstr "Edytuj"
+
+#: .\templates\accounts\reset_password.html:29
+msgid "New Password"
+msgstr "Nowe hasło"
+
+#: .\templates\accounts\reset_password.html:30
+msgid "Confirm Password"
+msgstr "Potwierdź hasło"
+
+#: .\templates\accounts\reset_password.html:32
+#: .\venv\Lib\site-packages\django\forms\widgets.py:441
+msgid "Change"
+msgstr "Zmień"
+
+#: .\templates\accounts\reset_password.html:42
+msgid "Password changed successfully. Redirecting..."
+msgstr "Hasło zmienione pomyślnie. Przekierowanie..."
 
 #: .\templates\accounts\signup.html:25
 msgid "What's your weight goal?"
@@ -1675,10 +1738,6 @@ msgstr "Wyczyść"
 #: .\venv\Lib\site-packages\django\forms\widgets.py:440
 msgid "Currently"
 msgstr "Obecne"
-
-#: .\venv\Lib\site-packages\django\forms\widgets.py:441
-msgid "Change"
-msgstr "Zmień"
 
 #: .\venv\Lib\site-packages\django\forms\widgets.py:770
 msgid "Unknown"

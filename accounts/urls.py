@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-
+from django.conf.urls import handler404, handler500
 
 urlpatterns = [
     path("", views.home_page, name="home-page"),
@@ -34,3 +34,6 @@ urlpatterns = [
     path('data/get/get-graph-stats-info-monthly', views.get_graph_stats_info_monthly, name='get-graph-stats-info-monthly'),
     path('data/get/get-graph-stats-info-yearly', views.get_graph_stats_info_yearly, name='get-graph-stats-info-yearly'),
 ]
+
+handler404 = views.error_404
+handler500 = views.error_500

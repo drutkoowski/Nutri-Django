@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-14 21:48+0100\n"
+"POT-Creation-Date: 2022-12-15 00:38+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -567,25 +567,36 @@ msgstr "dnia na Nutri"
 msgid "days on Nutri"
 msgstr "dni na Nutri"
 
+#: .\static\scripts\forgot-password\main.js:33
 #: .\static\scripts\login\main.js:33
 msgid "Email input is not valid email."
 msgstr "Wprowadzony Email jest niepoprawny."
 
-#: .\static\scripts\login\main.js:53
-msgid "Password too short."
-msgstr "Twoje hasło jest zbyt krótkie!"
-
+#: .\static\scripts\forgot-password\main.js:71
 #: .\static\scripts\login\main.js:83
 msgid "We could not match any user with these credentials."
 msgstr "Nie udało nam się znaleźć użytkownika z podanymi danymi."
 
-#: .\static\scripts\login\main.js:87
+#: .\static\scripts\forgot-password\main.js:79
 msgid "Your account is not verified. Click at email we sent you."
 msgstr "Twoje konto jest niezweryfikowane. Sprawdź email, który Ci wysłaliśmy."
 
+#: .\static\scripts\forgot-password\main.js:88
 #: .\static\scripts\login\main.js:92
 msgid "Error occurred.. try again."
 msgstr "Wystąpił błąd.. spróbuj jeszcze raz."
+
+#: .\static\scripts\forgot-password\main.js:115
+msgid "Email field is not valid email."
+msgstr "Wprowadzony Email jest niepoprawny."
+
+#: .\static\scripts\login\main.js:53 .\static\scripts\reset-password\main.js:87
+msgid "Password too short."
+msgstr "Twoje hasło jest zbyt krótkie!"
+
+#: .\static\scripts\login\main.js:87
+msgid "Your account is not verified... Click at email we sent you."
+msgstr "Twoje konto jest niezweryfikowane. Sprawdź email, który Ci wysłaliśmy."
 
 #: .\static\scripts\login\main.js:121
 msgid "Email or password field is not valid."
@@ -723,16 +734,12 @@ msgid "Maintain Weight"
 msgstr "Utrzymać wagę"
 
 #: .\static\scripts\recipes\add\main.js:111
-#, fuzzy
-#| msgid "Searching for recipes in our database"
 msgid "Adding recipe into the database"
-msgstr "Szukanie Twojego przepisu w naszej bazie"
+msgstr "Dodawanie Twojego przepisu do bazy"
 
 #: .\static\scripts\recipes\add\main.js:117
-#, fuzzy
-#| msgid "Translating and formatting recipes"
 msgid "Translating and formating recipe"
-msgstr "Tłumaczenie oraz formatowanie przepisów"
+msgstr "Tłumaczenie oraz formatowanie przepisu"
 
 #: .\static\scripts\recipes\add\main.js:123
 #: .\static\scripts\recipes\ideas\main.js:134
@@ -816,6 +823,14 @@ msgstr "Zobacz"
 #: .\static\scripts\recipes\search\main.js:139
 msgid "Difficulty level: "
 msgstr "Poziom trudności: "
+
+#: .\static\scripts\reset-password\main.js:52
+msgid "Your password recovery link is not valid or not existing. Try again."
+msgstr "Twój link do odzyskiwania hasła jest nieprawidłowy lub nie istnieje. Spróbuj ponownie."
+
+#: .\static\scripts\reset-password\main.js:73
+msgid "Password mismatches."
+msgstr "Wpisane hasła się różnią."
 
 #: .\static\scripts\signup\main.js:156
 msgid "\"What's your weight goal?\""
@@ -976,6 +991,3 @@ msgstr "Edytuj Aktywność"
 
 #~ msgid "days"
 #~ msgstr "dni"
-
-#~ msgid "Password is too short!"
-#~ msgstr "Twoje hasło jest zbyt krótkie!"
