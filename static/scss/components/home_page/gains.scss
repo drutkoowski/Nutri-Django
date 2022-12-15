@@ -4,17 +4,15 @@
   grid-template-rows: 1fr 1fr;
   grid-row-gap: 10rem;
   position: relative;
-  height: 100vh;
-    @include respond(tab-sm) {
+  height: auto;
+  @include respond(tab-sm) {
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 1fr 1fr;
       grid-row-gap: 5rem;
-      height: auto;
-    }
-
+  }
    @include respond(phone-md) {
       grid-row-gap: 1rem;
-    }
+   }
 
    @include respond(phone-sm) {
       grid-template-columns: 1fr;

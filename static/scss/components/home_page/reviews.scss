@@ -2,12 +2,14 @@
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 1fr;
-  //margin-top: 15rem;
   height: 100vh;
   justify-content: center;
   margin-left: 5rem;
   margin-right: 5rem;
 
+  @include respond(tab-land) {
+    height: 60rem;
+  }
   @include respond(tab-port) {
     margin-top: 2rem;
   }
