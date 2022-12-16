@@ -18,6 +18,7 @@ class ExerciseUnit(models.Model):
     def get_unit_name_pl(self):
         return f"{self.pl_name}"
 
+
 #
 class ExerciseTimeUnit(models.Model):
     pl_time_unit_name = models.CharField(max_length=15, blank=True)
@@ -82,6 +83,7 @@ class Workout(models.Model):
     min_spent_sum = models.FloatField(blank=True, null=True)
     kcal_burnt_sum = models.FloatField(blank=True, null=True)
     created_by = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+
     def __str__(self):
         return f'{self.id} / {self.created_by}'
 

@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='userprofile',
             name='goal_kg',
-            field=models.CharField(default=models.CharField(max_length=5), max_length=3),
+            field=models.CharField(default=models.CharField(max_length=5)),
         ),
     ]
