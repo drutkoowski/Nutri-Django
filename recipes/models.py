@@ -15,3 +15,4 @@ class Recipe(models.Model):
     steps_pl = models.JSONField(blank=True, default=dict)
     steps_en = models.JSONField(blank=True, default=dict)
     verified = models.BooleanField(blank=True, default=True, null=True)
+#

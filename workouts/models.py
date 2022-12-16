@@ -18,7 +18,7 @@ class ExerciseUnit(models.Model):
     def get_unit_name_pl(self):
         return f"{self.pl_name}"
 
-
+#
 class ExerciseTimeUnit(models.Model):
     pl_time_unit_name = models.CharField(max_length=15, blank=True)
     en_time_unit_name = models.CharField(max_length=15, blank=True)
