@@ -1,1 +1,1 @@
-web: gunicorn instaclone.wsgi:application --log-file -
+web: gunicorn nutri.wsgi:application --log-file -
