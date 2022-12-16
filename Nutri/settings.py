@@ -29,7 +29,7 @@ DEBUG = config('DEBUG')
 import django_heroku
 ALLOWED_HOSTS = ['*']
 
-# AUTH_USER_MODEL = "accounts.Account"
+AUTH_USER_MODEL = "accounts.Account"
 # Application definition
 
 INSTALLED_APPS = [
