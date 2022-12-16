@@ -73,7 +73,7 @@ class UserProfile(models.Model):
     weight = models.CharField(max_length=5)
     years_old = models.CharField(max_length=3)
     gender = models.CharField(max_length=6)
-    goal_kg = models.CharField(max_length=3, default='0')
+    goal_kg = models.CharField(max_length=5, default='0')
     user = models.OneToOneField(Account, on_delete=models.CASCADE)
     chest_json = models.JSONField(blank=True, default=dict, null=True)
     weight_json = models.JSONField(blank=True, default=dict, null=True)
