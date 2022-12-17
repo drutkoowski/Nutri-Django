@@ -18,7 +18,11 @@ def get_static_file_path(request):
     if not request.user.is_authenticated or request.user is AnonymousUser:
         return dict(get_static_file_path=None)
     from Nutri.settings import STATIC_FILES_URL
-    static_path = STATIC_FILES_URL
+    from Nutri.settings import DEBUG
+    if DEBUG is True:
+        static_path = '/static/'
+    else:
+        static_path = STATIC_FILES_URL
     return dict(get_static_file_path=static_path)
 
 
