@@ -92,7 +92,7 @@
  </div>
 
 <div class="modal-queued modal-queued__today-meals-list not-visible">
-    <div class="modal-queued__content modal-queued__today-meals-list__content">
+    <div class="modal-queued__content modal-queued__today-meals-list__content {% if not todayMeals %}no-meals-added{% endif %}">
         <div class="modal-queued__close-button modal-queued__today-meals__close-button">&times;</div>
         <h1 class="modal-queued--heading">{% trans 'Your added meals for today.' %}</h1>
           {% if todayMeals %}

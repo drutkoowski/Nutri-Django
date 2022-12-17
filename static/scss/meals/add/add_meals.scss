@@ -247,11 +247,10 @@
         }
 
         p {
-          margin: 3rem 2rem;
+          margin: 8rem 2rem;
           font-size: 2rem;
           @include respond(tab-desktop) {
-            font-size: 1.75rem;
-            margin: 2rem 2rem;
+            margin: 10rem 2rem;
           }
           @include respond(tab-sm) {
             font-size: 1.45rem;
@@ -808,4 +807,15 @@
   justify-self: end;
   margin-right: 1.5rem;
 
+}
+.no-meals-added {
+  @include respond(tab-md){
+    width: 60rem;
+    .modal-queued--heading {
+      text-align: center!important;
+    }
+  }
+  @include respond(phone-md-sm){
+    min-height: unset;
+  }
 }

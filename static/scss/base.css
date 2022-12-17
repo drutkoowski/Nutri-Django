@@ -5261,12 +5261,11 @@ div.modal--calendar__content-summary {
           .add-meals__search__results__container {
             height: 25rem; } }
         .add-meals__search__results__container p {
-          margin: 3rem 2rem;
+          margin: 8rem 2rem;
           font-size: 2rem; }
           @media only screen and (max-width: 84.375em) {
             .add-meals__search__results__container p {
-              font-size: 1.75rem;
-              margin: 2rem 2rem; } }
+              margin: 10rem 2rem; } }
           @media only screen and (max-width: 46.875em) {
             .add-meals__search__results__container p {
               font-size: 1.45rem;
@@ -5740,6 +5739,16 @@ div.modal--calendar__content-summary {
 .today-meals-added-remove-btn {
   justify-self: end;
   margin-right: 1.5rem; }
+
+@media only screen and (max-width: 62.5em) {
+  .no-meals-added {
+    width: 60rem; }
+    .no-meals-added .modal-queued--heading {
+      text-align: center !important; } }
+
+@media only screen and (max-width: 25em) {
+  .no-meals-added {
+    min-height: unset; } }
 
 .meals-enter-layout-container {
   width: 100vw;
