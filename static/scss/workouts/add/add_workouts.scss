@@ -614,8 +614,8 @@
   animation-duration: 1.5s;
   animation-timing-function: ease-out;
   color: var(--color-white);
-   @include respond(tab-sm) {
-    font-size: 1.5rem!important;
+  @include respond(tab-sm) {
+    margin: 10rem auto;
   }
   @include respond(phone-lg){
      margin: 7.5rem auto!important;
@@ -761,6 +761,9 @@
   animation-duration: 1.5s;
   animation-timing-function: ease-out;
   color: var(--black-muted);
+  @include respond(tab-port){
+    margin: 10rem 0 auto 0;
+  }
 }
 
 .today-workouts-list__content__workout-elements{

@@ -149,7 +149,7 @@
     }
     @include respond(tab-port) {
       height: auto;
-      max-height: 55rem;
+      max-height: 65rem;
     }
     &__bar {
       margin: 2rem auto;
@@ -212,10 +212,10 @@
       border-radius: 5px;
       @include respond(tab-desktop) {
         height: 35rem;
-        margin: 5rem 5rem 5rem 5rem;
+        margin: 5rem 5rem 0 5rem;
       }
       @include respond(tab-port) {
-         margin: 2rem 1.5rem 5rem 1.5rem;
+         margin: 2rem 1.5rem 0 1.5rem;
       }
       &__container::-webkit-scrollbar-track {
         -webkit-box-shadow:  inset 0 0 6px rgba(0,0,0,0.3);
@@ -640,9 +640,6 @@
   animation-name: fade-bottom;
   animation-duration: 1.5s;
   animation-timing-function: ease-out;
-  @include respond(tab-sm) {
-    font-size: 1.5rem!important;
-  }
   @include respond(phone-lg){
      margin: 7.5rem auto!important;
   }
@@ -748,6 +745,7 @@
     font-size: 1.2rem;
     margin: 0.25rem auto 0.25rem auto;
   }
+
 
   span {
     align-self: center;

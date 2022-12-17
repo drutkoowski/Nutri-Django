@@ -2097,7 +2097,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
         margin-right: 1.5rem;
         display: inline-block;
         position: absolute;
-        top: 1rem;
+        top: 0.75rem;
         left: 0; }
     .navigation--dashboard--small__link:hover, .navigation--dashboard--small__link:active {
       background-position: 100%;
@@ -5176,7 +5176,7 @@ div.modal--calendar__content-summary {
     @media only screen and (max-width: 56.25em) {
       .add-meals__search {
         height: auto;
-        max-height: 55rem; } }
+        max-height: 65rem; } }
     .add-meals__search__bar {
       margin: 2rem auto;
       position: relative; }
@@ -5231,10 +5231,10 @@ div.modal--calendar__content-summary {
       @media only screen and (max-width: 84.375em) {
         .add-meals__search__results {
           height: 35rem;
-          margin: 5rem 5rem 5rem 5rem; } }
+          margin: 5rem 5rem 0 5rem; } }
       @media only screen and (max-width: 56.25em) {
         .add-meals__search__results {
-          margin: 2rem 1.5rem 5rem 1.5rem; } }
+          margin: 2rem 1.5rem 0 1.5rem; } }
       .add-meals__search__results__container::-webkit-scrollbar-track {
         -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
         border-radius: 10px;
@@ -5603,9 +5603,6 @@ div.modal--calendar__content-summary {
   animation-name: fade-bottom;
   animation-duration: 1.5s;
   animation-timing-function: ease-out; }
-  @media only screen and (max-width: 46.875em) {
-    .saved-results-info {
-      font-size: 1.5rem !important; } }
   @media only screen and (max-width: 37.5em) {
     .saved-results-info {
       margin: 7.5rem auto !important; } }
@@ -7488,7 +7485,7 @@ div.modal--calendar__content-summary {
   color: var(--color-white); }
   @media only screen and (max-width: 46.875em) {
     .saved-results-info {
-      font-size: 1.5rem !important; } }
+      margin: 10rem auto; } }
   @media only screen and (max-width: 37.5em) {
     .saved-results-info {
       margin: 7.5rem auto !important; } }
@@ -7608,7 +7605,9 @@ div.modal--calendar__content-summary {
   animation-duration: 1.5s;
   animation-timing-function: ease-out;
   color: var(--black-muted); }
-
+  @media only screen and (max-width: 56.25em) {
+    .no-saved-templates-info {
+      margin: 10rem 0 auto 0; } }
 @media only screen and (max-width: 84.375em) {
   .today-workouts-list__content__workout-elements__element p {
     font-size: 1.5rem; } }
