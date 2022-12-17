@@ -41,6 +41,10 @@
       min-height: 30rem;
       max-height: 80%;
       width: 50rem;
+      transition: all .3s ease-in;
+      &:hover {
+        transform: scale(1.05) translateY(-10px);
+      }
       @include respond(md-desktop){
         grid-column: 1/2;
         margin-left: 5rem;
@@ -86,6 +90,10 @@
       h1{
         font-size: 5rem;
         margin-top: 5rem;
+        transition: all .3s ease-in;
+        &:hover {
+          transform: scale(1.05);
+        }
         @include respond(md-desktop){
           font-size: 3.5rem;
         }
@@ -108,6 +116,10 @@
       div{
         margin-top: 5rem;
         font-size: 2.5rem;
+        transition: all .3s ease-in;
+        &:hover {
+          transform: scale(1.05);
+        }
         @include respond(tab-port){
            align-self: center;
            text-align: center;

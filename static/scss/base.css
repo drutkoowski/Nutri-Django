@@ -502,7 +502,10 @@ ORDER: Base + typography > general layout + grid > page layout > components
   color: #fff;
   display: flex;
   justify-content: center;
-  align-content: center; }
+  align-content: center;
+  transition: all .3s ease-in; }
+  .header:hover {
+    transform: scale(1.05); }
   .header__flex-container {
     display: flex;
     flex-direction: column; }
@@ -648,7 +651,10 @@ ORDER: Base + typography > general layout + grid > page layout > components
     grid-column: 2/3;
     min-height: 30rem;
     max-height: 80%;
-    width: 50rem; }
+    width: 50rem;
+    transition: all .3s ease-in; }
+    .about__img-phone:hover {
+      transform: scale(1.05) translateY(-10px); }
     @media only screen and (max-width: 93.75em) {
       .about__img-phone {
         grid-column: 1/2;
@@ -692,7 +698,10 @@ ORDER: Base + typography > general layout + grid > page layout > components
         justify-self: center; } }
     .about__meanings h1 {
       font-size: 5rem;
-      margin-top: 5rem; }
+      margin-top: 5rem;
+      transition: all .3s ease-in; }
+      .about__meanings h1:hover {
+        transform: scale(1.05); }
       @media only screen and (max-width: 93.75em) {
         .about__meanings h1 {
           font-size: 3.5rem; } }
@@ -713,7 +722,10 @@ ORDER: Base + typography > general layout + grid > page layout > components
           font-size: 2rem; } }
     .about__meanings div {
       margin-top: 5rem;
-      font-size: 2.5rem; }
+      font-size: 2.5rem;
+      transition: all .3s ease-in; }
+      .about__meanings div:hover {
+        transform: scale(1.05); }
       @media only screen and (max-width: 56.25em) {
         .about__meanings div {
           align-self: center;

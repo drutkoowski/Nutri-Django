@@ -3,7 +3,10 @@
     display: flex;
     justify-content: center;
     align-content: center;
-
+    transition: all .3s ease-in;
+    &:hover {
+        transform: scale(1.05);
+    }
     &__flex-container {
         display: flex;
         flex-direction: column;
