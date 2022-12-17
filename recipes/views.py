@@ -130,7 +130,7 @@ def add_new_recipe(request):
             recipe.person_count = recipe_servings
             recipe.author = user_profile.user.username
             recipe.verified = False
-            # recipe.save()
+            recipe.save()
             return JsonResponse({'status': 200, 'text': 'Recipe created.'})
         except:
             return JsonResponse({'status': 400, 'text': 'Recipe not created.'})
