@@ -2,25 +2,34 @@
 const carouselTrack = document.querySelector('.carousel__track')
 const mediaQuery = window.matchMedia('(max-width: 46.875em)')
 if (mediaQuery.matches){
-    const appendElement = `
-    <li class="carousel__slide">
-    <div class="carousel__slide__card carousel__slide__card--1">
-     <figure class="carousel__slide__card__flex-container story__shape">
-            <img class="carousel__slide__card__avatar" src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="User Image">
-          <figcaption class="story__caption carousel__slide__card__username">John</figcaption>
-       </figure>
-       <div class="carousel__slide__card__stars">
-           <img class="carousel__slide__card__stars__star" src="/static/images/svg/star.svg" alt="Star Icon">
-           <img class="carousel__slide__card__stars__star" src="/static/images/svg/star.svg" alt="Star Icon">
-           <img class="carousel__slide__card__stars__star" src="/static/images/svg/star.svg" alt="Star Icon">
-           <img class="carousel__slide__card__stars__star" src="/static/images/svg/star.svg" alt="Star Icon">
-           <img class="carousel__slide__card__stars__star" src="/static/images/svg/star.svg" alt="Star Icon">
-       </div>
-       <p class="carousel__slide__card__description">${gettext('This application is second to none. Unique in its simplicity.')}</p>
-       </div>
-    </li>
-`
-    carouselTrack.insertAdjacentHTML('beforeend', appendElement)
+   const langPrefix = window.location.href.split('/')[3];
+    const url = window.location.origin + `/${langPrefix}/get/static-path`
+    $.ajax({
+        type: 'get',
+        url: url,
+        success: function (res){
+            const filePath = res.path
+            const appendElement = `
+            <li class="carousel__slide">
+            <div class="carousel__slide__card carousel__slide__card--1">
+             <figure class="carousel__slide__card__flex-container story__shape">
+                    <img class="carousel__slide__card__avatar" src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="User Image">
+                  <figcaption class="story__caption carousel__slide__card__username">John</figcaption>
+               </figure>
+               <div class="carousel__slide__card__stars">
+                   <img class="carousel__slide__card__stars__star" src="${filePath}/images/svg/star.svg" alt="Star Icon">
+                   <img class="carousel__slide__card__stars__star" src="${filePath}/images/svg/star.svg" alt="Star Icon">
+                   <img class="carousel__slide__card__stars__star" src="${filePath}/images/svg/star.svg" alt="Star Icon">
+                   <img class="carousel__slide__card__stars__star" src="${filePath}/images/svg/star.svg" alt="Star Icon">
+                   <img class="carousel__slide__card__stars__star" src="${filePath}/images/svg/star.svg" alt="Star Icon">
+               </div>
+               <p class="carousel__slide__card__description">${gettext('This application is second to none. Unique in its simplicity.')}</p>
+               </div>
+            </li>
+        `
+            carouselTrack.insertAdjacentHTML('beforeend', appendElement)
+        }
+    })
 }
 
 

@@ -33,6 +33,7 @@ urlpatterns = [
     path('data/get/get-graph-stats-info-weekly', views.get_graph_stats_info_weekly, name='get-graph-stats-info-weekly'),
     path('data/get/get-graph-stats-info-monthly', views.get_graph_stats_info_monthly, name='get-graph-stats-info-monthly'),
     path('data/get/get-graph-stats-info-yearly', views.get_graph_stats_info_yearly, name='get-graph-stats-info-yearly'),
+    path('get/static-path', views.get_static_files_url, name='get-static-path')
 ]
 
 handler404 = views.error_404
