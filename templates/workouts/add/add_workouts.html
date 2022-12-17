@@ -5,6 +5,7 @@
      <script src="{% sass_src 'scripts/workouts/add/main.js' %}" defer></script>
 {% endblock scripts %}
 {% block content %}
+    <input type="hidden" id="static-path" value="{{ get_static_file_path }}">
     <div class="loader"></div>
       <div class="bg-video-fixed" id="add-workouts-video-container">
       <div class="overlay-large"></div>

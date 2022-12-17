@@ -9,6 +9,7 @@
 {% endblock scripts %}
 {% block content %}
     {% csrf_token %}
+    <input type="hidden" id="static-path" value="{{ get_static_file_path }}">
     <div class="loader"></div>
       <div class="bg-video-fixed" id="save-workouts-video-container">
       <div class="overlay-large"></div>

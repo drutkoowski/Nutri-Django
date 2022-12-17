@@ -8,6 +8,7 @@
     </script>
 {% endblock scripts %}
 {% block content %}
+    <input type="hidden" id="static-path" value="{{ get_static_file_path }}">
     {% csrf_token %}
     <div class="loader"></div>
       <div class="bg-video-fixed" id="add-meals-video-container">
