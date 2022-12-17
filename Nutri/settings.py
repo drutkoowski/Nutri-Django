@@ -199,10 +199,10 @@ if DEBUG is False:
     }
     MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/media/"
     DEFAULT_FILE_STORAGE = "Nutri.media_storages.MediaStorage"
+    STATICFILES_DIRS = [
+        'static',
+    ]
 else:
     STATIC_URL = 'static/'
 
-# STATICFILES_DIRS = [
-#     'static',
-# ]
 STATIC_FILES_URL = STATIC_URL
