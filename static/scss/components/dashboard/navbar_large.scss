@@ -57,9 +57,9 @@
         opacity: 0;
         width: 0;
         transition: all .8s cubic-bezier(0.65, -0.53, 0.215, 1.45);
-         @include respond(tab-land) {
+        @include respond(tab-land) {
             display: none;
-         }
+        }
     }
 
     &__list {
@@ -80,6 +80,9 @@
             display: none;
         }
         margin: 1rem;
+         @media only screen and (max-height: 53em) {
+            margin: 0;
+        };
         &__container{
             display: flex;
         }
@@ -93,6 +96,9 @@
             width: 3.5rem;
             height: 3.5rem;
             margin-top: 1.1rem;
+            @media only screen and (max-height: 53em) {
+                 margin-top: 0;
+            };
         }
         &:link,
         &:visited {
@@ -105,6 +111,9 @@
             position: relative;
             width: 40rem;
             margin-left: 5rem;
+            @media only screen and (max-height: 53em) {
+                padding: 0 2rem;
+            };
             p {
                 font-size: 4rem!important;
                 @include respond(phone-md){

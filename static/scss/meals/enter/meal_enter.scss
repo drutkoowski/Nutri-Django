@@ -53,6 +53,7 @@
       animation-duration: 1s;
       animation-timing-function: ease-out;
       padding: 2rem 0.5rem 0 0.5rem;
+
       @include respond(phone-lg){
         grid-column: 1/2;
       }
@@ -243,7 +244,7 @@
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-
+        cursor: pointer;
       }
       &--bar-code {
         background-image: linear-gradient(to right bottom, rgba(241, 241, 241, 0.3), rgba(82, 82, 82, 0.5)),
@@ -251,6 +252,7 @@
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
+        cursor: pointer;
 
       }
     }

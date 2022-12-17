@@ -2,7 +2,7 @@
 const searchContainer = document.querySelector('.saved-workouts__search')
 const adjustableCard = document.querySelector('.saved-workouts__added')
 const navbar = document.querySelector('.navbar--dashboard')
-
+const staticPath = document.querySelector('#static-path').value
 navbar.classList.toggle('fix-navbar')
 // buttons
 const saveNewWorkoutButton = document.querySelector('.saved-workouts__search__save-new__button')
@@ -47,12 +47,12 @@ const verifiedIconEdit = document.querySelector('#verified-edit')
 verifiedIconEdit.addEventListener('click', () => {
     if (verifiedIconEdit.id === 'verified-edit') {
         verifiedIconEdit.id = 'unverified-edit'
-        verifiedIconEdit.src = '/static/images/svg/unchecked.svg'
+        verifiedIconEdit.src = `${staticPath}images/svg/unchecked.svg`
         onlyVerifiedEdit = false
     }
     else {
         verifiedIconEdit.id = 'verified-edit'
-        verifiedIconEdit.src = '/static/images/svg/checked.svg'
+        verifiedIconEdit.src = `${staticPath}/images/svg/checked.svg`
         onlyVerifiedEdit = true
     }
 })
@@ -61,12 +61,12 @@ const verifiedIconAdd = document.querySelector('#verified-add')
 verifiedIconAdd.addEventListener('click', () => {
     if (verifiedIconAdd.id === 'verified-add') {
         verifiedIconAdd.id = 'unverified-add'
-        verifiedIconAdd.src = '/static/images/svg/unchecked.svg'
+        verifiedIconAdd.src = `${staticPath}images/svg/unchecked.svg`
         onlyVerifiedAdd = false
     }
     else {
         verifiedIconAdd.id = 'verified-add'
-        verifiedIconAdd.src = '/static/images/svg/checked.svg'
+        verifiedIconAdd.src = `${staticPath}images/svg/checked.svg`
         onlyVerifiedAdd = true
     }
 })

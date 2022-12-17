@@ -133,6 +133,9 @@
             display: inline;
             margin: 0;
         }
+        @media only screen and (max-height: 53em) {
+            margin-top: 0;
+        };
         &__container{
             display: flex;
         }
@@ -147,6 +150,10 @@
             width: 3.5rem;
             height: 3.5rem;
             padding-top: 10px;
+             @media only screen and (max-height: 53em) {
+                 padding-top: 0;
+                 transform: translateY(-3px);
+            };
         }
         &:link,
         &:visited {
@@ -160,6 +167,9 @@
             position: relative;
             width: 40rem;
             margin-left: 5rem;
+            @media only screen and (max-height: 53em) {
+                 padding: 0 2rem;
+            };
             @include respond(phone-md-sm){
                 font-size: 3rem;
                 width: 30rem;

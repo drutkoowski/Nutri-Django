@@ -1852,6 +1852,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
   @media only screen and (max-width: 75em) {
     .navigation--dashboard__item {
       display: none; } }
+  @media only screen and (max-height: 53em) {
+    .navigation--dashboard__item {
+      margin: 0; } }
   .navigation--dashboard__item__container {
     display: flex; }
 
@@ -1863,7 +1866,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
   width: 3.5rem;
   height: 3.5rem;
   margin-top: 1.1rem; }
-
+  @media only screen and (max-height: 53em) {
+    .navigation--dashboard__link__icon {
+      margin-top: 0; } }
 .navigation--dashboard__link:link, .navigation--dashboard__link:visited {
   display: inline-block;
   font-weight: bold;
@@ -1874,6 +1879,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
   position: relative;
   width: 40rem;
   margin-left: 5rem; }
+  @media only screen and (max-height: 53em) {
+    .navigation--dashboard__link:link, .navigation--dashboard__link:visited {
+      padding: 0 2rem; } }
   .navigation--dashboard__link:link p, .navigation--dashboard__link:visited p {
     font-size: 4rem !important; }
     @media only screen and (max-width: 28.5em) {
@@ -2049,6 +2057,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
       .navigation--dashboard--small__item {
         display: inline;
         margin: 0; } }
+    @media only screen and (max-height: 53em) {
+      .navigation--dashboard--small__item {
+        margin-top: 0; } }
     .navigation--dashboard--small__item__container {
       display: flex; }
   .navigation--dashboard--small__link {
@@ -2060,6 +2071,10 @@ ORDER: Base + typography > general layout + grid > page layout > components
       width: 3.5rem;
       height: 3.5rem;
       padding-top: 10px; }
+      @media only screen and (max-height: 53em) {
+        .navigation--dashboard--small__link__icon {
+          padding-top: 0;
+          transform: translateY(-3px); } }
     .navigation--dashboard--small__link:link, .navigation--dashboard--small__link:visited {
       display: inline-block;
       font-size: 4rem;
@@ -2071,6 +2086,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
       position: relative;
       width: 40rem;
       margin-left: 5rem; }
+      @media only screen and (max-height: 53em) {
+        .navigation--dashboard--small__link:link, .navigation--dashboard--small__link:visited {
+          padding: 0 2rem; } }
       @media only screen and (max-width: 25em) {
         .navigation--dashboard--small__link:link, .navigation--dashboard--small__link:visited {
           font-size: 3rem;
@@ -2908,6 +2926,9 @@ label.year {
   @media only screen and (max-width: 62.5em) {
     .grid-layout-container {
       grid-template-columns: 1fr; } }
+  @media only screen and (max-height: 50em) {
+    .grid-layout-container {
+      height: auto !important; } }
 .dashboard__content {
   max-height: 100vh;
   font-size: 2rem;
@@ -2921,6 +2942,9 @@ label.year {
   border-radius: 20px;
   color: white;
   margin-left: -20px; }
+  @media only screen and (max-height: 50em) {
+    .dashboard__content {
+      max-height: unset; } }
   @media only screen and (max-width: 75em) {
     .dashboard__content {
       display: grid;
@@ -3884,6 +3908,9 @@ label.year {
   border-radius: 20px;
   color: white;
   margin-left: -20px; }
+  @media only screen and (max-height: 50em) {
+    .activity-calendar {
+      max-height: unset; } }
   @media only screen and (max-width: 75em) {
     .activity-calendar {
       margin-top: 2rem;
@@ -4100,10 +4127,7 @@ label.year {
   height: 100vh;
   z-index: 1000;
   background-color: rgba(112, 111, 111, 0.7);
-  display: flex;
-  animation-name: fade-bottom;
-  animation-duration: 1s;
-  animation-timing-function: ease-out; }
+  display: flex; }
   .modal--calendar__info-message {
     margin-top: 2rem;
     padding-left: 2.5rem;
@@ -4144,7 +4168,6 @@ label.year {
     width: 70%;
     max-height: 85%;
     padding: 5rem 5rem;
-    transition: all .2s ease-in;
     justify-self: center;
     align-self: center;
     margin-right: auto;
@@ -4154,7 +4177,11 @@ label.year {
     position: relative;
     -webkit-box-shadow: 0px 0px 18px -7px #42445a;
     -moz-box-shadow: 0px 0px 18px -7px #42445a;
-    box-shadow: 0px 0px 18px -7px #42445a; }
+    box-shadow: 0px 0px 18px -7px #42445a;
+    transition: all .3s ease-in;
+    animation-name: fade-bottom;
+    animation-duration: 1s;
+    animation-timing-function: ease-out; }
     @media only screen and (max-width: 84.375em) {
       .modal--calendar__content {
         width: 75%; } }
@@ -5927,12 +5954,14 @@ div.modal--calendar__content-summary {
       background-image: linear-gradient(to right bottom, rgba(241, 241, 241, 0.3), rgba(82, 82, 82, 0.5)), url("/static/images/traditional-way-meal-enter.jpg");
       background-size: cover;
       background-position: center;
-      background-repeat: no-repeat; }
+      background-repeat: no-repeat;
+      cursor: pointer; }
     .modal-enter__content__container__card--bar-code {
       background-image: linear-gradient(to right bottom, rgba(241, 241, 241, 0.3), rgba(82, 82, 82, 0.5)), url("https://static.boredpanda.com/blog/wp-content/uploads/2017/08/Clever-Barcode-Designs-103-599e7fd2f3697__700.jpg");
       background-position: center;
       background-repeat: no-repeat;
-      background-size: cover; }
+      background-size: cover;
+      cursor: pointer; }
 
 @media only screen and (max-width: 31.25em) {
   .modal-enter__content {

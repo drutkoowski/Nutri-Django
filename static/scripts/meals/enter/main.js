@@ -18,8 +18,11 @@ const categoryInput = document.querySelector('#category')
 const allInputs = Array.from(document.querySelectorAll('.meals-enter__input'))
 allInputs.forEach(input => {
     input.addEventListener('input', () => {
-        input.value = input.value.slice(0,4);
-        input.dataset.value = input.value
+        if (input.id !== 'name'){
+            input.value = input.value.slice(0,4);
+            input.dataset.value = input.value
+        }
+
     })
 })
 categoryInput.addEventListener('change', () => {
@@ -41,8 +44,8 @@ barCodeBtn.addEventListener('click', () => {
     const appendContent = `
     <div class="modal-enter__content__container__bar-code">
          <h3>${gettext('Type BAR Code Below')}</h3>
-         <p class="modal-enter__content__container__bar-code__error-msg" style="visibility: hidden; color=va"></p>
-         <div class="modal-enter__content__container__bar-code__search"><input id="bar-code" type="text" placeholder="${gettext('Bar Code')}"/><span><img class="modal-enter__content__container__bar-code__search__icon" src="${staticPath}images/svg/search.svg" alt="Search Icon" /></span></div>
+         <p class="modal-enter__content__container__bar-code__error-msg" style="visibility: hidden; color=var(--red-light)"></p>
+         <div class="modal-enter__content__container__bar-code__search"><input id="bar-code" type="text" placeholder="${gettext('Bar Code')}"/><span><img class="modal-enter__content__container__bar-code__search__icon" style="cursor:pointer" src="${staticPath}images/svg/search.svg" alt="Search Icon" /></span></div>
          <p>${gettext('Bar code usually contains 13 letters, fe. "5449000000996" stands for Coca Cola.')}</p>
     </div>
     `
