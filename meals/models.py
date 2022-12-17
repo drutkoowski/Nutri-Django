@@ -37,8 +37,8 @@ class IngredientCategory(models.Model):
 
 
 class Ingredient(models.Model):
-    pl_name = models.CharField(max_length=150, blank=True)
-    en_name = models.CharField(max_length=150, blank=False)
+    pl_name = models.CharField(max_length=155, blank=True)
+    en_name = models.CharField(max_length=155, blank=False)
     category = models.ForeignKey(IngredientCategory, on_delete=models.SET_DEFAULT, default=None, blank=True, null=True)
     unit = models.ForeignKey(IngredientUnit, blank=False, on_delete=models.SET_DEFAULT, default=None)
     kcal = models.FloatField(blank=False, default=None)
