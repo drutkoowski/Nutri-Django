@@ -274,12 +274,12 @@ const ajaxCallSearch = (query) => {
                 searchElements.forEach(el => {
                     el.remove()
                 })
-                searchResponseBox.innerHTML = `<h3 class="search-results-info" style="margin-top: 5rem!important;">${gettext('No search results.')}</h3>`
+                searchResponseBox.innerHTML = `<h3 class="search-results-info">${gettext('No search results.')}</h3>`
             }
 
             },
         error: function (error) {
-            searchResponseBox.innerHTML = `<h3 class="search-results-info" style="margin-top: 5rem!important;">${gettext('No search results.')}</h3>`
+            searchResponseBox.innerHTML = `<h3 class="search-results-info">${gettext('No search results.')}</h3>`
             const searchElements = Array.from(searchResponseBox.children)
                 searchElements.forEach(el => {
                     el.remove()

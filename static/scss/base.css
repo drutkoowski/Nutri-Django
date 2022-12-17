@@ -5261,11 +5261,12 @@ div.modal--calendar__content-summary {
           .add-meals__search__results__container {
             height: 25rem; } }
         .add-meals__search__results__container p {
-          margin: 8rem 2rem;
+          margin: 3rem 2rem;
           font-size: 2rem; }
           @media only screen and (max-width: 84.375em) {
             .add-meals__search__results__container p {
-              margin: 10rem 2rem; } }
+              font-size: 1.75rem;
+              margin: 2rem 2rem; } }
           @media only screen and (max-width: 46.875em) {
             .add-meals__search__results__container p {
               font-size: 1.45rem;
@@ -5585,7 +5586,8 @@ div.modal--calendar__content-summary {
   animation-name: fade-bottom;
   animation-duration: 1.5s;
   animation-timing-function: ease-out;
-  transition: all .2s ease-in; }
+  transition: all .2s ease-in;
+  margin-top: 10rem !important; }
   @media only screen and (max-width: 46.875em) {
     .search-results-info {
       margin-top: 10rem !important;
@@ -7484,7 +7486,7 @@ div.modal--calendar__content-summary {
       font-size: 1.15rem !important; } }
 .saved-results-info {
   font-size: 2rem;
-  margin: 15rem auto;
+  margin: 10rem auto;
   text-align: center;
   display: block;
   transition: all .2s ease-in;

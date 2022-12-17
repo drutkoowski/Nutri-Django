@@ -57,11 +57,13 @@ def live_search_ingredients(request):
         lang_code = request.path.split('/')[1]
         if query != '':
             if lang_code == 'pl' and is_verified == 'true':
-                check_if_ingredient_exists = Ingredient.objects.filter(
-                    pl_name__iregex=r"\b{0}\b".format(query), verified=True).all().union(
-                    Ingredient.objects.filter(
-                        pl_name__istartswith=query, verified=True
-                    )).all()
+                # check_if_ingredient_exists = Ingredient.objects.filter(
+                #     pl_name__iregex=r"\b{0}\b".format(query), verified=True).all().union(
+                #     Ingredient.objects.filter(
+                #         pl_name__istartswith=query, verified=True
+                #     )).all()
+                check_if_ingredient_exists = Ingredient.objects.filter(pl_name__search=query).all()
+
             elif lang_code == 'pl' and is_verified == 'false':
                 check_if_ingredient_exists = Ingredient.objects.filter(
                     pl_name__iregex=r"\b{0}\b".format(query)).all().union(

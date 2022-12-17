@@ -247,10 +247,11 @@
         }
 
         p {
-          margin: 8rem 2rem;
+          margin: 3rem 2rem;
           font-size: 2rem;
           @include respond(tab-desktop) {
-            margin: 10rem 2rem;
+            font-size: 1.75rem;
+            margin: 2rem 2rem;
           }
           @include respond(tab-sm) {
             font-size: 1.45rem;
@@ -621,6 +622,7 @@
   animation-duration: 1.5s;
   animation-timing-function: ease-out;
   transition: all .2s ease-in;
+  margin-top: 10rem!important;
   @include respond(tab-sm) {
     margin-top: 10rem!important;
     font-size: 1.5rem!important;
