@@ -317,12 +317,15 @@ def check_latest_change_value(change_json, month_num, year) -> float:
 
 
 def compare_change_latest_change(change_json, change) -> bool:
-    last_change_items = change_json[-1].items()
-    for key, value in last_change_items:
-        value_handler = value
-        if value_handler == change:
-            return True
-    else:
+    try:
+        last_change_items = change_json[-1].items()
+        for key, value in last_change_items:
+            value_handler = value
+            if value_handler == change:
+                return True
+        else:
+            return False
+    except:
         return False
 
 
