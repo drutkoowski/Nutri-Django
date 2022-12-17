@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'recipes',
     'sass_processor',
     "storages",
+    'django.contrib.postgres'
 ]
 
 # --- SASS Configuration ---
