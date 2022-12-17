@@ -1,5 +1,6 @@
 /// CAROUSEL CONTENT APPEND !!!!!
 const carouselTrack = document.querySelector('.carousel__track')
+const staticPath = document.querySelector('#static-path').value
 const mediaQuery = window.matchMedia('(max-width: 46.875em)')
 if (mediaQuery.matches){
     const langPrefix = window.location.href.split('/')[3];
@@ -17,11 +18,11 @@ if (mediaQuery.matches){
                   <figcaption class="story__caption carousel__slide__card__username">John</figcaption>
                </figure>
                <div class="carousel__slide__card__stars">
-                   <img class="carousel__slide__card__stars__star" src="${filePath}/images/svg/star.svg" alt="Star Icon">
-                   <img class="carousel__slide__card__stars__star" src="${filePath}/images/svg/star.svg" alt="Star Icon">
-                   <img class="carousel__slide__card__stars__star" src="${filePath}/images/svg/star.svg" alt="Star Icon">
-                   <img class="carousel__slide__card__stars__star" src="${filePath}/images/svg/star.svg" alt="Star Icon">
-                   <img class="carousel__slide__card__stars__star" src="${filePath}/images/svg/star.svg" alt="Star Icon">
+                   <img class="carousel__slide__card__stars__star" src="${staticPath}images/svg/star.svg" alt="Star Icon">
+                   <img class="carousel__slide__card__stars__star" src="${staticPath}images/svg/star.svg" alt="Star Icon">
+                   <img class="carousel__slide__card__stars__star" src="${staticPath}images/svg/star.svg" alt="Star Icon">
+                   <img class="carousel__slide__card__stars__star" src="${staticPath}images/svg/star.svg" alt="Star Icon">
+                   <img class="carousel__slide__card__stars__star" src="${staticPath}images/svg/star.svg" alt="Star Icon">
                </div>
                <p class="carousel__slide__card__description">${gettext('This application is second to none. Unique in its simplicity.')}</p>
                </div>
