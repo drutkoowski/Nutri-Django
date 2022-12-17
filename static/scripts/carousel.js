@@ -9,6 +9,7 @@ if (mediaQuery.matches){
         url: url,
         success: function (res){
             const filePath = res.path
+            console.log(filePath)
             const appendElement = `
             <li class="carousel__slide">
             <div class="carousel__slide__card carousel__slide__card--1">

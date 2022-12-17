@@ -211,3 +211,4 @@ STATICFILES_DIRS = [
 ]
 MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/media/"
 DEFAULT_FILE_STORAGE = "instaclone.media_storages.MediaStorage"
+BEA = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)

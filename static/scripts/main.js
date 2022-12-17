@@ -95,7 +95,6 @@ if (location.href !== location.origin + '/pl' || location.href !== location.orig
     })
 }
 else {
-    console.log('eaea')
     const gainsVideo = document.getElementById('gains-video')
     const goalsVideo = document.getElementById('goals-video')
     if (gainsVideo && goalsVideo) {
