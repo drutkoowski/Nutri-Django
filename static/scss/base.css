@@ -427,9 +427,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
     margin-left: 5rem; }
     .navigation__link:link p, .navigation__link:visited p {
       margin-left: 2rem; }
-    @media only screen and (max-width: 21.875em) {
+    @media only screen and (max-width: 28.5em) {
       .navigation__link:link, .navigation__link:visited {
-        width: 20rem;
+        width: 30rem;
         margin-left: 0;
         padding: 1rem 0;
         font-size: 3rem; } }
