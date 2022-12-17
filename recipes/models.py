@@ -3,8 +3,8 @@ from django.db import models
 
 # Create your models here.
 class Recipe(models.Model):
-    name_pl = models.CharField(max_length=100,default='')
-    name_en = models.CharField(max_length=100)
+    name_pl = models.CharField(max_length=150,default='')
+    name_en = models.CharField(max_length=150)
     person_count = models.IntegerField(blank=True, null=True)
     difficulty_pl = models.CharField(max_length=50, blank=True, null=True)
     difficulty_en = models.CharField(max_length=50, blank=True, null=True)

@@ -5,8 +5,8 @@ from accounts.models import UserProfile
 # Create your models here.
 
 class IngredientUnit(models.Model):
-    pl_name = models.CharField(max_length=50)
-    en_name = models.CharField(max_length=50)
+    pl_name = models.CharField(max_length=120)
+    en_name = models.CharField(max_length=120)
     multiplier = models.IntegerField(default=0, blank=True)
 
     def __str__(self):
@@ -37,8 +37,8 @@ class IngredientCategory(models.Model):
 
 
 class Ingredient(models.Model):
-    pl_name = models.CharField(max_length=100, blank=True)
-    en_name = models.CharField(max_length=100, blank=False)
+    pl_name = models.CharField(max_length=150, blank=True)
+    en_name = models.CharField(max_length=150, blank=False)
     category = models.ForeignKey(IngredientCategory, on_delete=models.SET_DEFAULT, default=None, blank=True, null=True)
     unit = models.ForeignKey(IngredientUnit, blank=False, on_delete=models.SET_DEFAULT, default=None)
     kcal = models.FloatField(blank=False, default=None)

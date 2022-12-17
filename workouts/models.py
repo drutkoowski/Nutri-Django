@@ -55,8 +55,8 @@ class ExerciseCategory(models.Model):
 
 
 class Exercise(models.Model):
-    pl_name = models.CharField(max_length=100, blank=True)
-    en_name = models.CharField(max_length=100, blank=False)
+    pl_name = models.CharField(max_length=150, blank=True)
+    en_name = models.CharField(max_length=150, blank=False)
     category = models.ForeignKey(ExerciseCategory, on_delete=models.SET_DEFAULT, default=None, blank=True, null=True)
     unit = models.ForeignKey(ExerciseUnit, blank=True, default=None, null=True, on_delete=models.CASCADE)
     time_unit = models.ForeignKey(ExerciseTimeUnit, blank=True, null=True, on_delete=models.SET_DEFAULT, default=None)
@@ -100,7 +100,7 @@ class WorkoutTemplateElement(models.Model):
 
 class WorkoutTemplate(models.Model):
     workout_elements = models.ManyToManyField(WorkoutTemplateElement, default='', null=True)
-    workout_name = models.CharField(max_length=50, blank=False)
+    workout_name = models.CharField(max_length=100, blank=False)
     kcal_burnt_sum = models.FloatField(blank=True, null=True, default=None)
     min_spent_sum = models.FloatField(blank=False, null=True, default=None)
     created_by = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
