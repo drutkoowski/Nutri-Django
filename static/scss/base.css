@@ -732,7 +732,10 @@ ORDER: Base + typography > general layout + grid > page layout > components
           text-align: center;
           justify-content: center;
           justify-items: center;
-          margin-top: 2rem; } }
+          margin-top: 2rem;
+          width: 20rem;
+          display: grid;
+          grid-template-columns: 0.25fr 1fr; } }
       .about__meanings div h3 {
         display: inline-block;
         margin-left: 2rem; }
@@ -740,10 +743,13 @@ ORDER: Base + typography > general layout + grid > page layout > components
           .about__meanings div h3 {
             font-size: 2rem;
             vertical-align: text-top; } }
+        @media only screen and (max-width: 56.25em) {
+          .about__meanings div h3 {
+            margin-left: 0;
+            text-align: start; } }
         @media only screen and (max-width: 31.25em) {
           .about__meanings div h3 {
-            font-size: 1.5rem;
-            margin-left: 0.5rem; } }
+            font-size: 1.5rem; } }
 .scroll-up-arrow {
   position: fixed;
   top: 92%;

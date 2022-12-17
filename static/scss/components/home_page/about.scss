@@ -126,6 +126,9 @@
            justify-content: center;
            justify-items: center;
            margin-top: 2rem;
+           width: 20rem;
+           display: grid;
+           grid-template-columns: 0.25fr 1fr;
         }
         h3 {
            display: inline-block;
@@ -134,9 +137,12 @@
              font-size: 2rem;
              vertical-align: text-top;
           }
+          @include respond(tab-port){
+            margin-left: 0;
+            text-align: start;
+          }
           @include respond(phone-md-lg){
             font-size: 1.5rem;
-            margin-left: 0.5rem;
           }
         }
       }
