@@ -107,13 +107,17 @@ def add_new_recipe(request):
         recipe_steps = json.loads(request.POST.get('recipeSteps'))
         recipe_ingredients = json.loads(request.POST.get('recipeIngredients'))
         recipe = Recipe()
+        ingredients_dict = {
+            'ingredient': recipe_ingredients[0]['ingredient'],
+            'quantity': recipe_ingredients[0]['quantity']
+        }
         try:
             if lang_code == 'pl':
                 recipe.name_pl = recipe_name
                 recipe.name_en = translate_recipe_name(recipe_name, 'en')
                 recipe.difficulty_pl = translate_recipe_difficulty_to_pl(recipe_difficulty)
                 recipe.difficulty_en = recipe_difficulty
-                recipe.ingredients_pl = recipe_ingredients
+                recipe.ingredients_pl = ingredients_dict
                 recipe.ingredients_en = translate_recipe_ingredients(recipe_ingredients, 'en')
                 recipe.steps_pl = recipe_steps
                 recipe.steps_en = translate_recipe_steps(recipe_steps, 'en')
@@ -130,7 +134,11 @@ def add_new_recipe(request):
             recipe.person_count = recipe_servings
             recipe.author = user_profile.user.username
             recipe.verified = False
-            recipe.save()
+            check_if_existing = Recipe.objects.filter(Q(name_pl__iexact=recipe.name_pl) | Q(name_en__iexact=recipe.name_en)).all()
+            if check_if_existing is not None and check_if_existing.count() > 0:
+                return JsonResponse({'status': 400, 'text': 'Recipe not created.'})
+            else:
+                recipe.save()
             return JsonResponse({'status': 200, 'text': 'Recipe created.'})
         except:
             return JsonResponse({'status': 400, 'text': 'Recipe not created.'})

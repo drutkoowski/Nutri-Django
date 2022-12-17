@@ -142,7 +142,7 @@ saveRecipeBtn.addEventListener('click', () => {
                 // setTimeout(function (){
                 //     location.reload()
                 // }, 2500)
-                location.reload()
+                // location.reload()
             },
             complete: function (res){
                  clearInterval(functionTimeExecutionCounter)

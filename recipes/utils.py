@@ -167,6 +167,7 @@ def convert_en_spoonacular_unit(unit: str, amount: float) -> str:
         unit_dict = {
             'cup': 'szklanka',
             'tablespoon': 'łyżka stołowa',
+            'tbsp': 'łyżka stołowa',
             'teaspoon': 'łyżeczka',
             'pound': 'kg',
             'ounce': 'g',
