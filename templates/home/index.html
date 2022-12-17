@@ -17,7 +17,11 @@
             </div>
         </div>
         <div class="about grid-full-span reveal fade-bottom" id="about">
-            <img src="{% static 'images/bg_photo.png' %}" class="about__img-phone" alt="Phone Img">
+            {% if 'pl' in request.path %}
+                 <img src="{% static 'images/bg_photo_pl.png' %}" class="about__img-phone" alt="Phone Img">
+            {% else %}
+                 <img src="{% static 'images/bg_photo_en.png' %}" class="about__img-phone" alt="Phone Img">
+            {% endif %}
             <div class="about__meanings">
                 <h1>Nutri - {% trans ' one word' %}<span class="header__nutri-dot">.</span>{% trans ' Many meanings' %}<span class="header__nutri-dot">.</span></h1>
                 <div>
