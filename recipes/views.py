@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.http import JsonResponse
 
+from Nutri.settings import DEBUG
 from accounts.models import UserProfile
 from recipes.models import Recipe
 from django.shortcuts import render, redirect
@@ -42,27 +43,43 @@ def live_search_recipes(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
         query = request.GET.get('query')
         lang_code = request.path.split('/')[1]
-        is_verified = request.GET.get('isVerified')
+        is_verified = str(request.GET.get('isVerified'))
         if is_verified == 'true':
             is_verified = True
         else:
             is_verified = False
         if query != '':
-            if lang_code == 'pl':
-                check_if_recipe_exists = Recipe.objects.filter(
-                    Q(name_pl__istartswith=query) | Q(name_pl__icontains=query) & Q(verified=is_verified))
-            else:
-                check_if_recipe_exists = Recipe.objects.filter(
-                    Q(name_en__istartswith=query) | Q(name_en__icontains=query) & Q(verified=is_verified))
-                # check_if_recipe_exists = Recipe.objects.filter(
-                #     name_en__iregex=r"\b{0}\b".format(query)).all().union(
-                #     Recipe.objects.filter(
-                #         name_en__istartswith=query
-                #     )).all().union(
-                #     Recipe.objects.filter(
-                #         name_en__icontains=query
-                #     )).all()
-
+            if lang_code == 'pl' and is_verified is True:
+                if DEBUG is True:
+                    check_if_recipe_exists = Recipe.objects.filter(
+                        Q(name_pl__istartswith=query) | Q(name_pl__icontains=query) & Q(verified=is_verified))
+                else:
+                    check_if_recipe_exists = Recipe.objects.filter(name_pl__search=query).all()
+                    if check_if_recipe_exists.count() == 0:
+                        check_if_recipe_exists = Recipe.objects.filter(pl_name__istartswith=query).all()
+            if lang_code == 'pl' and is_verified is False:
+                if DEBUG is True:
+                    check_if_recipe_exists = Recipe.objects.filter(Q(name_pl__istartswith=query) | Q(name_pl__icontains=query))
+                else:
+                    check_if_recipe_exists = Recipe.objects.filter(name_pl__search=query).all()
+                    if check_if_recipe_exists.count() == 0:
+                        check_if_recipe_exists = Recipe.objects.filter(pl_name__istartswith=query).all()
+            if lang_code == 'en' and is_verified is True:
+                if DEBUG is True:
+                    check_if_recipe_exists = Recipe.objects.filter(
+                        Q(name_en__istartswith=query) | Q(name_en__icontains=query) & Q(verified=is_verified))
+                else:
+                    check_if_recipe_exists = Recipe.objects.filter(name_en__search=query, verified=True).all()
+                    if check_if_recipe_exists.count() == 0:
+                        check_if_recipe_exists = Recipe.objects.filter(en_name__istartswith=query, verified=True).all()
+            if lang_code == 'en' and is_verified is False:
+                if DEBUG is True:
+                    check_if_recipe_exists = Recipe.objects.filter(
+                        Q(name_en__istartswith=query) | Q(name_en__icontains=query))
+                else:
+                    check_if_recipe_exists = Recipe.objects.filter(name_en__search=query).all()
+                    if check_if_recipe_exists.count() == 0:
+                        check_if_recipe_exists = Recipe.objects.filter(en_name__istartswith=query).all()
             # "\y" or "\b" depends on postgres or not (\y - postgres)
             if check_if_recipe_exists is not None and check_if_recipe_exists.count() > 0:
                 recipes = list(check_if_recipe_exists.values())

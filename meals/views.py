@@ -1,6 +1,6 @@
 import datetime
 import json
-
+from Nutri.settings import DEBUG
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.http import JsonResponse
@@ -57,30 +57,52 @@ def live_search_ingredients(request):
         lang_code = request.path.split('/')[1]
         if query != '':
             if lang_code == 'pl' and is_verified == 'true':
-                # check_if_ingredient_exists = Ingredient.objects.filter(
-                #     pl_name__iregex=r"\b{0}\b".format(query), verified=True).all().union(
-                #     Ingredient.objects.filter(
-                #         pl_name__istartswith=query, verified=True
-                #     )).all()
-                check_if_ingredient_exists = Ingredient.objects.filter(pl_name__search=query).all()
+                if DEBUG is True:
+                    check_if_ingredient_exists = Ingredient.objects.filter(
+                        pl_name__iregex=r"\b{0}\b".format(query), verified=True).all().union(
+                        Ingredient.objects.filter(
+                            pl_name__istartswith=query, verified=True
+                        )).all()
+                else:
+                    check_if_ingredient_exists = Ingredient.objects.filter(pl_name__search=query, verified=True).all()
+                    if check_if_ingredient_exists.count() == 0:
+                        check_if_ingredient_exists = Ingredient.objects.filter(pl_name__istartswith=query, verified=True).all()
+
             elif lang_code == 'pl' and is_verified == 'false':
-                check_if_ingredient_exists = Ingredient.objects.filter(
-                    pl_name__iregex=r"\b{0}\b".format(query)).all().union(
-                    Ingredient.objects.filter(
-                        pl_name__istartswith=query
-                    )).all()
+                if DEBUG is True:
+                    check_if_ingredient_exists = Ingredient.objects.filter(
+                        pl_name__iregex=r"\b{0}\b".format(query)).all().union(
+                        Ingredient.objects.filter(
+                            pl_name__istartswith=query
+                        )).all()
+                else:
+                    check_if_ingredient_exists = Ingredient.objects.filter(pl_name__search=query).all()
+                    if check_if_ingredient_exists.count() == 0:
+                        check_if_ingredient_exists = Ingredient.objects.filter(pl_name__istartswith=query).all()
+
             if lang_code == 'en' and is_verified == 'true':
-                check_if_ingredient_exists = Ingredient.objects.filter(
-                    en_name__iregex=r"\b{0}\b".format(query), verified=True).all().union(
-                    Ingredient.objects.filter(
-                        en_name__istartswith=query, verified=True
-                    )).all()
+                if DEBUG is True:
+                    check_if_ingredient_exists = Ingredient.objects.filter(
+                        en_name__iregex=r"\b{0}\b".format(query), verified=True).all().union(
+                        Ingredient.objects.filter(
+                            en_name__istartswith=query, verified=True
+                        )).all()
+                else:
+                    check_if_ingredient_exists = Ingredient.objects.filter(en_name__search=query, verified=True).all()
+                    if check_if_ingredient_exists.count() == 0:
+                        check_if_ingredient_exists = Ingredient.objects.filter(en_name__istartswith=query,
+                                                                               verified=True).all()
             elif lang_code == 'en' and is_verified == 'false':
-                check_if_ingredient_exists = Ingredient.objects.filter(
-                    en_name__iregex=r"\b{0}\b".format(query)).all().union(
-                    Ingredient.objects.filter(
-                        en_name__istartswith=query
-                    )).all()
+                if DEBUG is True:
+                    check_if_ingredient_exists = Ingredient.objects.filter(
+                        en_name__iregex=r"\b{0}\b".format(query)).all().union(
+                        Ingredient.objects.filter(
+                            en_name__istartswith=query
+                        )).all()
+                else:
+                    check_if_ingredient_exists = Ingredient.objects.filter(en_name__search=query).all()
+                    if check_if_ingredient_exists.count() == 0:
+                        check_if_ingredient_exists = Ingredient.objects.filter(en_name__istartswith=query).all()
 
             # "\y" or "\b" depends on postgres or not (\y - postgres)
             if check_if_ingredient_exists is not None and check_if_ingredient_exists.count() > 0:

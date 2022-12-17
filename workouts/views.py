@@ -4,6 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
+
+from Nutri.settings import DEBUG
 from accounts.models import UserProfile
 from workouts.models import Exercise, ExerciseUnit, ExerciseCategory, ExerciseTimeUnit, Workout, WorkoutElement, \
     WorkoutTemplate, WorkoutTemplateElement
@@ -59,25 +61,37 @@ def live_search_exercises(request):
         is_verified = str(request.GET.get('isVerified'))
         if query != '':
             if lang_code == 'pl' and is_verified == 'true':
-                check_if_exercise_exists = Exercise.objects.filter(
-                    pl_name__iregex=r"\b{0}\b".format(query), verified=True).all().union(
-                    Exercise.objects.filter(pl_name__istartswith=query, verified=True)).all()
+                if DEBUG is True:
+                    check_if_exercise_exists = Exercise.objects.filter(Q(pl_name__istartswith=query) | Q(pl_name__icontains=query) & Q(verified=True))
+                else:
+                    check_if_exercise_exists = Exercise.objects.filter(pl_name__search=query, verified=True).all()
+                    if check_if_exercise_exists.count() == 0:
+                        check_if_exercise_exists = Exercise.objects.filter(pl_name__istartswith=query, verified=True).all()
             elif lang_code == 'pl' and is_verified == 'false':
-                check_if_exercise_exists = Exercise.objects.filter(
-                    pl_name__iregex=r"\b{0}\b".format(query)).all().union(
-                    Exercise.objects.filter(
-                        pl_name__istartswith=query
-                    )).all()
+                if DEBUG is True:
+                    check_if_exercise_exists = Exercise.objects.filter(
+                        Q(pl_name__istartswith=query) | Q(pl_name__icontains=query))
+                else:
+                    check_if_exercise_exists = Exercise.objects.filter(pl_name__search=query).all()
+                    if check_if_exercise_exists.count() == 0:
+                        check_if_exercise_exists = Exercise.objects.filter(pl_name__istartswith=query).all()
             if lang_code == 'en' and is_verified == 'true':
-                check_if_exercise_exists = Exercise.objects.filter(
-                    en_name__iregex=r"\b{0}\b".format(query), verified=True).all().union(
-                    Exercise.objects.filter(en_name__istartswith=query, verified=True)).all()
+                if DEBUG is True:
+                    check_if_exercise_exists = Exercise.objects.filter(
+                        Q(en_name__istartswith=query) | Q(en_name__icontains=query) & Q(verified=True))
+                else:
+                    check_if_exercise_exists = Exercise.objects.filter(en_name__search=query, verified=True).all()
+                    if check_if_exercise_exists.count() == 0:
+                        check_if_exercise_exists = Exercise.objects.filter(en_name__istartswith=query,
+                                                                           verified=True).all()
             elif lang_code == 'en' and is_verified == 'false':
-                check_if_exercise_exists = Exercise.objects.filter(
-                    en_name__iregex=r"\b{0}\b".format(query)).all().union(
-                    Exercise.objects.filter(
-                        en_name__istartswith=query
-                    )).all()
+                if DEBUG is True:
+                    check_if_exercise_exists = Exercise.objects.filter(
+                        Q(en_name__istartswith=query) | Q(en_name__icontains=query))
+                else:
+                    check_if_exercise_exists = Exercise.objects.filter(en_name__search=query).all()
+                    if check_if_exercise_exists.count() == 0:
+                        check_if_exercise_exists = Exercise.objects.filter(en_name__istartswith=query).all()
             # "\y" or "\b" depends on postgres or not (\y - postgres)
             if check_if_exercise_exists is not None and check_if_exercise_exists.count() > 0:
                 exercises = list(check_if_exercise_exists.values())
