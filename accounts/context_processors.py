@@ -12,7 +12,7 @@ def get_current_user_profile(request):
     return dict(get_current_user_profile=user_profile)
 
 
-def get_static_file_path():
+def get_static_file_path(request):
     from Nutri.settings import STATIC_FILES_URL
     from Nutri.settings import DEBUG
     if DEBUG is True:
