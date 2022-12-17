@@ -85,7 +85,14 @@ if (workoutsVideo) {
     workoutsVideo.playbackRate = 0.5;
 }
 
-window.onresize = () => window.location.reload()
+let dwidth = $(window).width();
+$(window).resize(function(){
+    let wwidth = $(window).width();
+    if(dwidth!==wwidth){
+         dwidth = $(window).width();
+         location.reload();
+    }
+});
 
 if (matched && !isCardVisible && !matches_small && !matches_small_phone) {
     searchContainer.style.width = '65%'

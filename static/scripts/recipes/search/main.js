@@ -90,7 +90,14 @@ let openModal = function (modalClass) {
         div.classList.remove('not-visible')
         div.style.zIndex = '45000'
 };
-window.onresize = function(){ location.reload(); }
+let dwidth = $(window).width();
+$(window).resize(function(){
+    let wwidth = $(window).width();
+    if(dwidth!==wwidth){
+         dwidth = $(window).width();
+         location.reload();
+    }
+});
 
 const removeSearchResults = () => {
     const infoMessage = document.querySelector('.recipe-info-message')

@@ -7,7 +7,14 @@ if (menuWorkoutsVideo) {
     menuWorkoutsVideo.playbackRate = 0.55;
 }
 
-window.onresize = function(){ location.reload(); }
+let dwidth = $(window).width();
+$(window).resize(function(){
+    let wwidth = $(window).width();
+    if(dwidth!==wwidth){
+         dwidth = $(window).width();
+         location.reload();
+    }
+});
 
 const workoutAddCard = document.querySelector('.workouts__card--add')
 workoutAddCard.addEventListener('click', () => {

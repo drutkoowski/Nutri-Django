@@ -421,7 +421,14 @@ let detailsColors = []
 
 
 
-window.onresize = function(){ location.reload(); }
+let dwidth = $(window).width();
+$(window).resize(function(){
+    let wwidth = $(window).width();
+    if(dwidth!==wwidth){
+         dwidth = $(window).width();
+         location.reload();
+    }
+});
 const localeDateFormat = window.location.href.split('/')[3] === 'pl' ? 'pl-PL' : 'en-US'
 const todayDate = new Date().toLocaleDateString(`${localeDateFormat}`)
 const graphDate = document.querySelector('.graph-date')

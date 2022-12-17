@@ -72,7 +72,14 @@ let matches_small = window.matchMedia(watch_small_media_query).matches
 let matches_small_phone = window.matchMedia(watch_small_phone_media_query).matches
 let matched = window.matchMedia(watch_media_query).matches;
 
-window.onresize = () => window.location.reload()
+let dwidth = $(window).width();
+$(window).resize(function(){
+    let wwidth = $(window).width();
+    if(dwidth!==wwidth){
+         dwidth = $(window).width();
+         location.reload();
+    }
+});
 
 if (matched && !isCardVisible && !matches_small && !matches_small_phone) {
     searchContainer.style.width = '65%'

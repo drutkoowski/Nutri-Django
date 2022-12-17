@@ -122,8 +122,14 @@
 //
 //
 //
-// window.onresize = function(){ location.reload(); }
-
+let dwidth = $(window).width();
+$(window).resize(function(){
+    let wwidth = $(window).width();
+    if(dwidth!==wwidth){
+         dwidth = $(window).width();
+         location.reload();
+    }
+});
 const navAbout = document.querySelector('#nav-about')
 navAbout.addEventListener('click', () => {
     const navi = document.querySelector('#navi-toggle')

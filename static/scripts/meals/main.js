@@ -7,7 +7,14 @@ if (mealsVideo) {
     mealsVideo.playbackRate = 0.55;
 }
 
-window.onresize = function(){ location.reload(); }
+let dwidth = $(window).width();
+$(window).resize(function(){
+    let wwidth = $(window).width();
+    if(dwidth!==wwidth){
+         dwidth = $(window).width();
+         location.reload();
+    }
+});
 
 
 const mealsAddCard = document.querySelector('.meals__card--add')
