@@ -423,16 +423,16 @@ ORDER: Base + typography > general layout + grid > page layout > components
     text-decoration: none;
     text-transform: uppercase;
     position: relative;
-    width: 30rem;
+    width: 40rem;
     margin-left: 5rem; }
+    .navigation__link:link p, .navigation__link:visited p {
+      margin-left: 2rem; }
     @media only screen and (max-width: 21.875em) {
       .navigation__link:link, .navigation__link:visited {
         width: 20rem;
         margin-left: 0;
         padding: 1rem 0;
-        font-size: 3rem; }
-        .navigation__link:link p, .navigation__link:visited p {
-          margin-left: 3rem; } }
+        font-size: 3rem; } }
     .navigation__link:link span, .navigation__link:visited span {
       margin-right: 1.5rem;
       display: inline-block;

@@ -172,16 +172,16 @@
             text-decoration: none;
             text-transform: uppercase;
             position: relative;
-            width: 30rem;
+            width: 40rem;
             margin-left: 5rem;
+            p {
+                margin-left: 2rem;
+            }
             @include respond(phone-sm){
                 width: 20rem;
                 margin-left: 0;
                 padding: 1rem 0;
                 font-size: 3rem;
-                p {
-                    margin-left: 3rem;
-                }
             }
             span {
                 margin-right: 1.5rem;
