@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-15 22:49+0100\n"
+"POT-Creation-Date: 2022-12-17 15:52+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,11 +20,11 @@ msgstr ""
 "%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
 "%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: .\Nutri\settings.py:157
+#: .\Nutri\settings.py:153
 msgid "Polish"
 msgstr "Polski"
 
-#: .\Nutri\settings.py:158
+#: .\Nutri\settings.py:154
 msgid "English"
 msgstr "Angielski"
 
@@ -157,8 +157,8 @@ msgstr "Kalorie"
 #: .\templates\accounts\dashboard_stats.html:34
 #: .\templates\meals\add\add_meals.html:102
 #: .\templates\meals\add\add_meals.html:114
-#: .\templates\meals\enter\meal_enter.html:42
 #: .\templates\meals\enter\meal_enter.html:43
+#: .\templates\meals\enter\meal_enter.html:44
 msgid "Carbs"
 msgstr "Węglowodany"
 
@@ -167,8 +167,8 @@ msgstr "Węglowodany"
 #: .\templates\accounts\dashboard_stats.html:35
 #: .\templates\meals\add\add_meals.html:101
 #: .\templates\meals\add\add_meals.html:113
-#: .\templates\meals\enter\meal_enter.html:50
 #: .\templates\meals\enter\meal_enter.html:51
+#: .\templates\meals\enter\meal_enter.html:52
 msgid "Protein"
 msgstr "Białko"
 
@@ -228,8 +228,8 @@ msgid "Kcal Eaten"
 msgstr "Spożyte Kcal"
 
 #: .\templates\accounts\dashboard_stats.html:37
-#: .\templates\meals\enter\meal_enter.html:46
 #: .\templates\meals\enter\meal_enter.html:47
+#: .\templates\meals\enter\meal_enter.html:48
 msgid "Fats"
 msgstr "Tłuszcze"
 
@@ -274,52 +274,52 @@ msgid "Activity Durations"
 msgstr "Długości Aktywności"
 
 #: .\templates\accounts\dashboard_stats.html:63
-#: .\templates\accounts\profile_info.html:38
+#: .\templates\accounts\profile_info.html:39
 msgid "Weight"
 msgstr "Waga"
 
 #: .\templates\accounts\dashboard_stats.html:64
-#: .\templates\accounts\profile_info.html:100
+#: .\templates\accounts\profile_info.html:101
 msgid "Chest"
 msgstr "Klatka piers."
 
 #: .\templates\accounts\dashboard_stats.html:65
-#: .\templates\accounts\profile_info.html:109
+#: .\templates\accounts\profile_info.html:110
 msgid "Biceps"
 msgstr "Biceps"
 
 #: .\templates\accounts\dashboard_stats.html:66
-#: .\templates\accounts\profile_info.html:118
+#: .\templates\accounts\profile_info.html:119
 msgid "Waist"
 msgstr "Talia"
 
 #: .\templates\accounts\dashboard_stats.html:67
-#: .\templates\accounts\profile_info.html:127
+#: .\templates\accounts\profile_info.html:128
 msgid "Hips"
 msgstr "Biodra"
 
 #: .\templates\accounts\dashboard_stats.html:68
-#: .\templates\accounts\profile_info.html:136
+#: .\templates\accounts\profile_info.html:137
 msgid "Calves"
 msgstr "Łydka"
 
 #: .\templates\accounts\dashboard_stats.html:69
-#: .\templates\accounts\profile_info.html:145
+#: .\templates\accounts\profile_info.html:146
 msgid "Thighs"
 msgstr "Uda"
 
 #: .\templates\accounts\dashboard_stats.html:70
-#: .\templates\accounts\profile_info.html:154
+#: .\templates\accounts\profile_info.html:155
 msgid "Neck"
 msgstr "Szyja"
 
 #: .\templates\accounts\dashboard_stats.html:71
-#: .\templates\accounts\profile_info.html:163
+#: .\templates\accounts\profile_info.html:164
 msgid "Wrists"
 msgstr "Nadgarstki"
 
 #: .\templates\accounts\dashboard_stats.html:72
-#: .\templates\accounts\profile_info.html:172
+#: .\templates\accounts\profile_info.html:173
 msgid "Shoulders"
 msgstr "Ramiona"
 
@@ -404,7 +404,7 @@ msgstr "Statystyki"
 
 #: .\templates\accounts\navbar.html:21
 #: .\templates\accounts\navbar_small.html:21
-#: .\templates\accounts\profile_info.html:85
+#: .\templates\accounts\profile_info.html:86
 #: .\templates\components\sidebar\sidebar.html:29
 msgid "Activity"
 msgstr "Aktywności"
@@ -425,82 +425,82 @@ msgstr "Twoje Dane"
 msgid "Logout"
 msgstr "Wyloguj"
 
-#: .\templates\accounts\profile_info.html:20
+#: .\templates\accounts\profile_info.html:21
 msgid "Your Nutri Profile Information"
 msgstr "Twoje Informacje Profilowe Nutri"
 
-#: .\templates\accounts\profile_info.html:24
+#: .\templates\accounts\profile_info.html:25
 msgid "Your Body Information"
 msgstr "Informacje o Twoim ciele"
 
-#: .\templates\accounts\profile_info.html:26
+#: .\templates\accounts\profile_info.html:27
 msgid "BMI"
 msgstr "BMI"
 
-#: .\templates\accounts\profile_info.html:32
+#: .\templates\accounts\profile_info.html:33
 msgid "Height"
 msgstr "Wzrost"
 
-#: .\templates\accounts\profile_info.html:48
+#: .\templates\accounts\profile_info.html:49
 msgid "Your Personal Information"
 msgstr "Twoje dane personalne"
 
-#: .\templates\accounts\profile_info.html:50
+#: .\templates\accounts\profile_info.html:51
 msgid "First Name"
 msgstr "Imię"
 
-#: .\templates\accounts\profile_info.html:56
+#: .\templates\accounts\profile_info.html:57
 msgid "Last Name"
 msgstr "Nazwisko"
 
-#: .\templates\accounts\profile_info.html:63
+#: .\templates\accounts\profile_info.html:64
 msgid "Age"
 msgstr "Wiek"
 
-#: .\templates\accounts\profile_info.html:69
+#: .\templates\accounts\profile_info.html:70
 msgid "Weight Goal"
 msgstr "Cel wagowy"
 
-#: .\templates\accounts\profile_info.html:72
+#: .\templates\accounts\profile_info.html:73
 #: .\templates\accounts\signup.html:29
 msgid "Gain Weight"
 msgstr "Przytyć"
 
-#: .\templates\accounts\profile_info.html:73
+#: .\templates\accounts\profile_info.html:74
 #: .\templates\accounts\signup.html:30
 msgid "Maintain Weight"
 msgstr "Utrzymać wagę"
 
-#: .\templates\accounts\profile_info.html:74
+#: .\templates\accounts\profile_info.html:75
 #: .\templates\accounts\signup.html:31
 msgid "Lose Weight"
 msgstr "Schudnąć"
 
-#: .\templates\accounts\profile_info.html:79
+#: .\templates\accounts\profile_info.html:80
 msgid "Goal (kg)"
 msgstr "Cel (kg)"
 
-#: .\templates\accounts\profile_info.html:88
+#: .\templates\accounts\profile_info.html:89
 msgid "Not active"
 msgstr "Nieaktywny"
 
-#: .\templates\accounts\profile_info.html:89
+#: .\templates\accounts\profile_info.html:90
 msgid "Lightly active"
 msgstr "Lekko aktywny"
 
-#: .\templates\accounts\profile_info.html:90
+#: .\templates\accounts\profile_info.html:91
 msgid "Active"
 msgstr "Aktywny"
 
-#: .\templates\accounts\profile_info.html:91
+#: .\templates\accounts\profile_info.html:92
 msgid "Very active"
 msgstr "Bardzo aktywny"
 
-#: .\templates\accounts\profile_info.html:98
+#: .\templates\accounts\profile_info.html:99
 msgid "Measurements"
 msgstr "Pomiary"
 
-#: .\templates\accounts\profile_info.html:182
+#: .\templates\accounts\profile_info.html:183
 msgid "Edit"
 msgstr "Edytuj"
 
@@ -537,9 +537,9 @@ msgstr "Dalej"
 msgid "Do you have an account?"
 msgstr "Masz już konto?"
 
-#: .\templates\accounts\signup.html:44
-msgid "Verification link has been sent... Redirecting to login page."
-msgstr "Zarejestrowano pomyślnie... Przenoszenie na stronę logowania."
+#: .\templates\accounts\signup.html:44"
+msgid "Verification link sent... Redirecting to login page."
+msgstr "Link weryfikacyjny wysłany... Przenoszenie na stronę logowania."
 
 #: .\templates\components\carousel\carousel.html:25
 msgid "Brilliant tool, you will definitely not be disappointed!"
@@ -548,26 +548,35 @@ msgstr "Genialne narzędzie, na pewno nie będziesz zawiedziony!"
 #: .\templates\components\carousel\carousel.html:41
 msgid ""
 "I loved Nutri very quickly, very easy to use and most importantly.... free :)"
-msgstr "Bardzo szybko pokochałam Nutri, bardzo łatwy w obsłudze i co najważniejsze.... darmowe :)"
+msgstr ""
+"Bardzo szybko pokochałam Nutri, bardzo łatwy w obsłudze i co "
+"najważniejsze.... darmowe :)"
 
 #: .\templates\components\carousel\carousel.html:56
 msgid ""
 "I've used many other apps, but this one definitely has the most pertinent "
 "suggestions and data, definitely recommended for anyone."
-msgstr "Korzystałam z wielu innych aplikacji, ale ta zdecydowanie ma najbardziej trafne sugestie i dane, zdecydowanie polecam dla każdego."
+msgstr ""
+"Korzystałam z wielu innych aplikacji, ale ta zdecydowanie ma najbardziej "
+"trafne sugestie i dane, zdecydowanie polecam dla każdego."
 
 #: .\templates\components\carousel\carousel.html:73
 msgid ""
 "This application is second to none. Thanks to Nutri, I have learned a lot "
 "about myself and my eating habits, thanks to which I have achieved vital "
 "form. I recommend <3!!!"
-msgstr "Ta aplikacja nie ma sobie równych. Dzięki Nutri dowiedziałam się wiele o sobie i swoich nawykach żywieniowych, dzięki czemu osiągnęłam życiową formę. Polecam <3!!!"
+msgstr ""
+"Ta aplikacja nie ma sobie równych. Dzięki Nutri dowiedziałam się wiele o "
+"sobie i swoich nawykach żywieniowych, dzięki czemu osiągnęłam życiową formę. "
+"Polecam <3!!!"
 
 #: .\templates\components\carousel\carousel.html:89
 msgid ""
 "From the very beginning I fell in love with Nutri, which, in my opinion, is "
 "the perfect combination of functionalities I care most about."
-msgstr "Od samego początku zakochałam się w Nutri, które moim zdaniem jest idealnym połączeniem funkcjonalności, na których najbardziej mi zależy."
+msgstr ""
+"Od samego początku zakochałam się w Nutri, które moim zdaniem jest idealnym "
+"połączeniem funkcjonalności, na których najbardziej mi zależy."
 
 #: .\templates\components\carousel\carousel.html:105
 msgid "Simply Nutri, I recommend checking it out for everyone."
@@ -769,16 +778,16 @@ msgid "Meals on"
 msgstr "Posiłki w"
 
 #: .\templates\meals\add\add_meals.html:110
-#: .\templates\meals\enter\meal_enter.html:29
-#: .\templates\meals\enter\meal_enter.html:31
+#: .\templates\meals\enter\meal_enter.html:30
+#: .\templates\meals\enter\meal_enter.html:32
 #: .\templates\workouts\enter\activity_enter.html:29
 #: .\templates\workouts\enter\activity_enter.html:31
 msgid "Category"
 msgstr "Kategoria"
 
 #: .\templates\meals\add\add_meals.html:112
-#: .\templates\meals\enter\meal_enter.html:38
 #: .\templates\meals\enter\meal_enter.html:39
+#: .\templates\meals\enter\meal_enter.html:40
 msgid "Kcal"
 msgstr "Kcal"
 
@@ -786,37 +795,37 @@ msgstr "Kcal"
 msgid "No meals added for today..."
 msgstr "Brak posiłków dodanych dzisiaj..."
 
-#: .\templates\meals\enter\meal_enter.html:23
+#: .\templates\meals\enter\meal_enter.html:24
 msgid "Your ingredient/meal"
 msgstr "Twój składnik/posiłek"
 
-#: .\templates\meals\enter\meal_enter.html:25
 #: .\templates\meals\enter\meal_enter.html:26
+#: .\templates\meals\enter\meal_enter.html:27
 #: .\templates\recipes\add\add_recipes.html:33
 #: .\templates\workouts\enter\activity_enter.html:25
 #: .\templates\workouts\enter\activity_enter.html:26
 msgid "Name"
 msgstr "Nazwa"
 
-#: .\templates\meals\enter\meal_enter.html:54
 #: .\templates\meals\enter\meal_enter.html:55
+#: .\templates\meals\enter\meal_enter.html:56
 msgid "Serving grams"
 msgstr "Gramy"
 
-#: .\templates\meals\enter\meal_enter.html:57
+#: .\templates\meals\enter\meal_enter.html:58
 msgid "Nutrition Grade"
 msgstr "Stopień odżywienia"
 
-#: .\templates\meals\enter\meal_enter.html:58
+#: .\templates\meals\enter\meal_enter.html:59
 #: .\templates\workouts\enter\activity_enter.html:47
 msgid "Add"
 msgstr "Dodaj"
 
-#: .\templates\meals\enter\meal_enter.html:68
+#: .\templates\meals\enter\meal_enter.html:69
 msgid "Traditional way"
 msgstr "Tradycyjnie"
 
-#: .\templates\meals\enter\meal_enter.html:72
+#: .\templates\meals\enter\meal_enter.html:73
 msgid "BAR CODE"
 msgstr "Kod Kreskowy"
 
@@ -1162,10 +1171,6 @@ msgstr ""
 "więcej o jakości Twoich treningów lub aktywności."
 
 #: .\templates\workouts\workouts.html:27
-#, fuzzy
-#| msgid ""
-#| "Share an ingredient or meal that is not in our database and improve the "
-#| "experience of other users."
 msgid ""
 "Share an activity that is not in our database and improve the experience of "
 "other users."

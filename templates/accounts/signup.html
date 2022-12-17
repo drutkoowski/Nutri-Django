@@ -35,14 +35,19 @@
                     <button class="signup__card__buttons__button signup__card__buttons__button--next" >{% trans 'Next' %}</button>
                 </div>
                 <a href="{% url 'login' %}" class="signup__card__links">{% trans 'Do you have an account?' %}</a>
-                <a href="" class="signup__card__links">{% trans 'Forgot password?' %}</a>
+                <a href="{% url 'forgot-password' %}" class="signup__card__links">{% trans 'Forgot password?' %}</a>
             </div>
         </div>
      <div class="modal-signup not-visible" style="z-index: 16000">
         <div class="modal-signup__content">
             <div class="modal-signup__close-button">&times;</div>
-            <h1>{% trans 'Verification link has been sent... Redirecting to login page.' %}</h1>
+            <h1>{% trans 'Verification link sent... Redirecting to login page.' %}</h1>
             <div class="loader--signup"></div>
+        </div>
+    </div>
+    <div class="loader-message not-visible">
+        <div>
+            <p class="loader-message__message" style="white-space: nowrap;"></p>
         </div>
     </div>
     <div class="loader"></div>

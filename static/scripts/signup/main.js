@@ -39,6 +39,11 @@ const sendData = () => {
     // 9 - email address
     // 10 - username
     // 11 - password
+    const loader = document.querySelector('.loader-message')
+    loader.classList.remove('not-visible')
+    loader.style.transition = 'unset'
+    loader.style.opacity = '0.95'
+    let isSuccess = false
     $.ajax({
         type: "POST",
         url: '',
@@ -57,21 +62,44 @@ const sendData = () => {
             'username': choices[10],
             'password': choices[11],
         },
+        beforeSend: function (response){
+            const loaderMsg = document.querySelector('.loader-message__message')
+            const divParent = loaderMsg.parentElement.getBoundingClientRect()
+            loaderMsg.innerHTML = gettext('Creating your account...')
+            loaderMsg.style.removeProperty('left')
+            const loaderY = (loaderMsg.getBoundingClientRect().left) - divParent.left + 37.5 - loaderMsg.clientWidth / 2;
+            loaderMsg.style.left = `${loaderY}px`
+        },
         success: function (response){
+            isSuccess = true
             progressBar.classList.remove(`progress--${iteration}`)
             iteration += 1
             progressBar.classList.add(`progress--${iteration}`)
+            loader.classList.add('not-visible')
+            loader.style.removeProperty('transition')
+            loader.style.removeProperty('opacity')
             modal.classList.remove('not-visible')
             const langPrefix = window.location.href.split('/')[3];
             modal.style.zIndex = '22300'
-            setInterval(function () {
+            setTimeout(function () {
                 window.location = window.location.origin + `/${langPrefix}/login`;
             }, 4000);
+
             },
         error: function (error) {
             alertMsg.innerHTML = `Something went wrong, try again.`
             alertMsg.classList?.remove('not-visible')
         },
+        complete: function (complete){
+            setTimeout(function (){
+                loader.classList.add('not-visible')
+                loader.style.removeProperty('transition')
+                loader.style.removeProperty('opacity')
+                if (!isSuccess){
+                    modal.classList.add('not-visible')
+                }
+            }, 1500)
+        }
     })
 }
 
