@@ -1,6 +1,8 @@
 // navbar
 const navbar = document.querySelector('.navbar--dashboard')
 navbar.classList.toggle('fix-navbar')
+// static
+const staticPath = document.querySelector('#static-path').value
 // csrf
 const csrf = document.getElementsByName('csrfmiddlewaretoken')
 const csrfToken = csrf[0].value
@@ -202,7 +204,7 @@ stepCreatingButton.addEventListener('click', () => {
         const recipeStep = `
             <div class="recipe-add__search__container__steps__elements-box__already-added__element">
                 <input type="text" class="step-element-added recipes-add__text-input__step" id="temporary-id" value="${stepValue}">
-                <img src="/static/images/svg/minus.svg" class="filter-red" alt="Remove Icon">
+                <img src="${staticPath}images/svg/minus.svg" class="filter-red" alt="Remove Icon">
             </div>
         `
         addedStepsBox.insertAdjacentHTML('beforeend', recipeStep)
@@ -254,7 +256,7 @@ ingredientCreatingButton.addEventListener('click', () => {
            <div class="recipe-add__search__container__ingredients__elements-box__already-added__element">
              <input type="text" class="recipes-add__text-input__ingredient-sm ingredient-quantity-input" id='temporary-ig-value' value="${ingredientQuantityValue}">
              <input type="text" class="recipes-add__text-input__ingredient-lg ingredient-element-input" id='temporary-ig-quantity' value="${ingredientValue}">
-             <img src="/static/images/svg/minus.svg" class="filter-red" alt="Remove Icon">
+             <img src="${staticPath}images/svg/minus.svg" class="filter-red" alt="Remove Icon">
            </div>
         `
         addedIngredientsBox.insertAdjacentHTML('afterbegin', recipeIngredient)

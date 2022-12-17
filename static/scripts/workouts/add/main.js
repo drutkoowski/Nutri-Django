@@ -3,17 +3,18 @@ const navBarEl = document.querySelector('.navbar--dashboard')
 navBarEl.classList.toggle('fix-navbar')
 ///
 let onlyVerified = true
+const staticPath = document.querySelector('#static-path').value
 
 const verifiedIcon = document.querySelector('.verified-icon')
 verifiedIcon.addEventListener('click', () => {
     if (verifiedIcon.id === 'verified') {
         verifiedIcon.id = 'unverified'
-        verifiedIcon.src = '/static/images/svg/unchecked.svg'
+        verifiedIcon.src = `${staticPath}images/svg/unchecked.svg`
         onlyVerified = false
     }
     else {
         verifiedIcon.id = 'verified'
-        verifiedIcon.src = '/static/images/svg/checked.svg'
+        verifiedIcon.src = `${staticPath}images/svg/checked.svg`
         onlyVerified = true
     }
 })

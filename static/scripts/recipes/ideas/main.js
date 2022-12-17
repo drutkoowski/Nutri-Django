@@ -1,6 +1,7 @@
 const mealsVideo = document.getElementById('meals-video')
 const navbar = document.querySelector('.navbar--dashboard')
 const csrfToken = document.getElementsByName('csrfmiddlewaretoken')[0].value
+const staticPath = document.querySelector('#static-path').value
 
 navbar.classList.toggle('fix-navbar')
 
@@ -181,12 +182,12 @@ inputIngredientsBtn.addEventListener('click', () => {
                      let contentToAppend = `
                      <div class="recipe-search__search__results__container__item recipe-ideas__item">
                        <div class="recipe-search__search__results__container__item--heading recipe-ideas__item__heading">
-                         <img src="/static/images/svg/${isVerified}.svg" class="filter-green verified-icon" alt="${capitalize(isVerified)} Icon">
+                         <img src="${staticPath}images/svg/${isVerified}.svg" class="filter-green verified-icon" alt="${capitalize(isVerified)} Icon">
                          <p class="isVerified__label">${labelMsg}</p>
-                         <p>${recipeName} ${msgSwitch} ${servings} ${gettext('servings')} <img src="/static/images/svg/people.svg" class="clock-icon-recipe-duration filter-green" alt="People Icon"></p>
+                         <p>${recipeName} ${msgSwitch} ${servings} ${gettext('servings')} <img src="${staticPath}images/svg/people.svg" class="clock-icon-recipe-duration filter-green" alt="People Icon"></p>
                      </div>
                      <div class="recipe-search__search__results__container__item--lower recipe-ideas__item__lower">
-                          <p><img src="/static/images/svg/clock.svg" class="clock-icon-recipe-duration filter-green" alt="Clock Icon"> <span>${duration}</span> ${isDifficultLevel}</p>
+                          <p><img src="${staticPath}images/svg/clock.svg" class="clock-icon-recipe-duration filter-green" alt="Clock Icon"> <span>${duration}</span> ${isDifficultLevel}</p>
                      </div>
                      <button data-pk="${dbId}" class="btn-light recipe-details-btn">${gettext('See')}</button>
                      </div>

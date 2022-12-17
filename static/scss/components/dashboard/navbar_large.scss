@@ -80,7 +80,6 @@
             display: none;
         }
         margin: 1rem;
-
         &__container{
             display: flex;
         }
@@ -104,10 +103,15 @@
             color: #fff;
             text-decoration: none;
             text-transform: uppercase;
-
+            position: relative;
+            width: 40rem;
+            margin-left: 5rem;
             span {
                 margin-right: 1.5rem;
                 display: inline-block;
+                position: absolute;
+                top: 1rem;
+                left: 0;
             }
 
         }

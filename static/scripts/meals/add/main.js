@@ -4,7 +4,7 @@ navBarEl.style.marginTop = '0'
 navBarEl.style.paddingTop = '3rem'
 ///
 let onlyVerified = true
-
+const staticPath = document.querySelector('#static-path').value
 
 function hideModal(modalClass) {
     $("." + modalClass).fadeOut(900, e => {
@@ -43,12 +43,12 @@ const verifiedIcon = document.querySelector('.verified-icon')
 verifiedIcon.addEventListener('click', () => {
     if (verifiedIcon.id === 'verified') {
         verifiedIcon.id = 'unverified'
-        verifiedIcon.src = '/static/images/svg/unchecked.svg'
+        verifiedIcon.src = `${staticPath}images/svg/unchecked.svg`
         onlyVerified = false
     }
     else {
         verifiedIcon.id = 'verified'
-        verifiedIcon.src = '/static/images/svg/checked.svg'
+        verifiedIcon.src = `${staticPath}images/svg/checked.svg`
         onlyVerified = true
     }
 })

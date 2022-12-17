@@ -1,6 +1,8 @@
 const mealsVideo = document.getElementById('meals-video')
 const navbar = document.querySelector('.navbar--dashboard')
 const csrfToken = document.getElementsByName('csrfmiddlewaretoken')[0].value
+const staticPath = document.querySelector('#static-path').value
+
 let onlyVerified = true
 navbar.classList.toggle('fix-navbar')
 
@@ -12,12 +14,12 @@ const verifiedIcon = document.querySelector('.verified-icon')
 verifiedIcon.addEventListener('click', () => {
     if (verifiedIcon.id === 'verified') {
         verifiedIcon.id = 'unverified'
-        verifiedIcon.src = '/static/images/svg/unchecked.svg'
+        verifiedIcon.src = `${staticPath}images/svg/unchecked.svg`
         onlyVerified = false
     }
     else {
         verifiedIcon.id = 'verified'
-        verifiedIcon.src = '/static/images/svg/checked.svg'
+        verifiedIcon.src = `${staticPath}images/svg/checked.svg`
         onlyVerified = true
     }
 })
@@ -133,10 +135,10 @@ const searchRecipes = (query) => {
                     let contentToAppend = `
                         <div class="recipe-search__search__results__container__item">
                             <div class="recipe-search__search__results__container__item--heading">
-                                <p>${recipeName} ${gettext('for')}&nbsp;${recipePersonCount}&nbsp;x <img src="/static/images/svg/people.svg" class="clock-icon-recipe-duration filter-green" alt="People Icon"></p>
+                                <p>${recipeName} ${gettext('for')}&nbsp;${recipePersonCount}&nbsp;x <img src="${staticPath}images/svg/people.svg" class="clock-icon-recipe-duration filter-green" alt="People Icon"></p>
                             </div>
                             <div class="recipe-search__search__results__container__item--lower">
-                                <p><img src="/static/images/svg/clock.svg" class="clock-icon-recipe-duration filter-green" alt="Clock Icon"> <span>${recipeDuration}</span> <span class="pushed">${gettext('Difficulty level: ')} ${recipeDifficulty}</span></p>
+                                <p><img src="${staticPath}images/svg/clock.svg" class="clock-icon-recipe-duration filter-green" alt="Clock Icon"> <span>${recipeDuration}</span> <span class="pushed">${gettext('Difficulty level: ')} ${recipeDifficulty}</span></p>
                             </div>
                             <button data-pk="${recipe.id}" class="btn-light recipe-details-btn">${gettext('See')}</button>
                         </div>

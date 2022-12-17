@@ -131,6 +131,7 @@
         margin: 1rem;
          @include respond(tab-land) {
             display: inline;
+            margin: 0;
         }
         &__container{
             display: flex;
@@ -143,8 +144,8 @@
             display: inline-block;
         }
         &__icon {
-            width: 2.5rem;
-            height: 2.5rem;
+            width: 3.5rem;
+            height: 3.5rem;
             padding-top: 10px;
         }
         &:link,
@@ -156,10 +157,19 @@
             color: #fff;
             text-decoration: none;
             text-transform: uppercase;
-
+            position: relative;
+            width: 40rem;
+            margin-left: 5rem;
+            @include respond(phone-md-sm){
+                font-size: 3rem;
+                width: 30rem;
+            }
             span {
                 margin-right: 1.5rem;
                 display: inline-block;
+                position: absolute;
+                top: 1rem;
+                left: 0;
             }
 
         }

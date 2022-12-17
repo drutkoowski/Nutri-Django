@@ -79,7 +79,7 @@ def live_search_exercises(request):
                         en_name__istartswith=query
                     )).all()
             # "\y" or "\b" depends on postgres or not (\y - postgres)
-            if check_if_exercise_exists is not None:
+            if check_if_exercise_exists is not None and check_if_exercise_exists.count() > 0:
                 exercises = list(check_if_exercise_exists.values())
                 for i in exercises:
                     unit_id = i['unit_id']

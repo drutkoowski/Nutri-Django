@@ -64,7 +64,7 @@ def live_search_recipes(request):
                 #     )).all()
 
             # "\y" or "\b" depends on postgres or not (\y - postgres)
-            if check_if_recipe_exists is not None:
+            if check_if_recipe_exists is not None and check_if_recipe_exists.count() > 0:
                 recipes = list(check_if_recipe_exists.values())
                 recipes_arr = []
                 for recipe in recipes:

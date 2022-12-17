@@ -404,6 +404,13 @@ ORDER: Base + typography > general layout + grid > page layout > components
         .navigation__link__icon--flag {
           width: 2.5rem;
           height: 2.5rem; } }
+      .navigation__link__icon--flag:first-of-type {
+        width: 3.75rem;
+        height: 4.5rem; }
+        @media only screen and (max-width: 28.5em) {
+          .navigation__link__icon--flag:first-of-type {
+            width: 3rem;
+            height: 3.2rem; } }
       .navigation__link__icon--flag:nth-of-type(n+1) {
         margin-left: 1rem; }
       .navigation__link__icon--flag:hover {
@@ -1833,10 +1840,16 @@ ORDER: Base + typography > general layout + grid > page layout > components
   padding: 1rem 2rem;
   color: #fff;
   text-decoration: none;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  position: relative;
+  width: 40rem;
+  margin-left: 5rem; }
   .navigation--dashboard__link:link span, .navigation--dashboard__link:visited span {
     margin-right: 1.5rem;
-    display: inline-block; }
+    display: inline-block;
+    position: absolute;
+    top: 1rem;
+    left: 0; }
 
 .navigation--dashboard__link:hover, .navigation--dashboard__link:active {
   background-position: 100%;
@@ -1999,7 +2012,8 @@ ORDER: Base + typography > general layout + grid > page layout > components
     margin: 1rem; }
     @media only screen and (max-width: 75em) {
       .navigation--dashboard--small__item {
-        display: inline; } }
+        display: inline;
+        margin: 0; } }
     .navigation--dashboard--small__item__container {
       display: flex; }
   .navigation--dashboard--small__link {
@@ -2008,8 +2022,8 @@ ORDER: Base + typography > general layout + grid > page layout > components
       .navigation--dashboard--small__link {
         display: inline-block; } }
     .navigation--dashboard--small__link__icon {
-      width: 2.5rem;
-      height: 2.5rem;
+      width: 3.5rem;
+      height: 3.5rem;
       padding-top: 10px; }
     .navigation--dashboard--small__link:link, .navigation--dashboard--small__link:visited {
       display: inline-block;
@@ -2018,10 +2032,20 @@ ORDER: Base + typography > general layout + grid > page layout > components
       padding: 1rem 2rem;
       color: #fff;
       text-decoration: none;
-      text-transform: uppercase; }
+      text-transform: uppercase;
+      position: relative;
+      width: 40rem;
+      margin-left: 5rem; }
+      @media only screen and (max-width: 25em) {
+        .navigation--dashboard--small__link:link, .navigation--dashboard--small__link:visited {
+          font-size: 3rem;
+          width: 30rem; } }
       .navigation--dashboard--small__link:link span, .navigation--dashboard--small__link:visited span {
         margin-right: 1.5rem;
-        display: inline-block; }
+        display: inline-block;
+        position: absolute;
+        top: 1rem;
+        left: 0; }
     .navigation--dashboard--small__link:hover, .navigation--dashboard--small__link:active {
       background-position: 100%;
       color: #ffffff;
@@ -7578,6 +7602,9 @@ div.modal--calendar__content-summary {
       font-size: 1.2rem; } }
 .met-info {
   font-size: 1.25rem !important; }
+  @media only screen and (max-width: 28.5em) {
+    .met-info {
+      font-size: 1rem !important; } }
   .met-info span {
     font-weight: bold; }
 
@@ -7598,11 +7625,12 @@ div.modal--calendar__content-summary {
     .activity-enter-layout-container {
       grid-template-columns: 0.05fr 1fr 0.05fr;
       grid-template-rows: 0.30fr 2fr 0.15fr;
-      height: auto;
-      background-image: linear-gradient(to bottom, rgba(246, 244, 244, 0.5), rgba(148, 147, 147, 0.84)), url("https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80");
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover; } }
+      height: auto; } }
+  @media only screen and (max-width: 21.875em) {
+    .activity-enter-layout-container {
+      grid-template-columns: 1fr;
+      grid-template-rows: 0.30fr 2fr 0.15fr;
+      height: auto; } }
 .activity-enter {
   display: grid;
   grid-template-columns: 0.75fr 1fr 0.75fr;
@@ -7611,6 +7639,24 @@ div.modal--calendar__content-summary {
   grid-row: 2/3;
   justify-self: stretch;
   justify-items: center; }
+  @media only screen and (max-width: 75em) {
+    .activity-enter {
+      grid-template-columns: 0.45fr 1fr 0.45fr; } }
+  @media only screen and (max-width: 56.25em) {
+    .activity-enter {
+      grid-template-columns: 0.25fr 1fr 0.25fr; } }
+  @media only screen and (max-width: 37.5em) {
+    .activity-enter {
+      grid-template-columns: 0.05fr 1fr 0.05fr; } }
+  @media only screen and (max-width: 28.5em) {
+    .activity-enter {
+      grid-template-columns: 1fr; } }
+  @media only screen and (max-width: 21.875em) {
+    .activity-enter {
+      grid-column: 1/2; } }
+  @media only screen and (max-width: 18.75em) {
+    .activity-enter {
+      margin: 0 2rem; } }
   .activity-enter__card {
     grid-column: 2/3;
     background-color: #bde7c5;
@@ -7625,6 +7671,9 @@ div.modal--calendar__content-summary {
     animation-duration: 1s;
     animation-timing-function: ease-out;
     padding: 2rem 0.5rem 0 0.5rem; }
+    @media only screen and (max-width: 28.5em) {
+      .activity-enter__card {
+        grid-column: 1/2; } }
     .activity-enter__card h3 {
       color: var(--color-white);
       font-size: 3rem;
@@ -7638,13 +7687,19 @@ div.modal--calendar__content-summary {
       margin: 2rem 2rem 2rem auto; }
     .activity-enter__card div {
       color: var(--color-white);
-      margin-top: 1.5rem;
       display: flex;
-      margin-left: 7.5rem; }
+      margin: 1.5rem 2rem 0 2rem; }
+      @media only screen and (max-width: 18.75em) {
+        .activity-enter__card div {
+          flex-direction: column; } }
       .activity-enter__card div label {
         display: inline-block;
         font-size: 2rem;
         width: 15rem; }
+        @media only screen and (max-width: 18.75em) {
+          .activity-enter__card div label {
+            margin: 0 auto;
+            text-align: center; } }
       .activity-enter__card div input, .activity-enter__card div select {
         width: 15rem;
         height: 3rem;
@@ -7656,13 +7711,20 @@ div.modal--calendar__content-summary {
         transition: all .3s ease-in;
         text-align: center;
         justify-self: center; }
+        @media only screen and (max-width: 62.5em) {
+          .activity-enter__card div input, .activity-enter__card div select {
+            width: 11rem;
+            margin-left: auto; } }
+        @media only screen and (max-width: 18.75em) {
+          .activity-enter__card div input, .activity-enter__card div select {
+            width: 18rem;
+            margin: 0 auto; } }
         .activity-enter__card div input:hover, .activity-enter__card div select:hover {
           transform: scale(1.05); }
     .activity-enter__card p {
-      margin-top: 1.5rem;
       color: var(--color-white);
       font-size: 2rem;
-      margin-left: 7.5rem; }
+      margin: 1.5rem 2rem 0 2rem; }
       .activity-enter__card p span {
         text-transform: uppercase;
         font-weight: bold; }

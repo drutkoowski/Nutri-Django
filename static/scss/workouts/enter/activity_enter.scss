@@ -1,11 +1,14 @@
 .met-info{
   font-size: 1.25rem!important;
+  @include respond(phone-md){
+    font-size: 1rem!important;
+  }
   span {
     font-weight: bold;
   }
 }
 
-.activity-enter-layout-container {
+.activity-enter-layout-container{
   width: 100vw;
   height: auto;
   min-height: 100vh;
@@ -22,10 +25,11 @@
     grid-template-columns: 0.05fr 1fr 0.05fr;
     grid-template-rows: 0.30fr 2fr 0.15fr;
     height: auto;
-    background-image: linear-gradient(to bottom, rgba(246, 244, 244, 0.5), rgba(148, 147, 147, 0.84)), url("https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  }
+  @include respond(phone-sm){
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.30fr 2fr 0.15fr;
+    height: auto;
   }
 }
 
@@ -38,7 +42,24 @@
     grid-row: 2/3;
     justify-self: stretch;
     justify-items: center;
-
+    @include respond(tab-land){
+      grid-template-columns: 0.45fr 1fr 0.45fr;
+    }
+    @include respond(tab-port){
+      grid-template-columns: 0.25fr 1fr 0.25fr;
+    }
+    @include respond(phone-lg){
+      grid-template-columns: 0.05fr 1fr 0.05fr;
+    }
+    @include respond(phone-md){
+      grid-template-columns: 1fr;
+    }
+    @include respond(phone-sm){
+      grid-column: 1/2;
+    }
+    @include respond(phone-ultra-sm){
+      margin: 0 2rem;
+    }
     &__card {
       grid-column: 2/3;
       background-color: rgb(189, 231, 197);
@@ -53,6 +74,9 @@
       animation-duration: 1s;
       animation-timing-function: ease-out;
       padding: 2rem 0.5rem 0 0.5rem;
+      @include respond(phone-md){
+        grid-column: 1/2;
+      }
       h3 {
         color: var(--color-white);
         font-size: 3rem;
@@ -68,18 +92,20 @@
         margin: 2rem 2rem 2rem auto;
       }
       div {
-        //display: grid;
-        //grid-template-columns: 0.35fr 1fr;
-        //grid-template-rows: 1fr;
         color: var(--color-white);
-        margin-top: 1.5rem;
         display: flex;
-        //justify-content: center;
-        margin-left: 7.5rem;
+        margin: 1.5rem 2rem 0 2rem;
+        @include respond(phone-ultra-sm){
+          flex-direction: column;
+        }
         label {
           display: inline-block;
           font-size: 2rem;
           width: 15rem;
+          @include respond(phone-ultra-sm){
+            margin: 0 auto;
+            text-align: center;
+          }
         }
         input, select {
           width: 15rem;
@@ -92,16 +118,23 @@
           transition: all .3s ease-in;
           text-align: center;
           justify-self: center;
+          @include respond(tab-md){
+            width: 11rem;
+            margin-left: auto;
+          }
+          @include respond(phone-ultra-sm){
+            width: 18rem;
+            margin: 0 auto;
+          }
           &:hover {
             transform: scale(1.05);
           }
         }
       }
       p {
-        margin-top: 1.5rem;
         color: var(--color-white);
         font-size: 2rem;
-        margin-left: 7.5rem;
+        margin: 1.5rem 2rem 0 2rem;
         span {
           text-transform: uppercase;
           font-weight: bold;

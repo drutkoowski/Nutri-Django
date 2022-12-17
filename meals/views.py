@@ -82,7 +82,7 @@ def live_search_ingredients(request):
                     )).all()
 
             # "\y" or "\b" depends on postgres or not (\y - postgres)
-            if check_if_ingredient_exists is not None:
+            if check_if_ingredient_exists is not None and check_if_ingredient_exists.count() > 0:
                 ingredients = list(check_if_ingredient_exists.values())
                 for i in ingredients:
                     unit_id = i['unit_id']

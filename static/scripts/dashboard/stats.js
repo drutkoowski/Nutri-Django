@@ -195,7 +195,7 @@ const getChartFullDataMonthly = (type) => {
             const data = JSON.parse(response.data)
             if (type === 'chest'){
                 const xValuesWeekGraph = data.changesChest.datesArr;
-                const changesArr = data.changesChest.valuesArr
+                const changesArr = data.changesChest.valuesArr ? data.changesChest.valuesArr : []
                 let dataset = [{
                     data: [...changesArr],
                     label: `${gettext('Chest')}`,
@@ -237,7 +237,6 @@ const getChartFullDataMonthly = (type) => {
                 chartDraw(xValuesWeekGraph, dataset, 'update', 'Kcal', gettext('Chart of kcal consumed and burned'))
             }
             else if (type === 'duration'){
-                console.log(data)
                 const xValuesWeekGraph = data.changesDuration.datesArr;
                 const durationArray = data.changesDuration.valuesArr
                 let dataset = [{
@@ -304,7 +303,7 @@ const getChartFullDataMonthly = (type) => {
             }
             else if (type === 'weight'){
                 const xValuesWeekGraph = data.changesWeight.datesArr
-                const changesArr = data.changesWeight.valuesArr
+                const changesArr = data.changesWeight.valuesArr ? data.changesWeight.valuesArr : []
                 let dataset = [{
                     data: [...changesArr],
                     label: `${gettext('Weight')}`,
@@ -320,7 +319,7 @@ const getChartFullDataMonthly = (type) => {
             }
             else if (type === 'biceps'){
                 const xValuesWeekGraph = data.changesBiceps.datesArr;
-                const changesArr = data.changesBiceps.valuesArr
+                const changesArr = data.changesBiceps.valuesArr ? data.changesBiceps.valuesArr : []
                 let dataset = [{
                     data: [...changesArr],
                     label: `${gettext('Biceps')}`,
@@ -336,7 +335,7 @@ const getChartFullDataMonthly = (type) => {
             }
             else if (type === 'waist'){
                 const xValuesWeekGraph = data.changesWaist.datesArr;
-                const changesArr = data.changesWaist.valuesArr
+                const changesArr = data.changesWaist.valuesArr ? data.changesWaist.valuesArr : []
                 let dataset = [{
                     data: [...changesArr],
                     label: `${gettext('Waist')}`,
@@ -352,7 +351,7 @@ const getChartFullDataMonthly = (type) => {
             }
              else if (type === 'hips'){
                 const xValuesWeekGraph = data.changesHips.datesArr;
-                const changesArr = data.changesHips.valuesArr
+                const changesArr = data.changesHips.valuesArr ? data.changesHips.valuesArr : []
                 let dataset = [{
                     data: [...changesArr],
                     label: `${gettext('Hips')}`,
@@ -368,7 +367,7 @@ const getChartFullDataMonthly = (type) => {
             }
             else if (type === 'calves'){
                 const xValuesWeekGraph = data.changesCalves.datesArr;
-                const changesArr = data.changesCalves.valuesArr
+                const changesArr = data.changesCalves.valuesArr ? data.changesCalves.valuesArr : []
                 let dataset = [{
                     data: [...changesArr],
                     label: `${gettext('Calves')}`,
@@ -384,7 +383,7 @@ const getChartFullDataMonthly = (type) => {
             }
             else if (type === 'thighs'){
                 const xValuesWeekGraph = data.changesThighs.datesArr;
-                const changesArr = data.changesThighs.valuesArr
+                const changesArr = data.changesThighs.valuesArr ? data.changesThighs.valuesArr : []
                 let dataset = [{
                     data: [...changesArr],
                     label: `${gettext('Thighs')}`,
@@ -400,7 +399,7 @@ const getChartFullDataMonthly = (type) => {
             }
             else if (type === 'neck'){
                 const xValuesWeekGraph = data.changesNeck.datesArr;
-                const changesArr = data.changesNeck.valuesArr
+                const changesArr = data.changesNeck.valuesArr ? data.changesNeck.valuesArr : []
                 let dataset = [{
                     data: [...changesArr],
                     label: `${gettext('Neck')}`,
@@ -416,7 +415,7 @@ const getChartFullDataMonthly = (type) => {
             }
             else if (type === 'wrists'){
                 const xValuesWeekGraph = data.changesWrists.datesArr;
-                const changesArr = data.changesWrists.valuesArr
+                const changesArr = data.changesWrists.valuesArr ? data.changesWrists.valuesArr : []
                 let dataset = [{
                     data: [...changesArr],
                     label: `${gettext('Wrists')}`,
@@ -432,7 +431,7 @@ const getChartFullDataMonthly = (type) => {
             }
             else if (type === 'shoulders'){
                 const xValuesWeekGraph = data.changesShoulders.datesArr;
-                const changesArr = data.changesShoulders.valuesArr
+                const changesArr = data.changesShoulders.valuesArr ? data.changesShoulders.valuesArr : []
                 let dataset = [{
                     data: [...changesArr],
                     label: `${gettext('Shoulders')}`,
