@@ -2,14 +2,13 @@
 const carouselTrack = document.querySelector('.carousel__track')
 const mediaQuery = window.matchMedia('(max-width: 46.875em)')
 if (mediaQuery.matches){
-   const langPrefix = window.location.href.split('/')[3];
+    const langPrefix = window.location.href.split('/')[3];
     const url = window.location.origin + `/${langPrefix}/get/static-path`
     $.ajax({
         type: 'get',
         url: url,
         success: function (res){
             const filePath = res.path
-            console.log(filePath)
             const appendElement = `
             <li class="carousel__slide">
             <div class="carousel__slide__card carousel__slide__card--1">

@@ -12,6 +12,16 @@ def get_current_user_profile(request):
     return dict(get_current_user_profile=user_profile)
 
 
+def get_static_file_path(request):
+    if 'admin' in request.path:
+        return {}
+    if not request.user.is_authenticated or request.user is AnonymousUser:
+        return dict(get_static_file_path=None)
+    from Nutri.settings import STATIC_FILES_URL
+    static_path = STATIC_FILES_URL
+    return dict(get_static_file_path=static_path)
+
+
 def get_translated_profile_info(request):
     if 'admin' in request.path:
         return {}

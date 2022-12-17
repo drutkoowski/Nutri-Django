@@ -4379,7 +4379,9 @@ div.modal--calendar__content-summary {
       grid-column: 2/3;
       grid-row: 1/2;
       margin-left: 0;
-      max-height: unset; } }
+      max-height: unset; }
+      .measurements .dashboard__sidebar--small__upper {
+        margin-left: 0 !important; } }
   @media only screen and (max-width: 62.5em) {
     .measurements {
       grid-column: 1/2;

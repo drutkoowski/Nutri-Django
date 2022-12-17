@@ -5,6 +5,7 @@ const csrfToken = csrf[0].value
 let isChanged = false
 let allowedGoal
 let goalWeightConst
+const staticPath = document.querySelector('#static-path').value
 // sidebar
 const fullNameSidebar = document.querySelector('.dashboard__sidebar__name')
 const usernameSidebar = document.querySelector('.dashboard__sidebar__username')
@@ -77,17 +78,17 @@ allInputs.forEach(input => {
 const setStatusChangeIcon = (element, change) => {
     let iconPath
     if (change > 0) {
-        iconPath = '/static/images/svg/up-arrow-single.svg'
+        iconPath = `/${staticPath}images/svg/up-arrow-single.svg`
         element.classList.add('filter-green-dark')
         element.classList.remove('filter-red')
     }
     else if (change < 0){
-        iconPath = '/static/images/svg/down-arrow.svg'
+        iconPath = `/${staticPath}images/svg/down-arrow.svg`
         element.classList.add('filter-red')
         element.classList.remove('filter-green-dark')
     }
     else {
-        iconPath = '/static/images/svg/straight-arrow.svg'
+        iconPath = `/${staticPath}images/svg/straight-arrow.svg`
         element.classList.remove('filter-green-dark')
         element.classList.remove('filter-red')
     }
@@ -129,7 +130,7 @@ const buttonEditListener = () => {
                     'data': JSON.stringify(editArr),
                     'csrfmiddlewaretoken': csrfToken
                 },
-                beforeSend: function (){
+                beforeSend: function () {
                     loader.classList.remove('not-visible')
                     loader.style.transition = 'unset'
                     loader.style.opacity = '0.95'

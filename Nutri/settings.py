@@ -17,7 +17,6 @@ from decouple import config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -25,10 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY', cast=str)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG')
+DEBUG = config('DEBUG', cast=bool)
 import django_heroku
 ALLOWED_HOSTS = ['*']
-
 AUTH_USER_MODEL = "accounts.Account"
 # Application definition
 
@@ -89,14 +87,14 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 "accounts.context_processors.get_current_user_profile",
-                'accounts.context_processors.get_translated_profile_info'
+                'accounts.context_processors.get_translated_profile_info',
+                'accounts.context_processors.get_static_file_path'
             ],
         },
     },
 ]
 
 WSGI_APPLICATION = 'Nutri.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
@@ -107,7 +105,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -127,7 +124,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
@@ -141,13 +137,10 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 if DEBUG is True:
     STATIC_URL = 'static/'
-
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -180,7 +173,7 @@ EMAIL_HOST_USER = config("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
 EMAIL_USE_TLS = config("EMAIL_USE_TLS", cast=bool)
 
-SECURE_CROSS_ORIGIN_OPENER_POLICY='same-origin-allow-popups'
+SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin-allow-popups'
 
 ############
 db_from_env = dj_database_url.config(conn_max_age=600)
@@ -199,16 +192,17 @@ AWS_S3_OBJECT_PARAMETERS = {
 AWS_LOCATION = 'static'
 if DEBUG is False:
     STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    AWS_QUERYSTRING_AUTH = False
+    AWS_HEADERS = {
+        "Access-Control-Allow-Origin": "*",
+    }
+    MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/media/"
+    DEFAULT_FILE_STORAGE = "Nutri.media_storages.MediaStorage"
 else:
     STATIC_URL = 'static/'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-AWS_QUERYSTRING_AUTH = False
-AWS_HEADERS = {
-    "Access-Control-Allow-Origin": "*",
-}
-STATICFILES_DIRS = [
-    'static',
-]
-MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/media/"
-DEFAULT_FILE_STORAGE = "instaclone.media_storages.MediaStorage"
-BEA = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+
+# STATICFILES_DIRS = [
+#     'static',
+# ]
+STATIC_FILES_URL = STATIC_URL

@@ -22,6 +22,11 @@
       grid-row: 1/2;
       margin-left: 0;
       max-height: unset;
+      .dashboard__sidebar--small{
+        &__upper{
+          margin-left: 0!important;
+        }
+      }
     }
     @include respond(tab-md) {
       grid-column: 1/2;

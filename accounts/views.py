@@ -968,6 +968,6 @@ def get_graph_stats_info_yearly(request):
 
 def get_static_files_url(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'GET':
-        from Nutri.settings import BEA
+        from Nutri.settings import STATIC_FILES_URL
         return JsonResponse(
-            {'status': 200, 'text': 'Static path returned.', 'path': BEA})
+            {'status': 200, 'text': 'Static path returned.', 'path': STATIC_FILES_URL})
