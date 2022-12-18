@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-18 20:51+0100\n"
+"POT-Creation-Date: 2022-12-18 22:15+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -604,6 +604,22 @@ msgstr "Kontakt"
 #: .\templates\components\sidebar\sidebar.html:17
 msgid "years old"
 msgstr "lata"
+
+#: .\templates\home\index.html:13
+msgid "Eat Smarter"
+msgstr "Jedz mądrze"
+
+#: .\templates\home\index.html:13
+msgid "Live Better"
+msgstr "Żyj lepiej"
+
+#: .\templates\home\index.html:14
+msgid "Our tips"
+msgstr "Nasze rady"
+
+#: .\templates\home\index.html:14
+msgid "Your habits"
+msgstr "Twoje nawyki"
 
 #: .\templates\home\index.html:26
 msgid " one word"
