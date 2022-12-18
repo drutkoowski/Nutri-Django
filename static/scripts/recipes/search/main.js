@@ -165,6 +165,7 @@ const searchRecipes = (query) => {
                                     'recipeId': recipePk,
                                 },
                                 success: function (response){
+                                    console.log(response)
                                     fillModalRecipe(response)
                                 }
                             })

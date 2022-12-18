@@ -95,6 +95,7 @@ def live_search_recipes(request):
                         }
                     else:
                         recipes_dict = {
+                            'id': recipe['id'],
                             'name': recipe['name_en'],
                             'person_count': recipe['person_count'],
                             'difficulty': recipe['difficulty_en'],
