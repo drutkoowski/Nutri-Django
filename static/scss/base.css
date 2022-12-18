@@ -411,7 +411,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
             width: 3rem;
             height: 3.2rem; } }
       .navigation__link__icon--flag:nth-of-type(n+1) {
-        margin-left: 1rem; }
+        margin-left: 2rem; }
       .navigation__link__icon--flag:hover {
         transform: scale(1.1); }
   .navigation__link:link, .navigation__link:visited {
@@ -4547,7 +4547,7 @@ div.modal--calendar__content-summary {
           font-size: 1.75rem; } }
     .measurements__body-info__item {
       display: grid;
-      grid-template-columns: 0.3fr 1fr;
+      grid-template-columns: 0.35fr 1fr;
       grid-template-rows: 1fr;
       height: 3rem; }
       @media only screen and (max-width: 75em) {
@@ -4639,7 +4639,7 @@ div.modal--calendar__content-summary {
           font-size: 1.75rem; } }
     .measurements__personal-info__item {
       display: grid;
-      grid-template-columns: 0.3fr 1fr;
+      grid-template-columns: 0.35fr 1fr;
       grid-template-rows: 1fr;
       height: 3rem; }
       @media only screen and (max-width: 75em) {
@@ -4712,7 +4712,7 @@ div.modal--calendar__content-summary {
           font-size: 1.75rem; } }
     .measurements__measurements__item {
       display: grid;
-      grid-template-columns: 0.3fr 1fr;
+      grid-template-columns: 0.35fr 1fr;
       grid-template-rows: 1fr;
       height: 3rem; }
       @media only screen and (max-width: 75em) {

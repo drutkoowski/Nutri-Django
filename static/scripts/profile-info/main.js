@@ -256,8 +256,8 @@ function lettersOnly(input) {
 }
 
 const checkSelectedGoal = () => {
-    const weight = weightInput.value
-    const weightGoalKG = weightKgInput.value
+    const weight = Number(weightInput.value)
+    const weightGoalKG = Number(weightKgInput.value)
     if (weight > weightGoalKG) {
         allowedGoal = gettext('Lose Weight')
     }
@@ -271,15 +271,6 @@ const checkSelectedGoal = () => {
         allowedGoal = goalWeightConst
     }
 
-    // if (weightGoalKG < 30){
-    //     goalSidebar.innerHTML = `${gettext("Your goal")}: ${allowedGoal} (30 kg)`
-    // }
-    // else if (weightGoalKG > 300){
-    //     goalSidebar.innerHTML = `${gettext("Your goal")}: ${allowedGoal} (300 kg)`
-    // }
-    // else {
-    //     goalSidebar.innerHTML = `${gettext("Your goal")}: ${allowedGoal} (${weightGoalKG} kg)`
-    // }
     weightGoalInput.value = String(allowedGoal)
 }
 

@@ -7,7 +7,7 @@ const csrfToken = document.getElementsByName('csrfmiddlewaretoken')[0].value
 // inputs
 const inputName = document.querySelector('#name')
 const inputCategory = document.querySelector('#category')
-const inputMET = document.querySelector('#met')
+const kcalBurnt = document.querySelector('#kcal-burnt')
 
 // button
 const btnAdd = document.querySelector('.btn-light')
@@ -15,7 +15,7 @@ const allInputs = Array.from(document.querySelectorAll('.activity-enter__input')
 allInputs.forEach(input => {
     input.addEventListener('input', () => {
         if (input.id !== 'name'){
-            input.value = input.value.slice(0,2);
+            input.value = input.value.slice(0,4);
         }
         else {
             input.value = input.value.slice(0,100);
@@ -28,7 +28,7 @@ inputCategory.addEventListener('change', () => {
 })
 
 btnAdd.addEventListener('click', () => {
-    let activityName, met, category
+    let activityName, kcalBurnt, category, duration
     let isValid = true
     const allInputs = Array.from(document.querySelectorAll('.activity-enter__input'))
     allInputs.forEach(input => {
@@ -38,11 +38,14 @@ btnAdd.addEventListener('click', () => {
             if (type === 'name') {
                 activityName = inputVal
             }
+            if (type === 'duration') {
+                duration = inputVal
+            }
             else if (type === 'category') {
                 category = inputVal
             }
-            else if (type === 'met'){
-                met = inputVal
+            else if (type === 'kcal-burnt'){
+                kcalBurnt = inputVal
             }
         }
         else {
@@ -71,7 +74,8 @@ btnAdd.addEventListener('click', () => {
                 'csrfmiddlewaretoken': csrfToken,
                 'name': activityName,
                 'categoryPk': category,
-                'met': met,
+                'kcalBurnt': kcalBurnt,
+                'duration': duration,
                 'langCode': langPrefix
             },
             success: function (response) {
@@ -87,7 +91,6 @@ btnAdd.addEventListener('click', () => {
                         modalHeading.innerHTML = gettext('Your is already in database.')
                     }, 3200)
                 }
-
                 location.reload()
             }
         })

@@ -36,10 +36,14 @@
                     </select>
                 </div>
                 <div>
-                    <label id='met-label' for="met">{% trans 'MET' %}</label>
-                    <input class='activity-enter__input' type="number" onkeydown="return event.keyCode !== 69" id="met" placeholder="{% trans 'MET Indicator' %}">
+                    <label id='kcal-burnt-label' for="kcal-burnt">{% trans 'Kcal Burnt' %}</label>
+                    <input class='activity-enter__input' type="number" onkeydown="return event.keyCode !== 69" id="kcal-burnt" placeholder="{% trans 'Kcal Burnt' %}">
                 </div>
-                <p class="met-info"><span>{% trans 'What is MET?' %}</span><br>
+                <div>
+                    <label id='duration-label' for="duration">{% trans 'Duration' %}</label>
+                    <input class='activity-enter__input' type="number" onkeydown="return event.keyCode !== 69" id="duration" placeholder="{% trans 'Minutes' %}">
+                </div>
+                <p class="met-info"><span>{% trans 'Your result will be converted to MET' %}</span><br>
                 {% trans 'MET stands for average energy expenditure during a given activity ( 1 MET is the energy you consume during inactivity).' %}
                 </p>
                 <p class="met-info"><span>{% trans 'How to calculate MET?' %}</span><br>

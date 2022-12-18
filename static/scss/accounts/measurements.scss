@@ -115,7 +115,7 @@
       }
       &__item {
         display: grid;
-        grid-template-columns: 0.3fr 1fr;
+        grid-template-columns: 0.35fr 1fr;
         grid-template-rows: 1fr;
         height: 3rem;
         @include respond(tab-land){
@@ -217,7 +217,7 @@
       }
       &__item {
         display: grid;
-        grid-template-columns: 0.3fr 1fr;
+        grid-template-columns: 0.35fr 1fr;
         grid-template-rows: 1fr;
         height: 3rem;
         @include respond(tab-land){
@@ -296,7 +296,7 @@
       }
       &__item {
         display: grid;
-        grid-template-columns: 0.3fr 1fr;
+        grid-template-columns: 0.35fr 1fr;
         grid-template-rows: 1fr;
         height: 3rem;
         @include respond(tab-land){

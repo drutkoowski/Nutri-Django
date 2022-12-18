@@ -126,7 +126,8 @@ def add_new_activity_element(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == 'POST':
         user_profile = UserProfile.objects.get(user=request.user)
         category_pk = request.POST.get('categoryPk')
-        met = request.POST.get('met')
+        kcalBurnt = request.POST.get('kcalBurnt')
+        duration = request.POST.get('kcalBurnt')
         lang_code = request.POST.get('langCode')
         name = request.POST.get('name')
         category = ExerciseCategory.objects.get(pk=category_pk)
@@ -142,6 +143,7 @@ def add_new_activity_element(request):
 
         is_existing = Exercise.objects.filter(Q(pl_name__iexact=name_pl) | Q(en_name__iexact=name_en)).all()
         if not is_existing.exists():
+            met = round(float(kcalBurnt) / float(user_profile.weight) * float(duration) * 3.5 * 0.005, 2)
             element = Exercise.objects.create(pl_name=name_pl, en_name=name_en, category=category, met=met,
                                               time_unit=time_unit, unit=None, created_by=user_profile, verified=False)
             element.save()
