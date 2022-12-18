@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-17 15:47+0100\n"
+"POT-Creation-Date: 2022-12-18 20:55+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -330,19 +330,19 @@ msgid "Daily Summary Info"
 msgstr "Dzienne Podsumowanie Dnia"
 
 #: .\static\scripts\activity-calendar\activity-calendar.js:53
-#: .\static\scripts\dashboard\stats.js:96
-#: .\static\scripts\dashboard\stats.js:111
-#: .\static\scripts\dashboard\stats.js:183
-#: .\static\scripts\dashboard\stats.js:496
-#: .\static\scripts\dashboard\stats.js:511
+#: .\static\scripts\dashboard\stats.js:103
+#: .\static\scripts\dashboard\stats.js:118
+#: .\static\scripts\dashboard\stats.js:190
+#: .\static\scripts\dashboard\stats.js:503
+#: .\static\scripts\dashboard\stats.js:518
 msgid "Kcal"
 msgstr "Kcal"
 
 #: .\static\scripts\activity-calendar\activity-calendar.js:54
-#: .\static\scripts\dashboard\stats.js:87
-#: .\static\scripts\dashboard\stats.js:174
-#: .\static\scripts\dashboard\stats.js:228
-#: .\static\scripts\dashboard\stats.js:487
+#: .\static\scripts\dashboard\stats.js:94
+#: .\static\scripts\dashboard\stats.js:181
+#: .\static\scripts\dashboard\stats.js:235
+#: .\static\scripts\dashboard\stats.js:494
 msgid "Burnt"
 msgstr "Spalone"
 
@@ -350,9 +350,9 @@ msgstr "Spalone"
 #: .\static\scripts\activity-calendar\activity-calendar.js:164
 #: .\static\scripts\activity-calendar\activity-calendar.js:175
 #: .\static\scripts\dashboard\main.js:371
-#: .\static\scripts\dashboard\stats.js:134
-#: .\static\scripts\dashboard\stats.js:283
-#: .\static\scripts\dashboard\stats.js:534
+#: .\static\scripts\dashboard\stats.js:141
+#: .\static\scripts\dashboard\stats.js:290
+#: .\static\scripts\dashboard\stats.js:541
 msgid "Carbs"
 msgstr "Węglowodany"
 
@@ -360,17 +360,17 @@ msgstr "Węglowodany"
 #: .\static\scripts\activity-calendar\activity-calendar.js:164
 #: .\static\scripts\activity-calendar\activity-calendar.js:173
 #: .\static\scripts\dashboard\main.js:371
-#: .\static\scripts\dashboard\stats.js:101
-#: .\static\scripts\dashboard\stats.js:273
-#: .\static\scripts\dashboard\stats.js:501
+#: .\static\scripts\dashboard\stats.js:108
+#: .\static\scripts\dashboard\stats.js:280
+#: .\static\scripts\dashboard\stats.js:508
 msgid "Protein"
 msgstr "Białko"
 
 #: .\static\scripts\activity-calendar\activity-calendar.js:57
 #: .\static\scripts\dashboard\main.js:371
-#: .\static\scripts\dashboard\stats.js:122
-#: .\static\scripts\dashboard\stats.js:293
-#: .\static\scripts\dashboard\stats.js:522
+#: .\static\scripts\dashboard\stats.js:129
+#: .\static\scripts\dashboard\stats.js:300
+#: .\static\scripts\dashboard\stats.js:529
 msgid "Fats"
 msgstr "Tłuszcze"
 
@@ -396,7 +396,7 @@ msgid "Kcal Burnt"
 msgstr "Spalone Kcal"
 
 #: .\static\scripts\activity-calendar\activity-calendar.js:216
-#: .\static\scripts\dashboard\stats.js:244
+#: .\static\scripts\dashboard\stats.js:251
 msgid "Duration"
 msgstr "Czas trwania"
 
@@ -404,12 +404,12 @@ msgstr "Czas trwania"
 msgid "You have not added any activities on this day"
 msgstr "Nie dodałeś żadnych aktywności dla tego dnia"
 
-#: .\static\scripts\carousel.js:26
+#: .\static\scripts\carousel.js:20
 msgid "This application is second to none. Unique in its simplicity."
 msgstr "Ta aplikacja nie ma sobie równych. Wyjątkowa w swojej prostocie."
 
 #: .\static\scripts\dashboard\main.js:140
-#: .\static\scripts\dashboard\main.js:428
+#: .\static\scripts\dashboard\main.js:435
 msgid "Summary"
 msgstr "Podsumowanie"
 
@@ -421,153 +421,153 @@ msgstr "Cel kaloryczny"
 msgid "Percent (%)"
 msgstr "Procent (%)"
 
-#: .\static\scripts\dashboard\stats.js:77
-#: .\static\scripts\dashboard\stats.js:164
-#: .\static\scripts\dashboard\stats.js:218
-#: .\static\scripts\dashboard\stats.js:477
+#: .\static\scripts\dashboard\stats.js:84
+#: .\static\scripts\dashboard\stats.js:171
+#: .\static\scripts\dashboard\stats.js:225
+#: .\static\scripts\dashboard\stats.js:484
 msgid "Eaten"
 msgstr "Zjedzone"
 
-#: .\static\scripts\dashboard\stats.js:96
-#: .\static\scripts\dashboard\stats.js:183
-#: .\static\scripts\dashboard\stats.js:237
-#: .\static\scripts\dashboard\stats.js:496
+#: .\static\scripts\dashboard\stats.js:103
+#: .\static\scripts\dashboard\stats.js:190
+#: .\static\scripts\dashboard\stats.js:244
+#: .\static\scripts\dashboard\stats.js:503
 msgid "Chart of kcal consumed and burned"
 msgstr "Wykres spożytych i spalonych kcal"
 
-#: .\static\scripts\dashboard\stats.js:143
-#: .\static\scripts\dashboard\stats.js:302
-#: .\static\scripts\dashboard\stats.js:543
+#: .\static\scripts\dashboard\stats.js:150
+#: .\static\scripts\dashboard\stats.js:309
+#: .\static\scripts\dashboard\stats.js:550
 msgid "Percent"
 msgstr "Procent"
 
-#: .\static\scripts\dashboard\stats.js:143
-#: .\static\scripts\dashboard\stats.js:302
-#: .\static\scripts\dashboard\stats.js:543
+#: .\static\scripts\dashboard\stats.js:150
+#: .\static\scripts\dashboard\stats.js:309
+#: .\static\scripts\dashboard\stats.js:550
 msgid "Macro Value Chart according to your daily goals (%)"
 msgstr "Wykres wartości makro zgodnie z Twoimi dziennymi celami (%)"
 
-#: .\static\scripts\dashboard\stats.js:148
-#: .\static\scripts\dashboard\stats.js:548
+#: .\static\scripts\dashboard\stats.js:155
+#: .\static\scripts\dashboard\stats.js:555
 msgid "Activity Minutes"
 msgstr "Aktywności w minutach"
 
-#: .\static\scripts\dashboard\stats.js:157
-#: .\static\scripts\dashboard\stats.js:253
-#: .\static\scripts\dashboard\stats.js:557
+#: .\static\scripts\dashboard\stats.js:164
+#: .\static\scripts\dashboard\stats.js:260
+#: .\static\scripts\dashboard\stats.js:564
 msgid "Minutes"
 msgstr "Minuty"
 
-#: .\static\scripts\dashboard\stats.js:157
-#: .\static\scripts\dashboard\stats.js:253
-#: .\static\scripts\dashboard\stats.js:557
+#: .\static\scripts\dashboard\stats.js:164
+#: .\static\scripts\dashboard\stats.js:260
+#: .\static\scripts\dashboard\stats.js:564
 msgid "Time chart of your activities in minutes"
 msgstr "Wykres czasowy Twoich aktywności w minutach"
 
-#: .\static\scripts\dashboard\stats.js:201
-#: .\static\scripts\dashboard\stats.js:591
+#: .\static\scripts\dashboard\stats.js:208
+#: .\static\scripts\dashboard\stats.js:598
 msgid "Chest"
 msgstr "Klatka piers."
 
-#: .\static\scripts\dashboard\stats.js:210
-#: .\static\scripts\dashboard\stats.js:334
-#: .\static\scripts\dashboard\stats.js:350
-#: .\static\scripts\dashboard\stats.js:366
-#: .\static\scripts\dashboard\stats.js:382
-#: .\static\scripts\dashboard\stats.js:398
-#: .\static\scripts\dashboard\stats.js:414
-#: .\static\scripts\dashboard\stats.js:430
-#: .\static\scripts\dashboard\stats.js:446
-#: .\static\scripts\dashboard\stats.js:586
-#: .\static\scripts\dashboard\stats.js:601
-#: .\static\scripts\dashboard\stats.js:616
-#: .\static\scripts\dashboard\stats.js:631
-#: .\static\scripts\dashboard\stats.js:646
-#: .\static\scripts\dashboard\stats.js:661
-#: .\static\scripts\dashboard\stats.js:676
-#: .\static\scripts\dashboard\stats.js:691
-#: .\static\scripts\dashboard\stats.js:706
+#: .\static\scripts\dashboard\stats.js:217
+#: .\static\scripts\dashboard\stats.js:341
+#: .\static\scripts\dashboard\stats.js:357
+#: .\static\scripts\dashboard\stats.js:373
+#: .\static\scripts\dashboard\stats.js:389
+#: .\static\scripts\dashboard\stats.js:405
+#: .\static\scripts\dashboard\stats.js:421
+#: .\static\scripts\dashboard\stats.js:437
+#: .\static\scripts\dashboard\stats.js:453
+#: .\static\scripts\dashboard\stats.js:593
+#: .\static\scripts\dashboard\stats.js:608
+#: .\static\scripts\dashboard\stats.js:623
+#: .\static\scripts\dashboard\stats.js:638
+#: .\static\scripts\dashboard\stats.js:653
+#: .\static\scripts\dashboard\stats.js:668
+#: .\static\scripts\dashboard\stats.js:683
+#: .\static\scripts\dashboard\stats.js:698
+#: .\static\scripts\dashboard\stats.js:713
 msgid "Graph of changes in your measurements (cm)"
 msgstr "Wykres zmian Twoich pomiarów (cm)"
 
-#: .\static\scripts\dashboard\stats.js:263
+#: .\static\scripts\dashboard\stats.js:270
 msgid "Kcal Eaten"
 msgstr "Zjedzone Kcal"
 
-#: .\static\scripts\dashboard\stats.js:309
-#: .\static\scripts\dashboard\stats.js:562
+#: .\static\scripts\dashboard\stats.js:316
+#: .\static\scripts\dashboard\stats.js:569
 msgid "Weight"
 msgstr "Waga"
 
-#: .\static\scripts\dashboard\stats.js:318
+#: .\static\scripts\dashboard\stats.js:325
 msgid "Graph of changes in your weight (kg)"
 msgstr "Wykres zmian Twojej wagi (kg)"
 
-#: .\static\scripts\dashboard\stats.js:325
-#: .\static\scripts\dashboard\stats.js:576
+#: .\static\scripts\dashboard\stats.js:332
+#: .\static\scripts\dashboard\stats.js:583
 msgid "Biceps"
 msgstr "Biceps"
 
-#: .\static\scripts\dashboard\stats.js:341
-#: .\static\scripts\dashboard\stats.js:606
+#: .\static\scripts\dashboard\stats.js:348
+#: .\static\scripts\dashboard\stats.js:613
 msgid "Waist"
 msgstr "Talia"
 
-#: .\static\scripts\dashboard\stats.js:357
-#: .\static\scripts\dashboard\stats.js:621
+#: .\static\scripts\dashboard\stats.js:364
+#: .\static\scripts\dashboard\stats.js:628
 msgid "Hips"
 msgstr "Biodra"
 
-#: .\static\scripts\dashboard\stats.js:373
-#: .\static\scripts\dashboard\stats.js:636
+#: .\static\scripts\dashboard\stats.js:380
+#: .\static\scripts\dashboard\stats.js:643
 msgid "Calves"
 msgstr "Łydki"
 
-#: .\static\scripts\dashboard\stats.js:389
-#: .\static\scripts\dashboard\stats.js:651
+#: .\static\scripts\dashboard\stats.js:396
+#: .\static\scripts\dashboard\stats.js:658
 msgid "Thighs"
 msgstr "Uda"
 
-#: .\static\scripts\dashboard\stats.js:405
-#: .\static\scripts\dashboard\stats.js:666
+#: .\static\scripts\dashboard\stats.js:412
+#: .\static\scripts\dashboard\stats.js:673
 msgid "Neck"
 msgstr "Szyja"
 
-#: .\static\scripts\dashboard\stats.js:421
-#: .\static\scripts\dashboard\stats.js:681
+#: .\static\scripts\dashboard\stats.js:428
+#: .\static\scripts\dashboard\stats.js:688
 msgid "Wrists"
 msgstr "Nadgarstki"
 
-#: .\static\scripts\dashboard\stats.js:437
-#: .\static\scripts\dashboard\stats.js:696
+#: .\static\scripts\dashboard\stats.js:444
+#: .\static\scripts\dashboard\stats.js:703
 msgid "Shoulders"
 msgstr "Ramiona"
 
-#: .\static\scripts\dashboard\stats.js:571
+#: .\static\scripts\dashboard\stats.js:578
 msgid "Kilograms"
 msgstr "Kilogramy"
 
-#: .\static\scripts\dashboard\stats.js:571
+#: .\static\scripts\dashboard\stats.js:578
 msgid "Chart of changes in your weight (kg)"
 msgstr "Wykres zmian Twojej wagi (kg)"
 
-#: .\static\scripts\dashboard\stats.js:586
-#: .\static\scripts\dashboard\stats.js:601
-#: .\static\scripts\dashboard\stats.js:616
-#: .\static\scripts\dashboard\stats.js:631
-#: .\static\scripts\dashboard\stats.js:646
-#: .\static\scripts\dashboard\stats.js:661
-#: .\static\scripts\dashboard\stats.js:676
-#: .\static\scripts\dashboard\stats.js:691
-#: .\static\scripts\dashboard\stats.js:706
+#: .\static\scripts\dashboard\stats.js:593
+#: .\static\scripts\dashboard\stats.js:608
+#: .\static\scripts\dashboard\stats.js:623
+#: .\static\scripts\dashboard\stats.js:638
+#: .\static\scripts\dashboard\stats.js:653
+#: .\static\scripts\dashboard\stats.js:668
+#: .\static\scripts\dashboard\stats.js:683
+#: .\static\scripts\dashboard\stats.js:698
+#: .\static\scripts\dashboard\stats.js:713
 msgid "cm"
 msgstr "cm"
 
-#: .\static\scripts\dashboard\stats.js:791
+#: .\static\scripts\dashboard\stats.js:798
 msgid "day on Nutri"
 msgstr "dnia na Nutri"
 
-#: .\static\scripts\dashboard\stats.js:791
+#: .\static\scripts\dashboard\stats.js:798
 msgid "days on Nutri"
 msgstr "dni na Nutri"
 
@@ -607,11 +607,11 @@ msgid "Email or password field is not valid."
 msgstr "Pole email lub hasła jest nieprawidłowe."
 
 #: .\static\scripts\meals\add\main.js:198
-#: .\static\scripts\meals\saved\main.js:137
-#: .\static\scripts\meals\saved\main.js:263
+#: .\static\scripts\meals\saved\main.js:144
+#: .\static\scripts\meals\saved\main.js:270
 #: .\static\scripts\workouts\add\main.js:203
-#: .\static\scripts\workouts\saved\main.js:142
-#: .\static\scripts\workouts\saved\main.js:219
+#: .\static\scripts\workouts\saved\main.js:149
+#: .\static\scripts\workouts\saved\main.js:226
 msgid "Category"
 msgstr "Kategoria"
 
@@ -635,74 +635,74 @@ msgstr "Spróbuj wyszukać posiłek lub składniki, które zjadłeś/aś dzisiaj
 msgid "Results will appear here."
 msgstr "Wyniki pojawią się tutaj."
 
-#: .\static\scripts\meals\enter\main.js:43
+#: .\static\scripts\meals\enter\main.js:46
 msgid "Type BAR Code Below"
 msgstr "Wpisz kod kreskowy poniżej"
 
-#: .\static\scripts\meals\enter\main.js:45
+#: .\static\scripts\meals\enter\main.js:48
 msgid "Bar Code"
 msgstr "Kod kreskowy"
 
-#: .\static\scripts\meals\enter\main.js:46
+#: .\static\scripts\meals\enter\main.js:49
 msgid ""
 "Bar code usually contains 13 letters, fe. \"5449000000996\" stands for Coca "
 "Cola."
 msgstr ""
 "Kod kreskowy zawiera zazwyczaj 13 cyfr, np. 5449000000996 oznacza Coca Colę."
 
-#: .\static\scripts\meals\enter\main.js:114
+#: .\static\scripts\meals\enter\main.js:117
 #: .\static\scripts\recipes\ideas\main.js:23
 #: .\static\scripts\recipes\ideas\main.js:167
 #: .\static\scripts\recipes\search\main.js:31
-#: .\static\scripts\recipes\search\main.js:134
+#: .\static\scripts\recipes\search\main.js:141
 msgid "Unknown"
 msgstr "Nieznane"
 
-#: .\static\scripts\meals\enter\main.js:124
+#: .\static\scripts\meals\enter\main.js:127
 msgid "We could not find any matching element."
 msgstr "Nie udało nam się znaleźć pasującego elementu."
 
-#: .\static\scripts\meals\saved\main.js:431
+#: .\static\scripts\meals\saved\main.js:438
 msgid "Updating your meal template in our database."
 msgstr "Aktualizowanie Twojego szablonu w naszej bazie."
 
-#: .\static\scripts\meals\saved\main.js:453
-#: .\static\scripts\workouts\saved\main.js:503
+#: .\static\scripts\meals\saved\main.js:460
+#: .\static\scripts\workouts\saved\main.js:510
 msgid "Removing selected activity template from database.."
 msgstr "Usuwanie wskazanego szablonu aktywności z bazy.."
 
-#: .\static\scripts\meals\saved\main.js:502
+#: .\static\scripts\meals\saved\main.js:509
 msgid "Add new element for your meal"
 msgstr "Dodaj nowy element dla swojego posiłku"
 
-#: .\static\scripts\meals\saved\main.js:510
-#: .\static\scripts\meals\saved\main.js:689
-#: .\static\scripts\workouts\saved\main.js:551
-#: .\static\scripts\workouts\saved\main.js:728
+#: .\static\scripts\meals\saved\main.js:517
+#: .\static\scripts\meals\saved\main.js:696
+#: .\static\scripts\workouts\saved\main.js:558
+#: .\static\scripts\workouts\saved\main.js:735
 msgid "Save"
 msgstr "Zapisz"
 
-#: .\static\scripts\meals\saved\main.js:673
+#: .\static\scripts\meals\saved\main.js:680
 msgid "Create New Meal Template"
 msgstr "Stwórz Nowy Szablon Posiłku"
 
-#: .\static\scripts\meals\saved\main.js:680
+#: .\static\scripts\meals\saved\main.js:687
 msgid "Search to fill your template with meals."
 msgstr "Szukaj, aby uzupełnić szablon posiłkami."
 
-#: .\static\scripts\meals\saved\main.js:682
+#: .\static\scripts\meals\saved\main.js:689
 msgid "Your Meal"
 msgstr "Twój Posiłek"
 
-#: .\static\scripts\meals\saved\main.js:688
+#: .\static\scripts\meals\saved\main.js:695
 msgid "Meal Name"
 msgstr "Nazwa posiłku"
 
-#: .\static\scripts\meals\saved\main.js:697
+#: .\static\scripts\meals\saved\main.js:704
 msgid "Add new element to your meal"
 msgstr "Dodaj nowy element dla swojego posiłku"
 
-#: .\static\scripts\meals\saved\main.js:787
+#: .\static\scripts\meals\saved\main.js:794
 msgid "Edit Meal"
 msgstr "Edytuj Posiłek"
 
@@ -715,8 +715,8 @@ msgid "years old"
 msgstr "lat"
 
 #: .\static\scripts\profile-info\main.js:212
-msgid "Your Goal"
-msgstr "Twój Cel"
+msgid "Goal"
+msgstr "Cel"
 
 #: .\static\scripts\profile-info\main.js:213
 msgid "Activity"
@@ -782,7 +782,7 @@ msgstr "Nazwa składnika i ilość są puste."
 
 #: .\static\scripts\recipes\ideas\main.js:27
 #: .\static\scripts\recipes\search\main.js:35
-#: .\static\scripts\recipes\search\main.js:138
+#: .\static\scripts\recipes\search\main.js:145
 msgid "for"
 msgstr "dla"
 
@@ -820,11 +820,11 @@ msgid "servings"
 msgstr "porcje"
 
 #: .\static\scripts\recipes\ideas\main.js:192
-#: .\static\scripts\recipes\search\main.js:143
+#: .\static\scripts\recipes\search\main.js:150
 msgid "See"
 msgstr "Zobacz"
 
-#: .\static\scripts\recipes\search\main.js:141
+#: .\static\scripts\recipes\search\main.js:148
 msgid "Difficulty level: "
 msgstr "Poziom trudności: "
 
@@ -956,42 +956,45 @@ msgstr "Brak dodanych dzisiejszych aktywności..."
 msgid "Try to search exercise or exercises that have you eaten today."
 msgstr "Spróbuj wyszukać aktywność lub ćwiczenia, które wykonałaś/eś dziś."
 
-#: .\static\scripts\workouts\enter\main.js:68
+#: .\static\scripts\workouts\enter\main.js:71
 msgid "Adding your custom element..."
 msgstr ""
 
-#: .\static\scripts\workouts\enter\main.js:82
+#: .\static\scripts\workouts\enter\main.js:86
 msgid "Your element added successfully."
 msgstr ""
 
-#: .\static\scripts\workouts\enter\main.js:87
+#: .\static\scripts\workouts\enter\main.js:91
 msgid "Your is already in database."
 msgstr ""
 
-#: .\static\scripts\workouts\saved\main.js:543
-#: .\static\scripts\workouts\saved\main.js:736
+#: .\static\scripts\workouts\saved\main.js:550
+#: .\static\scripts\workouts\saved\main.js:743
 msgid "Add new element for your activity"
 msgstr "Dodaj nowy element dla swojej aktywności"
 
-#: .\static\scripts\workouts\saved\main.js:712
+#: .\static\scripts\workouts\saved\main.js:719
 msgid "Create New Activity Template"
 msgstr "Stwórz Nowy Szablon Posiłku"
 
-#: .\static\scripts\workouts\saved\main.js:719
+#: .\static\scripts\workouts\saved\main.js:726
 msgid "Search to fill your template with activity"
 msgstr "Szukaj, aby wypełnić szablon aktywnościami"
 
-#: .\static\scripts\workouts\saved\main.js:721
+#: .\static\scripts\workouts\saved\main.js:728
 msgid "Your Activity"
 msgstr "Twoja aktywność"
 
-#: .\static\scripts\workouts\saved\main.js:727
+#: .\static\scripts\workouts\saved\main.js:734
 msgid "Activity Name"
 msgstr "Nazwa Aktywności"
 
-#: .\static\scripts\workouts\saved\main.js:817
+#: .\static\scripts\workouts\saved\main.js:824
 msgid "Edit Activity"
 msgstr "Edytuj Aktywność"
+
+#~ msgid "Your Goal"
+#~ msgstr "Twój Cel"
 
 #~ msgid "Your goal"
 #~ msgstr "Twój Cel"

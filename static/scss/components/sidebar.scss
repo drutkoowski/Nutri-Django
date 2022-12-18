@@ -47,6 +47,7 @@
     }
     &__gender, &__years, &__height, &__weight, &__goal, &__activity-level {
       margin-left: 2rem;
+      margin-right: 2rem;
       @include respond(md-desktop) {
           font-size: 1.7rem;
       }

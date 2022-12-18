@@ -209,7 +209,7 @@ const getPersonalInfo = () => {
             yearsSidebar.innerHTML = `${data.age} ${gettext('years old')}`
             heightSidebar.innerHTML = `${data.height} cm`
             weightSidebar.innerHTML = `${data.weight} kg`
-            goalSidebar.innerHTML = `${gettext('Your Goal')}: ${data.weightGoal} (${data.goalKg} kg)`
+            goalSidebar.innerHTML = `${gettext('Goal')}: ${data.weightGoal} (${data.goalKg} kg)`
             activitySidebar.innerHTML = `${gettext('Activity')}: ${data.activityLevel}`
         },
     })

@@ -2235,7 +2235,8 @@ ORDER: Base + typography > general layout + grid > page layout > components
       .dashboard__sidebar__username {
         font-size: 1.7rem; } }
   .dashboard__sidebar__gender, .dashboard__sidebar__years, .dashboard__sidebar__height, .dashboard__sidebar__weight, .dashboard__sidebar__goal, .dashboard__sidebar__activity-level {
-    margin-left: 2rem; }
+    margin-left: 2rem;
+    margin-right: 2rem; }
     @media only screen and (max-width: 93.75em) {
       .dashboard__sidebar__gender, .dashboard__sidebar__years, .dashboard__sidebar__height, .dashboard__sidebar__weight, .dashboard__sidebar__goal, .dashboard__sidebar__activity-level {
         font-size: 1.7rem; } }

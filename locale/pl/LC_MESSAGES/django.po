@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-18 01:14+0100\n"
+"POT-Creation-Date: 2022-12-18 20:51+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -220,6 +220,8 @@ msgid "Daily average on Nutri"
 msgstr "Średnie dzienne na Nutri"
 
 #: .\templates\accounts\dashboard_stats.html:33
+#: .\templates\workouts\enter\activity_enter.html:39
+#: .\templates\workouts\enter\activity_enter.html:40
 msgid "Kcal Burnt"
 msgstr "Spalone Kcal"
 
@@ -241,6 +243,7 @@ msgstr "Ustawienia wykresu"
 #: .\templates\recipes\add\add_recipes.html:46
 #: .\templates\workouts\add\add_workouts.html:98
 #: .\templates\workouts\add\add_workouts.html:118
+#: .\templates\workouts\enter\activity_enter.html:43
 #: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1758
 msgid "Duration"
 msgstr "Czas"
@@ -817,7 +820,7 @@ msgid "Nutrition Grade"
 msgstr "Stopień odżywienia"
 
 #: .\templates\meals\enter\meal_enter.html:59
-#: .\templates\workouts\enter\activity_enter.html:48
+#: .\templates\workouts\enter\activity_enter.html:52
 msgid "Add"
 msgstr "Dodaj"
 
@@ -920,6 +923,7 @@ msgid "Hard"
 msgstr "Trudne"
 
 #: .\templates\recipes\add\add_recipes.html:47
+#: .\templates\workouts\enter\activity_enter.html:44
 msgid "Minutes"
 msgstr "Minuty"
 
@@ -1024,17 +1028,21 @@ msgstr ""
 msgid "Add Recipe"
 msgstr "Dodaj Przepis"
 
-#: .\templates\recipes\recipes.html:27 .\templates\recipes\recipes.html:31
+#: .\templates\recipes\recipes.html:27
+msgid "Enter your own recipe and share it with your friends."
+msgstr "Wprowadź swój własny przepis i podziel się nim z przyjaciółmi."
+
+#: .\templates\recipes\recipes.html:30
+msgid "Recipe Ideas"
+msgstr "Pomysł na przepis"
+
+#: .\templates\recipes\recipes.html:31
 msgid ""
 "Search for a recipe by entering the ingredients you have, or those you would "
 "like it to consist of."
 msgstr ""
 "Wyszukaj przepis wpisując składniki, które masz lub te z których chciałbyś "
 "żeby się składał."
-
-#: .\templates\recipes\recipes.html:30
-msgid "Recipe Ideas"
-msgstr "Pomysł na przepis"
 
 #: .\templates\recipes\search\search_recipes.html:30
 msgid "Search for recipe"
@@ -1113,19 +1121,11 @@ msgstr "Brak aktywności dodanych dzisiaj..."
 msgid "Your activity"
 msgstr "Twoja Aktywność"
 
-#: .\templates\workouts\enter\activity_enter.html:39
-msgid "MET"
-msgstr "MET"
+#: .\templates\workouts\enter\activity_enter.html:46
+msgid "Your result will be converted to MET"
+msgstr "Twój rezultat będzie skonwertowany do MET"
 
-#: .\templates\workouts\enter\activity_enter.html:40
-msgid "MET Indicator"
-msgstr "Wskaźnik MET"
-
-#: .\templates\workouts\enter\activity_enter.html:42
-msgid "What is MET?"
-msgstr "Czym jest MET?"
-
-#: .\templates\workouts\enter\activity_enter.html:43
+#: .\templates\workouts\enter\activity_enter.html:47
 msgid ""
 "MET stands for average energy expenditure during a given activity ( 1 MET is "
 "the energy you consume during inactivity)."
@@ -1133,7 +1133,7 @@ msgstr ""
 "MET oznacza średni wydatek energetyczny podczas danej aktywności ( 1 MET to "
 "energia, którą zużywasz podczas bezczynności)."
 
-#: .\templates\workouts\enter\activity_enter.html:45
+#: .\templates\workouts\enter\activity_enter.html:49
 msgid "How to calculate MET?"
 msgstr "Jak obliczać MET?"
 
@@ -2360,6 +2360,15 @@ msgid ""
 "Set the precision for numeric computations in the SASS processor. Default: "
 "settings.SASS_PRECISION."
 msgstr ""
+
+#~ msgid "MET"
+#~ msgstr "MET"
+
+#~ msgid "MET Indicator"
+#~ msgstr "Wskaźnik MET"
+
+#~ msgid "What is MET?"
+#~ msgstr "Czym jest MET?"
 
 #~ msgid "Today's Meals"
 #~ msgstr "Dzisiejsze Posiłki"
