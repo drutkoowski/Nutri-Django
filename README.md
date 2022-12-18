@@ -53,6 +53,7 @@ Visualization Examples <br>
 - <img src="https://github.com/devicons/devicon/blob/master/icons/postgresql/postgresql-original.svg" title="Postgresql" alt="Postgresql" width="20" height="20" align='center'/> Postgres (deployment)&nbsp;
 - <img src="https://github.com/devicons/devicon/blob/master/icons/heroku/heroku-plain-wordmark.svg" title="Heroku" alt="Heroku" width="20" height="20" align='center'/> Heroku (deployment)&nbsp;
 - <img src="https://symbols.getvecta.com/stencil_9/32_aws-elastic-beanstalk.3cbb564d52.svg" title="AWS" alt="AWS" width="20" height="20" align='center'/> AWS S3 (static files storage for deployment)&nbsp;
+
 ## Features
 List the ready features here:
 - Creating an account which is verified by mail activation link
@@ -69,7 +70,7 @@ List the ready features here:
 - Adding your own recipe
 - Visualization of the data
 - Translating entered meals/ingredients/activities/recipes to both EN and PL language
-
+- Translating page content using i18n functionality
 
 ## Screenshots
 ![name](static/images/main_page_readme.png)
