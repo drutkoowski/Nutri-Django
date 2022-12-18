@@ -1,6 +1,13 @@
-# Project Name
-> Outline a brief description of your project.
-> Live demo [_here_](https://www.example.com). <!-- If you have the project hosted somewhere, include the link here. -->
+# Nutri
+<p align="center">
+  <img height='1200px' width='850px' src="static/images/bg_photo_en.png?raw=true" alt="Nutri"/>
+</p>
+
+> Nutri is an web app created for people who want to learn more about their nutrition and the exercises they do. <br>
+
+Live demo <br>
+• [English](https://nutri-django.herokuapp.com/en/) <br>
+• [Polish](https://nutri-django.herokuapp.com/pl/)
 
 ## Table of Contents
 * [General Info](#general-information)
@@ -17,11 +24,20 @@
 
 
 ## General Information
-- Provide general information about your project here.
-- What problem does it (intend to) solve?
-- What is the purpose of your project?
-- Why did you undertake it?
-<!-- You don't have to answer all the questions - just the ones relevant to your project. -->
+Nutri is an app created for people who want to learn more about their nutrition and the exercises they do.<br>
+It allows you to add the meals you have eaten and the exercises you have done during the day.
+You can do this by searching for items manually, or create templates to do it more efficiently.
+
+Nutri allows all users to enter exercises, ingredients or recipes that are not currently in the database.
+This can be accomplished by filling out forms manually or by using a barcode (ingredient entry). <br>
+The application tracks all changes in your body, that is, it allows you to enter measurements of your body, the changes of which can be visualized with dynamic graphs (daily, weekly, monthly and yearly) <br>
+
+Visualization Examples <br>
+1.
+![name](static/images/dashboard_readme.png)
+2.
+![name](static/images/graph_nutri.png)
+
 
 
 ## Technologies Used
