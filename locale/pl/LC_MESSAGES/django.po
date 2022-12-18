@@ -1058,7 +1058,7 @@ msgstr "Sprawdź swoje aktywności"
 
 #: .\templates\workouts\add\add_workouts.html:42
 msgid "Activity Composition"
-msgstr "Kompozycja Twojej aktywności"
+msgstr "Kompozycja aktywności"
 
 #: .\templates\workouts\add\add_workouts.html:46
 msgid "Your activity will appear here"
