@@ -65,7 +65,7 @@ def live_search_exercises(request):
                     check_if_exercise_exists = Exercise.objects.filter(Q(pl_name__istartswith=query) | Q(pl_name__icontains=query) & Q(verified=True))
                 else:
                     check_if_exercise_exists = Exercise.objects.filter(pl_name__search=query, verified=True).all()
-                    if check_if_exercise_exists.count() == 0 or not check_if_exercise_exists.exists():
+                    if check_if_exercise_exists.count() == 0:
                         check_if_exercise_exists = Exercise.objects.filter(pl_name__istartswith=query, verified=True).all()
             elif lang_code == 'pl' and is_verified == 'false':
                 if DEBUG is True:
@@ -73,7 +73,7 @@ def live_search_exercises(request):
                         Q(pl_name__istartswith=query) | Q(pl_name__icontains=query))
                 else:
                     check_if_exercise_exists = Exercise.objects.filter(pl_name__search=query).all()
-                    if check_if_exercise_exists.count() == 0 or not check_if_exercise_exists.exists():
+                    if check_if_exercise_exists.count() == 0:
                         check_if_exercise_exists = Exercise.objects.filter(pl_name__istartswith=query).all()
             if lang_code == 'en' and is_verified == 'true':
                 if DEBUG is True:
@@ -81,7 +81,7 @@ def live_search_exercises(request):
                         Q(en_name__istartswith=query) | Q(en_name__icontains=query) & Q(verified=True))
                 else:
                     check_if_exercise_exists = Exercise.objects.filter(en_name__search=query, verified=True).all()
-                    if check_if_exercise_exists.count() == 0 or not check_if_exercise_exists.exists():
+                    if check_if_exercise_exists.count() == 0:
                         check_if_exercise_exists = Exercise.objects.filter(en_name__istartswith=query,
                                                                            verified=True).all()
             elif lang_code == 'en' and is_verified == 'false':
@@ -90,7 +90,7 @@ def live_search_exercises(request):
                         Q(en_name__istartswith=query) | Q(en_name__icontains=query))
                 else:
                     check_if_exercise_exists = Exercise.objects.filter(en_name__search=query).all()
-                    if check_if_exercise_exists.count() == 0 or not check_if_exercise_exists.exists():
+                    if check_if_exercise_exists.count() == 0:
                         check_if_exercise_exists = Exercise.objects.filter(en_name__istartswith=query).all()
             # "\y" or "\b" depends on postgres or not (\y - postgres)
             if check_if_exercise_exists is not None and check_if_exercise_exists.count() > 0:

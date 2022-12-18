@@ -55,14 +55,14 @@ def live_search_recipes(request):
                         Q(name_pl__istartswith=query) | Q(name_pl__icontains=query) & Q(verified=is_verified))
                 else:
                     check_if_recipe_exists = Recipe.objects.filter(name_pl__search=query).all()
-                    if check_if_recipe_exists.count() == 0 or not check_if_recipe_exists.exists():
+                    if check_if_recipe_exists.count() == 0:
                         check_if_recipe_exists = Recipe.objects.filter(pl_name__istartswith=query).all()
             if lang_code == 'pl' and is_verified is False:
                 if DEBUG is True:
                     check_if_recipe_exists = Recipe.objects.filter(Q(name_pl__istartswith=query) | Q(name_pl__icontains=query))
                 else:
                     check_if_recipe_exists = Recipe.objects.filter(name_pl__search=query).all()
-                    if check_if_recipe_exists.count() == 0 or not check_if_recipe_exists.exists() :
+                    if check_if_recipe_exists.count() == 0:
                         check_if_recipe_exists = Recipe.objects.filter(pl_name__istartswith=query).all()
             if lang_code == 'en' and is_verified is True:
                 if DEBUG is True:
@@ -70,7 +70,7 @@ def live_search_recipes(request):
                         Q(name_en__istartswith=query) | Q(name_en__icontains=query) & Q(verified=is_verified))
                 else:
                     check_if_recipe_exists = Recipe.objects.filter(name_en__search=query, verified=True).all()
-                    if check_if_recipe_exists.count() == 0 or not check_if_recipe_exists.exists():
+                    if check_if_recipe_exists.count() == 0:
                         check_if_recipe_exists = Recipe.objects.filter(en_name__istartswith=query, verified=True).all()
             if lang_code == 'en' and is_verified is False:
                 if DEBUG is True:
@@ -78,7 +78,7 @@ def live_search_recipes(request):
                         Q(name_en__istartswith=query) | Q(name_en__icontains=query))
                 else:
                     check_if_recipe_exists = Recipe.objects.filter(name_en__search=query).all()
-                    if check_if_recipe_exists.count() == 0 or not check_if_recipe_exists.exists():
+                    if check_if_recipe_exists.count() == 0:
                         check_if_recipe_exists = Recipe.objects.filter(en_name__istartswith=query).all()
             # "\y" or "\b" depends on postgres or not (\y - postgres)
             if check_if_recipe_exists is not None and check_if_recipe_exists.count() > 0:
