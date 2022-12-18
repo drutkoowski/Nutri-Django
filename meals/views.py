@@ -65,7 +65,7 @@ def live_search_ingredients(request):
                         )).all()
                 else:
                     check_if_ingredient_exists = Ingredient.objects.filter(pl_name__search=query, verified=True).all()
-                    if check_if_ingredient_exists.count() == 0:
+                    if check_if_ingredient_exists.count() == 0 or not check_if_ingredient_exists.exists():
                         check_if_ingredient_exists = Ingredient.objects.filter(pl_name__istartswith=query, verified=True).all()
 
             elif lang_code == 'pl' and is_verified == 'false':
@@ -77,7 +77,7 @@ def live_search_ingredients(request):
                         )).all()
                 else:
                     check_if_ingredient_exists = Ingredient.objects.filter(pl_name__search=query).all()
-                    if check_if_ingredient_exists.count() == 0:
+                    if check_if_ingredient_exists.count() == 0 or not check_if_ingredient_exists.exists():
                         check_if_ingredient_exists = Ingredient.objects.filter(pl_name__istartswith=query).all()
 
             if lang_code == 'en' and is_verified == 'true':
@@ -89,7 +89,7 @@ def live_search_ingredients(request):
                         )).all()
                 else:
                     check_if_ingredient_exists = Ingredient.objects.filter(en_name__search=query, verified=True).all()
-                    if check_if_ingredient_exists.count() == 0:
+                    if check_if_ingredient_exists.count() == 0 or not check_if_ingredient_exists.exists():
                         check_if_ingredient_exists = Ingredient.objects.filter(en_name__istartswith=query,
                                                                                verified=True).all()
             elif lang_code == 'en' and is_verified == 'false':
@@ -101,7 +101,7 @@ def live_search_ingredients(request):
                         )).all()
                 else:
                     check_if_ingredient_exists = Ingredient.objects.filter(en_name__search=query).all()
-                    if check_if_ingredient_exists.count() == 0:
+                    if check_if_ingredient_exists.count() == 0 or not check_if_ingredient_exists.exists():
                         check_if_ingredient_exists = Ingredient.objects.filter(en_name__istartswith=query).all()
 
             # "\y" or "\b" depends on postgres or not (\y - postgres)
