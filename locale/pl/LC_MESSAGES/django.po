@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-17 15:52+0100\n"
+"POT-Creation-Date: 2022-12-18 01:14+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,11 +20,11 @@ msgstr ""
 "%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
 "%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: .\Nutri\settings.py:153
+#: .\Nutri\settings.py:154
 msgid "Polish"
 msgstr "Polski"
 
-#: .\Nutri\settings.py:154
+#: .\Nutri\settings.py:155
 msgid "English"
 msgstr "Angielski"
 
@@ -48,56 +48,56 @@ msgstr "z powrotem"
 msgid "Server encountered an unexpected error - lets take you"
 msgstr "Serwer napotkał nieoczekiwany błąd - zabierzmy cię"
 
-#: .\templates\accounts\activity_calendar.html:18
+#: .\templates\accounts\activity_calendar.html:19
 msgid "Activity Calendar"
 msgstr "Kalendarz Aktywności"
 
-#: .\templates\accounts\activity_calendar.html:19
+#: .\templates\accounts\activity_calendar.html:20
 msgid "There you can watch your nutrition and activity history, day by day"
 msgstr ""
 "Tutaj możesz sprawdzić swoją historię odżywiania oraz aktywności, dzień po "
 "dniu"
 
-#: .\templates\accounts\activity_calendar.html:32
+#: .\templates\accounts\activity_calendar.html:33
 #: .\venv\Lib\site-packages\django\utils\dates.py:22
 msgid "Sun"
 msgstr "Nie"
 
-#: .\templates\accounts\activity_calendar.html:33
+#: .\templates\accounts\activity_calendar.html:34
 #: .\venv\Lib\site-packages\django\utils\dates.py:16
 msgid "Mon"
 msgstr "Pon"
 
-#: .\templates\accounts\activity_calendar.html:34
+#: .\templates\accounts\activity_calendar.html:35
 #: .\venv\Lib\site-packages\django\utils\dates.py:17
 msgid "Tue"
 msgstr "Wt"
 
-#: .\templates\accounts\activity_calendar.html:35
+#: .\templates\accounts\activity_calendar.html:36
 #: .\venv\Lib\site-packages\django\utils\dates.py:18
 msgid "Wed"
 msgstr "Śr"
 
-#: .\templates\accounts\activity_calendar.html:36
+#: .\templates\accounts\activity_calendar.html:37
 #: .\venv\Lib\site-packages\django\utils\dates.py:19
 msgid "Thu"
 msgstr "Czw"
 
-#: .\templates\accounts\activity_calendar.html:37
+#: .\templates\accounts\activity_calendar.html:38
 #: .\venv\Lib\site-packages\django\utils\dates.py:20
 msgid "Fri"
 msgstr "Pt"
 
-#: .\templates\accounts\activity_calendar.html:38
+#: .\templates\accounts\activity_calendar.html:39
 #: .\venv\Lib\site-packages\django\utils\dates.py:21
 msgid "Sat"
 msgstr "Sob"
 
-#: .\templates\accounts\activity_calendar.html:42
+#: .\templates\accounts\activity_calendar.html:43
 msgid "NOTE: Saved Activities/Meals are highlighted by green dots"
 msgstr "UWAGA: Zapisane Aktywności/Posiłki są zaznaczone zielonymi kropkami"
 
-#: .\templates\accounts\activity_calendar.html:42
+#: .\templates\accounts\activity_calendar.html:43
 msgid "Click at them to get more information"
 msgstr "Kliknij na nie, aby uzyskać więcej informacji"
 
@@ -155,8 +155,8 @@ msgstr "Kalorie"
 #: .\templates\accounts\dashboard.html:61
 #: .\templates\accounts\dashboard_stats.html:27
 #: .\templates\accounts\dashboard_stats.html:34
-#: .\templates\meals\add\add_meals.html:102
-#: .\templates\meals\add\add_meals.html:114
+#: .\templates\meals\add\add_meals.html:103
+#: .\templates\meals\add\add_meals.html:115
 #: .\templates\meals\enter\meal_enter.html:43
 #: .\templates\meals\enter\meal_enter.html:44
 msgid "Carbs"
@@ -165,8 +165,8 @@ msgstr "Węglowodany"
 #: .\templates\accounts\dashboard.html:66
 #: .\templates\accounts\dashboard_stats.html:25
 #: .\templates\accounts\dashboard_stats.html:35
-#: .\templates\meals\add\add_meals.html:101
-#: .\templates\meals\add\add_meals.html:113
+#: .\templates\meals\add\add_meals.html:102
+#: .\templates\meals\add\add_meals.html:114
 #: .\templates\meals\enter\meal_enter.html:51
 #: .\templates\meals\enter\meal_enter.html:52
 msgid "Protein"
@@ -174,8 +174,8 @@ msgstr "Białko"
 
 #: .\templates\accounts\dashboard.html:71
 #: .\templates\accounts\dashboard_stats.html:26
-#: .\templates\meals\add\add_meals.html:103
-#: .\templates\meals\add\add_meals.html:115
+#: .\templates\meals\add\add_meals.html:104
+#: .\templates\meals\add\add_meals.html:116
 msgid "Fat"
 msgstr "Tłuszcze"
 
@@ -211,7 +211,7 @@ msgid "Eaten Kcal"
 msgstr "Zjedzone Kcal"
 
 #: .\templates\accounts\dashboard_stats.html:24
-#: .\templates\workouts\add\add_workouts.html:116
+#: .\templates\workouts\add\add_workouts.html:117
 msgid "Burnt Kcal"
 msgstr "Spalone Kcal"
 
@@ -238,9 +238,9 @@ msgid "Graph Customization"
 msgstr "Ustawienia wykresu"
 
 #: .\templates\accounts\dashboard_stats.html:50
-#: .\templates\recipes\add\add_recipes.html:45
-#: .\templates\workouts\add\add_workouts.html:97
-#: .\templates\workouts\add\add_workouts.html:117
+#: .\templates\recipes\add\add_recipes.html:46
+#: .\templates\workouts\add\add_workouts.html:98
+#: .\templates\workouts\add\add_workouts.html:118
 #: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1758
 msgid "Duration"
 msgstr "Czas"
@@ -326,11 +326,11 @@ msgstr "Ramiona"
 #: .\templates\accounts\forgot_password.html:15
 #: .\templates\accounts\login.html:15
 #: .\templates\accounts\reset_password.html:15
-#: .\templates\accounts\signup.html:15 .\templates\home\index.html:83
-#: .\templates\meals\add\add_meals.html:14 .\templates\meals\meals.html:14
+#: .\templates\accounts\signup.html:15 .\templates\home\index.html:88
+#: .\templates\meals\add\add_meals.html:15 .\templates\meals\meals.html:14
 #: .\templates\recipes\recipes.html:14
-#: .\templates\workouts\add\add_workouts.html:14
-#: .\templates\workouts\enter\activity_enter.html:15
+#: .\templates\workouts\add\add_workouts.html:15
+#: .\templates\workouts\enter\activity_enter.html:16
 #: .\templates\workouts\workouts.html:14
 msgid "Your browser is not supported!"
 msgstr "Twoja przeglądarka nie jest obsługiwana!"
@@ -537,7 +537,7 @@ msgstr "Dalej"
 msgid "Do you have an account?"
 msgstr "Masz już konto?"
 
-#: .\templates\accounts\signup.html:44"
+#: .\templates\accounts\signup.html:44
 msgid "Verification link sent... Redirecting to login page."
 msgstr "Link weryfikacyjny wysłany... Przenoszenie na stronę logowania."
 
@@ -602,196 +602,196 @@ msgstr "Kontakt"
 msgid "years old"
 msgstr "lata"
 
-#: .\templates\home\index.html:21
+#: .\templates\home\index.html:26
 msgid " one word"
 msgstr " jeden wyraz"
 
-#: .\templates\home\index.html:21
+#: .\templates\home\index.html:26
 msgid " Many meanings"
 msgstr " Wiele znaczeń"
 
-#: .\templates\home\index.html:24
+#: .\templates\home\index.html:29
 msgid "Multifunctional"
 msgstr "Wielofunkcyjność"
 
-#: .\templates\home\index.html:28
+#: .\templates\home\index.html:33
 msgid "Simplicity"
 msgstr "Prostota"
 
-#: .\templates\home\index.html:32
+#: .\templates\home\index.html:37
 msgid "Accessibility"
 msgstr "Dostępność"
 
-#: .\templates\home\index.html:36
+#: .\templates\home\index.html:41
 msgid "Accuracy"
 msgstr "Dokładność"
 
-#: .\templates\home\index.html:40
+#: .\templates\home\index.html:45
 msgid "Innovation"
 msgstr "Innowacja"
 
-#: .\templates\home\index.html:56
+#: .\templates\home\index.html:61
 msgid "Using Nutri"
 msgstr "Używając Nutri"
 
-#: .\templates\home\index.html:56
+#: .\templates\home\index.html:61
 msgid "You can make your goal real"
 msgstr "Możesz spełnić swój cel"
 
-#: .\templates\home\index.html:61
+#: .\templates\home\index.html:66
 msgid "Discover Your Nutrition"
 msgstr "Poznaj swoje odżywianie"
 
-#: .\templates\home\index.html:64
+#: .\templates\home\index.html:69
 msgid "Desktop and Mobile accessibility"
 msgstr "Dostępność desktopowa i mobilna"
 
-#: .\templates\home\index.html:68
+#: .\templates\home\index.html:73
 msgid "Completely free of charge"
 msgstr "Całkowicie bezpłatnie"
 
-#: .\templates\home\index.html:72
+#: .\templates\home\index.html:77
 msgid "Appreciated by"
 msgstr "Docenieni przez"
 
-#: .\templates\home\index.html:72
+#: .\templates\home\index.html:77
 msgid "users"
 msgstr "użytkowników"
 
-#: .\templates\home\index.html:88
+#: .\templates\home\index.html:93
 msgid "Calculate daily KCAL"
 msgstr "Obliczaj dzienne KCAL"
 
-#: .\templates\home\index.html:93
+#: .\templates\home\index.html:98
 msgid "Search for recipes"
 msgstr "Szukaj przepisów"
 
-#: .\templates\home\index.html:97
+#: .\templates\home\index.html:102
 msgid "Save your progress"
 msgstr "Zapisuj postępy"
 
-#: .\templates\home\index.html:101
+#: .\templates\home\index.html:106
 msgid "Many personalization methods"
 msgstr "Wiele metod personalizacji"
 
-#: .\templates\home\index.html:105
+#: .\templates\home\index.html:110
 msgid "Add your exercises"
 msgstr "Dodawaj swoje ćwiczenia"
 
-#: .\templates\home\index.html:109
+#: .\templates\home\index.html:114
 msgid "Share your progress"
 msgstr "Dziel się sukcesem"
 
-#: .\templates\home\index.html:120
+#: .\templates\home\index.html:125
 msgid "Created with &hearts; by"
 msgstr "Stworzone z &hearts; przez"
 
-#: .\templates\meals\add\add_meals.html:24
-#: .\templates\meals\saved\saved_meals.html:77
-#: .\templates\meals\saved\saved_meals.html:91
-#: .\templates\recipes\search\search_recipes.html:31
-#: .\templates\workouts\add\add_workouts.html:23
-#: .\templates\workouts\saved\saved_workouts.html:79
-#: .\templates\workouts\saved\saved_workouts.html:93
+#: .\templates\meals\add\add_meals.html:25
+#: .\templates\meals\saved\saved_meals.html:78
+#: .\templates\meals\saved\saved_meals.html:92
+#: .\templates\recipes\search\search_recipes.html:32
+#: .\templates\workouts\add\add_workouts.html:24
+#: .\templates\workouts\saved\saved_workouts.html:80
+#: .\templates\workouts\saved\saved_workouts.html:94
 msgid "Search"
 msgstr "Szukaj"
 
-#: .\templates\meals\add\add_meals.html:30
-#: .\templates\meals\saved\saved_meals.html:75
-#: .\templates\meals\saved\saved_meals.html:89
-#: .\templates\recipes\search\search_recipes.html:38
-#: .\templates\workouts\add\add_workouts.html:27
-#: .\templates\workouts\saved\saved_workouts.html:77
-#: .\templates\workouts\saved\saved_workouts.html:91
+#: .\templates\meals\add\add_meals.html:31
+#: .\templates\meals\saved\saved_meals.html:76
+#: .\templates\meals\saved\saved_meals.html:90
+#: .\templates\recipes\search\search_recipes.html:39
+#: .\templates\workouts\add\add_workouts.html:28
+#: .\templates\workouts\saved\saved_workouts.html:78
+#: .\templates\workouts\saved\saved_workouts.html:92
 msgid "Only verified"
 msgstr "Tylko zweryfikowane"
 
-#: .\templates\meals\add\add_meals.html:34
-#: .\templates\workouts\add\add_workouts.html:29
+#: .\templates\meals\add\add_meals.html:35
+#: .\templates\workouts\add\add_workouts.html:30
 msgid "Your search results"
 msgstr "Twoje rezultaty wyszukiwania"
 
-#: .\templates\meals\add\add_meals.html:37
+#: .\templates\meals\add\add_meals.html:38
 msgid "Try to search meal or ingredients that have you eaten today."
 msgstr "Spróbuj wyszukać posiłek lub składnik, który zjadłeś/aś."
 
-#: .\templates\meals\add\add_meals.html:38
-#: .\templates\recipes\search\search_recipes.html:41
-#: .\templates\workouts\add\add_workouts.html:33
+#: .\templates\meals\add\add_meals.html:39
+#: .\templates\recipes\search\search_recipes.html:42
+#: .\templates\workouts\add\add_workouts.html:34
 msgid "Results will appear here."
 msgstr "Twoje rezultaty wyszukiwania pojawią się tutaj."
 
-#: .\templates\meals\add\add_meals.html:41
+#: .\templates\meals\add\add_meals.html:42
 msgid "Check your meals"
 msgstr "Sprawdź swoje posiłki"
 
-#: .\templates\meals\add\add_meals.html:46
-msgid "Today's Meals"
-msgstr "Dzisiejsze Posiłki"
+#: .\templates\meals\add\add_meals.html:47
+msgid "Meal Composition"
+msgstr "Kompozycja Posiłku"
 
-#: .\templates\meals\add\add_meals.html:50
+#: .\templates\meals\add\add_meals.html:51
 msgid "Your meal composition will appear here"
 msgstr "Twoja kompozycja posiłku pojawi się tutaj"
 
-#: .\templates\meals\add\add_meals.html:54 .\templates\meals\meals.html:30
+#: .\templates\meals\add\add_meals.html:55 .\templates\meals\meals.html:30
 msgid "Saved Meals"
 msgstr "Zapisane Posiłki"
 
-#: .\templates\meals\add\add_meals.html:66
-#: .\templates\meals\saved\saved_meals.html:43
-#: .\templates\workouts\saved\saved_workouts.html:43
+#: .\templates\meals\add\add_meals.html:67
+#: .\templates\meals\saved\saved_meals.html:44
+#: .\templates\workouts\saved\saved_workouts.html:44
 msgid "No saved templates yet"
 msgstr "Brak zapisanych szablonów"
 
-#: .\templates\meals\add\add_meals.html:70
-#: .\templates\recipes\add\add_recipes.html:91
-#: .\templates\workouts\add\add_workouts.html:65
+#: .\templates\meals\add\add_meals.html:71
+#: .\templates\recipes\add\add_recipes.html:92
+#: .\templates\workouts\add\add_workouts.html:66
 msgid "Save"
 msgstr "Zapisz"
 
-#: .\templates\meals\add\add_meals.html:77
+#: .\templates\meals\add\add_meals.html:78
 msgid "Adding your meal to our database..."
 msgstr "Dodawanie Twojego posiłku do bazy..."
 
-#: .\templates\meals\add\add_meals.html:85
+#: .\templates\meals\add\add_meals.html:86
 msgid "Are you sure you want to delete this meal?"
 msgstr "Czy jesteś pewien, że chcesz usunąć ten posiłek?"
 
-#: .\templates\meals\add\add_meals.html:87
-#: .\templates\workouts\add\add_workouts.html:82
+#: .\templates\meals\add\add_meals.html:88
+#: .\templates\workouts\add\add_workouts.html:83
 #: .\venv\Lib\site-packages\django\forms\widgets.py:771
 msgid "Yes"
 msgstr "Tak"
 
-#: .\templates\meals\add\add_meals.html:88
-#: .\templates\workouts\add\add_workouts.html:83
+#: .\templates\meals\add\add_meals.html:89
+#: .\templates\workouts\add\add_workouts.html:84
 #: .\venv\Lib\site-packages\django\forms\widgets.py:772
 msgid "No"
 msgstr "Nie"
 
-#: .\templates\meals\add\add_meals.html:96
+#: .\templates\meals\add\add_meals.html:97
 msgid "Your added meals for today."
 msgstr "Twoje dzisiejsze dodane posiłki."
 
-#: .\templates\meals\add\add_meals.html:98
+#: .\templates\meals\add\add_meals.html:99
 msgid "Meals on"
 msgstr "Posiłki w"
 
-#: .\templates\meals\add\add_meals.html:110
+#: .\templates\meals\add\add_meals.html:111
 #: .\templates\meals\enter\meal_enter.html:30
 #: .\templates\meals\enter\meal_enter.html:32
-#: .\templates\workouts\enter\activity_enter.html:29
-#: .\templates\workouts\enter\activity_enter.html:31
+#: .\templates\workouts\enter\activity_enter.html:30
+#: .\templates\workouts\enter\activity_enter.html:32
 msgid "Category"
 msgstr "Kategoria"
 
-#: .\templates\meals\add\add_meals.html:112
+#: .\templates\meals\add\add_meals.html:113
 #: .\templates\meals\enter\meal_enter.html:39
 #: .\templates\meals\enter\meal_enter.html:40
 msgid "Kcal"
 msgstr "Kcal"
 
-#: .\templates\meals\add\add_meals.html:121
+#: .\templates\meals\add\add_meals.html:122
 msgid "No meals added for today..."
 msgstr "Brak posiłków dodanych dzisiaj..."
 
@@ -801,9 +801,9 @@ msgstr "Twój składnik/posiłek"
 
 #: .\templates\meals\enter\meal_enter.html:26
 #: .\templates\meals\enter\meal_enter.html:27
-#: .\templates\recipes\add\add_recipes.html:33
-#: .\templates\workouts\enter\activity_enter.html:25
+#: .\templates\recipes\add\add_recipes.html:34
 #: .\templates\workouts\enter\activity_enter.html:26
+#: .\templates\workouts\enter\activity_enter.html:27
 msgid "Name"
 msgstr "Nazwa"
 
@@ -817,7 +817,7 @@ msgid "Nutrition Grade"
 msgstr "Stopień odżywienia"
 
 #: .\templates\meals\enter\meal_enter.html:59
-#: .\templates\workouts\enter\activity_enter.html:47
+#: .\templates\workouts\enter\activity_enter.html:48
 msgid "Add"
 msgstr "Dodaj"
 
@@ -863,146 +863,146 @@ msgstr ""
 "Przeglądaj i modyfikuj swoje zapisane dania, aby łatwiej i szybciej "
 "korzystać z opcji dodawania posiłków."
 
-#: .\templates\meals\saved\saved_meals.html:29
+#: .\templates\meals\saved\saved_meals.html:30
 msgid "Your Saved Meals"
 msgstr "Zapisane Posiłki"
 
-#: .\templates\meals\saved\saved_meals.html:37
-#: .\templates\workouts\saved\saved_workouts.html:37
+#: .\templates\meals\saved\saved_meals.html:38
+#: .\templates\workouts\saved\saved_workouts.html:38
 msgid "Manage"
 msgstr "Zarządzaj"
 
-#: .\templates\meals\saved\saved_meals.html:38
-#: .\templates\workouts\saved\saved_workouts.html:38
+#: .\templates\meals\saved\saved_meals.html:39
+#: .\templates\workouts\saved\saved_workouts.html:39
 #: .\venv\Lib\site-packages\django\forms\formsets.py:496
 msgid "Delete"
 msgstr "Usuń"
 
-#: .\templates\meals\saved\saved_meals.html:48
+#: .\templates\meals\saved\saved_meals.html:49
 msgid "Do you want to create new meal template?"
 msgstr "Chcesz utworzyć nowy szablon posiłku?"
 
-#: .\templates\meals\saved\saved_meals.html:49
+#: .\templates\meals\saved\saved_meals.html:50
 msgid "Create Template"
 msgstr "Utwórz Szablon"
 
-#: .\templates\meals\saved\saved_meals.html:55
+#: .\templates\meals\saved\saved_meals.html:56
 msgid "Adding your meal template to our database.."
 msgstr "Dodawanie Twojego szablonu posiłku do bazy..."
 
-#: .\templates\meals\saved\saved_meals.html:73
-#: .\templates\meals\saved\saved_meals.html:87
+#: .\templates\meals\saved\saved_meals.html:74
+#: .\templates\meals\saved\saved_meals.html:88
 msgid "Search for your meal components"
 msgstr "Szukaj składowych posiłku"
 
-#: .\templates\recipes\add\add_recipes.html:29
+#: .\templates\recipes\add\add_recipes.html:30
 msgid "Add your own recipe"
 msgstr "Dodaj swój własny przepis"
 
-#: .\templates\recipes\add\add_recipes.html:34
+#: .\templates\recipes\add\add_recipes.html:35
 msgid "Recipe Name"
 msgstr "Nazwa Przepisu"
 
-#: .\templates\recipes\add\add_recipes.html:37
+#: .\templates\recipes\add\add_recipes.html:38
 msgid "Difficulty"
 msgstr "Trudność"
 
-#: .\templates\recipes\add\add_recipes.html:39
+#: .\templates\recipes\add\add_recipes.html:40
 msgid "Easy"
 msgstr "Łatwe"
 
-#: .\templates\recipes\add\add_recipes.html:40
+#: .\templates\recipes\add\add_recipes.html:41
 msgid "Medium"
 msgstr "Średnie"
 
-#: .\templates\recipes\add\add_recipes.html:41
+#: .\templates\recipes\add\add_recipes.html:42
 msgid "Hard"
 msgstr "Trudne"
 
-#: .\templates\recipes\add\add_recipes.html:46
+#: .\templates\recipes\add\add_recipes.html:47
 msgid "Minutes"
 msgstr "Minuty"
 
-#: .\templates\recipes\add\add_recipes.html:49
+#: .\templates\recipes\add\add_recipes.html:50
 msgid "Servings"
 msgstr "Porcje"
 
-#: .\templates\recipes\add\add_recipes.html:68
-#: .\templates\recipes\ideas\recipes_ideas.html:101
-#: .\templates\recipes\search\search_recipes.html:82
+#: .\templates\recipes\add\add_recipes.html:69
+#: .\templates\recipes\ideas\recipes_ideas.html:102
+#: .\templates\recipes\search\search_recipes.html:83
 msgid "Step by step"
 msgstr "Krok po kroku"
 
-#: .\templates\recipes\add\add_recipes.html:72
+#: .\templates\recipes\add\add_recipes.html:73
 msgid "For example - Add pasta and striped Parma ham"
 msgstr "Na przykład - Dodaj Makaron i szynkę parmeńską"
 
-#: .\templates\recipes\add\add_recipes.html:79
-#: .\templates\recipes\ideas\recipes_ideas.html:96
-#: .\templates\recipes\search\search_recipes.html:78
+#: .\templates\recipes\add\add_recipes.html:80
+#: .\templates\recipes\ideas\recipes_ideas.html:97
+#: .\templates\recipes\search\search_recipes.html:79
 msgid "Ingredients"
 msgstr "Składniki"
 
-#: .\templates\recipes\add\add_recipes.html:83
+#: .\templates\recipes\add\add_recipes.html:84
 msgid "fe. 300 g"
 msgstr "np. 300 g"
 
-#: .\templates\recipes\add\add_recipes.html:84
+#: .\templates\recipes\add\add_recipes.html:85
 msgid "Ingredient (fe. Pasta)"
 msgstr "Składnik (np. Makaron)"
 
-#: .\templates\recipes\add\add_recipes.html:98
+#: .\templates\recipes\add\add_recipes.html:99
 msgid "Your recipe added successfully."
 msgstr "Twój przepis dodany pomyślnie."
 
-#: .\templates\recipes\ideas\recipes_ideas.html:31
+#: .\templates\recipes\ideas\recipes_ideas.html:32
 msgid "Suggested recipes"
 msgstr "Sugerowane przepisy"
 
-#: .\templates\recipes\ideas\recipes_ideas.html:34
+#: .\templates\recipes\ideas\recipes_ideas.html:35
 msgid "We could not find any recipe matching your criterias."
 msgstr "Nie znaleźliśmy żadnego przepisu spełniającego Twoje wymogi."
 
-#: .\templates\recipes\ideas\recipes_ideas.html:38
+#: .\templates\recipes\ideas\recipes_ideas.html:39
 msgid "Not satisfied with results?"
 msgstr "Nie zadowoliły Cię rezultaty?"
 
-#: .\templates\recipes\ideas\recipes_ideas.html:39
+#: .\templates\recipes\ideas\recipes_ideas.html:40
 msgid "Try again"
 msgstr "Spróbuj ponownie"
 
-#: .\templates\recipes\ideas\recipes_ideas.html:48
+#: .\templates\recipes\ideas\recipes_ideas.html:49
 msgid "Type ingredients that you have below separating by a comma"
 msgstr "Wpisz poniżej składniki, które masz oddzielając je przecinkiem"
 
-#: .\templates\recipes\ideas\recipes_ideas.html:49
+#: .\templates\recipes\ideas\recipes_ideas.html:50
 msgid "Type all ingredients here"
 msgstr "Wpisz wszystkie składniki tutaj"
 
-#: .\templates\recipes\ideas\recipes_ideas.html:54
+#: .\templates\recipes\ideas\recipes_ideas.html:55
 msgid "Focus on"
 msgstr "Skup się na"
 
-#: .\templates\recipes\ideas\recipes_ideas.html:55
+#: .\templates\recipes\ideas\recipes_ideas.html:56
 msgid "Ingredients you have"
 msgstr "Posiadanych składnikach"
 
-#: .\templates\recipes\ideas\recipes_ideas.html:56
+#: .\templates\recipes\ideas\recipes_ideas.html:57
 msgid "Minimizing missing ingredients"
 msgstr "Minimalizowaniu brakujących składników"
 
-#: .\templates\recipes\ideas\recipes_ideas.html:64
+#: .\templates\recipes\ideas\recipes_ideas.html:65
 msgid "Something went wrong, we could not fetch information about this recipe."
 msgstr ""
 "Coś poszło nie tak, nie byliśmy w stanie pobrać informacji o tym przepisie."
 
-#: .\templates\recipes\ideas\recipes_ideas.html:73
-#: .\templates\recipes\search\search_recipes.html:55
+#: .\templates\recipes\ideas\recipes_ideas.html:74
+#: .\templates\recipes\search\search_recipes.html:56
 msgid "Author"
 msgstr "Autor"
 
-#: .\templates\recipes\ideas\recipes_ideas.html:75
-#: .\templates\recipes\search\search_recipes.html:57
+#: .\templates\recipes\ideas\recipes_ideas.html:76
+#: .\templates\recipes\search\search_recipes.html:58
 msgid "What do you need to make it by yourself?"
 msgstr "Co potrzebujesz by wykonać to samemu?"
 
@@ -1036,96 +1036,96 @@ msgstr ""
 msgid "Recipe Ideas"
 msgstr "Pomysł na przepis"
 
-#: .\templates\recipes\search\search_recipes.html:29
+#: .\templates\recipes\search\search_recipes.html:30
 msgid "Search for recipe"
 msgstr "Szukaj przepisu"
 
-#: .\templates\recipes\search\search_recipes.html:45
+#: .\templates\recipes\search\search_recipes.html:46
 msgid "Don't you know what do you want to eat?"
 msgstr "Nie wiesz co chcesz zjeść?"
 
-#: .\templates\recipes\search\search_recipes.html:46
+#: .\templates\recipes\search\search_recipes.html:47
 msgid "Random Recipe"
 msgstr "Wylosuj Przepis"
 
-#: .\templates\workouts\add\add_workouts.html:32
+#: .\templates\workouts\add\add_workouts.html:33
 msgid "Try to search activities that have you done today."
 msgstr "Spróbuj wyszukać aktywności, które dziś wykonałeś/aś."
 
-#: .\templates\workouts\add\add_workouts.html:36
+#: .\templates\workouts\add\add_workouts.html:37
 msgid "Check your activities"
 msgstr "Sprawdź swoje aktywności"
 
-#: .\templates\workouts\add\add_workouts.html:41
+#: .\templates\workouts\add\add_workouts.html:42
 msgid "Activity Composition"
 msgstr "Kompozycja Twojej aktywności"
 
-#: .\templates\workouts\add\add_workouts.html:45
+#: .\templates\workouts\add\add_workouts.html:46
 msgid "Your activity will appear here"
 msgstr "Kompozycja Twojej aktywności pojawi się tutaj"
 
-#: .\templates\workouts\add\add_workouts.html:49
+#: .\templates\workouts\add\add_workouts.html:50
 #: .\templates\workouts\workouts.html:30
 msgid "Saved Activities"
 msgstr "Zapisane aktywności"
 
-#: .\templates\workouts\add\add_workouts.html:61
+#: .\templates\workouts\add\add_workouts.html:62
 msgid "No saved activities yet"
 msgstr "Brak zapisanych szablonów"
 
-#: .\templates\workouts\add\add_workouts.html:72
+#: .\templates\workouts\add\add_workouts.html:73
 msgid "Adding your activity to our database..."
 msgstr "Dodawanie Twojej aktywności do bazy..."
 
-#: .\templates\workouts\add\add_workouts.html:80
+#: .\templates\workouts\add\add_workouts.html:81
 msgid "Are you sure you want to delete this activity?"
 msgstr "Czy jesteś pewien, że chcesz usunąć tą aktywność?"
 
-#: .\templates\workouts\add\add_workouts.html:92
+#: .\templates\workouts\add\add_workouts.html:93
 msgid "Your added activities for today."
 msgstr "Twoje dodane aktywności dla"
 
-#: .\templates\workouts\add\add_workouts.html:94
+#: .\templates\workouts\add\add_workouts.html:95
 msgid "Activities on"
 msgstr "Aktywności w"
 
-#: .\templates\workouts\add\add_workouts.html:104
+#: .\templates\workouts\add\add_workouts.html:105
 msgid "Activity #"
 msgstr "Aktywność #"
 
-#: .\templates\workouts\add\add_workouts.html:105
+#: .\templates\workouts\add\add_workouts.html:106
 msgid "Summary Kcal"
 msgstr "Suma Kcal"
 
-#: .\templates\workouts\add\add_workouts.html:106
+#: .\templates\workouts\add\add_workouts.html:107
 msgid "Summary Duration"
 msgstr "Suma Czasu"
 
-#: .\templates\workouts\add\add_workouts.html:107
+#: .\templates\workouts\add\add_workouts.html:108
 msgid "Created at"
 msgstr "Utworzone w"
 
-#: .\templates\workouts\add\add_workouts.html:125
+#: .\templates\workouts\add\add_workouts.html:126
 msgid "No activities added for today..."
 msgstr "Brak aktywności dodanych dzisiaj..."
 
-#: .\templates\workouts\enter\activity_enter.html:23
+#: .\templates\workouts\enter\activity_enter.html:24
 msgid "Your activity"
 msgstr "Twoja Aktywność"
 
-#: .\templates\workouts\enter\activity_enter.html:38
+#: .\templates\workouts\enter\activity_enter.html:39
 msgid "MET"
 msgstr "MET"
 
-#: .\templates\workouts\enter\activity_enter.html:39
+#: .\templates\workouts\enter\activity_enter.html:40
 msgid "MET Indicator"
 msgstr "Wskaźnik MET"
 
-#: .\templates\workouts\enter\activity_enter.html:41
+#: .\templates\workouts\enter\activity_enter.html:42
 msgid "What is MET?"
 msgstr "Czym jest MET?"
 
-#: .\templates\workouts\enter\activity_enter.html:42
+#: .\templates\workouts\enter\activity_enter.html:43
 msgid ""
 "MET stands for average energy expenditure during a given activity ( 1 MET is "
 "the energy you consume during inactivity)."
@@ -1133,28 +1133,28 @@ msgstr ""
 "MET oznacza średni wydatek energetyczny podczas danej aktywności ( 1 MET to "
 "energia, którą zużywasz podczas bezczynności)."
 
-#: .\templates\workouts\enter\activity_enter.html:44
+#: .\templates\workouts\enter\activity_enter.html:45
 msgid "How to calculate MET?"
 msgstr "Jak obliczać MET?"
 
-#: .\templates\workouts\saved\saved_workouts.html:29
+#: .\templates\workouts\saved\saved_workouts.html:30
 msgid "Your Saved Activities"
 msgstr "Zapisane aktywności"
 
-#: .\templates\workouts\saved\saved_workouts.html:48
+#: .\templates\workouts\saved\saved_workouts.html:49
 msgid "Do you want to create new activity template?"
 msgstr "Chcesz utworzyć nowy szablon aktywności?"
 
-#: .\templates\workouts\saved\saved_workouts.html:49
+#: .\templates\workouts\saved\saved_workouts.html:50
 msgid "Create New Template"
 msgstr "Utwórz Szablon"
 
-#: .\templates\workouts\saved\saved_workouts.html:57
+#: .\templates\workouts\saved\saved_workouts.html:58
 msgid "Adding your activity template to our database.."
 msgstr "Dodawanie Twojego szablonu posiłku do bazy..."
 
-#: .\templates\workouts\saved\saved_workouts.html:75
-#: .\templates\workouts\saved\saved_workouts.html:89
+#: .\templates\workouts\saved\saved_workouts.html:76
+#: .\templates\workouts\saved\saved_workouts.html:90
 msgid "Search for your activity components"
 msgstr "Szukaj składowych aktywności"
 
@@ -1175,8 +1175,8 @@ msgid ""
 "Share an activity that is not in our database and improve the experience of "
 "other users."
 msgstr ""
-"Podziel się składnikiem lub posiłkiem, który nie znajduje się w naszej bazie "
-"i ulepsz doświadczenia innych użytkowników."
+"Podziel się aktywnością, która nie znajduje się w naszej bazie i ulepsz "
+"doświadczenia innych użytkowników."
 
 #: .\templates\workouts\workouts.html:31
 msgid ""
@@ -2361,6 +2361,9 @@ msgid ""
 "settings.SASS_PRECISION."
 msgstr ""
 
+#~ msgid "Today's Meals"
+#~ msgstr "Dzisiejsze Posiłki"
+
 #~ msgid "People"
 #~ msgstr "Ludzie"
 
@@ -2376,9 +2379,6 @@ msgstr ""
 
 #~ msgid "Your Goal"
 #~ msgstr "Twój Cel"
-
-#~ msgid "Meals Propositions"
-#~ msgstr "Propozycje Posiłków"
 
 #~ msgid ""
 #~ "Browse the dish suggestions with their recipes and other information "
