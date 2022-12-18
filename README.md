@@ -85,6 +85,7 @@ List the ready features here:
 ![name](static/images/graph_nutri.png)
 ![name](static/images/calendar_readme.png)
 ![name](static/images/calendar_readme1.png)
+![name](static/images/error_page_readme.png)
 <!-- If you have screenshots you'd like to share, include them here. -->
 ... and many more!
 
