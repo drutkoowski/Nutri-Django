@@ -503,7 +503,6 @@ const updateSummary = () => {
         type: 'get',
         url: url,
         success: function (response) {
-
             const items = document.querySelectorAll('.add-meals__already__added--item')
             if (items.length > 0){
                 const kcalEaten = Math.round(response.kcalEaten, 2)
@@ -518,8 +517,8 @@ const updateSummary = () => {
                 if (summary) {
                     kcal.innerHTML = kcalEaten
                     protein.innerHTML =  proteinEaten + ' g'
-                    carbs.innerHTML = fatEaten + ' g'
-                    fat.innerHTML = carbsEaten + ' g'
+                    carbs.innerHTML = carbsEaten + ' g'
+                    fat.innerHTML = fatEaten + ' g'
                 }
             }
         },
