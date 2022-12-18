@@ -9301,7 +9301,11 @@ div.modal--calendar__content-summary {
       height: 2rem;
       vertical-align: text-top;
       margin-right: 1rem; }
-
+      @media only screen and (max-width: 46.875em) {
+        .recipe-search-options div img {
+          height: 1.5rem;
+          width: 1.5rem;
+          margin-top: 0.5rem; } }
 @media only screen and (max-width: 62.5em) {
   .recipe-ideas__item {
     display: grid;

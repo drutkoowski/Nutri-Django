@@ -42,6 +42,11 @@
       height: 2rem;
       vertical-align: text-top;
       margin-right: 1rem;
+      @include respond(tab-sm){
+        height: 1.5rem;
+        width: 1.5rem;
+        margin-top: 0.4rem;
+      }
     }
   }
 }
