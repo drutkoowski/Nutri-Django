@@ -547,3 +547,21 @@
     animation-duration: 1s;
     animation-timing-function: ease-out;
 }
+
+
+
+  div.modal-queued__recipe__container__requirements{
+    p{
+      @include respond(tab-sm) {
+        img.recipe-people-icon {
+          margin-bottom: 0.45rem;
+        }
+      }
+      @include respond(phone-md-lg){
+        img.recipe-people-icon {
+          margin-bottom: 0.55rem;
+        }
+      }
+    }
+  }
+

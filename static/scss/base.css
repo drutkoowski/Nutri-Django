@@ -9265,6 +9265,14 @@ div.modal--calendar__content-summary {
   animation-duration: 1s;
   animation-timing-function: ease-out; }
 
+@media only screen and (max-width: 46.875em) {
+  div.modal-queued__recipe__container__requirements p img.recipe-people-icon {
+    margin-bottom: 0.45rem; } }
+
+@media only screen and (max-width: 31.25em) {
+  div.modal-queued__recipe__container__requirements p img.recipe-people-icon {
+    margin-bottom: 0.55rem; } }
+
 .modal-recipe-ideas__content {
   height: 30rem;
   width: 60rem; }
