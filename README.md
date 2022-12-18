@@ -15,10 +15,8 @@ Live demo <br>
 * [Features](#features)
 * [Screenshots](#screenshots)
 * [Setup](#setup)
-* [Usage](#usage)
 * [Project Status](#project-status)
 * [Room for Improvement](#room-for-improvement)
-* [Acknowledgements](#acknowledgements)
 * [Contact](#contact)
 <!-- * [License](#license) -->
 
@@ -91,14 +89,26 @@ List the ready features here:
 ... and many more!
 
 ## Setup
-- Create New Folder
-- Type 'git clone https://github.com/drutkoowski/Nutri-Django.git' into the console/git cli
-- Then 'cd Nutri'
-- Create Virtual Environment by typing 'python3 -m venv venv' (in some cases you might use python instead of python3)
-- Install all required dependencies located in requirements.txt using 'pip install -r requirements.txt'
-- Create '.env' file (variables required are located in env-sample)
-- Run migrations by typing 'python manage.py makemigrations' and then 'python manage.py migrate'
-- Finally run 'python manage.py runserver'
+1. Create New Folder <br>
+
+2. Type <br>
+> 'git clone https://github.com/drutkoowski/Nutri-Django.git' into the console/git cli <br>
+Then <br>
+> 'cd Nutri' <br>
+
+3. Create Virtual Environment by typing <br>
+>'python3 -m venv venv' (in some cases you might use python instead of python3) <br>
+
+4. Install all required dependencies located in requirements.txt using <br>
+> 'pip install -r requirements.txt' <br>
+
+5. Create '.env' file (variables required are located in env-sample)<br>
+
+6. Run migrations by typing <br>
+> 'python manage.py makemigrations' and then 'python manage.py migrate' <br>
+
+7. Finally run <br>
+> 'python manage.py runserver' <br>
 
 ## Project Status
 Project is: :fire: COMPLETED :fire:
