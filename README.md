@@ -57,58 +57,70 @@ Visualization Examples <br>
 - <img src="https://symbols.getvecta.com/stencil_9/32_aws-elastic-beanstalk.3cbb564d52.svg" title="AWS" alt="AWS" width="20" height="20" align='center'/> AWS S3 (static files storage for deployment)&nbsp;
 ## Features
 List the ready features here:
-- Awesome feature 1
-- Awesome feature 2
-- Awesome feature 3
+- Creating an account which is verified by mail activation link
+- Adding meals manually or template based
+- Adding workouts manually or template based
+- Creating a meals/workouts templates
+- Calculating user macro demands (kcal, carbs, fat, protein)
+- Tracking daily income of macros
+- Tracking measurements changes in time (monthly, yearly)
+- Adding a ingredient/meal manually or using bar code search functionality which is not included in database
+- Adding activities which are not included in database
+- Searching for recipe by name and display its content
+- Searching for recipe by ingredients ( 2 options of search)
+- Adding your own recipe
+- Visualization of the data
+- Translating entered meals/ingredients/activities/recipes to both EN and PL language
 
 
 ## Screenshots
-![Example screenshot](./img/screenshot.png)
+![name](static/images/main_page_readme.png)
+![name](static/images/signup_readme.png)
+![name](static/images/signup_readme1.png)
+![name](static/images/login_readme.png)
+![name](static/images/dashboard_readme.png)
+![name](static/images/meals_menu_readme.png)
+![name](static/images/adding_workout.png)
+![name](static/images/recipes_readme.png)
+![name](static/images/add_recipe_readme.png)
+![name](static/images/profile_info_readme.png)
+![name](static/images/graph_nutri.png)
+![name](static/images/calendar_readme.png)
+![name](static/images/calendar_readme1.png)
 <!-- If you have screenshots you'd like to share, include them here. -->
-
+... and many more!
 
 ## Setup
-What are the project requirements/dependencies? Where are they listed? A requirements.txt or a Pipfile.lock file perhaps? Where is it located?
-
-Proceed to describe how to install / setup one's local environment / get started with the project.
-
-
-## Usage
-How does one go about using it?
-Provide various use cases and code examples here.
-
-`write-your-code-here`
-
+- Create New Folder
+- Type 'git clone https://github.com/drutkoowski/Nutri-Django.git' into the console/git cli
+- Then 'cd Nutri'
+- Create Virtual Environment by typing 'python3 -m venv venv' (in some cases you might use python instead of python3)
+- Install all required dependencies located in requirements.txt using 'pip install -r requirements.txt'
+- Create '.env' file (variables required are located in env-sample)
+- Run migrations by typing 'python manage.py makemigrations' and then 'python manage.py migrate'
+- Finally run 'python manage.py runserver'
 
 ## Project Status
-Project is: _in progress_ / _complete_ / _no longer being worked on_. If you are no longer working on it, provide reasons why.
+Project is: :fire: COMPLETED :fire:
 
-
-## Room for Improvement
-Include areas you believe need improvement / could be improved. Also add TODOs for future development.
-
-Room for improvement:
-- Improvement to be done 1
-- Improvement to be done 2
-
-To do:
-- Feature to be added 1
-- Feature to be added 2
-
-
-## Acknowledgements
-Give credit here.
-- This project was inspired by...
-- This project was based on [this tutorial](https://www.example.com).
-- Many thanks to...
-
+## Improvements to be done
+- Creating Meals/Workouts fitted suggestions
+- Save for later functionality
+- Mobile version of the application
 
 ## Contact
-Created by [@flynerdpl](https://www.flynerd.pl/) - feel free to contact me!
-
-
-<!-- Optional -->
-<!-- ## License -->
-<!-- This project is open source and available under the [... License](). -->
-
-<!-- You don't have to include all sections - just the one's relevant to your project -->
+Created by Damian Rutkowski - feel free to contact me!
+<div id="badges">
+  <a href="https://www.facebook.com/drutkoowski/">
+    <img src="https://img.shields.io/badge/Facebook-blue?style=for-the-badge&logo=facebook&logoColor=white" alt="Facebook Badge"/>
+  </a>
+  
+   <a href="mailto:d.rutkowski2000@gmail.com" target="_blank">
+    <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail Badge"/>
+  </a>
+  
+  <a href="https://www.linkedin.com/in/damian-rutkowski-810428237/">
+    <img src="https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge"/>
+  </a>
+  
+</div>
