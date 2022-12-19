@@ -34,55 +34,57 @@ def signup_view(request):
     if request.user.is_authenticated:
         return redirect('dashboard')
     if request.headers.get('x-requested-with') == 'XMLHttpRequest' and request.method == "POST":
-        lang_code = request.path.split('/')[1]
-        goal_weight = request.POST.get('goal-weight')
-        activity_level = request.POST.get('activity-level')
-        body_cm = request.POST.get('body-cm')
-        body_kg = request.POST.get('body-kg')
-        body_goal = request.POST.get('kg-goal')
-        first_name = request.POST.get('first-name')
-        last_name = request.POST.get('last-name')
-        gender = request.POST.get('gender')
-        years_old = request.POST.get('years-old')
-        email = request.POST.get('email')
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = Account.objects.create_user(first_name=first_name, last_name=last_name, username=username, email=email,
-                                           password=password)
-        current_site = get_current_site(request)
-        if lang_code == 'pl':
-            mail_subject = 'Nutri, aktywacja Twojego konta'
-            message = render_to_string("accounts/emails/account_verification_email_pl.html", {
-                "user": user,
-                "domain": current_site,
-                "uid": urlsafe_base64_encode(force_bytes(user.pk)),
-                "token": default_token_generator.make_token(user),
+        try:
+            lang_code = request.path.split('/')[1]
+            goal_weight = request.POST.get('goal-weight')
+            activity_level = request.POST.get('activity-level')
+            body_cm = request.POST.get('body-cm')
+            body_kg = request.POST.get('body-kg')
+            body_goal = request.POST.get('kg-goal')
+            first_name = request.POST.get('first-name')
+            last_name = request.POST.get('last-name')
+            gender = request.POST.get('gender')
+            years_old = request.POST.get('years-old')
+            email = request.POST.get('email')
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+            user = Account.objects.create_user(first_name=first_name, last_name=last_name, username=username, email=email,
+                                               password=password)
+            current_site = get_current_site(request)
+            if lang_code == 'pl':
+                mail_subject = 'Nutri, aktywacja Twojego konta'
+                message = render_to_string("accounts/emails/account_verification_email_pl.html", {
+                    "user": user,
+                    "domain": current_site,
+                    "uid": urlsafe_base64_encode(force_bytes(user.pk)),
+                    "token": default_token_generator.make_token(user),
 
-            })
-        else:
-            mail_subject = "Nutri, activation your account"
-            message = render_to_string("accounts/emails/account_verification_email.html", {
-                "user": user,
-                "domain": current_site,
-                "uid": urlsafe_base64_encode(force_bytes(user.pk)),
-                "token": default_token_generator.make_token(user),
+                })
+            else:
+                mail_subject = "Nutri, activation your account"
+                message = render_to_string("accounts/emails/account_verification_email.html", {
+                    "user": user,
+                    "domain": current_site,
+                    "uid": urlsafe_base64_encode(force_bytes(user.pk)),
+                    "token": default_token_generator.make_token(user),
 
-            }, request=request)
-        to_email = email
-        send_email = EmailMessage(from_email=EMAIL_HOST_USER, subject=mail_subject, body=message, to=[to_email])
-        send_email.send()
-        # user.is_active = True  # temporary
-        profile = UserProfile()
-        profile.user = user
-        profile.activity_level = activity_level
-        profile.goal_weight = goal_weight
-        profile.height = body_cm
-        profile.weight = body_kg
-        profile.years_old = years_old
-        profile.goal_kg = body_goal
-        profile.gender = gender
-        profile.save()
-        user.save()
+                }, request=request)
+            to_email = email
+            send_email = EmailMessage(from_email=EMAIL_HOST_USER, subject=mail_subject, body=message, to=[to_email])
+            send_email.send()
+            profile = UserProfile()
+            profile.user = user
+            profile.activity_level = activity_level
+            profile.goal_weight = goal_weight
+            profile.height = body_cm
+            profile.weight = body_kg
+            profile.years_old = years_old
+            profile.goal_kg = body_goal
+            profile.gender = gender
+            profile.save()
+            user.save()
+        except Exception as e:
+            print(e)
     return render(request, 'accounts/signup.html')
 
 
