@@ -45,7 +45,6 @@ Visualization Examples <br>
 - <img src="https://github.com/devicons/devicon/blob/master/icons/sass/sass-original.svg" title="SASS" alt="SASS" width="20" height="20" align='center'/> SASS&nbsp;
 - <img src="https://github.com/devicons/devicon/blob/master/icons/css3/css3-original-wordmark.svg" title="CSS" alt="CSS" width="20" height="20" align='center'/> CSS3&nbsp;
 - <img src="https://github.com/devicons/devicon/blob/master/icons/javascript/javascript-original.svg" title="JavaScript" alt="JavaScript" width="20" height="20" align='center'/> JavaScript ES6+&nbsp;
-- <img src="https://github.com/devicons/devicon/blob/master/icons/javascript/javascript-original.svg" title="JavaScript" alt="JavaScript" width="20" height="20" align='center'/> JavaScript ES6+&nbsp;
 - <img src="https://github.com/devicons/devicon/blob/master/icons/jquery/jquery-original-wordmark.svg" title="jQuery" alt="jQuery" width="20" height="20" align='center'/> jQuery (Ajax Included)&nbsp;
 ### :hammer_and_wrench: Tools & Deployment:
 - <img src="https://github.com/devicons/devicon/blob/master/icons/pycharm/pycharm-original.svg" title="PyCharm" alt="Pycharm" width="20" height="20" align='center'/> PyCharm&nbsp;
