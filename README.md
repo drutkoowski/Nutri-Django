@@ -9,6 +9,10 @@ Live demo <br>
 • [English](https://nutri-django.herokuapp.com/en/) <br>
 • [Polish](https://nutri-django.herokuapp.com/pl/)
 
+Dummy user credentials <br>
+<b>Username</b>: 'xetic67743@bitvoo.com'
+<b>Password</b>: 'test01'
+
 ## Table of Contents
 * [General Info](#general-information)
 * [Technologies Used](#technologies-used)
