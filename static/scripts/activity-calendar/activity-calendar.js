@@ -24,19 +24,6 @@ let openModal = function (modalClass) {
         div.style.zIndex = '213132121'
         div.classList.remove('not-visible')
         div.classList.add('modal-active')
-        // let Mwidth = div.offsetWidth;
-        // let Mheight = div.offsetHeight;
-        // let Wwidth = window.innerWidth;
-        // let Wheight = window.innerHeight;
-        // document.querySelector(modalClass).classList.add('modal-active')
-        // div.style.position = "absolute";
-        // div.style.top = ((Wheight - Mheight ) / 2 +window.pageYOffset ) + "px";
-        // div.style.left = ((Wwidth - Mwidth) / 2 +window.pageXOffset ) + "px";
-        // $(modalClass).on('scroll touchmove mousewheel', function(e){
-        //   e.preventDefault();
-        //   e.stopPropagation();
-        //   return false;
-        // })
 };
 
 
@@ -267,7 +254,11 @@ const renderCalendar = () => {
                 if (i < 10) {
                     day_num = `0${i}`
                 }
-                let dayClass = `${currYear}-${currMonth+1}-${day_num}`
+                let month_num = String(currMonth+1)
+                if (currMonth+1 < 10) {
+                    month_num = `0${currMonth+1}`
+                }
+                let dayClass = `${currYear}-${month_num}-${day_num}`
                 let dayDate = new Date(`${currYear}-${currMonth+1}-${day_num}`)
                 const isEvent = eventList.find(date => date.toDateString() === dayDate.toDateString()) ? 'isEvent' : ''
                 if (isEvent === 'isEvent'){

@@ -168,9 +168,9 @@ def login_user(request):
         email_address = request.POST.get('emailAddress')
         password = request.POST.get('password')
         check_if_user_exists = Account.objects.filter(email__iexact=email_address).first()
-        if not check_if_user_exists.is_active:
-            return JsonResponse({'status': 405, 'text': 'User not verified'})
         if check_if_user_exists:
+            if not check_if_user_exists.is_active:
+                return JsonResponse({'status': 405, 'text': 'User not verified'})
             user = auth.authenticate(username=check_if_user_exists.username, password=password)
         else:
             user = None
